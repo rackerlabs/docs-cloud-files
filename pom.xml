@@ -6,6 +6,28 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Cloud Files API Docs</name>
+    <profiles>
+        <profile>
+            <id>Rackspace Research Repositories</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>rackspace-research</id>
+                    <name>Rackspace Research Repository</name>
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>rackspace-research</id>
+                    <name>Rackspace Research Repository</name>
+                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
     <build>
         <resources>
             <resource>
@@ -42,33 +64,4 @@
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>Rackspace Cloud Research</id>
-            <repositories>
-                <repository>
-                    <id>repos.rackspace.cloud.snapshots</id>
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>                                                                                                                                                                         
-                <pluginRepository>                                                                                                                                                                       
-                    <id>repos.rackspace.cloud.snapshots</id>                                                                                                                                             
-                    <url>http://maven.research.rackspacecloud.com/content/groups/public/</url>                                                                                                           
-                    <releases>                                                                                                                                                                           
-                        <enabled>true</enabled>                                                                                                                                                          
-                    </releases>                                                                                                                                                                          
-                    <snapshots>                                                                                                                                                                          
-                        <enabled>true</enabled>                                                                                                                                                          
-                    </snapshots>                                                                                                                                                                         
-                </pluginRepository>                                                                                                                                                                     
-            </pluginRepositories>                  
-        </profile>
-    </profiles>
 </project>
