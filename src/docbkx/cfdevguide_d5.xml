@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<book version="6.0" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:db="http://docbook.org/ns/docbook">
@@ -20,7 +20,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files</productname>
-    <pubdate>12/13/10</pubdate>
+    <pubdate>12/17/10</pubdate>
     <abstract>
       <para> This document is intended for software developers interested in developing applications
         using the Cloud Files Application Programming Interface (<abbrev>API</abbrev>). </para>
@@ -295,8 +295,17 @@
         method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
           <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
         Access Key respectively.</para>
+      <db:para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace
+        Cloud APIs and is itself a RESTful web service. For US customers, it is accessible at
+        https://auth.api.rackspacecloud.com/v1.0. If you signed up at www.rackspacecloud.com, you
+        are considered a US customer. If you signed up at www.rackspace.co.uk/cloud, you are
+        considered a UK customer. For UK customers, it is accessible at
+        https://lon.auth.api.rackspacecloud.com/v1.0. In order to authenticate, you must supply your
+        username and API access key in the X-Auth-User and X-Auth-Key x-headers, respectively.
+        Username is your common Rackspace Cloud username and your API access key can be obtained
+        from the Rackspace Cloud Control Panel in the Your Account | API Access section.</db:para>
       <example>
-        <title>Authentication Request</title>
+        <title>Sample Authentication Request (US Customers)</title>
         <literallayout class="monospaced">
   GET /v1.0 HTTP/1.1
   Host: auth.api.rackspacecloud.com
