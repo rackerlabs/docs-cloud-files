@@ -39,7 +39,7 @@
       hurdles.</para>
     <para>Cloud Files allows users to store/retrieve files and CDN-enabled content via a simple Web
       Service (ReST: Representational State Transfer) interface. There are also language-specific
-      API’s that utilize the ReSTful API but make it much easier for developers to integrate into
+      APIs that utilize the ReSTful API but make it much easier for developers to integrate into
       their applications.</para>
     <para>For more details on the Cloud Files service please refer to <link
         xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
@@ -51,13 +51,12 @@
         fully documents the ReST application programming interface (API) that allows developers to
         interact with the storage and CDN components of the Cloud Files system.</para>
       <para>Prerequisites: Familiarity with HTTP, RFC 2616</para>
-      <para>Rackspace also provides company supported language-specific API’s in several popular
-        programming languages. The current list of supported API’s is C#/.NET, Java, PHP, Python,
-        and Ruby. These API’s utilize the ReST API and are provided to help developers rapidly
-        integrate Cloud Files support into their applications without needing to write at the ReST
-        interface. Each API includes its own documentation in its <emphasis>native</emphasis>
-        format. For example, the Java API includes JavaDocs and the C#/.NET API includes a CHM
-        file.</para>
+      <para>Rackspace also provides company supported language-specific APIs in several popular
+        programming languages. The current list of supported APIs is C#/.NET, Java, PHP, Python, and
+        Ruby. These APIs utilize the ReST API and are provided to help developers rapidly integrate
+        Cloud Files support into their applications without needing to write at the ReST interface.
+        Each API includes its own documentation in its <emphasis>native</emphasis> format. For
+        example, the Java API includes JavaDocs and the C#/.NET API includes a CHM file.</para>
       <para>System administrators and other users who are interested in the storage and CDN benefits
         of Cloud Files should consider using the File Manager interface within the Rackspace Cloud
         Control Panel, <link xlink:href="http://www.jungledisk.com/">Jungle Disk</link>, or third
@@ -116,10 +115,10 @@
     </section>
     <section>
       <title>Authentication</title>
-      <para>The language and ReST API's below describe how to authenticate against the
-        Authentication service to receive Cloud Files connection parameters and an
-          <firstterm>authentication token</firstterm>. The token must be passed in for all
-        subsequent Container/Object operations.</para>
+      <para>The language and ReST APIs below describe how to authenticate against the Authentication
+        service to receive Cloud Files connection parameters and an <firstterm>authentication
+          token</firstterm>. The token must be passed in for all subsequent Container/Object
+        operations.</para>
       <note>
         <para>The language-specific APIs handle authentication, token passing, and HTTPS
           request/response communication.</para>
@@ -253,7 +252,7 @@
       performed with standard HTTP calls. See the <link
         xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
         article</link> for more information about ReST.</para>
-    <para>The following constraints apply to the ReST APIs HTTP requests:</para>
+    <para>The following constraints apply to the ReST API's HTTP requests:</para>
     <itemizedlist>
       <listitem>
         <para>Maximum number of HTTP headers per request: 90</para>
@@ -275,7 +274,7 @@
       </listitem>
     </itemizedlist>
     <para>Container and Object names should be properly URL encoded prior to interacting with the
-      ReST interface (the language API's handle URL encoding/decoding). The length restrictions
+      ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
       should be checked against the URL encoded string.</para>
     <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
         <firstterm>authorization token</firstterm> HTTP header defined as <code>X-Auth-Token</code>.
@@ -291,7 +290,7 @@
         <code>X-Storage-Url</code> can be used to create a Container or upload an Object. A
         <code>PUT</code> request against the<code>X-CDN-Management-Url</code> is used to CDN-enable
       a Container.</para>
-    <para>The language-specific API's mask this system separation from the programmer. They simply
+    <para>The language-specific APIs mask this system separation from the programmer. They simply
       create a Container and mark it <emphasis>public</emphasis> and it handles calling out to the
       appropriate back-end services using the appropriate ReST API.</para>
     <note>
@@ -1643,7 +1642,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
       <para>cURL allows you to transmit and receive HTTP requests and responses from the
         command-line or from within a shell script. This makes it possible to work with the ReST API
-        directly without using one of the client API's. </para>
+        directly without using one of the client APIs. </para>
       <para>The following cURL command-line options will be used</para>
       <variablelist>
         <title>cURL Command-Line Options</title>
@@ -1841,9 +1840,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
-          API's however are designed to re-use these connections between operations and therefore
+          APIs however are designed to re-use these connections between operations and therefore
           provide much better performance. It is recommended that you use one of the supported
-          language API's in your production applications and limit <code>curl</code> to
+          language APIs in your production applications and limit <code>curl</code> to
           quick-and-easy testing/troubleshooting.</para>
       </section>
     </section>
