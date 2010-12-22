@@ -98,11 +98,10 @@
   </chapter>
   <chapter>
     <title>Concepts</title>
-    <para>Cloud Files is not a <emphasis>file system</emphasis> in the traditional sense. You will
-      not be able to <emphasis role="strong">map</emphasis> or <emphasis role="strong"
-        >mount</emphasis> virtual disk drives like you can with other forms of storage such as a SAN
-      or NAS. Since Cloud Files is a different way of thinking when it comes to storage, you should
-      take a few moments to review the key concepts listed below.</para>
+    <para>Cloud Files is not a file system in the traditional sense. You will not be able to map or
+      mount virtual disk drives like you can with other forms of storage such as a SAN or NAS. Since
+      Cloud Files is a different way of thinking when it comes to storage, you should take a few
+      moments to review the key concepts listed below.</para>
     <section>
       <title>Accounts</title>
       <para>The Cloud Files system is designed to be used by many different customers. Your user
@@ -116,9 +115,8 @@
     <section>
       <title>Authentication</title>
       <para>The language and ReST APIs below describe how to authenticate against the Authentication
-        service to receive Cloud Files connection parameters and an <firstterm>authentication
-          token</firstterm>. The token must be passed in for all subsequent Container/Object
-        operations.</para>
+        service to receive Cloud Files connection parameters and an authentication token. The token
+        must be passed in for all subsequent container/object operations.</para>
       <note>
         <para>The language-specific APIs handle authentication, token passing, and HTTPS
           request/response communication.</para>
@@ -126,99 +124,98 @@
     </section>
     <section>
       <title>Permissions</title>
-      <para>There are no permissions or access-controls around Containers or Objects in Cloud Files.
+      <para>There are no permissions or access-controls around containers or objects in Cloud Files.
         Each user has their own storage account and has full access to that account. Users must
         authenticate with their credentials as described above, but once authenticated they can
-        create/delete Containers and Objects within that Account. The only way a user can access the
-        content from another Account is if they share their Username/API Access Key or a session
+        create/delete containers and objects within that account. The only way a user can access the
+        content from another account is if they share their Username/API Access Key or a session
         token.</para>
     </section>
     <section>
       <title>Containers</title>
-      <para>A <firstterm>Container</firstterm> is a <emphasis>storage compartment</emphasis> for
-        your data and provides a way for you to organize your data. You can think of a Container as
-        a folder in Windows® or a directory in UNIX®. The primary difference between a Container and
-        these other <emphasis>file system</emphasis> concepts is that Containers cannot be nested.
-        You can, however, create an unlimited number of Containers within your account. Data must be
-        stored in a Container so you must have at least one Container defined in your account prior
-        to uploading data.</para>
-      <para>The only restrictions on Container names is that they cannot contain a forward slash
+      <para>A container is a storage compartment for your data and provides a way for you to
+        organize your data. You can think of a container as a folder in Windows® or a directory in
+        UNIX®. The primary difference between a container and these other file system concepts is
+        that containers cannot be nested. You can, however, create an unlimited number of containers
+        within your account. Data must be stored in a container so you must have at least one
+        container defined in your account prior to uploading data.</para>
+      <para>The only restrictions on container names is that they cannot contain a forward slash
           (<code>/</code>) and must be less than 256 bytes in length. Please note that the length
-        restriction applies to the name after it has been URL encoded. For example, a Container name
+        restriction applies to the name after it has been URL encoded. For example, a container name
         of <code>Course Docs</code> would be URL encoded as <code>Course%20Docs</code> and therefore
         be 13 bytes in length rather than the expected 11.</para>
     </section>
     <section>
       <title>Objects</title>
-      <para>An <firstterm>Object</firstterm> is the basic storage entity and any optional metadata
-        that represents the <emphasis>files</emphasis> you store in the Cloud Files system. When you
-        upload data to Cloud Files the data is stored as-is (no compression or encryption) and
-        consists of a location (Container), the Object's name, and any metadata consisting of
-        key/value pairs. For instance, you may chose to store a backup of your digital photos and
-        organize them into albums. For example, each Object could be tagged with metadata such as
-          <code>Album : Caribbean Cruise</code> or <code>Album : Aspen Ski Trip</code>.</para>
-      <para>The only restriction on Object names is that they must be less than 1024 bytes in length
-        after URL encoding. For example, an Object name of <code>C++final(v2).txt</code> should be
+      <para>An object is the basic storage entity and any optional metadata that represents the
+        files you store in the Cloud Files system. When you upload data to Cloud Files, the data is
+        stored as-is (no compression or encryption) and consists of a location (container), the
+        object's name, and any metadata consisting of key/value pairs. For instance, you may chose
+        to store a backup of your digital photos and organize them into albums. In this case, each
+        object could be tagged with metadata such as <code>Album : Caribbean Cruise</code> or
+          <code>Album : Aspen Ski Trip</code>.</para>
+      <para>The only restriction on object names is that they must be less than 1024 bytes in length
+        after URL encoding. For example, an object name of <code>C++final(v2).txt</code> should be
         URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
         rather than the expected 16.</para>
-      <para>The maximum allowable size for a storage Object is 5 gigabytes and the minimum is zero
-        bytes. For metadata, you should not exceed 90 individual key/value pairs for any one Object
+      <para>The maximum allowable size for a storage object is 5 gigabytes and the minimum is zero
+        bytes. For metadata, you should not exceed 90 individual key/value pairs for any one object
         and the total byte length of all key/value pairs should not exceed 4KB (4096 bytes).</para>
     </section>
     <section>
       <title>Operations</title>
-      <para>Operations are the actions you perform within your Account. Creating or deleting
-        Containers, uploading or downloading Objects, etc. The full list of operations is documented
-        under the ReST API section. Operations may be performed via the ReST web service API or a
-        language-specific API (currently we support Python, PHP, Java, Ruby, and C#/.NET).</para>
+      <para>Operations are the actions you perform within your account. Creating or deleting
+        containers, uploading or downloading objects, etc. The full list of operations is documented
+        in the ReST API section. Operations may be performed via the ReST web service API or a
+        language-specific API; currently, we support Python, PHP, Java, Ruby, and C#/.NET.</para>
       <important>
         <para> All operations must include a valid authorization token. </para>
       </important>
     </section>
     <section>
-      <title>CDN-enabled Containers</title>
-      <para>To publish data that is to be served by a Content Distribution Network (CDN), Containers
-        which house the data must be <firstterm>CDN-enabled</firstterm>. When a Container is
-        CDN-enabled any files will be publicly accessible and not require an authentication token
-        for read access. Uploading content into a CDN-enabled Container is a secure operation and
-        will require a valid authentication token.</para>
-      <para>Each CDN-enabled Container has a unique Uniform Resource Locator (URL) that can be
-        combined with its Object names and openly distributed in web pages, emails, or other
+      <title>CDN-Enabled Containers</title>
+      <para>To publish data that is to be served by a Content Distribution Network (CDN), containers
+        which house the data must be CDN-enabled. When a container is CDN-enabled, any files within
+        the container are publicly accessible and do not require an authentication token for read
+        access. Uploading content into a CDN-enabled container is a secure operation and requires a
+        valid authentication token.</para>
+      <para>Each CDN-enabled container has a unique Uniform Resource Locator (URL) that can be
+        combined with its object names and openly distributed in web pages, emails, or other
         applications.</para>
-      <para>For example, a CDN-enabled Container named <code>photos</code> might be referenced as
+      <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
           <link xlink:href="http://c0010171.cdn.cloudfiles.rackspacecloud.com"
-          >http://c0010171.cdn.cloudfiles.rackspacecloud.com</link>. If that Container houses a
+          >http://c0010171.cdn.cloudfiles.rackspacecloud.com</link>. If that container houses a
         screenshot called <code>wow1.jpg</code>, then that image can be served by a CDN with the
         full URL of <link xlink:href="http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg"
           >http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg</link>. This URL can be
         embedded in HTML pages, email messages, blog posts, etc. When that URL is accessed, a copy
         of that image is fetched from the Cloud Files storage system and cached in a CDN and served
         from there for all subsequent requests for a configurable cache time to live (TTL) value.
-        Setting the TTL of a CDN-enabled Container translates to setting the <code>Expires</code>
+        Setting the TTL of a CDN-enabled container translates to setting the <code>Expires</code>
         and <code>Cache-Control</code> HTTP headers. </para>
       <para>Containers tracked in the CDN management service are completely separate and distinct
-        from the Containers defined in the storage service. It is possible for a Container to be
+        from the containers defined in the storage service. It is possible for a container to be
         CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
         pre-generate CDN URLs before actually uploading content and this separation gives them that
         ability.</para>
-      <para>However, for the content to be served from the CDN, the Container names <emphasis
+      <para>However, for the content to be served from the CDN, the container names <emphasis
           role="strong">MUST</emphasis> match in both the CDN management service and the storage
-        service. For example, you could CDN-enable a Container called <code>images</code> and be
-        assigned the CDN URL, but you also need to create a Container called <code>images</code> in
+        service. For example, you could CDN-enable a container called <code>images</code> and be
+        assigned the CDN URL, but you also need to create a container called <code>images</code> in
         the storage service.</para>
     </section>
     <section>
-      <title>Language-specific API Bindings</title>
+      <title>Language-Specific API Bindings</title>
       <para>A set of supported API bindings in several popular languages are available to help put
         Cloud Files in the hands of developers. These bindings provide a layer of abstraction on top
-        of the base ReST API allowing programmers to work with a Container and Object model instead
+        of the base ReST API, allowing programmers to work with a container and object model instead
         of working directly with HTTP requests and responses. These bindings are free (as in beer
         and as in speech) to download, use, and modify. They are all licensed under the MIT License
         as described in the COPYING file packaged with each binding. If you do make any improvements
         to an API, you are encouraged (but not required) to submit those changes back to us.</para>
       <para>The API bindings are hosted at <link xlink:href="http://github.com/rackspace"
           >http://github.com/rackspace</link>. Feel free to coordinate your changes through github
-        or if you prefer, send your changes to cloudfiles@rackspacecloud.com. Just make sure to
+        or, if you prefer, send your changes to cloudfiles@rackspacecloud.com. Just make sure to
         indicate which language and version you modified and send us a unified diff. </para>
       <para>Each binding includes its own documentation (either HTML, PDF, or CHM). They also
         include code snippets and examples to help you get started. The currently supported API
@@ -247,8 +244,8 @@
   </chapter>
   <chapter>
     <title>ReST API</title>
-    <para>The underlying API for Cloud Files is implemented as a set of ReSTful web services
-      (Representational State Transfer). All Authentication and Container/Object operations can be
+    <para>The underlying API for Cloud Files is implemented as a set of ReSTful (Representational
+      State Transfer) web services. All authentication and container/object operations can be
       performed with standard HTTP calls. See the <link
         xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
         article</link> for more information about ReST.</para>
@@ -267,13 +264,13 @@
         <para>Maximum length of HTTP request: 5 gigabytes</para>
       </listitem>
       <listitem>
-        <para>Maximum length of Container name: 256 bytes</para>
+        <para>Maximum length of container name: 256 bytes</para>
       </listitem>
       <listitem>
-        <para>Maximum length of Object name: 1024 bytes</para>
+        <para>Maximum length of object name: 1024 bytes</para>
       </listitem>
     </itemizedlist>
-    <para>Container and Object names should be properly URL encoded prior to interacting with the
+    <para>Container and object names should be properly URL encoded prior to interacting with the
       ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
       should be checked against the URL encoded string.</para>
     <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
@@ -282,25 +279,25 @@
       service and supplying a valid Username and API Access Key.</para>
     <para>There are actually two different sets of ReST services that make up the full Cloud Files
       product. The first ReST service identified with <code>X-Storage-Url</code> is used for
-      managing the data stored in the system. Example operations are creating Containers and
-      uploading Objects. The second ReST service is for managing the CDN feature of Cloud Files and
+      managing the data stored in the system. Example operations are creating containers and
+      uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
       is identified by <code>X-CDN-Management-Url</code>.</para>
     <para>In the following sections, each HTTP method will be documented and which service the call
       should be made against. For example, a <code>PUT</code> request against
-        <code>X-Storage-Url</code> can be used to create a Container or upload an Object. A
+        <code>X-Storage-Url</code> can be used to create a container or upload an object. A
         <code>PUT</code> request against the<code>X-CDN-Management-Url</code> is used to CDN-enable
-      a Container.</para>
+      a container.</para>
     <para>The language-specific APIs mask this system separation from the programmer. They simply
-      create a Container and mark it <emphasis>public</emphasis> and it handles calling out to the
+      create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
       appropriate back-end services using the appropriate ReST API.</para>
     <note>
       <para>All requests to authenticate and operate against Cloud Files are performed using SSL
         over HTTP (HTTPS) on TCP port 443.</para>
     </note>
-    <para>The following diagram illustrates the various system interfaces and the ease with
-      which content can be distributed over the CDN. Authenticate, create a Container, upload
-      Objects, mark the Container as <emphasis>public</emphasis> and begin serving that content
-      from a powerful CDN.</para>  
+    <para>The following diagram illustrates the various system interfaces and the ease with which
+      content can be distributed over the CDN. The process is simple: authenticate, create a
+      container, upload objects, mark the container as public and begin serving that content from a
+      powerful CDN.</para>  
     
     <figure xml:id="CFinterfaces">
       <title>Cloud Files System Interfaces</title>
@@ -339,12 +336,12 @@
               </literallayout>
       </example>
       <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
-        headers, <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
-          <code>X-Auth-Token</code>. Note any 2xx response is a good response. For example, a 202
+          <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
+          <code>X-Auth-Token</code> headers. Any 2xx response is a good response. For example, a 202
         response means the request has been accepted. Also, additional <code>X-</code> headers may
         be returned. These additional headers are related to other Rackspace services and can be
         ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
-        subsequent Container/Object operations against Cloud Files should be made against the URI
+        subsequent container/object operations against Cloud Files should be made against the URI
         specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
         include the <code>X-Auth-Token</code> header.</para>
       <example>
@@ -363,7 +360,7 @@
       <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
         parsed and used in the connection and request line of all subsequent requests against Cloud
         Files. In the example response above, users connecting to Cloud Files would send most
-        Container/Object requests with a Host header of <code>storage.clouddrive.com</code> and the
+        container/object requests with a host header of <code>storage.clouddrive.com</code> and the
         request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable Containers
         or adjust CDN attributes, ReST requests should be sent to <code>cdn.clouddrive.com</code>.
         Note that authentication tokens are valid for a 24 hour period.</para>
@@ -382,7 +379,7 @@
           <para>Object names cannot exceed 1024 bytes and have no character restrictions</para>
         </listitem>
         <listitem>
-          <para>Object and Container names must be URL-encoded</para>
+          <para>Object and container names must be URL-encoded</para>
         </listitem>
       </itemizedlist>
       <section>
@@ -399,7 +396,7 @@
         <section>
           <title>GET</title>
           <para><code>GET</code> operations against the <code>X-Storage-Url</code> for an account
-            are performed to retrieve a list of existing storage Containers ordered by name. The
+            are performed to retrieve a list of existing storage containers ordered by name. The
             following list describes the optional query parameters that are supported with this
             request.</para>
           <variablelist>
@@ -419,7 +416,7 @@
               <listitem>
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, return Object names greater in value than the specified
+                  </inlineequation>, return object names greater in value than the specified
                   marker.</para>
               </listitem>
             </varlistentry>
@@ -431,7 +428,7 @@
               </listitem>
             </varlistentry>
           </variablelist>
-          <para>At this time, a <code>prefix</code> query parameter is not supported at the Account
+          <para>At this time, a <code>prefix</code> query parameter is not supported at the account
             level.</para>
           <example>
             <title>Storage Account GET Request</title>
@@ -527,7 +524,7 @@
           </section>
           <section>
             <title>Large Container Lists</title>
-            <para>The system will return a maximum of 10,000 Container names per request. To
+            <para>The system will return a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
               parameter. The marker indicates where the last list left off and the system will
               return container names greater than this marker, up to 10,000 again. Note that the
@@ -585,10 +582,10 @@
         <section>
           <title>HEAD</title>
           <para><code>HEAD</code> operations against an account are performed to retrieve the number
-            of Containers and the total bytes stored in Cloud Files for the account. This
+            of containers and the total bytes stored in Cloud Files for the account. This
             information is returned in two custom headers, <code>X-Account-Container-Count</code>
             and <code>X-Account-Bytes-Used</code>.</para>
-          <para>Determine the number of Containers within the account and the total bytes stored.
+          <para>Determine the number of containers within the account and the total bytes stored.
             Since the storage system is designed to store large amounts of data, care should be
             taken when representing the total bytes response as an integer; when possible, convert
             it to a 64-bit unsigned integer if your platform supports that primitive type.</para>
@@ -616,7 +613,7 @@
       </section>
       <section>
         <title>Storage Container Services</title>
-        <para>This section documents the ReST operations that can be performed on Containers. All
+        <para>This section documents the ReST operations that can be performed on containers. All
           operations are valid HTTP request methods and will resemble this format:</para>
         <example>
           <title>Storage Container HTTP Request</title>
@@ -626,9 +623,9 @@
         </example>
         <section>
           <title>HEAD</title>
-          <para><code>HEAD</code> operations against a storage Container are used to determine the
-            number of Objects, and the total bytes of all Objects stored in the Container.</para>
-          <para>Determine the number of Objects and total stored bytes within the Container. Since
+          <para><code>HEAD</code> operations against a storage container are used to determine the
+            number of objects, and the total bytes of all objects stored in the container.</para>
+          <para>Determine the number of objects and total stored bytes within the container. Since
             the storage system is designed to store large amounts of data, care should be taken when
             representing the total bytes response as an integer; when possible, convert it to a
             64-bit unsigned integer if your platform supports that primitive type.</para>
@@ -640,8 +637,8 @@
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>The HTTP return code will be 204 (No Content) if the Container exists, and 404 (Not
-            Found) if it does not. The Object count and utilization are returned in the
+          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
+            Found) if it does not. The object count and utilization are returned in the
               <code>X-Container-Object-Count</code> and <code>X-Container-Bytes-Used</code> headers
             respectively.</para>
           <example>
@@ -657,12 +654,12 @@
         </section>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against a storage Container name are performed to
-            retrieve a list of Objects stored in the Container. Additionally, there are a number of
+          <para><code>GET</code> operations against a storage container name are performed to
+            retrieve a list of objects stored in the container. Additionally, there are a number of
             optional query parameters that can be used to refine the list results.</para>
-          <para>A request with no query parameters will return the full list of Object names stored
-            in the Container up to 10,000 names. Optionally specifying the query parameters will
-            filter the full list and return a subset of Objects.</para>
+          <para>A request with no query parameters will return the full list of object names stored
+            in the container, up to 10,000 names. Optionally specifying the query parameters will
+            filter the full list and return a subset of objects.</para>
           <variablelist>
             <title>Query Parameters</title>
             <varlistentry>
@@ -680,7 +677,7 @@
               <listitem>
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, return Object names greater in value than the specified
+                  </inlineequation>, return object names greater in value than the specified
                   marker.</para>
               </listitem>
             </varlistentry>
@@ -689,7 +686,7 @@
               <listitem>
                 <para>For a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, causes the results to be limited to Object names beginning with
+                  </inlineequation>, causes the results to be limited to object names beginning with
                   the substring <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
                   </inlineequation>.</para>
@@ -707,7 +704,7 @@
               <listitem>
                 <para>For a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, return the Object names nested in the pseudo path (assuming
+                  </inlineequation>, return the object names nested in the pseudo path (assuming
                   preconditions are met - see below).</para>
               </listitem>
             </varlistentry>
@@ -716,7 +713,7 @@
               <listitem>
                 <para>For a character <inlineequation>
                     <mathphrase><emphasis>c</emphasis></mathphrase>
-                  </inlineequation>, return all the Object names nested in the container (without
+                  </inlineequation>, return all the object names nested in the container (without
                   the need for the directory marker objects).</para>
               </listitem>
             </varlistentry>
@@ -729,9 +726,9 @@
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>A list of Objects is returned in the response body, one Object name per line. A 204
-            (No Content) HTTP return code will be passed back if the Container is empty or does not
-            exist for the specified account. If an incorrect Account is specified, the HTTP return
+          <para>A list of objects is returned in the response body, one object name per line. A 204
+            (No Content) HTTP return code will be passed back if the container is empty or does not
+            exist for the specified account. If an incorrect account is specified, the HTTP return
             code will be 404 (Not Found).</para>
           <example>
             <title>Storage Container GET Response</title>
@@ -833,19 +830,19 @@
           </section>
           <section>
             <title>Large Object Lists</title>
-            <para>The system will return a maximum of 10,000 Object names per request. To retrieve
-              subsequent Object names, another request must be made with a 'marker' parameter. The
-              marker indicates where the last list left off and the system will return Object names
+            <para>The system will return a maximum of 10,000 object names per request. To retrieve
+              subsequent object names, another request must be made with a 'marker' parameter. The
+              marker indicates where the last list left off and the system will return object names
               greater than this marker, up to 10,000 again. Note that the ‘marker’ value should be
               URL encoded prior to sending the HTTP request.</para>
             <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
-            <para>If the number of Object names returned equals the limit given (or 10,000 if no
-              limit is given), it can be assumed there are more Object names to be listed. If the
+            <para>If the number of object names returned equals the limit given (or 10,000 if no
+              limit is given), it can be assumed there are more object names to be listed. If the
               container name list is exactly divisible by the limit, the last request will simply
               have no content.</para>
             <example>
               <title>Large Object Lists</title>
-              <para>For an example, let's use a listing of five Object names:</para>
+              <para>For an example, let's use a listing of five object names:</para>
               <literallayout class="monospaced">
   apples
   bananas
@@ -863,8 +860,8 @@
   apples
   bananas
                     </literallayout>
-              <para>Since we received 2 items back, we can assume there are more Object names to
-                list; so we make another request with a marker of the last item returned:</para>
+              <para>Since we received two items back, we can assume there are more object names to
+                list. So, we make another request with a marker of the last item returned:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
@@ -874,7 +871,7 @@
   kiwis
   oranges
                     </literallayout>
-              <para>Again we have 2 items returned, there may be more:</para>
+              <para>Again we have two items returned, there may be more:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -892,22 +889,22 @@
             <para>Users will be able to simulate a hierarchical structure in Cloud Files by
               following a few guidelines. Object names must contain the forward slash character
                 <code>/</code> as a path element separator and also create <firstterm>directory
-                marker</firstterm> Objects, then they will be able to traverse this nested structure
+                marker</firstterm> objects; then they will be able to traverse this nested structure
               with the new <emphasis>path</emphasis> query parameter. This can best be illustrated
               by example:</para>
             <note>
-              <para>For the purposes of this example, the Container where the Objects reside is
-                called <code>backups</code>. All Objects in this example start with a prefix of
+              <para>For the purposes of this example, the container where the objects reside is
+                called <code>backups</code>. All objects in this example start with a prefix of
                   <code>photos</code> and should <emphasis role="strong">NOT</emphasis> be confused
-                with the Container name. In the example, the full URI of the <code>me.jpg</code>
+                with the container name. In the example, the full URI of the <code>me.jpg</code>
                 file would be
                   <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>
               </para>
             </note>
             <example>
               <title>Pseudo hierarchical folders/directories</title>
-              <para>In the example, the following <emphasis>real</emphasis> Objects are uploaded to
-                the storage system with names representing their full filesystem path.</para>
+              <para>In the example, the following <emphasis>real</emphasis> objects are uploaded to
+                the storage system with names representing their full filesystem path:</para>
               <literallayout class="monospaced">
   photos/animals/dogs/poodle.jpg
   photos/animals/dogs/terrier.jpg
@@ -918,9 +915,9 @@
   photos/me.jpg
                     </literallayout>
               <para>To take advantage of this feature, the <emphasis>directory marker</emphasis>
-                Objects must also be created to represent the appropriate directories. The following
-                additional Objects need to be created. A good convention would be to create these as
-                zero or one byte files with a Content-Type of
+                objects must also be created to represent the appropriate directories. The following
+                additional objects need to be created. A good convention would be to create these as
+                zero- or one-byte files with a Content-Type of
                 <code>application/directory</code>.</para>
               <literallayout class="monospaced">
   photos/animals/dogs
@@ -929,7 +926,7 @@
   photos/plants
   photos
                     </literallayout>
-              <para>Now issuing a <code>GET</code> request against the Container name coupled with
+              <para>Now issuing a <code>GET</code> request against the container name coupled with
                 the <code>path</code> query parameter of the directory to list can traverse these
                   <emphasis>directories</emphasis>. Only the request line and results are depicted
                 below excluding other request/response headers.</para>
@@ -978,11 +975,10 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations against a storage Container are used to create that
-            Container.</para>
-          <para>Containers are <emphasis>storage compartments</emphasis> for your data. The URL
-            encoded name must be less than 256 bytes and cannot contain a forward slash '/'
-            character.</para>
+          <para><code>PUT</code> operations against a storage container are used to create that
+            container.</para>
+          <para>Containers are storage compartments for your data. The URL encoded name must be less
+            than 256 bytes and cannot contain a forward slash '/' character.</para>
           <example>
             <title>Storage Container PUT Request</title>
             <literallayout class="monospaced">
@@ -991,9 +987,9 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>No content is returned. A status code of 201 (Created) indicates that the Container
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
             was created as requested. Container <code>PUT</code> requests are idempotent and a code
-            of 202 (Accepted) is returned when the Container already existed.</para>
+            of 202 (Accepted) is returned when the container already existed.</para>
           <example>
             <title>Storage Container PUT Response</title>
             <literallayout class="monospaced">
@@ -1041,10 +1037,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>DELETE</title>
-          <para><code>DELETE</code> operations against a storage Container are used to permanently
-            remove that Container. The Container must be empty before it can be deleted.</para>
-          <para>A <code>HEAD</code> request against the Container can be used to determine if it
-            contains any Objects.</para>
+          <para><code>DELETE</code> operations against a storage container are used to permanently
+            remove that container. The container must be empty before it can be deleted.</para>
+          <para>A <code>HEAD</code> request against the container can be used to determine if it
+            contains any objects.</para>
           <example>
             <title>Storage Container DELETE Request</title>
             <literallayout class="monospaced">
@@ -1057,8 +1053,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             <emphasis role="italic">'Response '</emphasis>
           </para>
           <para>No content is returned. A status code of 204 (No Content) indicates success, 404
-            (Not Found) is returned if the requested Container was not found, and a 409 (Conflict)
-            if the Container is not empty (no response body will be generated).</para>
+            (Not Found) is returned if the requested container was not found, and a 409 (Conflict)
+            if the container is not empty. No response body will be generated.</para>
           <example>
             <title>Storage Container DELETE Response</title>
             <literallayout class="monospaced">
@@ -1073,14 +1069,14 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
       <section>
         <title>Storage Object Services</title>
-        <para>An Object represents the data and any extra metadata for the files stored in the
-          system. Through the ReST interface, metadata for an Object can be included by adding
+        <para>An object represents the data and any extra metadata for the files stored in the
+          system. Through the ReST interface, metadata for an object can be included by adding
           custom HTTP headers to the request and the data payload as the request body. Objects
           cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
           encoding.</para>
         <section>
           <title>HEAD</title>
-          <para><code>HEAD</code> operations on an Object are used to retrieve Object metadata and
+          <para><code>HEAD</code> operations on an object are used to retrieve object metadata and
             other standard HTTP headers.</para>
           <para>The only required header to be sent in the request is the authorization
             token.</para>
@@ -1093,7 +1089,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
           </example>
           <para>No response body is returned. Metadata is returned as HTTP headers. A status code of
-            204 (No Content) indicates success, status 404 (Not Found) is returned when the Object
+            204 (No Content) indicates success; status 404 (Not Found) is returned when the object
             does not exist.</para>
           <example>
             <title>Storage Object HEAD Response</title>
@@ -1114,7 +1110,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against an Object are used to retrieve the Object's
+          <para><code>GET</code> operations against an object are used to retrieve the object's
             data.</para>
           <para>Note that you can perform conditional <code>GET</code> requests by using certain
             HTTP headers as documented in RFC 2616. Cloud Files supports the following
@@ -1145,14 +1141,14 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             are supported forms of the header:</para>
           <itemizedlist>
             <listitem>
-              <para><code>Range: bytes=-5</code> - first five bytes of the Object</para>
+              <para><code>Range: bytes=-5</code> - first five bytes of the object</para>
             </listitem>
             <listitem>
-              <para><code>Range: bytes=10-15</code> - the five bytes after a 10 byte offset</para>
+              <para><code>Range: bytes=10-15</code> - the five bytes after a 10-byte offset</para>
             </listitem>
             <listitem>
               <para><code>Range: bytes=32-</code> - all data after the first 32 bytes of the
-                Object</para>
+                object</para>
             </listitem>
           </itemizedlist>
           <example>
@@ -1163,9 +1159,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>The Object's data is returned in the response body. Object metadata is returned as
-            HTTP headers. A status of 200 (Ok) indicates success, and status 404 (Not Found) if no
-            such Object exists.</para>
+          <para>The object's data is returned in the response body. Object metadata is returned as
+            HTTP headers. A status of 200 (Ok) indicates success; status 404 (Not Found) is returned
+            if no such object exists.</para>
           <example>
             <title>Storage Object GET Response</title>
             <literallayout class="monospaced">
@@ -1184,11 +1180,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations are used to write, or overwrite, an Object's metadata
+          <para><code>PUT</code> operations are used to write, or overwrite, an object's metadata
             and content.</para>
           <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
-            Object's data in the ETag header. You are not required to include the ETag header, but
-            it is recommended to ensure that the storage system successfully stored your Object's
+            object's data in the ETag header. You are not required to include the ETag header, but
+            it is recommended to ensure that the storage system successfully stored your object's
             content.</para>
           <para>The HTTP response will include the MD5 checksum of the data written to the storage
             system. If you do not send the ETag in the request, you should compare the value
@@ -1196,7 +1192,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             the client side.</para>
           <para>Objects can be assigned custom metadata by including additional HTTP headers on the
               <code>PUT</code> request.</para>
-          <para>The Object can be created with custom metadata via HTTP headers identified with the
+          <para>The object can be created with custom metadata via HTTP headers identified with the
               <code>X-Object-Meta-</code> prefix.</para>
           <example>
             <title>Storage Object PUT Request</title>
@@ -1213,7 +1209,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
           </example>
           <para>No response body is returned. A status code of 201 (Created) indicates a successful
-            write, status 412 (Length Required) denotes a missing <code>Content-Length</code> or
+            write; status 412 (Length Required) denotes a missing <code>Content-Length</code> or
               <code>Content-Type</code> header in the request. If the MD5 checksum of the data
             written to the storage system does NOT match the (optionally) supplied ETag value, a 422
             (Unprocessable Entity) response is returned.</para>
@@ -1239,7 +1235,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             size. If users attempt to upload more that 5GB with this method, the server will close
             the TCP/IP connection after 5GB and purge the customer data from the system. Users must
             take responsibility to ensure the data they transfer will be less than 5GB or to split
-            it into 5GB chunks each in its own storage Object.</para>
+            it into 5GB chunks each in its own storage object.</para>
           <example>
             <title>Storage Object Chunked PUT</title>
             <literallayout class="monospaced">
@@ -1260,10 +1256,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>POST</title>
-          <para><code>POST</code> operations against an Object name are used to set and overwrite
+          <para><code>POST</code> operations against an object name are used to set and overwrite
             arbitrary key/value metadata. You cannot use the <code>POST</code> operation to change
-            any of the Object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
-            etc. It is not used to upload storage Objects (see <code>PUT</code>).</para>
+            any of the object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
+            etc. It is not used to upload storage objects (see <code>PUT</code>).</para>
           <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A <code>POST</code>
             request will delete all existing metadata added with a previous
             <code>PUT/POST</code>.</para>
@@ -1277,8 +1273,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Object-Meta-Veggie: Carrot
                       </literallayout>
           </example>
-          <para> No response body is returned. A status code of 202 (Accepted) indicates success,
-            status 404 (Not Found) is returned when the requested Object does not exist. </para>
+          <para> No response body is returned. A status code of 202 (Accepted) indicates success;
+            status 404 (Not Found) is returned when the requested object does not exist. </para>
           <example>
             <title>Storage Object POST Response</title>
             <literallayout class="monospaced">
@@ -1292,9 +1288,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>DELETE</title>
-          <para><code>DELETE</code> operations on an Object are used to permanently remove that
-            Object from the storage system (metadata and data).</para>
-          <para>Deleting an Object is processed immediately at the time of the request. Any
+          <para><code>DELETE</code> operations on an object are used to permanently remove that
+            object from the storage system (metadata and data).</para>
+          <para>Deleting an object is processed immediately at the time of the request. Any
             subsequent <code>GET</code>, <code>HEAD</code>, <code>POST</code>, or
               <code>DELETE</code> operations will return a 404 (Not Found) error.</para>
           <example>
@@ -1306,7 +1302,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
           </example>
           <para>No response body is returned. A status code of 204 (No Content) indicates success,
-            status 404 (Not Found) is returned when the Object does not exist.</para>
+            status 404 (Not Found) is returned when the object does not exist.</para>
           <example>
             <title>Storage Object DELETE Response</title>
             <literallayout class="monospaced">
@@ -1321,10 +1317,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
     </section>
     <section>
       <title>CDN Services</title>
-      <para>The following is a list of APIs that can be used for CDN Account and container
-        operations. All of the ReST method described below must be issued against the CDN Management
-        service as defined in the <code>X-CDN-Management–Url</code> returned by a successful
-        authentication.</para>
+      <para>The following is a list of APIs that can be used for CDN account and container
+        operations. All of the ReST methods described below must be issued against the CDN
+        management service as defined in the <code>X-CDN-Management–Url</code> returned by a
+        successful authentication.</para>
       <section>
         <title>CDN Account Operations</title>
         <para>The following section describes the methods allowed against the account portion URI
@@ -1338,8 +1334,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <section>
           <title>GET</title>
           <para><code>GET</code> operations against the <code>X-CDN-Management-Url</code> for an
-            account are performed to retrieve a list of existing CDN-enabled Containers. Like the
-            storage system’s <code>GET</code> Container, the CDN management service allows the
+            account are performed to retrieve a list of existing CDN-enabled containers. Like the
+            storage system’s <code>GET</code> container, the CDN management service allows the
             following query parameters:</para>
           <variablelist>
             <title>Query Parameters</title>
@@ -1358,7 +1354,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
               <listitem>
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, return Object names greater in value than the specified
+                  </inlineequation>, return object names greater in value than the specified
                   marker.</para>
               </listitem>
             </varlistentry>
@@ -1372,20 +1368,20 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             <varlistentry>
               <term><code>enabled_only</code></term>
               <listitem>
-                <para>Set to <code>true</code> to return only the CDN-enabled Containers.</para>
+                <para>Set to <code>true</code> to return only the CDN-enabled containers.</para>
               </listitem>
             </varlistentry>
           </variablelist>
           <para>Like the storage system, it is possible to request the output in a serialized format
             in either JSON or XML with the <code>format</code> query parameter.</para>
           <para>Also like the storage system, using <code>limit</code> and <code>marker</code>
-            provides a mechanism to iterate through the entire list of Containers. Keep in mind that
+            provides a mechanism to iterate through the entire list of containers. Keep in mind that
             the value for marker will need to be URL encoded before issuing the request.</para>
-          <para>There is also support for filtering the list to only return the list of Containers
+          <para>There is also support for filtering the list to only return the list of containers
             that are currently CDN-enabled. Passing in a query parameter of
               <code>?enabled_only=true</code> will suppress any <emphasis>private</emphasis>
-            Containers from appearing in the list.</para>
-          <para>The list of CDN-enabled Containers is returned in the response body, one Container
+            containers from appearing in the list.</para>
+          <para>The list of CDN-enabled containers is returned in the response body, one container
             name per line.</para>
           <example>
             <title>CDN GET Request</title>
@@ -1488,7 +1484,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       <section>
         <title>CDN Container Services</title>
         <para>This section documents the ReST operations against the CDN management service that can
-          be performed on Containers. All operations are valid HTTP request methods and will
+          be performed on containers. All operations are valid HTTP request methods and will
           resemble this format:</para>
         <example>
           <title>CDN Container HTTP Request</title>
@@ -1497,33 +1493,33 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                 </literallayout>
         </example>
         <para>Containers tracked in the CDN management service are separate and distinct from the
-          Containers defined in the storage service. It is possible for a Container to be
+          containers defined in the storage service. It is possible for a container to be
           CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
-          pre-generate CDN URL's before actually uploading content and this separation gives them
-          that ability.</para>
-        <para>However, for the content to be served from the CDN, the Container names <emphasis
+          pre-generate CDN URLs before actually uploading content; this separation gives them that
+          ability.</para>
+        <para>However, for the content to be served from the CDN, the container names <emphasis
             role="strong">MUST</emphasis> match in both the CDN management service and the storage
-          service. For example, you could CDN-enable a Container called <code>images</code> and be
-          assigned the CDN URL, but you also need to create a Container called <code>images</code>
+          service. For example, you could CDN-enable a container called <code>images</code> and be
+          assigned the CDN URL, but you also need to create a container called <code>images</code>
           in the storage service and populate it with the content you want to serve over the
           CDN.</para>
         <section>
           <title>HEAD</title>
-          <para><code>HEAD</code> operations against a CDN-enabled Container are used to determine
-            the CDN attributes of the Container.</para>
-          <para>If the Container is (or has ever been) CDN-enabled, the URI, TTL, enabled-status,
-            log retention status, referrer acl and User-agent acl are returned in the response
-            headers. Its CDN URI can be combined with any Object name within the Container to form
-            the publicly accessible URL for that Object for distribution over a CDN system. The TTL
-            value is the number of seconds that the Object will be cached in the CDN system before
-            being refetched. The enabled-status indicates if the Container is currently marked to
-            allow public serving of Objects via CDN. The log_retention setting specifies if the CDN
-            access logs should be collected and stored in the Cloud Files storage system. The
-            referrer-acl is a Perl Compatible Regular Expression (PCRE) that must match the referrer
-            in order for the content to be served. This is a useful mechanism to prevent other
-            content providers from hot-linking your CDN content. The user-agent-acl is a PCRE that
-            must match the user agent (AKA the browser) that your users are using to access the CDN
-            content.</para>
+          <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
+            the CDN attributes of the container.</para>
+          <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled-status,
+            log retention status, referrer ACL and user-agent ACL are returned in the response
+            headers. Its CDN URI can be combined with any object name within the container to form
+            the publicly accessible URL for that object for distribution over a CDN system. The TTL
+            value is the number of seconds that the object will be cached in the CDN system before
+            being refetched. The enabled-status indicates whether the container is currently marked
+            to allow public serving of objects via CDN. The log_retention setting specifies whether
+            the CDN access logs should be collected and stored in the Cloud Files storage system.
+            The referrer-acl is a Perl Compatible Regular Expression (PCRE) that must match the
+            referrer in order for the content to be served. This is a useful mechanism to prevent
+            other content providers from hot-linking your CDN content. The user-agent-acl is a PCRE
+            that must match the user agent (for example, the browser) that your users are using to
+            access the CDN content.</para>
           <example>
             <title>CDN Container HEAD Request</title>
             <literallayout class="monospaced">
@@ -1532,7 +1528,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
           </example>
-          <para>The HTTP return code will be 204 (No Content) if the Container exists, and 404 (Not
+          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
             Found) if it does not. The CDN attributes are returned in HTTP headers.</para>
           <example>
             <title>CDN Container HEAD Response</title>
@@ -1551,18 +1547,17 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations against a Container are used to initially CDN-enable the
-            Container and set its attributes.</para>
-          <para>When a Container is CDN-enabled, any Objects stored in that Container will be
-            publicly accessible over a CDN by combining the Container's CDN URI with the Object
-            name. Any Objects accessed will be cached in the CDN for TTL(value) number of seconds
-            (the default is one day or 86400 seconds). On the next access after the TTL expiration,
-            the CDN will re-fetch the Object and cache it again for another TTL(value) seconds. The
-            minimum TTL that can be set is 1 hour and maximum TTL is 3 days (3600-259200
-            seconds).</para>
+          <para><code>PUT</code> operations against a container are used to initially CDN-enable the
+            container and set its attributes.</para>
+          <para>When a container is CDN-enabled, any objects stored in that container are publicly
+            accessible over a CDN by combining the container's CDN URI with the object name. Any
+            objects accessed will be cached in the CDN for TTL(value) number of seconds; the default
+            is one day or 86400 seconds. On the next access after the TTL expiration, the CDN will
+            re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
+            that can be set is 1 hour; the maximum TTL is 3 days (3600-259200 seconds).</para>
           <para>To specify the TTL, include an HTTP header of <code>X-TTL: integer_seconds</code>
             Setting the TTL is the same as setting the HTTP <code>Expires</code> and
-              <code>Cache-Control</code> headers for the cached Object.</para>
+              <code>Cache-Control</code> headers for the cached object.</para>
           <example>
             <title>CDN Container PUT Request</title>
             <literallayout class="monospaced">
@@ -1575,10 +1570,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Referrer-ACL: .*.\rackspacecloud\.com
                     </literallayout>
           </example>
-          <para>No content is returned. A status code of 201 (Created) indicates that the Container
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
             was CDN-enabled as requested. The response will contain an HTTP header to indicate the
-            URL that can be combined with Object names to serve Objects through the CDN. If the
-            Container is already CDN-enabled, a 202 (Accepted) response is returned and the TTL is
+            URL that can be combined with object names to serve objects through the CDN. If the
+            container is already CDN-enabled, a 202 (Accepted) response is returned and the TTL is
             adjusted.</para>
           <example>
             <title>CDN Container PUT Request</title>
@@ -1593,11 +1588,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>POST</title>
-          <para><code>POST</code> operations against a CDN-enabled Container are used to adjust CDN
+          <para><code>POST</code> operations against a CDN-enabled container are used to adjust CDN
             attributes.</para>
           <para>The <code>POST</code> operation can be used to set a new TTL cache expiration value
             or to enable/disable public sharing over the CDN. Keep in mind that if you have content
-            currently cached in the CDN, setting your Container back to private will NOT purge the
+            currently cached in the CDN, setting your container back to private will NOT purge the
             CDN cache; you will have to wait for the TTL to expire.</para>
           <example>
             <title>CDN Container POST Request</title>
@@ -1610,8 +1605,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Log-Retention: True
                       </literallayout>
           </example>
-          <para> No content is returned. A status code of 202 (Accepted) indicates success, 404 (Not
-            Found) is returned if the requested Container was not found. The CDN URI is returned in
+          <para> No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+            Found) is returned if the requested container was not found. The CDN URI is returned in
             the HTTP header, X-CDN-URI. </para>
           <example>
             <title>CDN Container POST Response</title>
@@ -1697,7 +1692,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       <section>
         <title>How much storage space are you using?</title>
         <para>A <code>HEAD</code> request can be sent to the storage service to determine how much
-          data you have stored in the system and the number of Containers. Use the <code>-X</code>
+          data you have stored in the system and the number of containers. Use the <code>-X</code>
           switch to specify the correct HTTP method and the <code>-D</code> to dump the HTTP
           response headers to terminal output (stdout).</para>
         <example>
@@ -1717,13 +1712,13 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                       </computeroutput></screen>
         </example>
         <para>The HTTP request must include a header to specify the authentication token. The HTTP
-          headers in the response indicate the number of Containers in this storage account and the
+          headers in the response indicate the number of containers in this storage account and the
           total bytes stored for the entire account.</para>
       </section>
       <section>
         <title>Creating a Storage Container</title>
         <para>The first thing you'll need to do before uploading any data to Cloud Files is create a
-          storage Container. You do this with a <code>PUT</code> request and cURL can be used for
+          storage container. You do this with a <code>PUT</code> request and cURL can be used for
           that too.</para>
         <example>
           <title>cURL Create Storage Container</title>
@@ -1741,14 +1736,14 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    </computeroutput></screen>
         </example>
         <para>As you can see, an HTTP status code of 201 (Created) was returned which indicates that
-          the Container was successfully created.</para>
+          the container was successfully created.</para>
       </section>
       <section>
         <title>Uploading a Storage Object</title>
         <para>Now you can upload a local file. For this example, let's upload a screenshot image.
           The <code>-T</code> switch specifies the full path to the local file to upload. Please
-          note that if you intend to distribute this Object via the CDN you MUST make sure that the
-          Object's <code>Content-Type</code> is set correctly. This is the mechanism by which a
+          note that if you intend to distribute this object via the CDN you MUST make sure that the
+          object's <code>Content-Type</code> is set correctly. This is the mechanism by which a
           user's web browser knows how to display the file or launch a helper application to view
           the file.</para>
         <example>
@@ -1772,9 +1767,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </example>
       </section>
       <section>
-        <title>CDN-enabling the Container</title>
+        <title>CDN-Enabling the Container</title>
         <para>Now you'd like to share this file out with your friends. Since the data in Cloud Files
-          is all private, you can share your screenshot via the CDN. To CDN-enable a Container,
+          is all private, you can share your screenshot via the CDN. To CDN-enable a container,
           issue a <code>PUT</code> request against the CDN management service. The default TTL is 24
           hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3 days (259200
           seconds). Note the target URL specifies the CDN system.</para>
@@ -1797,16 +1792,16 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    Content-Type: text/plain; charset=UTF-8
                       </computeroutput></screen>
         </example>
-        <para>When the Container is CDN-enabled, the service returns its public URI in the
+        <para>When the container is CDN-enabled, the service returns its public URI in the
             <code>X-CDN-URI</code> header of the response. Now you can combine this URI along with
-          the Object name to access the file via the CDN.</para>
+          the object name to access the file via the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
-          sending a <code>GET</code> request to the Object's CDN URL and viewing the response
+          sending a <code>GET</code> request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
             <code>Cache-Control</code> headers of the CDN's cached Object.</para>
         <para>The cURL command below issues a <code>GET</code> request which downloads the entire
           file but writes it to <code>/dev/null</code>, a data sink that won't actually save the
-          content to your local drive (only valid on UNIX-like systems).</para>
+          content to your local drive (This is only valid on UNIX-like systems).</para>
         <example>
           <title>cURL Downloading a File</title>
           <screen>
@@ -1862,12 +1857,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
     <glossentry>
       <glossterm>Entity Tag (<acronym>ETag</acronym>)</glossterm>
       <glossdef>
-        <para> An ETag is a HTTP header that defines an Object's MD5 checksum. When a user uploads a
-          new Object, if they included an ETag header it's value will be compared to the computed
-          MD5 checksum as it is written to the storage system. If the two do not match an error
+        <para> An ETag is a HTTP header that defines an object's MD5 checksum. When a user uploads a
+          new object, if they included an ETag header it's value will be compared to the computed
+          MD5 checksum as it is written to the storage system. If the two do not match, an error
           response is returned. In all cases, an ETag header is returned in the response to the user
-          on a <code>PUT</code>, <code>GET</code>, or <code>HEAD</code> request of a storage Object.
-        </para>
+          on a <code>PUT</code>, <code>GET</code>, or <code>HEAD</code> request of a storage object. </para>
       </glossdef>
     </glossentry>
     <glossentry>
