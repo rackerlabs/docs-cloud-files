@@ -297,23 +297,20 @@
       <para>All requests to authenticate and operate against Cloud Files are performed using SSL
         over HTTP (HTTPS) on TCP port 443.</para>
     </note>
-    <figure xml:id="cf-systems">
+    <para>The following diagram illustrates the various system interfaces and the ease with
+      which content can be distributed over the CDN. Authenticate, create a Container, upload
+      Objects, mark the Container as <emphasis>public</emphasis> and begin serving that content
+      from a powerful CDN.</para>  
+    
+    <figure xml:id="CFinterfaces">
       <title>Cloud Files System Interfaces</title>
       <mediaobject>
         <imageobject>
-          <imagedata scale="75" fileref="figures/cf-systems.jpg"/>
+          <imagedata scale="75" fileref="figures/CFinterfaces-plain.svg"/>
         </imageobject>
-        <textobject>
-          <phrase>An illustration of the various system interfaces in Cloud Files</phrase>
-        </textobject>
       </mediaobject>
-      <caption>
-        <para>The following diagram illustrates the various system interfaces and the ease with
-          which content can be distributed over the CDN. Authenticate, create a Container, upload
-          Objects, mark the Container as <emphasis>public</emphasis> and begin serving that content
-          from a powerful CDN.</para>
-      </caption>
     </figure>
+    
     <section>
       <title>Authentication</title>
       <para>In order to use the Cloud Files storage system, you must first have a valid username and
