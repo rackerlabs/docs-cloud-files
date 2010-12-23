@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1.0</releaseinfo>
     <productname>Cloud Files</productname>
-    <pubdate>04 Jan 2011</pubdate>
+    <pubdate>04Jan2011</pubdate>
     <abstract>
       <para> This document is intended for software developers interested in developing applications
         using the Rackspace Cloud Files Application Programming Interface (<abbrev>API</abbrev>). </para>
@@ -114,13 +114,12 @@
       <para>This version of the Developer Guide replaces and obsoletes all previous versions.
         The most recent change is described at the top of the table
         below:</para>
-      <table xml:id="ex.calstable" frame='all'>
-        <title>Document changes</title>
-        <tgroup cols="4" align="left" colsep="1" rowsep="1">
+      <informaltable xml:id="ex.calstable" frame='all'>
+         <tgroup cols="4" align="left" colsep="1" rowsep="1">
           <colspec colname="c1" colwidth="104.0pt"/>
           <colspec colname="newCol2" colnum="2" colwidth="74.0pt"/>
           <colspec colname="newCol3" colnum="3" colwidth="62.0pt"/>
-          <colspec colname="c2" colwidth="329.0pt"/>
+          <colspec colname="c2" colwidth="324.0pt"/>
           <thead>
             <row>
               <entry>Revision Date</entry>
@@ -157,7 +156,7 @@
             </row>
           </tbody>
         </tgroup>
-      </table>
+      </informaltable>
     </section>
     <section>
       <title>Additional Resources</title>
@@ -1981,90 +1980,4 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
     </section>
   </chapter>
-  <glossary>
-    <title>Glossary</title>
-    <glossentry>
-      <glossterm>Application Programming Interface (<abbrev>API</abbrev>)</glossterm>
-      <glossdef>
-        <para>An interface which enables one software program to interact with another.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Content Distribution Network (<abbrev>CDN</abbrev>)</glossterm>
-      <glossdef>
-        <para>A network in which data is replicated in various geographic locations in order to
-          maximize bandwidth.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Entity Tag (<acronym>ETag</acronym>)</glossterm>
-      <glossdef>
-        <para> An ETag is a HTTP header that defines an object's MD5 checksum. When a user uploads a
-          new object, if they included an ETag header it's value will be compared to the computed
-          MD5 checksum as it is written to the storage system. If the two do not match, an error
-          response is returned. In all cases, an ETag header is returned in the response to the user
-          on a &PUT;, &GET;, or <code>HEAD</code> request of a storage object. </para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Hypertext Transfer Protocol (<abbrev>HTTP</abbrev>)</glossterm>
-      <glossdef>
-        <para> An Application Protocol defined in RFC 2616. </para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Java</glossterm>
-      <glossdef>
-        <para> An object oriented programming language. </para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Message-Digest Algorithm 5 (<abbrev>MD5</abbrev>)</glossterm>
-      <glossdef>
-        <para>A cryptographic hash function with a 128-bit hash value.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>.NET</glossterm>
-      <glossdef>
-        <para>The Microsoft® .NET Framework</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>PHP Hypertext Preprocessor</glossterm>
-      <glossdef>
-        <para>A computer scripting language, mainly used in web applications.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Python</glossterm>
-      <glossdef>
-        <para>A high-level, object-oriented programming language.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Rackspace</glossterm>
-      <glossdef>
-        <para>A recognized leader in the managed hosting market.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>ReST</glossterm>
-      <glossdef>
-        <para>A web service architecture which utilizes the HTTP protocol.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Ruby</glossterm>
-      <glossdef>
-        <para>A high-level, object-oriented programming language.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry>
-      <glossterm>Uniform Resource Identifier (<abbrev>URI</abbrev>)</glossterm>
-      <glossdef>
-        <para>A string of characters used to identify a resource on the internet.</para>
-      </glossdef>
-    </glossentry>
-  </glossary>
-</book>
+ </book>
