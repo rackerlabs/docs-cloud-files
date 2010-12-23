@@ -390,31 +390,91 @@
     
     <section>
       <title>Authentication</title>
-      <para>In order to use the Cloud Files storage system, you must first have a valid username and
-        API Access Key. Include these parameters as HTTP headers in the authentication request
-        illustrated below.</para>
       <para>Client authentication is provided via a ReST interface using the &GET;
         method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
           <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
-        Access Key respectively.</para>
-      <db:para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace
-        Cloud APIs and is itself a RESTful web service. For US customers, it is accessible at
-        https://auth.api.rackspacecloud.com/v1.0. If you signed up at www.rackspacecloud.com, you
-        are considered a US customer. If you signed up at www.rackspace.co.uk/cloud, you are
-        considered a UK customer. For UK customers, it is accessible at
-        https://lon.auth.api.rackspacecloud.com/v1.0. In order to authenticate, you must supply your
-        username and API access key in the X-Auth-User and X-Auth-Key x-headers, respectively.
-        Username is your common Rackspace Cloud username and your API access key can be obtained
-        from the Rackspace Cloud Control Panel in the Your Account | API Access section.</db:para>
-      <example>
-        <title>Sample Authentication Request (US Customers)</title>
-        <literallayout class="monospaced">
-  GET /v1.0 HTTP/1.1
-  Host: auth.api.rackspacecloud.com
-  X-Auth-User: jdoe
-  X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
-              </literallayout>
-      </example>
+          Access Key respectively.</para>
+      <para> Each ReST request against the Cloud Servers system requires the inclusion of a specific
+        authorization token HTTP x-header, defined as <code>X-Auth-Token</code>. Clients obtain this
+        token, along with the Cloud Servers API URL, by first using the Rackspace Cloud
+        Authentication Service and supplying a valid username and API access key. </para>
+      <para> The Rackspace Cloud Authentication Service is a ReSTful web service. It is
+        the entry point to all Rackspace Cloud APIs. </para>
+      <para> To access the Authentication Service, you must know whether your account is
+        US-based or UK-based: 
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            US-based accounts authenticate through <link xlink:href="">https://auth.api.rackspacecloud.com/v1.0</link>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            UK-based accounts authenticate through <link xlink:href="">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Your account may be based in either the US or the UK; this is not determined
+        by your physical location but by the location of the Rackspace retail site which
+        was used to create your account: 
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            If your account was
+            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
+          </para>   
+        </listitem>
+        <listitem>
+          <para>
+            If your account was
+            created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        If you are unsure how your account was created, use the Rackspace contact
+        information at either site to ask for help.
+      </para>
+      <simplesect>
+        <title>Request</title>
+        <para>
+          To authenticate, you must supply your username and API access key in x-headers:
+        </para>
+        <para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Use your Rackspace Cloud
+                username as the username for the API. Place it in the
+                <code>X-Auth-User</code> x-header.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Obtain your API access
+                key from the Rackspace Cloud Control Panel in the Your Account |
+                API Access section. Place it in the <code>X-Auth-User</code>
+                x-header.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para> </para>
+        <example>
+          <title>Sample Authentication Request (US-Based Account)</title>
+          <literallayout class="monospaced">
+GET /v1.0 HTTP/1.1
+Host: auth.api.rackspacecloud.com
+X-Auth-User: jdoe
+X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+                    </literallayout>
+        </example>
+      </simplesect>
+      <simplesect>
+        <title>Response</title>     
       <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
           <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
           <code>X-Auth-Token</code> headers. Any 2xx response is a good response. For example, a 202
@@ -425,7 +485,7 @@
         specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
         include the <code>X-Auth-Token</code> header.</para>
       <example>
-        <title>Authentication Response</title>
+        <title>Sample Authentication Response</title>
         <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Mon, 12 Nov 2007 15:32:21 GMT
@@ -444,7 +504,9 @@
         request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable Containers
         or adjust CDN attributes, ReST requests should be sent to <code>cdn.clouddrive.com</code>.
         Note that authentication tokens are valid for a 24 hour period.</para>
+     </simplesect>
     </section>
+    <?hard-pagebreak?>
     <section>
       <title>Storage Services</title>
       <para>The following section describes the ReST API for interacting with the storage component
