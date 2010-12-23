@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="img/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+]>
 <book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
@@ -283,9 +309,9 @@
       uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
       is identified by <code>X-CDN-Management-Url</code>.</para>
     <para>In the following sections, each HTTP method will be documented and which service the call
-      should be made against. For example, a <code>PUT</code> request against
+      should be made against. For example, a &PUT; request against
         <code>X-Storage-Url</code> can be used to create a container or upload an object. A
-        <code>PUT</code> request against the<code>X-CDN-Management-Url</code> is used to CDN-enable
+      &PUT; request against the<code>X-CDN-Management-Url</code> is used to CDN-enable
       a container.</para>
     <para>The language-specific APIs mask this system separation from the programmer. They simply
       create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
@@ -313,7 +339,7 @@
       <para>In order to use the Cloud Files storage system, you must first have a valid username and
         API Access Key. Include these parameters as HTTP headers in the authentication request
         illustrated below.</para>
-      <para>Client authentication is provided via a ReST interface using the <code>GET</code>
+      <para>Client authentication is provided via a ReST interface using the &GET;
         method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
           <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
         Access Key respectively.</para>
@@ -395,7 +421,7 @@
         </example>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against the <code>X-Storage-Url</code> for an account
+          <para>&GET; operations against the <code>X-Storage-Url</code> for an account
             are performed to retrieve a list of existing storage containers ordered by name. The
             following list describes the optional query parameters that are supported with this
             request.</para>
@@ -654,7 +680,7 @@
         </section>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against a storage container name are performed to
+          <para>&GET; operations against a storage container name are performed to
             retrieve a list of objects stored in the container. Additionally, there are a number of
             optional query parameters that can be used to refine the list results.</para>
           <para>A request with no query parameters will return the full list of object names stored
@@ -926,7 +952,7 @@
   photos/plants
   photos
                     </literallayout>
-              <para>Now issuing a <code>GET</code> request against the container name coupled with
+              <para>Now issuing a &GET; request against the container name coupled with
                 the <code>path</code> query parameter of the directory to list can traverse these
                   <emphasis>directories</emphasis>. Only the request line and results are depicted
                 below excluding other request/response headers.</para>
@@ -975,7 +1001,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations against a storage container are used to create that
+          <para>&PUT; operations against a storage container are used to create that
             container.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
@@ -988,7 +1014,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
-            was created as requested. Container <code>PUT</code> requests are idempotent and a code
+            was created as requested. Container &PUT; requests are idempotent and a code
             of 202 (Accepted) is returned when the container already existed.</para>
           <example>
             <title>Storage Container PUT Response</title>
@@ -1037,7 +1063,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>DELETE</title>
-          <para><code>DELETE</code> operations against a storage container are used to permanently
+          <para>&DELETE; operations against a storage container are used to permanently
             remove that container. The container must be empty before it can be deleted.</para>
           <para>A <code>HEAD</code> request against the container can be used to determine if it
             contains any objects.</para>
@@ -1110,9 +1136,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against an object are used to retrieve the object's
+          <para>&GET; operations against an object are used to retrieve the object's
             data.</para>
-          <para>Note that you can perform conditional <code>GET</code> requests by using certain
+          <para>Note that you can perform conditional &GET; requests by using certain
             HTTP headers as documented in RFC 2616. Cloud Files supports the following
             headers:</para>
           <para>RFC 2616: <link xlink:href="http://www.ietf.org/rfc/rfc2616.txt"
@@ -1180,7 +1206,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations are used to write, or overwrite, an object's metadata
+          <para>&PUT; operations are used to write, or overwrite, an object's metadata
             and content.</para>
           <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
             object's data in the ETag header. You are not required to include the ETag header, but
@@ -1191,7 +1217,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             returned with your content's MD5 locally to perform the end-to-end data validation on
             the client side.</para>
           <para>Objects can be assigned custom metadata by including additional HTTP headers on the
-              <code>PUT</code> request.</para>
+            &PUT; request.</para>
           <para>The object can be created with custom metadata via HTTP headers identified with the
               <code>X-Object-Meta-</code> prefix.</para>
           <example>
@@ -1256,11 +1282,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>POST</title>
-          <para><code>POST</code> operations against an object name are used to set and overwrite
-            arbitrary key/value metadata. You cannot use the <code>POST</code> operation to change
+          <para>&POST; operations against an object name are used to set and overwrite
+            arbitrary key/value metadata. You cannot use the &POST; operation to change
             any of the object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
-            etc. It is not used to upload storage objects (see <code>PUT</code>).</para>
-          <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A <code>POST</code>
+            etc. It is not used to upload storage objects (see &PUT;).</para>
+          <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A &POST;
             request will delete all existing metadata added with a previous
             <code>PUT/POST</code>.</para>
           <example>
@@ -1288,11 +1314,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>DELETE</title>
-          <para><code>DELETE</code> operations on an object are used to permanently remove that
+          <para>&DELETE; operations on an object are used to permanently remove that
             object from the storage system (metadata and data).</para>
           <para>Deleting an object is processed immediately at the time of the request. Any
-            subsequent <code>GET</code>, <code>HEAD</code>, <code>POST</code>, or
-              <code>DELETE</code> operations will return a 404 (Not Found) error.</para>
+            subsequent &GET;, <code>HEAD</code>, &POST;, or
+            &DELETE; operations will return a 404 (Not Found) error.</para>
           <example>
             <title>Storage Object DELETE Request</title>
             <literallayout class="monospaced">
@@ -1333,9 +1359,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </example>
         <section>
           <title>GET</title>
-          <para><code>GET</code> operations against the <code>X-CDN-Management-Url</code> for an
+          <para>&GET; operations against the <code>X-CDN-Management-Url</code> for an
             account are performed to retrieve a list of existing CDN-enabled containers. Like the
-            storage system’s <code>GET</code> container, the CDN management service allows the
+            storage system’s &GET; container, the CDN management service allows the
             following query parameters:</para>
           <variablelist>
             <title>Query Parameters</title>
@@ -1547,7 +1573,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>PUT</title>
-          <para><code>PUT</code> operations against a container are used to initially CDN-enable the
+          <para>&PUT; operations against a container are used to initially CDN-enable the
             container and set its attributes.</para>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
             accessible over a CDN by combining the container's CDN URI with the object name. Any
@@ -1588,9 +1614,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </section>
         <section>
           <title>POST</title>
-          <para><code>POST</code> operations against a CDN-enabled container are used to adjust CDN
+          <para>&POST; operations against a CDN-enabled container are used to adjust CDN
             attributes.</para>
-          <para>The <code>POST</code> operation can be used to set a new TTL cache expiration value
+          <para>The &POST; operation can be used to set a new TTL cache expiration value
             or to enable/disable public sharing over the CDN. Keep in mind that if you have content
             currently cached in the CDN, setting your container back to private will NOT purge the
             CDN cache; you will have to wait for the TTL to expire.</para>
@@ -1641,7 +1667,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <varlistentry>
           <term><option>-X METHOD</option></term>
           <listitem>
-            <para>Specify the HTTP method to request (<code>HEAD</code>, <code>GET</code>,
+            <para>Specify the HTTP method to request (<code>HEAD</code>, &GET;,
               etc.)</para>
           </listitem>
         </varlistentry>
@@ -1686,7 +1712,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </example>
         <para>The storage URL, CDN management URL, and authentication token, are returned in the
           headers of the response. You can now use cURL to perform <code>HEAD</code>,
-            <code>GET</code>, <code>DELETE</code>, <code>POST</code> and <code>PUT</code> requests
+          &GET;, &DELETE;, &POST; and &PUT; requests
           on the storage and CDN services.</para>
       </section>
       <section>
@@ -1718,7 +1744,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       <section>
         <title>Creating a Storage Container</title>
         <para>The first thing you'll need to do before uploading any data to Cloud Files is create a
-          storage container. You do this with a <code>PUT</code> request and cURL can be used for
+          storage container. You do this with a &PUT; request and cURL can be used for
           that too.</para>
         <example>
           <title>cURL Create Storage Container</title>
@@ -1770,7 +1796,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <title>CDN-Enabling the Container</title>
         <para>Now you'd like to share this file out with your friends. Since the data in Cloud Files
           is all private, you can share your screenshot via the CDN. To CDN-enable a container,
-          issue a <code>PUT</code> request against the CDN management service. The default TTL is 24
+          issue a &PUT; request against the CDN management service. The default TTL is 24
           hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3 days (259200
           seconds). Note the target URL specifies the CDN system.</para>
         <example>
@@ -1796,10 +1822,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             <code>X-CDN-URI</code> header of the response. Now you can combine this URI along with
           the object name to access the file via the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
-          sending a <code>GET</code> request to the object's CDN URL and viewing the response
+          sending a &GET; request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
             <code>Cache-Control</code> headers of the CDN's cached Object.</para>
-        <para>The cURL command below issues a <code>GET</code> request which downloads the entire
+        <para>The cURL command below issues a &GET; request which downloads the entire
           file but writes it to <code>/dev/null</code>, a data sink that won't actually save the
           content to your local drive (This is only valid on UNIX-like systems).</para>
         <example>
@@ -1828,7 +1854,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <para>As you can see, cURL is a great utility for interacting directly with Cloud Files.
           Hopefully this is enough of a primer to get you started with issuing any of the ReST
           methods defined in this document with the cURL utility. You can use cURL to send
-            <code>POST</code> and <code>DELETE</code> requests too even though we haven't provided
+          &POST; and &DELETE; requests too even though we haven't provided
           specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
@@ -1861,7 +1887,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           new object, if they included an ETag header it's value will be compared to the computed
           MD5 checksum as it is written to the storage system. If the two do not match, an error
           response is returned. In all cases, an ETag header is returned in the response to the user
-          on a <code>PUT</code>, <code>GET</code>, or <code>HEAD</code> request of a storage object. </para>
+          on a &PUT;, &GET;, or <code>HEAD</code> request of a storage object. </para>
       </glossdef>
     </glossentry>
     <glossentry>
