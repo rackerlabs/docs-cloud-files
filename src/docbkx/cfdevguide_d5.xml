@@ -48,12 +48,13 @@
       <year>2011</year>
       <holder>Rackspace Hosting, Inc.</holder>
     </copyright>
-    <releaseinfo>API v1.0</releaseinfo>
+    <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files</productname>
     <pubdate>04Jan2011</pubdate>
     <abstract>
       <para> This document is intended for software developers interested in developing applications
-        using the Rackspace Cloud Files Application Programming Interface (<abbrev>API</abbrev>). </para>
+        using the Rackspace Cloud Files Application Programming Interface (<abbrev>API</abbrev>).
+      </para>
     </abstract>
   </info>
   <chapter>
@@ -132,7 +133,7 @@
             <row>
               <entry align="center">2011-Jan-04</entry>
               <entry align="center">2</entry>
-              <entry align="center">1.0</entry>
+              <entry align="center">1</entry>
               <entry>
                 <itemizedlist spacing="compact">
                   <listitem>
@@ -151,7 +152,7 @@
             <row>
               <entry align="center">2010-Aug-06</entry>
               <entry align="center" >1</entry>
-              <entry align="center" >1.0</entry>
+              <entry align="center">1</entry>
               <entry>Initial release.</entry>
             </row>
           </tbody>
@@ -294,7 +295,8 @@
         to an API, you are encouraged (but not required) to submit those changes back to us.</para>
       <para>The API bindings are hosted at <link xlink:href="http://github.com/rackspace"
           >http://github.com/rackspace</link>. Feel free to coordinate your changes through github
-        or, if you prefer, send your changes to cloudfiles@rackspacecloud.com. Just make sure to
+        or, if you prefer, send your changes to <link
+          xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. Just make sure to
         indicate which language and version you modified and send us a unified diff. </para>
       <para>Each binding includes its own documentation (either HTML, PDF, or CHM). They also
         include code snippets and examples to help you get started. The currently supported API
@@ -322,77 +324,13 @@
     </section>
   </chapter>
   <chapter>
-    <title>ReST API</title>
-    <para>The underlying API for Cloud Files is implemented as a set of ReSTful (Representational
-      State Transfer) web services. All authentication and container/object operations can be
-      performed with standard HTTP calls. See the <link
-        xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
-        article</link> for more information about ReST.</para>
-    <para>The following constraints apply to the ReST API's HTTP requests:</para>
-    <itemizedlist>
-      <listitem>
-        <para>Maximum number of HTTP headers per request: 90</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of all HTTP headers: 4096 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length per HTTP request line: 8192 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of HTTP request: 5 gigabytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of container name: 256 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of object name: 1024 bytes</para>
-      </listitem>
-    </itemizedlist>
-    <para>Container and object names should be properly URL encoded prior to interacting with the
-      ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
-      should be checked against the URL encoded string.</para>
-    <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
-        <firstterm>authorization token</firstterm> HTTP header defined as <code>X-Auth-Token</code>.
-      Clients obtain this token, along with the Cloud Files URI's, by first using the Authentication
-      service and supplying a valid Username and API Access Key.</para>
-    <para>There are actually two different sets of ReST services that make up the full Cloud Files
-      product. The first ReST service identified with <code>X-Storage-Url</code> is used for
-      managing the data stored in the system. Example operations are creating containers and
-      uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
-      is identified by <code>X-CDN-Management-Url</code>.</para>
-    <para>In the following sections, each HTTP method will be documented and which service the call
-      should be made against. For example, a &PUT; request against
-        <code>X-Storage-Url</code> can be used to create a container or upload an object. A
-      &PUT; request against the<code>X-CDN-Management-Url</code> is used to CDN-enable
-      a container.</para>
-    <para>The language-specific APIs mask this system separation from the programmer. They simply
-      create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
-      appropriate back-end services using the appropriate ReST API.</para>
-    <note>
-      <para>All requests to authenticate and operate against Cloud Files are performed using SSL
-        over HTTP (HTTPS) on TCP port 443.</para>
-    </note>
-    <para>The following diagram illustrates the various system interfaces and the ease with which
-      content can be distributed over the CDN. The process is simple: authenticate, create a
-      container, upload objects, mark the container as public and begin serving that content from a
-      powerful CDN.</para>  
-    
-    <figure xml:id="CFinterfaces">
-      <title>Cloud Files System Interfaces</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata scale="60" fileref="figures/CFinterfaces-PLAIN-Visio-paste-save.svg"/>
-        </imageobject>
-      </mediaobject>
-    </figure>
-    
+    <title>General API Information</title>
     <section>
       <title>Authentication</title>
       <para>Client authentication is provided via a ReST interface using the &GET;
         method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
-          <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
-          Access Key respectively.</para>
+        <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
+        Access Key respectively.</para>
       <para> Each ReST request against the Cloud Servers system requires the inclusion of a specific
         authorization token HTTP x-header, defined as <code>X-Auth-Token</code>. Clients obtain this
         token, along with the Cloud Servers API URL, by first using the Rackspace Cloud
@@ -463,7 +401,7 @@
         </para>
         <para> </para>
         <example>
-          <title>Sample Authentication Request (US-Based Account)</title>
+          <title>Authentication Request (US-Based Account)</title>
           <literallayout class="monospaced">
 GET /v1.0 HTTP/1.1
 Host: auth.api.rackspacecloud.com
@@ -474,18 +412,18 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       </simplesect>
       <simplesect>
         <title>Response</title>     
-      <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
+        <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
           <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
           <code>X-Auth-Token</code> headers. Any 2xx response is a good response. For example, a 202
-        response means the request has been accepted. Also, additional <code>X-</code> headers may
-        be returned. These additional headers are related to other Rackspace services and can be
-        ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
-        subsequent container/object operations against Cloud Files should be made against the URI
-        specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
-        include the <code>X-Auth-Token</code> header.</para>
-      <example>
-        <title>Sample Authentication Response</title>
-        <literallayout class="monospaced">
+          response means the request has been accepted. Also, additional <code>X-</code> headers may
+          be returned. These additional headers are related to other Rackspace services and can be
+          ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
+          subsequent container/object operations against Cloud Files should be made against the URI
+          specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
+          include the <code>X-Auth-Token</code> header.</para>
+        <example>
+          <title>Authentication Response</title>
+          <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Mon, 12 Nov 2007 15:32:21 GMT
   Server: Apache
@@ -495,17 +433,82 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
               </literallayout>
-      </example>
-      <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
-        parsed and used in the connection and request line of all subsequent requests against Cloud
-        Files. In the example response above, users connecting to Cloud Files would send most
-        container/object requests with a host header of <code>storage.clouddrive.com</code> and the
-        request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable Containers
-        or adjust CDN attributes, ReST requests should be sent to <code>cdn.clouddrive.com</code>.
-        Note that authentication tokens are valid for a 24 hour period.</para>
-     </simplesect>
+        </example>
+        <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
+          parsed and used in the connection and request line of all subsequent requests against Cloud
+          Files. In the example response above, users connecting to Cloud Files would send most
+          container/object requests with a host header of <code>storage.clouddrive.com</code> and the
+          request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable Containers
+          or adjust CDN attributes, ReST requests should be sent to <code>cdn.clouddrive.com</code>.
+          Note that authentication tokens are valid for a 24 hour period.</para>
+      </simplesect>
     </section>
     <?hard-pagebreak?>
+  </chapter>
+  <chapter>
+    <title>API Operations</title>
+    <para>The Cloud Files API is implemented as a set of ReSTful (Representational State Transfer)
+      web services. All authentication and container/object operations can be performed with
+      standard HTTP calls. See the <link
+        xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
+        article</link> for more information about ReST.</para>
+    <para>The following constraints apply to the ReST API's HTTP requests:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Maximum number of HTTP headers per request: 90</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of all HTTP headers: 4096 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length per HTTP request line: 8192 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of HTTP request: 5 gigabytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of container name: 256 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of object name: 1024 bytes</para>
+      </listitem>
+    </itemizedlist>
+    <para>Container and object names should be properly URL encoded prior to interacting with the
+      ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
+      should be checked against the URL encoded string.</para>
+    <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
+        <firstterm>authorization token</firstterm> HTTP header defined as <code>X-Auth-Token</code>.
+      Clients obtain this token, along with the Cloud Files URIs, by first using the Authentication
+      service and supplying a valid Username and API Access Key.</para>
+    <para>There are actually two different sets of ReST services that make up the full Cloud Files
+      product. The first ReST service identified with <code>X-Storage-Url</code> is used for
+      managing the data stored in the system. Example operations are creating containers and
+      uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
+      is identified by <code>X-CDN-Management-Url</code>.</para>
+    <para>In the following sections, each HTTP method will be documented and which service the call
+      should be made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
+      used to create a container or upload an object. A &PUT; request against the
+        <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
+    <para>The language-specific APIs mask this system separation from the programmer. They simply
+      create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
+      appropriate back-end services using the appropriate ReST API.</para>
+    <note>
+      <para>All requests to authenticate and operate against Cloud Files are performed using SSL
+        over HTTP (HTTPS) on TCP port 443.</para>
+    </note>
+    <para>The following diagram illustrates the various system interfaces and the ease with which
+      content can be distributed over the CDN. The process is simple: authenticate, create a
+      container, upload objects, mark the container as public and begin serving that content from a
+      powerful CDN.</para>  
+    
+    <figure xml:id="CFinterfaces">
+      <title>Cloud Files System Interfaces</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata scale="60" fileref="figures/CFinterfaces-PLAIN-Visio-paste-save.svg"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
     <section>
       <title>Storage Services</title>
       <para>The following section describes the ReST API for interacting with the storage component
@@ -667,9 +670,9 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             <title>Large Container Lists</title>
             <para>The system will return a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
-              parameter. The marker indicates where the last list left off and the system will
-              return container names greater than this marker, up to 10,000 again. Note that the
-              ‘marker’ value should be URL encoded prior to sending the HTTP request.</para>
+              parameter. The marker indicates where the last list left off;  the system will return
+              container names greater than this marker, up to 10,000 again. Note that the ‘marker’
+              value should be URL-encoded prior to sending the HTTP request.</para>
             <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
             <para>If the number of container names returned equals the limit given (or 10,000 if no
               limit is given), it can be assumed there are more container names to be listed. If the
@@ -677,7 +680,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               have no content.</para>
             <example>
               <title>Large Container Lists</title>
-              <para>For an example, let's use a listing of five container names</para>
+              <para>For example, let's use a listing of five container names</para>
               <literallayout class="monospaced">
   apples
   bananas
@@ -685,7 +688,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   oranges
   pears
                     </literallayout>
-              <para>We'll use a limit of 2 to show how things work:</para>
+              <para>We'll use a limit of two to show how things work:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>?limit=2
   Host: storage.clouddrive.com
@@ -695,8 +698,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   apples
   bananas
                     </literallayout>
-              <para>Since we received 2 items back, we can assume there are more container names to
-                list; so we make another request with a marker of the last item returned:</para>
+              <para>Since we received two items back, we can assume there are more container names
+                to list, so we make another request with a marker of the last item returned:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
@@ -706,7 +709,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   kiwis
   oranges
                     </literallayout>
-              <para>Again we have 2 items returned, there may be more:</para>
+              <para>Again,  two items are returned; there may be more:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -715,8 +718,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               <literallayout class="monospaced">
   pears
                     </literallayout>
-              <para>Now we received less than the limit number of container names; so we have the
-                complete list.</para>
+              <para>With this one-item response we received less than the limit number of container
+                names, indicating that this is the end of the list.</para>
             </example>
           </section>
         </section>
@@ -1026,7 +1029,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
           </section>
           <section>
-            <title>Pseudo hierarchical folders/directories</title>
+            <title>Pseudo-Hierarchical Folders/Directories</title>
             <para>Users will be able to simulate a hierarchical structure in Cloud Files by
               following a few guidelines. Object names must contain the forward slash character
                 <code>/</code> as a path element separator and also create <firstterm>directory
@@ -1043,7 +1046,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               </para>
             </note>
             <example>
-              <title>Pseudo hierarchical folders/directories</title>
+              <title>Pseudo-hierarchical folders/directories</title>
               <para>In the example, the following <emphasis>real</emphasis> objects are uploaded to
                 the storage system with names representing their full filesystem path:</para>
               <literallayout class="monospaced">
@@ -1103,8 +1106,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               virtual in that they don't actually represent real objects. like the directory
               markers, though, they will have a content-type of application/directory and be in a
               subdir section of json and xml results.</para>
-            <para>If you have the following objects in a container: photos/photo1, photos/photo2,
-              movieobject, videos/movieobj4, your delimiter parameter query using slash (/) would
+            <para>If you have the following objects&mdash;photos/photo1, photos/photo2,
+              movieobject, videos/movieobj4&mdash;in a container, your delimiter parameter query using slash (/) would
               give you photos, movieobject,
               videos.</para>
               <literallayout class="monospaced">
@@ -1148,19 +1151,18 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
               object. With server-side object copy, you can save the step of re-uploading the
               content and thus also save the associated bandwidth charges, if any were to apply. </para>
             <para>There are two ways to copy an existing object to another object in Cloud Files.
-              One, do a PUT to the new object (the target) location, but add the “X-Copy-From”
-              header to designate the source of the data. The header value should be the container
-              and object name of the source object in the form of “/container/object”. Also, the
-              X-Copy-From PUT requests require a Content-Length header, even if it is zero
+              One way is to do a PUT to the new object (the target) location, but add the
+              “X-Copy-From” header to designate the source of the data. The header value should be
+              the container and object name of the source object in the form of “/container/object”.
+              Also, the X-Copy-From PUT requests require a Content-Length header, even if it is zero
               (0).</para><literallayout class="monospaced">PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;destobject> HTTP/1.1
 Host: &lt;storage URL>
 X-Auth-Token: &lt;some-auth-token>
 X-Copy-From: /&lt;container>/&lt;sourceobject>
 Content-Length: 0                    </literallayout>
-            <para>The second way to do an object copy is similar. This time, do a COPY to the
-              existing object, and include the “Destination” header to specify the target of the
-              copy. The header value is the container and new object name in the form of
-              “/container/object”.
+            <para>The second way to do an object copy is similar. Do a COPY to the existing object,
+              and include the “Destination” header to specify the target of the copy. The header
+              value is the container and new object name in the form of “/container/object”.
               <literallayout>COPY /&lt;api version>/&lt;account>/&lt;container>/&lt;sourceobject> HTTP/1.1
 Host: &lt;storage URL>
 X-Auth-Token: &lt;some-auth-token>
@@ -1553,9 +1555,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             <title>Serialized List Output</title>
             <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
               the CDN management URL, the service will serve extended container information
-              serialized in the chosen format. Other than the <code>?format=xml|json</code> param,
-              it will return the same status/errors codes. The sample responses below are formatted
-              for readability.</para>
+              serialized in the chosen format. Other than the <code>?format=xml|json</code>
+              parameter, it will return the same status/errors codes. The sample responses below are
+              formatted for readability.</para>
             <example>
               <title>CDN GET JSON Request</title>
               <literallayout class="monospaced">
@@ -1649,7 +1651,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
             the CDN attributes of the container.</para>
           <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled-status,
-            log retention status, referrer ACL and user-agent ACL are returned in the response
+            log retention status, referrer ACL, and user-agent ACL are returned in the response
             headers. Its CDN URI can be combined with any object name within the container to form
             the publicly accessible URL for that object for distribution over a CDN system. The TTL
             value is the number of seconds that the object will be cached in the CDN system before
@@ -1915,7 +1917,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3 days (259200
           seconds). Note the target URL specifies the CDN system.</para>
         <example>
-          <title>cURL Enabling CDN</title>
+          <title>cURL CDN-Enable Container</title>
           <screen>
    <command>curl</command> <option>–X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
@@ -1944,7 +1946,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           file but writes it to <code>/dev/null</code>, a data sink that won't actually save the
           content to your local drive (This is only valid on UNIX-like systems).</para>
         <example>
-          <title>cURL Downloading a File</title>
+          <title>cURL Download a File</title>
           <screen>
    <command>curl</command> <option>–s</option> <option>-D</option> - \
      <uri>http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg</uri> \
@@ -1966,11 +1968,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
       <section>
         <title>Other cURL commands</title>
-        <para>As you can see, cURL is a great utility for interacting directly with Cloud Files.
-          Hopefully this is enough of a primer to get you started with issuing any of the ReST
-          methods defined in this document with the cURL utility. You can use cURL to send
-          &POST; and &DELETE; requests too even though we haven't provided
-          specific examples.</para>
+        <para>You can issue any of the ReST methods defined for Cloud Files with the cURL utility.
+          For example, you can use cURL to send &POST; and &DELETE; requests even though we haven't
+          provided specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
           APIs however are designed to re-use these connections between operations and therefore
