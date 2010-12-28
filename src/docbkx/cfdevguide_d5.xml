@@ -538,7 +538,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 </literallayout>
         </example>
         <section>
-          <title>GET</title>
+          <title>List Containers</title>
           <para>&GET; operations against the <code>X-Storage-Url</code> for an account
             are performed to retrieve a list of existing storage containers ordered by name. The
             following list describes the optional query parameters that are supported with this
@@ -724,7 +724,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </section>
         </section>
         <section>
-          <title>HEAD</title>
+          <title>Count Containers and Bytes</title>
           <para><code>HEAD</code> operations against an account are performed to retrieve the number
             of containers and the total bytes stored in Cloud Files for the account. This
             information is returned in two custom headers, <code>X-Account-Container-Count</code>
@@ -767,7 +767,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 </literallayout>
         </example>
  <section>
-          <title>GET</title>
+          <title>List Objects</title>
           <para>&GET; operations against a storage container name are performed to
             retrieve a list of objects stored in the container. Additionally, there are a number of
             optional query parameters that can be used to refine the list results.</para>
@@ -1088,7 +1088,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           </section>
         </section>   
         <section>
-          <title>HEAD</title>
+          <title>Count Objects and Bytes</title>
           <para><code>HEAD</code> operations against a storage container are used to determine the
             number of objects, and the total bytes of all objects stored in the container.</para>
           <para>Determine the number of objects and total stored bytes within the container. Since
@@ -1119,7 +1119,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           </example>
         </section>
 <section>
-        <title>PUT</title>
+        <title>Create Container</title>
           <para>&PUT; operations against a storage container are used to create that
             container.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
@@ -1180,7 +1180,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </section>
         </section>
         <section>
-          <title>DELETE</title>
+          <title>Delete Container</title>
           <para>&DELETE; operations against a storage container are used to permanently
             remove that container. The container must be empty before it can be deleted.</para>
           <para>A <code>HEAD</code> request against the container can be used to determine if it
@@ -1220,7 +1220,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
           encoding.</para>
         <section>
-          <title>HEAD</title>
+          <title>Retrieve Metadata</title>
           <para><code>HEAD</code> operations on an object are used to retrieve object metadata and
             other standard HTTP headers.</para>
           <para>The only required header to be sent in the request is the authorization
@@ -1254,7 +1254,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>GET</title>
+          <title>Retrieve Content</title>
           <para>&GET; operations against an object are used to retrieve the object's
             data.</para>
           <para>Note that you can perform conditional &GET; requests by using certain
@@ -1324,7 +1324,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>PUT</title>
+          <title>Update Metadata and Content</title>
           <para>&PUT; operations are used to write, or overwrite, an object's metadata
             and content.</para>
           <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
@@ -1371,7 +1371,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>Chunked PUT</title>
+          <title>Upload Chunked Content</title>
           <para>Users can upload data without needing to know in advance the amount of data to be
             uploaded. Users can do this by specifying an HTTP header of <code>Transfer-Encoding:
               chunked</code> and not using a <code>Content-Length</code> header. A good use of this
@@ -1400,7 +1400,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>POST</title>
+          <title>Set Key/Value Metadata</title>
           <para>&POST; operations against an object name are used to set and overwrite
             arbitrary key/value metadata. You cannot use the &POST; operation to change
             any of the object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
@@ -1432,7 +1432,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>DELETE</title>
+          <title>Delete Object</title>
           <para>&DELETE; operations on an object are used to permanently remove that
             object from the storage system (metadata and data).</para>
           <para>Deleting an object is processed immediately at the time of the request. Any
@@ -1462,10 +1462,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
     </chapter>
     <chapter>
       <title>API Operations for CDN Services</title>
-      <para>The following is a list of APIs that can be used for CDN account and container
-        operations. All of the ReST methods described below must be issued against the CDN
-        management service as defined in the <code>X-CDN-Management–Url</code> returned by a
-        successful authentication.</para>
+      <para>The following is a list of API calls that can be used for CDN account and container
+      operations. All of the ReST methods described below must be issued against the CDN management
+      service as defined in the <code>X-CDN-Management–Url</code> returned by a successful
+      authentication.</para>
       <section>
         <title>CDN Account Operations</title>
         <para>The following section describes the methods allowed against the account portion URI
@@ -1477,7 +1477,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                 </literallayout>
         </example>
         <section>
-          <title>GET</title>
+          <title>List CDN-Enabled Containers</title>
           <para>&GET; operations against the <code>X-CDN-Management-Url</code> for an
             account are performed to retrieve a list of existing CDN-enabled containers. Like the
             storage system’s &GET; container, the CDN management service allows the
@@ -1650,7 +1650,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           in the storage service and populate it with the content you want to serve over the
           CDN.</para>
         <section>
-          <title>HEAD</title>
+          <title>List CDN Attributes of Container</title>
           <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
             the CDN attributes of the container.</para>
           <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled-status,
@@ -1692,7 +1692,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>PUT</title>
+          <title>CDN-Enable Container</title>
           <para>&PUT; operations against a container are used to initially CDN-enable the
             container and set its attributes.</para>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
@@ -1733,7 +1733,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           </example>
         </section>
         <section>
-          <title>POST</title>
+          <title>Update CDN Attributes</title>
           <para>&POST; operations against a CDN-enabled container are used to adjust CDN
             attributes.</para>
           <para>The &POST; operation can be used to set a new TTL cache expiration value
@@ -1770,12 +1770,12 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   </chapter>
   <chapter>
     <title>Troubleshooting</title>
-    <para>This section introduces you to a command-line utility and demonstrates interacting with
-      the ReST interfaces.</para>
+    <para>This section introduces a command-line utility and demonstrates interacting with the ReST
+      interfaces through that utility.</para>
     <section>
       <title>Using cURL</title>
-      <para>cURL is a command-line tool available on most UNIX®-like environments and Mac OS X® and
-        can even be downloaded for Windows®. For more information on cURL, visit <link
+      <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
+        OS X® and can be downloaded for Windows®. For more information on cURL, visit <link
           xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
       <para>cURL allows you to transmit and receive HTTP requests and responses from the
         command-line or from within a shell script. This makes it possible to work with the ReST API
