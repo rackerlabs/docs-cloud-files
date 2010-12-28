@@ -498,7 +498,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
     </note>
     <para>The following diagram illustrates the various system interfaces and the ease with which
       content can be distributed over the CDN. The process is simple: authenticate, create a
-      container, upload objects, mark the container as public and begin serving that content from a
+      container, upload objects, mark the container as public, and begin serving that content from a
       powerful CDN.</para>  
     
     <figure xml:id="CFinterfaces">
@@ -514,7 +514,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       <para>The following section describes the ReST API for interacting with the storage component
         of Cloud Files. All requests will be directed to the host and URL described in the
           <code>X-Storage-Url</code> HTTP header obtained during successful authentication.</para>
-      <para>The following are some pointers for the use of the Storage services:</para>
+      <para>The following are some pointers for the use of the storage services:</para>
       <itemizedlist>
         <listitem>
           <para>Container names cannot exceed 256 bytes and cannot contain a '/' character</para>
@@ -765,38 +765,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   METHOD /v1/&lt;account>/&lt;container> HTTP/1.1
                 </literallayout>
         </example>
-        <section>
-          <title>HEAD</title>
-          <para><code>HEAD</code> operations against a storage container are used to determine the
-            number of objects, and the total bytes of all objects stored in the container.</para>
-          <para>Determine the number of objects and total stored bytes within the container. Since
-            the storage system is designed to store large amounts of data, care should be taken when
-            representing the total bytes response as an integer; when possible, convert it to a
-            64-bit unsigned integer if your platform supports that primitive type.</para>
-          <example>
-            <title>Storage Container HEAD Request</title>
-            <literallayout class="monospaced">
-  HEAD /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-                    </literallayout>
-          </example>
-          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
-            Found) if it does not. The object count and utilization are returned in the
-              <code>X-Container-Object-Count</code> and <code>X-Container-Bytes-Used</code> headers
-            respectively.</para>
-          <example>
-            <title>Storage Container HEAD Response</title>
-            <literallayout class="monospaced">
-  HTTP/1.1 204 No Content
-  Date: Wed, 11 Jul 2007 19:37:41 GMT
-  Content-type: text/html
-  X-Container-Object-Count: 7
-  X-Container-Bytes-Used: 413
-                    </literallayout>
-          </example>
-        </section>
-        <section>
+ <section>
           <title>GET</title>
           <para>&GET; operations against a storage container name are performed to
             retrieve a list of objects stored in the container. Additionally, there are a number of
@@ -994,7 +963,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   oranges
   pears
                     </literallayout>
-              <para>We'll use a limit of 2 to show how things work:</para>
+              <para>We'll use a limit of two to show how things work:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?limit=2
   Host: storage.clouddrive.com
@@ -1015,7 +984,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   kiwis
   oranges
                     </literallayout>
-              <para>Again we have two items returned, there may be more:</para>
+              <para>Again we have two items returned; there may be more:</para>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -1024,8 +993,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               <literallayout class="monospaced">
   pears
                     </literallayout>
-              <para>Now we received less than the limit number of container names; so we have the
-                complete list.</para>
+              <para>Now we received less than the limit number of container names, indicated that we
+                have the complete list.</para>
             </example>
           </section>
           <section>
@@ -1116,9 +1085,40 @@ Host: storage.clouddrive.com
 X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
               </literallayout>
           </section>
-        </section>
+        </section>   
         <section>
-          <title>PUT</title>
+          <title>HEAD</title>
+          <para><code>HEAD</code> operations against a storage container are used to determine the
+            number of objects, and the total bytes of all objects stored in the container.</para>
+          <para>Determine the number of objects and total stored bytes within the container. Since
+            the storage system is designed to store large amounts of data, care should be taken when
+            representing the total bytes response as an integer; when possible, convert it to a
+            64-bit unsigned integer if your platform supports that primitive type.</para>
+          <example>
+            <title>Storage Container HEAD Request</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
+            Found) if it does not. The object count and utilization are returned in the
+              <code>X-Container-Object-Count</code> and <code>X-Container-Bytes-Used</code> headers
+            respectively.</para>
+          <example>
+            <title>Storage Container HEAD Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Wed, 11 Jul 2007 19:37:41 GMT
+  Content-type: text/html
+  X-Container-Object-Count: 7
+  X-Container-Bytes-Used: 413
+                    </literallayout>
+          </example>
+        </section>
+<section>
+        <title>PUT</title>
           <para>&PUT; operations against a storage container are used to create that
             container.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
@@ -1377,8 +1377,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             directly into Cloud Files without having to buffer the data to disk to compute the file
             size. If users attempt to upload more that 5GB with this method, the server will close
             the TCP/IP connection after 5GB and purge the customer data from the system. Users must
-            take responsibility to ensure the data they transfer will be less than 5GB or to split
-            it into 5GB chunks each in its own storage object.</para>
+            take responsibility for ensuring the data they transfer will be less than 5GB or for
+            splitting it into 5GB chunks, each in its own storage object.</para>
           <example>
             <title>Storage Object Chunked PUT</title>
             <literallayout class="monospaced">
@@ -1827,17 +1827,16 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    Content-Type: application/octet-stream
                       </computeroutput></screen>
         </example>
-        <para>The storage URL, CDN management URL, and authentication token, are returned in the
-          headers of the response. You can now use cURL to perform <code>HEAD</code>,
-          &GET;, &DELETE;, &POST; and &PUT; requests
-          on the storage and CDN services.</para>
+        <para>The storage URL, CDN management URL, and authentication token are returned in the
+          headers of the response. You can now use cURL to perform <code>HEAD</code>, &GET;,
+          &DELETE;, &POST; and &PUT; requests on the storage and CDN services.</para>
       </section>
       <section>
-        <title>How much storage space are you using?</title>
+        <title>Determining Storage Usage</title>
         <para>A <code>HEAD</code> request can be sent to the storage service to determine how much
-          data you have stored in the system and the number of containers. Use the <code>-X</code>
-          switch to specify the correct HTTP method and the <code>-D</code> to dump the HTTP
-          response headers to terminal output (stdout).</para>
+          data you have stored in the system and the number of containers you are using. Use the
+            <code>-X</code> switch to specify the correct HTTP method and the <code>-D</code> to
+          dump the HTTP response headers to terminal output (stdout).</para>
         <example>
           <title>cURL Get Storage Space</title>
           <screen>
@@ -1860,9 +1859,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
       <section>
         <title>Creating a Storage Container</title>
-        <para>The first thing you'll need to do before uploading any data to Cloud Files is create a
-          storage container. You do this with a &PUT; request and cURL can be used for
-          that too.</para>
+        <para> Before uploading any data to Cloud Files, you must create a storage container. You do
+          this with a &PUT; request; cURL can be used for that, too.</para>
         <example>
           <title>cURL Create Storage Container</title>
           <screen>
@@ -1878,17 +1876,17 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    Content-Type: text/plain
    </computeroutput></screen>
         </example>
-        <para>As you can see, an HTTP status code of 201 (Created) was returned which indicates that
-          the container was successfully created.</para>
+        <para>Returning an HTTP status code of 201 (Created) indicates that the container was
+          successfully created.</para>
       </section>
       <section>
         <title>Uploading a Storage Object</title>
-        <para>Now you can upload a local file. For this example, let's upload a screenshot image.
-          The <code>-T</code> switch specifies the full path to the local file to upload. Please
-          note that if you intend to distribute this object via the CDN you MUST make sure that the
-          object's <code>Content-Type</code> is set correctly. This is the mechanism by which a
-          user's web browser knows how to display the file or launch a helper application to view
-          the file.</para>
+        <para>After creating a containter, you can upload a local file. For this example, let's
+          upload a screenshot image. The <code>-T</code> switch specifies the full path to the local
+          file to upload. Please note that if you intend to distribute this object via the CDN you
+          MUST make sure that the object's <code>Content-Type</code> is set correctly. This is the
+          mechanism by which a user's web browser knows how to display the file or launch a helper
+          application to view the file.</para>
         <example>
           <title>cURL Upload Storage Object</title>
           <screen>
@@ -1911,11 +1909,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
       <section>
         <title>CDN-Enabling the Container</title>
-        <para>Now you'd like to share this file out with your friends. Since the data in Cloud Files
-          is all private, you can share your screenshot via the CDN. To CDN-enable a container,
-          issue a &PUT; request against the CDN management service. The default TTL is 24
-          hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3 days (259200
-          seconds). Note the target URL specifies the CDN system.</para>
+        <para>After creating a container and storing a file in it, you can choose to share the file.
+          Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
+          To CDN-enable a container, issue a &PUT; request against the CDN management service. The
+          default TTL is 24 hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3
+          days (259200 seconds). Note that the target URL specifies the CDN system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen>
@@ -1936,8 +1934,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                       </computeroutput></screen>
         </example>
         <para>When the container is CDN-enabled, the service returns its public URI in the
-            <code>X-CDN-URI</code> header of the response. Now you can combine this URI along with
-          the object name to access the file via the CDN.</para>
+            <code>X-CDN-URI</code> header of the response. Now you can combine this URI with the
+          object name to access the file via the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
           sending a &GET; request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
@@ -1973,7 +1971,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           provided specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
-          APIs however are designed to re-use these connections between operations and therefore
+          APIs. however. are designed to re-use these connections between operations and therefore
           provide much better performance. It is recommended that you use one of the supported
           language APIs in your production applications and limit <code>curl</code> to
           quick-and-easy testing/troubleshooting.</para>
