@@ -532,7 +532,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           example, the URI for the requests below will end with the Cloud Files account
           string:</para>
         <example>
-          <title>Storage Account HTTP Request</title>
+          <title>Storage Account HTTP Request: General Structure</title>
           <literallayout class="monospaced">
   METHOD /v1/&lt;account> HTTP/1.1
                 </literallayout>
@@ -575,7 +575,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <para>At this time, a <code>prefix</code> query parameter is not supported at the account
             level.</para>
           <example>
-            <title>Storage Account GET Request</title>
+            <title>Containers List Request</title>
             <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account> HTTP/1.1
   Host: storage.clouddrive.com
@@ -586,7 +586,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             (No Content) HTTP return code will be passed back if the account has no
             containers.</para>
           <example>
-            <title>Storage Account GET Response</title>
+            <title>Containers List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -608,7 +608,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               serialized in the chosen format. The sample responses below are formatted for
               readability.</para>
             <example>
-              <title>Storage Account GET JSON Request</title>
+              <title>Containers Details Request: JSON</title>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>?format=json HTTP/1.1
   Host: storage.clouddrive.com
@@ -617,7 +617,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Storage Account GET JSON Response</title>
+              <title>Containers Details Response: JSON</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
@@ -632,7 +632,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </programlisting>
             </example>
             <example>
-              <title>Storage Account GET XML Request</title>
+              <title>Containers Details Request: XML</title>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>?format=xml HTTP/1.1
   Host: storage.clouddrive.com
@@ -641,7 +641,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Storage Account GET XML Response</title>
+              <title>Containers Details Response: XML</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
@@ -667,7 +667,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
           </section>
           <section>
-            <title>Large Container Lists</title>
+            <title>List Large Number of Containers</title>
             <para>The system will return a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
               parameter. The marker indicates where the last list left off;  the system will return
@@ -679,7 +679,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               container name list is exactly divisible by the limit, the last request will simply
               have no content.</para>
             <example>
-              <title>Large Container Lists</title>
+              <title>List Large Number of Containers</title>
               <para>For example, let's use a listing of five container names</para>
               <literallayout class="monospaced">
   apples
@@ -734,7 +734,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             taken when representing the total bytes response as an integer; when possible, convert
             it to a 64-bit unsigned integer if your platform supports that primitive type.</para>
           <example>
-            <title>Storage Account HEAD Request</title>
+            <title>Containers and Bytes Count Request </title>
             <literallayout class="monospaced">
   HEAD /&lt;api version>/&lt;account> HTTP/1.1
   Host: storage.clouddrive.com
@@ -744,7 +744,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <para>The HTTP return code will be 204 (No Content) if the request succeeds. A 401
             (Unauthorized) will be returned for an invalid account or access key.</para>
           <example>
-            <title>Storage Account HEAD Response</title>
+            <title>Containers and Bytes Count Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -761,7 +761,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         <para>This section documents the ReST operations that can be performed on containers. All
           operations are valid HTTP request methods and will resemble this format:</para>
         <example>
-          <title>Storage Container HTTP Request</title>
+          <title>Storage Container HTTP Request: General Structure</title>
           <literallayout class="monospaced">
   METHOD /v1/&lt;account>/&lt;container> HTTP/1.1
                 </literallayout>
@@ -833,7 +833,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </varlistentry>
           </variablelist>
           <example>
-            <title>Storage Container GET Request</title>
+            <title>Objects List Request</title>
             <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>[?parm=value] HTTP/1.1
   Host: storage.clouddrive.com
@@ -845,7 +845,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             exist for the specified account. If an incorrect account is specified, the HTTP return
             code will be 404 (Not Found).</para>
           <example>
-            <title>Storage Container GET Response</title>
+            <title>Objects List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Thu, 07 Jun 2007 18:50:19 GMT
@@ -866,12 +866,12 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <section>
             <title>Serialized List Output</title>
             <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
-              the storage account URL, the service will serve extended container information
-              serialized in the chosen format. Other than the <code>?format=xml|json</code> param,
-              it will return the same status/errors codes. The sample responses below are formatted
-              for readability.</para>
+            the storage account URL, the service will serve extended object information serialized
+            in the chosen format. Other than the <code>?format=xml|json</code> param, it will return
+            the same status/errors codes. The sample responses below are formatted for
+            readability.</para>
             <example>
-              <title>Storage Container GET JSON Request</title>
+              <title>Objects Details Request: JSON </title>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?format=json HTTP/1.1
   Host: storage.clouddrive.com
@@ -880,7 +880,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Storage Container GET JSON Response</title>
+              <title>Objects Details Response: JSON </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
@@ -904,7 +904,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
 					</programlisting>
             </example>
             <example>
-              <title>Storage Container GET XML Request</title>
+              <title>Objects Details Request: XML</title>
               <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>?format=xml HTTP/1.1
   Host: storage.clouddrive.com
@@ -912,7 +912,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
             </example>
             <example>
-              <title>Storage Container GET XML Response</title>
+              <title>Objects Details Request: XML </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
@@ -943,7 +943,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
           </section>
           <section>
-            <title>Large Object Lists</title>
+            <title>List Large Number of Objects</title>
             <para>The system will return a maximum of 10,000 object names per request. To retrieve
               subsequent object names, another request must be made with a 'marker' parameter. The
               marker indicates where the last list left off and the system will return object names
@@ -955,14 +955,14 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               container name list is exactly divisible by the limit, the last request will simply
               have no content.</para>
             <example>
-              <title>Large Object Lists</title>
+              <title>List Large Number of Objects</title>
               <para>For an example, let's use a listing of five object names:</para>
               <literallayout class="monospaced">
-  apples
-  bananas
-  kiwis
-  oranges
-  pears
+  gala
+  grannysmith
+  honeycrisp
+  jonagold
+  reddelicious
                     </literallayout>
               <para>We'll use a limit of two to show how things work:</para>
               <literallayout class="monospaced">
@@ -971,19 +971,19 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
               <literallayout class="monospaced">
-  apples
-  bananas
+  gala
+  grannysmith
                     </literallayout>
               <para>Since we received two items back, we can assume there are more object names to
                 list. So, we make another request with a marker of the last item returned:</para>
               <literallayout class="monospaced">
-  GET /&lt;api version>/&lt;account>/&lt;container>?limit=2&amp;marker=bananas
+  GET /&lt;api version>/&lt;account>/&lt;container>?limit=2&amp;marker=grannysmith
   Host: storage.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
               <literallayout class="monospaced">
-  kiwis
-  oranges
+  honeycrisp
+  jonagold
                     </literallayout>
               <para>Again we have two items returned; there may be more:</para>
               <literallayout class="monospaced">
@@ -992,7 +992,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
               <literallayout class="monospaced">
-  pears
+  reddelicious
                     </literallayout>
               <para>Now we received less than the limit number of container names, indicated that we
                 have the complete list.</para>
@@ -1000,12 +1000,12 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </section>
           <section>
             <title>Pseudo-Hierarchical Folders/Directories</title>
-            <para>Users will be able to simulate a hierarchical structure in Cloud Files by
-              following a few guidelines. Object names must contain the forward slash character
-                <code>/</code> as a path element separator and also create <firstterm>directory
-                marker</firstterm> objects; then they will be able to traverse this nested structure
-              with the new <emphasis>path</emphasis> query parameter. This can best be illustrated
-              by example:</para>
+            <para>You can simulate a hierarchical structure in Cloud Files by following a few
+            guidelines. Object names must contain the forward slash character <code>/</code> as a
+            path element separator and also create <firstterm>directory marker</firstterm> objects;
+            then they will be able to traverse this nested structure with the new
+              <emphasis>path</emphasis> query parameter. This can best be illustrated by
+            example:</para>
             <note>
               <para>For the purposes of this example, the container where the objects reside is
                 called <code>backups</code>. All objects in this example start with a prefix of
@@ -1016,7 +1016,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               </para>
             </note>
             <example>
-              <title>Pseudo-hierarchical folders/directories</title>
+              <title>Pseudo-Hierarchical Folders/Directories</title>
               <para>In the example, the following <emphasis>real</emphasis> objects are uploaded to
                 the storage system with names representing their full filesystem path:</para>
               <literallayout class="monospaced">
@@ -1125,7 +1125,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
           <example>
-            <title>Storage Container PUT Request</title>
+            <title>Container Create Request </title>
             <literallayout class="monospaced">
   PUT /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1136,7 +1136,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             was created as requested. Container &PUT; requests are idempotent and a code
             of 202 (Accepted) is returned when the container already existed.</para>
           <example>
-            <title>Storage Container PUT Response</title>
+            <title>Container Create Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:50:19 GMT
@@ -1145,7 +1145,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
           <section>
-            <title>Server-side object copy</title>
+            <title>Server-Side Object Copy</title>
             <para>Suppose you upload a file with the wrong object name or content type, or you
               needed to move some objects to another container. Without a server-side copy feature,
               you would need to repeat uploading the same content and then delete the existing
@@ -1186,7 +1186,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para>A <code>HEAD</code> request against the container can be used to determine if it
             contains any objects.</para>
           <example>
-            <title>Storage Container DELETE Request</title>
+            <title>Container Delete Request</title>
             <literallayout class="monospaced">
   DELETE /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1200,7 +1200,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             (Not Found) is returned if the requested container was not found, and a 409 (Conflict)
             if the container is not empty. No response body will be generated.</para>
           <example>
-            <title>Storage Container DELETE Response</title>
+            <title>Container Delete Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -1226,7 +1226,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para>The only required header to be sent in the request is the authorization
             token.</para>
           <example>
-            <title>Storage Object HEAD Request</title>
+            <title>Object Metadata List Request</title>
             <literallayout class="monospaced">
   HEAD /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1237,7 +1237,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             204 (No Content) indicates success; status 404 (Not Found) is returned when the object
             does not exist.</para>
           <example>
-            <title>Storage Object HEAD Response</title>
+            <title>Object Metadata List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 20:59:39 GMT
@@ -1297,7 +1297,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             </listitem>
           </itemizedlist>
           <example>
-            <title>Storage Object GET Request</title>
+            <title>Object Content Retrieval Request </title>
             <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1308,7 +1308,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             HTTP headers. A status of 200 (Ok) indicates success; status 404 (Not Found) is returned
             if no such object exists.</para>
           <example>
-            <title>Storage Object GET Response</title>
+            <title>Object Content Retrieval Response </title>
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Wed, 11 Jul 2007 19:37:41 GMT
@@ -1340,7 +1340,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para>The object can be created with custom metadata via HTTP headers identified with the
               <code>X-Object-Meta-</code> prefix.</para>
           <example>
-            <title>Storage Object PUT Request</title>
+            <title>Object Content and Metadata Update Request</title>
             <literallayout class="monospaced">
   PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1359,7 +1359,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             written to the storage system does NOT match the (optionally) supplied ETag value, a 422
             (Unprocessable Entity) response is returned.</para>
           <example>
-            <title>Storage Object PUT Response</title>
+            <title>Object Content and Metadata Update Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -1382,7 +1382,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             take responsibility for ensuring the data they transfer will be less than 5GB or for
             splitting it into 5GB chunks, each in its own storage object.</para>
           <example>
-            <title>Storage Object Chunked PUT</title>
+            <title>Upload Unspecified Quanity of Content</title>
             <literallayout class="monospaced">
   PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1409,7 +1409,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             request will delete all existing metadata added with a previous
             <code>PUT/POST</code>.</para>
           <example>
-            <title>Storage Object POST Request</title>
+            <title>Object Key/Value Metadata Update Request</title>
             <literallayout class="monospaced">
   POST /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1421,7 +1421,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para> No response body is returned. A status code of 202 (Accepted) indicates success;
             status 404 (Not Found) is returned when the requested object does not exist. </para>
           <example>
-            <title>Storage Object POST Response</title>
+            <title>Object Key/Value Metadata Update Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 202 Accepted
   Date: Thu, 07 Jun 2007 20:59:39 GMT
@@ -1439,7 +1439,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             subsequent &GET;, <code>HEAD</code>, &POST;, or
             &DELETE; operations will return a 404 (Not Found) error.</para>
           <example>
-            <title>Storage Object DELETE Request</title>
+            <title>Object Delete Request</title>
             <literallayout class="monospaced">
   DELETE /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1449,7 +1449,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para>No response body is returned. A status code of 204 (No Content) indicates success,
             status 404 (Not Found) is returned when the object does not exist.</para>
           <example>
-            <title>Storage Object DELETE Response</title>
+            <title>Object Delete Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 20:59:39 GMT
@@ -1468,10 +1468,10 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       authentication.</para>
       <section>
         <title>CDN Account Operations</title>
-        <para>The following section describes the methods allowed against the account portion URI
-          and conform to the following format:</para>
+        <para>This section describes the methods allowed against the account portion URI and conform
+        to the following format:</para>
         <example>
-          <title>CDN HTTP Request</title>
+          <title>CDN HTTP Request: General Structure</title>
           <literallayout class="monospaced">
   METHOD /v1/&lt;account> HTTP\1.1
                 </literallayout>
@@ -1517,19 +1517,19 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
               </listitem>
             </varlistentry>
           </variablelist>
-          <para>Like the storage system, it is possible to request the output in a serialized format
-            in either JSON or XML with the <code>format</code> query parameter.</para>
-          <para>Also like the storage system, using <code>limit</code> and <code>marker</code>
-            provides a mechanism to iterate through the entire list of containers. Keep in mind that
-            the value for marker will need to be URL encoded before issuing the request.</para>
-          <para>There is also support for filtering the list to only return the list of containers
-            that are currently CDN-enabled. Passing in a query parameter of
-              <code>?enabled_only=true</code> will suppress any <emphasis>private</emphasis>
-            containers from appearing in the list.</para>
+          <para>Using the <code>format</code> query parameter, you can request the output in a
+          serialized format in either JSON or XML.</para>
+          <para>Using <code>limit</code> and <code>marker</code> provides a mechanism to iterate
+          through the entire list of containers. Keep in mind that the value for marker will need to
+          be URL encoded before issuing the request.</para>
+          <para>There is also support for filtering the list to return only the list of containers
+          that are currently CDN-enabled. Passing in a query parameter of
+            <code>?enabled_only=true</code> will suppress any <emphasis>private</emphasis>
+          containers from appearing in the list.</para>
           <para>The list of CDN-enabled containers is returned in the response body, one container
             name per line.</para>
           <example>
-            <title>CDN GET Request</title>
+            <title>CDN-Enabled Containers List Request</title>
             <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account> HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1540,7 +1540,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             (No Content) HTTP return code will be passed back if the account has no
             containers.</para>
           <example>
-            <title>CDN GET Response</title>
+            <title>CDN-Enabled Containers List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -1561,7 +1561,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
               parameter, it will return the same status/errors codes. The sample responses below are
               formatted for readability.</para>
             <example>
-              <title>CDN GET JSON Request</title>
+              <title>CDN-Enabled Containers Details Request: JSON </title>
               <literallayout class="monospaced">
   GET /v1/&lt;account>?format=json HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1569,7 +1569,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
             </example>
             <example>
-              <title>CDN GET JSON Response</title>
+              <title>CDN-Enabled Containers Details Response: JSON </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Mon, 09 Mar 2009 20:07:47 GMT
@@ -1590,7 +1590,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </programlisting>
             </example>
             <example>
-              <title>CDN GET XML Request</title>
+              <title>CDN-Enabled Containers Details Request: XML</title>
               <literallayout class="monospaced">
   GET /v1/&lt;account>?format=xml HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1598,7 +1598,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
             </example>
             <example>
-              <title>CDN GET XML Response</title>
+              <title>CDN-Enabled Containers Details Response: XML</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Mon, 09 Mar 2009 20:11:27 GMT
@@ -1633,7 +1633,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           be performed on containers. All operations are valid HTTP request methods and will
           resemble this format:</para>
         <example>
-          <title>CDN Container HTTP Request</title>
+          <title>CDN-Enabled Container HTTP Request: General Structure</title>
           <literallayout class="monospaced">
   METHOD /v1/&lt;account>/&lt;container> HTTP/1.1
                 </literallayout>
@@ -1667,7 +1667,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             that must match the user agent (for example, the browser) that your users are using to
             access the CDN content.</para>
           <example>
-            <title>CDN Container HEAD Request</title>
+            <title>CDN-Enabled Container Attributes List Request</title>
             <literallayout class="monospaced">
   HEAD /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1677,7 +1677,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
             Found) if it does not. The CDN attributes are returned in HTTP headers.</para>
           <example>
-            <title>CDN Container HEAD Response</title>
+            <title>CDN-Enabled Container Attributes List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Wed, 11 Jul 2007 19:37:41 GMT
@@ -1705,7 +1705,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             Setting the TTL is the same as setting the HTTP <code>Expires</code> and
               <code>Cache-Control</code> headers for the cached object.</para>
           <example>
-            <title>CDN Container PUT Request</title>
+            <title>Container CDN-Enable Request</title>
             <literallayout class="monospaced">
   PUT /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1722,7 +1722,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             container is already CDN-enabled, a 202 (Accepted) response is returned and the TTL is
             adjusted.</para>
           <example>
-            <title>CDN Container PUT Request</title>
+            <title>Container CDN-Enable Response </title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:50:19 GMT
@@ -1741,7 +1741,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             currently cached in the CDN, setting your container back to private will NOT purge the
             CDN cache; you will have to wait for the TTL to expire.</para>
           <example>
-            <title>CDN Container POST Request</title>
+            <title>CDN-Enabled Container Attributes Update Request</title>
             <literallayout class="monospaced">
   POST /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
   Host: cdn.clouddrive.com
@@ -1755,7 +1755,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             Found) is returned if the requested container was not found. The CDN URI is returned in
             the HTTP header, X-CDN-URI. </para>
           <example>
-            <title>CDN Container POST Response</title>
+            <title>CDN-Enabled Container Attributes Update Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 18:57:07 GMT
@@ -1810,7 +1810,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           header. The following example demonstrates how to use cURL to obtain the authorization
           token and the URL of the storage system.</para>
         <example>
-          <title>cURL Authentication</title>
+          <title>cURL Authenticate</title>
           <screen>
    <command>curl</command> <option>-D</option> - \
         <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
@@ -1830,8 +1830,9 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                       </computeroutput></screen>
         </example>
         <para>The storage URL, CDN management URL, and authentication token are returned in the
-          headers of the response. You can now use cURL to perform <code>HEAD</code>, &GET;,
-          &DELETE;, &POST; and &PUT; requests on the storage and CDN services.</para>
+          headers of the response. After authentication, you can use cURL to perform
+            <code>HEAD</code>, &GET;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
+          services.</para>
       </section>
       <section>
         <title>Determining Storage Usage</title>
@@ -1967,7 +1968,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         </example>
       </section>
       <section>
-        <title>Other cURL commands</title>
+        <title>Other cURL Commands</title>
         <para>You can issue any of the ReST methods defined for Cloud Files with the cURL utility.
           For example, you can use cURL to send &POST; and &DELETE; requests even though we haven't
           provided specific examples.</para>
