@@ -56,6 +56,159 @@
         using the Rackspace Cloud Files Application Programming Interface (<abbrev>API</abbrev>).
       </para>
     </abstract>
+    <cover>
+      <para>this is a placeholder for the front cover</para>
+    </cover>
+    <cover>
+      <para>this is a placeholder for the back cover</para>
+      <para>Rackspace Cloud Files API Operations Reference Summary</para>
+      <para> Storage Accounts </para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="2">URI</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1">&GET;</td>
+            <td colspan="2">/<parameter>account</parameter></td>
+            <td colspan="3">List containers</td>
+          </tr>
+          <tr>
+            <td colspan="1"><code>HEAD</code></td>
+            <td colspan="2"><parameter>account</parameter></td>
+            <td colspan="3">Count containers and bytes</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para> Storage Containers </para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="2">URI</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1">&GET;</td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">List objects</td>
+          </tr>
+          <tr>
+            <td colspan="1"><code>HEAD</code></td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">Count objects and bytes</td>
+          </tr>
+          <tr>
+            <td colspan="1">&PUT;</td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">Create container</td>
+          </tr>
+          <tr>
+            <td colspan="1">&DELETE;</td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">Delete container</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para> Storage Objects </para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="2">URI</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1"><code>HEAD</code></td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Retrieve metadata</td>
+          </tr>
+          <tr>
+            <td colspan="1">&GET;</td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Retrieve content</td>
+          </tr>
+          <tr>
+            <td colspan="1">&PUT;</td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Update metadata and content</td>
+          </tr>
+          <tr>
+            <td colspan="1">&PUT;</td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Upload chunked content</td>
+          </tr>
+          <tr>
+            <td colspan="1">&POST;</td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Set key/value metadata</td>
+          </tr>
+          <tr>
+            <td colspan="1">&DELETE;</td>
+            <td colspan="2"
+                >/<parameter>account</parameter>/<parameter>container</parameter>/<parameter>object</parameter></td>
+            <td colspan="3">Delete container</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para> CDN Accounts</para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="2">URI</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1">&GET;</td>
+            <td colspan="2">/<parameter>account</parameter></td>
+            <td colspan="3">List CDN-enabled containers</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para> CDN Containers</para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td colspan="1">Verb</td>
+            <td colspan="2">URI</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1"><code>HEAD</code></td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">List CDN attributes of container</td>
+          </tr>
+          <tr>
+            <td colspan="1">&PUT;</td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">CDN-enable container</td>
+          </tr>
+          <tr>
+            <td colspan="1">&POST;</td>
+            <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
+            <td colspan="3">Update CDN attributes of container</td>
+          </tr>
+        </tbody>
+      </informaltable>
+    </cover>
   </info>
   <chapter>
     <title>Overview</title>
@@ -115,48 +268,42 @@
       <para>This version of the Developer Guide replaces and obsoletes all previous versions.
         The most recent change is described at the top of the table
         below:</para>
-      <informaltable xml:id="ex.calstable" frame='all'>
-         <tgroup cols="4" align="left" colsep="1" rowsep="1">
-          <colspec colname="c1" colwidth="104.0pt"/>
-          <colspec colname="newCol2" colnum="2" colwidth="74.0pt"/>
-          <colspec colname="newCol3" colnum="3" colwidth="62.0pt"/>
-          <colspec colname="c2" colwidth="324.0pt"/>
-          <thead>
-            <row>
-              <entry>Revision Date</entry>
-              <entry>Document Version</entry>
-              <entry>API Version</entry>
-              <entry>Summary of Changes</entry>
-            </row>
-          </thead>
-          <tbody>
-            <row>
-              <entry align="center">2011-Jan-04</entry>
-              <entry align="center">2</entry>
-              <entry align="center">1</entry>
-              <entry>
-                <itemizedlist spacing="compact">
-                  <listitem>
-                    <para> 
-                      Expanded authentication information to compare US and UK processes.
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para> 
-                      Added "delimiter" as a Query Parameter and server-side object copy example.
-                    </para>
-                  </listitem>
-                 </itemizedlist>                  
-                </entry>
-            </row>
-            <row>
-              <entry align="center">2010-Aug-06</entry>
-              <entry align="center" >1</entry>
-              <entry align="center">1</entry>
-              <entry>Initial release.</entry>
-            </row>
-          </tbody>
-        </tgroup>
+      <informaltable rules='all'>
+        <thead>
+          <tr>
+            <td>Revision Date</td>
+            <td>Document Version</td>
+            <td>API Version</td>
+            <td>Summary of Changes</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">2011-Jan-04</td>
+            <td align="center">2</td>
+            <td align="center">1.0</td>
+            <td>
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para> 
+                    Expanded authentication information to compare US and UK processes.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para> 
+                    Added "delimiter" as a Query Parameter and server-side object copy example.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td align="center">2010-Aug-06</td>
+            <td align="center" >1</td>
+            <td align="center" >1.0</td>
+            <td>Initial release.</td>
+          </tr>
+        </tbody>
       </informaltable>
     </section>
     <section>
