@@ -642,6 +642,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       <para>All requests to authenticate and operate against Cloud Files are performed using SSL
         over HTTP (HTTPS) on TCP port 443.</para>
     </note>
+    <?hard-pagebreak?>
     <para>The following diagram illustrates the various system interfaces and the ease with which
       content can be distributed over the CDN. The process is simple: authenticate, create a
       container, upload objects, mark the container as public, and begin serving that content from a
