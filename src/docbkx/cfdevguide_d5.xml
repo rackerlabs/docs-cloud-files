@@ -1743,8 +1743,6 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    "cdn_enabled":"true",
    "ttl":28800,
    "log_retention":"true",
-   "referrer_url":"",
-   "useragent_acl:"",
    "cdn_uri":"http://c0010171.cdn.cloudfiles.rackspacecloud.com/"}
   ]
                     </programlisting>
@@ -1777,8 +1775,6 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         &lt;cdn_url>
             http://c0010171.cdn.cloudfiles.rackspacecloud.com/
         &lt;/cdn_url>
-        &lt;referrer_acl>&lt;/referrer_acl>
-        &lt;useragent_acl>&lt;/useragent_acl>
    &lt;/container>
   &lt;/account>
                     </programlisting>
@@ -1830,8 +1826,6 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-TTL: 2592000
   X-Log-Retention: True
-  X-User-Agent-ACL: Mozilla
-  X-Referrer-ACL: .*.\rackspacecloud\.com
                     </literallayout>
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
@@ -1855,18 +1849,13 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
             the CDN attributes of the container.</para>
           <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled status,
-            log retention status, referrer ACL, and user-agent ACL are returned in the response
-            headers. Its CDN URI can be combined with any object name within the container to form
-            the publicly accessible URL for that object for distribution over a CDN system. The TTL
-            value is the number of seconds that the object will be cached in the CDN system before
-            being refetched. The enabled status indicates whether the container is currently marked
-            to allow public serving of objects via CDN. The log_retention setting specifies whether
-            the CDN access logs should be collected and stored in the Cloud Files storage system.
-            The referrer-acl is a Perl Compatible Regular Expression (PCRE) that must match the
-            referrer in order for the content to be served. This is a useful mechanism to prevent
-            other content providers from hot-linking your CDN content. The user-agent-acl is a PCRE
-            that must match the user agent (for example, the browser) that your users are using to
-            access the CDN content.</para>
+          and log retention status are returned in the response headers. Its CDN URI can be combined
+          with any object name within the container to form the publicly accessible URL for that
+          object for distribution over a CDN system. The TTL value is the number of seconds that the
+          object will be cached in the CDN system before being refetched. The enabled status
+          indicates whether the container is currently marked to allow public serving of objects via
+          CDN. The log_retention setting specifies whether the CDN access logs should be collected
+          and stored in the Cloud Files storage system.</para>
           <example>
             <title>CDN-Enabled Container Metadata Request</title>
             <literallayout class="monospaced">
@@ -1887,8 +1876,6 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-CDN-URI: http://c0010171.cdn.cloudfiles.rackspacecloud.com/
   X-TTL: 86400
   X-Log-Retention: True
-  X-User-Agent-ACL: Mozilla
-  X-Referrer-ACL: .*.\rackspacecloud\.com
                           </literallayout>
           </example>
         </section>
