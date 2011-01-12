@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>01/04/11</pubdate>
+    <pubdate>01/12/11</pubdate>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
@@ -298,6 +298,11 @@
                     Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
                   </para>
                 </listitem>
+                <listitem>
+                    <para>
+                        Added section numbers.
+                    </para>
+                </listitem>
               </itemizedlist>
             </td>
           </tr><tr>
@@ -336,7 +341,7 @@
         Cloud website at <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
           http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
       </para>
-      <para> For more details about the Cloud Fiiles service, please refer to <link
+      <para> For more details about the Cloud Files service, please refer to <link
           xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
           >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents
         are available at the same site, as are links to Rackspace's official support channels,
