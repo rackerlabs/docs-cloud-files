@@ -285,6 +285,22 @@
         </thead>
         <tbody>
           <tr>
+            <td colspan="1" align="center">Jan. 12, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para> 
+                    Removed references to ACL (Access Control List).
+                  </para>
+                </listitem>
+                <listitem>
+                  <para> 
+                    Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr><tr>
             <td colspan="1" align="center">Jan. 4, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
@@ -1960,7 +1976,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <title>cURL Authenticate</title>
           <screen>
    <command>curl</command> <option>-D</option> - \
-        <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
+        <option>-H "X-Auth-Token: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
         <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
                       </screen>
@@ -1991,7 +2007,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <title>cURL Get Storage Space</title>
           <screen>
    <command>curl</command> <option>–X HEAD</option> <option>-D</option> - \
-        <option>-H "X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
                       </screen>
           <screen>
@@ -2015,7 +2031,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <title>cURL Create Storage Container</title>
           <screen>
    <command>curl</command> <option>–X PUT</option> <option>-D</option> - \
-        <option>-H "X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images</uri>
                       </screen>
           <screen>
@@ -2068,7 +2084,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <title>cURL CDN-Enable Container</title>
           <screen>
    <command>curl</command> <option>–X PUT</option> <option>-D</option> - \
-        <option>-H "X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <option>-H "X-CDN-Enabled: True"</option> \
         <option>-H "X-TTL: 259200"</option> \
         <uri>https://cdn.clouddrive.com/v1/CF_xer7_343/images</uri>
