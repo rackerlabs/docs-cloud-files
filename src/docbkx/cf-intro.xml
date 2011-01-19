@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+        <!-- Some useful entities borrowed from HTML -->
+        <!ENTITY ndash  "&#x2013;">
+        <!ENTITY mdash  "&#x2014;">
+        <!ENTITY hellip "&#x2026;">
+
+        <!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                 <imageobject>
+                  <imagedata fileref="img/Check_mark_23x20_02.svg"
+                             format="SVG" scale="60"/>
+                  </imageobject>
+                </inlinemediaobject>'>
+
+         <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+                  <imageobject>
+                   <imagedata fileref="img/Arrow_east.svg"
+                              format="SVG" scale="60"/>
+                  </imageobject>
+                </inlinemediaobject>'>
+]>
+  <book xmlns="http://docbook.org/ns/docbook"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:m="http://www.w3.org/1998/Math/MathML"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:db="http://docbook.org/ns/docbook"
+        version="5.0">
+  <title>Cloud Files™ Introduction</title>
+  <info>
+    <author>
+      <personname>
+        <firstname/>
+        <surname/>
+      </personname>
+      <affiliation>
+        <orgname>Rackspace Cloud</orgname>
+      </affiliation>
+    </author>
+    <copyright>
+        <year>2009</year>
+        <year>2010</year>
+        <year>2011</year>
+        <holder>Rackspace US, Inc.</holder>
+    </copyright>
+    <releaseinfo>API v1</releaseinfo>
+    <productname>Cloud Files™</productname>
+    <pubdate>24Jan2011</pubdate>
+    <legalnotice role="rs-api">
+        <annotation>
+            <remark>Copyright details are filled in by the template.</remark>
+        </annotation>
+    </legalnotice>
+    <abstract>
+      <para> This document is intended for potential and actual users of Rackspace Cloud Files™and
+        for software developers interested in developing applications using the Rackspace Cloud
+        Files™ Application Programming Interface (<abbrev>API</abbrev>). </para>
+    </abstract>
+    <cover>
+      <para>this is a placeholder for the front cover</para>
+    </cover>
+    <cover>
+      <para>this is a placeholder for the back cover</para>
+    </cover>
+  </info> 
+  <chapter>
+    <title>Introduction</title>
+    <para>
+      Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage service offering. 
+      The core storage system is designed to provide a safe, secure, automatically re-sizing 
+      and network-accessible way to store data.
+      You can store an unlimited quantity of files and each one can be as large as 5 gigabytes. 
+      Users can store as much as
+      they want and pay only for storage space they actually use.
+    </para>
+    <para>    
+      Additionally, Cloud Files provides a simple yet powerful way to publish and distribute 
+      content behind the industry-leading Akamai Content Distribution Network. Cloud Files users get access to this network automatically
+      without having to worry about contracts, additional costs, or technical hurdles.
+    </para>
+    <para>
+      Cloud Files allows users to store/retrieve files and CDN-enable content via a simple 
+      ReST (Representational
+      State Transfer) web service interface. 
+      There are also language-specific APIs that utilize the ReST API but make it much
+      easier for developers to integrate into their applications.
+    </para>
+    <para>
+     For more details on the Cloud Files service, please refer to 
+      <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+        >http://www.rackspacecloud.com/cloud_hosting_products/files</link>.
+    </para>
+  </chapter>
+   <chapter>
+     <title>Ideal Uses of Cloud Files</title>
+     <para>
+       There are a number of uses for the Cloud Files service. 
+       Cloud Files is an excellent storage solution 
+       and is well suited for applications such as:
+       <itemizedlist>
+         <listitem>
+           <para>Backing up or archiving data</para>
+         </listitem>
+         <listitem>
+           <para>Serving images/videos (streaming data to the user’s browser)</para>
+         </listitem>
+         <listitem>
+           <para>Serving content with a world-class CDN (Akamai)</para>
+         </listitem>
+         <listitem>
+           <para>Storing secondary/tertiary, static web-accessible data</para>
+         </listitem>
+         <listitem>
+           <para>Developing new applications with data storage integration</para>
+         </listitem>
+         <listitem>
+           <para>Storing data when predicting storage capacity is difficult</para>
+         </listitem>
+         <listitem>
+           <para>Storing data for applications affordably</para>
+         </listitem>
+       </itemizedlist>
+     </para>
+   </chapter>
+    <chapter>
+      <title>Why Use Cloud Files?</title>
+      <para>
+        There are a number of reasons to choose the Cloud Files service over similar services available in the market.
+        <itemizedlist>
+          <listitem>
+            <para>Simplicity of security mechanisms and CDN functionality</para>
+          </listitem>
+          <listitem>
+            <para>Affordability of the service with a price of just 15cents / gigabyte of storage</para>
+          </listitem>
+          <listitem>
+            <para>Flexibility in terms, paying as you go</para>
+          </listitem>
+          <listitem>
+            <para>Great performance</para>
+          </listitem>
+          <listitem>
+            <para>World-class support</para>
+          </listitem>
+        </itemizedlist>
+        </para>
+    </chapter> 
+    <chapter>
+      <title>Cloud Files Features</title>
+      <section>
+        <title>Simplicity</title>
+        <para>
+          Cloud Files is simple to use for developers and non-developers alike. 
+          Users can get started in as little as five minutes.
+          Users do not have to know how to code to use Cloud Files and CDN. 
+          Users can, within minutes, sign up for Cloud
+          Files, create a Container, upload a file and publish that Container’s content through 
+          the CDN. 
+          The Cloud Files GUI is easy to navigate and use. 
+          The Rackspace browser-based control
+          panel lets users easily upload files and distribute on a CDN without writing any code.
+        </para>
+        <para>
+          All the content can be backed by a CDN without complex negotiations and details of updating content for optimizing
+          delivery. 
+          Given the complexity of the CDN, 
+          users may have to make a series of choices such as number of servers
+          to use, etc., before obtaining the service. 
+          After making the choices, users must ensure that their usage bills are accurate. 
+          All
+          these issues are handled by Cloud Files. 
+          CDNs have, in the past, been the prerogative of companies with more money
+          but Cloud Files has changed that.
+        </para>
+        <para> Cloud Files is a user-friendly and developer-friendly service. Security mechanisms
+        are simple to use. Third-party tools which further simplify use of the storage service are
+        available. Developers can use an Application Programming Interface (API) with
+        language-specific bindings to develop utilities or applications. The API is easy to use and
+        is documented with examples to get started quickly. </para>
+      </section>
+      <section>
+        <title>Affordability</title>
+        <para>
+          Pricing for Cloud Files with CDN starts at 15 cents per gigabyte of storage 
+          and 8 cents per gigabyte inbound and 18
+          cents per gigabyte of bandwidth outbound to any edge location around the globe. 
+          There are no per-requests fees for CDN. 
+          For the latest pricing information, please refer to the Cloud Files web site at
+          <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+            >http://www.rackspacecloud.com/cloud_hosting_products/files</link>.
+        </para>
+      </section>
+      <section>
+        <title>Flexibility</title>
+        <para>
+          Cloud Files is a dynamically expanding storage system. 
+          It is very flexible and is built on the pay-for-use principle. 
+          Customers
+          can use as much or little storage as necessary, while paying only for storage space used. 
+          There is no limit on total space
+          used and individual files can be as large as 5GB. 
+          The GUI control panel allows users to check storage space used and
+          bandwidth utilized. 
+          There are no upfront fees or contracts and end users pay only for storage space used and outgoing
+          bandwidth that they use.
+        </para>
+        <para>
+          System administrators can use this for simple manual updates as well. 
+          Users do not have to know how to code to use
+          Cloud Files and CDN. 
+          No API is required to share files. 
+          Non-developers have a simple web-interface that can be
+          used to quickly and easily upload data and enable CDN access. 
+          Multiple third party tools make it even more flexible for users of 
+          specific environments such as the Mac OS.
+        </para>
+        <para>
+          Developers can use the ReST web service and language-specific APIs in 
+          PHP, Python, Java, Ruby, and C#/.NET. 
+          The APIs provide full support for managing content in Cloud Files and 
+          publishing content over the CDN. 
+          The API allows
+          developers to work in the language they feel most comfortable using.
+        </para>
+      </section>
+      <section>
+        <title>World-Class Support</title>
+        <para>
+          With Cloud Files, world-class free technical support is only a click away. 
+          Live support, with real people, is available 24/7. 
+          Fanatical Support is built into the price. 
+          Users can get peace of mind knowing that technical support is just a
+          phone call or online chat away &mdash; at any time of the day.
+        </para>
+      </section>
+      <section>
+        <title>Data Redundancy</title>
+        <para>
+          The Cloud Files storage system is designed to be highly available and fault tolerant. 
+          Cloud Files achieves client data
+          redundancy by replicating three full copies on different storage nodes. 
+          Storage nodes are grouped in logical Zones
+          within Rackspace datacenters. 
+          Zones are connected to redundant Internet backbone providers and reside on redundant
+          power supplies and generators. 
+          The system has been engineered in such a way as to continue to be fully functional
+          even in the event of a major service disruption within a Datacenter. 
+          Content on the CDN provides an additional layer
+          of data redundancy.
+        </para>
+      </section>
+      <section>
+        <title>Security</title>
+        <para>
+          Cloud Files uses a number of different measures to ensure that your data is kept safe. 
+          First and foremost, all traffic
+          between clients and the Cloud Files system uses SSL to establish a secure, 
+          encrypted communication channel. 
+          This ensures that any data (usernames, passwords, and content) 
+          cannot be intercepted and read by a third-party. 
+          Users authenticate with a valid username and API Access Key and are granted 
+          a session authentication token. 
+          These authentication
+          tokens are used to validate all operations against Cloud Files. 
+          There is no way to terminate a valid session by the user, 
+          but the session tokens will automatically expire after 24 hours, 
+          forcing clients to resend their credentials.
+        </para>
+        <para>
+          The API Access Key is only available after login to the customer's Rackspace Cloud
+          control panel. 
+          Users must enter their valid username and password to gain access to view the
+          API Access Key or to generate a new key.
+        </para>
+        <para>
+          It is important to note that Cloud Files does not apply any transformations 
+          to data before storing it. 
+          This means that
+          Cloud Files will not store data in encrypted form unless the client encrypts it 
+          prior to transmission. 
+          This allows users
+          to select the type and level of encryption best suited to their applications.
+        </para>
+        <para>
+          When deleting storage Objects from the Cloud Files system, 
+          all copies of data are permanently removed within a
+          matter of minutes. 
+          Furthermore, the physical blocks making up the customer’s data are zeroed over 
+          before that space is
+          re-used for other customer data. 
+          In other words, after a delete request, the data will be unrecoverable.
+        </para>
+      </section>
+    </chapter>
+    <chapter>
+      <title>Tools and Applications for Cloud Files</title>
+      <para>
+        In addition to the ReST API and its language-specific bindings, 
+        there are several other ways for users to interact with Cloud Files.
+      </para>
+      <section>
+        <title>Control Panel</title>
+        <para>
+          The Rackspace Cloud control panel is one way to access Cloud Files. 
+          Files can be uploaded and
+          downloaded through the control panel. 
+          This is a tool to understand at a high level how Cloud Files works. 
+          It gives system administrators a view of the various containers and objects 
+          stored on Cloud Files. 
+          It also provides a means of updating
+          individual files and the metadata that describes those files.
+          <informalfigure xml:id="screenshotCP">
+            <mediaobject>
+              <imageobject>
+                <imagedata scale="60" fileref="figures/cf-screenshot-ControlPanel.png"/>
+              </imageobject>
+            </mediaobject>
+          </informalfigure>
+        </para>
+      </section>
+      <section>
+        <title>FireUploader GUI</title>
+        <para> FireUploader is a tool from Suchi Software; it provides an intuitive interface to
+        move and manage files in Cloud Files. It works as a plug-in to the Mozilla Firefox browser
+        and provides a GUI to manage the movement as well as metadata in Cloud Files. While setting
+        up the tool, you must supply your Rackspace Cloud username; when prompted for a password,
+        enter your API Access Key. This tool provides a creative way of working with available Cloud
+        Files features to allow users to simulate a hierarchical file system structure. For more
+        information, please see the Fireuploader web site at <link
+          xlink:href="http://www.fireuploader.com">http://www.fireuploader.com</link>. 
+          <informalfigure xml:id="screenshotFU">
+          <mediaobject>
+            <imageobject>
+              <imagedata scale="60" fileref="figures/cf-screenshot-FireUploader.png"/>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
+      </section>
+      <section>
+        <title>Cyberduck</title>
+        <para>
+          Cyberduck is an open-source Cloud Files browser licensed under the GPL that runs on Macs.
+          It features an easy-to-use
+          interface with easily accessible bookmarks. 
+          The browser outline view allows users to browse large folder structures
+          efficiently and preview files with Quick Look. 
+          Cyberduck also provides seamless integration with many external
+          editors, making it easy to change content quickly. 
+          It provides a way to upload and configure Cloud Files to distribute
+          content over the CDN. 
+          Cyberduck also supports many OS X core system technologies such as Spotlight, Bonjour,
+          Keychain, and a large number of language translations. 
+          Cyberduck 3.x requires Mac OS X 10.4 or later. For more
+          information, please see the Cyberduck web site at
+          <link xlink:href="http://cyberduck.ch/"
+            >http://cyberduck.ch/</link>.
+          <informalfigure xml:id="screenshotCD">
+            <mediaobject>
+              <imageobject>
+                <imagedata scale="60" fileref="figures/cf-screenshot-Cyberduck.png"/>
+              </imageobject>
+            </mediaobject>
+          </informalfigure>
+        </para>
+      </section>
+    </chapter>
+    <chapter>
+      <title>Developing Applications for Cloud Files</title>
+      <para>
+        There are several programming interfaces for using Cloud Files 
+        that will allow developers to integrate the storage
+        solution into new applications, or provide automated ways of accessing the system. 
+      </para>
+      <section>
+        <title>ReST API</title>
+        <para>
+          Cloud Files allows users to store/retrieve files via a simple 
+          Web Service (ReST: Representational State Transfer) interface. 
+          New Cloud Files storage applications such as the tools described in the previous sections 
+          can be designed
+          and developed by using the ReST application programming interface. 
+          For more details on developing Cloud Files applications, please refer to the 
+          Rackspace Cloud Files API Developer Guide at 
+          <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf"
+            >http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
+        </para>
+      </section>
+      <section>
+        <title>Language-Specific API Bindings</title>
+        <para>
+          In addition to the ReST API, 
+          there are language-specific API documents and assets for C#/.NET, Python, PHP, Java
+          and Ruby. These developer resources are documented on the Cloud Files web site at
+          <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files/api/"
+            >http://www.rackspacecloud.com/cloud_hosting_products/files/api/</link>.
+        </para>
+      </section>
+      <section>
+        <title>Caveats</title>
+        <para>
+          There are many advantages to a storage system like Cloud Files and many appropriate use-cases. 
+          However, there are limitations
+          depending on your needs and there are some use-cases for which Cloud Files is not an ideal storage solution. 
+          Keep the following
+          points in mind as you further explore Cloud Files:
+          <itemizedlist>
+            <listitem>
+              <para>
+                Native support within your operating system. 
+                It is not possible to “mount” or “map” the Cloud Files storage
+                system as a virtual hard-disk on your computer or server.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Disk mirroring or backup solutions that require byte/block level differences. 
+                There are no concepts of “appending data” or 
+                “file locking” operations within Cloud Files.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Data can be organized into storage compartments called “Containers”, 
+                but Containers cannot be nested. 
+                Since there is only one top level of organization, 
+                you will not be able to upload nested directory/folder structures
+                into Cloud Files unless a transformation is performed to flatten the structure.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                There is no built-in concept of permissions or access controls in 
+                the Cloud Files system such as you may be accustomed 
+                to in a traditional file system.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                There are no transcoding capabilities to read a file in one format 
+                and upload it in one or more other formats
+                into Cloud Files.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+    </chapter>
+    <chapter>
+      <title>Additional Resources</title>
+      <para>
+        The official support channels 
+        (phone, chat, email, forums, and knowledge base articles) for Cloud Files are available
+        through the Rackspace Cloud web site at 
+        <link xlink:href="http://www.rackspacecloud.com"
+          >http://www.rackspacecloud.com</link>.
+      </para>
+      <para>
+        The system status page at 
+        <link xlink:href="http://status.cloudfiles.rackspacecloud.com"
+          >http://status.cloudfiles.rackspacecloud.com</link>        
+        can be reviewed
+        if you believe the Cloud Files system is not functioning to your expectations. 
+        This page is updated to reflect up-to-date information
+        about the system’s current health and status.
+      </para>
+      <para>
+        Interested users can also follow updates/announcements via twitter at 
+        <link xlink:href="http://www.twitter.com/rackcloud"
+          >http://www.twitter.com/rackcloud</link>.
+      </para>
+      <para>
+        Developers are also encouraged to join some of the members of the Cloud Files team at 
+        irc.freenode.net on
+        the #cloudfiles channel. 
+        This is not an official Cloud Files support channel but should rather be viewed as a community
+        meeting place to share ideas and discuss Cloud Files.
+      </para>
+    </chapter>      
+ </book>
