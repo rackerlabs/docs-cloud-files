@@ -439,11 +439,11 @@
         combined with its object names and openly distributed in web pages, emails, or other
         applications.</para>
       <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
-          <link xlink:href="http://c0010171.cdn.cloudfiles.rackspacecloud.com"
-          >http://c0010171.cdn.cloudfiles.rackspacecloud.com</link>. If that container houses a
+          <link xlink:href="http://c10171.r71.cf0.rackcdn.com"
+            >http://c10171.r71.cf0.rackcdn.com</link>. If that container houses a
         screenshot called <code>wow1.jpg</code>, then that image can be served by a CDN with the
-        full URL of <link xlink:href="http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg"
-          >http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg</link>. This URL can be
+        full URL of <link xlink:href="http://c10171.r71.cf0.rackcdn.com/wow1.jpg"
+          >http://c10171.r71.cf0.rackcdn.com/wow1.jpg</link>. This URL can be
         embedded in HTML pages, email messages, blog posts, etc. When that URL is accessed, a copy
         of that image is fetched from the Cloud Files storage system and cached in a CDN and served
         from there for all subsequent requests for a configurable cache time to live (TTL) value.
@@ -1399,7 +1399,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             are supported forms of the header:</para>
           <itemizedlist>
             <listitem>
-              <para><code>Range: bytes=-5</code> - first five bytes of the object</para>
+              <para><code>Range: bytes=-5</code> - last five bytes of the object</para>
             </listitem>
             <listitem>
               <para><code>Range: bytes=10-15</code> - the five bytes after a 10-byte offset</para>
@@ -1494,7 +1494,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
               take responsibility for ensuring the data they transfer will be less than 5GB or for
               splitting it into 5GB chunks, each in its own storage object.</para>
               <example>
-                  <title>Upload Unspecified Quanity of Content</title>
+                  <title>Upload Unspecified Quantity of Content</title>
                   <literallayout class="monospaced">
   PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
   Host: storage.clouddrive.com
@@ -1764,7 +1764,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    "cdn_enabled":"true",
    "ttl":28800,
    "log_retention":"true",
-   "cdn_uri":"http://c0010171.cdn.cloudfiles.rackspacecloud.com/"}
+   "cdn_uri":"http://c10171.r71.cf0.rackcdn.com/"}
   ]
                     </programlisting>
             </example>
@@ -1794,7 +1794,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         &lt;ttl>86400&lt;/ttl>
         &lt;log_retention>True&lt;/log_retention>
         &lt;cdn_url>
-            http://c0010171.cdn.cloudfiles.rackspacecloud.com/
+            http://c10171.r71.cf0.rackcdn.com/
         &lt;/cdn_url>
    &lt;/container>
   &lt;/account>
@@ -1861,7 +1861,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Date: Thu, 07 Jun 2007 18:50:19 GMT
   Server: Apache
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c0010171.cdn.cloudfiles.rackspacecloud.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
                       </literallayout>
           </example>
         </section>
@@ -1894,7 +1894,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Content-type: text/html
   X-CDN-Enabled: True
-  X-CDN-URI: http://c0010171.cdn.cloudfiles.rackspacecloud.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
@@ -1930,7 +1930,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c0010171.cdn.cloudfiles.rackspacecloud.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
                       </literallayout>
           </example>
         </section>
@@ -2052,7 +2052,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
       </section>
       <section>
         <title>Uploading a Storage Object</title>
-        <para>After creating a containter, you can upload a local file. For this example, let's
+        <para>After creating a container, you can upload a local file. For this example, let's
           upload a screenshot image. The <code>-T</code> switch specifies the full path to the local
           file to upload. Please note that if you intend to distribute this object via the CDN you
           MUST make sure that the object's <code>Content-Type</code> is set correctly. This is the
@@ -2098,7 +2098,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    <computeroutput>HTTP/1.1 202 Accepted
    Date: Thu, 06 Aug 2009 01:34:13 GMT
    Server: Apache
-   X-CDN-URI: http://c0010171.cdn.cloudfiles.rackspacecloud.com
+   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
    Content-Length: 0
    Connection: close
    Content-Type: text/plain; charset=UTF-8
@@ -2118,7 +2118,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           <title>cURL Download a File</title>
           <screen>
    <command>curl</command> <option>–s</option> <option>-D</option> - \
-     <uri>http://c0010171.cdn.cloudfiles.rackspacecloud.com/wow1.jpg</uri> \
+     <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
                       </screen>
           <screen>
