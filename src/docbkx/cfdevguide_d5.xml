@@ -45,18 +45,18 @@
       </affiliation>
     </author>
     <copyright>
-        <year>2009</year>
-        <year>2010</year>
-        <year>2011</year>
-        <holder>Rackspace US, Inc.</holder>
+      <year>2009</year>
+      <year>2010</year>
+      <year>2011</year>
+      <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>02/09/11</pubdate>
+    <pubdate>02/18/11</pubdate>
     <legalnotice role="rs-api">
-        <annotation>
-            <remark>Copyright details are filled in by the template.</remark>
-        </annotation>
+      <annotation>
+        <remark>Copyright details are filled in by the template.</remark>
+      </annotation>
     </legalnotice>
     <abstract>
       <para> This document is intended for software developers interested in developing applications
@@ -285,18 +285,18 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">Feb. 09, 2011</td>
+            <td colspan="1" align="center">Feb. 18, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
-                  <para> 
-                    Fixed error in the header range example that stated first instead of last when fetching a portion of the data.
-                  </para>
+                  <para>Fixed error in the header range example that stated first instead of last
+                    when fetching a portion of the data. </para>
                 </listitem>
                 <listitem>
-                  <para> 
-                    Updated CDN URLs to match new format.
-                  </para>
+                  <para>Updated CDN URLs to match new format.</para>
+                </listitem>
+                <listitem>
+                  <para>Fixed error referring to X-Auth-User instead of X-Auth-Key.  </para>
                 </listitem>
               </itemizedlist>
             </td>
@@ -583,12 +583,8 @@
               </para>
             </listitem>
             <listitem>
-              <para>
-                Obtain your API access
-                key from the Rackspace Cloud Control Panel in the Your Account |
-                API Access section. Place it in the <code>X-Auth-User</code>
-                x-header.
-              </para>
+              <para> Obtain your API access key from the Rackspace Cloud Control Panel in the Your
+                Account | API Access section. Place it in the <code>X-Auth-Key</code> x-header. </para>
             </listitem>
           </itemizedlist>
         </para>
