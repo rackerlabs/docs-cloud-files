@@ -1950,17 +1950,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <section>
           <title>Purge CDN-Enabled Containers or Objects</title>
           <para>&DELETE; operations against a CDN-enabled container or object are used to remove an
-          outdated or unwanted object from the CDN's edge. </para>
-        <db:para>When an object resides in a CDN-enabled container, the CDN likely serves it from an
-          "edge" location that matches the requester's region to make the transfer fast and
-          efficient. Sometimes, however, the object retrieved from the edge server does not match an
-          updated version stored on a server housed in a separate cluster. When this happens, Cloud
-          Files ensures that the user gets the most recent object by comparing the TTL value and
-          ensuring the version of the object is the correct version. If needed, you can manually
-          purge CDN-enabled objects or containers without having to wait for the TTL to expire and
-          you can send an email notification that the object has been purged. There are two methods
-          for purging content from the edge: one for purging individual objects, one for purging
-          entire containers.</db:para>
+          outdated or unwanted object from the CDN. You can manually purge CDN-enabled objects or
+          containers without having to wait for the TTL to expire, and you can optionally be
+          notified by email that the object has been purged. There are two methods for purging
+          content from the edge: one for purging individual objects, one for purging entire
+          containers.</para>
           <example>
             <title>Purge CDN-Enabled Object</title>
             <literallayout class="monospaced">
