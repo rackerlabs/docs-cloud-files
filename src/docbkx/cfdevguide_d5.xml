@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>02/23/11</pubdate>
+    <pubdate>02/25/11</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -233,7 +233,7 @@
           <tr>
             <td colspan="1">&DELETE;</td>
             <td colspan="2">/<parameter>account</parameter>/<parameter>container</parameter></td>
-            <td colspan="3">Purge CDN-enabled container from the CDN edge</td>
+            <td colspan="3">Delete CDN-enabled container or object</td>
           </tr>
         </tbody>
       </informaltable>
@@ -307,11 +307,12 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">Feb. 23, 2011</td>
+            <td colspan="1" align="center">Feb. 25, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
-                  <para>Added information about the edge purge capability which enables developers to purge an object from the CDN's edge so that outdated objects or containers are not served just due to their proximity to the requestor.</para>
+                  <para>Added information about the edge purge capability for CDN-enabled containers
+                    and objects.</para>
                 </listitem>
                 
               </itemizedlist>
@@ -498,8 +499,10 @@
         fetched from the Cloud Files storage system and cached in a CDN and served from there for
         all subsequent requests for a configurable cache time to live (TTL) value. Setting the TTL
         of a CDN-enabled container translates to setting the <code>Expires</code> and
-          <code>Cache-Control</code> HTTP headers. Cloud Files enables purging content from the CDN
-        edge by comparing this TTL value to the object of origin.  </para>
+          <code>Cache-Control</code> HTTP headers. Cloud Files continues to serve content via the
+        CDN until it receives a delete request. When the TTL expires, the CDN checks Cloud Files to
+        ensure that it has the most up-to-date content. A purge request forces the CDN to check with
+        Cloud Files for the most version of the file. </para>
       <para>Containers tracked in the CDN management service are completely separate and distinct
         from the containers defined in the storage service. It is possible for a container to be
         CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
@@ -1974,22 +1977,22 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Purge-Email: user@domain.com, user2@domain.com, user3@domain.com
                       </literallayout>
           </example>
-          <para>A 200 OK response is returned. The system purges the object from the CDN, and sends
-          an email to the indicated address. The email address is optional. You can enter a comma
-          separated list of addresses if you want to notify more than one person about the deletion.
-          A status code of 200 (OK) indicates success; 404 (Not Found) is returned if the requested
-          container was not found; 403 if the container is not CDN-enabled, or if an authorization
-          problem occurs. The CDN URI is returned in the HTTP header, X-CDN-URI. Purging a container
-          may take a long time, 45 minutes or longer, please be patient waiting for a response. </para>
+          <para>A 204 No Content response is returned. The system purges the object from the CDN,
+          and sends an email to the indicated address or multiple addresses. The email address is
+          optional. You can enter a comma-separated list of addresses if you want to notify more
+          than one person about the deletion. A status code of 204 (No Content) indicates success;
+          404 (Not Found) is returned if the requested container was never CDN-enabled, and it
+          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
+          header, X-CDN-URI. Purging a container may take a long time, 45 minutes or longer, please
+          be patient while waiting for a response. </para>
           <example>
             <title>Purge CDN-Enabled Container or Object Response </title>
             <literallayout class="monospaced">
-  HTTP/1.1 200 OK
+  HTTP/1.1 204 No Content
   Date: Thu, 13 Jan 2010 18:57:07 GMT
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
                       </literallayout>
           </example>
         </section>
