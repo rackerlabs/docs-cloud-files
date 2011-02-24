@@ -502,7 +502,7 @@
           <code>Cache-Control</code> HTTP headers. Cloud Files continues to serve content via the
         CDN until it receives a delete request. When the TTL expires, the CDN checks Cloud Files to
         ensure that it has the most up-to-date content. A purge request forces the CDN to check with
-        Cloud Files for the most version of the file. </para>
+        Cloud Files for the most up-to-date version of the file. </para>
       <para>Containers tracked in the CDN management service are completely separate and distinct
         from the containers defined in the storage service. It is possible for a container to be
         CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
@@ -1877,7 +1877,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           in the storage service and populate it with the content you want to serve over the
           CDN.</para>
         <section>
-          <title>CDN-Enable Container</title>
+          <title>CDN-Enabled Container</title>
           <para>&PUT; operations against a container are used to initially CDN-enable the
             container and set its attributes.</para>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
