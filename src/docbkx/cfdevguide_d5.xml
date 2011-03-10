@@ -311,7 +311,8 @@
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
-                  <para>Added a section about retrieving an SSL URI for CDN-enabled containers that are using https protocol.</para>
+                  <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
+                    are using https protocol.</para>
                 </listitem>
                 
               </itemizedlist>
@@ -2069,7 +2070,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
-  X-CDN-SSL-URI: https://c10171.r71.ssl.cf0.rackcdn.com/
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com/
   X-CDN-Enabled: True
   X-TTL: 259000
   X-Log-Retention: False
