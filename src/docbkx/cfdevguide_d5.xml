@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>02/25/11</pubdate>
+    <pubdate>03/10/11</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -306,6 +306,17 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td colspan="1" align="center">Mar. 10, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added a section about retrieving an SSL URI for CDN-enabled containers that are using https protocol.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
           <tr>
             <td colspan="1" align="center">Feb. 25, 2011</td>
             <td colspan="4">
@@ -1936,7 +1947,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                           </literallayout>
           </example>
           <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
-            Found) if it does not. The CDN attributes are returned in HTTP headers.</para>
+          Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
+          available for the container, an X-CDN-SSL-URI header is returned in addition to X-CDN-URI. </para>
           <example>
             <title>CDN-Enabled Container Metadata  Response</title>
             <literallayout class="monospaced">
@@ -2015,18 +2027,54 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   X-Log-Retention: True
                       </literallayout>
           </example>
-          <para> No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
-            Found) is returned if the requested container was not found. The CDN URI is returned in
-            the HTTP header, X-CDN-URI. </para>
+          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+          Found) is returned if the requested container was not found. The CDN URI is returned in
+          the HTTP header, X-CDN-URI. </para>
           <example>
             <title>Update CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
-  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Date: Thu, 07 Jun 2011 18:57:07 GMT
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
+                      </literallayout>
+          </example>
+        </section>
+        <section>
+          <title>CDN-Enabled Containers Served via SSL</title>
+         <para><code>HEAD</code> operations against a CDN-enabled container can also return an SSL
+          URI. If SSL is available, another header gets returned with calls to the CDN Management
+          URL, X-CDN-SSL-URI, in addition to X-CDN-URI. This feature enables users to use https
+          protocol in URLS used for requesting objects stored in CDN-enabled containers. </para>
+          
+          <example>
+            <title>CDN-Enabled Container Metadata Requests with SSL</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                          </literallayout>
+          </example>
+          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+          Found) is returned if the requested container was not found. The CDN SSL URI is returned
+          in the HTTP header, X-CDN-SSL-URI. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata with SSL</title>
+            <literallayout class="monospaced">
+  HTTPS/1.1 204 No Content
+  Date: Thu, 07 Jan 2011 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
+  X-CDN-SSL-URI: https://c10171.r71.ssl.cf0.rackcdn.com/
+  X-CDN-Enabled: True
+  X-TTL: 259000
+  X-Log-Retention: False
+  Connection: close
+  Content-Type: text/plain; charset=UTF-8
                       </literallayout>
           </example>
         </section>
