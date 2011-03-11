@@ -314,6 +314,9 @@
                   <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
                     are using https protocol.</para>
                 </listitem>
+                <listitem>
+                  <para>Updated examples to contain SSL as appropriate.</para>
+                </listitem>
                 
               </itemizedlist>
             </td>
@@ -1826,7 +1829,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    "cdn_enabled":"true",
    "ttl":28800,
    "log_retention":"true",
-   "cdn_uri":"http://c10171.r71.cf0.rackcdn.com/"}
+   "cdn_uri":"http://c2.r2.cf1.rackcdn.com",
+   "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com"}
   ]
                     </programlisting>
             </example>
@@ -1856,8 +1860,11 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         &lt;ttl>86400&lt;/ttl>
         &lt;log_retention>True&lt;/log_retention>
         &lt;cdn_url>
-            http://c10171.r71.cf0.rackcdn.com/
+            http://c2.r2.cf1.rackcdn.com
         &lt;/cdn_url>
+        &lt;cdn_ssl_url>
+            https://c2.ssl.cf1.rackcdn.com
+        &lt;/cdn_ssl_url>
    &lt;/container>
   &lt;/account>
                     </programlisting>
@@ -1923,7 +1930,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Date: Thu, 07 Jun 2007 18:50:19 GMT
   Server: Apache
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
@@ -1957,7 +1965,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Content-type: text/html
   X-CDN-Enabled: True
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
@@ -2029,8 +2038,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                       </literallayout>
           </example>
           <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN URI is returned in
-          the HTTP header, X-CDN-URI. </para>
+          Found) is returned if the requested container was not found. The CDN URI and the CDN SSL
+          URI are both returned in the HTTP headers, X-CDN-URI and X-CDN-SSL-URI. </para>
           <example>
             <title>Update CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
@@ -2039,14 +2048,15 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
         <section>
           <title>CDN-Enabled Containers Served via SSL</title>
          <para><code>HEAD</code> operations against a CDN-enabled container can also return an SSL
-          URI. If SSL is available, another header gets returned with calls to the CDN Management
+          URI. When SSL is available, another header gets returned with calls to the CDN Management
           URL, X-CDN-SSL-URI, in addition to X-CDN-URI. This feature enables users to use https
           protocol in URLS used for requesting objects stored in CDN-enabled containers. </para>
           
@@ -2069,8 +2079,8 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com/
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com/
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
   X-CDN-Enabled: True
   X-TTL: 259000
   X-Log-Retention: False
@@ -2244,14 +2254,17 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    Date: Thu, 06 Aug 2009 01:34:13 GMT
    Server: Apache
    X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcnd.com
    Content-Length: 0
    Connection: close
    Content-Type: text/plain; charset=UTF-8
                       </computeroutput></screen>
         </example>
         <para>When the container is CDN-enabled, the service returns its public URI in the
-            <code>X-CDN-URI</code> header of the response. Now you can combine this URI with the
-          object name to access the file via the CDN.</para>
+            <code>X-CDN-URI</code> header of the response, plus the SSL URL in the
+            <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URI with the
+          object name to access the file via the CDN, or use the https:// URI in combination with
+          the object name to access the file over a secure SSL connection via the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
           sending a &GET; request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
