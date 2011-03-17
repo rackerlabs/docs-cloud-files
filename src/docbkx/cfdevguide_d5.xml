@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>03/10/11</pubdate>
+    <pubdate>03/17/11</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -306,6 +306,16 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td colspan="1" align="center">Mar. 17, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about container metadata.</para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
           <tr>
             <td colspan="1" align="center">Mar. 10, 2011</td>
             <td colspan="4">
@@ -1338,6 +1348,9 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             container.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
+        <para>Containers can be assigned custom metadata by including additional HTTP headers on the
+          &PUT; request. The custom metadata is assigned to a container via HTTP headers identified
+          with the <code>X-Container-Meta-</code> prefix. </para>
           <example>
             <title>Container Create Request </title>
             <literallayout class="monospaced">
@@ -1347,13 +1360,41 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
-            was created as requested. Container &PUT; requests are idempotent and a code
-            of 202 (Accepted) is returned when the container already existed.</para>
+          was created as requested. Container &PUT; requests are idempotent and a code of 202
+          (Accepted) is returned when the container already existed. If you request a PUT to a
+          container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+          request responses carry the metadata prefix from the container in subsequent
+          requests.</para>
           <example>
             <title>Container Create Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:50:19 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+          <para>Using custom container metadata, you can create information in the header to effectively "tag" a container with metadata. The container metadata restrictions are the same as object metadata, you can have 4096 bytes maximum overall metadata, 90 distinct metadata items at the most. Each may have a 128 character name length with a 256 max value length each.  Any valid UTF8 http header value is allowed for metadata, however we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal representation of the ISO-Latin code for the character.</para>
+          <example>
+            <title>Container Create Request with Metadata </title>
+            <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Container-Meta-InspectedBy: JackWolf
+                    </literallayout>
+          </example>
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
+            was created as requested. Container &PUT; requests are idempotent and a code of 202
+            (Accepted) is returned when the container already existed. If you request a PUT to a
+            container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+            request responses carry the metadata prefix from the container in subsequent
+            requests.</para>
+          <example>
+            <title>Container Create Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 201 Created
+  Date: Thu, 07 Jun 2010 18:50:19 GMT
   Server: Apache
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
@@ -1416,10 +1457,11 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
             <title>Container Metadata Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
-  Date: Wed, 11 Jul 2007 19:37:41 GMT
+  Date: Wed, 16 Mar 2010 19:37:41 GMT
   Content-type: text/html
   X-Container-Object-Count: 7
   X-Container-Bytes-Used: 413
+  X-Container-Meta-InspectedBy: JackWolf
                     </literallayout>
           </example>
         </section>
