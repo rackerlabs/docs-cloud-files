@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>03/17/11</pubdate>
+    <pubdate>2011-03-25</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -307,6 +307,16 @@
         </thead>
         <tbody>
           <tr>
+            <td colspan="1" align="center">Mar. 25, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about large object support.</para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
             <td colspan="1" align="center">Mar. 17, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
@@ -490,8 +500,8 @@
         after URL encoding. For example, an object name of <code>C++final(v2).txt</code> should be
         URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
         rather than the expected 16.</para>
-      <para>The maximum allowable size for a storage object is 5 gigabytes and the minimum is zero
-        bytes. For metadata, you should not exceed 90 individual key/value pairs for any one object
+      <para>Cloud Files has a limit on the size of a single uploaded object; by default this is 5 GB. However, the download size of a single object is virtually unlimited with the concept of segmentation. Segments of the larger object are uploaded and a special manifest file is created that, when downloaded, sends all the segments concatenated as a single object. This also offers much greater upload speed with the possibility of parallel uploads of the segments.</para>
+      <para> For metadata, you should not exceed 90 individual key/value pairs for any one object
         and the total byte length of all key/value pairs should not exceed 4KB (4096 bytes).</para>
     </section>
     <section>
@@ -1472,7 +1482,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           system. Through the ReST interface, metadata for an object can be included by adding
           custom HTTP headers to the request and the data payload as the request body. Objects
           cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
-          encoding.</para>
+          encoding. However, objects larger than 5GB are segmented and then concatenated together so that you can upload 5 GB segments and download a single concatenated object. You can work with the segments and manifests directly with HTTP requests.</para>
         <section>
           <title>Retrieve Object</title>
           <para>&GET; operations against an object are used to retrieve the object's
@@ -1546,15 +1556,18 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <section>
           <title>Create/Update Object</title>
           <para>&PUT; operations are used to write, or overwrite, an object's metadata
-            and content.</para>
+            and content. </para>
           <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
             object's data in the ETag header. You are not required to include the ETag header, but
             it is recommended to ensure that the storage system successfully stored your object's
             content.</para>
           <para>The HTTP response will include the MD5 checksum of the data written to the storage
-            system. If you do not send the ETag in the request, you should compare the value
-            returned with your content's MD5 locally to perform the end-to-end data validation on
-            the client side.</para>
+          system. If you do not send the ETag in the request, you should compare the value returned
+          with your content's MD5 locally to perform the end-to-end data validation on the client
+          side. For segmented objects, the ETag is the MD5 sum of the concatenated string of ETags
+          for each of the segments in the manifest, which only offers change detection but not
+          direct comparison.</para>
+          
           <para>Objects can be assigned custom metadata by including additional HTTP headers on the
             &PUT; request.</para>
           <para>The object can be created with custom metadata via HTTP headers identified with the
@@ -1590,6 +1603,69 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
           <section>
+            <title>Large Object Creation</title>
+            <para>Objects that are larger than 5GB must be segmented, either manually or
+            programmatically, prior to upload. You then upload the segments like you would any other
+            object and create a manifest (a zero-byte file telling Cloud Files how to put it back
+            together, described below) which you submit with any subsequent HTTP requests using an
+            extra X-Object-Manifest header.</para>
+            
+            <para>In order to ensure the download works correctly, you must upload all the object segments to the same container, ensure each object name has a common prefix where their names sort in the order they should be concatenated. You also create and upload a manifest file. The manifest file is simply a zero-byte file with the extra X-Object-Manifest:  &lt;container&gt;/&lt;prefix&gt; header, where &lt;container&gt;  is the container the object segments are in and &lt;prefix&gt; is the common prefix for all the segments. </para>
+            <para>It is best to upload all the segments first and then create or update the manifest. With this method, the full object will not be available for downloading until the upload is complete. Also, you can upload a new set of segments to a second location and then update the manifest to point to this new location. During the upload of the new segments, the original manifest will still be available to download the first set of segments.</para>
+            <example>
+              <title>Upload Segment of a Large Object</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 1
+  X-Object-Meta-PIN: 1234
+                  </literallayout>
+              <literallayout class="monospaced">
+  s
+                    </literallayout>
+            </example>
+            <para>No response body is returned. A status code of 201 (Created) indicates a successful
+              write; status 412 (Length Required) denotes a missing <code>Content-Length</code> or
+              <code>Content-Type</code> header in the request. If the MD5 checksum of the data
+              written to the storage system does NOT match the (optionally) supplied ETag value, a 422
+              (Unprocessable Entity) response is returned.</para>
+            <para>You can continue uploading segments like this example shows, prior to uploading the manifest.</para>
+            <example>
+              <title>Upload Next Segment of the Large Object</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 1
+  X-Object-Meta-PIN: 1234
+                  </literallayout>
+              <literallayout class="monospaced">
+  w
+                    </literallayout>
+            </example>
+            
+            <para>Next, upload the manifest you created that indicates the container the object segments reside within. Note that uploading additional segments after the manifest is created will cause the concatenated object to be that much larger but there’s no need to recreate the manifest file for subsequent additional segments.</para>
+
+            <example>
+              <title>Upload Manifest</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Length: 0
+  X-Object-Meta-PIN: 1234
+  X-Object-Manifest: container/object/segments
+                  </literallayout>
+              <literallayout class="monospaced">
+  [...]
+                    </literallayout>
+            </example>
+            <para>The response’s Content-Type for a &GET; or <code>HEAD</code> on the manifest will be the same as the Content-Type set during the PUT request that created the manifest. You can easily change the Content-Type by reissuing the &PUT; request.</para>
+          </section>
+          <section>
               <title>Chunked Transfer Encoding</title>
               <para>Users can upload data without needing to know in advance the amount of data to be
               uploaded. Users can do this by specifying an HTTP header of <code>Transfer-Encoding:
@@ -1599,7 +1675,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
               size. If users attempt to upload more that 5GB with this method, the server will close
               the TCP/IP connection after 5GB and purge the customer data from the system. Users must
               take responsibility for ensuring the data they transfer will be less than 5GB or for
-              splitting it into 5GB chunks, each in its own storage object.</para>
+              splitting it into 5GB chunks, each in its own storage object. If you have files that are larger than 5GB and still want to use Cloud Files, you can segment them prior to upload, upload them to the same container, and then use a manifest file to allow downloading of a concatenated object containing all the segmented objects, concatenated as a single object.  </para>
               <example>
                   <title>Upload Unspecified Quantity of Content</title>
                   <literallayout class="monospaced">
@@ -2270,7 +2346,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
    Date: Thu, 09 Jul 2009 17:03:36 GMT
    Server: Apache
    Content-Length: 0
-   Etag: 805120ec285a7ed28f74024422fe3594 
+   ETag: 805120ec285a7ed28f74024422fe3594 
    Content-Type: text/plain
    </computeroutput></screen>
         </example>
