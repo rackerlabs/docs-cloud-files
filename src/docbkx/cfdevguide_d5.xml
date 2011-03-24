@@ -1482,7 +1482,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           system. Through the ReST interface, metadata for an object can be included by adding
           custom HTTP headers to the request and the data payload as the request body. Objects
           cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
-          encoding. However, objects larger than 5GB are segmented and then concatenated together so that you can upload 5 GB segments and download a single concatenated object. You can work with the segments and manifests directly with HTTP requests.</para>
+          encoding. However, objects larger than 5GB can be segmented and then concatenated together so that you can upload 5 GB segments and download a single concatenated object. You can work with the segments and manifests directly with HTTP requests.</para>
         <section>
           <title>Retrieve Object</title>
           <para>&GET; operations against an object are used to retrieve the object's
@@ -1604,11 +1604,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           </example>
           <section>
             <title>Large Object Creation</title>
-            <para>Objects that are larger than 5GB must be segmented, either manually or
-            programmatically, prior to upload. You then upload the segments like you would any other
-            object and create a manifest (a zero-byte file telling Cloud Files how to put it back
-            together, described below) which you submit with any subsequent HTTP requests using an
-            extra X-Object-Manifest header.</para>
+            <para>Objects that are larger than 5GB must be segmented, prior to upload. You then upload the segments like you would any other object and create a manifest object telling Cloud Files how to find the segments of the large object. The segments remain individually addressable, but retrieving the manifest object streams all the segments concatenated. There is no limit to the number of segments that can be a part of a single large object.</para>
             
             <para>In order to ensure the download works correctly, you must upload all the object segments to the same container, ensure each object name has a common prefix where their names sort in the order they should be concatenated. You also create and upload a manifest file. The manifest file is simply a zero-byte file with the extra X-Object-Manifest:  &lt;container&gt;/&lt;prefix&gt; header, where &lt;container&gt;  is the container the object segments are in and &lt;prefix&gt; is the common prefix for all the segments. </para>
             <para>It is best to upload all the segments first and then create or update the manifest. With this method, the full object will not be available for downloading until the upload is complete. Also, you can upload a new set of segments to a second location and then update the manifest to point to this new location. During the upload of the new segments, the original manifest will still be available to download the first set of segments.</para>
