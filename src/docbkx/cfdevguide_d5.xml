@@ -52,7 +52,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-03-25</pubdate>
+    <pubdate>2011-04-08</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -307,6 +307,17 @@
         </thead>
         <tbody>
           <tr>
+            <td colspan="1" align="center">Apr. 8, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>HEAD returns 200 instead of 204 on an object metadata request.</para>
+                </listitem>
+                <listitem><para>TTL maximum value is now 50 years instead of 3 days.</para></listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
             <td colspan="1" align="center">Mar. 25, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
@@ -535,7 +546,7 @@
         all subsequent requests for a configurable cache time to live (TTL) value. Setting the TTL
         of a CDN-enabled container translates to setting the <code>Expires</code> and
           <code>Cache-Control</code> HTTP headers. Cloud Files continues to serve content via the
-        CDN until it receives a delete request. When the TTL expires, the CDN checks Cloud Files to
+        CDN until it receives a delete request, although extremely long TTL values do not guarantee that an obect is served from a CDN edge location. When the TTL expires, the CDN checks Cloud Files to
         ensure that it has the most up-to-date content. A purge request forces the CDN to check with
         Cloud Files for the most up-to-date version of the file. </para>
       <para>Containers tracked in the CDN management service are completely separate and distinct
@@ -1020,12 +1031,11 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </example>
         </section>
       </section>
-      <?hard-pagebreak?>
       <section>
         <title>Storage Container Services</title>
         <para>This section documents the ReST operations that can be performed on containers. All
           operations are valid HTTP request methods and will resemble this format:</para>
-        <example>
+        <example><?dbfo keep-together="always"?>
           <title>Storage Container HTTP Request: General Structure</title>
           <literallayout class="monospaced">
   METHOD /v1/&lt;account>/&lt;container> HTTP/1.1
@@ -1430,7 +1440,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           <para>No content is returned. A status code of 204 (No Content) indicates success, 404
             (Not Found) is returned if the requested container was not found, and a 409 (Conflict)
             if the container is not empty. No response body will be generated.</para>
-          <example>
+          <example><?dbfo keep-together="always"?>
             <title>Container Delete Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
@@ -1703,18 +1713,22 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
               “X-Copy-From” header to designate the source of the data. The header value should be
               the container and object name of the source object in the form of “/container/object”.
               Also, the X-Copy-From PUT requests require a Content-Length header, even if it is zero
-              (0).</para><literallayout class="monospaced">PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;destobject> HTTP/1.1
+              (0).</para><literallayout class="monospaced">
+PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;destobject> HTTP/1.1
 Host: &lt;storage URL>
 X-Auth-Token: &lt;some-auth-token>
 X-Copy-From: /&lt;container>/&lt;sourceobject>
-Content-Length: 0                    </literallayout>
+Content-Length: 0                    
+              </literallayout>
             <para>The second way to do an object copy is similar. Do a COPY to the existing object,
               and include the “Destination” header to specify the target of the copy. The header
               value is the container and new object name in the form of “/container/object”.
-              <literallayout>COPY /&lt;api version>/&lt;account>/&lt;container>/&lt;sourceobject> HTTP/1.1
+              <literallayout class="monospaced">
+COPY /&lt;api version>/&lt;account>/&lt;container>/&lt;sourceobject> HTTP/1.1
 Host: &lt;storage URL>
 X-Auth-Token: &lt;some-auth-token>
-Destination: /&lt;container>/&lt;destobject></literallayout></para>
+Destination: /&lt;container>/&lt;destobject>
+              </literallayout></para>
             <para>With both of these methods, the destination container must exist before
               attempting the copy. If you were wanting to perform a move of the objects rather than
               a copy, you would need to send a DELETE request to the old object. A move simply
@@ -1767,12 +1781,12 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
                     </literallayout>
           </example>
           <para>No response body is returned. Metadata is returned as HTTP headers. A status code of
-            204 (No Content) indicates success; status 404 (Not Found) is returned when the object
+            200 (OK) indicates success; status 404 (Not Found) is returned when the object
             does not exist.</para>
-          <example>
+          <example><?dbfo keep-together="always"?>
             <title>Object Metadata Response</title>
             <literallayout class="monospaced">
-  HTTP/1.1 204 No Content
+  HTTP/1.1 200 OK
   Date: Thu, 07 Jun 2007 20:59:39 GMT
   Server: Apache
   Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
@@ -1888,7 +1902,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
           containers from appearing in the list.</para>
           <para>The list of CDN-enabled containers is returned in the response body, one container
             name per line.</para>
-          <example>
+          <example><?dbfo keep-together="always"?>
             <title>CDN-Enabled Containers List Request</title>
             <literallayout class="monospaced">
   GET /&lt;api version>/&lt;account> HTTP/1.1
@@ -1948,7 +1962,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
   ]
                     </programlisting>
             </example>
-            <example>
+            <example><?dbfo keep-together="always"?>
               <title>CDN-Enabled Containers Details Request: XML</title>
               <literallayout class="monospaced">
   GET /v1/&lt;account>?format=xml HTTP/1.1
@@ -2015,13 +2029,13 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
             container and set its attributes.</para>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
             accessible over a CDN by combining the container's CDN URI with the object name. Any
-            objects accessed will be cached in the CDN for TTL(value) number of seconds; the default
+            objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
             is one day or 86400 seconds. On the next access after the TTL expiration, the CDN will
             re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
-            that can be set is 1 hour; the maximum TTL is 3 days (3600-259200 seconds).</para>
+            that can be set is 1 hour; the maximum TTL is 50 years (3600 to 1577880000 seconds).</para>
           <para>To specify the TTL, include an HTTP header of <code>X-TTL: integer_seconds</code>
             Setting the TTL is the same as setting the HTTP <code>Expires</code> and
-              <code>Cache-Control</code> headers for the cached object.</para>
+            <code>Cache-Control</code> headers for the cached object. Setting a TTL for a long time, such as 5 years, does not guarantee that their content will stay populated on CDN edge servers for the entire five-year period. The most popular objects stay cached based on the edge locations logic. </para>
           <example>
             <title>Container CDN-Enable Request</title>
             <literallayout class="monospaced">
@@ -2352,8 +2366,7 @@ Destination: /&lt;container>/&lt;destobject></literallayout></para>
         <para>After creating a container and storing a file in it, you can choose to share the file.
           Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
           To CDN-enable a container, issue a &PUT; request against the CDN management service. The
-          default TTL is 24 hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 3
-          days (259200 seconds). Note that the target URL specifies the CDN system.</para>
+          default TTL is 24 hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 50 years (1577880000 seconds). Note that the target URL specifies the CDN system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen>
