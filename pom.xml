@@ -41,11 +41,12 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.0.2-SNAPSHOT</version>
+                <version>1.0.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
                     </execution>
@@ -60,6 +61,20 @@
                 </dependencies>
                 <configuration>
                     <xincludeSupported>true</xincludeSupported>
+		    <branding>rackspace</branding>
+		    <postProcess>
+		      <copy todir="target/docbkx/webhelp/cfdevguide_d5/content/figures">
+			<fileset dir="src/docbkx/figures">
+			  <include name="**/CFinterfaces.png" />
+			</fileset>
+		      </copy>
+		      <copy todir="target/docbkx/webhelp/cf-intro/content/figures">
+			<fileset dir="src/docbkx/figures">
+			  <include name="**/*.png" />
+			  <exclude name="**/CFinterfaces.png" />
+			</fileset>
+		      </copy>
+		    </postProcess>
                 </configuration>
             </plugin>
         </plugins>

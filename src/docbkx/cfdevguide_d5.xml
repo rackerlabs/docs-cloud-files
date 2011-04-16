@@ -775,8 +775,11 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
     <figure xml:id="CFinterfaces">
       <title>Cloud Files System Interfaces</title>
       <mediaobject>
-        <imageobject>
+        <imageobject role="fo">
           <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
+        </imageobject>
+        <imageobject role="html">
+          <imagedata fileref="figures/CFinterfaces.png"/>
         </imageobject>
       </mediaobject>
     </figure>

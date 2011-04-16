@@ -31,7 +31,6 @@
         xmlns:svg="http://www.w3.org/2000/svg"
         xmlns:m="http://www.w3.org/1998/Math/MathML"
         xmlns:html="http://www.w3.org/1999/xhtml"
-        xmlns:db="http://docbook.org/ns/docbook"
         version="5.0">
   <title>Cloud Files™ Introduction</title>
   <info>
@@ -52,7 +51,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>01/24/11</pubdate>
+    <pubdate>2011-01-24</pubdate>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
