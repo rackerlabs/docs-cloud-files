@@ -307,13 +307,13 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">Apr. 8, 2011</td>
+            <td colspan="1" align="center">Apr. 20, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
                   <para>HEAD returns 200 instead of 204 on an object metadata request.</para>
                 </listitem>
-                <listitem><para>TTL maximum value is now 50 years instead of 3 days.</para></listitem>
+                <listitem><para>TTL maximum value is now 50 years instead of 3 days, the minimum TTL is now 15 minutes (900 seconds), and the default is now 72 hours instead of 24 hours.</para></listitem>
               </itemizedlist>
             </td>
           </tr>
@@ -775,11 +775,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
     <figure xml:id="CFinterfaces">
       <title>Cloud Files System Interfaces</title>
       <mediaobject>
-        <imageobject role="fo">
+        <imageobject>
           <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
-        </imageobject>
-        <imageobject role="html">
-          <imagedata fileref="figures/CFinterfaces.png"/>
         </imageobject>
       </mediaobject>
     </figure>
@@ -2033,9 +2030,9 @@ Destination: /&lt;container>/&lt;destobject>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
             accessible over a CDN by combining the container's CDN URI with the object name. Any
             objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
-            is one day or 86400 seconds. On the next access after the TTL expiration, the CDN will
+            is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
             re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
-            that can be set is 1 hour; the maximum TTL is 50 years (3600 to 1577880000 seconds).</para>
+            that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds).</para>
           <para>To specify the TTL, include an HTTP header of <code>X-TTL: integer_seconds</code>
             Setting the TTL is the same as setting the HTTP <code>Expires</code> and
             <code>Cache-Control</code> headers for the cached object. Setting a TTL for a long time, such as 5 years, does not guarantee that their content will stay populated on CDN edge servers for the entire five-year period. The most popular objects stay cached based on the edge locations logic. </para>
@@ -2369,7 +2366,7 @@ Destination: /&lt;container>/&lt;destobject>
         <para>After creating a container and storing a file in it, you can choose to share the file.
           Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
           To CDN-enable a container, issue a &PUT; request against the CDN management service. The
-          default TTL is 24 hours and supports a minimum of 1 hour (3600 seconds) and a maximum of 50 years (1577880000 seconds). Note that the target URL specifies the CDN system.</para>
+          default TTL is 72 hours and supports a minimum of 15 minutes (900 seconds) and a maximum of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen>
