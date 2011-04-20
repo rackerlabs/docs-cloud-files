@@ -776,7 +776,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       <title>Cloud Files System Interfaces</title>
       <mediaobject>
         <imageobject role="html">
-          <imagedata fileref="figures/CFinterfaces.svg"/>
+          <imagedata fileref="figures/CFinterfaces.png"/>
         </imageobject>
         <imageobject role="fo">
           <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
