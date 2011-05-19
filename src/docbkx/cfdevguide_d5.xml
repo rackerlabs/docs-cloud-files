@@ -51,7 +51,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-05-18</pubdate>
+    <pubdate>2011-05-19</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -306,7 +306,7 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">May 18, 2011</td>
+            <td colspan="1" align="center">May 19, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
@@ -785,9 +785,9 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
       should be checked against the URL encoded string.</para>
     <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
-        <firstterm>authorization token</firstterm> HTTP header defined as <code>X-Auth-Token</code>.
-      Clients obtain this token, along with the Cloud Files URIs, by first using the Authentication
-      service and supplying a valid Username and API Access Key.</para>
+          <firstterm>authorization token</firstterm> HTTP header defined as
+          <code>X-Auth-Token</code>. Clients obtain this token, along with the Cloud Files URIs, by
+        first using the Authentication service and supplying a valid Username and API Access Key. </para>
     <para>There are actually two different sets of ReST services that make up the full Cloud Files
       product. The first ReST service identified with <code>X-Storage-Url</code> is used for
       managing the data stored in the system. Example operations are creating containers and
@@ -1310,61 +1310,6 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 have the complete list.</para>
             </example>
           </section>
-   <section><title>Assigning CORS Headers to Requests</title>
-     
-     <para>CORS is a specification that stands for Cross-Origin Resource Sharing. It defines how
-            browsers and servers communicate across origins using HTTP headers, such as those
-            assigned by Cloud Files API requests. These headers are supported with the Cloud Files
-            API. You can read more about the definition of the Access-Control- response headers and
-            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/"
-              >www.w3.org/TR/access-control/</link>.<itemizedlist>
-              <listitem>
-                <para>Content-Encoding: Allows a file to be compressed without losing the identity
-                  of the underlying media type of the file (such as a video)</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Allow-Credentials</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Allow-Methods</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Allow-Origin</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Expose-Headers</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Max-Age</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Request-Headers</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Request-Method</para>
-              </listitem>
-              <listitem>
-                <para>Origin</para>
-              </listitem>
-              <listitem>
-                <para>X-Object-Manifest: A Cloud Files header that </para>
-              </listitem>
-            </itemizedlist></para>
-     
-     <para></para>
-     
-   </section>
-   <section><title>Enforcing a File Download or Save As with the Content-Disposition Header </title>
-     
-     <para></para>
-     <example>
-       <title>Content-Disposition Header Example</title>
-       <para>In the example, the content-disposition header is assigned with an attachment type that indicates how the file should be downloaded:</para>
-       <literallayout class="monospaced">
-  
-  
-                    </literallayout></example>
-   </section>
           <section>
             <title>Pseudo-Hierarchical Folders/Directories</title>
             <para>You can simulate a hierarchical structure in Cloud Files by following a few
@@ -1797,6 +1742,89 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                   </literallayout>
               </example>
           </section>
+        <section>
+          <title>Assigning CORS Headers to Requests</title>
+          <para>CORS is a specification that stands for Cross-Origin Resource Sharing. It defines
+            how browsers and servers communicate across origins using HTTP headers, such as those
+            assigned by Cloud Files API requests. These headers are supported with the Cloud Files
+            API. You can read more about the definition of the Access-Control- response headers and
+            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/"
+              >www.w3.org/TR/access-control/</link>.<itemizedlist>
+              <listitem>
+                <para>Access-Control-Allow-Credentials</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Allow-Methods</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Allow-Origin</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Expose-Headers</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Max-Age</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Request-Headers</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Request-Method</para>
+              </listitem>
+              <listitem>
+                <para>Origin</para>
+              </listitem>
+            </itemizedlist></para>
+          <para>These headers can be assigned to objects only. You cannot assign headers using the
+            POST operation.</para>
+          <example>
+            <title>Assign CORS Header</title>
+            <para>In the example, the origin header is assigned that indicates where the file came
+              from. This allows you to provide security that requests to your Cloud Files repository
+              are indeed from the correct origination:</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Origin: http://storage.clouddrive.com
+                     </literallayout>
+          </example>
+        </section>
+        <section>
+          <title>Enabling File Compression with the Content-Encoding Header</title>
+          <para>The Content-Encoding header allows a file to be compressed without losing the
+            identity of the underlying media type of the file, for example, a video.</para>
+          <example>
+            <title>Content-Encoding Header Example</title>
+            <para>In the example, the content-encoding header is assigned with an attachment type
+              that indicates how the file should be downloaded:</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Type: video/mp4
+  Content-Encoding: gzip
+       </literallayout>
+          </example>
+        </section>
+        <section>
+          <title>Enabling Browser Bypass with the Content-Disposition Header</title>
+          <para>When an object is assigned the Content-Disposition header you can override a
+            browser's default behavior for a file so that the downloader saves the file rather than
+            displaying it using default browser settings.</para>
+          <example>
+            <title>Content-Disposition Header Example</title>
+            <para>In the example, the content-encoding header is assigned with an attachment type
+              that indicates how the file should be downloaded.</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version>/&lt;account>/&lt;container>/&lt;object> HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Type: image/tiff
+  Content-Disposition: attachment; filename=platmap.tif
+                    </literallayout>
+          </example>
+        </section>
       </section>
       <section>
             <title>Copy Object</title>
