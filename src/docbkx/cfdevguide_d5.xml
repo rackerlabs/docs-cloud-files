@@ -51,7 +51,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-05-19</pubdate>
+    <pubdate>2011-05-24</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -306,7 +306,7 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">May 19, 2011</td>
+            <td colspan="1" align="center">May 24, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
@@ -489,36 +489,7 @@
       <title>Permissions</title>
       <para>In Cloud Files, each user has their own storage account and has full access to that
         account. Users must authenticate with their credentials as described above, but once
-        authenticated they can create/delete containers and objects within that account. The only
-        way a user can access the content from another account is if they share their Username/API
-        Access Key or a session token. </para>
-      <para>Within a user account, you can also assign these headers to individual objects to
-        control access. You can read more about the definition of each response header at
-        <link xlink:href="http://www.w3.org/TR/access-control/">www.w3.org/TR/access-control/</link>.</para>
-      <itemizedlist><listitem>
-        <para>Access-Control-Allow-Credentials</para>
-      </listitem>
-        <listitem>
-          <para>Access-Control-Allow-Methods</para>
-        </listitem>
-        <listitem>
-          <para>Access-Control-Allow-Origin</para>
-        </listitem>
-        <listitem>
-          <para>Access-Control-Expose-Headers</para>
-        </listitem>
-        <listitem>
-          <para>Access-Control-Max-Age</para>
-        </listitem>
-        <listitem>
-          <para>Access-Control-Request-Headers</para>
-        </listitem>
-        <listitem>
-          <para>Access-Control-Request-Method</para>
-        </listitem>
-        <listitem>
-          <para>Origin</para>
-        </listitem></itemizedlist>
+        authenticated they can create/delete containers and objects within that account. </para>
     </section>
     <section>
       <title>Containers</title>
@@ -1775,8 +1746,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                 <para>Origin</para>
               </listitem>
             </itemizedlist></para>
-          <para>These headers can be assigned to objects only. You cannot assign headers using the
-            POST operation.</para>
+          <para>These headers can be assigned to objects only. </para>
           <example>
             <title>Assign CORS Header</title>
             <para>In the example, the origin header is assigned that indicates where the file came
@@ -1931,9 +1901,8 @@ Destination: /&lt;container>/&lt;destobject>
             arbitrary key/value metadata. You cannot use the &POST; operation to change
             any of the object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
             etc. It is not used to upload storage objects (see &PUT;).</para>
-          <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A &POST;
-            request will delete all existing metadata added with a previous
-            <code>PUT/POST</code>.</para>
+          <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A &POST; request will
+          delete all existing metadata added with a previous <code>PUT/POST</code>.</para>
           <example>
             <title>Update Object Metadata Request</title>
             <literallayout class="monospaced">
