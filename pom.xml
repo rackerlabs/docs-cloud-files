@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rackspace.cloud.files.api</groupId>
@@ -60,21 +62,26 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <includes>cfdevguide_d5.xml,cf-intro.xml</includes>
                     <xincludeSupported>true</xincludeSupported>
-		    <branding>rackspace</branding>
-		    <postProcess>
-		      <copy todir="target/docbkx/webhelp/cfdevguide_d5/content/figures">
-			<fileset dir="src/docbkx/figures">
-			  <include name="**/CFinterfaces.png" />
-			</fileset>
-		      </copy>
-		      <copy todir="target/docbkx/webhelp/cf-intro/content/figures">
-			<fileset dir="src/docbkx/figures">
-			  <include name="**/*.png" />
-			  <exclude name="**/CFinterfaces.png" />
-			</fileset>
-		      </copy>
-		    </postProcess>
+                    <branding>rackspace</branding>
+                    <enableDisqus>1</enableDisqus>
+                    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
+                    <postProcess>
+                        <copy
+                            todir="target/docbkx/webhelp/cfdevguide_d5/content/figures">
+                            <fileset dir="src/docbkx/figures">
+                                <include name="**/CFinterfaces.png"/>
+                            </fileset>
+                        </copy>
+                        <copy
+                            todir="target/docbkx/webhelp/cf-intro/content/figures">
+                            <fileset dir="src/docbkx/figures">
+                                <include name="**/*.png"/>
+                                <exclude name="**/CFinterfaces.png"/>
+                            </fileset>
+                        </copy>
+                    </postProcess>
                 </configuration>
             </plugin>
         </plugins>

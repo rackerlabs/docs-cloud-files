@@ -1,30 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE book [
-        <!-- Some useful entities borrowed from HTML -->
-        <!ENTITY ndash  "&#x2013;">
-        <!ENTITY mdash  "&#x2014;">
-        <!ENTITY hellip "&#x2026;">
-
-        <!-- Useful for describing APIs -->
-        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
-        <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-                 <imageobject>
-                  <imagedata fileref="img/Check_mark_23x20_02.svg"
-                             format="SVG" scale="60"/>
-                  </imageobject>
-                </inlinemediaobject>'>
-
-         <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-                  <imageobject>
-                   <imagedata fileref="img/Arrow_east.svg"
-                              format="SVG" scale="60"/>
-                  </imageobject>
-                </inlinemediaobject>'>
-]>
   <book xmlns="http://docbook.org/ns/docbook"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -32,6 +6,7 @@
         xmlns:m="http://www.w3.org/1998/Math/MathML"
         xmlns:html="http://www.w3.org/1999/xhtml"
         version="5.0">
+    <?rax pdf.url="../../../cf-intro-latest.pdf"?>
   <title>Cloud Files™ Introduction</title>
   <info>
     <author>
@@ -69,7 +44,7 @@
       <para>this is a placeholder for the back cover</para>
     </cover>
   </info> 
-  <chapter>
+  <chapter xml:id="Introduction-d1e82">
     <title>Introduction</title>
     <para>
       Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage service offering. 
@@ -97,7 +72,7 @@
         >http://www.rackspacecloud.com/cloud_hosting_products/files</link>.
     </para>
   </chapter>
-   <chapter>
+   <chapter xml:id="Ideal_Uses_of_Cloud_Files-d1e103">
      <title>Ideal Uses of Cloud Files</title>
      <para>
        There are a number of uses for the Cloud Files service. 
@@ -128,7 +103,7 @@
        </itemizedlist>
      </para>
    </chapter>
-    <chapter>
+    <chapter xml:id="Why_Use_Cloud_Files-d1e159">
       <title>Why Use Cloud Files?</title>
       <para>
         There are a number of reasons to choose the Cloud Files service over similar services available in the market.
@@ -151,9 +126,9 @@
         </itemizedlist>
         </para>
     </chapter> 
-    <chapter>
+    <chapter xml:id="Cloud_Files_Features-d1e201">
       <title>Cloud Files Features</title>
-      <section>
+      <section xml:id="Simplicity-d1e206">
         <title>Simplicity</title>
         <para>
           Cloud Files is simple to use for developers and non-developers alike. 
@@ -184,7 +159,7 @@
         language-specific bindings to develop utilities or applications. The API is easy to use and
         is documented with examples to get started quickly. </para>
       </section>
-      <section>
+      <section xml:id="Affordability-d1e221">
         <title>Affordability</title>
         <para>
           Pricing for Cloud Files with CDN starts at 15 cents per gigabyte of storage 
@@ -196,7 +171,7 @@
             >http://www.rackspacecloud.com/cloud_hosting_products/files</link>.
         </para>
       </section>
-      <section>
+      <section xml:id="Flexibility-d1e233">
         <title>Flexibility</title>
         <para>
           Cloud Files is a dynamically expanding storage system. 
@@ -229,17 +204,17 @@
           developers to work in the language they feel most comfortable using.
         </para>
       </section>
-      <section>
+      <section xml:id="World-Class_Support-d1e248">
         <title>World-Class Support</title>
         <para>
           With Cloud Files, world-class free technical support is only a click away. 
           Live support, with real people, is available 24/7. 
           Fanatical Support is built into the price. 
           Users can get peace of mind knowing that technical support is just a
-          phone call or online chat away &mdash; at any time of the day.
+          phone call or online chat away &#x2014; at any time of the day.
         </para>
       </section>
-      <section>
+      <section xml:id="Data_Redundancy-d1e258">
         <title>Data Redundancy</title>
         <para>
           The Cloud Files storage system is designed to be highly available and fault tolerant. 
@@ -255,7 +230,7 @@
           of data redundancy.
         </para>
       </section>
-      <section>
+      <section xml:id="Security-d1e267">
         <title>Security</title>
         <para>
           Cloud Files uses a number of different measures to ensure that your data is kept safe. 
@@ -298,13 +273,13 @@
         </para>
       </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Tools_and_Applications_for_Cloud_Files-d1e286">
       <title>Tools and Applications for Cloud Files</title>
       <para>
         In addition to the ReST API and its language-specific bindings, 
         there are several other ways for users to interact with Cloud Files.
       </para>
-      <section>
+      <section xml:id="Control_Panel-d1e294">
         <title>Control Panel</title>
         <para>
           The Rackspace Cloud control panel is one way to access Cloud Files. 
@@ -324,7 +299,7 @@
           </informalfigure>
         </para>
       </section>
-      <section>
+      <section xml:id="FireUploader_GUI-d1e314">
         <title>FireUploader GUI</title>
         <para> FireUploader is a tool from Suchi Software; it provides an intuitive interface to
         move and manage files in Cloud Files. It works as a plug-in to the Mozilla Firefox browser
@@ -332,8 +307,7 @@
         up the tool, you must supply your Rackspace Cloud username; when prompted for a password,
         enter your API Access Key. This tool provides a creative way of working with available Cloud
         Files features to allow users to simulate a hierarchical file system structure. For more
-        information, please see the Fireuploader web site at <link
-          xlink:href="http://www.fireuploader.com">http://www.fireuploader.com</link>. 
+        information, please see the Fireuploader web site at <link xlink:href="http://www.fireuploader.com">http://www.fireuploader.com</link>. 
           <informalfigure xml:id="screenshotFU">
           <mediaobject>
             <imageobject>
@@ -343,7 +317,7 @@
         </informalfigure>
       </para>
       </section>
-      <section>
+      <section xml:id="Cyberduck-d1e337">
         <title>Cyberduck</title>
         <para>
           Cyberduck is an open-source Cloud Files browser licensed under the GPL that runs on Macs.
@@ -371,14 +345,14 @@
         </para>
       </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Developing_Applications_for_Cloud_Files-d1e361">
       <title>Developing Applications for Cloud Files</title>
       <para>
         There are several programming interfaces for using Cloud Files 
         that will allow developers to integrate the storage
         solution into new applications, or provide automated ways of accessing the system. 
       </para>
-      <section>
+      <section xml:id="ReST_API-d1e369">
         <title>ReST API</title>
         <para>
           Cloud Files allows users to store/retrieve files via a simple 
@@ -392,7 +366,7 @@
             >http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
         </para>
       </section>
-      <section>
+      <section xml:id="Language-Specific_API_Bindings-d1e381">
         <title>Language-Specific API Bindings</title>
         <para>
           In addition to the ReST API, 
@@ -402,7 +376,7 @@
             >http://www.rackspacecloud.com/cloud_hosting_products/files/api/</link>.
         </para>
       </section>
-      <section>
+      <section xml:id="Caveats-d1e393">
         <title>Caveats</title>
         <para>
           There are many advantages to a storage system like Cloud Files and many appropriate use-cases. 
@@ -452,7 +426,7 @@
         </para>
       </section>
     </chapter>
-    <chapter>
+    <chapter xml:id="Additional_Resources-d1e436">
       <title>Additional Resources</title>
       <para>
         The official support channels 
