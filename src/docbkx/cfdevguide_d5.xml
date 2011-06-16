@@ -35,7 +35,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-05-24</pubdate>
+    <pubdate>2011-06-15</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -111,6 +111,16 @@
         </thead>
         <tbody>
           <tr>
+            <td colspan="1" align="center">June 15, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added best practices for authentication tokens.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr><tr>
             <td colspan="1" align="center">May 24, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
@@ -253,9 +263,11 @@
         Cloud website at <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
           http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
       </para>
-      <para> For more details about the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents
-        are available at the same site, as are links to Rackspace's official support channels,
-        including knowledge base articles, forums, phone, chat, and email.</para>
+      <para> For more details about the Cloud Files service, please refer to <link
+          xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+          >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents are
+        available at the same site, as are links to official Rackspace support channels, including
+        knowledge base articles, forums, phone, chat, and email.</para>
       <para> You can also follow updates and announcements via twitter at <link xlink:href="http://www.twitter.com/rackcloud">http://www.twitter.com/rackcloud</link>
       </para>
     </section>   
@@ -278,7 +290,8 @@
       <title>Authentication</title>
       <para>The language and ReST APIs below describe how to authenticate against the Authentication
         service to receive Cloud Files connection parameters and an authentication token. The token
-        must be passed in for all subsequent container/object operations.</para>
+        must be passed in for all subsequent container/object operations during the time it is
+        valid.</para>
       <note>
         <para>The language-specific APIs handle authentication, token passing, and HTTPS
           request/response communication.</para>
@@ -508,12 +521,13 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               </literallayout>
         </example>
         <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
-          parsed and used in the connection and request line of all subsequent requests against Cloud
-          Files. In the example response above, users connecting to Cloud Files would send most
-          container/object requests with a host header of <code>storage.clouddrive.com</code> and the
-          request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable Containers
-          or adjust CDN attributes, ReST requests should be sent to <code>cdn.clouddrive.com</code>.
-          Note that authentication tokens are valid for a 24 hour period.</para>
+          parsed and used in the connection and request line of all subsequent requests against
+          Cloud Files. In the example response above, users connecting to Cloud Files would send
+          most container/object requests with a host header of <code>storage.clouddrive.com</code>
+          and the request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable
+          Containers or adjust CDN attributes, ReST requests should be sent to
+            <code>cdn.clouddrive.com</code>. Note that authentication tokens are valid for a 24-hour
+          period. Once a token expires, you must request a new one.</para>
       </simplesect>
     </section>
     <?hard-pagebreak?>
@@ -545,7 +559,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       </listitem>
     </itemizedlist>
     <para>Container and object names should be properly URL-encoded prior to interacting with the
-      ReST interface (the language APIs handle URL encoding/decoding). The length restrictions
+      ReST interface (the language APIs handle URL encoding/decoding) and the container
+      and object names must be UTF-8 encoded. The length restrictions
       should be checked against the URL encoded string.</para>
     <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
           <firstterm>authorization token</firstterm> HTTP header defined as
@@ -596,7 +611,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <para>Object names cannot exceed 1024 bytes and have no character restrictions</para>
         </listitem>
         <listitem>
-          <para>Object and container names must be URL-encoded</para>
+          <para>Object and container names must be URL-encoded and UTF-8 encoded</para>
         </listitem>
       </itemizedlist>
       <section xml:id="Storage_Account_Services-d1e977">
@@ -1570,8 +1585,8 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         <section xml:id="Enabling_Browser_Bypass_with_the_Content-Disposition_Header-d1e2219">
           <title>Enabling Browser Bypass with the Content-Disposition Header</title>
           <para>When an object is assigned the Content-Disposition header you can override a
-            browser's default behavior for a file so that the downloader saves the file rather than
-            displaying it using default browser settings.</para>
+            browser's default behavior for a file so that the browser prompts to save the file
+            rather than displaying it using default browser settings.</para>
           <example>
             <title>Content-Disposition Header Example</title>
             <para>In the example, the content-encoding header is assigned with an attachment type
@@ -2103,7 +2118,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
       </section>
   </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
-    <title>Troubleshooting</title>
+    <title>Examples and Troubleshooting</title>
     <para>This section introduces a command-line utility and demonstrates interacting with the ReST
       interfaces through that utility.</para>
     <section xml:id="Using_cURL-d1e2863">
@@ -2166,6 +2181,35 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           headers of the response. After authentication, you can use cURL to perform
             <code>HEAD</code>, &GET;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
           services.</para>
+        <para>While an authentication token lasts, you can continue to perform requests, but once a
+          token expires it returns an HTTP error code 401 Unauthorized. Given than an X-Auth-Token
+          is good for 24 hours, long running or high request rate jobs should not try to
+          authenticate at api.auth.rackspace.com on every request. You don't need to request another
+          X-Auth-Token again until your existing X-Auth-Token expires. At that point you must obtain
+          another authorization token. As a best practice example, here is some pseudo-code for
+          re-authenticating. The best scalable process flow would be:<orderedlist>
+            <listitem>
+              <para>Begin requests by going to auth.api.rackspace.com for an X-Auth-Token.</para>
+            </listitem>
+            <listitem>
+              <para>Send request X-Storage-URL using the X-Auth-Token obtained in Step 1.</para>
+            </listitem>
+            <listitem>
+              <para>Repeat step 2 using the same X-Auth-Token retrieved in Step 1 until either the
+                job finishes or you get a result code of 401 (Unauthorized). </para>
+            </listitem>
+          </orderedlist><itemizedlist>
+            <listitem>
+              <para>If the job finishes, you can allow the token to expire with no further
+                action.</para>
+            </listitem>
+            <listitem>
+              <para>If result code is 401 then send a request to auth.api.rackspacecloud.com for a
+                new X-Auth-Token.</para>
+            </listitem>
+          </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
+          receiving an error can be found in the OpenStack Swift project in client.py, which is
+          freely available. </para>
       </section>
       <section xml:id="Determining_Storage_Usage-d1e2976">
         <title>Determining Storage Usage</title>
