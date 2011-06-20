@@ -2156,7 +2156,11 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <para>In order to use the ReST API, you will first need to obtain a authorization token,
           which will need to be passed in for each request using the <code>X-Auth-Token</code>
           header. The following example demonstrates how to use cURL to obtain the authorization
-          token and the URL of the storage system.</para>
+          token and the URL of the storage system. Note that your account may be based in either the
+          US or the UK; this is not determined by your physical location but by the location of the
+          Rackspace retail site where the account was created. This example uses the US-based URL
+          https://auth.api.rackspacecloud.com/v1.0, UK-based accounts authenticate through
+          https://lon.auth.api.rackspacecloud.com/v1.0.</para>
         <example>
           <title>cURL Authenticate</title>
           <screen>
