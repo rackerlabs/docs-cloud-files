@@ -2235,7 +2235,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <example>
           <title>cURL Get Storage Space</title>
           <screen>
-   <command>curl</command> <option>–X HEAD</option> <option>-D</option> - \
+   <command>curl</command> <option>-X HEAD</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
                       </screen>
@@ -2259,7 +2259,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <example>
           <title>cURL Create Storage Container</title>
           <screen>
-   <command>curl</command> <option>–X PUT</option> <option>-D</option> - \
+   <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images</uri>
                       </screen>
@@ -2285,7 +2285,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <example>
           <title>cURL Upload Storage Object</title>
           <screen>
-   <command>curl</command> <option>–X PUT</option> <option>-T screenies/wow1.jpg</option> <option>-D</option> - \
+   <command>curl</command> <option>-X PUT</option> <option>-T screenies/wow1.jpg</option> <option>-D</option> - \
      <option>-H "ETag: 805120ec285a7ed28f74024422fe3594"</option> \
      <option>-H "Content-Type: image/jpeg"</option> \
      <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
