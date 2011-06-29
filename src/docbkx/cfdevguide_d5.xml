@@ -100,7 +100,7 @@
     <section xml:id="Document_Change_History-d1e141">
       <title>Document Change History</title>
       <para>This version of the Developer Guide replaces and obsoletes
-      all previous versions.  The most recent changes are described in
+      all previous versions. The most recent changes are described in
       the table below:</para>
       <informaltable rules="all">
         <thead>
@@ -110,6 +110,17 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td colspan="1" align="center">June 29, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
           <tr>
             <td colspan="1" align="center">June 15, 2011</td>
             <td colspan="4">
@@ -2175,7 +2186,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    Server: Apache/2.2.3
    X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_343
    X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_343
-   X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
+   X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
    Content-Length: 0
    Connection: close
    Content-Type: application/octet-stream
