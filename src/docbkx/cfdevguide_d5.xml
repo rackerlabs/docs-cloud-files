@@ -1748,7 +1748,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
       <title>API Operations for CDN Services</title>
       <para>The following is a description of API calls that can be used for CDN account and container
       operations. All of the ReST methods described below must be issued against the CDN management
-      service as defined in the <code>X-CDN-Management–Url</code> returned by a successful
+      service as defined in the <code>X-CDN-Management-Url</code> returned by a successful
       authentication.</para>
       <section xml:id="CDN_Account_Operations-d1e2397">
         <title>CDN Account Operations</title>
@@ -2311,7 +2311,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen>
-   <command>curl</command> <option>–X PUT</option> <option>-D</option> - \
+   <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <option>-H "X-CDN-Enabled: True"</option> \
         <option>-H "X-TTL: 259200"</option> \
@@ -2343,7 +2343,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <example>
           <title>cURL Download a File</title>
           <screen>
-   <command>curl</command> <option>–s</option> <option>-D</option> - \
+   <command>curl</command> <option>-s</option> <option>-D</option> - \
      <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
                       </screen>
