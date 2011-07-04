@@ -2176,7 +2176,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           <title>cURL Authenticate</title>
           <screen>
    <command>curl</command> <option>-D</option> - \
-        <option>-H "X-Auth-Token: a86850deb2742ec3cb41518e26aa2d89"</option> \
+        <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
         <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
                       </screen>
@@ -2186,7 +2186,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    Server: Apache/2.2.3
    X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_343
    X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_343
-   X-Auth-Key: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
+   X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
    Content-Length: 0
    Connection: close
    Content-Type: application/octet-stream
