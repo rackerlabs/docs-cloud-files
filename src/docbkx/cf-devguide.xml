@@ -1,0 +1,2378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+
+        <!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command>GET</command>'>
+        <!ENTITY PUT    '<command>PUT</command>'>
+        <!ENTITY POST   '<command>POST</command>'>
+        <!ENTITY DELETE '<command>DELETE</command>'>
+
+]>
+  <book xmlns="http://docbook.org/ns/docbook"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:m="http://www.w3.org/1998/Math/MathML"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        version="5.0">
+    <?rax pdf.url="../../../cf-devguide-latest.pdf"?>
+  <title>Cloud Files™ Developer Guide</title>
+  <info>
+    <author>
+      <personname>
+        <firstname/>
+        <surname/>
+      </personname>
+      <affiliation>
+        <orgname>Rackspace Cloud</orgname>
+      </affiliation>
+    </author>
+    <copyright>
+      <year>2009</year>
+      <year>2010</year>
+      <year>2011</year>
+      <holder>Rackspace US, Inc.</holder>
+    </copyright>
+    <releaseinfo>API v1</releaseinfo>
+    <productname>Cloud Files™</productname>
+    <pubdate>2011-06-29</pubdate>
+    <legalnotice role="rs-api">
+      <annotation>
+        <remark>Copyright details are filled in by the template.</remark>
+      </annotation>
+    </legalnotice>
+    <abstract>
+      <para> This document is intended for software developers interested in developing applications
+        using the Rackspace Cloud Files™ Application Programming Interface (<abbrev>API</abbrev>).
+      </para>
+    </abstract>
+  </info>
+  <chapter xml:id="Overview-d1e70">
+    <title>Overview</title>
+    <para>Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage
+      service offering. The core storage system is designed to provide a safe, secure, automatically
+      re-sizing and network accessible way to store data. You can store an unlimited quantity of
+      files and each file can be as large as 5 gigabytes. Users can store as much as they want and
+      pay only for storage space they actually use.</para>
+    <para>Additionally, Cloud Files provides a simple yet powerful way to publish and distribute
+      content behind a Content Distribution Network. Cloud Files users get access to this network
+      automatically without having to worry about contracts, additional costs, or technical
+      hurdles.</para>
+    <para>Cloud Files allows users to store and retrieve files and CDN-enabled content via a simple
+      Web Service (ReST: Representational State Transfer) interface. There are also
+      language-specific APIs that utilize the ReSTful API but make it much easier for developers to
+      integrate into their applications.</para>
+    <para>For more details on the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>
+    </para>
+    <para> We welcome feedback, comments, and bug reports at <link xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. 
+    </para>
+    <section xml:id="Intended_Audience-d1e97">
+      <title>Intended Audience</title>
+      <para>This guide is intended to assist software developers who want to develop applications
+        using the Rackspace Cloud Files API. It fully documents the ReST application programming
+        interface (API) that allows developers to interact with the storage and CDN components of
+        the Cloud Files system. To use the information provided here, you should first have a
+        general understanding of the Rackspace Cloud Files service and have access to an active
+        Rackspace Cloud Files account. You should also be familiar with: </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>ReSTful web services</para>
+        </listitem>
+        <listitem>
+          <para>HTTP/1.1</para>
+        </listitem>
+      </itemizedlist>
+      <para>Rackspace also provides Rackspace-supported, language-specific APIs in several popular
+        programming languages. Currently, the supported APIs ares C#/.NET, Java, PHP, Python, and
+        Ruby. These APIs utilize the ReST API and are provided to help developers rapidly integrate
+        Cloud Files support into their applications without needing to write at the ReST interface.
+        Each API includes its own documentation in its native format. For example, the Java API
+        includes JavaDocs and the C#/.NET API includes a CHM file.</para>
+      <para>System administrators and other users who are interested in the storage and CDN benefits
+        of Cloud Files should consider using the File Manager interface within the Rackspace Cloud
+        Control Panel, <link xlink:href="http://www.jungledisk.com/">Jungle Disk</link>, or third
+        party tools such as <link xlink:href="http://www.fireuploader.com/">Fileuploader</link>,
+          <link xlink:href="http://www.cyberduck.ch/">Cyberduck</link>, or <link xlink:href="http://cloudfilesmanager.com/">Cloud Files Manager</link>. The control panel
+        provides an easy to use web-based interface for uploading and downloading content to and
+        from Cloud Files.</para>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Document_Change_History-d1e141">
+      <title>Document Change History</title>
+      <para>This version of the Developer Guide replaces and obsoletes
+      all previous versions. The most recent changes are described in
+      the table below:</para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <td align="center" colspan="1">Revision Date</td>
+            <td align="center" colspan="4">Summary of Changes</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="1" align="center">June 29, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">June 15, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added best practices for authentication tokens.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr><tr>
+            <td colspan="1" align="center">May 24, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about new headers including CORS headers.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Apr. 20, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>HEAD returns 200 instead of 204 on an object metadata request.</para>
+                </listitem>
+                <listitem><para>TTL maximum value is now 50 years instead of 3 days, the minimum TTL is now 15 minutes (900 seconds), and the default is now 72 hours instead of 24 hours.</para></listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Mar. 25, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about large object support.</para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Mar. 17, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about container metadata.</para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Mar. 10, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
+                    are using https protocol.</para>
+                </listitem>
+                <listitem>
+                  <para>Updated examples to contain SSL as appropriate.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Feb. 25, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about the edge purge capability for CDN-enabled containers
+                    and objects.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Feb. 18, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Fixed error in the header range example that stated first instead of last
+                    when fetching a portion of the data. </para>
+                </listitem>
+                <listitem>
+                  <para>Updated CDN URLs to match new format.</para>
+                </listitem>
+                <listitem>
+                  <para>Fixed error referring to X-Auth-User instead of X-Auth-Key.  </para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Jan. 12, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para> 
+                    Removed references to ACL (Access Control List).
+                  </para>
+                </listitem>
+                <listitem>
+                  <para> 
+                    Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
+                  </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Added section numbers.
+                    </para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr><tr>
+            <td colspan="1" align="center">Jan. 4, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para> 
+                    Expanded authentication information for UK release.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para> 
+                    Added "delimiter" as a Query Parameter and server-side object copy example.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">May 5, 2008</td>
+            <td colspan="4">
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>Initial release.</para>
+                    </listitem>
+                </itemizedlist>
+            </td>
+          </tr>
+        </tbody>
+      </informaltable>
+    </section>
+    <section xml:id="Additional_Resources-d1e388">
+      <title>Additional Resources</title>
+      <para> You can download the most current version of this document from the Rackspace
+        Cloud website at <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
+          http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
+      </para>
+      <para> For more details about the Cloud Files service, please refer to <link
+          xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+          >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents are
+        available at the same site, as are links to official Rackspace support channels, including
+        knowledge base articles, forums, phone, chat, and email.</para>
+      <para> You can also follow updates and announcements via twitter at <link xlink:href="http://www.twitter.com/rackcloud">http://www.twitter.com/rackcloud</link>
+      </para>
+    </section>   
+  </chapter>
+  <chapter xml:id="Concepts-d1e413">
+    <title>Concepts</title>
+    <para>Cloud Files is not a file system in the traditional sense. You will not be able to map or
+      mount virtual disk drives like you can with other forms of storage such as a SAN or NAS. Since
+      Cloud Files is a different way of thinking when it comes to storage, you should take a few
+      moments to review the key concepts listed below.</para>
+    <section xml:id="Accounts-d1e421">
+      <title>Accounts</title>
+      <para>The Cloud Files system is designed to be used by many different customers. Your user
+        account is your portion of the Cloud Files system. A user must identify themselves with
+        their Rackspace Cloud username and API Access Key and once authenticated, that user has full
+        read/write access to the files stored under that user account. Please visit <link xlink:href="http://www.rackspacecloud.com/signup">http://www.rackspacecloud.com/signup</link> to obtain a Cloud Files account and enable
+        your API Access Key. </para>
+    </section>
+    <section xml:id="Authentication-d1e433">
+      <title>Authentication</title>
+      <para>The language and ReST APIs below describe how to authenticate against the Authentication
+        service to receive Cloud Files connection parameters and an authentication token. The token
+        must be passed in for all subsequent container/object operations during the time it is
+        valid.</para>
+      <note>
+        <para>The language-specific APIs handle authentication, token passing, and HTTPS
+          request/response communication.</para>
+      </note>
+    </section>
+    <section xml:id="Permissions-d1e448">
+      <title>Permissions</title>
+      <para>In Cloud Files, each user has their own storage account and has full access to that
+        account. Users must authenticate with their credentials as described above, but once
+        authenticated they can create/delete containers and objects within that account. </para>
+    </section>
+    <section xml:id="Containers-d1e458">
+      <title>Containers</title>
+      <para>A container is a storage compartment for your data and provides a way for you to
+        organize your data. You can think of a container as a folder in Windows® or a directory in
+        UNIX®. The primary difference between a container and these other file system concepts is
+        that containers cannot be nested. You can, however, create an unlimited number of containers
+        within your account. Data must be stored in a container so you must have at least one
+        container defined in your account prior to uploading data.</para>
+      <para>The only restrictions on container names is that they cannot contain a forward slash
+          (<code>/</code>) and must be less than 256 bytes in length. Please note that the length
+        restriction applies to the name after it has been URL encoded. For example, a container name
+        of <code>Course Docs</code> would be URL encoded as <code>Course%20Docs</code> and therefore
+        be 13 bytes in length rather than the expected 11.</para>
+    </section>
+    <section xml:id="Objects-d1e479">
+      <title>Objects</title>
+      <para>An object is the basic storage entity and any optional metadata that represents the
+        files you store in the Cloud Files system. When you upload data to Cloud Files, the data is
+        stored as-is (no compression or encryption) and consists of a location (container), the
+        object's name, and any metadata consisting of key/value pairs. For instance, you may chose
+        to store a backup of your digital photos and organize them into albums. In this case, each
+        object could be tagged with metadata such as <code>Album : Caribbean Cruise</code> or
+          <code>Album : Aspen Ski Trip</code>.</para>
+      <para>The only restriction on object names is that they must be less than 1024 bytes in length
+        after URL encoding. For example, an object name of <code>C++final(v2).txt</code> should be
+        URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
+        rather than the expected 16.</para>
+      <para>Cloud Files has a limit on the size of a single uploaded object; by default this is 5 GB. However, the download size of a single object is virtually unlimited with the concept of segmentation. Segments of the larger object are uploaded and a special manifest file is created that, when downloaded, sends all the segments concatenated as a single object. This also offers much greater upload speed with the possibility of parallel uploads of the segments.</para>
+      <para>For metadata, you should not exceed 90 individual key/value pairs for any one object and
+        the total byte length of all key/value pairs should not exceed 4KB (4096 bytes).</para>
+    </section>
+    <section xml:id="Operations-d1e509">
+      <title>Operations</title>
+      <para>Operations are the actions you perform within your account. Creating or deleting
+        containers, uploading or downloading objects, etc. The full list of operations is documented
+        in the ReST API section. Operations may be performed via the ReST web service API or a
+        language-specific API; currently, we support Python, PHP, Java, Ruby, and C#/.NET.</para>
+      <important>
+        <para> All operations must include a valid authorization token. </para>
+      </important>
+    </section>
+    <section xml:id="CDN-Enabled_Containers-d1e524">
+      <title>CDN-Enabled Containers</title>
+      <para>To publish data that is to be served by a Content Distribution Network (CDN), containers
+        which house the data must be CDN-enabled. When a container is CDN-enabled, any files within
+        the container are publicly accessible and do not require an authentication token for read
+        access. Uploading content into a CDN-enabled container is a secure operation and requires a
+        valid authentication token.</para>
+      <para>Each CDN-enabled container has a unique Uniform Resource Locator (URL) that can be
+        combined with its object names and openly distributed in web pages, emails, or other
+        applications.</para>
+      <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
+          <link xlink:href="http://c10171.r71.cf0.rackcdn.com">http://c10171.r71.cf0.rackcdn.com</link>. If that container houses a screenshot called
+          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of <link xlink:href="http://c10171.r71.cf0.rackcdn.com/wow1.jpg">http://c10171.r71.cf0.rackcdn.com/wow1.jpg</link>. This URL can be embedded in HTML
+        pages, email messages, blog posts, etc. When that URL is accessed, a copy of that image is
+        fetched from the Cloud Files storage system and cached in a CDN and served from there for
+        all subsequent requests for a configurable cache time to live (TTL) value. Setting the TTL
+        of a CDN-enabled container translates to setting the <code>Expires</code> and
+          <code>Cache-Control</code> HTTP headers. Cloud Files continues to serve content via the
+        CDN until it receives a delete request, although extremely long TTL values do not guarantee
+        that an object is served from a CDN edge location. When the TTL expires, the CDN checks
+        Cloud Files to ensure that it has the most up-to-date content. A purge request forces the
+        CDN to check with Cloud Files for the most up-to-date version of the file. </para>
+      <para>Containers tracked in the CDN management service are completely separate and distinct
+        from the containers defined in the storage service. It is possible for a container to be
+        CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
+        pre-generate CDN URLs before actually uploading content and this separation gives them that
+        ability.</para>
+      <para>However, for the content to be served from the CDN, the container names <emphasis role="strong">MUST</emphasis> match in both the CDN management service and the storage
+        service. For example, you could CDN-enable a container called <code>images</code> and be
+        assigned the CDN URL, but you also need to create a container called <code>images</code> in
+        the storage service.</para>
+    </section>
+    <section xml:id="Language-Specific_API_Bindings-d1e574">
+      <title>Language-Specific API Bindings</title>
+      <para>A set of supported API bindings in several popular languages are available to help put
+        Cloud Files in the hands of developers. These bindings provide a layer of abstraction on top
+        of the base ReST API, allowing programmers to work with a container and object model instead
+        of working directly with HTTP requests and responses. These bindings are free (as in beer
+        and as in speech) to download, use, and modify. They are all licensed under the MIT License
+        as described in the COPYING file packaged with each binding. If you do make any improvements
+        to an API, you are encouraged (but not required) to submit those changes back to us.</para>
+      <para>The API bindings are hosted at <link xlink:href="http://github.com/rackspace">http://github.com/rackspace</link>. Feel free to coordinate your changes through github
+        or, if you prefer, send your changes to <link xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. Just make sure to
+        indicate which language and version you modified and send us a unified diff. </para>
+      <para>Each binding includes its own documentation (either HTML, PDF, or CHM). They also
+        include code snippets and examples to help you get started. The currently supported API
+        binding for Cloud Files are:</para>
+      <itemizedlist>
+        <listitem>
+          <para>PHP (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
+        </listitem>
+        <listitem>
+          <para>Python (requires 2.4 or newer)</para>
+        </listitem>
+        <listitem>
+          <para>Java (requires JRE v1.5 or newer)</para>
+        </listitem>
+        <listitem>
+          <para>C#/.NET (requires .NET Framework v3.5)</para>
+        </listitem>
+        <listitem>
+          <para>Ruby (requires 1.8 or newer and mime-tools module)</para>
+        </listitem>
+      </itemizedlist>
+      <para>There are no other supported language-specific bindings at this time. You are welcome to
+        create your own language API bindings and we will help answer any questions during
+        development, host your code if you like, and give you full credit for your work.</para>
+    </section>
+  </chapter>
+  <chapter xml:id="General_API_Information-d1e634">
+    <title>General API Information</title>
+    <section xml:id="Authentication-d1e639">
+      <title>Authentication</title>
+      <para>Client authentication is provided via a ReST interface using the &GET;
+        method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
+        <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
+        Access Key respectively.</para>
+      <para> Each ReST request against the Cloud Files system requires the inclusion of a specific
+        authorization token HTTP x-header, defined as <code>X-Auth-Token</code>. Clients obtain this
+        token, along with the Cloud Servers API URL, by first using the Rackspace Cloud
+        Authentication Service and supplying a valid username and API access key. </para>
+      <para> The Rackspace Cloud Authentication Service is a ReSTful web service. It is
+        the entry point to all Rackspace Cloud APIs. </para>
+      <para> To access the Authentication Service, you must know whether your account is
+        US-based or UK-based: 
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            UK-based accounts authenticate through <link xlink:href="https://lon.auth.api.rackspacecloud.com/v1.0">https://lon.auth.api.rackspacecloud.com/v1.0</link>.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Your account may be based in either the US or the UK; this is not determined
+        by your physical location but by the location of the Rackspace retail site which
+        was used to create your account: 
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            If your account was
+            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
+          </para>   
+        </listitem>
+        <listitem>
+          <para>
+            If your account was
+            created via <link xlink:href="http:/www.rackspace.co.uk">http:/www.rackspace.co.uk</link>, it is a UK-based account.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        If you are unsure how your account was created, use the Rackspace contact
+        information at either site to ask for help.
+      </para>
+      <simplesect>
+        <title>Request</title>
+        <para>
+          To authenticate, you must supply your username and API access key in x-headers:
+        </para>
+        <para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Use your Rackspace Cloud
+                username as the username for the API. Place it in the
+                <code>X-Auth-User</code> x-header.
+              </para>
+            </listitem>
+            <listitem>
+              <para> Obtain your API access key from the Rackspace Cloud Control Panel in the Your
+                Account | API Access section. Place it in the <code>X-Auth-Key</code> x-header. </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para> </para>
+        <example>
+          <title>Authentication Request (US-Based Account)</title>
+          <literallayout class="monospaced">
+GET /v1.0 HTTP/1.1
+Host: auth.api.rackspacecloud.com
+X-Auth-User: jdoe
+X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+                    </literallayout>
+        </example>
+      </simplesect>
+      <simplesect>
+        <title>Response</title>     
+        <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
+          <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
+          <code>X-Auth-Token</code> headers. Any 2xx response is a good response. For example, a 202
+          response means the request has been accepted. Also, additional <code>X-</code> headers may
+          be returned. These additional headers are related to other Rackspace services and can be
+          ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
+          subsequent container/object operations against Cloud Files should be made against the URI
+          specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
+          include the <code>X-Auth-Token</code> header.</para>
+        <example>
+          <title>Authentication Response</title>
+          <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Mon, 12 Nov 2007 15:32:21 GMT
+  Server: Apache
+  X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_34
+  X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_34
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+              </literallayout>
+        </example>
+        <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
+          parsed and used in the connection and request line of all subsequent requests against
+          Cloud Files. In the example response above, users connecting to Cloud Files would send
+          most container/object requests with a host header of <code>storage.clouddrive.com</code>
+          and the request line's version and account as <code>/v1/CF_xer7_34</code>. To CDN-enable
+          Containers or adjust CDN attributes, ReST requests should be sent to
+            <code>cdn.clouddrive.com</code>. Note that authentication tokens are valid for a 24-hour
+          period. Once a token expires, you must request a new one.</para>
+      </simplesect>
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="Overview_of_API_Operations-d1e823">
+    <title>Overview of API Operations</title>
+    <para>The Cloud Files API is implemented as a set of ReSTful (Representational State Transfer)
+      web services. All authentication and container/object operations can be performed with
+      standard HTTP calls. See the <link xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
+        article</link> for more information about ReST.</para>
+    <para>The following constraints apply to the ReST API's HTTP requests:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Maximum number of HTTP headers per request: 90</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of all HTTP headers: 4096 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length per HTTP request line: 8192 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of HTTP request: 5 gigabytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of container name: 256 bytes</para>
+      </listitem>
+      <listitem>
+        <para>Maximum length of object name: 1024 bytes</para>
+      </listitem>
+    </itemizedlist>
+    <para>Container and object names should be properly URL-encoded prior to interacting with the
+      ReST interface (the language APIs handle URL encoding/decoding) and the container
+      and object names must be UTF-8 encoded. The length restrictions
+      should be checked against the URL encoded string.</para>
+    <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
+          <firstterm>authorization token</firstterm> HTTP header defined as
+          <code>X-Auth-Token</code>. Clients obtain this token, along with the Cloud Files URIs, by
+        first using the Authentication service and supplying a valid Username and API Access Key. </para>
+    <para>There are actually two different sets of ReST services that make up the full Cloud Files
+      product. The first ReST service identified with <code>X-Storage-Url</code> is used for
+      managing the data stored in the system. Example operations are creating containers and
+      uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
+      is identified by <code>X-CDN-Management-Url</code>.</para>
+    <para>In the following sections, the purpose of each HTTP method depends upon which service the
+        call is made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
+        used to create a container or upload an object, while a &PUT; request against the
+          <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
+    <para>The language-specific APIs mask this system separation from the programmer. They simply
+      create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
+      appropriate back-end services using the appropriate ReST API.</para>
+    <note>
+      <para>All requests to authenticate and operate against Cloud Files are performed using SSL
+        over HTTP (HTTPS) on TCP port 443.</para>
+    </note>
+    <?hard-pagebreak?>
+    <para>The following diagram illustrates the various system interfaces and the ease with which
+      content can be distributed over the CDN. The process is simple: authenticate, create a
+      container, upload objects, mark the container as public, and begin serving that content from a
+      powerful CDN.</para>  
+    <figure xml:id="CFinterfaces">
+      <title>Cloud Files System Interfaces</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    </section>
+    </chapter>
+    <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
+      <title>API Operations for Storage Services</title>
+      <para>The following section describes the ReST API for interacting with the storage component
+        of Cloud Files. All requests will be directed to the host and URL described in the
+          <code>X-Storage-Url</code> HTTP header obtained during successful authentication.</para>
+      <para>The following are some pointers for the use of the storage services:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Container names cannot exceed 256 bytes and cannot contain a '/' character</para>
+        </listitem>
+        <listitem>
+          <para>Object names cannot exceed 1024 bytes and have no character restrictions</para>
+        </listitem>
+        <listitem>
+          <para>Object and container names must be URL-encoded and UTF-8 encoded</para>
+        </listitem>
+      </itemizedlist>
+      <section xml:id="Storage_Account_Services-d1e977">
+        <title>Storage Account Services</title>
+        <para>The following operations can be performed at the account level of the URI. For
+          example, the URI for the requests below will end with the Cloud Files account
+          string:</para>
+        <example>
+          <title>Storage Account HTTP Request: General Structure</title>
+          <literallayout class="monospaced">
+  METHOD /v1/&lt;account&gt; HTTP/1.1
+                </literallayout>
+        </example>
+        <section xml:id="List_Containers-d1e994">
+          <title>List Containers</title>
+          <para>&GET; operations against the <code>X-Storage-Url</code> for an account
+            are performed to retrieve a list of existing storage containers ordered by name. The
+            following list describes the optional query parameters that are supported with this
+            request.</para>
+          <variablelist>
+            <title>Query Parameters</title>
+            <varlistentry>
+              <term><code>limit</code></term>
+              <listitem>
+                <para>For an integer value <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation>, limits the number of results to at most <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation> values.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>marker</code></term>
+              <listitem>
+                <para>Given a string value <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>, return object names greater in value than the specified
+                  marker.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>format</code></term>
+              <listitem>
+                <para>Specify either <code>json</code> or <code>xml</code> to return the respective
+                  serialized response.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+          <para>At this time, a <code>prefix</code> query parameter is not supported at the account
+            level.</para>
+          <example>
+            <title>Containers List Request</title>
+            <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                      </literallayout>
+          </example>
+          <para>A list of containers is returned in the response body, one container per line. A 204
+            (No Content) HTTP return code will be passed back if the account has no
+            containers.</para>
+          <example>
+            <title>Containers List Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 200 Ok
+  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+  Content-Length: 32
+                      </literallayout>
+            <literallayout class="monospaced">
+  images
+  movies
+  documents
+  backups
+                      </literallayout>
+          </example>
+          <section xml:id="Serialized_List_Output-d1e1108">
+            <title>Serialized List Output</title>
+            <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
+              the storage account URL, the service will serve extended container information
+              serialized in the chosen format. The sample responses below are formatted for
+              readability.</para>
+            <example>
+              <title>Containers Details Request: JSON</title>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;?format=json HTTP/1.1
+  Host: storage.clouddrive.com
+  Content-Length: 0
+  X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
+                      </literallayout>
+            </example>
+            <example>
+              <title>Containers Details Response: JSON</title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Tue, 25 Nov 2008 19:39:13 GMT
+  Server: Apache
+  Content-Type: application/json; charset=utf-8
+                      </literallayout>
+              <programlisting language="javascript">
+  [
+    {"name":"test_container_1", "count":2, "bytes":78},
+    {"name":"test_container_2", "count":1, "bytes":17}
+  ] 
+                      </programlisting>
+            </example>
+            <example>
+              <title>Containers Details Request: XML</title>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;?format=xml HTTP/1.1
+  Host: storage.clouddrive.com
+  Content-Length: 0
+  X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
+                      </literallayout>
+            </example>
+            <example>
+              <title>Containers Details Response: XML</title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Tue, 25 Nov 2008 19:42:35 GMT
+  Server: Apache
+  Content-Type: application/xml; charset=utf-8
+                      </literallayout>
+              <programlisting language="xml">
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+  &lt;account name="MichaelBarton"&gt;
+    &lt;container&gt;
+      &lt;name&gt;test_container_1&lt;/name&gt;
+      &lt;count&gt;2&lt;/count&gt;
+      &lt;bytes&gt;78&lt;/bytes&gt;
+    &lt;/container&gt;
+    &lt;container&gt;
+      &lt;name&gt;test_container_2&lt;/name&gt;
+      &lt;count&gt;1&lt;/count&gt;
+      &lt;bytes&gt;17&lt;/bytes&gt;
+    &lt;/container&gt;
+  &lt;/account&gt;
+                      </programlisting>
+            </example>
+          </section>
+          <section xml:id="List_Large_Number_of_Containers-d1e1166">
+            <title>List Large Number of Containers</title>
+            <para>The system will return a maximum of 10,000 container names per request. To
+              retrieve subsequent container names, another request must be made with a 'marker'
+              parameter. The marker indicates where the last list left off;  the system will return
+              container names greater than this marker, up to 10,000 again. Note that the ‘marker’
+              value should be URL-encoded prior to sending the HTTP request.</para>
+            <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
+            <para>If the number of container names returned equals the limit given (or 10,000 if no
+              limit is given), it can be assumed there are more container names to be listed. If the
+              container name list is exactly divisible by the limit, the last request will simply
+              have no content.</para>
+            <example>
+              <title>List Large Number of Containers</title>
+              <para>For example, let's use a listing of five container names</para>
+              <literallayout class="monospaced">
+  apples
+  bananas
+  kiwis
+  oranges
+  pears
+                    </literallayout>
+              <para>We'll use a limit of two to show how things work:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;?limit=2
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  apples
+  bananas
+                    </literallayout>
+              <para>Since we received two items back, we can assume there are more container names
+                to list, so we make another request with a marker of the last item returned:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;?limit=2&amp;marker=bananas
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  kiwis
+  oranges
+                    </literallayout>
+              <para>Again,  two items are returned; there may be more:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;?limit=2&amp;marker=oranges
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  pears
+                    </literallayout>
+              <para>With this one-item response we received less than the limit number of container
+                names, indicating that this is the end of the list.</para>
+            </example>
+          </section>
+        </section>
+        <section xml:id="Retrieve_Account_Metadata-d1e1226">
+          <title>Retrieve Account Metadata</title>
+          <para><code>HEAD</code> operations against an account are
+          performed to retrieve the number of containers and the total
+          bytes stored in Cloud Files for the account. This
+          information is returned in two custom headers,
+          <code>X-Account-Container-Count</code> and
+          <code>X-Account-Bytes-Used</code>. Since the storage system
+          is designed to store large amounts of data, care should be
+          taken when representing the total bytes response as an
+          integer; when possible, convert it to a 64-bit unsigned
+          integer if your platform supports that primitive
+          type.</para>
+          <example>
+            <title>Account Metadata Request </title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                      </literallayout>
+          </example>
+          <para>The HTTP return code will be 204 (No Content) if the request succeeds. A 401
+            (Unauthorized) will be returned for an invalid account or access key.</para>
+          <example>
+            <title>Account Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Server: Apache
+  X-Account-Container-Count: 3
+  X-Account-Bytes-Used: 323479
+                      </literallayout>
+          </example>
+        </section>
+      </section>
+      <section xml:id="Storage_Container_Services-d1e1266">
+        <title>Storage Container Services</title>
+        <para>This section documents the ReST operations that can be performed on containers. All
+          operations are valid HTTP request methods and will resemble this format:</para>
+        <example><?dbfo keep-together="always"?>
+          <title>Storage Container HTTP Request: General Structure</title>
+          <literallayout class="monospaced">
+  METHOD /v1/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+                </literallayout>
+        </example>
+ <section xml:id="List_Objects-d1e1284">
+          <title>List Objects</title>
+          <para>&GET; operations against a storage container name are performed to
+            retrieve a list of objects stored in the container. Additionally, there are a number of
+            optional query parameters that can be used to refine the list results.</para>
+          <para>A request with no query parameters will return the full list of object names stored
+            in the container, up to 10,000 names. Optionally specifying the query parameters will
+            filter the full list and return a subset of objects.</para>
+          <variablelist>
+            <title>Query Parameters</title>
+            <varlistentry>
+              <term><code>limit</code></term>
+              <listitem>
+                <para>For an integer value <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation>, limits the number of results to at most <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation> values.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>marker</code></term>
+              <listitem>
+                <para>Given a string value <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>, return object names greater in value than the specified
+                  marker.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>prefix</code></term>
+              <listitem>
+                <para>For a string value <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>, causes the results to be limited to object names beginning with
+                  the substring <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>format</code></term>
+              <listitem>
+                <para>Specify either <code>json</code> or <code>xml</code> to return the respective
+                  serialized response.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>path</code></term>
+              <listitem>
+                <para>For a string value <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>, return the object names nested in the pseudo path (assuming
+                  preconditions are met - see below).</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>delimiter</code></term>
+              <listitem>
+                <para>For a character <inlineequation>
+                    <mathphrase><emphasis>c</emphasis></mathphrase>
+                  </inlineequation>, return all the object names nested in the container (without
+                  the need for the directory marker objects).</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+          <example>
+            <title>Objects List Request</title>
+            <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;[?parm=value] HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>A list of objects is returned in the response body, one object name per line. A 204
+            (No Content) HTTP return code will be passed back if the container is empty or does not
+            exist for the specified account. If an incorrect account is specified, the HTTP return
+            code will be 404 (Not Found).</para>
+          <example>
+            <title>Objects List Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 200 Ok
+  Date: Thu, 07 Jun 2007 18:50:19 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+  Content-Length: 171
+                    </literallayout>
+            <literallayout class="monospaced">
+  kate_beckinsale.jpg
+  How To Win Friends And Influence People.pdf
+  moms_birthday.jpg
+  poodle_strut.mov
+  Disturbed - Down With The Sickness.mp3
+  army_of_darkness.avi
+  the_mad.avi
+                    </literallayout>
+          </example>
+          <section xml:id="Serialized_List_Output-d1e1460">
+            <title>Serialized List Output</title>
+            <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
+            the storage account URL, the service will serve extended object information serialized
+            in the chosen format. Other than the <code>?format=xml|json</code> parameter, it will
+            return the same status/errors codes. The sample responses below are formatted for
+            readability.</para>
+            <example>
+              <title>Objects Details Request: JSON </title>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?format=json HTTP/1.1
+  Host: storage.clouddrive.com
+  Content-Length: 0
+  X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
+                      </literallayout>
+            </example>
+            <example>
+              <title>Objects Details Response: JSON </title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Tue, 25 Nov 2008 19:39:13 GMT
+  Server: Apache
+  Content-Length: 387
+  Content-Type: application/json; charset=utf-8
+                    </literallayout>
+              <programlisting language="javascript">
+ [
+   {"name":"test_obj_1",
+    "hash":"4281c348eaf83e70ddce0e07221c3d28",
+    "bytes":14,
+    "content_type":"application\/octet-stream",
+    "last_modified":"2009-02-03T05:26:32.612278"},
+   {"name":"test_obj_2",
+    "hash":"b039efe731ad111bc1b0ef221c3849d0",
+    "bytes":64,
+    "content_type":"application\/octet-stream",
+    "last_modified":"2009-02-03T05:26:32.612278"},
+ ]
+					</programlisting>
+            </example>
+            <example>
+              <title>Objects Details Request: XML</title>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?format=xml HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
+                    </literallayout>
+            </example>
+            <example>
+              <title>Objects Details Request: XML </title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Tue, 25 Nov 2008 19:42:35 GMT
+  Server: Apache
+  Content-Length: 643
+  Content-Type: application/xml; charset=utf-8
+                    </literallayout>
+              <programlisting language="xml">
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+  &lt;container name="test_container_1"&gt;
+    &lt;object&gt;
+      &lt;name&gt;test_object_1&lt;/name&gt;
+      &lt;hash&gt;4281c348eaf83e70ddce0e07221c3d28&lt;/hash&gt;
+      &lt;bytes&gt;14&lt;/bytes&gt;
+      &lt;content_type&gt;application/octet-stream&lt;/content_type&gt;
+      &lt;last_modified&gt;2009-02-03T05:26:32.612278&lt;/last_modified&gt;
+    &lt;/object&gt;
+    &lt;object&gt;
+      &lt;name&gt;test_object_2&lt;/name&gt;
+      &lt;hash&gt;b039efe731ad111bc1b0ef221c3849d0&lt;/hash&gt;
+      &lt;bytes&gt;64&lt;/bytes&gt;
+      &lt;content_type&gt;application/octet-stream&lt;/content_type&gt;
+      &lt;last_modified&gt;2009-02-03T05:26:32.612278&lt;/last_modified&gt;
+    &lt;/object&gt;
+  &lt;/container&gt;
+                    </programlisting>
+            </example>
+          </section>
+          <section xml:id="List_Large_Number_of_Objects-d1e1521">
+            <title>List Large Number of Objects</title>
+            <para>The system will return a maximum of 10,000 object names per request. To retrieve
+              subsequent object names, another request must be made with a 'marker' parameter. The
+              marker indicates where the last list left off and the system will return object names
+              greater than this marker, up to 10,000 again. Note that the ‘marker’ value should be
+              URL encoded prior to sending the HTTP request.</para>
+            <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
+            <para>If the number of object names returned equals the limit given (or 10,000 if no
+              limit is given), it can be assumed there are more object names to be listed. If the
+              container name list is exactly divisible by the limit, the last request will simply
+              have no content.</para>
+            <example>
+              <title>List Large Number of Objects</title>
+              <para>For an example, let's use a listing of five object names:</para>
+              <literallayout class="monospaced">
+  gala
+  grannysmith
+  honeycrisp
+  jonagold
+  reddelicious
+                    </literallayout>
+              <para>We'll use a limit of two to show how things work:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  gala
+  grannysmith
+                    </literallayout>
+              <para>Since we received two items back, we can assume there are more object names to
+                list. So, we make another request with a marker of the last item returned:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2&amp;marker=grannysmith
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  honeycrisp
+  jonagold
+                    </literallayout>
+              <para>Again we have two items returned; there may be more:</para>
+              <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2&amp;marker=oranges
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  reddelicious
+                    </literallayout>
+              <para>Now we received less than the limit number of container names, indicating that we
+                have the complete list.</para>
+            </example>
+          </section>
+          <section xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580">
+            <title>Pseudo-Hierarchical Folders/Directories</title>
+            <para>You can simulate a hierarchical structure in Cloud Files by following a few
+            guidelines. Object names must contain the forward slash character <code>/</code> as a
+            path element separator and also create <firstterm>directory marker</firstterm> objects;
+            then they will be able to traverse this nested structure with the new
+              <emphasis>path</emphasis> query parameter. This can best be illustrated by
+            example:</para>
+            <note>
+              <para>For the purposes of this example, the container where the objects reside is
+                called <code>backups</code>. All objects in this example start with a prefix of
+                  <code>photos</code> and should <emphasis role="strong">NOT</emphasis> be confused
+                with the container name. In the example, the full URI of the <code>me.jpg</code>
+                file would be
+                  <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>
+              </para>
+            </note>
+            <example>
+              <title>Pseudo-Hierarchical Folders/Directories</title>
+              <para>In the example, the following <emphasis>real</emphasis> objects are uploaded to
+                the storage system with names representing their full filesystem path:</para>
+              <literallayout class="monospaced">
+  photos/animals/dogs/poodle.jpg
+  photos/animals/dogs/terrier.jpg
+  photos/animals/cats/persian.jpg
+  photos/animals/cats/siamese.jpg
+  photos/plants/fern.jpg
+  photos/plants/rose.jpg
+  photos/me.jpg
+                    </literallayout>
+              <para>To take advantage of this feature, the <emphasis>directory marker</emphasis>
+                objects must also be created to represent the appropriate directories. The following
+                additional objects need to be created. A good convention would be to create these as
+                zero- or one-byte files with a Content-Type of
+                <code>application/directory</code>.</para>
+              <literallayout class="monospaced">
+  photos/animals/dogs
+  photos/animals/cats
+  photos/animals
+  photos/plants
+  photos
+                    </literallayout>
+              <para>Now issuing a &GET; request against the container name coupled with
+                the <code>path</code> query parameter of the directory to list can traverse these
+                  <emphasis>directories</emphasis>. Only the request line and results are depicted
+                below excluding other request/response headers.</para>
+              <literallayout class="monospaced">
+  GET /v1/AccountString/backups?path=photos HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  photos/animals
+  photos/cats
+  photos/me.jpg
+                    </literallayout>
+              <para>To traverse down into the <code>animals</code> directory, specify that
+                path.</para>
+              <literallayout class="monospaced">
+  GET /v1/AccountString/backups?path=photos/animals
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+              <literallayout class="monospaced">
+  photos/animals/dogs
+  photos/animals/cats
+                    </literallayout>
+            </example>
+            <para>By combining this <code>path</code> query parameter with the <code>format</code>
+              query parameter, users will be able to easily distinguish between virtual
+              folders/directories by Content-Type and build interfaces that allow traversal of the
+              pseudo-nested structure.</para>
+            <para>You can also use a delimiter parameter to represent a nested directory
+              hierarchy without the need for the directory marker objects. You can use any single
+              character as a delimiter. The listings can return virtual directories - they are
+              virtual in that they don't actually represent real objects. like the directory
+              markers, though, they will have a content-type of application/directory and be in a
+              subdir section of json and xml results.</para>
+            <para>If you have the following objects&#x2014;photos/photo1, photos/photo2,
+              movieobject, videos/movieobj4&#x2014;in a container, your delimiter parameter query using slash (/) would
+              give you photos, movieobject,
+              videos.</para>
+              <literallayout class="monospaced">
+GET /v1/acct/container?delimiter=/
+Host: storage.clouddrive.com
+X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+              </literallayout>
+          </section>
+        </section>
+        <section xml:id="Create_Container-d1e1694">
+        <title>Create Container</title>
+          <para>&PUT; operations against a storage container are used to create that
+            container.</para>
+          <para>Containers are storage compartments for your data. The URL encoded name must be less
+            than 256 bytes and cannot contain a forward slash '/' character.</para>
+        <para>Containers can be assigned custom metadata by including additional HTTP headers on the
+          &PUT; request. The custom metadata is assigned to a container via HTTP headers identified
+          with the <code>X-Container-Meta-</code> prefix. </para>
+          <example>
+            <title>Container Create Request </title>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
+          was created as requested. Container &PUT; requests are idempotent and a code of 202
+          (Accepted) is returned when the container already existed. If you request a PUT to a
+          container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+          request responses carry the metadata prefix from the container in subsequent
+          requests.</para>
+          <example>
+            <title>Container Create Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 201 Created
+  Date: Thu, 07 Jun 2007 18:50:19 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+          <para>Using custom container metadata, you can create information in the header to effectively "tag" a container with metadata. The container metadata restrictions are the same as object metadata, you can have 4096 bytes maximum overall metadata, 90 distinct metadata items at the most. Each may have a 128 character name length with a 256 max value length each.  Any valid UTF8 http header value is allowed for metadata, however we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal representation of the ISO-Latin code for the character.</para>
+          <example>
+            <title>Container Create Request with Metadata </title>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Container-Meta-InspectedBy: JackWolf
+                    </literallayout>
+          </example>
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
+            was created as requested. Container &PUT; requests are idempotent and a code of 202
+            (Accepted) is returned when the container already existed. If you request a PUT to a
+            container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+            request responses carry the metadata prefix from the container in subsequent
+            requests.</para>
+          <example>
+            <title>Container Create Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 201 Created
+  Date: Thu, 07 Jun 2010 18:50:19 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+        </section>
+        <section xml:id="Delete_Container-d1e1765">
+          <title>Delete Container</title>
+          <para>&DELETE; operations against a storage container are used to permanently
+            remove that container. The container must be empty before it can be deleted.</para>
+          <para>A <code>HEAD</code> request against the container can be used to determine if it
+            contains any objects.</para>
+          <example>
+            <title>Container Delete Request</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>
+            <emphasis role="italic">'Response '</emphasis>
+          </para>
+          <para>No content is returned. A status code of 204 (No Content) indicates success, 404
+            (Not Found) is returned if the requested container was not found, and a 409 (Conflict)
+            if the container is not empty. No response body will be generated.</para>
+          <example><?dbfo keep-together="always"?>
+            <title>Container Delete Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+        </section>
+        <section xml:id="Retrieve_Container_Metadata-d1e1809">
+          <title>Retrieve Container Metadata</title>
+          <para><code>HEAD</code> operations against a storage
+          container are used to determine the number of objects, and
+          the total bytes of all objects stored in the
+          container. Since the storage system is designed to store
+          large amounts of data, care should be taken when
+          representing the total bytes response as an integer; when
+          possible, convert it to a 64-bit unsigned integer if your
+          platform supports that primitive type.</para>
+          <example>
+            <title>Container Metadata Request</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
+            Found) if it does not. The object count and utilization are returned in the
+              <code>X-Container-Object-Count</code> and <code>X-Container-Bytes-Used</code> headers
+            respectively.</para>
+          <example>
+            <title>Container Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Wed, 16 Mar 2010 19:37:41 GMT
+  Content-type: text/html
+  X-Container-Object-Count: 7
+  X-Container-Bytes-Used: 413
+  X-Container-Meta-InspectedBy: JackWolf
+                    </literallayout>
+          </example>
+        </section>
+      </section>
+      <section xml:id="Storage_Object_Services-d1e1848">
+        <title>Storage Object Services</title>
+        <para>An object represents the data and any metadata for the files stored in the
+          system. Through the ReST interface, metadata for an object can be included by adding
+          custom HTTP headers to the request and the data payload as the request body. Objects
+          cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
+          encoding. However, objects larger than 5GB can be segmented and then concatenated together so that you can upload 5 GB segments and download a single concatenated object. You can work with the segments and manifests directly with HTTP requests.</para>
+        <section xml:id="Retrieve_Object-d1e1856">
+          <title>Retrieve Object</title>
+          <para>&GET; operations against an object are used to retrieve the object's
+            data.</para>
+          <para>Note that you can perform conditional &GET; requests by using certain
+            HTTP headers as documented in RFC 2616. Cloud Files supports the following
+            headers:</para>
+          <para>RFC 2616: <link xlink:href="http://www.ietf.org/rfc/rfc2616.txt">http://www.ietf.org/rfc/rfc2616.txt</link>
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>If-Match</para>
+            </listitem>
+            <listitem>
+              <para>If-None-Match</para>
+            </listitem>
+            <listitem>
+              <para>If-Modified-Since</para>
+            </listitem>
+            <listitem>
+              <para>If-Unmodified-Since</para>
+            </listitem>
+          </itemizedlist>
+          <para>It is also possible to fetch a portion of data using the HTTP <code>Range</code>
+            header. At this time, Cloud Files does not support the full specification for
+              <code>Range</code> but basic support is provided. Cloud Files only allows a single
+            range that includes OFFSET and/or LENGTH. We support a sub-set of <code>Range</code> and
+            do not adhere to the full RFC-2616 specification. We support specifying OFFSET-LENGTH
+            where either OFFSET or LENGTH can be optional (not both at the same time). The following
+            are supported forms of the header:</para>
+          <itemizedlist>
+            <listitem>
+              <para><code>Range: bytes=-5</code> - last five bytes of the object</para>
+            </listitem>
+            <listitem>
+              <para><code>Range: bytes=10-15</code> - the five bytes after a 10-byte offset</para>
+            </listitem>
+            <listitem>
+              <para><code>Range: bytes=32-</code> - all data after the first 32 bytes of the
+                object</para>
+            </listitem>
+          </itemizedlist>
+          <example>
+            <title>Retrieve Object Request</title>
+            <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>The object's data is returned in the response body. Object metadata is returned as
+            HTTP headers. A status of 200 (Ok) indicates success; status 404 (Not Found) is returned
+            if no such object exists.</para>
+          <example>
+            <title>Retrieve Object Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 200 Ok
+  Date: Wed, 11 Jul 2007 19:37:41 GMT
+  Server: Apache
+  Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
+  ETag: b0dffe8254d152d8fd28f3c5e0404a10
+  Content-type: text/html
+  Content-Length: 512000
+                    </literallayout>
+            <literallayout class="monospaced">
+  [ ... ]
+                    </literallayout>
+          </example>
+        </section>
+        <section xml:id="Create_Update_Object-d1e1965">
+          <title>Create/Update Object</title>
+          <para>&PUT; operations are used to write, or overwrite, an object's metadata
+            and content. </para>
+          <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
+            object's data in the ETag header. You are not required to include the ETag header, but
+            it is recommended to ensure that the storage system successfully stored your object's
+            content.</para>
+          <para>The HTTP response will include the MD5 checksum of the data written to the storage
+          system. If you do not send the ETag in the request, you should compare the value returned
+          with your content's MD5 locally to perform the end-to-end data validation on the client
+          side. For segmented objects, the ETag is the MD5 sum of the concatenated string of ETags
+          for each of the segments in the manifest, which only offers change detection but not
+          direct comparison.</para>
+          
+          <para>Objects can be assigned custom metadata by including additional HTTP headers on the
+            &PUT; request.</para>
+          <para>The object can be created with custom metadata via HTTP headers identified with the
+              <code>X-Object-Meta-</code> prefix.</para>
+          <example>
+            <title>Create/Update Object Request</title>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 512000
+  X-Object-Meta-PIN: 1234
+                    </literallayout>
+            <literallayout class="monospaced">
+  [ ... ]
+                    </literallayout>
+          </example>
+          <para>No response body is returned. A status code of 201 (Created) indicates a successful
+            write; status 412 (Length Required) denotes a missing <code>Content-Length</code> or
+              <code>Content-Type</code> header in the request. If the MD5 checksum of the data
+            written to the storage system does NOT match the (optionally) supplied ETag value, a 422
+            (Unprocessable Entity) response is returned.</para>
+          <example>
+            <title>Create/Update Object Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 201 Created
+  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Server: Apache
+  ETag: d9f5eb4bba4e2f2f046e54611bc8196b
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+          <section xml:id="Large_Object_Creation-d1e2019">
+            <title>Large Object Creation</title>
+            <para>Objects that are larger than 5GB must be segmented, prior to upload. You then upload the segments like you would any other object and create a manifest object telling Cloud Files how to find the segments of the large object. The segments remain individually addressable, but retrieving the manifest object streams all the segments concatenated. There is no limit to the number of segments that can be a part of a single large object.</para>
+            
+            <para>In order to ensure the download works correctly, you must upload all the object segments to the same container, ensure each object name has a common prefix where their names sort in the order they should be concatenated. You also create and upload a manifest file. The manifest file is simply a zero-byte file with the extra X-Object-Manifest:  &lt;container&gt;/&lt;prefix&gt; header, where &lt;container&gt;  is the container the object segments are in and &lt;prefix&gt; is the common prefix for all the segments. </para>
+            <para>It is best to upload all the segments first and then create or update the manifest. With this method, the full object will not be available for downloading until the upload is complete. Also, you can upload a new set of segments to a second location and then update the manifest to point to this new location. During the upload of the new segments, the original manifest will still be available to download the first set of segments.</para>
+            <example>
+              <title>Upload Segment of a Large Object</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 1
+  X-Object-Meta-PIN: 1234
+                  </literallayout>
+              <literallayout class="monospaced">
+  s
+                    </literallayout>
+            </example>
+            <para>No response body is returned. A status code of 201 (Created) indicates a successful
+              write; status 412 (Length Required) denotes a missing <code>Content-Length</code> or
+              <code>Content-Type</code> header in the request. If the MD5 checksum of the data
+              written to the storage system does NOT match the (optionally) supplied ETag value, a 422
+              (Unprocessable Entity) response is returned.</para>
+            <para>You can continue uploading segments like this example shows, prior to uploading the manifest.</para>
+            <example>
+              <title>Upload Next Segment of the Large Object</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 1
+  X-Object-Meta-PIN: 1234
+                  </literallayout>
+              <literallayout class="monospaced">
+  w
+                    </literallayout>
+            </example>
+            
+            <para>Next, upload the manifest you created that indicates the container the object
+            segments reside within. Note that uploading additional segments after the manifest is
+            created will cause the concatenated object to be that much larger but you do not need to
+            recreate the manifest file for subsequent additional segments.</para>
+
+            <example>
+              <title>Upload Manifest</title>
+              <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Length: 0
+  X-Object-Meta-PIN: 1234
+  X-Object-Manifest: container/object/segments
+                  </literallayout>
+              <literallayout class="monospaced">
+  [...]
+                    </literallayout>
+            </example>
+            <para>The response's Content-Type for a &GET; or <code>HEAD</code> on the manifest will
+            be the same as the Content-Type set during the PUT request that created the manifest.
+            You can easily change the Content-Type by reissuing the &PUT; request.</para>
+          </section>
+          <section xml:id="Chunked_Transfer_Encoding-d1e2092">
+              <title>Chunked Transfer Encoding</title>
+              <para>Users can upload data without needing to know in advance the amount of data to be
+              uploaded. Users can do this by specifying an HTTP header of <code>Transfer-Encoding:
+              chunked</code> and not using a <code>Content-Length</code> header. A good use of this
+              feature would be doing a DB dump, piping the output through gzip, then piping the data
+              directly into Cloud Files without having to buffer the data to disk to compute the file
+              size. If users attempt to upload more that 5GB with this method, the server will close
+              the TCP/IP connection after 5GB and purge the customer data from the system. Users must
+              take responsibility for ensuring the data they transfer will be less than 5GB or for
+              splitting it into 5GB chunks, each in its own storage object. If you have files that are larger than 5GB and still want to use Cloud Files, you can segment them prior to upload, upload them to the same container, and then use a manifest file to allow downloading of a concatenated object containing all the segmented objects, concatenated as a single object.  </para>
+              <example>
+                  <title>Upload Unspecified Quantity of Content</title>
+                  <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Transfer-Encoding: chunked
+  X-Object-Meta-PIN: 1234
+                  </literallayout>
+                  <literallayout class="monospaced">
+  19
+  A bunch of data broken up
+  D
+   into chunks.
+  0
+                  </literallayout>
+              </example>
+          </section>
+        <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
+          <title>Assigning CORS Headers to Requests</title>
+          <para>CORS is a specification that stands for Cross-Origin Resource Sharing. It defines
+            how browsers and servers communicate across origins using HTTP headers, such as those
+            assigned by Cloud Files API requests. These headers are supported with the Cloud Files
+            API. You can read more about the definition of the Access-Control- response headers and
+            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/">www.w3.org/TR/access-control/</link>.<itemizedlist>
+              <listitem>
+                <para>Access-Control-Allow-Credentials</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Allow-Methods</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Allow-Origin</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Expose-Headers</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Max-Age</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Request-Headers</para>
+              </listitem>
+              <listitem>
+                <para>Access-Control-Request-Method</para>
+              </listitem>
+              <listitem>
+                <para>Origin</para>
+              </listitem>
+            </itemizedlist></para>
+          <para>These headers can be assigned to objects only. </para>
+          <example>
+            <title>Assign CORS Header</title>
+            <para>In the example, the origin header is assigned that indicates where the file came
+              from. This allows you to provide security that requests to your Cloud Files repository
+              are indeed from the correct origination:</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Origin: http://storage.clouddrive.com
+                     </literallayout>
+          </example>
+        </section>
+        <section xml:id="Enabling_File_Compression_with_the_Content-Encoding_Header-d1e2198">
+          <title>Enabling File Compression with the Content-Encoding Header</title>
+          <para>The Content-Encoding header allows a file to be compressed without losing the
+            identity of the underlying media type of the file, for example, a video.</para>
+          <example>
+            <title>Content-Encoding Header Example</title>
+            <para>In the example, the content-encoding header is assigned with an attachment type
+              that indicates how the file should be downloaded:</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Type: video/mp4
+  Content-Encoding: gzip
+       </literallayout>
+          </example>
+        </section>
+        <section xml:id="Enabling_Browser_Bypass_with_the_Content-Disposition_Header-d1e2219">
+          <title>Enabling Browser Bypass with the Content-Disposition Header</title>
+          <para>When an object is assigned the Content-Disposition header you can override a
+            browser's default behavior for a file so that the browser prompts to save the file
+            rather than displaying it using default browser settings.</para>
+          <example>
+            <title>Content-Disposition Header Example</title>
+            <para>In the example, the content-encoding header is assigned with an attachment type
+              that indicates how the file should be downloaded.</para>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Content-Type: image/tiff
+  Content-Disposition: attachment; filename=platmap.tif
+                    </literallayout>
+          </example>
+        </section>
+      </section>
+      <section xml:id="Copy_Object-d1e2241">
+            <title>Copy Object</title>
+            <para>Suppose you upload a file with the wrong object name or content type, or you
+              needed to move some objects to another container. Without a server-side copy feature,
+              you would need to repeat uploading the same content and then delete the existing
+              object. With server-side object copy, you can save the step of re-uploading the
+              content and thus also save the associated bandwidth charges, if any were to apply. </para>
+            <para>There are two ways to copy an existing object to another object in Cloud Files.
+              One way is to do a PUT to the new object (the target) location, but add the
+              “X-Copy-From” header to designate the source of the data. The header value should be
+              the container and object name of the source object in the form of “/container/object”.
+              Also, the X-Copy-From PUT requests require a Content-Length header, even if it is zero
+              (0).</para><literallayout class="monospaced">
+PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;destobject&gt; HTTP/1.1
+Host: &lt;storage URL&gt;
+X-Auth-Token: &lt;some-auth-token&gt;
+X-Copy-From: /&lt;container&gt;/&lt;sourceobject&gt;
+Content-Length: 0                    
+              </literallayout>
+            <para>The second way to do an object copy is similar. Do a COPY to the existing object,
+              and include the “Destination” header to specify the target of the copy. The header
+              value is the container and new object name in the form of “/container/object”.
+              <literallayout class="monospaced">
+COPY /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;sourceobject&gt; HTTP/1.1
+Host: &lt;storage URL&gt;
+X-Auth-Token: &lt;some-auth-token&gt;
+Destination: /&lt;container&gt;/&lt;destobject&gt;
+              </literallayout></para>
+            <para>With both of these methods, the destination container must exist before
+              attempting the copy. If you were wanting to perform a move of the objects rather than
+              a copy, you would need to send a DELETE request to the old object. A move simply
+              becomes a COPY + DELETE. All metadata is preserved during the object copy. Note that
+              you can set metadata on the request to copy the object (either the PUT or the COPY)
+              and the metadata will overwrite any conflicting keys on the target (new) object. One
+              interesting use case is to copy an object to itself and set the content type to a new
+              value. This is the only way to change the content type of an existing
+              object.</para>
+        </section>
+        <section xml:id="Delete_Object-d1e2264">
+          <title>Delete Object</title>
+          <para>&DELETE; operations on an object are used to permanently remove that
+            object from the storage system (metadata and data).</para>
+          <para>Deleting an object is processed immediately at the time of the request. Any
+            subsequent &GET;, <code>HEAD</code>, &POST;, or
+            &DELETE; operations will return a 404 (Not Found) error.</para>
+          <example>
+            <title>Object Delete Request</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>No response body is returned. A status code of 204 (No Content) indicates success,
+            status 404 (Not Found) is returned when the object does not exist.</para>
+          <example>
+            <title>Object Delete Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 07 Jun 2007 20:59:39 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+        </section>
+        <section xml:id="Retrieve_Object_Metadata-d1e2301">
+          <title>Retrieve Object Metadata</title>
+          <para><code>HEAD</code> operations on an object are used to retrieve object metadata and
+            other standard HTTP headers.</para>
+          <para>The only required header to be sent in the request is the authorization
+            token.</para>
+          <example>
+            <title>Object Metadata Request</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>No response body is returned. Metadata is returned as HTTP headers. A status code of
+            200 (OK) indicates success; status 404 (Not Found) is returned when the object
+            does not exist.</para>
+          <example><?dbfo keep-together="always"?>
+            <title>Object Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Thu, 07 Jun 2007 20:59:39 GMT
+  Server: Apache
+  Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
+  ETag: 8a964ee2a5e88be344f36c22562a6486
+  Content-Length: 512000
+  Content-Type: text/plain; charset=UTF-8
+  X-Object-Meta-Meat: Bacon
+  X-Object-Meta-Fruit: Bacon
+  X-Object-Meta-Veggie: Bacon
+  X-Object-Meta-Dairy: Bacon
+                    </literallayout>
+          </example>
+        </section>
+        <section xml:id="Update_Object_Metadata-d1e2338">
+          <title>Update Object Metadata</title>
+          <para>&POST; operations against an object name are used to set and overwrite
+            arbitrary key/value metadata. You cannot use the &POST; operation to change
+            any of the object's other headers such as <code>Content-Type</code>, <code>ETag</code>,
+            etc. It is not used to upload storage objects (see &PUT;).</para>
+          <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A &POST; request will
+          delete all existing metadata added with a previous <code>PUT/POST</code>.</para>
+          <example>
+            <title>Update Object Metadata Request</title>
+            <literallayout class="monospaced">
+  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Object-Meta-Fruit: Apple
+  X-Object-Meta-Veggie: Carrot
+                      </literallayout>
+          </example>
+          <para> No response body is returned. A status code of 202 (Accepted) indicates success;
+            status 404 (Not Found) is returned when the requested object does not exist. </para>
+          <example>
+            <title>Update Object Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 202 Accepted
+  Date: Thu, 07 Jun 2007 20:59:39 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+        </section>
+      </section>
+    </chapter>
+    <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
+      <title>API Operations for CDN Services</title>
+      <para>The following is a description of API calls that can be used for CDN account and container
+      operations. All of the ReST methods described below must be issued against the CDN management
+      service as defined in the <code>X-CDN-Management-Url</code> returned by a successful
+      authentication.</para>
+      <section xml:id="CDN_Account_Operations-d1e2397">
+        <title>CDN Account Operations</title>
+        <para>This section describes the methods allowed against the account portion URI and conform
+        to the following format:</para>
+        <example>
+          <title>CDN HTTP Request: General Structure</title>
+          <literallayout class="monospaced">
+  METHOD /v1/&lt;account&gt; HTTP\1.1
+                </literallayout>
+        </example>
+        <section xml:id="List_CDN-Enabled_Containers-d1e2414">
+          <title>List CDN-Enabled Containers</title>
+          <para>&GET; operations against the <code>X-CDN-Management-Url</code> for an
+            account are performed to retrieve a list of existing CDN-enabled containers. Like the
+            storage system’s &GET; container, the CDN management service allows the
+            following query parameters:</para>
+          <variablelist>
+            <title>Query Parameters</title>
+            <varlistentry>
+              <term><code>limit</code></term>
+              <listitem>
+                <para>For an integer value <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation>, limits the number of results to at most <inlineequation>
+                    <mathphrase><emphasis>n</emphasis></mathphrase>
+                  </inlineequation> values.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>marker</code></term>
+              <listitem>
+                <para>Given a string value <inlineequation>
+                    <mathphrase><emphasis>x</emphasis></mathphrase>
+                  </inlineequation>, return object names greater in value than the specified
+                  marker.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>format</code></term>
+              <listitem>
+                <para>Specify either <code>json</code> or <code>xml</code> to return the respective
+                  serialized response.</para>
+              </listitem>
+            </varlistentry>
+            <varlistentry>
+              <term><code>enabled_only</code></term>
+              <listitem>
+                <para>Set to <code>true</code> to return only the CDN-enabled containers.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+          <para>Using the <code>format</code> query parameter, you can request the output in a
+          serialized format in either JSON or XML.</para>
+          <para>Using <code>limit</code> and <code>marker</code> provides a mechanism to iterate
+          through the entire list of containers. Keep in mind that the value for marker will need to
+          be URL encoded before issuing the request.</para>
+          <para>There is also support for filtering the list to return only the list of containers
+          that are currently CDN-enabled. Passing in a query parameter of
+            <code>?enabled_only=true</code> will suppress any <emphasis>private</emphasis>
+          containers from appearing in the list.</para>
+          <para>The list of CDN-enabled containers is returned in the response body, one container
+            name per line.</para>
+          <example><?dbfo keep-together="always"?>
+            <title>CDN-Enabled Containers List Request</title>
+            <literallayout class="monospaced">
+  GET /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                    </literallayout>
+          </example>
+          <para>A list of containers is returned in the response body, one container per line. A 204
+            (No Content) HTTP return code will be passed back if the account has no
+            containers.</para>
+          <example>
+            <title>CDN-Enabled Containers List Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 200 Ok
+  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+  Content-Length: 13
+                    </literallayout>
+            <literallayout class="monospaced">
+  images
+  movies
+                    </literallayout>
+          </example>
+          <section xml:id="Serialized_List_Output-d1e2566">
+            <title>Serialized List Output</title>
+            <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
+              the CDN management URL, the service will serve extended container information
+              serialized in the chosen format. Other than the <code>?format=xml|json</code>
+              parameter, it will return the same status/errors codes. The sample responses below are
+              formatted for readability.</para>
+            <example>
+              <title>CDN-Enabled Containers Details Request: JSON </title>
+              <literallayout class="monospaced">
+  GET /v1/&lt;account&gt;?format=json HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
+                    </literallayout>
+            </example>
+            <example>
+              <title>CDN-Enabled Containers Details Response: JSON </title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Mon, 09 Mar 2009 20:07:47 GMT
+  Server: Apache
+  Content-Length: 127
+  Content-Type: application/json; charset=utf-8
+                    </literallayout>
+              <programlisting language="javascript">
+  [
+  {"name":"test_container",
+   "cdn_enabled":"true",
+   "ttl":28800,
+   "log_retention":"true",
+   "cdn_uri":"http://c2.r2.cf1.rackcdn.com",
+   "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com"}
+  ]
+                    </programlisting>
+            </example>
+            <example><?dbfo keep-together="always"?>
+              <title>CDN-Enabled Containers Details Request: XML</title>
+              <literallayout class="monospaced">
+  GET /v1/&lt;account&gt;?format=xml HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
+                    </literallayout>
+            </example>
+            <example>
+              <title>CDN-Enabled Containers Details Response: XML</title>
+              <literallayout class="monospaced">
+  HTTP/1.1 200 OK
+  Date: Mon, 09 Mar 2009 20:11:27 GMT
+  Server: Apache
+  Content-Length: 267
+  Content-Type: application/xml; charset=utf-8
+                    </literallayout>
+              <programlisting language="xml">
+  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;account name="WidgetsRNotUs.invalid"&gt;
+    &lt;container&gt;
+        &lt;name&gt;images&lt;/name&gt;
+        &lt;cdn_enabled&gt;True&lt;/cdn_enabled&gt;
+        &lt;ttl&gt;86400&lt;/ttl&gt;
+        &lt;log_retention&gt;True&lt;/log_retention&gt;
+        &lt;cdn_url&gt;
+            http://c2.r2.cf1.rackcdn.com
+        &lt;/cdn_url&gt;
+        &lt;cdn_ssl_url&gt;
+            https://c2.ssl.cf1.rackcdn.com
+        &lt;/cdn_ssl_url&gt;
+   &lt;/container&gt;
+  &lt;/account&gt;
+                    </programlisting>
+            </example>
+          </section>
+        </section>
+      </section>
+      <?hard-pagebreak?>
+      <section xml:id="CDN_Container_Services-d1e2632">
+        <title>CDN Container Services</title>
+        <para>This section documents the ReST operations against the CDN management service that can
+          be performed on containers. All operations are valid HTTP request methods and will
+          resemble this format:</para>
+        <example>
+          <title>CDN-Enabled Container HTTP Request: General Structure</title>
+          <literallayout class="monospaced">
+  METHOD /v1/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+                </literallayout>
+        </example>
+        <para>Containers tracked in the CDN management service are separate and distinct from the
+          containers defined in the storage service. It is possible for a container to be
+          CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
+          pre-generate CDN URLs before actually uploading content; this separation gives them that
+          ability.</para>
+        <para>However, for the content to be served from the CDN, the container names <emphasis role="strong">MUST</emphasis> match in both the CDN management service and the storage
+          service. For example, you could CDN-enable a container called <code>images</code> and be
+          assigned the CDN URL, but you also need to create a container called <code>images</code>
+          in the storage service and populate it with the content you want to serve over the
+          CDN.</para>
+        <section xml:id="CDN-Enabled_Container-d1e2665">
+          <title>CDN-Enabled Container</title>
+          <para>&PUT; operations against a container are used to initially CDN-enable the
+            container and set its attributes.</para>
+          <para>When a container is CDN-enabled, any objects stored in that container are publicly
+            accessible over a CDN by combining the container's CDN URI with the object name. Any
+            objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
+            is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
+            re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
+            that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds).</para>
+          <para>To specify the TTL, include an HTTP header of <code>X-TTL: integer_seconds</code>
+            Setting the TTL is the same as setting the HTTP <code>Expires</code> and
+            <code>Cache-Control</code> headers for the cached object. Setting a TTL for a long time, such as 5 years, does not guarantee that their content will stay populated on CDN edge servers for the entire five-year period. The most popular objects stay cached based on the edge locations logic. </para>
+          <example>
+            <title>Container CDN-Enable Request</title>
+            <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-TTL: 2592000
+  X-Log-Retention: True
+                    </literallayout>
+          </example>
+          <para>No content is returned. A status code of 201 (Created) indicates that the container
+            was CDN-enabled as requested. The response will contain an HTTP header to indicate the
+            URL that can be combined with object names to serve objects through the CDN. If the
+            container is already CDN-enabled, a 202 (Accepted) response is returned and the TTL is
+            adjusted.</para>
+          <example>
+            <title>Container CDN-Enable Response </title>
+            <literallayout class="monospaced">
+  HTTP/1.1 201 Created
+  Date: Thu, 07 Jun 2007 18:50:19 GMT
+  Server: Apache
+  Content-Type: text/plain; charset=UTF-8
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
+                      </literallayout>
+          </example>
+        </section>
+        <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
+          <title>List CDN-Enabled Container Metadata</title>
+          <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
+            the CDN attributes of the container.</para>
+          <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled status,
+          and log retention status are returned in the response headers. Its CDN URI can be combined
+          with any object name within the container to form the publicly accessible URL for that
+          object for distribution over a CDN system. The TTL value is the number of seconds that the
+          object will be cached in the CDN system before being refetched. The enabled status
+          indicates whether the container is currently marked to allow public serving of objects via
+          CDN. The log_retention setting specifies whether the CDN access logs should be collected
+          and stored in the Cloud Files storage system.</para>
+          <example>
+            <title>CDN-Enabled Container Metadata Request</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                          </literallayout>
+          </example>
+          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
+          Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
+          available for the container, an X-CDN-SSL-URI header is returned in addition to X-CDN-URI. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata  Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Wed, 11 Jul 2007 19:37:41 GMT
+  Content-type: text/html
+  X-CDN-Enabled: True
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-TTL: 86400
+  X-Log-Retention: True
+                          </literallayout>
+          </example>
+        </section>
+        <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
+          <title>Purge CDN-Enabled Containers or Objects</title>
+          <para>&DELETE; operations against a CDN-enabled container or object are used to remove an
+          outdated or unwanted object from the CDN. You can manually purge CDN-enabled objects or
+          containers without having to wait for the TTL to expire, and you can optionally be
+          notified by email that the object has been purged. There are two methods for purging
+          content from the edge: one for purging individual objects, one for purging entire
+          containers.</para>
+          <example>
+            <title>Purge CDN-Enabled Object</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Purge-Email: user@domain.com
+                      </literallayout>
+          </example>
+          
+          <example>
+            <title>Purge CDN-Enabled Container</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Purge-Email: user@domain.com, user2@domain.com, user3@domain.com
+                      </literallayout>
+          </example>
+          <para>A 204 No Content response is returned. The system purges the object from the CDN,
+          and sends an email to the indicated address or multiple addresses. The email address is
+          optional. You can enter a comma-separated list of addresses if you want to notify more
+          than one person about the deletion. A status code of 204 (No Content) indicates success;
+          404 (Not Found) is returned if the requested container was never CDN-enabled, and it
+          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
+          header, X-CDN-URI. Purging a container may take a long time, 45 minutes or longer, please
+          be patient while waiting for a response. </para>
+          <example>
+            <title>Purge CDN-Enabled Container or Object Response </title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 13 Jan 2010 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+        <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
+          <title>Update CDN-Enabled Container Metadata</title>
+          <para>&POST; operations against a CDN-enabled container are used to adjust CDN
+            attributes.</para>
+          <para>The &POST; operation can be used to set a new TTL cache expiration value
+            or to enable/disable public sharing over the CDN. Keep in mind that if you have content
+            currently cached in the CDN, setting your container back to private will NOT purge the
+            CDN cache; you will have to wait for the TTL to expire.</para>
+          <example>
+            <title>Update CDN-Enabled Container Metadata Request</title>
+            <literallayout class="monospaced">
+  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-TTL: 86400
+  X-CDN-Enabled: True
+  X-Log-Retention: True
+                      </literallayout>
+          </example>
+          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+          Found) is returned if the requested container was not found. The CDN URI and the CDN SSL
+          URI are both returned in the HTTP headers, X-CDN-URI and X-CDN-SSL-URI. </para>
+          <example>
+            <title>Update CDN-Enabled Container Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 07 Jun 2011 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+                      </literallayout>
+          </example>
+        </section>
+        <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
+          <title>CDN-Enabled Containers Served via SSL</title>
+         <para><code>HEAD</code> operations against a CDN-enabled container can also return an SSL
+          URI. When SSL is available, another header gets returned with calls to the CDN Management
+          URL, X-CDN-SSL-URI, in addition to X-CDN-URI. This feature enables users to use https
+          protocol in URLS used for requesting objects stored in CDN-enabled containers. </para>
+          
+          <example>
+            <title>CDN-Enabled Container Metadata Requests with SSL</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                          </literallayout>
+          </example>
+          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+          Found) is returned if the requested container was not found. The CDN SSL URI is returned
+          in the HTTP header, X-CDN-SSL-URI. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata with SSL</title>
+            <literallayout class="monospaced">
+  HTTPS/1.1 204 No Content
+  Date: Thu, 07 Jan 2011 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-Enabled: True
+  X-TTL: 259000
+  X-Log-Retention: False
+  Connection: close
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+      </section>
+  </chapter>
+  <chapter xml:id="Troubleshooting-d1e2855">
+    <title>Examples and Troubleshooting</title>
+    <para>This section introduces a command-line utility and demonstrates interacting with the ReST
+      interfaces through that utility.</para>
+    <section xml:id="Using_cURL-d1e2863">
+      <title>Using cURL</title>
+      <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
+        OS X® and can be downloaded for Windows®. For more information on cURL, visit <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
+      <para>cURL allows you to transmit and receive HTTP requests and responses from the
+        command-line or from within a shell script. This makes it possible to work with the ReST API
+        directly without using one of the client APIs. </para>
+      <para>The following cURL command-line options will be used</para>
+      <variablelist>
+        <title>cURL Command-Line Options</title>
+        <varlistentry>
+          <term><option>-X METHOD</option></term>
+          <listitem>
+            <para>Specify the HTTP method to request (<code>HEAD</code>, &GET;,
+              etc.)</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><option>-D</option></term>
+          <listitem>
+            <para>Dump HTTP response headers to stdout.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><option>-H HEADER</option></term>
+          <listitem>
+            <para>Specify an HTTP header in the request.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <section xml:id="Authentication-d1e2929">
+        <title>Authentication</title>
+        <para>In order to use the ReST API, you will first need to obtain a authorization token,
+          which will need to be passed in for each request using the <code>X-Auth-Token</code>
+          header. The following example demonstrates how to use cURL to obtain the authorization
+          token and the URL of the storage system. Note that your account may be based in either the
+          US or the UK; this is not determined by your physical location but by the location of the
+          Rackspace retail site where the account was created. This example uses the US-based URL
+          https://auth.api.rackspacecloud.com/v1.0, UK-based accounts authenticate through
+          https://lon.auth.api.rackspacecloud.com/v1.0.</para>
+        <example>
+          <title>cURL Authenticate</title>
+          <screen>
+   <command>curl</command> <option>-D</option> - \
+        <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
+        <option>-H "X-Auth-User: jdoe"</option> \
+        <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 204 No Content
+   Date: Thu, 09 Jul 2009 15:31:39 GMT
+   Server: Apache/2.2.3
+   X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_343
+   X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_343
+   X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
+   Content-Length: 0
+   Connection: close
+   Content-Type: application/octet-stream
+                      </computeroutput></screen>
+        </example>
+        <para>The storage URL, CDN management URL, and authentication token are returned in the
+          headers of the response. After authentication, you can use cURL to perform
+            <code>HEAD</code>, &GET;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
+          services.</para>
+        <para>While an authentication token lasts, you can continue to perform requests, but once a
+          token expires it returns an HTTP error code 401 Unauthorized. Given than an X-Auth-Token
+          is good for 24 hours, long running or high request rate jobs should not try to
+          authenticate at api.auth.rackspace.com on every request. You don't need to request another
+          X-Auth-Token again until your existing X-Auth-Token expires. At that point you must obtain
+          another authorization token. As a best practice example, here is some pseudo-code for
+          re-authenticating. The best scalable process flow would be:<orderedlist>
+            <listitem>
+              <para>Begin requests by going to auth.api.rackspace.com for an X-Auth-Token.</para>
+            </listitem>
+            <listitem>
+              <para>Send request X-Storage-URL using the X-Auth-Token obtained in Step 1.</para>
+            </listitem>
+            <listitem>
+              <para>Repeat step 2 using the same X-Auth-Token retrieved in Step 1 until either the
+                job finishes or you get a result code of 401 (Unauthorized). </para>
+            </listitem>
+          </orderedlist><itemizedlist>
+            <listitem>
+              <para>If the job finishes, you can allow the token to expire with no further
+                action.</para>
+            </listitem>
+            <listitem>
+              <para>If result code is 401 then send a request to auth.api.rackspacecloud.com for a
+                new X-Auth-Token.</para>
+            </listitem>
+          </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
+          receiving an error can be found in the OpenStack Swift project in client.py, which is
+          freely available. </para>
+      </section>
+      <section xml:id="Determining_Storage_Usage-d1e2976">
+        <title>Determining Storage Usage</title>
+        <para>A <code>HEAD</code> request can be sent to the storage service to determine how much
+          data you have stored in the system and the number of containers you are using. Use the
+            <code>-X</code> switch to specify the correct HTTP method and the <code>-D</code> to
+          dump the HTTP response headers to terminal output (stdout).</para>
+        <example>
+          <title>cURL Get Storage Space</title>
+          <screen>
+   <command>curl</command> <option>-X HEAD</option> <option>-D</option> - \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 204 No Content
+   Date: Thu, 09 Jul 2009 15:38:14 GMT
+   Server: Apache
+   X-Account-Container-Count: 22
+   X-Account-Bytes-Used: 9891628380
+   Content-Type: text/plain
+                      </computeroutput></screen>
+        </example>
+        <para>The HTTP request must include a header to specify the authentication token. The HTTP
+          headers in the response indicate the number of containers in this storage account and the
+          total bytes stored for the entire account.</para>
+      </section>
+      <section xml:id="Creating_a_Storage_Container-d1e3026">
+        <title>Creating a Storage Container</title>
+        <para> Before uploading any data to Cloud Files, you must create a storage container. You do
+          this with a &PUT; request; cURL can be used for that, too.</para>
+        <example>
+          <title>cURL Create Storage Container</title>
+          <screen>
+   <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images</uri>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 201 Created
+   Date: Thu, 09 Jul 2009 17:03:36 GMT
+   Server: Apache
+   Content-Length: 0
+   Content-Type: text/plain
+   </computeroutput></screen>
+        </example>
+        <para>Returning an HTTP status code of 201 (Created) indicates that the container was
+          successfully created.</para>
+      </section>
+      <section xml:id="Uploading_a_Storage_Object-d1e3067">
+        <title>Uploading a Storage Object</title>
+        <para>After creating a container, you can upload a local file. For this example, let's
+          upload a screenshot image. The <code>-T</code> switch specifies the full path to the local
+          file to upload. Please note that if you intend to distribute this object via the CDN you
+          MUST make sure that the object's <code>Content-Type</code> is set correctly. This is the
+          mechanism by which a user's web browser knows how to display the file or launch a helper
+          application to view the file.</para>
+        <example>
+          <title>cURL Upload Storage Object</title>
+          <screen>
+   <command>curl</command> <option>-X PUT</option> <option>-T screenies/wow1.jpg</option> <option>-D</option> - \
+     <option>-H "ETag: 805120ec285a7ed28f74024422fe3594"</option> \
+     <option>-H "Content-Type: image/jpeg"</option> \
+     <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+     <option>-H "X-Object-Meta-Screenie: Mel visits Outland"</option> \
+     <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images/wow1.jpg</uri>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 201 Created
+   Date: Thu, 09 Jul 2009 17:03:36 GMT
+   Server: Apache
+   Content-Length: 0
+   ETag: 805120ec285a7ed28f74024422fe3594 
+   Content-Type: text/plain
+   </computeroutput></screen>
+        </example>
+      </section>
+      <section xml:id="CDN-Enabling_the_Container-d1e3123">
+        <title>CDN-Enabling the Container</title>
+        <para>After creating a container and storing a file in it, you can choose to share the file.
+          Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
+          To CDN-enable a container, issue a &PUT; request against the CDN management service. The
+          default TTL is 72 hours and supports a minimum of 15 minutes (900 seconds) and a maximum of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system.</para>
+        <example>
+          <title>cURL CDN-Enable Container</title>
+          <screen>
+   <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
+        <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
+        <option>-H "X-CDN-Enabled: True"</option> \
+        <option>-H "X-TTL: 259200"</option> \
+        <uri>https://cdn.clouddrive.com/v1/CF_xer7_343/images</uri>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 202 Accepted
+   Date: Thu, 06 Aug 2009 01:34:13 GMT
+   Server: Apache
+   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcnd.com
+   Content-Length: 0
+   Connection: close
+   Content-Type: text/plain; charset=UTF-8
+                      </computeroutput></screen>
+        </example>
+        <para>When the container is CDN-enabled, the service returns its public URI in the
+            <code>X-CDN-URI</code> header of the response, plus the SSL URL in the
+            <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URI with the
+          object name to access the file via the CDN, or use the https:// URI in combination with
+          the object name to access the file over a secure SSL connection via the CDN.</para>
+        <para>You can verify the CDN's cache settings that you specified with your TTL value by
+          sending a &GET; request to the object's CDN URL and viewing the response
+          headers. The TTL value you specify translates to the <code>Expires</code> and
+            <code>Cache-Control</code> headers of the CDN's cached Object.</para>
+        <para>The cURL command below issues a &GET; request which downloads the entire
+          file but writes it to <code>/dev/null</code>, a data sink that won't actually save the
+          content to your local drive (This is only valid on UNIX-like systems).</para>
+        <example>
+          <title>cURL Download a File</title>
+          <screen>
+   <command>curl</command> <option>-s</option> <option>-D</option> - \
+     <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
+     <option>-O /dev/null</option>
+                      </screen>
+          <screen>
+   <computeroutput>HTTP/1.1 200 OK
+   Date: Thu, 06 Aug 2009 01:40:12 GMT
+   Server: Apache
+   Expires: Fri, 07 Aug 2009 01:40:12 GMT
+   Last-Modified: Thu, 09 Jul 2009 17:14:46 GMT
+   Cache-Control: max-age=86400, public
+   ETag: b20237bff6828976d2eb348e1ca8adae
+   Content-Length: 1255764
+   Content-Type: image/jpeg
+   Connection: keep-alive
+   </computeroutput></screen>
+        </example>
+      </section>
+      <section xml:id="Other_cURL_Commands-d1e3222">
+        <title>Other cURL Commands</title>
+        <para>You can issue any of the ReST methods defined for Cloud Files with the cURL utility.
+          For example, you can use cURL to send &POST; and &DELETE; requests even though we haven't
+          provided specific examples.</para>
+        <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
+          operation, a separate TCP/IP and SSL connection is created and thrown away. The language
+          APIs. however. are designed to re-use these connections between operations and therefore
+          provide much better performance. It is recommended that you use one of the supported
+          language APIs in your production applications and limit <code>curl</code> to
+          quick-and-easy testing/troubleshooting.</para>
+      </section>
+    </section>
+  </chapter>
+ </book>
