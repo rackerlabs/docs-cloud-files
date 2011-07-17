@@ -53,23 +53,15 @@
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.docbook</groupId>
-                        <artifactId>docbook-xml</artifactId>
-                        <version>4.4</version>
-                        <scope>runtime</scope>
-                    </dependency>
-                </dependencies>
                 <configuration>
-                    <includes>cfdevguide_d5.xml,cf-intro.xml</includes>
+                    <includes>cf-devguide.xml,cf-intro.xml</includes>
                     <xincludeSupported>true</xincludeSupported>
                     <branding>rackspace</branding>
                     <enableDisqus>1</enableDisqus>
                     <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
                     <postProcess>
                         <copy
-                            todir="target/docbkx/webhelp/cfdevguide_d5/content/figures">
+                            todir="target/docbkx/webhelp/cf-devguide/content/figures">
                             <fileset dir="src/docbkx/figures">
                                 <include name="**/CFinterfaces.png"/>
                             </fileset>
