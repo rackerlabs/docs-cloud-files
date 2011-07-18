@@ -14,6 +14,7 @@
         xmlns:svg="http://www.w3.org/2000/svg"
         xmlns:m="http://www.w3.org/1998/Math/MathML"
         xmlns:html="http://www.w3.org/1999/xhtml"
+	xml:id="cf-devguide"
         version="5.0">
     <?rax pdf.url="../../../cf-devguide-latest.pdf"?>
   <title>Cloud Files™ Developer Guide</title>
