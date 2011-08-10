@@ -38,12 +38,6 @@
         for software developers interested in developing applications using the Rackspace Cloud
         Files™ Application Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
-    <cover>
-      <para>this is a placeholder for the front cover</para>
-    </cover>
-    <cover>
-      <para>this is a placeholder for the back cover</para>
-    </cover>
   </info> 
   <chapter xml:id="Introduction-d1e82">
     <title>Introduction</title>
@@ -129,6 +123,11 @@
     </chapter> 
     <chapter xml:id="Cloud_Files_Features-d1e201">
       <title>Cloud Files Features</title>
+      <para> Cloud Files' key features include <link linkend="Simplicity-d1e206">simplicity</link>,
+        <link linkend="Affordability-d1e221">affordability</link>, <link
+        linkend="Flexibility-d1e233">flexibility</link>, 
+        <trademark class='registered'><link linkend="World-Class_Support-d1e248">Fanatical Support</link></trademark>, <link linkend="Data_Redundancy-d1e258">data redundancy</link>,
+      and <link linkend="Security-d1e267">security</link>. </para>
       <section xml:id="Simplicity-d1e206">
         <title>Simplicity</title>
         <para>
@@ -162,15 +161,12 @@
       </section>
       <section xml:id="Affordability-d1e221">
         <title>Affordability</title>
-        <para>
-          Pricing for Cloud Files with CDN starts at 15 cents per gigabyte of storage 
-          and 8 cents per gigabyte inbound and 18
-          cents per gigabyte of bandwidth outbound to any edge location around the globe. 
-          There are no per-requests fees for CDN. 
-          For the latest pricing information, please refer to the Cloud Files web site at
-          <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
-            >http://www.rackspacecloud.com/cloud_hosting_products/files</link>.
-        </para>
+        <para> Pricing for Cloud Files with CDN starts at 15 cents per gigabyte of storage and 18
+        cents per gigabyte of bandwidth outbound to any edge location around the globe. There is no
+        charge for inbound bandwidth and there are no per-requests fees for CDN. For the latest
+        pricing information, please refer to the Cloud Files web site at <link
+          xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+          >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. </para>
       </section>
       <section xml:id="Flexibility-d1e233">
         <title>Flexibility</title>
@@ -186,16 +182,11 @@
           There are no upfront fees or contracts and end users pay only for storage space used and outgoing
           bandwidth that they use.
         </para>
-        <para>
-          System administrators can use this for simple manual updates as well. 
-          Users do not have to know how to code to use
-          Cloud Files and CDN. 
-          No API is required to share files. 
-          Non-developers have a simple web-interface that can be
-          used to quickly and easily upload data and enable CDN access. 
-          Multiple third party tools make it even more flexible for users of 
-          specific environments such as the Mac OS.
-        </para>
+        <para> System administrators can use this for simple manual updates as well. Users do not
+        have to know how to code to use Cloud Files and CDN. No API is required to share files.
+        Non-developers have a simple web interface that can be used to quickly and easily upload
+        data and enable CDN access. Multiple third party tools make it even more flexible for users
+        of specific environments such as the Mac OS. </para>
         <para>
           Developers can use the ReST web service and language-specific APIs in 
           PHP, Python, Java, Ruby, and C#/.NET. 
@@ -210,26 +201,20 @@
         <para>
           With Cloud Files, world-class free technical support is only a click away. 
           Live support, with real people, is available 24/7. 
-          Fanatical Support is built into the price. 
+          <trademark class='registered'>Fanatical Support</trademark> is built into the price. 
           Users can get peace of mind knowing that technical support is just a
           phone call or online chat away &#x2014; at any time of the day.
         </para>
       </section>
       <section xml:id="Data_Redundancy-d1e258">
         <title>Data Redundancy</title>
-        <para>
-          The Cloud Files storage system is designed to be highly available and fault tolerant. 
-          Cloud Files achieves client data
-          redundancy by replicating three full copies on different storage nodes. 
-          Storage nodes are grouped in logical Zones
-          within Rackspace datacenters. 
-          Zones are connected to redundant Internet backbone providers and reside on redundant
-          power supplies and generators. 
-          The system has been engineered in such a way as to continue to be fully functional
-          even in the event of a major service disruption within a Datacenter. 
-          Content on the CDN provides an additional layer
-          of data redundancy.
-        </para>
+        <para> The Cloud Files storage system is designed to be highly available and fault tolerant.
+        Cloud Files achieves client data redundancy by replicating three full copies on different
+        storage nodes. Storage nodes are grouped in logical Zones within Rackspace datacenters.
+        Zones are connected to redundant internet backbone providers and reside on redundant power
+        supplies and generators. The system has been engineered in such a way as to continue to be
+        fully functional even in the event of a major service disruption within a datacenter.
+        Content on the CDN provides an additional layer of data redundancy. </para>
       </section>
       <section xml:id="Security-d1e267">
         <title>Security</title>
@@ -320,30 +305,22 @@
       </section>
       <section xml:id="Cyberduck-d1e337">
         <title>Cyberduck</title>
-        <para>
-          Cyberduck is an open-source Cloud Files browser licensed under the GPL that runs on Macs.
-          It features an easy-to-use
-          interface with easily accessible bookmarks. 
-          The browser outline view allows users to browse large folder structures
-          efficiently and preview files with Quick Look. 
-          Cyberduck also provides seamless integration with many external
-          editors, making it easy to change content quickly. 
-          It provides a way to upload and configure Cloud Files to distribute
-          content over the CDN. 
-          Cyberduck also supports many OS X core system technologies such as Spotlight, Bonjour,
-          Keychain, and a large number of language translations. 
-          Cyberduck 3.x requires Mac OS X 10.4 or later. For more
-          information, please see the Cyberduck web site at
-          <link xlink:href="http://cyberduck.ch/"
-            >http://cyberduck.ch/</link>.
-          <informalfigure xml:id="screenshotCD">
-            <mediaobject>
-              <imageobject>
-                <imagedata scale="80" fileref="figures/cf-screenshot-Cyberduck.png"/>
-              </imageobject>
-            </mediaobject>
-          </informalfigure>
-        </para>
+        <para> Cyberduck is an open-source Cloud Files browser licensed under the GPL; it's
+        available for Mac and Windows. Cyberduck features an easy-to-use interface with easily
+        accessible bookmarks. The browser outline view allows users to browse large folder
+        structures efficiently and preview files with Quick Look. Cyberduck also provides seamless
+        integration with many external editors, making it easy to change content quickly. It
+        provides a way to upload and configure Cloud Files to distribute content over the CDN. For
+        more information, please see the Cyberduck web site at <link
+          xlink:href="http://cyberduck.ch/">http://cyberduck.ch/</link>. <informalfigure
+          xml:id="screenshotCD">
+          <mediaobject>
+            <imageobject>
+              <imagedata scale="80" fileref="figures/cf-screenshot-Cyberduck.png"/>
+            </imageobject>
+          </mediaobject>
+        </informalfigure>
+      </para>
       </section>
     </chapter>
     <chapter xml:id="Developing_Applications_for_Cloud_Files-d1e361">
@@ -447,8 +424,8 @@
       </para>
       <para>
         Interested users can also follow updates/announcements via twitter at 
-        <link xlink:href="http://www.twitter.com/rackcloud"
-          >http://www.twitter.com/rackcloud</link>.
+        <link xlink:href="http://www.twitter.com/rackspace"
+          >http://www.twitter.com/rackspace</link>.
       </para>
       <para>
         Developers are also encouraged to join some of the members of the Cloud Files team at 
