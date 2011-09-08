@@ -36,7 +36,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-06-29</pubdate>
+    <pubdate>2011-09-13</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -65,8 +65,8 @@
       integrate into their applications.</para>
     <para>For more details on the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>
     </para>
-    <para> We welcome feedback, comments, and bug reports at <link xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. 
-    </para>
+    <para>We welcome feedback, comments, and bug reports at <link
+        xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
       <title>Intended Audience</title>
       <para>This guide is intended to assist software developers who want to develop applications
@@ -112,7 +112,20 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="1" align="center">June 29, 2011</td>
+            <td colspan="1" align="center">Sep. 7, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added information about streaming containers to support this new streaming
+                    feature, including changing examples to match the streaming headers and URIs
+                    returned.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" align="center">Jun. 29, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
@@ -123,7 +136,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="1" align="center">June 15, 2011</td>
+            <td colspan="1" align="center">Jun. 15, 2011</td>
             <td colspan="4">
               <itemizedlist spacing="compact">
                 <listitem>
@@ -271,16 +284,17 @@
     </section>
     <section xml:id="Additional_Resources-d1e388">
       <title>Additional Resources</title>
-      <para> You can download the most current version of this document from the Rackspace
-        Cloud website at <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
-          http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
-      </para>
-      <para> For more details about the Cloud Files service, please refer to <link
+      <para>You can download the most current version of this document from the Rackspace Cloud
+        website at <link
+          xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
+          http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
+      <para>For more details about the Cloud Files service, please refer to <link
           xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
           >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents are
         available at the same site, as are links to official Rackspace support channels, including
         knowledge base articles, forums, phone, chat, and email.</para>
-      <para> You can also follow updates and announcements via twitter at <link xlink:href="http://www.twitter.com/rackcloud">http://www.twitter.com/rackcloud</link>
+      <para>You can also follow updates and announcements via twitter at <link
+          xlink:href="http://www.twitter.com/rackcloud">http://www.twitter.com/rackcloud</link>
       </para>
     </section>   
   </chapter>
@@ -1830,11 +1844,11 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           <example>
             <title>CDN-Enabled Containers List Response</title>
             <literallayout class="monospaced">
-  HTTP/1.1 200 Ok
-  Date: Thu, 07 Jun 2007 18:57:07 GMT
-  Server: Apache
-  Content-Type: text/plain; charset=UTF-8
-  Content-Length: 13
+  HTTP/1.1 200 OK
+  Date: Thu, 08 Sep 2011 14:35:45 GMT
+  Server: Apache/2.2.14 (Ubuntu)
+  Transfer-Encoding: chunked
+  Content-Type: text/plain
                     </literallayout>
             <literallayout class="monospaced">
   images
@@ -1860,8 +1874,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
               <title>CDN-Enabled Containers Details Response: JSON </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
-  Date: Mon, 09 Mar 2009 20:07:47 GMT
-  Server: Apache
+  Date: Thu, 08 Sep 2011 14:41:29 GMT
+  Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
@@ -1872,7 +1886,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    "ttl":28800,
    "log_retention":"true",
    "cdn_uri":"http://c2.r2.cf1.rackcdn.com",
-   "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com"}
+   "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com",
+   "streaming_enabled":"true", 
+   "streaming_uri":"https://c2.r2.stream.cf1.rackcdn.com"}
   ]
                     </programlisting>
             </example>
@@ -1907,6 +1923,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         &lt;cdn_ssl_url&gt;
             https://c2.ssl.cf1.rackcdn.com
         &lt;/cdn_ssl_url&gt;
+        &lt;cdn_streaming_url&gt;
+            https://c2.r2.stream.cf1.rackcdn.com
+        &lt;/cdn_streaming_url&gt;
    &lt;/container&gt;
   &lt;/account&gt;
                     </programlisting>
@@ -1927,15 +1946,17 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                 </literallayout>
         </example>
         <para>Containers tracked in the CDN management service are separate and distinct from the
-          containers defined in the storage service. It is possible for a container to be
-          CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
-          pre-generate CDN URLs before actually uploading content; this separation gives them that
-          ability.</para>
+        containers defined in the storage service. It is possible for a container to be CDN-enabled
+        even if it doesn't exist in the storage system, so that you have the ability to pre-generate
+        CDN URLs before actually uploading content. This separation gives you that ability to
+        pre-generate URLs.</para>
         <para>However, for the content to be served from the CDN, the container names <emphasis role="strong">MUST</emphasis> match in both the CDN management service and the storage
           service. For example, you could CDN-enable a container called <code>images</code> and be
           assigned the CDN URL, but you also need to create a container called <code>images</code>
           in the storage service and populate it with the content you want to serve over the
           CDN.</para>
+      <para>When you enable a container for CDN management, you also enable both SSL and streaming
+        which generates two different URIs which are returned with the appropriate API requests. </para>
         <section xml:id="CDN-Enabled_Container-d1e2665">
           <title>CDN-Enabled Container</title>
           <para>&PUT; operations against a container are used to initially CDN-enable the
@@ -1947,8 +1968,11 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
             re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
             that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds).</para>
           <para>To specify the TTL, include an HTTP header of <code>X-TTL: integer_seconds</code>
-            Setting the TTL is the same as setting the HTTP <code>Expires</code> and
-            <code>Cache-Control</code> headers for the cached object. Setting a TTL for a long time, such as 5 years, does not guarantee that their content will stay populated on CDN edge servers for the entire five-year period. The most popular objects stay cached based on the edge locations logic. </para>
+          Setting the TTL is the same as setting the HTTP <code>Expires</code> and
+            <code>Cache-Control</code> headers for the cached object. Setting a TTL for a long time,
+          such as 5 years, does not guarantee that their content will stay populated on CDN edge
+          servers for the entire five-year period. The most popular objects stay cached based on the
+          edge location's logic. </para>
           <example>
             <title>Container CDN-Enable Request</title>
             <literallayout class="monospaced">
@@ -1968,11 +1992,12 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
             <title>Container CDN-Enable Response </title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
-  Date: Thu, 07 Jun 2007 18:50:19 GMT
-  Server: Apache
-  Content-Type: text/plain; charset=UTF-8
+  Date: Wed, 07 Sep 2011 19:04:30 GMT 
+  Server: Apache/2.2.14 (Ubuntu)
+  Content-Type: text/plain
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
   X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
@@ -2008,6 +2033,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-CDN-Enabled: True
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.stream.cf0.rackcdn.com
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
@@ -2078,9 +2104,10 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-Log-Retention: True
                       </literallayout>
           </example>
-          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN URI and the CDN SSL
-          URI are both returned in the HTTP headers, X-CDN-URI and X-CDN-SSL-URI. </para>
+          <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
+          Found) is returned if the requested container was not found. The CDN URI, the CDN SSL URI,
+          and the CDN Streaming URI are returned in the HTTP headers, X-CDN-URI,  X-CDN-SSL-URI, and
+          X-CDN-STREAMING-URI. </para>
           <example>
             <title>Update CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
@@ -2091,6 +2118,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Content-Type: text/plain; charset=UTF-8
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
@@ -2099,7 +2127,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
          <para><code>HEAD</code> operations against a CDN-enabled container can also return an SSL
           URI. When SSL is available, another header gets returned with calls to the CDN Management
           URL, X-CDN-SSL-URI, in addition to X-CDN-URI. This feature enables users to use https
-          protocol in URLS used for requesting objects stored in CDN-enabled containers. </para>
+          protocol in URLs used for requesting objects stored in CDN-enabled containers. </para>
           
           <example>
             <title>CDN-Enabled Container Metadata Requests with SSL</title>
@@ -2109,9 +2137,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
           </example>
-          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+          <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
           Found) is returned if the requested container was not found. The CDN SSL URI is returned
-          in the HTTP header, X-CDN-SSL-URI. </para>
+          in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI, X-CDN-STREAMING-URI. </para>
           <example>
             <title>CDN-Enabled Container Metadata with SSL</title>
             <literallayout class="monospaced">
@@ -2122,6 +2150,42 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Content-Type: text/plain; charset=UTF-8
   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  X-CDN-Enabled: True
+  X-TTL: 259000
+  X-Log-Retention: False
+  Connection: close
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+        <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
+          <title>Streaming CDN-Enabled Containers </title>
+          <para><code>HEAD</code> operations against a CDN-enabled container can also return a streaming
+            URI. Like SSL, streaming is always enabled, and you use the streaming URL for links to content that you want to stream, such as video. </para>
+          
+          <example>
+            <title>CDN-Enabled Container Metadata Requests (Streaming Enabled)</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                          </literallayout>
+          </example>
+          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
+            Found) is returned if the requested container was not found. The CDN SSL URI is returned
+            in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI, X-CDN-STREAMING-URI. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata (Streaming Enabled)</title>
+            <literallayout class="monospaced">
+  HTTPS/1.1 204 No Content
+  Date: Thu, 07 Sep 2011 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
   X-CDN-Enabled: True
   X-TTL: 259000
   X-Log-Retention: False
@@ -2186,8 +2250,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                       </screen>
           <screen>
    <computeroutput>HTTP/1.1 204 No Content
-   Date: Thu, 09 Jul 2009 15:31:39 GMT
-   Server: Apache/2.2.3
+   Server: Apache/2.2.13 (Red Hat)
+   Date: Wed, 07 Sep 2011 18:19:26 GMT
    X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_343
    X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_343
    X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae
@@ -2244,12 +2308,14 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
                       </screen>
           <screen>
-   <computeroutput>HTTP/1.1 204 No Content
-   Date: Thu, 09 Jul 2009 15:38:14 GMT
-   Server: Apache
-   X-Account-Container-Count: 22
-   X-Account-Bytes-Used: 9891628380
-   Content-Type: text/plain
+ <computeroutput>HTTP/1.1 204 No Content
+  X-Account-Object-Count: 4943
+  X-Account-Bytes-Used: 25603957646
+  X-Account-Container-Count: 151
+  Accept-Ranges: bytes
+  Content-Length: 0
+  X-Trans-Id: txl5d1b08e3c1540at8cceda42acc723e4
+  Date: Wed, 07 Sep 2011 18:48:15 GMT
                       </computeroutput></screen>
         </example>
         <para>The HTTP request must include a header to specify the authentication token. The HTTP
@@ -2269,10 +2335,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                       </screen>
           <screen>
    <computeroutput>HTTP/1.1 201 Created
-   Date: Thu, 09 Jul 2009 17:03:36 GMT
-   Server: Apache
-   Content-Length: 0
-   Content-Type: text/plain
+   Content-Length: 18
+   Content-Type: text/html; charset=UTF-8
+   X-Trans-Id: txs56dc5b74f91419480ba485348057bfd
+   Date: Wed, 07 Sep 2011 18:52:30 GMT
+
+   201 Created
+
    </computeroutput></screen>
         </example>
         <para>Returning an HTTP status code of 201 (Created) indicates that the container was
@@ -2311,7 +2380,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <para>After creating a container and storing a file in it, you can choose to share the file.
           Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
           To CDN-enable a container, issue a &PUT; request against the CDN management service. The
-          default TTL is 72 hours and supports a minimum of 15 minutes (900 seconds) and a maximum of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system.</para>
+          default TTL is 72 hours and supports a minimum of 15 minutes (900 seconds) and a maximum
+          of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system, not
+          the authorization system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen>
@@ -2322,14 +2393,14 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <uri>https://cdn.clouddrive.com/v1/CF_xer7_343/images</uri>
                       </screen>
           <screen>
-   <computeroutput>HTTP/1.1 202 Accepted
-   Date: Thu, 06 Aug 2009 01:34:13 GMT
-   Server: Apache
-   X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-   X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcnd.com
-   Content-Length: 0
-   Connection: close
-   Content-Type: text/plain; charset=UTF-8
+   <computeroutput>HTTP/1.1 201 Created
+    Date: Wed, 07 Sep 2011 19:00:44 GMT
+    Server: Apache/2.2.14 (Ubuntu)
+    X-CDN-URI: http://c1935.r35.stg2.rackcdn.com
+    X-CDN-SSL-URI: https://c1935.ssl.stg2.rackcdn.com
+    X-CDN-STREAMING-URI: http://c1935.r35.stream.stg2.rackcdn.com
+    Content-Length: 0
+    Content-Type: text/plain
                       </computeroutput></screen>
         </example>
         <para>When the container is CDN-enabled, the service returns its public URI in the
@@ -2341,9 +2412,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           sending a &GET; request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
             <code>Cache-Control</code> headers of the CDN's cached Object.</para>
-        <para>The cURL command below issues a &GET; request which downloads the entire
-          file but writes it to <code>/dev/null</code>, a data sink that won't actually save the
-          content to your local drive (This is only valid on UNIX-like systems).</para>
+        <para>The cURL command below issues a &GET; request which downloads the entire file but
+          writes it to <code>/dev/null</code>, a data sink that won't actually save the content to
+          your local drive (this convention is only valid on UNIX-like systems).</para>
         <example>
           <title>cURL Download a File</title>
           <screen>
@@ -2372,7 +2443,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           provided specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
-          APIs. however. are designed to re-use these connections between operations and therefore
+          APIs, however, are designed to re-use these connections between operations and therefore
           provide much better performance. It is recommended that you use one of the supported
           language APIs in your production applications and limit <code>curl</code> to
           quick-and-easy testing/troubleshooting.</para>
