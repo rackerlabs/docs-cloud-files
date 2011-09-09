@@ -373,7 +373,6 @@
     <section xml:id="CDN-Enabled_Containers-d1e524">
       <title>CDN-Enabled Containers</title>
       <para>To publish data that is to be served by a Content Distribution Network (CDN), containers
-        which house the data must be CDN-enabled. When a container is CDN-enabled, any files within
         the container are publicly accessible and do not require an authentication token for read
         access. Uploading content into a CDN-enabled container is a secure operation and requires a
         valid authentication token.</para>
@@ -1887,8 +1886,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    "log_retention":"true",
    "cdn_uri":"http://c2.r2.cf1.rackcdn.com",
    "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com",
-   "streaming_enabled":"true", 
-   "streaming_uri":"https://c2.r2.stream.cf1.rackcdn.com"}
+   "cdn_streaming_uri":"https://c2.r2.stream.cf1.rackcdn.com"}
   ]
                     </programlisting>
             </example>
@@ -2025,7 +2023,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
           available for the container, an X-CDN-SSL-URI header is returned in addition to X-CDN-URI. </para>
           <example>
-            <title>CDN-Enabled Container Metadata  Response</title>
+            <title>CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Wed, 11 Jul 2007 19:37:41 GMT
