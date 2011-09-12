@@ -336,7 +336,9 @@
         UNIX®. The primary difference between a container and these other file system concepts is
         that containers cannot be nested. You can, however, create an unlimited number of containers
         within your account. Data must be stored in a container so you must have at least one
-        container defined in your account prior to uploading data.</para>
+        container defined in your account prior to uploading data. If you expect to have containers
+        with millions of objects, we recommend organizing the object storage across multiple
+        containers.</para>
       <para>The only restrictions on container names is that they cannot contain a forward slash
           (<code>/</code>) and must be less than 256 bytes in length. Please note that the length
         restriction applies to the name after it has been URL encoded. For example, a container name
@@ -1902,12 +1904,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
               <title>CDN-Enabled Containers Details Response: XML</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
-  Date: Mon, 09 Mar 2009 20:11:27 GMT
-  Server: Apache
+  Date: Fri, 09 Sep 2011 17:57:28 GMT
+  Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 267
   Content-Type: application/xml; charset=utf-8
                     </literallayout>
               <programlisting language="xml">
+          
   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
   &lt;account name="WidgetsRNotUs.invalid"&gt;
     &lt;container&gt;
