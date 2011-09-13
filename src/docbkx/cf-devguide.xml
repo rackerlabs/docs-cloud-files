@@ -2173,9 +2173,10 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
           </example>
-          <para>No content is returned. A status code of 202 (Accepted) indicates success; 404 (Not
-            Found) is returned if the requested container was not found. The CDN SSL URI is returned
-            in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI, X-CDN-STREAMING-URI. </para>
+          <para>No content is returned. A status code of 204 (No Content) indicates success; 404
+          (Not Found) is returned if the requested container was not found. The CDN SSL URI is
+          returned in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI,
+          X-CDN-STREAMING-URI. </para>
           <example>
             <title>CDN-Enabled Container Metadata (Streaming Enabled)</title>
             <literallayout class="monospaced">
