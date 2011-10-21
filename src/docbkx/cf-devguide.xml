@@ -36,7 +36,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2011-09-13</pubdate>
+    <pubdate>2011-10-21</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -111,6 +111,17 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td colspan="1" align="center">Oct. 21, 2011</td>
+            <td colspan="4">
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>Added more detail about reasons to perform a CDN purge, clarifying that it isn't required for deleting objects.</para>
+                </listitem>
+                
+              </itemizedlist>
+            </td>
+          </tr>
           <tr>
             <td colspan="1" align="center">Sep. 13, 2011</td>
             <td colspan="4">
@@ -2042,8 +2053,11 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
         <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
           <title>Purge CDN-Enabled Containers or Objects</title>
-          <para>&DELETE; operations against a CDN-enabled container or object are used to remove an
-          outdated or unwanted object from the CDN. You can manually purge CDN-enabled objects or
+          <para>&DELETE; operations against a CDN-enabled container or object are used to invalidate
+          an object in the CDN when it could have serious personal, business, or security
+          consequences if it remained in the CDN. For example, suppose someone published your
+          company's quarterly earnings too early. Perhaps the timing of the publish was incorrect,
+          and you need to remove it from public view. You can manually purge CDN-enabled objects or
           containers without having to wait for the TTL to expire, and you can optionally be
           notified by email that the object has been purged. There are two methods for purging
           content from the edge: one for purging individual objects, one for purging entire
