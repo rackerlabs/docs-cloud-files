@@ -47,6 +47,191 @@
         using the Rackspace Cloud Files™ Application Programming Interface (<abbrev>API</abbrev>).
       </para>
     </abstract>
+    <revhistory>
+      <revision>
+        <date>2011-10-21</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added more detail about reasons to perform a CDN purge, clarifying that it isn't required for deleting objects.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-09-13</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added information about streaming containers to support this new streaming
+                feature, including changing examples to match the streaming headers and URIs
+                returned.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-06-29</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-06-15</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added best practices for authentication tokens.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-05-24</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added information about new headers including CORS headers.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-04-20</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>HEAD returns 200 instead of 204 on an object metadata request.</para>
+            </listitem>
+            <listitem>
+              <para>TTL maximum value is now 50 years instead of 3 days, the minimum TTL is now 15 minutes (900 seconds), and the default is now 72 hours instead of 24 hours.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-03-25</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added information about large object support.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-03-17</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added information about container metadata.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-03-10</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
+                are using https protocol.</para>
+            </listitem>
+            <listitem>
+              <para>Updated examples to contain SSL as appropriate.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-02-25</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added information about the edge purge capability for CDN-enabled containers
+                and objects.</para>
+            </listitem>
+            
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-02-18</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Fixed error in the header range example that stated first instead of last
+                when fetching a portion of the data. </para>
+            </listitem>
+            <listitem>
+              <para>Updated CDN URLs to match new format.</para>
+            </listitem>
+            <listitem>
+              <para>Fixed error referring to X-Auth-User instead of X-Auth-Key.  </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-01-12</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para> 
+                Removed references to ACL (Access Control List).
+              </para>
+            </listitem>
+            <listitem>
+              <para> 
+                Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Added section numbers.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2011-01-04</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para> 
+                Expanded authentication information for UK release.
+              </para>
+            </listitem>
+            <listitem>
+              <para> 
+                Added "delimiter" as a Query Parameter and server-side object copy example.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2008-05-05</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Initial release.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <chapter xml:id="Overview-d1e70">
     <title>Overview</title>
@@ -103,195 +288,7 @@
       <para>This version of the Developer Guide replaces and obsoletes
       all previous versions. The most recent changes are described in
       the table below:</para>
-      <informaltable rules="all">
-        <thead>
-          <tr>
-            <td align="center" colspan="1">Revision Date</td>
-            <td align="center" colspan="4">Summary of Changes</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="1" align="center">Oct. 21, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added more detail about reasons to perform a CDN purge, clarifying that it isn't required for deleting objects.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Sep. 13, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added information about streaming containers to support this new streaming
-                    feature, including changing examples to match the streaming headers and URIs
-                    returned.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Jun. 29, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Jun. 15, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added best practices for authentication tokens.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr><tr>
-            <td colspan="1" align="center">May 24, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added information about new headers including CORS headers.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Apr. 20, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>HEAD returns 200 instead of 204 on an object metadata request.</para>
-                </listitem>
-                <listitem><para>TTL maximum value is now 50 years instead of 3 days, the minimum TTL is now 15 minutes (900 seconds), and the default is now 72 hours instead of 24 hours.</para></listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Mar. 25, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added information about large object support.</para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Mar. 17, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added information about container metadata.</para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Mar. 10, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
-                    are using https protocol.</para>
-                </listitem>
-                <listitem>
-                  <para>Updated examples to contain SSL as appropriate.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Feb. 25, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Added information about the edge purge capability for CDN-enabled containers
-                    and objects.</para>
-                </listitem>
-                
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Feb. 18, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para>Fixed error in the header range example that stated first instead of last
-                    when fetching a portion of the data. </para>
-                </listitem>
-                <listitem>
-                  <para>Updated CDN URLs to match new format.</para>
-                </listitem>
-                <listitem>
-                  <para>Fixed error referring to X-Auth-User instead of X-Auth-Key.  </para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">Jan. 12, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para> 
-                    Removed references to ACL (Access Control List).
-                  </para>
-                </listitem>
-                <listitem>
-                  <para> 
-                    Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
-                  </para>
-                </listitem>
-                <listitem>
-                    <para>
-                        Added section numbers.
-                    </para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr><tr>
-            <td colspan="1" align="center">Jan. 4, 2011</td>
-            <td colspan="4">
-              <itemizedlist spacing="compact">
-                <listitem>
-                  <para> 
-                    Expanded authentication information for UK release.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para> 
-                    Added "delimiter" as a Query Parameter and server-side object copy example.
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="1" align="center">May 5, 2008</td>
-            <td colspan="4">
-                <itemizedlist spacing="compact">
-                    <listitem>
-                        <para>Initial release.</para>
-                    </listitem>
-                </itemizedlist>
-            </td>
-          </tr>
-        </tbody>
-      </informaltable>
+      <?rax revhistory?>
     </section>
     <section xml:id="Additional_Resources-d1e388">
       <title>Additional Resources</title>

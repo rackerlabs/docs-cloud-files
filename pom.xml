@@ -43,37 +43,56 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.0.4</version>
-                <executions>
+                <version>1.0.7-SNAPSHOT</version>
+                <executions>		 
                     <execution>
+		      <id>g2</id>
                         <goals>
                             <goal>generate-pdf</goal>
                             <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
+			<configuration>
+			  <includes>cf-devguide.xml</includes>
+			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-defguide</canonicalUrlBase>
+			  <postProcess>
+			    <copy
+				todir="target/docbkx/webhelp/cf-devguide/content/figures">
+			      <fileset dir="src/docbkx/figures">
+				<include name="**/CFinterfaces.png"/>
+			      </fileset>
+			    </copy>
+			  </postProcess>
+			</configuration>
+                    </execution>
+                    <execution>
+		      <id>g1</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+			<configuration>
+			  <includes>cf-intro.xml</includes>
+			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro</canonicalUrlBase>
+			  <postProcess>
+			    <copy
+				todir="target/docbkx/webhelp/cf-intro/content/figures">
+			      <fileset dir="src/docbkx/figures">
+				<include name="**/*.png"/>
+				<exclude name="**/CFinterfaces.png"/>
+			      </fileset>
+			    </copy>
+			  </postProcess>
+			</configuration>			
                     </execution>
                 </executions>
                 <configuration>
-                    <includes>cf-devguide.xml,cf-intro.xml</includes>
                     <xincludeSupported>true</xincludeSupported>
                     <branding>rackspace</branding>
                     <enableDisqus>1</enableDisqus>
                     <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
-                    <postProcess>
-                        <copy
-                            todir="target/docbkx/webhelp/cf-devguide/content/figures">
-                            <fileset dir="src/docbkx/figures">
-                                <include name="**/CFinterfaces.png"/>
-                            </fileset>
-                        </copy>
-                        <copy
-                            todir="target/docbkx/webhelp/cf-intro/content/figures">
-                            <fileset dir="src/docbkx/figures">
-                                <include name="**/*.png"/>
-                                <exclude name="**/CFinterfaces.png"/>
-                            </fileset>
-                        </copy>
-                    </postProcess>
+		    <useDisqusId>0</useDisqusId>
                 </configuration>
             </plugin>
         </plugins>
