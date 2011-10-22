@@ -54,7 +54,7 @@
                         <phase>generate-sources</phase>
 			<configuration>
 			  <includes>cf-devguide.xml</includes>
-			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-defguide</canonicalUrlBase>
+			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-defguide/content</canonicalUrlBase>
 			  <postProcess>
 			    <copy
 				todir="target/docbkx/webhelp/cf-devguide/content/figures">
@@ -74,7 +74,7 @@
                         <phase>generate-sources</phase>
 			<configuration>
 			  <includes>cf-intro.xml</includes>
-			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro</canonicalUrlBase>
+			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
 			  <postProcess>
 			    <copy
 				todir="target/docbkx/webhelp/cf-intro/content/figures">
