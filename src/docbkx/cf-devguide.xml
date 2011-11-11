@@ -53,7 +53,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Revised information about how to perform a CDN purge, indicating you must contact support for a purge operation.</para>
+              <para>Revised information about how to perform a CDN
+                purge, indicating you must contact support to request
+                a container purge operation.</para>
             </listitem>
             
           </itemizedlist>
@@ -2059,17 +2061,53 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                           </literallayout>
           </example>
         </section>
-        <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
-          <title>Purge CDN-Enabled Containers or Objects</title>
-          <para>Rackspace can perform operations against a CDN-enabled container or object when it
+        <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
+        <title>Purge CDN-Enabled Objects</title>
+        <para>
+        <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
+        The situation for object purges should be limited to times when it
           could have serious personal, business, or security consequences if it remained in the CDN.
           For example, suppose someone published your company's quarterly earnings too early.
           Perhaps the timing of the publish was incorrect, and you need to remove it from public
-          view. You can either wait for the TTL to expire, or you can request purges for individual
-          objects, or request the purge of an entire container. Once you have made the request via a
+          view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
+          notified by email that the object has been purged. There are two methods for purging
+          content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
+          containers is available by filing a support ticket.</para>
+          <example>
+            <title>Purge CDN-Enabled Object</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Purge-Email: user@domain.com
+                      </literallayout>
+          </example></para>
+           <para>A 204 No Content response is returned. The system purges the object from the CDN,
+          and sends an email to the indicated address or multiple addresses. The email address is
+          optional. You can enter a comma-separated list of addresses if you want to notify more
+          than one person about the deletion. A status code of 204 (No Content) indicates success;
+          404 (Not Found) is returned if the requested object was never CDN-enabled, and it
+          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
+          header, X-CDN-URI. Purging a large number of objects may take a long time, as in 45 minutes or longer, please
+          be patient while waiting for a response. </para>
+          <example>
+            <title>Purge CDN-Enabled Object Response </title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 13 Jan 2010 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+        <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
+          <title>Purge CDN-Enabled Containers</title>
+          <para>Rackspace can perform operations against a CDN-enabled container. You can either wait for the TTL to expire or you can request the purge of an entire container. Once you have made the request via a
           support ticket, the system purges the object from the CDN, and sends an email to an email
           address (or multiple addresses) that you indicated through the ticket. The email address
-          notification is optional. </para>
+          notification is optional.</para>
+         
         </section>
         <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
           <title>Update CDN-Enabled Container Metadata</title>
