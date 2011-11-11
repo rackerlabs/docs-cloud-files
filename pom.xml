@@ -90,7 +90,9 @@
                 <configuration>
                     <xincludeSupported>true</xincludeSupported>
                     <branding>rackspace</branding>
-                    <enableDisqus>1</enableDisqus>
+                    <!--<enableDisqus>1</enableDisqus>-->
+                    <enableDisqus>intranet</enableDisqus>
+                    <feedbackEmail>anne.gentle@rackspace.com, sami.moran@rackspace.com</feedbackEmail>
                     <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
 		    <useDisqusId>0</useDisqusId>
                 </configuration>
