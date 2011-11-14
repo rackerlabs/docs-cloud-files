@@ -1956,6 +1956,57 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
       </section>
       <?hard-pagebreak?>
+<section xml:id="CDN_Object_Services">
+ <title>CDN Object Services</title>
+        <para>This section documents the ReST operations against the CDN management service that can
+          be performed on objects. Any objects stored in a CDN-enabled container are publicly
+            accessible over a CDN by combining the container's CDN URI with the object name. Any
+            objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
+            is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
+            re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
+            that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds). </para>
+
+<section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
+        <title>Purge CDN-Enabled Objects</title>
+        <para>
+        <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
+        The situation for object purges should be limited to times when it
+          could have serious personal, business, or security consequences if it remained in the CDN.
+          For example, suppose someone published your company's quarterly earnings too early.
+          Perhaps the timing of the publish was incorrect, and you need to remove it from public
+          view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
+          notified by email that the object has been purged. There are two methods for purging
+          content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
+          containers is available by filing a support ticket.</para>
+          <example>
+            <title>Purge CDN-Enabled Object</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Purge-Email: user@domain.com, user2@domain.com
+                      </literallayout>
+          </example></para>
+           <para>A 204 No Content response is returned. The system purges the object from the CDN,
+          and sends an email to the indicated address or multiple addresses. The email address is
+          optional. You can enter a comma-separated list of addresses if you want to notify more
+          than one person about the deletion. A status code of 204 (No Content) indicates success;
+          404 (Not Found) is returned if the requested object was never CDN-enabled, and it
+          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
+          header, X-CDN-URI. Purging a large number of objects may take a long time, so please
+          be patient while waiting for a response. </para>
+          <example>
+            <title>Purge CDN-Enabled Object Response </title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 13 Jan 2010 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+</section>
       <section xml:id="CDN_Container_Services-d1e2632">
         <title>CDN Container Services</title>
         <para>This section documents the ReST operations against the CDN management service that can
@@ -2061,46 +2112,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                           </literallayout>
           </example>
         </section>
-        <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
-        <title>Purge CDN-Enabled Objects</title>
-        <para>
-        <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
-        The situation for object purges should be limited to times when it
-          could have serious personal, business, or security consequences if it remained in the CDN.
-          For example, suppose someone published your company's quarterly earnings too early.
-          Perhaps the timing of the publish was incorrect, and you need to remove it from public
-          view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
-          notified by email that the object has been purged. There are two methods for purging
-          content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
-          containers is available by filing a support ticket.</para>
-          <example>
-            <title>Purge CDN-Enabled Object</title>
-            <literallayout class="monospaced">
-  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
-  Host: cdn.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-  X-Purge-Email: user@domain.com, user2@domain.com
-                      </literallayout>
-          </example></para>
-           <para>A 204 No Content response is returned. The system purges the object from the CDN,
-          and sends an email to the indicated address or multiple addresses. The email address is
-          optional. You can enter a comma-separated list of addresses if you want to notify more
-          than one person about the deletion. A status code of 204 (No Content) indicates success;
-          404 (Not Found) is returned if the requested object was never CDN-enabled, and it
-          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
-          header, X-CDN-URI. Purging a large number of objects may take a long time, as in 45 minutes or longer, please
-          be patient while waiting for a response. </para>
-          <example>
-            <title>Purge CDN-Enabled Object Response </title>
-            <literallayout class="monospaced">
-  HTTP/1.1 204 No Content
-  Date: Thu, 13 Jan 2010 18:57:07 GMT
-  Server: Apache
-  Content-Length: 0
-  Content-Type: text/plain; charset=UTF-8
-                      </literallayout>
-          </example>
-        </section>
+        
         <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
           <title>Purge CDN-Enabled Containers</title>
           <para>Rackspace can perform operations against a CDN-enabled container. You can either wait for the TTL to expire or you can request the purge of an entire container. Once you have made the request via a
