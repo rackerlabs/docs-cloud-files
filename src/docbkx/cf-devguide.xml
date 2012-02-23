@@ -91,7 +91,7 @@
           <itemizedlist spacing="compact">
             <listitem>
               <para>Added information about streaming containers to support this new streaming
-                feature, including changing examples to match the streaming headers and URIs
+                feature, including changing examples to match the streaming headers and URLs
                 returned.</para>
             </listitem>
             
@@ -169,7 +169,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added a section about retrieving an SSL URI for CDN-enabled containers that
+              <para>Added a section about retrieving an SSL URL for CDN-enabled containers that
                 are using https protocol.</para>
             </listitem>
             <listitem>
@@ -443,7 +443,9 @@
         applications.</para>
       <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
           <link xlink:href="http://c10171.r71.cf0.rackcdn.com">http://c10171.r71.cf0.rackcdn.com</link>. If that container houses a screenshot called
-          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of <link xlink:href="http://c10171.r71.cf0.rackcdn.com/wow1.jpg">http://c10171.r71.cf0.rackcdn.com/wow1.jpg</link>. This URL can be embedded in HTML
+          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of <link xlink:href="http://c10171.r71.cf0.rackcdn.com/wow1.jpg">http://c10171.r71.cf0.rackcdn.com/wow1.jpg</link>. 
+        </para>
+      <para>This URL can be embedded in HTML
         pages, email messages, blog posts, etc. When that URL is accessed, a copy of that image is
         fetched from the Cloud Files storage system and cached in a CDN and served from there for
         all subsequent requests for a configurable cache time to live (TTL) value. Setting the TTL
@@ -591,7 +593,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           response means the request has been accepted. Also, additional <code>X-</code> headers may
           be returned. These additional headers are related to other Rackspace services and can be
           ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
-          subsequent container/object operations against Cloud Files should be made against the URI
+          subsequent container/object operations against Cloud Files should be made against the URL
           specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
           include the <code>X-Auth-Token</code> header.</para>
         <example>
@@ -648,10 +650,10 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
     <para>Container and object names should be properly URL-encoded prior to interacting with the
       ReST interface (the language APIs handle URL encoding/decoding) and the container
       and object names must be UTF-8 encoded. The length restrictions
-      should be checked against the URL encoded string.</para>
+      should be checked against the URL-encoded string.</para>
     <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
           <firstterm>authorization token</firstterm> HTTP header defined as
-          <code>X-Auth-Token</code>. Clients obtain this token, along with the Cloud Files URIs, by
+          <code>X-Auth-Token</code>. Clients obtain this token, along with the Cloud Files URLs, by
         first using the Authentication service and supplying a valid Username and API Access Key. </para>
     <para>There are actually two different sets of ReST services that make up the full Cloud Files
       product. The first ReST service identified with <code>X-Storage-Url</code> is used for
@@ -706,8 +708,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       </itemizedlist>
       <section xml:id="Storage_Account_Services-d1e977">
         <title>Storage Account Services</title>
-        <para>The following operations can be performed at the account level of the URI. For
-          example, the URI for the requests below will end with the Cloud Files account
+        <para>The following operations can be performed at the account level of the URL. For
+          example, the URL for the requests below will end with the Cloud Files account
           string:</para>
         <example>
           <title>Storage Account HTTP Request: General Structure</title>
@@ -1900,7 +1902,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
       authentication.</para>
       <section xml:id="CDN_Account_Operations-d1e2397">
         <title>CDN Account Operations</title>
-        <para>This section describes the methods allowed against the account portion URI and conform
+        <para>This section describes the methods allowed against the account portion URL and conform
         to the following format:</para>
         <example>
           <title>CDN HTTP Request: General Structure</title>
@@ -2136,13 +2138,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           in the storage service and populate it with the content you want to serve over the
           CDN.</para>
       <para>When you enable a container for CDN management, you also enable both SSL and streaming
-        which generates two different URIs which are returned with the appropriate API requests. </para>
+        which generates two different URLs which are returned with the appropriate API requests. </para>
         <section xml:id="CDN-Enabled_Container-d1e2665">
           <title>CDN-Enabled Container</title>
           <para>&PUT; operations against a container are used to initially CDN-enable the
             container and set its attributes.</para>
           <para>When a container is CDN-enabled, any objects stored in that container are publicly
-            accessible over a CDN by combining the container's CDN URI with the object name. Any
+            accessible over a CDN by combining the container's CDN URL with the object name. Any
             objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
             is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
             re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
@@ -2175,9 +2177,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Date: Wed, 07 Sep 2011 19:04:30 GMT 
   Server: Apache/2.2.14 (Ubuntu)
   Content-Type: text/plain
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URL: http://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
@@ -2185,8 +2187,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           <title>List CDN-Enabled Container Metadata</title>
           <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
             the CDN attributes of the container.</para>
-          <para>If the container is (or ever has been) CDN-enabled, the URI, TTL, enabled status,
-          and log retention status are returned in the response headers. Its CDN URI can be combined
+          <para>If the container is (or ever has been) CDN-enabled, the URL, TTL, enabled status,
+          and log retention status are returned in the response headers. Its CDN URL can be combined
           with any object name within the container to form the publicly accessible URL for that
           object for distribution over a CDN system. The TTL value is the number of seconds that the
           object will be cached in the CDN system before being refetched. The enabled status
@@ -2203,7 +2205,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           </example>
           <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
           Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
-          available for the container, an X-CDN-SSL-URI header is returned in addition to X-CDN-URI. </para>
+          available for the container, an <code>X-CDN-SSL-URL</code> header is returned in 
+            addition to <code>X-CDN-URL</code>. </para>
           <example>
             <title>CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
@@ -2211,9 +2214,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Content-type: text/html
   X-CDN-Enabled: True
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.stream.cf0.rackcdn.com
+  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URL: http://c10171.stream.cf0.rackcdn.com
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
@@ -2248,9 +2251,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                       </literallayout>
           </example>
           <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN URI, the CDN SSL URI,
-          and the CDN Streaming URI are returned in the HTTP headers, X-CDN-URI,  X-CDN-SSL-URI, and
-          X-CDN-STREAMING-URI. </para>
+          Found) is returned if the requested container was not found. The CDN URL, the CDN SSL URL,
+          and the CDN Streaming URL are returned in the HTTP headers, <code>X-CDN-URL</code>, 
+            <code>X-CDN-SSL-URL</code>, and <code>X-CDN-STREAMING-URL</code>. </para>
           <example>
             <title>Update CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
@@ -2259,18 +2262,19 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
           </example>
         </section>
         <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
           <title>CDN-Enabled Containers Served via SSL</title>
-         <para><code>HEAD</code> operations against a CDN-enabled container can also return an SSL
-          URI. When SSL is available, another header gets returned with calls to the CDN Management
-          URL, X-CDN-SSL-URI, in addition to X-CDN-URI. This feature enables users to use https
-          protocol in URLs used for requesting objects stored in CDN-enabled containers. </para>
+          <para>&HEAD; operations against a CDN-enabled container can also return an SSL
+          URL. When SSL is available, another header gets returned with calls to the CDN Management
+          URL, <code>X-CDN-SSL-URL</code>, in addition to <code>X-CDN-URL</code>. This 
+            feature enables users to use https protocol in URLs used for requesting objects 
+            stored in CDN-enabled containers. </para>
           
           <example>
             <title>CDN-Enabled Container Metadata Requests with SSL</title>
@@ -2281,8 +2285,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                           </literallayout>
           </example>
           <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN SSL URI is returned
-          in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI, X-CDN-STREAMING-URI. </para>
+          Found) is returned if the requested container was not found. The CDN SSL URL is returned
+          in the HTTP header, <code>X-CDN-SSL-URL</code>, along with the CDN streaming URL,
+            <code>X-CDN-STREAMING-URL</code>. </para>
           <example>
             <title>CDN-Enabled Container Metadata with SSL</title>
             <literallayout class="monospaced">
@@ -2291,9 +2296,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
   X-CDN-Enabled: True
   X-TTL: 259000
   X-Log-Retention: False
@@ -2304,8 +2309,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
         <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
           <title>Streaming CDN-Enabled Containers </title>
-          <para><code>HEAD</code> operations against a CDN-enabled container can also return a streaming
-            URI. Like SSL, streaming is always enabled, and you use the streaming URL for links to content that you want to stream, such as video. </para>
+          <para>&HEAD; operations against a CDN-enabled container can also return a streaming
+            URL. Like SSL, streaming is always enabled, and you use the streaming URL for links to content that you want to stream, such as video. </para>
           
           <example>
             <title>CDN-Enabled Container Metadata Requests (Streaming Enabled)</title>
@@ -2316,9 +2321,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                           </literallayout>
           </example>
           <para>No content is returned. A status code of 204 (No Content) indicates success; 404
-          (Not Found) is returned if the requested container was not found. The CDN SSL URI is
-          returned in the HTTP header, X-CDN-SSL-URI, along with the CDN streaming URI,
-          X-CDN-STREAMING-URI. </para>
+          (Not Found) is returned if the requested container was not found. The CDN SSL URL is
+          returned in the HTTP header, <code>X-CDN-SSL-URL</code>, along with the CDN streaming URL,
+            <code>X-CDN-STREAMING-URL</code>. </para>
           <example>
             <title>CDN-Enabled Container Metadata (Streaming Enabled)</title>
             <literallayout class="monospaced">
@@ -2327,9 +2332,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
   X-CDN-Enabled: True
   X-TTL: 259000
   X-Log-Retention: False
@@ -2546,17 +2551,17 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    <computeroutput>HTTP/1.1 201 Created
     Date: Wed, 07 Sep 2011 19:00:44 GMT
     Server: Apache/2.2.14 (Ubuntu)
-    X-CDN-URI: http://c1935.r35.stg2.rackcdn.com
-    X-CDN-SSL-URI: https://c1935.ssl.stg2.rackcdn.com
-    X-CDN-STREAMING-URI: http://c1935.r35.stream.stg2.rackcdn.com
+    X-CDN-URL: http://c1935.r35.stg2.rackcdn.com
+    X-CDN-SSL-URL: https://c1935.ssl.stg2.rackcdn.com
+    X-CDN-STREAMING-URL: http://c1935.r35.stream.stg2.rackcdn.com
     Content-Length: 0
     Content-Type: text/plain
                       </computeroutput></screen>
         </example>
-        <para>When the container is CDN-enabled, the service returns its public URI in the
-            <code>X-CDN-URI</code> header of the response, plus the SSL URL in the
-            <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URI with the
-          object name to access the file via the CDN, or use the https:// URI in combination with
+        <para>When the container is CDN-enabled, the service returns its public URL in the
+            <code>X-CDN-URL</code> header of the response, plus the SSL URL in the
+            <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URL with the
+          object name to access the file via the CDN, or use the https:// URL in combination with
           the object name to access the file over a secure SSL connection via the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
           sending a &GET; request to the object's CDN URL and viewing the response
