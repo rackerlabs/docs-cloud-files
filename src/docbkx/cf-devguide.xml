@@ -284,7 +284,7 @@
       hurdles.</para>
     <para>Cloud Files allows users to store and retrieve files and CDN-enabled content via a simple
       Web Service (ReST: Representational State Transfer) interface. There are also
-      language-specific APIs that utilize the ReSTful API but make it much easier for developers to
+      language-specific APIs that utilize the ReST API but make it much easier for developers to
       integrate into their applications.</para>
     <para>For more details on the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>
     </para>
@@ -307,7 +307,7 @@
         </listitem>
       </itemizedlist>
       <para>Rackspace also provides Rackspace-supported, language-specific APIs in several popular
-        programming languages. Currently, the supported APIs ares C#/.NET, Java, PHP, Python, and
+        programming languages. Currently, the supported APIs are C#/.NET, Java, PHP, Python, and
         Ruby. These APIs utilize the ReST API and are provided to help developers rapidly integrate
         Cloud Files support into their applications without needing to write at the ReST interface.
         Each API includes its own documentation in its native format. For example, the Java API
@@ -343,9 +343,6 @@
           >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents are
         available at the same site, as are links to official Rackspace support channels, including
         knowledge base articles, forums, phone, chat, and email.</para>
-      <para>You can also follow updates and announcements via twitter at <link
-          xlink:href="http://www.twitter.com/rackcloud">http://www.twitter.com/rackcloud</link>
-      </para>
       <para>Language bindings are available. Each binding includes its own documentation (either HTML, PDF, or CHM). They also
         include code snippets and examples to help you get started. The currently supported API
         binding for Cloud Files are:</para>
@@ -421,7 +418,7 @@
       <para>An object is the basic storage entity and any optional metadata that represents the
         files you store in the Cloud Files system. When you upload data to Cloud Files, the data is
         stored as-is (no compression or encryption) and consists of a location (container), the
-        object's name, and any metadata consisting of key/value pairs. For instance, you may chose
+        object's name, and any metadata consisting of key/value pairs. For instance, you may choose
         to store a backup of your digital photos and organize them into albums. In this case, each
         object could be tagged with metadata such as <code>Album : Caribbean Cruise</code> or
           <code>Album : Aspen Ski Trip</code>.</para>
@@ -484,12 +481,13 @@
         of the base ReST API, allowing programmers to work with a container and object model instead
         of working directly with HTTP requests and responses. These bindings are free (as in beer
         and as in speech) to download, use, and modify. They are all licensed under the MIT License
-        as described in the COPYING file packaged with each binding. If you do make any improvements
+        as described in the COPYING file packaged with each binding. If you make any improvements
         to an API, you are encouraged (but not required) to submit those changes back to us.</para>
-      <para>The API bindings are hosted at <link xlink:href="http://github.com/rackspace">http://github.com/rackspace</link>. Feel free to coordinate your changes through github
-        or, if you prefer, send your changes to <link xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. Just make sure to
-        indicate which language and version you modified and send us a unified diff. </para>
-      <para>Each binding includes its own documentation (either HTML, PDF, or CHM). They also
+      <para>The API bindings are hosted at <link xlink:href="http://github.com/rackspace">http://github.com/rackspace</link>. 
+        Feel free to coordinate your changes through github or, if you prefer, send your changes 
+        to <link xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. 
+        Make sure to indicate which language and version you modified and send us a unified diff. </para>
+      <para>Each binding includes its own documentation (in HTML, PDF, or CHM format). They also
         include code snippets and examples to help you get started. The currently supported API
         binding for Cloud Files are:</para>
       <itemizedlist>
@@ -637,7 +635,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
     <para>The Cloud Files API is implemented as a set of ReSTful (Representational State Transfer)
       web services. All authentication and container/object operations can be performed with
       standard HTTP calls. See the <link xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
-        article</link> for more information about ReST.</para>
+        article</link> on ReST for more information.</para>
     <para>The following constraints apply to the ReST API's HTTP requests:</para>
     <itemizedlist>
       <listitem>
@@ -744,7 +742,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               <listitem>
                 <para>For an integer value <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
-                  </inlineequation>, limits the number of results to at most <inlineequation>
+                  </inlineequation>, limits the number of results to <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
                   </inlineequation> values.</para>
               </listitem>
@@ -862,16 +860,15 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </section>
           <section xml:id="List_Large_Number_of_Containers-d1e1166">
             <title>List Large Number of Containers</title>
-            <para>The system will return a maximum of 10,000 container names per request. To
+            <para>The system returns a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
-              parameter. The marker indicates where the last list left off;  the system will return
-              container names greater than this marker, up to 10,000 again. Note that the ‘marker’
+              parameter. The marker indicates where the last list left off; the system returns
+              container names greater than the marker, up to 10,000 results again. Note that the ‘marker’
               value should be URL-encoded prior to sending the HTTP request.</para>
-            <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
-            <para>If the number of container names returned equals the limit given (or 10,000 if no
-              limit is given), it can be assumed there are more container names to be listed. If the
-              container name list is exactly divisible by the limit, the last request will simply
-              have no content.</para>
+            <para>If 10,000 is larger than desired, use the 'limit' parameter.</para>
+            <para>If the number of returned items equals the limit used (or 10,000 if no limit
+              was given), you may assume there are more container names.
+              </para>
             <example>
               <title>List Large Number of Containers</title>
               <para>For example, let's use a listing of five container names</para>
@@ -977,7 +974,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               <listitem>
                 <para>For an integer value <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
-                  </inlineequation>, limits the number of results to at most <inlineequation>
+                  </inlineequation>, limits the number of results to <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
                   </inlineequation> values.</para>
               </listitem>
@@ -1141,16 +1138,14 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </section>
           <section xml:id="List_Large_Number_of_Objects-d1e1521">
             <title>List Large Number of Objects</title>
-            <para>The system will return a maximum of 10,000 object names per request. To retrieve
-              subsequent object names, another request must be made with a 'marker' parameter. The
-              marker indicates where the last list left off and the system will return object names
+            <para>The system returns a maximum of 10,000 object names per request. To retrieve
+              subsequent object names, another request must be made with the 'marker' parameter. The
+              marker indicates where the last list left off and the system returns object names
               greater than this marker, up to 10,000 again. Note that the ‘marker’ value should be
-              URL encoded prior to sending the HTTP request.</para>
-            <para>If 10,000 is larger than desired, a 'limit' parameter may be given.</para>
-            <para>If the number of object names returned equals the limit given (or 10,000 if no
-              limit is given), it can be assumed there are more object names to be listed. If the
-              container name list is exactly divisible by the limit, the last request will simply
-              have no content.</para>
+              URL-encoded prior to sending the HTTP request.</para>
+            <para>If 10,000 is larger than desired, use a 'limit' parameter.</para>
+            <para>If the number of returned items equals the limit used (or 10,000 if no limit
+              was given), you may assume there are more container names.</para>
             <example>
               <title>List Large Number of Objects</title>
               <para>For an example, let's use a listing of five object names:</para>
@@ -1324,7 +1319,13 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
-          <para>Using custom container metadata, you can create information in the header to effectively "tag" a container with metadata. The container metadata restrictions are the same as object metadata, you can have 4096 bytes maximum overall metadata, 90 distinct metadata items at the most. Each may have a 128 character name length with a 256 max value length each.  Any valid UTF8 http header value is allowed for metadata, however we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal representation of the ISO-Latin code for the character.</para>
+          <!-- Added colon and / "with" in second sentence to / clarify meaning dsh 02-03-12 -->
+          <para>Using custom container metadata, you can create information in the header to effectively "tag" 
+            a container with metadata. The container metadata restrictions are the same as object metadata: you 
+            can have 4096 bytes maximum overall metadata, with 90 distinct metadata items at the most. Each may have 
+            a 128 character name length with a 256 max value length each. Any valid UTF-8 http header value 
+            is allowed for metadata, however we recommend that you URL-encode any non-ASCII values using a "%" 
+            symbol, followed by the two-digit hexadecimal representation of the ISO-Latin code for the character.</para>
           <example>
             <title>Container Create Request with Metadata </title>
             <literallayout class="monospaced">
@@ -1336,7 +1337,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
             was created as requested. Container &PUT; requests are idempotent and a code of 202
-            (Accepted) is returned when the container already existed. If you request a PUT to a
+            (Accepted) is returned if the container existed prior to the request. If you request a PUT to a
             container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
             request responses carry the metadata prefix from the container in subsequent
             requests.</para>
@@ -1495,7 +1496,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         <section xml:id="Create_Update_Object-d1e1965">
           <title>Create/Update Object</title>
           <para>&PUT; operations are used to write, or overwrite, an
-          object's metadata and content. </para>
+          object's content and metadata.</para>
           <para>You can ensure end-to-end data integrity by including an MD5 checksum of your
             object's data in the ETag header. You are not required to include the ETag header, but
             it is recommended to ensure that the storage system successfully stored your object's
@@ -1532,11 +1533,14 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   [ ... ]
                     </literallayout>
           </example>
-          <para>No response body is returned. A status code of 201 (Created) indicates a successful
-            write; status 412 (Length Required) denotes a missing <code>Content-Length</code> or
-              <code>Content-Type</code> header in the request. If the MD5 checksum of the data
-            written to the storage system does NOT match the (optionally) supplied ETag value, a 422
-            (Unprocessable Entity) response is returned.</para>
+          <!-- changed the status code / below to 411 / (wikipedia)  dsh 02-14-12-->
+          <para>No response body is returned. A status code of 201
+          (Created) indicates a successful write; status 411 (Length
+          Required) denotes a missing <code>Content-Length</code> or
+            <code>Content-Type</code> header in the request. If the
+          MD5 checksum of the data written to the storage system does
+          NOT match the (optionally) supplied ETag value, a 422
+          (Unprocessable Entity) response is returned.</para>
           <example>
             <title>Create/Update Object Response</title>
             <literallayout class="monospaced">
@@ -1550,7 +1554,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           </example>
           <section xml:id="Large_Object_Creation-d1e2019">
             <title>Large Object Creation</title>
-            <para>Objects that are larger than 5GB must be segmented, prior to upload. You then upload the segments like you would any other object and create a manifest object telling Cloud Files how to find the segments of the large object. The segments remain individually addressable, but retrieving the manifest object streams all the segments concatenated. There is no limit to the number of segments that can be a part of a single large object.</para>
+            <para>Objects that are larger than 5 GB must be segmented, prior to upload. You then upload the segments like you would any other object and create a manifest object telling Cloud Files how to find the segments of the large object. The segments remain individually addressable, but retrieving the manifest object streams all the segments concatenated. There is no limit to the number of segments that can be a part of a single large object.</para>
             
             <para>In order to ensure the download works correctly, you must upload all the object segments to the same container, ensure each object name has a common prefix where their names sort in the order they should be concatenated. You also create and upload a manifest file. The manifest file is simply a zero-byte file with the extra X-Object-Manifest:  &lt;container&gt;/&lt;prefix&gt; header, where &lt;container&gt;  is the container the object segments are in and &lt;prefix&gt; is the common prefix for all the segments. </para>
             <para>It is best to upload all the segments first and then create or update the manifest. With this method, the full object will not be available for downloading until the upload is complete. Also, you can upload a new set of segments to a second location and then update the manifest to point to this new location. During the upload of the new segments, the original manifest will still be available to download the first set of segments.</para>
@@ -1619,10 +1623,13 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               chunked</code> and not using a <code>Content-Length</code> header. A good use of this
               feature would be doing a DB dump, piping the output through gzip, then piping the data
               directly into Cloud Files without having to buffer the data to disk to compute the file
-              size. If users attempt to upload more that 5GB with this method, the server will close
-              the TCP/IP connection after 5GB and purge the customer data from the system. Users must
-              take responsibility for ensuring the data they transfer will be less than 5GB or for
-              splitting it into 5GB chunks, each in its own storage object. If you have files that are larger than 5GB and still want to use Cloud Files, you can segment them prior to upload, upload them to the same container, and then use a manifest file to allow downloading of a concatenated object containing all the segmented objects, concatenated as a single object.  </para>
+              size. If users attempt to upload more than 5 GB with this method, the server will close
+              the TCP/IP connection after 5 GB and purge the customer data from the system. Users must
+              take responsibility for ensuring the data they transfer will be less than 5 GB or for
+              splitting it into 5 GB chunks, each in its own storage object. If you have files that 
+              are larger than 5 GB and still want to use Cloud Files, you can segment them prior to 
+              upload, upload them to the same container, and then use a manifest file to allow downloading 
+              of a concatenated object containing all the segmented objects, concatenated as a single object.  </para>
               <example>
                   <title>Upload Unspecified Quantity of Content</title>
                   <literallayout class="monospaced">
@@ -1724,31 +1731,37 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         </section>
           <section xml:id="Expiring_Objects-e1e3228">
             <title>Expiring Objects with the X-Delete-After and X-Delete-At Headers</title>
-            <para>When an object is assigned either an X-Delete-After
-            or X-Delete-At header when doing a &PUT; or &POST; on the
+            <para>When an object is assigned either an <code>X-Delete-After</code>
+              or <code>X-Delete-At</code> header when doing a &PUT; or &POST; on the
             object, it is scheduled for deletion. This feature is
             helpful for objects you do not want to permanently store,
             such as log files, recurring full backups of a dataset, or
             documents or images you know will be outdated at a future
             time.</para>
-            <para>The X-Delete-At header requires a Unix Epoch
+            
+            
+            <para>The <code>X-Delete-At</code> header requires a Unix Epoch
             timestamp, in integer form; for example: 1348691905
-            represents Wed, 26 Sep 2012 20:38:25 GMT. By setting the
-            header to a specific POSIX time, you indicate when you
+            represents Wed, 26 Sep 2012 20:38:25 GMT. 
+            <!--  Exchanged POSIX in / favor of Epoch for the / sake of clarity dsh 02-06-12 -->
+             By setting the header to a specific Epoch time, you indicate when you
             want the object to expire, not be served, and be deleted
             completely from the storage system. </para>
-              <para>The X-Delete-After header takes a integer number
+            <para>The <code>X-Delete-After</code> header takes an integer number
             of seconds and calculates the amount of time from now that
             you want the object to be deleted. The proxy server that
             receives the request converts this header into an
-            X-Delete-At header and calculates the deletion time using
-            its current time plus the value given in seconds.</para>
+              <code>X-Delete-At</code> header and calculates the deletion time using
+              its current time plus the value given in seconds.</para>
           <para>For existing objects that you want to assign
             expiration headers to, use the &POST; operation.</para>
             <example>
               <title>Delete At Example</title>
-              <para>In the example, the X-Delete-At header is assigned with a Unix Epoch timestamp in integer form for Mon, 11 Jun 2012 15:38:25 GMT. 
-                Use <link xlink:href="http://www.epochconverter.com/">http://www.epochconverter.com/</link> for example timestamps and a batch converter.</para>
+              <para>In the example, the <code>X-Delete-At</code> header is assigned with a Unix Epoch 
+                timestamp in integer form for Mon, 11 Jun 2012 15:38:25 GMT. 
+                Use <link xlink:href="http://www.epochconverter.com/">http://www.epochconverter.com/</link> 
+                for example timestamps and a batch converter.</para>
+              
               <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -1759,8 +1772,11 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
             <example>
               <title>Delete After Example</title>
-              <para>In the example, the X-Delete-After header is assigned a value in seconds, in this example we want the object to expire in 10 days. 
-                The system then converts the time necessary for an X-Delete-At header operation.</para>
+              <para>
+                <!-- Reworded this here /  paragraph to make more sense / and match what I see dsh 02-06-12 -->
+                In this example, the <code>X-Delete-After</code> header is assigned a value in seconds,
+                equivalent to 10 days. After this time, the object shall expire.  
+                <!-- Removed, "The system then converts the time necessary for an <code>X-Delete-At</code> header operation." Doesn't seem to match dsh 02-06-12--></para>
               <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -1779,10 +1795,10 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               object. With server-side object copy, you can save the step of re-uploading the
               content and thus also save the associated bandwidth charges, if any were to apply. </para>
             <para>There are two ways to copy an existing object to another object in Cloud Files.
-              One way is to do a PUT to the new object (the target) location, but add the
-              “X-Copy-From” header to designate the source of the data. The header value should be
+              One way is to do a &PUT; to the new object (the target) location, but add the
+              <code>“X-Copy-From”</code> header to designate the source of the data. The header value should be
               the container and object name of the source object in the form of “/container/object”.
-              Also, the X-Copy-From PUT requests require a Content-Length header, even if it is zero
+              Also, the <code>X-Copy-From</code> &PUT; requests require a Content-Length header, even if it is zero
               (0).</para><literallayout class="monospaced">
 PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;destobject&gt; HTTP/1.1
 Host: &lt;storage URL&gt;
@@ -1790,7 +1806,7 @@ X-Auth-Token: &lt;some-auth-token&gt;
 X-Copy-From: /&lt;container&gt;/&lt;sourceobject&gt;
 Content-Length: 0                    
               </literallayout>
-            <para>The second way to do an object copy is similar. Do a COPY to the existing object,
+            <para>The second way to do an object copy is similar. Do a &COPY; to the existing object,
               and include the “Destination” header to specify the target of the copy. The header
               value is the container and new object name in the form of “/container/object”.
               <literallayout class="monospaced">
@@ -1799,24 +1815,25 @@ Host: &lt;storage URL&gt;
 X-Auth-Token: &lt;some-auth-token&gt;
 Destination: /&lt;container&gt;/&lt;destobject&gt;
               </literallayout></para>
-            <para>With both of these methods, the destination container must exist before
-              attempting the copy. If you were wanting to perform a move of the objects rather than
-              a copy, you would need to send a DELETE request to the old object. A move simply
-              becomes a COPY + DELETE. All metadata is preserved during the object copy. Note that
-              you can set metadata on the request to copy the object (either the PUT or the COPY)
+        <para>With both of these methods, the destination container must exist before attempting the copy.</para>
+        <para>
+        <!-- Reworked this sentence / to remove the subjunctive / mood and make active dsh 02-06-12 -->
+              If you wanted to move the object rather than copy it, you need to send a &DELETE; request to
+              the old object. A move is simply
+              a &COPY; + &DELETE;. All metadata is preserved during the object copy. Note that
+              you can set metadata on the request to copy the object (either the &PUT; or the &COPY;)
               and the metadata will overwrite any conflicting keys on the target (new) object. One
               interesting use case is to copy an object to itself and set the content type to a new
-              value. This is the only way to change the content type of an existing
-              object.</para>
+              value. This is the only way to change the content type of an existing object.</para>
         </section>
         <section xml:id="Delete_Object-d1e2264">
           <title>Delete Object</title>
-          <para>&DELETE; operations on an object are used to permanently remove that
-            object from the storage system (metadata and data).</para>
+          <para>&DELETE; operations on an object are used to permanently remove an
+            object from the storage system (data and metadata).</para>
           <para>Deleting an object is processed immediately at the time of the request. Any
             subsequent &GET;, &HEAD;, &POST;, or
             &DELETE; operations will return a 404 (Not Found) error.</para>
-        <para>Objects with the X-Delete-At or X-Delete-After header
+          <para>Objects with the <code>X-Delete-At</code> or <code>X-Delete-After</code> header
           assigned are deleted within one day of the expiration time
           and the object is not served immediately after the
           expiration time. Refer to <link linkend="Expiring_Objects-e1e3228">Expiring Objects</link> for more details.</para>
@@ -1917,7 +1934,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
     </chapter>
     <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
       <title>API Operations for CDN Services</title>
-      <para>The following is a description of API calls that can be used for CDN account and container
+      <para>The following is a description of API calls that can be used for the Content Delivery Network
+        (CDN) account and container
       operations. All of the ReST methods described below must be issued against the CDN management
       service as defined in the <code>X-CDN-Management-Url</code> returned by a successful
       authentication.</para>
@@ -1944,7 +1962,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
               <listitem>
                 <para>For an integer value <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
-                  </inlineequation>, limits the number of results to at most <inlineequation>
+                  </inlineequation>, limits the number of results to <inlineequation>
                     <mathphrase><emphasis>n</emphasis></mathphrase>
                   </inlineequation> values.</para>
               </listitem>
@@ -2087,56 +2105,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
       </section>
       <?hard-pagebreak?>
-<section xml:id="CDN_Object_Services">
- <title>CDN Object Services</title>
-        <para>This section documents the ReST operations against the CDN management service that can
-          be performed on objects. Any objects stored in a CDN-enabled container are publicly
-            accessible over a CDN by combining the container's CDN URI with the object name. Any
-            objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
-            is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
-            re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
-            that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds). </para>
 
-<section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
-        <title>Purge CDN-Enabled Objects</title>
-        <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
-        The situation for object purges should be limited to times when it
-          could have serious personal, business, or security consequences if it remained in the CDN.
-          For example, suppose someone published your company's quarterly earnings too early.
-          Perhaps the timing of the publish was incorrect, and you need to remove it from public
-          view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
-          notified by email that the object has been purged. There are two methods for purging
-          content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
-          containers is available by filing a support ticket.</para>
-          <example>
-            <title>Purge CDN-Enabled Object</title>
-            <literallayout class="monospaced">
-  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
-  Host: cdn.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-  X-Purge-Email: user@domain.com, user2@domain.com
-                      </literallayout>
-          </example>
-           <para>A 204 No Content response is returned. The system purges the object from the CDN,
-          and sends an email to the indicated address or multiple addresses. The email address is
-          optional. You can enter a comma-separated list of addresses if you want to notify more
-          than one person about the deletion. A status code of 204 (No Content) indicates success;
-          404 (Not Found) is returned if the requested object was never CDN-enabled, and it
-          returns a 403 if an authorization problem occurs. The CDN URI is returned in the HTTP
-          header, X-CDN-URI. Purging a large number of objects may take a long time, so please
-          be patient while waiting for a response. </para>
-          <example>
-            <title>Purge CDN-Enabled Object Response </title>
-            <literallayout class="monospaced">
-  HTTP/1.1 204 No Content
-  Date: Thu, 13 Jan 2010 18:57:07 GMT
-  Server: Apache
-  Content-Length: 0
-  Content-Type: text/plain; charset=UTF-8
-                      </literallayout>
-          </example>
-        </section>
-</section>
+      
       <section xml:id="CDN_Container_Services-d1e2632">
         <title>CDN Container Services</title>
         <para>This section documents the ReST operations against the CDN management service that can
@@ -2365,6 +2335,59 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           </example>
         </section>
       </section>
+      
+      <section xml:id="CDN_Object_Services">
+        <title>CDN Object Services</title>
+        <para>This section documents the ReST operations against the CDN management service that can
+          be performed on objects. Any objects stored in a CDN-enabled container are publicly
+          accessible over a CDN by combining the container's CDN URL with the object name. Any
+          objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
+          is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
+          re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
+          that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds). </para>
+        
+        <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
+          <title>Purge CDN-Enabled Objects</title>
+          <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
+            The situation for object purges should be limited to times when it
+            could have serious personal, business, or security consequences if it remained in the CDN.
+            For example, suppose someone published your company's quarterly earnings too early.
+            Perhaps the timing of the publish was incorrect, and you need to remove it from public
+            view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
+            notified by email that the object has been purged. There are two methods for purging
+            content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
+            containers is available by filing a support ticket.</para>
+          <example>
+            <title>Purge CDN-Enabled Object</title>
+            <literallayout class="monospaced">
+  DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Purge-Email: user@domain.com, user2@domain.com
+                      </literallayout>
+          </example>
+          <para>A 204 No Content response is returned. The system purges the object from the CDN,
+            and sends an email to the indicated address or multiple addresses. The email address is
+            optional. You can enter a comma-separated list of addresses if you want to notify more
+            than one person about the deletion. A status code of 204 (No Content) indicates success;
+            404 (Not Found) is returned if the requested object was never CDN-enabled, and it
+            returns a 403 if an authorization problem occurs. The CDN URL is returned in the HTTP
+            header, <code>X-CDN-URL</code>. Purging a large number of objects may take a long time, so please
+            be patient while waiting for a response. </para>
+          <example>
+            <title>Purge CDN-Enabled Object Response </title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 13 Jan 2010 18:57:07 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                      </literallayout>
+          </example>
+        </section>
+      </section>      
+      
+      
   </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples and Troubleshooting</title>
@@ -2441,20 +2464,20 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
             &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
           services.</para>
         <para>While an authentication token lasts, you can continue to perform requests, but once a
-          token expires it returns an HTTP error code 401 Unauthorized. Given than an X-Auth-Token
+          token expires it returns an HTTP error code 401 Unauthorized. Given that an <code>X-Auth-Token</code>
           is good for 24 hours, long running or high request rate jobs should not try to
           authenticate at api.auth.rackspace.com on every request. You don't need to request another
-          X-Auth-Token again until your existing X-Auth-Token expires. At that point you must obtain
+          <code>X-Auth-Token</code> again until your existing <code>X-Auth-Token</code> expires. At that point you must obtain
           another authorization token. As a best practice example, here is some pseudo-code for
           re-authenticating. The best scalable process flow would be:<orderedlist>
             <listitem>
-              <para>Begin requests by going to auth.api.rackspace.com for an X-Auth-Token.</para>
+              <para>Begin requests by going to auth.api.rackspace.com for an <code>X-Auth-Token</code>.</para>
             </listitem>
             <listitem>
-              <para>Send request X-Storage-URL using the X-Auth-Token obtained in Step 1.</para>
+              <para>Send request <code>X-Storage-URL</code> using the <code>X-Auth-Token</code> obtained in Step 1.</para>
             </listitem>
             <listitem>
-              <para>Repeat step 2 using the same X-Auth-Token retrieved in Step 1 until either the
+              <para>Repeat step 2 using the same <code>X-Auth-Token</code> retrieved in Step 1 until either the
                 job finishes or you get a result code of 401 (Unauthorized). </para>
             </listitem>
           </orderedlist><itemizedlist>
@@ -2464,7 +2487,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
             </listitem>
             <listitem>
               <para>If result code is 401 then send a request to auth.api.rackspacecloud.com for a
-                new X-Auth-Token.</para>
+                new <code>X-Auth-Token</code>.</para>
             </listitem>
           </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
           receiving an error can be found in the OpenStack Swift project in client.py, which is
