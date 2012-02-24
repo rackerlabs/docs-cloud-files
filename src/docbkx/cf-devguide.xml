@@ -2,11 +2,12 @@
 <!DOCTYPE book [
 
         <!-- Useful for describing APIs -->
+        <!ENTITY COPY   '<command>COPY</command>'>
+        <!ENTITY DELETE '<command>DELETE</command>'>
         <!ENTITY GET    '<command>GET</command>'>
+        <!ENTITY HEAD   '<command>HEAD</command>'>
         <!ENTITY PUT    '<command>PUT</command>'>
         <!ENTITY POST   '<command>POST</command>'>
-        <!ENTITY DELETE '<command>DELETE</command>'>
-
 ]>
   <book xmlns="http://docbook.org/ns/docbook"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -907,7 +908,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         </section>
         <section xml:id="Retrieve_Account_Metadata-d1e1226">
           <title>Retrieve Account Metadata</title>
-          <para><code>HEAD</code> operations against an account are
+          <para>&HEAD; operations against an account are
           performed to retrieve the number of containers and the total
           bytes stored in Cloud Files for the account. This
           information is returned in two custom headers,
@@ -1333,7 +1334,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
           <title>Delete Container</title>
           <para>&DELETE; operations against a storage container are used to permanently
             remove that container. The container must be empty before it can be deleted.</para>
-          <para>A <code>HEAD</code> request against the container can be used to determine if it
+          <para>A &HEAD; request against the container can be used to determine if it
             contains any objects.</para>
           <example>
             <title>Container Delete Request</title>
@@ -1362,7 +1363,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
         </section>
         <section xml:id="Retrieve_Container_Metadata-d1e1809">
           <title>Retrieve Container Metadata</title>
-          <para><code>HEAD</code> operations against a storage
+          <para>&HEAD; operations against a storage
           container are used to determine the number of objects, and
           the total bytes of all objects stored in the
           container. Since the storage system is designed to store
@@ -1587,7 +1588,7 @@ X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   [...]
                     </literallayout>
             </example>
-            <para>The response's Content-Type for a &GET; or <code>HEAD</code> on the manifest will
+            <para>The response's Content-Type for a &GET; or &HEAD; on the manifest will
             be the same as the Content-Type set during the PUT request that created the manifest.
             You can easily change the Content-Type by reissuing the &PUT; request.</para>
           </section>
@@ -1793,7 +1794,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           <para>&DELETE; operations on an object are used to permanently remove that
             object from the storage system (metadata and data).</para>
           <para>Deleting an object is processed immediately at the time of the request. Any
-            subsequent &GET;, <code>HEAD</code>, &POST;, or
+            subsequent &GET;, &HEAD;, &POST;, or
             &DELETE; operations will return a 404 (Not Found) error.</para>
         <para>Objects with the X-Delete-At or X-Delete-After header
           assigned are deleted within one day of the expiration time
@@ -1821,7 +1822,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
         <section xml:id="Retrieve_Object_Metadata-d1e2301">
           <title>Retrieve Object Metadata</title>
-          <para><code>HEAD</code> operations on an object are used to retrieve object metadata and
+          <para>&HEAD; operations on an object are used to retrieve object metadata and
             other standard HTTP headers.</para>
           <para>The only required header to be sent in the request is the authorization
             token.</para>
@@ -2185,7 +2186,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </section>
         <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
           <title>List CDN-Enabled Container Metadata</title>
-          <para><code>HEAD</code> operations against a CDN-enabled container are used to determine
+          <para>&HEAD; operations against a CDN-enabled container are used to determine
             the CDN attributes of the container.</para>
           <para>If the container is (or ever has been) CDN-enabled, the URL, TTL, enabled status,
           and log retention status are returned in the response headers. Its CDN URL can be combined
@@ -2368,7 +2369,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <varlistentry>
           <term><option>-X METHOD</option></term>
           <listitem>
-            <para>Specify the HTTP method to request (<code>HEAD</code>, &GET;,
+            <para>Specify the HTTP method to request (&GET;, &HEAD;,
               etc.)</para>
           </listitem>
         </varlistentry>
@@ -2417,7 +2418,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </example>
         <para>The storage URL, CDN management URL, and authentication token are returned in the
           headers of the response. After authentication, you can use cURL to perform
-            <code>HEAD</code>, &GET;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
+            &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
           services.</para>
         <para>While an authentication token lasts, you can continue to perform requests, but once a
           token expires it returns an HTTP error code 401 Unauthorized. Given than an X-Auth-Token
@@ -2451,7 +2452,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
       </section>
       <section xml:id="Determining_Storage_Usage-d1e2976">
         <title>Determining Storage Usage</title>
-        <para>A <code>HEAD</code> request can be sent to the storage service to determine how much
+        <para>A &HEAD; request can be sent to the storage service to determine how much
           data you have stored in the system and the number of containers you are using. Use the
             <code>-X</code> switch to specify the correct HTTP method and the <code>-D</code> to
           dump the HTTP response headers to terminal output (stdout).</para>
