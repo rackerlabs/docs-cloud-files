@@ -599,7 +599,10 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         <title>Response</title>     
         <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
           <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
-          <code>X-Auth-Token</code> headers. Any 2xx response is a good response. For example, a 202
+          <code>X-Auth-Token</code> headers. The headers can be processed as is, and any 2xx response 
+          is a good response. 
+          <!-- As-is processing / note requested by JIRA / DOC 110 dsh 02-03-12 -->
+          For example, a 202
           response means the request has been accepted. Also, additional <code>X-</code> headers may
           be returned. These additional headers are related to other Rackspace services and can be
           ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
@@ -753,7 +756,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
                   </inlineequation>, return object names greater in value than the specified
-                  marker.</para>
+                  marker. Only strings using UTF-8 encoding are valid.
+                <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
               </listitem>
             </varlistentry>
             <varlistentry>
@@ -985,7 +989,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
                   </inlineequation>, return object names greater in value than the specified
-                  marker.</para>
+                  marker. Only strings using UTF-8 encoding are valid.
+                  <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
               </listitem>
             </varlistentry>
             <varlistentry>
@@ -1422,8 +1427,14 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         <para>An object represents the data and any metadata for the files stored in the
           system. Through the ReST interface, metadata for an object can be included by adding
           custom HTTP headers to the request and the data payload as the request body. Objects
-          cannot exceed 5GB and must have names that do not exceed 1024 bytes after URL
-          encoding. However, objects larger than 5GB can be segmented and then concatenated together so that you can upload 5 GB segments and download a single concatenated object. You can work with the segments and manifests directly with HTTP requests.</para>
+          cannot exceed 5 GB and must have names that do not exceed 1024 bytes after URL
+          encoding. If you try to upload an object larger than 5 GB, a 413 (Request Entity Too Large)
+          code will be returned.
+          <!-- Error code note was / requested by JIRA tick / DOC-1-11 dsh 02-03-12 -->
+          
+          However, objects larger than 5 GB may be segmented and concatenated 
+          together so that you can upload 5 GB segments and download a single concatenated object. 
+          You can work with the segments and manifests directly with HTTP requests.</para>
         <section xml:id="Retrieve_Object-d1e1856">
           <title>Retrieve Object</title>
           <para>&GET; operations against an object are used to retrieve the object's
@@ -1762,6 +1773,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 Use <link xlink:href="http://www.epochconverter.com/">http://www.epochconverter.com/</link> 
                 for example timestamps and a batch converter.</para>
               
+              
               <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -1808,7 +1820,9 @@ Content-Length: 0
               </literallayout>
             <para>The second way to do an object copy is similar. Do a &COPY; to the existing object,
               and include the “Destination” header to specify the target of the copy. The header
-              value is the container and new object name in the form of “/container/object”.
+              value is the container and new object name in the form of “/container/object”. Unlike
+              the first method, this method does not require a Content-Length header.
+              <!--  Content Length header / note required by JIRA / tick DOC-100 dsh 02-03-12 -->
               <literallayout class="monospaced">
 COPY /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;sourceobject&gt; HTTP/1.1
 Host: &lt;storage URL&gt;
@@ -1825,6 +1839,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
               and the metadata will overwrite any conflicting keys on the target (new) object. One
               interesting use case is to copy an object to itself and set the content type to a new
               value. This is the only way to change the content type of an existing object.</para>
+        <!-- Added ServiceNet / discussion to clarify / costs of copying dsh 02-06-12 -->
+        <para>
+          Your account will not be charged when you copy or move your objects within the same Data Center
+          using the internal network host name. The name will be the Cloud Files storage URL with "<code>snet-</code>"
+          pre-pended to it. You may locate your Data Center within the control panel. The Data Center name can
+          is in the Storage URL returned when authenticating to Cloud Files.
+        </para>
         </section>
         <section xml:id="Delete_Object-d1e2264">
           <title>Delete Object</title>
@@ -1973,7 +1994,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
                 <para>Given a string value <inlineequation>
                     <mathphrase><emphasis>x</emphasis></mathphrase>
                   </inlineequation>, return object names greater in value than the specified
-                  marker.</para>
+                  marker. Only strings using UTF-8 encoding are valid.
+                  <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
               </listitem>
             </varlistentry>
             <varlistentry>
@@ -2106,6 +2128,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
       </section>
       <?hard-pagebreak?>
 
+      
+      
+
+      
+      
+      
+      
       
       <section xml:id="CDN_Container_Services-d1e2632">
         <title>CDN Container Services</title>
@@ -2386,6 +2415,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           </example>
         </section>
       </section>      
+      
+      
       
       
   </chapter>
