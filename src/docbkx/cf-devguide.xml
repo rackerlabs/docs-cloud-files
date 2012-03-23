@@ -646,6 +646,7 @@
         <para>
           Note: To CDN-enable Containers or adjust CDN attributes, requests must be sent to
             <code>cdn.clouddrive.com</code>. 
+        </para>
       </simplesect>
     </section>
     <?hard-pagebreak?>
