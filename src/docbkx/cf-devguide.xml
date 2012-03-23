@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-02-06</pubdate>
+    <pubdate>2012-03-19</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,17 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-03-19</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added Static Web and fixed doc tickets.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2012-02-06</date>
         <revdescription>
