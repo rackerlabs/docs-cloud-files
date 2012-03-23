@@ -732,6 +732,13 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <para>Object and container names must be URL-encoded and UTF-8 encoded</para>
         </listitem>
       </itemizedlist>
+      <para>
+        <info>Added paragraph to forecast info structure -- dsh -2012-03-09 </info>
+        The following sections describe the actions that may be performed within the
+        storage system. The first section addresses actions that can be taken on the account
+        level of the storage system. The second section addresses actions that may be performed
+        on containers. The third section addresses actions that may be performed on objects.
+      </para>
       <section xml:id="Storage_Account_Services-d1e977">
         <title>Storage Account Services</title>
         <para>The following operations can be performed at the account level of the URL. For
