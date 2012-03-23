@@ -1321,7 +1321,7 @@
         <section xml:id="Create_Container-d1e1694">
         <title>Create Container</title>
           <para>&PUT; operations against a storage container are used to create that
-            container.</para>
+            container. Your may create up to 500,000 containers in your Cloud Files account.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
         <para>Containers can be assigned custom metadata by including additional HTTP headers on the
