@@ -286,7 +286,7 @@
     <title>Overview</title>
     <para>Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage
       service offering. The core storage system is designed to provide a safe, secure, automatically
-      re-sizing and network accessible way to store data. You can store an unlimited quantity of
+      re-sizing and network-accessible way to store data. You can store an unlimited quantity of
       files and each file can be as large as 5 gigabytes. Users can store as much as they want and
       pay only for storage space they actually use.</para>
     <para>Additionally, Cloud Files provides a simple yet powerful way to publish and distribute
@@ -294,8 +294,8 @@
       automatically without having to worry about contracts, additional costs, or technical
       hurdles.</para>
     <para>Cloud Files allows users to store and retrieve files and CDN-enabled content via a simple
-      Web Service (ReST: Representational State Transfer) interface. There are also
-      language-specific APIs that utilize the ReST API but make it much easier for developers to
+      Web Service interface (ReST: Representational State Transfer). There are also
+      language-specific APIs that utilize the ReSTful API but make it much easier for developers to
       integrate into their applications.</para>
     <para>For more details on the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>
     </para>
@@ -426,13 +426,14 @@
     </section>
     <section xml:id="Objects-d1e479">
       <title>Objects</title>
-      <para>An object is the basic storage entity and any optional metadata that represents the
-        files you store in the Cloud Files system. When you upload data to Cloud Files, the data is
-        stored as-is (no compression or encryption) and consists of a location (container), the
-        object's name, and any metadata consisting of key/value pairs. For instance, you may choose
+      <para>Objects are the basic storage entities in Cloud Files. They represent the files and their
+        optional metadata you upload to the system. When you upload objects to Cloud Files, the data is
+        stored as-is (without compression or encryption) and consists of a location (container), the
+        object's name, and any metadata you assign consisting of key/value pairs. For instance, you may choose
         to store a backup of your digital photos and organize them into albums. In this case, each
         object could be tagged with metadata such as <code>Album : Caribbean Cruise</code> or
-          <code>Album : Aspen Ski Trip</code>.</para>
+          <code>Album : Aspen Ski Trip</code>.
+      </para>
       <para>The only restriction on object names is that they must be less than 1024 bytes in length
         after URL encoding. For example, an object name of <code>C++final(v2).txt</code> should be
         URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
@@ -613,8 +614,9 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
           <code>X-Auth-Token</code> headers. The headers can be processed as is, and any 2xx response 
           is a good response. 
           <!-- As-is processing / note requested by JIRA / DOC 110 dsh 02-03-12 -->
-          For example, a 202
-          response means the request has been accepted. Also, additional <code>X-</code> headers may
+          <phrase>
+          <info>2012-02-29</info>For example, a 202
+            response means the request has been accepted.</phrase> Also, additional <code>X-</code> headers may
           be returned. These additional headers are related to other Rackspace services and can be
           ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
           subsequent container/object operations against Cloud Files should be made against the URL
@@ -721,10 +723,10 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
       <para>The following are some requirements for the use of the storage services:</para>
       <itemizedlist>
         <listitem>
-          <para>Container names cannot exceed 256 bytes and cannot contain a '/' character</para>
+          <para>Container names may not exceed 256 bytes and cannot contain a '/' character</para>
         </listitem>
         <listitem>
-          <para>Object names cannot exceed 1024 bytes and have no character restrictions</para>
+          <para>Object names may not exceed 1024 bytes, but they have no character restrictions</para>
         </listitem>
         <listitem>
           <para>Object and container names must be URL-encoded and UTF-8 encoded</para>
@@ -1211,12 +1213,12 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             <!-- reworked this section / as path and its elements / are not supported - dsh - 02-16-12 -->
             <para>Although you cannot nest directories in Cloud Files, you can simulate 
               a hierarchical structure within a single container by adding forward slash
-              characters (<code>/</code>) in the object name. To navigate the pseudo directory
+              characters (<code>/</code>) in the object name. To navigate the pseudo-directory
               structure, you may use the <code>delimiter</code> query parameter. See the below examples
               for an illustration.</para>
             <note>
               <para>In the example below, the objects reside in a container called <code>backups</code>. 
-                Within that container, the objects are organized in a pseudo directory called <code>photos</code>. 
+                Within that container, the objects are organized in a pseudo-directory called <code>photos</code>. 
                 Keep in mind that the container name is not displayed in the example,
                 but that it is a part of the object URLs. For instance, the URL of the 
                 picture <code>me.jpg</code> is
@@ -1248,7 +1250,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             <para>
               <!-- The JIRA ticket / doc-97 subsumed / to this location - dsh - 02-03-12 --> 
               Use the delimiter parameter to limit the displayed results. Any character may be used
-              as a delimiter. However, to use <code>delimiter</code> with pseudo directories, 
+              as a delimiter. However, to use <code>delimiter</code> with pseudo-directories, 
               use the parameter slash (<code>/</code>).
             </para>
               <literallayout class="monospaced">
@@ -1256,7 +1258,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               </literallayout>
               <para>
                 The system returns status code 200 (OK) and the requested matching objects. Because
-                we use the slash, only the pseudo directory <code>photos/</code> displays.
+                we use the slash, only the pseudo-directory <code>photos/</code> displays.
                 Keep in mind that the returned values
                 from a slash <code>delimiter</code> query are not real objects. They have a content-type of 
                 application/directory and are in a subdir section of json and xml results.
@@ -1266,14 +1268,15 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               </literallayout>
               <para>
                Use the <code>prefix</code> parameter with the <code>delimiter</code> parameter 
-                to view the objects inside a pseudo directory, including further nested pseudo directories.
+                to view the objects inside a pseudo-directory, including further nested 
+                pseudo-directories.
               </para>
               <literallayout class="monospaced">
   GET /v1/AccountString/backups?prefix=photos/&#38;delimiter=/
               </literallayout>
               <para>
-                The system returns status code 200 (OK) and the objects and pseudo directories within 
-                the top level pseudo directory.
+                The system returns status code 200 (OK) and the objects and pseudo-directories within 
+                the top level pseudo-directory.
               </para>
               <literallayout class="monospaced">
   photos/animals/
@@ -1281,10 +1284,10 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   photos/plants/
               </literallayout>
               <para>
-                There is no limit to the amount of nested pseudo directories you can create. In order to
+                There is no limit to the amount of nested pseudo-directories you can create. In order to
                 navigate through them, use a longer <code>prefix</code> parameter coupled with the 
-                <code>delimiter</code> parameter. In the sample output below, there is a pseudo 
-                directory called <code>dogs</code> within the pseudo directory <code>animals</code>. 
+                <code>delimiter</code> parameter. In the sample output below, there is a 
+                pseudo-directory called <code>dogs</code> within the pseudo-directory <code>animals</code>. 
                 In order to navigate directly to the files contained within <code>dogs</code>, enter 
                 the below command.
               </para>
@@ -1292,8 +1295,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   GET /v1/AccountString/backups?prefix=photos/animals/dogs/&#38;delimiter=/
               </literallayout>              
               <para>
-                The system returns status code 200 (OK) and the objects and pseudo directories within 
-                the nested pseudo directory.
+                The system returns status code 200 (OK) and the objects and pseudo-directories within 
+                the nested pseudo-directory.
               </para>
               <literallayout class="monospaced">
   photos/animals/dogs/corgi.jpg
@@ -1381,12 +1384,9 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>
-            <emphasis role="italic">'Response '</emphasis>
-          </para>
-          <para>No content is returned. A status code of 204 (No Content) indicates success, 404
-            (Not Found) is returned if the requested container was not found, and a 409 (Conflict)
-            if the container is not empty. No response body will be generated.</para>
+          <para>No content is returned. A status code of 204 (No Content) indicates success; 404
+            (Not Found) is returned if the requested container was not found; a 409 (Conflict) is
+            returned if the container is not empty. No response body is generated.</para>
           <example><?dbfo keep-together="always"?>
             <title>Container Delete Response</title>
             <literallayout class="monospaced">
@@ -1400,8 +1400,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
         </section>
         <section xml:id="Retrieve_Container_Metadata-d1e1809">
           <title>Retrieve Container Metadata</title>
-          <para>&HEAD; operations against a storage
-          container are used to determine the number of objects, and
+          <para>&HEAD; operations against a storage container 
+            are used to determine the number of objects, and
           the total bytes of all objects stored in the
           container. Since the storage system is designed to store
           large amounts of data, care should be taken when
@@ -1877,8 +1877,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
           </example>
-          <para>No response body is returned. A status code of 204 (No Content) indicates success,
-            status 404 (Not Found) is returned when the object does not exist.</para>
+          <para>No response body is returned. A status code of 204 (No Content) indicates success;
+            status code 404 (Not Found) is returned when the object does not exist.</para>
           <example>
             <title>Object Delete Response</title>
             <literallayout class="monospaced">
@@ -1950,7 +1950,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           </example>
           <para>No response body is returned. A status code of 202
           (Accepted) indicates success; status 404 (Not Found) is
-          returned when the requested object does not exist. </para>
+          returned if the requested object does not exist. </para>
           <example>
             <title>Update Object Metadata Response</title>
             <literallayout class="monospaced">
@@ -1970,11 +1970,14 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         (CDN) account and container
       operations. All of the ReST methods described below must be issued against the CDN management
       service as defined in the <code>X-CDN-Management-Url</code> returned by a successful
-      authentication.</para>
+      authentication. See the section on authentication for more details.
+      </para>
       <section xml:id="CDN_Account_Operations-d1e2397">
-        <title>CDN Account Operations</title>
-        <para>This section describes the methods allowed against the account portion URL and conform
-        to the following format:</para>
+        <title>CDN Account Services</title>
+        <para>
+          <info>Added opening line and rephrased second -- dsh - 2012-03-09</info>
+          The following operations may be performed at the account level of the 
+          CDN account. The operations conform to the following format:</para>
         <example>
           <title>CDN HTTP Request: General Structure</title>
           <literallayout class="monospaced">
@@ -2236,8 +2239,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           </example>
           <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
           Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
-          available for the container, an <code>X-CDN-SSL-URL</code> header is returned in 
-            addition to <code>X-CDN-URL</code>. </para>
+          available for the container, an <code>X-CDN-SSL-URI</code> header is returned in 
+            addition to <code>X-CDN-URI</code>. 
+          </para>
           <example>
             <title>CDN-Enabled Container Metadata Response</title>
             <literallayout class="monospaced">
@@ -2257,8 +2261,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
           <title>Purge CDN-Enabled Containers</title>
           <para>Rackspace can perform operations against a CDN-enabled container. You can either wait for the TTL to expire or you can request the purge of an entire container. Once you have made the request via a
-          support ticket, the system purges the object from the CDN, and sends an email to an email
-          address (or multiple addresses) that you indicated through the ticket. The email address
+          support ticket, the system purges the object from the CDN, and sends an email to the address 
+          (or multiple addresses) that you indicate through the ticket. The email address
           notification is optional.</para>
          
         </section>
@@ -2406,13 +2410,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   X-Purge-Email: user@domain.com, user2@domain.com
                       </literallayout>
           </example>
-          <para>A 204 No Content response is returned. The system purges the object from the CDN,
+          <para>A 204 (No Content) response is returned. The system purges the object from the CDN,
             and sends an email to the indicated address or multiple addresses. The email address is
             optional. You can enter a comma-separated list of addresses if you want to notify more
             than one person about the deletion. A status code of 204 (No Content) indicates success;
             404 (Not Found) is returned if the requested object was never CDN-enabled, and it
-            returns a 403 if an authorization problem occurs. The CDN URL is returned in the HTTP
-            header, <code>X-CDN-URL</code>. Purging a large number of objects may take a long time, so please
+            returns a 403 (Forbidden) status code if an authorization problem occurs. The CDN URL is returned in the HTTP
+            header, <code>X-CDN-URI</code>. Purging a large number of objects may take a long time, so please
             be patient while waiting for a response. </para>
           <example>
             <title>Purge CDN-Enabled Object Response </title>
@@ -2444,7 +2448,8 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
     <section xml:id="Using_cURL-d1e2863">
       <title>Using cURL</title>
       <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
-        OS X® and can be downloaded for Windows®. For more information on cURL, visit <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
+        OS X® and can be downloaded for Windows®. For more information on cURL, 
+        visit <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se</link>. </para>
       <para>cURL allows you to transmit and receive HTTP requests and responses from the
         command-line or from within a shell script. This makes it possible to work with the ReST API
         directly without using one of the client APIs. </para>
@@ -2475,11 +2480,13 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         <title>Authentication</title>
         <para>In order to use the ReST API, you will first need to obtain a authorization token,
           which will need to be passed in for each request using the <code>X-Auth-Token</code>
-          header. The following example demonstrates how to use cURL to obtain the authorization
+          header. 
+        </para>
+        <para>
+          The following example demonstrates how to use cURL to obtain the authorization
           token and the URL of the storage system. Note that your account may be based in either the
-          US or the UK; this is not determined by your physical location but by the location of the
+          US or the UK; this is not determined by your physical location, but by the location of the
           Rackspace retail site where the account was created. This example uses the US-based URL
-          https://auth.api.rackspacecloud.com/v1.0, UK-based accounts authenticate through
           https://lon.auth.api.rackspacecloud.com/v1.0.</para>
         <example>
           <title>cURL Authenticate</title>
@@ -2580,8 +2587,6 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
    Content-Type: text/html; charset=UTF-8
    X-Trans-Id: txs56dc5b74f91419480ba485348057bfd
    Date: Wed, 07 Sep 2011 18:52:30 GMT
-
-   201 Created
 
    </computeroutput></screen>
         </example>
@@ -2689,6 +2694,5 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           language APIs in your production applications and limit <code>curl</code> to
           quick-and-easy testing/troubleshooting.</para>
       </section>
-    </section>
   </chapter>
  </book>
