@@ -817,7 +817,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               serialized in the chosen format. The sample responses below are formatted for
               readability.</para>
             <example>
-              <title>Containers Details Request: JSON</title>
+              <title>Container Details Request: JSON</title>
               <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;?format=json HTTP/1.1
   Host: storage.clouddrive.com
@@ -826,7 +826,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Containers Details Response: JSON</title>
+              <title>Container Details Response: JSON</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
@@ -841,7 +841,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </programlisting>
             </example>
             <example>
-              <title>Containers Details Request: XML</title>
+              <title>Container Details Request: XML</title>
               <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;?format=xml HTTP/1.1
   Host: storage.clouddrive.com
@@ -850,7 +850,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Containers Details Response: XML</title>
+              <title>Container Details Response: XML</title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
@@ -876,7 +876,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Containers-d1e1166">
-            <title>List Large Number of Containers</title>
+            <info>Changed title for clarity dsh 2012-03-09 </info>
+            <title>Controlling a Large List of Containers</title>
             <para>The system returns a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
               parameter. The marker indicates where the last list left off; the system returns
@@ -977,7 +978,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                 </literallayout>
         </example>
  <section xml:id="List_Objects-d1e1284">
-          <title>List Objects</title>
+          <title>List Objects in a Container</title>
           <para>&GET; operations against a storage container name are performed to
             retrieve a list of objects stored in the container. Additionally, there are a number of
             optional query parameters that can be used to refine the list results.</para>
@@ -1083,7 +1084,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             return the same status/errors codes. The sample responses below are formatted for
             readability.</para>
             <example>
-              <title>Objects Details Request: JSON </title>
+              <title>Object Details Request: JSON </title>
               <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?format=json HTTP/1.1
   Host: storage.clouddrive.com
@@ -1092,7 +1093,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                       </literallayout>
             </example>
             <example>
-              <title>Objects Details Response: JSON </title>
+              <title>Object Details Response: JSON </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
@@ -1116,7 +1117,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
 					</programlisting>
             </example>
             <example>
-              <title>Objects Details Request: XML</title>
+              <title>Object Details Request: XML</title>
               <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?format=xml HTTP/1.1
   Host: storage.clouddrive.com
@@ -1124,7 +1125,7 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
             </example>
             <example>
-              <title>Objects Details Request: XML </title>
+              <title>Object Details Request: XML </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
@@ -1155,7 +1156,8 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Objects-d1e1521">
-            <title>List Large Number of Objects</title>
+            <info>Changed title for clarity -- dsh - 2012-03-09</info>
+            <title>Controlling a Large List of Objects</title>
             <para>The system returns a maximum of 10,000 object names per request. To retrieve
               subsequent object names, another request must be made with the 'marker' parameter. The
               marker indicates where the last list left off and the system returns object names
@@ -2543,7 +2545,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           freely available. </para>
       </section>
       <section xml:id="Determining_Storage_Usage-d1e2976">
-        <title>Determining Storage Usage</title>
+        <title>Determining Storage Usage with cURL</title>
         <para>A &HEAD; request can be sent to the storage service to determine how much
           data you have stored in the system and the number of containers you are using. Use the
             <code>-X</code> switch to specify the correct HTTP method and the <code>-D</code> to
@@ -2571,7 +2573,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           total bytes stored for the entire account.</para>
       </section>
       <section xml:id="Creating_a_Storage_Container-d1e3026">
-        <title>Creating a Storage Container</title>
+        <title>Creating a Storage Container with cURL</title>
         <para> Before uploading any data to Cloud Files, you must create a storage container. You do
           this with a &PUT; request; cURL can be used for that, too.</para>
         <example>
@@ -2594,7 +2596,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
           successfully created.</para>
       </section>
       <section xml:id="Uploading_a_Storage_Object-d1e3067">
-        <title>Uploading a Storage Object</title>
+        <title>Uploading a Storage Object with cURL</title>
         <para>After creating a container, you can upload a local file. For this example, let's
           upload a screenshot image. The <code>-T</code> switch specifies the full path to the local
           file to upload. Please note that if you intend to distribute this object via the CDN you
@@ -2622,7 +2624,7 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
         </example>
       </section>
       <section xml:id="CDN-Enabling_the_Container-d1e3123">
-        <title>CDN-Enabling the Container</title>
+        <title>CDN-Enabling the Container with cURL</title>
         <para>After creating a container and storing a file in it, you can choose to share the file.
           Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
           To CDN-enable a container, issue a &PUT; request against the CDN management service. The
