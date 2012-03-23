@@ -1337,8 +1337,8 @@
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
           was created as requested. Container &PUT; requests are idempotent and a code of 202
-          (Accepted) is returned when the container already existed. If you request a PUT to a
-          container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+          (Accepted) is returned when the container already existed. If you request a &PUT; to a
+          container with an <code>X-Container-Meta-</code> prefix in the header, your &GET;/&HEAD;
           request responses carry the metadata prefix from the container in subsequent
           requests.</para>
           <example>
@@ -1368,8 +1368,8 @@
           </example>
           <para>No content is returned. A status code of 201 (Created) indicates that the container
             was created as requested. Container &PUT; requests are idempotent and a code of 202
-            (Accepted) is returned if the container existed prior to the request. If you request a PUT to a
-            container with an <code>X-Container-Meta-</code> prefix in the header, your GET/HEAD
+            (Accepted) is returned if the container existed prior to the request. If you request a &PUT; to a
+            container with an <code>X-Container-Meta-</code> prefix in the header, your &GET;/&HEAD;
             request responses carry the metadata prefix from the container in subsequent
             requests.</para>
           <example>
@@ -1963,7 +1963,8 @@
             object</link> when you need to update metadata or other
           headers such as Content-Type or CORS headers. </para>
           <para>Key names must be prefixed with <code>X-Object-Meta-</code>. A &POST; request will
-          delete all existing metadata added with a previous <code>PUT/POST</code>.</para>
+          delete all existing metadata added with a previous &PUT;/&POST;.
+          </para>
           <example>
             <title>Update Object Metadata Request</title>
             <literallayout class="monospaced">
