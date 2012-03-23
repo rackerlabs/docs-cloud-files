@@ -600,10 +600,10 @@
         <example>
           <title>Authentication Request (US-Based Account)</title>
           <literallayout class="monospaced">
-GET /v1.0 HTTP/1.1
-Host: auth.api.rackspacecloud.com
-X-Auth-User: jdoe
-X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
+  GET /v1.0 HTTP/1.1
+  Host: auth.api.rackspacecloud.com
+  X-Auth-User: jdoe
+  X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
         </example>
       </simplesect>
@@ -1838,11 +1838,11 @@ X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
               the container and object name of the source object in the form of “/container/object”.
               Also, the <code>X-Copy-From</code> &PUT; requests require a Content-Length header, even if it is zero
               (0).</para><literallayout class="monospaced">
-PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;destobject&gt; HTTP/1.1
-Host: &lt;storage URL&gt;
-X-Auth-Token: &lt;some-auth-token&gt;
-X-Copy-From: /&lt;container&gt;/&lt;sourceobject&gt;
-Content-Length: 0                    
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;destobject&gt; HTTP/1.1
+  Host: &lt;storage URL&gt;
+  X-Auth-Token: &lt;some-auth-token&gt;
+  X-Copy-From: /&lt;container&gt;/&lt;sourceobject&gt;
+  Content-Length: 0                    
               </literallayout>
             <para>The second way to do an object copy is similar. Do a &COPY; to the existing object,
               and include the “Destination” header to specify the target of the copy. The header
@@ -1850,10 +1850,10 @@ Content-Length: 0
               the first method, this method does not require a Content-Length header.
               <!--  Content Length header / note required by JIRA / tick DOC-100 dsh 02-03-12 -->
               <literallayout class="monospaced">
-COPY /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;sourceobject&gt; HTTP/1.1
-Host: &lt;storage URL&gt;
-X-Auth-Token: &lt;some-auth-token&gt;
-Destination: /&lt;container&gt;/&lt;destobject&gt;
+  COPY /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;sourceobject&gt; HTTP/1.1
+  Host: &lt;storage URL&gt;
+  X-Auth-Token: &lt;some-auth-token&gt;
+  Destination: /&lt;container&gt;/&lt;destobject&gt;
               </literallayout></para>
         <para>With both of these methods, the destination container must exist before attempting the copy.</para>
         <para>
@@ -2304,9 +2304,9 @@ Destination: /&lt;container&gt;/&lt;destobject&gt;
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Content-type: text/html
   X-CDN-Enabled: True
-  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URL: http://c10171.stream.cf0.rackcdn.com
+  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
+  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
+  X-CDN-STREAMING-URI: http://c10171.stream.cf0.rackcdn.com
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
