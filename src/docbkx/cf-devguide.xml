@@ -1444,6 +1444,69 @@
                     </literallayout>
           </example>
         </section>
+        <section xml:id="Update_Container_Metadata-d1e1900">
+          <title>Create/Update Container Metadata</title>
+          <para>
+            <info>Update container / metadata - from JIRA / doc 1-24 -- dsh 2012-03-07</info>
+            You may create any custom or arbitrary metadata headers as you find useful. They
+            must, however, take the format <code>X-Container-Meta-</code>.
+          </para>
+          <para>
+            To create or update the arbitrary container metadata, use the &POST; query.
+            Subsequent requests of the same key/value pair overwrites the previous value. 
+          </para>          
+          <example>
+            <title>Update Container Metadata Request</title>
+            <literallayout class="monospaced">
+  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Container-Meta-Book: MobyDick
+  X-Container-Meta-Subject: Whaling
+                      </literallayout>
+          </example>
+          <para>No response body is returned. A status code of 204
+            (No Content) indicates success; status 404 (Not Found) is
+            returned when the requested container does not exist. </para>
+          <example>
+            <title>Update Container Metadata Response</title>
+            <literallayout class="monospaced">
+  HTTP/1.1 204 No Content
+  Date: Thu, 07 Mar 2012 20:42:51 GMT
+  Server: Apache
+  Content-Length: 0
+  Content-Type: text/plain; charset=UTF-8
+                    </literallayout>
+          </example>
+          To confirm your metadata changes, perform a &HEAD; request on the container. Do not send
+          the metadata in your &HEAD; request.
+          <example>
+            <title>View Container Metadata Request</title>
+            <literallayout class="monospaced">
+  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+                       </literallayout>
+          </example>
+          <example>
+            <title>View Container Metadata Response</title>
+            <literallayout class="monospaced">
+HTTP/1.1 204 No Content
+X-Container-Object-Count: 0
+X-Trans-Id: tx028b40d228534c759f4d5fa69f8cf7fd
+X-Container-Meta-Book: MobyDick
+X-Container-Meta-Subject: Whaling
+Accept-Ranges: bytes
+Date: Mon, 12 Mar 2012 16:40:20 GMT
+Content-Length: 0
+X-Container-Bytes-Used: 0
+                    </literallayout>
+          </example>          
+          <!-- Note: using POST with null value should delete a metadata header, but
+            this method is not functional with all tools, so we are leaving it out for now.
+             A future patch may come where using "-" (dash) for the value will delete it.  dsh - 2012-0309 -->
+        </section>
+        
       </section>
       <section xml:id="Storage_Object_Services-d1e1848">
         <title>Storage Object Services</title>
