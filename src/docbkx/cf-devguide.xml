@@ -55,7 +55,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added Static Web and fixed doc tickets.
+              <para>Fixed doc tickets.
               </para>
             </listitem>
           </itemizedlist>
@@ -2557,110 +2557,91 @@ X-Container-Bytes-Used: 0
       </section>      
       
       
-      <section xml:id="Static Web">
-        <title>Static Web Services</title>
-        <para>This section shows how you can use your CDN-enabled
-          containers to create static websites in Cloud Files.          
-        </para>
-        
-        <section xml:id="Create_Static_Website-dle4000">
-          <title>Create Static Website</title>
-          <para >
-            You may use your Cloud Files account to create a static website 
-            on the World Wide Web. First, you will CDN-enable a container.
-            Any HTML or static web pages you put in the container will
-            become available through a static website once you set the 
-            <code>X-Container-Meta-Web</code> header to index.html or 
-            other index page of your choice. You may also create subdirectories
-            in your website by creating pseudo-directories, as outlined
-            in the pseudo directory section of this guide. Each of the 
-            pseudo-directories becomes a subdirectory in the website. 
-            
-          </para>
-          <para>
-            The page you set for <code>X-Container-Meta-Web</code> becomes the 
-            index page for every subdirectory in your website; each of your
-            pseudo-directories should contain a file with that name. So, if you
-            set <code>X-Container-Meta-Web</code> to index.html, you should have an
-            index.html page in each pseudo-directory. If you do not have the 
-            named index page, visits to myhost/subdir/ will return a 404
-            error. 
-            
-          </para>
-          <variablelist>
-            <title>Set up a Static Website
-            </title>
-            <varlistentry>
-              <term>1.</term>
-              <listitem>
-                <para>
-                Upload your pages a container.  
-                </para>
-              </listitem>
-            </varlistentry>
-            
-            <varlistentry>
-              <term>2.</term>
-              <listitem>
-                <para>
-                  &POST; the <code>X-Container-Meta-Web-Index</code> to set the index 
-                  or other primary page of your website.
-                </para>
-              </listitem>
-            </varlistentry>
-            
-            <varlistentry>
-             <term>3.</term>
-              <listitem>
-                <para>
-                  CDN-Enable your container.
-                </para>
-              </listitem>
-            </varlistentry>
-           
-            <varlistentry>  
-              <term>4.</term>
-              <listitem>
-                <para>
-                  Go to your domain host and set up a CNAME to your CDN URL.
-                </para>
-              </listitem>
-            </varlistentry>
-          </variablelist>
-          <para>
-            Once your container is configured for Static Web and your domain
-            host has your CNAME recorded, you will get the following results.
-          </para>
-          <example>
-            <title>Container Setup for Static Web Site</title>
-            <literallayout class="monospaced">
+        </example>
+      </section>
+    </section>
+    <section xml:id="StaticWeb" security="writeronly">
+      <title>Static Web Services</title>
+      <para>This section shows how you can use your CDN-enabled
+        containers to create static websites in Cloud Files. </para>
+      <section xml:id="Create_Static_Website-dle4000">
+        <title>Create Static Website</title>
+        <para> You may use your Cloud Files account to create a static
+          website on the World Wide Web. First, you will CDN-enable a
+          container. Any HTML or static web pages you put in the
+          container will become available through a static website
+          once you set the <code>X-Container-Meta-Web</code> header to
+          index.html or other index page of your choice. You may also
+          create subdirectories in your website by creating
+          pseudo-directories, as outlined in the pseudo directory
+          section of this guide. Each of the pseudo-directories
+          becomes a subdirectory in the website. </para>
+        <para> The page you set for <code>X-Container-Meta-Web</code>
+          becomes the index page for every subdirectory in your
+          website; each of your pseudo-directories should contain a
+          file with that name. So, if you set
+            <code>X-Container-Meta-Web</code> to index.html, you
+          should have an index.html page in each pseudo-directory. If
+          you do not have the named index page, visits to
+          myhost/subdir/ will return a 404 error. </para>
+        <variablelist>
+          <title>Set up a Static Website </title>
+          <varlistentry>
+            <term>1.</term>
+            <listitem>
+              <para> Upload your pages a container. </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>2.</term>
+            <listitem>
+              <para> &POST; the
+                  <code>X-Container-Meta-Web-Index</code> to set the
+                index or other primary page of your website. </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>3.</term>
+            <listitem>
+              <para> CDN-Enable your container. </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>4.</term>
+            <listitem>
+              <para> Go to your domain host and set up a CNAME to your
+                CDN URL. </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para> Once your container is configured for Static Web and
+          your domain host has your CNAME recorded, you will get the
+          following results. </para>
+        <example>
+          <title>Container Setup for Static Web Site</title>
+          <literallayout class="monospaced">
   container/index.html
   container/page2.html
   container/subdir/index.html
   container/subdir/pageX.html
             </literallayout>
-          </example>
-          <para>
-            In the results below, the user's CNAME is myhost, and the 
-            <code>X-Container-Meta-Web</code> is set to index.html. The results
-            on the right of the example are the pages that display in the 
-            Web browser.
-          </para>
-          <example>
-            <title>Static Web Site Enabled Container Results</title>
-            <literallayout class="monospaced">
+        </example>
+        <para> In the results below, the user's CNAME is myhost, and
+          the <code>X-Container-Meta-Web</code> is set to index.html.
+          The results on the right of the example are the pages that
+          display in the Web browser. </para>
+        <example>
+          <title>Static Web Site Enabled Container Results</title>
+          <literallayout class="monospaced">
   http://myhost                     Displays container/index.html
   http://myhost/page2.html          Displays container/page2.html
   http://myhost/subdir              Displays container/subdir/index.html
   http://myhost/subdir/             Displays container/subdir/index.html
   http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html
              </literallayout>
-          </example>        
-        </section>
-      </section>      
-      
-      
-      
+        </example>
+      </section>
+    </section>
   </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples and Troubleshooting</title>
