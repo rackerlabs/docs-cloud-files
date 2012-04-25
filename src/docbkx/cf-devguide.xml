@@ -2653,7 +2653,264 @@ X-Container-Bytes-Used: 0
         </example>
       </section>
     </section>
-  </chapter>
+    </chapter>
+    
+    
+    <chapter xml:id="Public_Access_to_Account-d1a4440">
+      <title>Public Access to Your Cloud Files Account</title>
+      <para>
+        This section describes ways you can allow others to post or retrieve objects
+        from your Cloud Files account. With the methods described here, users do not
+        need your password or login information in order to have access to your account.
+      </para>
+      <section xml:id="TempURL-d1a4450">
+        <title>TempURL</title>
+        <para>
+          The Temporary URL feature (TempURL) allows you to create limited-time 
+          Internet addresses which allow you to grant limited access to your Cloud 
+          Files account. Using TempURL, you may allow others to retrieve or put 
+          objects in your Cloud Files account for as long or as short a time as 
+          you wish. Access to the TempURL is independent of whether or not your 
+          account is CDN-enabled. Even if you don't CDN-enable a directory, you 
+          can still grant temporary public access through a TempURL.
+        </para>
+        <para>
+          This feature is useful if you want to allow a limited audience to download 
+          a file from your Cloud Files account or website. You can give out the 
+          TempURL and know that after a specified time, no one will be able to 
+          access your object through the address. Or, if you want to allow your 
+          audience to upload objects into your Cloud Files account, you can give 
+          out a TempURL. After the specified time expires, no one will be able to 
+          upload to the address.
+        </para>
+        <para>
+          Additionally, you need not worry about time running out when someone 
+          downloads a large object. If the time expires while a file is being retrieved, 
+          the download will continue until it is finished. Only the link will expire.
+        </para>
+        <para>
+          When you create a TempURL, Cloud Files validates a GET- or PUT-accessible URL
+          which is time-limited.
+        </para>
+        <section xml:id="Set_Account_Metadata-d1a4460">
+          <title>Set Account Metadata Key</title>
+          <para>
+            To create a Temporary URL, you must first set the metadata header 
+            <code>X-Account-Meta-Temp-URL-Key</code> on your Cloud Files account 
+            to a key that only you know. This key can be any arbitrary sequence as it is  
+            for encoding your account. 
+          </para>
+          <para>
+            Once the key is set, you may not change it while you still want others 
+            to be able to access your TempURL. If you change it, the TempURL becomes 
+            invalid (within 60 seconds, which is the cache time for a key) and others 
+            will not be allowed to access it. 
+          </para>
+          <example>
+            <title>Set Account Metadata Key for Public Access</title>
+            <literallayout class="monospaced">
+  POST /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Account-Meta-Temp-Url-Key: &lt;your key&gt;
+</literallayout>           
+          </example>
+          <para>Any 2xx response indicates success.</para>
+        </section>
+        <section xml:id="Create_TempURL-d1a444">
+          <title>Create the TempURL</title>        
+        <para>
+          After the metadata is set, you must create an HMAC-SHA1 (RFC 2104) signature. 
+          When you generate the TempURL, you determine which method of access you 
+          will grant users, &GET; or &PUT;. You also determine the path to the object 
+          or container you are granting access to. If you allow &PUT; access to your 
+          Cloud Files account, you must indicate the object prefix that will be used 
+          for each file uploaded. Lastly, set the time in UNIX epoch notation, 
+          which is when the TempURL expires.
+        </para>
+        <para>
+          In the Python example below, a URL is generated for an object (my_cat.jpg), 
+          which will be available for 60 seconds.
+        </para>
+          <example>
+            <title>Create TempURL</title>
+            <literallayout class="monospaced">
+  import hmac
+  from hashlib import sha1
+  from time import time
+  method = 'GET'
+  expires = int(time() + 60)
+  path = '/v1/AUTH_account/container/my_cat.jpg'
+  key = 'mykey'
+  hmac_body = '%s\n%s\n%s' % (method, expires, path)
+  sig = hmac.new(key, hmac_body, sha1).hexdigest()
+            </literallayout>
+          </example>
+          <para>
+            Be certain to use the full path, from the /v1/ onward.
+          </para>
+          <para>
+            In this example, the signature becomes da39a3ee5e6b4b0d3255bfef95601890afd80709 
+            and expires is 1323479485. On your website, you would provide a link to the 
+            below URL:
+          </para>
+          <literallayout class="monospaced">
+  https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
+  temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+  temp_url_expires=1323479485
+           </literallayout>
+        <para>
+          If you do not provide users with the exact TempURL, they will get 401 
+          (Unauthorized) status errors. &HEAD; queries are allowed if &GET; or &PUT; 
+          are allowed.    
+        </para>
+        </section>
+      </section>
+        <section xml:id="FormPost-d1a555">
+          <title>FormPost</title>
+          <para>
+            FormPost lets you offer your website audience a way to upload objects to your 
+            Cloud Files account through a web form. FormPost works by translating a browser 
+            form request into a object PUT in Cloud Files. Once you enable FormPost on your 
+            account, you need only create the form in your website using the guidelines below. 
+          </para>
+          <para>
+            As with all objects in Cloud Files, the object file size limit is 5 gb. If your 
+            users try to uplaod an object larger than 5 gb, they will get a file size error.
+           </para>
+          <section xml:id="Set_Account_Metadata-d1a666">
+            <title>Set Account Metadata Key</title>
+            <para>
+              To allow FormPost actions on your Cloud Files account, you must first set the 
+              metadata header  
+              <code>X-Account-Meta-Temp-URL-Key</code> on your Cloud Files account to a key that 
+              only you know. This key can be any arbitrary sequence as it is  
+              for encoding your account. 
+            </para>
+            <para>
+              Once the key is set, you may not change it while you still want others to access 
+              your account. If you change it, the actions from a FormPost become invalid 
+              (within 60 seconds, which is the cache time for a key).
+            </para>
+            <example>
+              <title>Set Account Metadata Key for Public Access</title>
+              <literallayout class="monospaced">
+  POST /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Account-Meta-Temp-Url-Key:  &lt;your key&gt;
+</literallayout>
+            </example>
+            <para>Any 2xx response indicates success.</para>
+          </section>
+          <section xml:id="Set_Account_Metadata-d1a777">
+          <title>Create the Form</title>
+            <para>
+              To communicate between your website and your Cloud Files account, 
+              create a form using the following format in your website:
+            </para>
+          <example> 
+            <title>Layout of Web Form</title>
+            <literallayout class="monospaced">
+  &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
+    &lt;input type="hidden" name="redirect" value="&lt;redirect-url&gt;" /&gt;
+    &lt;input type="hidden" name="max_file_size" value="&lt;bytes&gt;" /&gt;
+    &lt;input type="hidden" name="max_file_count" value="&lt;count&gt;" /&gt;
+    &lt;input type="hidden" name="expires" value="&lt;unix-timestamp&gt;" /&gt;
+    &lt;input type="hidden" name="signature" value="&lt;hmac&gt;" /&gt;
+    &lt;input type="file" name="file1" />&lt;br /&gt;
+    &lt;input type="submit" /&gt;
+  &lt;/form&gt;
+            </literallayout>
+          </example>
+            <para>
+              <emphasis>Required:</emphasis> <code>Form action</code> is the Cloud Files URL (CF-url) to the destination where 
+              files will be uploaded. For instance, 
+              <code>https://storage.clouddrive.com/v1/CF_xer7_34/container</code>. The name of each 
+              uploaded object will have the &lt;CF-url&gt; appended to the front of it. 
+                Your users upload directly to root of the container. 
+            </para>
+            <para>
+              You may also include a prefix to separate uploads, such as assigning 
+              each user a certain prefix:
+              <code>https://storage.clouddrive.com/v1/CF_xer7_34/container/user_prefix</code>.
+              </para>
+              <para>
+                <emphasis>Required:</emphasis> The form <code>method</code> must be 
+                "<code>POST</code>" and the <code>enctype</code> must be set as 
+                “<code>multipart/form-data</code>”.
+              </para>
+              <para>              
+                <emphasis>Optional:</emphasis> The <code>redirect</code> attribute 
+                is the URL of the page that displays on your website 
+              after the form processes. The URL will have status and message query 
+              parameters added to it, indicating the HTTP status code for the upload 
+              (2xx is success) and a possible message for further information if there 
+              is an error, such as “max_file_size exceeded”.
+              </para>
+              <para>              
+                <emphasis>Required:</emphasis> The <code>max_file_size</code> 
+                attribute must be included and indicates the 
+              largest single file upload allowed, in bytes. Although you may limit the 
+              size of the individual file uploaded to your Cloud Files account here, 
+              the max_file_size may not exceed 5 gb.
+              </para>
+              <para>              
+                <emphasis>Required:</emphasis> The <code>max_file_count</code> attribute indicates the maximum number of 
+              files that can be uploaded with the form.
+              </para>
+              <para>              
+                <emphasis>Required:</emphasis> The <code>expires</code> attribute is the Unix timestamp when the form is 
+              invalidated. This gives your website users a limited time to have the 
+              form open. Time must be in Unix epoch format.
+              </para>
+              <para>
+                <emphasis>Required:</emphasis> The <code>signature</code> attribute is the HMAC-SHA1 signature of the form. 
+                Here is sample code for computing the signature in Python:
+              </para>
+            <example>
+              <title>Generate Signature for Form Post</title>
+            <literallayout class="monospaced">
+  import hmac
+  from hashlib import sha1
+  from time import time
+  path = '/v1/account/container/object_prefix'
+  redirect = 'https://myserver.com/some-page'
+  max_file_size = 104857600
+  max_file_count = 10
+  expires = int(time() + 600)
+  key = 'mykey'
+  hmac_body = '%s\n%s\n%s\n%s\n%s' % (path, redirect,
+      max_file_size, max_file_count, expires)
+  signature = hmac.new(key, hmac_body, sha1).hexdigest()
+              </literallayout>
+            <para>
+              Be certain to use the full path in your Cloud Files account, from the /v1/ onward.
+            </para>
+            <para>
+              <code>Key</code> is the value of the <code>X-Account-Meta-Temp-URL-Key</code> 
+              header set for the account.
+            </para>
+            <para>
+              The <code>max_file_count</code> used in generating the signature must be the same as 
+              that in the web form. 
+            </para>
+            </example>
+            <para>  
+              <emphasis>Required:</emphasis> The <code>type="file"</code> field 
+              defines the form file field. 
+              At least one entry is required to allow your users to select and upload
+              a file, but additional fields may be added for multiple files. The number 
+              of entries should not, however, exceed the <code>max_file_count</code>. 
+              Each <code>type="file"</code> field must have a different name.
+            </para>
+            <para>
+            Note that the <code>type="file"</code> field(s) must be at the end of the form code
+            in order for Cloud Files to process the uploads properly.
+            </para>           
+          </section>
+        </section>
+    </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples and Troubleshooting</title>
     <para>This section introduces a command-line utility and demonstrates interacting with the ReST
@@ -2663,7 +2920,10 @@ X-Container-Bytes-Used: 0
       if you see problems. Object names must be less than 1024 bytes in length after URL encoding. 
       For example, an object name of C++final(v2).txt should be URL encoded as C%2B%2Bfinal%28v2%29.txt and therefore be 24 bytes in length 
       rather than the expected 16.</para>
-    <para>Also, tokens expire after 24 hours. Be sure you request a new token programmatically only when one you have is expired.</para>
+    <para>Also, tokens expire after 24 hours. Be sure you request a new token 
+      programmatically only when one you have is expired.
+    </para>
+  
     <section xml:id="Using_cURL-d1e2863">
       <title>Using cURL</title>
       <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
