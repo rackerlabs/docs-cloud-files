@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-03-19</pubdate>
+    <pubdate>2012-04-25</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -51,11 +51,22 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2012-04-25</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added TempURL and FormPost.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2012-03-19</date>
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Fixed doc tickets.
+              <para>Fixed doc tickets. 
               </para>
             </listitem>
           </itemizedlist>
@@ -67,7 +78,8 @@
           <itemizedlist spacing="compact">
             <listitem>
               <para>Revisions to clarify issues brought up in doc tickets.
-              Formatted HEAD like other commands. Standardized on URL. Added ServiceNet information.</para>
+              Formatted HEAD like other commands. Standardized on URL. 
+              Added Expiring Objects and ServiceNet information.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -197,8 +209,7 @@
             </listitem>
             <listitem>
               <para>Updated examples to contain SSL as appropriate.</para>
-            </listitem>
-            
+            </listitem>   
           </itemizedlist>
         </revdescription>
       </revision>
