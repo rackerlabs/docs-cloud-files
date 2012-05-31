@@ -86,6 +86,33 @@
 			  </postProcess>
 			</configuration>			
                     </execution>
+                    <execution>
+                        <id>g3</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cf-releasenotes.xml</includes>
+                            <!-- Supress chapter numbers -->
+                            <chapterAutolabel>0</chapterAutolabel>
+                            <security>external</security>
+                            <xincludeSupported>true</xincludeSupported>
+                            <!--The entry below enables Disqus-->
+                            <enableDisqus>1</enableDisqus>
+                            <!-- <disqusShortname>rc-docs-beta</disqusShortname>  -->
+                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                            <!-- <googleAnalyticsId>UA-26410723-1</googleAnalyticsId> -->
+                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
+                            <!-- The entry below inserts Twitter, Facebook, and Google+ icons in the webhelp output -->
+                            <!-- Enable this when you go out of beta!!! -->
+                            <socialIcons>1</socialIcons>
+                            <metaRobots>1</metaRobots>
+                            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                            <failOnValidationError>no</failOnValidationError>
+                         </configuration>
+                    </execution>
                 </executions>
                 <configuration>
                     <xincludeSupported>true</xincludeSupported>
