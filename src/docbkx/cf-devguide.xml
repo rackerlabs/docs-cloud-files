@@ -2109,8 +2109,9 @@
           <para>No response body is returned. Metadata is returned as HTTP headers. A status code of
             200 (OK) indicates success; status 404 (Not Found) is returned when the object
             does not exist.</para>
+          
           <para>
-            <info>JIRA ticket 1-/ 21 metadata / response clarity -- dsh  2012-03-07</info>            
+            <remark security="writeronly">JIRA ticket 1-/ 21 metadata / response clarity -- dsh  2012-03-07</remark>            
             You may note that the &HEAD; return code for the object is different from that of the 
             container. &HEAD; requests do not return a message body in the response, so anything in 
             the 2xx response code range notes success. When a &HEAD; query is run against the 
@@ -2180,128 +2181,142 @@
       </section>
     </chapter>
     <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
-      <title>API Operations for CDN Services</title>
-      <para>The following is a description of API calls that can be used for the Content Delivery Network
-        (CDN) account and container
-      operations. All of the ReST methods described below must be issued against the CDN management
-      service as defined in the <code>X-CDN-Management-Url</code> returned by a successful
-      authentication. See the section on authentication for more details.
-      </para>
-      <section xml:id="CDN_Account_Operations-d1e2397">
-        <title>CDN Account Services</title>
-        <para>
-          <info>Added opening line and rephrased second -- dsh - 2012-03-09</info>
-          The following operations may be performed at the account level of the 
-          CDN account. The operations conform to the following format:</para>
-        <example>
-          <title>CDN HTTP Request: General Structure</title>
-          <literallayout class="monospaced">
+    <title>API Operations for CDN Services</title>
+    <para>The following is a description of API calls that can be used
+      for the Content Delivery Network (CDN) account and container
+      operations. All of the ReST methods described below must be
+      issued against the CDN management service as defined in the
+        <code>X-CDN-Management-Url</code> returned by a successful
+      authentication. See the section on authentication for more
+      details. </para>
+    <section xml:id="CDN_Account_Operations-d1e2397">
+      <title>CDN Account Services</title>
+      <para>
+        <remark security="writeronly">Added opening line and rephrased second -- dsh -
+          2012-03-09</remark> The following operations may be performed
+        at the account level of the CDN account. The operations
+        conform to the following format:</para>
+      <example>
+        <title>CDN HTTP Request: General Structure</title>
+        <literallayout class="monospaced">
   METHOD /v1/&lt;account&gt; HTTP\1.1
                 </literallayout>
-        </example>
-        <section xml:id="List_CDN-Enabled_Containers-d1e2414">
-          <title>List CDN-Enabled Containers</title>
-          <para>&GET; operations against the <code>X-CDN-Management-Url</code> for an
-            account are performed to retrieve a list of existing CDN-enabled containers. Like the
-            storage system’s &GET; container, the CDN management service allows the
-            following query parameters:</para>
-          <variablelist>
-            <title>Query Parameters</title>
-            <varlistentry>
-              <term><code>limit</code></term>
-              <listitem>
-                <para>For an integer value <inlineequation>
-                    <mathphrase><emphasis>n</emphasis></mathphrase>
-                  </inlineequation>, limits the number of results to <inlineequation>
-                    <mathphrase><emphasis>n</emphasis></mathphrase>
-                  </inlineequation> values.</para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><code>marker</code></term>
-              <listitem>
-                <para>Given a string value <inlineequation>
-                    <mathphrase><emphasis>x</emphasis></mathphrase>
-                  </inlineequation>, return object names greater in value than the specified
-                  marker. Only strings using UTF-8 encoding are valid.
-                  <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><code>format</code></term>
-              <listitem>
-                <para>Specify either <code>json</code> or <code>xml</code> to return the respective
-                  serialized response.</para>
-              </listitem>
-            </varlistentry>
-            <varlistentry>
-              <term><code>enabled_only</code></term>
-              <listitem>
-                <para>Set to <code>true</code> to return only the CDN-enabled containers.</para>
-              </listitem>
-            </varlistentry>
-          </variablelist>
-          <para>Using the <code>format</code> query parameter, you can request the output in a
-          serialized format in either JSON or XML.</para>
-          <para>Using <code>limit</code> and <code>marker</code> provides a mechanism to iterate
-          through the entire list of containers. Keep in mind that the value for marker will need to
-          be URL encoded before issuing the request.</para>
-          <para>There is also support for filtering the list to return only the list of containers
-          that are currently CDN-enabled. Passing in a query parameter of
-            <code>?enabled_only=true</code> will suppress any <emphasis>private</emphasis>
-          containers from appearing in the list.</para>
-          <para>The list of CDN-enabled containers is returned in the response body, one container
-            name per line.</para>
-          <example><?dbfo keep-together="always"?>
-            <title>CDN-Enabled Containers List Request</title>
-            <literallayout class="monospaced">
+      </example>
+      <section xml:id="List_CDN-Enabled_Containers-d1e2414">
+        <title>List CDN-Enabled Containers</title>
+        <para>&GET; operations against the
+            <code>X-CDN-Management-Url</code> for an account are
+          performed to retrieve a list of existing CDN-enabled
+          containers. Like the storage system’s &GET; container, the
+          CDN management service allows the following query
+          parameters:</para>
+        <variablelist>
+          <title>Query Parameters</title>
+          <varlistentry>
+            <term><code>limit</code></term>
+            <listitem>
+              <para>For an integer value <inlineequation>
+                  <mathphrase><emphasis>n</emphasis></mathphrase>
+                </inlineequation>, limits the number of results to <inlineequation>
+                  <mathphrase><emphasis>n</emphasis></mathphrase>
+                </inlineequation> values.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><code>marker</code></term>
+            <listitem>
+              <para>Given a string value <inlineequation>
+                  <mathphrase><emphasis>x</emphasis></mathphrase>
+                </inlineequation>, return object names greater in
+                value than the specified marker. Only strings using
+                UTF-8 encoding are valid.
+                <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><code>format</code></term>
+            <listitem>
+              <para>Specify either <code>json</code> or
+                  <code>xml</code> to return the respective serialized
+                response.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><code>enabled_only</code></term>
+            <listitem>
+              <para>Set to <code>true</code> to return only the
+                CDN-enabled containers.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>Using the <code>format</code> query parameter, you can
+          request the output in a serialized format in either JSON or
+          XML.</para>
+        <para>Using <code>limit</code> and <code>marker</code>
+          provides a mechanism to iterate through the entire list of
+          containers. Keep in mind that the value for marker will need
+          to be URL encoded before issuing the request.</para>
+        <para>There is also support for filtering the list to return
+          only the list of containers that are currently CDN-enabled.
+          Passing in a query parameter of
+            <code>?enabled_only=true</code> will suppress any
+            <emphasis>private</emphasis> containers from appearing in
+          the list.</para>
+        <para>The list of CDN-enabled containers is returned in the
+          response body, one container name per line.</para>
+        <example>
+          <?dbfo keep-together="always"?>
+          <title>CDN-Enabled Containers List Request</title>
+          <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
-          </example>
-          <para>A list of containers is returned in the response body, one container per line. A 204
-            (No Content) HTTP return code will be passed back if the account has no
-            containers.</para>
-          <example>
-            <title>CDN-Enabled Containers List Response</title>
-            <literallayout class="monospaced">
+        </example>
+        <para>A list of containers is returned in the response body,
+          one container per line. A 204 (No Content) HTTP return code
+          will be passed back if the account has no containers.</para>
+        <example>
+          <title>CDN-Enabled Containers List Response</title>
+          <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Thu, 08 Sep 2011 14:35:45 GMT
   Server: Apache/2.2.14 (Ubuntu)
   Transfer-Encoding: chunked
   Content-Type: text/plain
                     </literallayout>
-            <literallayout class="monospaced">
+          <literallayout class="monospaced">
   images
   movies
                     </literallayout>
-          </example>
-          <section xml:id="Serialized_List_Output-d1e2566">
-            <title>Serialized List Output</title>
-            <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
-              the CDN management URL, the service will serve extended container information
-              serialized in the chosen format. Other than the <code>?format=xml|json</code>
-              parameter, it will return the same status/errors codes. The sample responses below are
-              formatted for readability.</para>
-            <example>
-              <title>CDN-Enabled Containers Details Request: JSON </title>
-              <literallayout class="monospaced">
+        </example>
+        <section xml:id="Serialized_List_Output-d1e2566">
+          <title>Serialized List Output</title>
+          <para>If a <code>format=xml</code> or
+              <code>format=json</code> argument is appended to the CDN
+            management URL, the service will serve extended container
+            information serialized in the chosen format. Other than
+            the <code>?format=xml|json</code> parameter, it will
+            return the same status/errors codes. The sample responses
+            below are formatted for readability.</para>
+          <example>
+            <title>CDN-Enabled Containers Details Request: JSON </title>
+            <literallayout class="monospaced">
   GET /v1/&lt;account&gt;?format=json HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
                     </literallayout>
-            </example>
-            <example>
-              <title>CDN-Enabled Containers Details Response: JSON </title>
-              <literallayout class="monospaced">
+          </example>
+          <example>
+            <title>CDN-Enabled Containers Details Response: JSON </title>
+            <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Thu, 08 Sep 2011 14:41:29 GMT
   Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
-              <programlisting language="javascript">
+            <programlisting language="javascript">
   [
   {"name":"test_container",
    "cdn_enabled":"true",
@@ -2312,25 +2327,27 @@
    "cdn_streaming_uri":"https://c2.r2.stream.cf1.rackcdn.com"}
   ]
                     </programlisting>
-            </example>
-            <example><?dbfo keep-together="always"?>
-              <title>CDN-Enabled Containers Details Request: XML</title>
-              <literallayout class="monospaced">
+          </example>
+          <example>
+            <?dbfo keep-together="always"?>
+            <title>CDN-Enabled Containers Details Request: XML</title>
+            <literallayout class="monospaced">
   GET /v1/&lt;account&gt;?format=xml HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
                     </literallayout>
-            </example>
-            <example>
-              <title>CDN-Enabled Containers Details Response: XML</title>
-              <literallayout class="monospaced">
+          </example>
+          <example>
+            <title>CDN-Enabled Containers Details Response:
+              XML</title>
+            <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Fri, 09 Sep 2011 17:57:28 GMT
   Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 267
   Content-Type: application/xml; charset=utf-8
                     </literallayout>
-              <programlisting language="xml">
+            <programlisting language="xml">
           
   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
   &lt;account name="WidgetsRNotUs.invalid"&gt;
@@ -2351,90 +2368,88 @@
    &lt;/container&gt;
   &lt;/account&gt;
                     </programlisting>
-            </example>
-          </section>
+          </example>
         </section>
       </section>
-      <?hard-pagebreak?>
-
-      
-      
-
-      
-      
-      
-      
-      
-      <section xml:id="CDN_Container_Services-d1e2632">
-        <title>CDN Container Services</title>
-        <para>This section documents the ReST operations against the CDN management service that can
-          be performed on containers. All operations are valid HTTP request methods and will
-          resemble this format:</para>
-        <example>
-          <title>CDN-Enabled Container HTTP Request: General Structure</title>
-          <literallayout class="monospaced">
+    </section>
+    <?hard-pagebreak?>
+    <section xml:id="CDN_Container_Services-d1e2632">
+      <title>CDN Container Services</title>
+      <para>This section documents the ReST operations against the CDN
+        management service that can be performed on containers. All
+        operations are valid HTTP request methods and will resemble
+        this format:</para>
+      <example>
+        <title>CDN-Enabled Container HTTP Request: General
+          Structure</title>
+        <literallayout class="monospaced">
   METHOD /v1/&lt;account&gt;/&lt;container&gt; HTTP/1.1
                 </literallayout>
-        </example>
-          <para>
-            <info>Reworked these two paragraphs to clarify connection between CDN and Storage URLs -- dsh - 2012-03-09</info>
-            When you CDN-enable a container, all the objects within it become available 
-            through the CDN. Similarly, once a container is CDN-enabled, any objects 
-            added to it in the storage service become CDN-enabled. Once you CDN-enable 
-            a container, its publically-available URL can be found under the header <code>X-CDN-URI</code>,
-            and its objects may be accessed at <code>X-CDN-URI/objectName</code>. By knowing this
-            pattern, you may pre-generate the URL for an object before it is added to the container.
-        </para>        
+      </example>
+      <para>
+        <remark security="writeronly">Reworked these two paragraphs to clarify connection
+          between CDN and Storage URLs -- dsh - 2012-03-09</remark> When
+        you CDN-enable a container, all the objects within it become
+        available through the CDN. Similarly, once a container is
+        CDN-enabled, any objects added to it in the storage service
+        become CDN-enabled. Once you CDN-enable a container, its
+        publically-available URL can be found under the header
+          <code>X-CDN-URI</code>, and its objects may be accessed at
+          <code>X-CDN-URI/objectName</code>. By knowing this pattern,
+        you may pre-generate the URL for an object before it is added
+        to the container. </para>
+      <para> When you enable a container in the CDN service, you
+        automatically generate URLs for SSL and streaming usage. They
+        are listed under the <code>X-CDN-SSL-URI</code> and
+          <code>X-CDN-STREAMING-URI</code> headers, respectively. </para>
+      <section xml:id="CDN-Enabled_Container-d1e2665">
+        <title>CDN-Enable a Container</title>
         <para>
-          When you enable a container in the CDN service, you automatically generate URLs 
-          for SSL and streaming usage. They are listed under the <code>X-CDN-SSL-URI</code> and 
-          <code>X-CDN-STREAMING-URI</code> headers, respectively.                 
-        </para>
-        <section xml:id="CDN-Enabled_Container-d1e2665">
-          <title>CDN-Enable a Container</title>
-          <para>
-            <info>Reworked this section to highlight TTL -- dsh - 2012-03-12</info>
-            
-            Before a container can be CDN-enabled, it must exist in the storage system. 
-            To CDN-enable the container, you will &PUT; it to the publicURL created 
-            under Cloud Files during Authentication. (In the examples below, this URL is 
-            referred to as cdn.clouddrive.com.) When a container is CDN-enabled, 
-            any objects stored in that container are publicly accessible over a CDN by combining 
-            the container's CDN URL with the object name (<code>X-CDN-URI/objectName</code>).
-          </para>
-          <para>
-             Any CDN-accessed objects will be cached in the CDN for specified amount of time called
-             the TTL, or Time to Live. The default TTL value is 259200 seconds, or 72 hours. Each time
-             the object is accessed after a TTL expiration, the CDN refetches and caches the object
-             for the TTL duration.
-          </para>
-          <para>
-            You may specify the TTL for an object by including the HTTP header <code>X-TTL: integer_seconds</code>.
-            Setting the TTL is the same as setting the HTTP <code>Expires</code> and
-            <code>Cache-Control</code> headers for the cached object. The minimum TTL
-            is 15 minutes (900 seconds) and the maximum is 50 years (range of 900 to 1577836800 seconds).
-            Setting a TTL for a long time, however, does not guarantee that the 
-            content will stay populated on CDN edge servers for the entire five-year period. The most 
-            popular objects stay cached based on the edge location's logic.
-          </para> 
-          <example>
-            <title>Container CDN-Enable Request</title>
-            <literallayout class="monospaced">
+          <remark security="writeronly">Reworked this section to highlight TTL -- dsh -
+            2012-03-12</remark> Before a container can be CDN-enabled,
+          it must exist in the storage system. To CDN-enable the
+          container, you will &PUT; it to the publicURL created under
+          Cloud Files during Authentication. (In the examples below,
+          this URL is referred to as cdn.clouddrive.com.) When a
+          container is CDN-enabled, any objects stored in that
+          container are publicly accessible over a CDN by combining
+          the container's CDN URL with the object name
+            (<code>X-CDN-URI/objectName</code>). </para>
+        <para> Any CDN-accessed objects will be cached in the CDN for
+          specified amount of time called the TTL, or Time to Live.
+          The default TTL value is 259200 seconds, or 72 hours. Each
+          time the object is accessed after a TTL expiration, the CDN
+          refetches and caches the object for the TTL duration. </para>
+        <para> You may specify the TTL for an object by including the
+          HTTP header <code>X-TTL: integer_seconds</code>. Setting the
+          TTL is the same as setting the HTTP <code>Expires</code> and
+            <code>Cache-Control</code> headers for the cached object.
+          The minimum TTL is 15 minutes (900 seconds) and the maximum
+          is 50 years (range of 900 to 1577836800 seconds). Setting a
+          TTL for a long time, however, does not guarantee that the
+          content will stay populated on CDN edge servers for the
+          entire five-year period. The most popular objects stay
+          cached based on the edge location's logic. </para>
+        <example>
+          <title>Container CDN-Enable Request</title>
+          <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-TTL: 2592000
   X-Log-Retention: True
                     </literallayout>
-          </example>
-          <para>No content is returned. A status code of 201 (Created) indicates that the container
-            was CDN-enabled as requested. The response will contain an HTTP header to indicate the
-            URL that can be combined with object names to serve objects through the CDN. If the
-            container is already CDN-enabled, a 202 (Accepted) response is returned and the TTL is
-            adjusted.</para>
-          <example>
-            <title>Container CDN-Enable Response </title>
-            <literallayout class="monospaced">
+        </example>
+        <para>No content is returned. A status code of 201 (Created)
+          indicates that the container was CDN-enabled as requested.
+          The response will contain an HTTP header to indicate the URL
+          that can be combined with object names to serve objects
+          through the CDN. If the container is already CDN-enabled, a
+          202 (Accepted) response is returned and the TTL is
+          adjusted.</para>
+        <example>
+          <title>Container CDN-Enable Response </title>
+          <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Wed, 07 Sep 2011 19:04:30 GMT 
   Server: Apache/2.2.14 (Ubuntu)
@@ -2443,52 +2458,57 @@
   X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
   X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
-          </example>
-          <para>
-            <info>JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh - 2012-03-07</info>
-            In order to remove the container from the CDN, change the 
-          <code>X-Log-Retention</code> flag to <code>False</code>, as in the request below. Please
-            note, however, that objects remain public until their TTL expires.
-          </para>
-          <example>
-            <title>Container CDN-Disable Request</title>
-            <literallayout class="monospaced">
+        </example>
+        <para>
+          <remark security="writeronly">JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh
+            - 2012-03-07</remark> In order to remove the container from
+          the CDN, change the <code>X-Log-Retention</code> flag to
+            <code>False</code>, as in the request below. Please note,
+          however, that objects remain public until their TTL expires. </para>
+        <example>
+          <title>Container CDN-Disable Request</title>
+          <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-TTL: 2592000
   X-CDN-Enabled: False
                     </literallayout>
-          </example>
-        </section>
-        <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
-          <title>List a CDN-Enabled Container's Metadata</title>
-          <para>&HEAD; operations against a CDN-enabled container are used to determine
-            the CDN attributes of the container.</para>
-          <para>If the container is (or ever has been) CDN-enabled, the URL, TTL, enabled status,
-          and log retention status are returned in the response headers. Its CDN URL can be combined
-          with any object name within the container to form the publicly accessible URL for that
-          object for distribution over a CDN system. The TTL value is the number of seconds that the
-          object will be cached in the CDN system before being refetched. The enabled status
-          indicates whether the container is currently marked to allow public serving of objects via
-          CDN. The log_retention setting specifies whether the CDN access logs should be collected
-          and stored in the Cloud Files storage system.</para>
-          <example>
-            <title>CDN-Enabled Container Metadata Request</title>
-            <literallayout class="monospaced">
+        </example>
+      </section>
+      <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
+        <title>List a CDN-Enabled Container's Metadata</title>
+        <para>&HEAD; operations against a CDN-enabled container are
+          used to determine the CDN attributes of the
+          container.</para>
+        <para>If the container is (or ever has been) CDN-enabled, the
+          URL, TTL, enabled status, and log retention status are
+          returned in the response headers. Its CDN URL can be
+          combined with any object name within the container to form
+          the publicly accessible URL for that object for distribution
+          over a CDN system. The TTL value is the number of seconds
+          that the object will be cached in the CDN system before
+          being refetched. The enabled status indicates whether the
+          container is currently marked to allow public serving of
+          objects via CDN. The log_retention setting specifies whether
+          the CDN access logs should be collected and stored in the
+          Cloud Files storage system.</para>
+        <example>
+          <title>CDN-Enabled Container Metadata Request</title>
+          <literallayout class="monospaced">
   HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
-          </example>
-          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
-          Found) if it does not. The CDN attributes are returned in HTTP headers. If SSL is
-          available for the container, an <code>X-CDN-SSL-URI</code> header is returned in 
-            addition to <code>X-CDN-URI</code>. 
-          </para>
-          <example>
-            <title>CDN-Enabled Container Metadata Response</title>
-            <literallayout class="monospaced">
+        </example>
+        <para>The HTTP return code will be 204 (No Content) if the
+          container exists, and 404 (Not Found) if it does not. The
+          CDN attributes are returned in HTTP headers. If SSL is
+          available for the container, an <code>X-CDN-SSL-URI</code>
+          header is returned in addition to <code>X-CDN-URI</code>. </para>
+        <example>
+          <title>CDN-Enabled Container Metadata Response</title>
+          <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Content-type: text/html
@@ -2499,33 +2519,37 @@
   X-TTL: 86400
   X-Log-Retention: True
                           </literallayout>
-          </example>
-        </section>
-        
-        <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
-          <title>Purge CDN-Enabled Containers</title>
-          <para>Rackspace can perform operations against a CDN-enabled container. You can either wait for the TTL to expire or you can request the purge of an entire container. Once you have made the request via a
-          support ticket, the system purges the object from the CDN, and sends an email to the address 
-          (or multiple addresses) that you indicate through the ticket. The email address
-          notification is optional.</para>
-         
-        </section>
-        <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
-          <title>Update CDN-Enabled Container Metadata</title>
-          <para>You may use the &POST; request against a CDN-enabled container to adjust CDN
-            attributes. <phrase>You may not, however, set the arbitrary 
-            header metadata that is allowed under the storage service. The only metadata
-            that may be changed on the CDN is <code>X-Log-Retention,</code>
-            <code>X-CDN-enabled</code>, and <code>X-TTL</code></phrase>. 
-          </para>
-          <para>
-            The &POST; operation can be used to set a new TTL cache expiration value
-            or to enable/disable public sharing over the CDN. Keep in mind that if you have content
-            currently cached in the CDN, setting your container back to private will NOT purge the
-            CDN cache; you will have to wait for the TTL to expire.</para>
-          <example>
-            <title>Update CDN-Enabled Container Metadata Request</title>
-            <literallayout class="monospaced">
+        </example>
+      </section>
+      <section
+        xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
+        <title>Purge CDN-Enabled Containers</title>
+        <para>Rackspace can perform operations against a CDN-enabled
+          container. You can either wait for the TTL to expire or you
+          can request the purge of an entire container. Once you have
+          made the request via a support ticket, the system purges the
+          object from the CDN, and sends an email to the address (or
+          multiple addresses) that you indicate through the ticket.
+          The email address notification is optional.</para>
+      </section>
+      <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
+        <title>Update CDN-Enabled Container Metadata</title>
+        <para>You may use the &POST; request against a CDN-enabled
+          container to adjust CDN attributes. <phrase>You may not,
+            however, set the arbitrary header metadata that is allowed
+            under the storage service. The only metadata that may be
+            changed on the CDN is <code>X-Log-Retention,</code>
+            <code>X-CDN-enabled</code>, and
+            <code>X-TTL</code></phrase>. </para>
+        <para> The &POST; operation can be used to set a new TTL cache
+          expiration value or to enable/disable public sharing over
+          the CDN. Keep in mind that if you have content currently
+          cached in the CDN, setting your container back to private
+          will NOT purge the CDN cache; you will have to wait for the
+          TTL to expire.</para>
+        <example>
+          <title>Update CDN-Enabled Container Metadata Request</title>
+          <literallayout class="monospaced">
   POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
@@ -2533,14 +2557,17 @@
   X-CDN-Enabled: True
   X-Log-Retention: True
                       </literallayout>
-          </example>
-          <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN URL, the CDN SSL URL,
-          and the CDN Streaming URL are returned in the HTTP headers, <code>X-CDN-URL</code>, 
-            <code>X-CDN-SSL-URL</code>, and <code>X-CDN-STREAMING-URL</code>. </para>
-          <example>
-            <title>Update CDN-Enabled Container Metadata Response</title>
-            <literallayout class="monospaced">
+        </example>
+        <para>No content is returned. A status code of 204 (No
+          Content) indicates success; 404 (Not Found) is returned if
+          the requested container was not found. The CDN URL, the CDN
+          SSL URL, and the CDN Streaming URL are returned in the HTTP
+          headers, <code>X-CDN-URL</code>, <code>X-CDN-SSL-URL</code>,
+          and <code>X-CDN-STREAMING-URL</code>. </para>
+        <example>
+          <title>Update CDN-Enabled Container Metadata
+            Response</title>
+          <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2011 18:57:07 GMT
   Server: Apache
@@ -2550,31 +2577,35 @@
   X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
   X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
-          </example>
-        </section>
-        <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
-          <title>CDN-Enabled Containers Served via SSL</title>
-          <para>&HEAD; operations against a CDN-enabled container can also return an SSL
-          URL. When SSL is available, another header gets returned with calls to the CDN Management
-          URL, <code>X-CDN-SSL-URL</code>, in addition to <code>X-CDN-URL</code>. This 
-            feature enables users to use https protocol in URLs used for requesting objects 
-            stored in CDN-enabled containers. </para>
-          
-          <example>
-            <title>CDN-Enabled Container Metadata Requests with SSL</title>
-            <literallayout class="monospaced">
+        </example>
+      </section>
+      <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
+        <title>CDN-Enabled Containers Served via SSL</title>
+        <para>&HEAD; operations against a CDN-enabled container can
+          also return an SSL URL. When SSL is available, another
+          header gets returned with calls to the CDN Management URL,
+            <code>X-CDN-SSL-URL</code>, in addition to
+            <code>X-CDN-URL</code>. This feature enables users to use
+          https protocol in URLs used for requesting objects stored in
+          CDN-enabled containers. </para>
+        <example>
+          <title>CDN-Enabled Container Metadata Requests with
+            SSL</title>
+          <literallayout class="monospaced">
   HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
-          </example>
-          <para>No content is returned. A status code of 204 (No Content) indicates success; 404 (Not
-          Found) is returned if the requested container was not found. The CDN SSL URL is returned
-          in the HTTP header, <code>X-CDN-SSL-URL</code>, along with the CDN streaming URL,
+        </example>
+        <para>No content is returned. A status code of 204 (No
+          Content) indicates success; 404 (Not Found) is returned if
+          the requested container was not found. The CDN SSL URL is
+          returned in the HTTP header, <code>X-CDN-SSL-URL</code>,
+          along with the CDN streaming URL,
             <code>X-CDN-STREAMING-URL</code>. </para>
-          <example>
-            <title>CDN-Enabled Container Metadata with SSL</title>
-            <literallayout class="monospaced">
+        <example>
+          <title>CDN-Enabled Container Metadata with SSL</title>
+          <literallayout class="monospaced">
   HTTPS/1.1 204 No Content
   Date: Thu, 07 Jan 2011 18:57:07 GMT
   Server: Apache
@@ -2589,28 +2620,33 @@
   Connection: close
   Content-Type: text/plain; charset=UTF-8
                       </literallayout>
-          </example>
-        </section>
-        <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
-          <title>Streaming CDN-Enabled Containers </title>
-          <para>&HEAD; operations against a CDN-enabled container can also return a streaming
-            URL. Like SSL, streaming is always enabled, and you use the streaming URL for links to content that you want to stream, such as video. </para>
-          
-          <example>
-            <title>CDN-Enabled Container Metadata Requests (Streaming Enabled)</title>
-            <literallayout class="monospaced">
+        </example>
+      </section>
+      <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
+        <title>Streaming CDN-Enabled Containers </title>
+        <para>&HEAD; operations against a CDN-enabled container can
+          also return a streaming URL. Like SSL, streaming is always
+          enabled, and you use the streaming URL for links to content
+          that you want to stream, such as video. </para>
+        <example>
+          <title>CDN-Enabled Container Metadata Requests (Streaming
+            Enabled)</title>
+          <literallayout class="monospaced">
   HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                           </literallayout>
-          </example>
-          <para>No content is returned. A status code of 204 (No Content) indicates success; 404
-          (Not Found) is returned if the requested container was not found. The CDN SSL URL is
-          returned in the HTTP header, <code>X-CDN-SSL-URL</code>, along with the CDN streaming URL,
+        </example>
+        <para>No content is returned. A status code of 204 (No
+          Content) indicates success; 404 (Not Found) is returned if
+          the requested container was not found. The CDN SSL URL is
+          returned in the HTTP header, <code>X-CDN-SSL-URL</code>,
+          along with the CDN streaming URL,
             <code>X-CDN-STREAMING-URL</code>. </para>
-          <example>
-            <title>CDN-Enabled Container Metadata (Streaming Enabled)</title>
-            <literallayout class="monospaced">
+        <example>
+          <title>CDN-Enabled Container Metadata (Streaming
+            Enabled)</title>
+          <literallayout class="monospaced">
   HTTPS/1.1 204 No Content
   Date: Thu, 07 Sep 2011 18:57:07 GMT
   Server: Apache
@@ -2625,62 +2661,70 @@
   Connection: close
   Content-Type: text/plain; charset=UTF-8
                       </literallayout>
-          </example>
-        </section>
+        </example>
       </section>
-      
-      <section xml:id="CDN_Object_Services">
-        <title>CDN Object Services</title>
-        <para>This section documents the ReST operations against the CDN management service that can
-          be performed on objects. Any objects stored in a CDN-enabled container are publicly
-          accessible over a CDN by combining the container's CDN URL with the object name. Any
-          objects accessed will be cached in the CDN for Time To Live or TTL(value) number of seconds; the default
-          is 72 hours or 259200 seconds. On the next access after the TTL expiration, the CDN will
-          re-fetch the object and cache it again for another TTL(value) seconds. The minimum TTL
-          that can be set is 15 minutes (900 seconds); the maximum TTL is 50 years (range of 900 to 1577836800 seconds). </para>
-        
-        <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
-          <title>Purge CDN-Enabled Objects</title>
-          <para>You can perform &DELETE; operations against a CDN-enabled object when you find it absolutely necessary to remove the object from public access and you cannot wait for the TTL to expire.  
-            The situation for object purges should be limited to times when it
-            could have serious personal, business, or security consequences if it remained in the CDN.
-            For example, suppose someone published your company's quarterly earnings too early.
-            Perhaps the timing of the publish was incorrect, and you need to remove it from public
-            view. You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be
-            notified by email that the object has been purged. There are two methods for purging
-            content from the edge: the method for purging individual objects is available through the API, and the method for purging entire
-            containers is available by filing a support ticket.</para>
-          <example>
-            <title>Purge CDN-Enabled Object</title>
-            <literallayout class="monospaced">
+    </section>
+    <section xml:id="CDN_Object_Services">
+      <title>CDN Object Services</title>
+      <para>This section documents the ReST operations against the CDN
+        management service that can be performed on objects. Any
+        objects stored in a CDN-enabled container are publicly
+        accessible over a CDN by combining the container's CDN URL
+        with the object name. Any objects accessed will be cached in
+        the CDN for Time To Live or TTL(value) number of seconds; the
+        default is 72 hours or 259200 seconds. On the next access
+        after the TTL expiration, the CDN will re-fetch the object and
+        cache it again for another TTL(value) seconds. The minimum TTL
+        that can be set is 15 minutes (900 seconds); the maximum TTL
+        is 50 years (range of 900 to 1577836800 seconds). </para>
+      <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
+        <title>Purge CDN-Enabled Objects</title>
+        <para>You can perform &DELETE; operations against a
+          CDN-enabled object when you find it absolutely necessary to
+          remove the object from public access and you cannot wait for
+          the TTL to expire. The situation for object purges should be
+          limited to times when it could have serious personal,
+          business, or security consequences if it remained in the
+          CDN. For example, suppose someone published your company's
+          quarterly earnings too early. Perhaps the timing of the
+          publish was incorrect, and you need to remove it from public
+          view. You can manually purge CDN-enabled objects without
+          having to wait for the TTL to expire, and you can optionally
+          be notified by email that the object has been purged. There
+          are two methods for purging content from the edge: the
+          method for purging individual objects is available through
+          the API, and the method for purging entire containers is
+          available by filing a support ticket.</para>
+        <example>
+          <title>Purge CDN-Enabled Object</title>
+          <literallayout class="monospaced">
   DELETE /&lt;api version&gt;/&lt;account&gt;/&lt;object&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-Purge-Email: user@domain.com, user2@domain.com
                       </literallayout>
-          </example>
-          <para>A 204 (No Content) response is returned. The system purges the object from the CDN,
-            and sends an email to the indicated address or multiple addresses. The email address is
-            optional. You can enter a comma-separated list of addresses if you want to notify more
-            than one person about the deletion. A status code of 204 (No Content) indicates success;
-            404 (Not Found) is returned if the requested object was never CDN-enabled, and it
-            returns a 403 (Forbidden) status code if an authorization problem occurs. The CDN URL is returned in the HTTP
-            header, <code>X-CDN-URI</code>. Purging a large number of objects may take a long time, so please
-            be patient while waiting for a response. </para>
-          <example>
-            <title>Purge CDN-Enabled Object Response </title>
-            <literallayout class="monospaced">
+        </example>
+        <para>A 204 (No Content) response is returned. The system
+          purges the object from the CDN, and sends an email to the
+          indicated address or multiple addresses. The email address
+          is optional. You can enter a comma-separated list of
+          addresses if you want to notify more than one person about
+          the deletion. A status code of 204 (No Content) indicates
+          success; 404 (Not Found) is returned if the requested object
+          was never CDN-enabled, and it returns a 403 (Forbidden)
+          status code if an authorization problem occurs. The CDN URL
+          is returned in the HTTP header, <code>X-CDN-URI</code>.
+          Purging a large number of objects may take a long time, so
+          please be patient while waiting for a response. </para>
+        <example>
+          <title>Purge CDN-Enabled Object Response </title>
+          <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 13 Jan 2010 18:57:07 GMT
   Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
                       </literallayout>
-          </example>
-        </section>
-      </section>      
-      
-      
         </example>
       </section>
     </section>
