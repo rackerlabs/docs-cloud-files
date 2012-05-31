@@ -2684,27 +2684,29 @@
         </example>
       </section>
     </section>
-    <section xml:id="StaticWeb" security="writeronly">
+    <section xml:id="StaticWeb">
       <title>Static Web Services</title>
-      <para>This section shows how you can use your CDN-enabled
+      <para>
+        <remark security="writeronly">Added for 2012-05-14 release - dsh</remark>
+        This section shows how you can use your CDN-enabled
         containers to create static websites in Cloud Files. </para>
       <section xml:id="Create_Static_Website-dle4000">
         <title>Create Static Website</title>
         <para> You may use your Cloud Files account to create a static
-          website on the World Wide Web. First, you will CDN-enable a
-          container. Any HTML or static web pages you put in the
+          website on the World Wide Web. First, you must CDN-enable a
+          container. Any HTML or static web pages in the
           container will become available through a static website
-          once you set the <code>X-Container-Meta-Web</code> header to
+          once you set the <code>X-Container-Meta-Web-Index</code> header to
           index.html or other index page of your choice. You may also
           create subdirectories in your website by creating
           pseudo-directories, as outlined in the pseudo directory
           section of this guide. Each of the pseudo-directories
           becomes a subdirectory in the website. </para>
-        <para> The page you set for <code>X-Container-Meta-Web</code>
+        <para> The page you set for <code>X-Container-Meta-Web-Index</code>
           becomes the index page for every subdirectory in your
           website; each of your pseudo-directories should contain a
           file with that name. So, if you set
-            <code>X-Container-Meta-Web</code> to index.html, you
+            <code>X-Container-Meta-Web-Index</code> to index.html, you
           should have an index.html page in each pseudo-directory. If
           you do not have the named index page, visits to
           myhost/subdir/ will return a 404 error. </para>
@@ -2713,7 +2715,7 @@
           <varlistentry>
             <term>1.</term>
             <listitem>
-              <para> Upload your pages a container. </para>
+              <para> Upload your pages to a container. </para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2738,7 +2740,7 @@
             </listitem>
           </varlistentry>
         </variablelist>
-        <para> Once your container is configured for Static Web and
+        <para>Once your container is configured for Static Web and
           your domain host has your CNAME recorded, you will get the
           following results. </para>
         <example>
@@ -2751,7 +2753,7 @@
             </literallayout>
         </example>
         <para> In the results below, the user's CNAME is myhost, and
-          the <code>X-Container-Meta-Web</code> is set to index.html.
+          the <code>X-Container-Meta-Web-Index</code> is set to index.html.
           The results on the right of the example are the pages that
           display in the Web browser. </para>
         <example>
@@ -2764,6 +2766,41 @@
   http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html
              </literallayout>
         </example>
+      </section>
+      
+      <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
+        <title>Set Error Pages for Static Website</title>
+        <para> 
+          <remark security="writeronly">Added for 2012-05-14 release - dsh </remark>
+          You may create and set custom error pages for visitors to your website; 
+          currently, only 401 (Unauthorized) and 404 (Not Found) errors are supported. 
+          To do this, set the metadata header, <code>X-Container-Meta-Web-Error</code>.
+        </para>
+        <para>
+          Error pages are served with the &lt;status&gt; code prepended to the name 
+          of the error page you set. For instance, if you set 
+          <code>X-Container-Meta-Web-Error</code> to <code>error.html</code>, 
+          401 errors will display the page <code>401error.html</code>. Similarly, 404 errors 
+          will display <code>404error.html</code>. You must have both of these pages created 
+          in your container when you set the <code>X-Container-Meta-Web-Error</code> 
+          metadata, or your site will display generic error pages.
+        </para>
+        <para>
+          You need only set the <code>X-Container-Meta-Web-Error</code> metadata once 
+          for your entire static website.          
+        </para>
+        <example>
+          <title>Set Error Pages for Static Website</title>
+          <literallayout>
+  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Container-Meta-Web-Error: error.html            
+          </literallayout>
+        </example>
+        <para>
+          Any 2xx response indicates success.
+        </para>
       </section>
     </section>
     </chapter>
