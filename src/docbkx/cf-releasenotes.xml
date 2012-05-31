@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xml:id="cf-releasenotes"
+    version="5.0">
+  <?rax  pdf.url="../../../cf-releasenotes-latest.pdf" canonical.url.base="http://docs.rackspace.com/cm/api/v1.0/cf-releasenotes/content"?> 
+    <title>Cloud Files Release Notes</title>
+
+    <info>
+		<author>
+			<personname>
+				<firstname/>
+				<surname/>
+			</personname>
+			<affiliation>
+				<orgname>Rackspace Cloud</orgname>
+			</affiliation>
+		</author>
+		<copyright>
+			<year>2010</year>
+			<year>2011</year>
+			<year>2012</year>
+			<holder>Rackspace US, Inc.</holder>
+		</copyright>
+		<releaseinfo>API v1</releaseinfo>
+		<productname>Cloud Files</productname>
+		<pubdate>2012-06-01</pubdate>
+		<legalnotice role="rs-api">
+			<annotation>
+				<remark>Copyright details are filled in by the template.</remark>
+			</annotation>
+		</legalnotice>
+		<abstract>
+			<para>This document is intended for software developers
+				interested in developing applications using the
+				Rackspace Cloud Files API. </para>
+		</abstract>
+		<revhistory>
+			<revision>
+				<date>2012-06-01</date>
+				<revdescription>
+					<para>June 1 2012 Release</para>
+				</revdescription>
+			</revision>
+		</revhistory>
+    	<legalnotice role="rs-api">
+    		<annotation>
+    			<remark>Copyright details are filled in by the template.</remark>
+    		</annotation>
+    	</legalnotice>
+    </info>
+	<chapter xml:id="cmv1.2">
+		<?dbhtml stop-chunking?>
+		<title>Jun 01, 2012</title>
+		<para>Addition of Object Versioning and Static Web.</para>
+
+<!-- New Features -->
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para><emphasis role="bold">Static Web &amp; Custom Error Page for Static Web</emphasis></para>
+				<para>
+					Use Cloud Files to create a Web site that uses your containers and objects
+					to deliver content on the World Wide Web. Create a custom error page for your
+					users so that they don't get generic, unbranded error pages like 404 pages.</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Object Versioning</emphasis></para>
+				<para>
+					Keep track of previous versions of objects from a container.
+					Assign a container to hold the non-current versions so that
+					when you make content changes to an object, previous versions
+					are stored automatically and marked with a timestamp.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+<!-- Enchancements --> 		
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>There were no enchacements to existing functionality in this release.
+				</para>
+			</listitem>
+		</itemizedlist>
+
+<!-- Resolved Issues --> 
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>There were no outstanding issues for this release.</para>
+			</listitem>
+		</itemizedlist>
+		
+<!-- Documentation Changes --> 		
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Fixed a typo in <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>
+				</para>
+			</listitem>
+			<listitem>
+				<para>Clarified language in  <emphasis role="italic">Cloud Files Introduction</emphasis>
+				</para>
+			</listitem>
+			<listitem>
+				<para>Added text and examples for Static Web, Static Web Custom Error Page, and
+					Object Versioning in the <emphasis role="italic">Cloud Files API Developer Guide</emphasis>
+				</para>
+				<para><link
+					xlink:href="http://docs.rackspace.com/cf/api/v1.0/cf-devguide/content/index.html"
+					>docs.rackspace.com/cf/api/v1.0/cf-devguide/content/index.html</link>.
+				</para>
+			</listitem>			
+			
+			
+		</itemizedlist>
+		<itemizedlist>
+			<title>Talk to Us</title>
+			<para xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
+				Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Join us in our chat room at: Freenode IRC at #cloudfiles</para>
+				<para>Or click the following link:</para>
+				<para><link
+					xlink:href="http://webchat.freenode.net?channels=cloudfiles&amp;uio=d4"
+					>Webchat</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>You can also provide feedback using our feedback form:</para>
+				<para><link
+					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/6849-cloud-files"
+					>Product Feedback Forum</link></para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Get support here:</para>
+				<para>
+					<link xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do">File a ticket here</link></para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	
+</book>
