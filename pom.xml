@@ -46,6 +46,27 @@
                 <version>1.0.9</version>
                 <executions>		 
                     <execution>
+                        <id>g1</id>
+                        <goals>
+                            <goal>generate-pdf</goal>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cf-intro.xml</includes>
+                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
+                            <postProcess>
+                                <copy
+                                    todir="target/docbkx/webhelp/cf-intro/content/figures">
+                                    <fileset dir="src/docbkx/figures">
+                                        <include name="**/*.png"/>
+                                        <exclude name="**/CFinterfaces.png"/>
+                                    </fileset>
+                                </copy>
+                            </postProcess>
+                        </configuration>			
+                    </execution>
+                    <execution>
 		      <id>g2</id>
                         <goals>
                             <goal>generate-pdf</goal>
@@ -54,6 +75,7 @@
                         <phase>generate-sources</phase>
 			<configuration>
 			  <includes>cf-devguide.xml</includes>
+		<security>external</security>
 			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
 			  <postProcess>
 			    <copy
@@ -64,27 +86,6 @@
 			    </copy>
 			  </postProcess>
 			</configuration>
-                    </execution>
-                    <execution>
-		      <id>g1</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-			<configuration>
-			  <includes>cf-intro.xml</includes>
-			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
-			  <postProcess>
-			    <copy
-				todir="target/docbkx/webhelp/cf-intro/content/figures">
-			      <fileset dir="src/docbkx/figures">
-				<include name="**/*.png"/>
-				<exclude name="**/CFinterfaces.png"/>
-			      </fileset>
-			    </copy>
-			  </postProcess>
-			</configuration>			
                     </execution>
                     <execution>
                         <id>g3</id>
