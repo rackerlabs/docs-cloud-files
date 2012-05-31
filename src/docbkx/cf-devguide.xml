@@ -460,7 +460,11 @@
         after URL encoding. For example, an object name of <code>C++final(v2).txt</code> should be
         URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
         rather than the expected 16.</para>
-      <para>Cloud Files has a limit on the size of a single uploaded object; by default this is 5 GB. However, the download size of a single object is virtually unlimited with the concept of segmentation. Segments of the larger object are uploaded and a special manifest file is created that, when downloaded, sends all the segments concatenated as a single object. This also offers much greater upload speed with the possibility of parallel uploads of the segments.</para>
+      <para>Cloud Files has a limit on the size of a single uploaded object; by default this is 5 GB. 
+        However, the download size of a single object is virtually unlimited with the concept 
+        of segmentation. Segments of the larger object are uploaded and a special manifest file 
+        is created that, when downloaded, sends all the segments concatenated as a single object. 
+        This also offers much greater upload speed with the possibility of parallel uploads of the segments.</para>
       <para>For metadata, you should not exceed 90 individual key/value pairs for any one object and
         the total byte length of all key/value pairs should not exceed 4KB (4096 bytes).</para>
     </section>
@@ -637,7 +641,7 @@
           is a good response. 
           <!-- As-is processing / note requested by JIRA / DOC 110 dsh 02-03-12 -->
           <phrase>
-          <info>2012-02-29</info>For example, a 202
+          <remark security="writeronly">2012-02-29</remark>For example, a 202
             response means the request has been accepted.</phrase> Also, additional <code>X-</code> headers may
           be returned. These additional headers are related to other Rackspace services and can be
           ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
@@ -759,7 +763,7 @@
         </listitem>
       </itemizedlist>
       <para>
-        <info>Added paragraph to forecast info structure -- dsh -2012-03-09 </info>
+        <remark security="writeronly">Added paragraph to forecast info structure -- dsh -2012-03-09 </remark>
         The following sections describe the actions that may be performed within the
         storage system. The first section addresses actions that can be taken on the account
         level of the storage system. The second section addresses actions that may be performed
@@ -909,9 +913,8 @@
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Containers-d1e1166">
-            <info>Changed title for clarity dsh 2012-03-09 </info>
             <title>Controlling a Large List of Containers</title>
-            <para>The system returns a maximum of 10,000 container names per request. To
+            <remark security="writeronly">Changed title for clarity dsh 2012-03-09 </remark><para>The system returns a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
               parameter. The marker indicates where the last list left off; the system returns
               container names greater than the marker, up to 10,000 results again. Note that the ‘marker’
@@ -1189,8 +1192,8 @@
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Objects-d1e1521">
-            <info>Changed title for clarity -- dsh - 2012-03-09</info>
             <title>Controlling a Large List of Objects</title>
+            <remark security="writeronly">Changed title for clarity -- dsh - 2012-03-09</remark>
             <para>The system returns a maximum of 10,000 object names per request. To retrieve
               subsequent object names, another request must be made with the 'marker' parameter. The
               marker indicates where the last list left off and the system returns object names
@@ -1344,7 +1347,7 @@
         <section xml:id="Create_Container-d1e1694">
         <title>Create Container</title>
           <para>&PUT; operations against a storage container are used to create that
-            container. Your may create up to 500,000 containers in your Cloud Files account.</para>
+            container. You may create up to 500,000 containers in your Cloud Files account.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
         <para>Containers can be assigned custom metadata by including additional HTTP headers on the
@@ -1407,7 +1410,7 @@
         </section>
         <section xml:id="Delete_Container-d1e1765">
           <title>Delete Container</title>
-          <info>Edited first two paragrpahs for clarity -- dsh - 2012-03-09</info>
+          <remark security="writeronly">Edited first two paragrpahs for clarity -- dsh - 2012-03-09</remark>
           <para>&DELETE; operations against a storage container permanently
             remove it. The container must be empty before it can be deleted.</para>
           <para>A &HEAD; request against the container will list any objects it contains.</para>
@@ -1470,7 +1473,7 @@
         <section xml:id="Update_Container_Metadata-d1e1900">
           <title>Create/Update Container Metadata</title>
           <para>
-            <info>Update container / metadata - from JIRA / doc 1-24 -- dsh 2012-03-07</info>
+            <remark security="writeronly">Update container / metadata - from JIRA / doc 1-24 -- dsh 2012-03-07</remark>
             You may create any custom or arbitrary metadata headers as you find useful. They
             must, however, take the format <code>X-Container-Meta-</code>.
           </para>
@@ -1501,8 +1504,10 @@
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
+          <para>
           To confirm your metadata changes, perform a &HEAD; request on the container. Do not send
           the metadata in your &HEAD; request.
+          </para>
           <example>
             <title>View Container Metadata Request</title>
             <literallayout class="monospaced">
@@ -1514,15 +1519,15 @@
           <example>
             <title>View Container Metadata Response</title>
             <literallayout class="monospaced">
-HTTP/1.1 204 No Content
-X-Container-Object-Count: 0
-X-Trans-Id: tx028b40d228534c759f4d5fa69f8cf7fd
-X-Container-Meta-Book: MobyDick
-X-Container-Meta-Subject: Whaling
-Accept-Ranges: bytes
-Date: Mon, 12 Mar 2012 16:40:20 GMT
-Content-Length: 0
-X-Container-Bytes-Used: 0
+  HTTP/1.1 204 No Content
+  X-Container-Object-Count: 0
+  X-Trans-Id: tx028b40d228534c759f4d5fa69f8cf7fd
+  X-Container-Meta-Book: MobyDick
+  X-Container-Meta-Subject: Whaling
+  Accept-Ranges: bytes
+  Date: Mon, 12 Mar 2012 16:40:20 GMT
+  Content-Length: 0
+  X-Container-Bytes-Used: 0
                     </literallayout>
           </example>          
           <!-- Note: using POST with null value should delete a metadata header, but
@@ -1852,7 +1857,7 @@ X-Container-Bytes-Used: 0
                     </literallayout>
           </example>
         </section>
-          <section xml:id="Expiring_Objects-e1e3228">
+          <section xml:id="Expiring_Objects-e1e3228"> <!-- begin 4.3.2.6 -->
             <title>Expiring Objects with the X-Delete-After and X-Delete-At Headers</title>
             <para>When an object is assigned either an <code>X-Delete-After</code>
               or <code>X-Delete-At</code> header when doing a &PUT; or &POST; on the
