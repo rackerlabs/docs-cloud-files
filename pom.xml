@@ -43,7 +43,7 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.1.1-SNAPSHOT</version>
+                <version>1.0.9</version>
                 <executions>		 
                     <execution>
 		      <id>g2</id>
@@ -93,7 +93,8 @@
                     <enableDisqus>1</enableDisqus>
                     <!-- <enableDisqus>intranet</enableDisqus> -->
                     <feedbackEmail>david.hendler@rackspace.com, sami.moran@rackspace.com</feedbackEmail>
-		    <socialIcons>1</socialIcons>
+                    <googleAnalyticsId>UA-23102455-4</googleAnalyticsId>
+		    <useDisqusId>0</useDisqusId>
                 </configuration>
             </plugin>
         </plugins>

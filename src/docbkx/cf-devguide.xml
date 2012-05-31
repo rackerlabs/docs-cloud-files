@@ -626,7 +626,7 @@
           is a good response. 
           <!-- As-is processing / note requested by JIRA / DOC 110 dsh 02-03-12 -->
           <phrase>
-          <remark>2012-02-29</remark>For example, a 202
+          <info>2012-02-29</info>For example, a 202
             response means the request has been accepted.</phrase> Also, additional <code>X-</code> headers may
           be returned. These additional headers are related to other Rackspace services and can be
           ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
@@ -748,7 +748,7 @@
         </listitem>
       </itemizedlist>
       <para>
-        <remark>Added paragraph to forecast info structure -- dsh -2012-03-09 </remark>
+        <info>Added paragraph to forecast info structure -- dsh -2012-03-09 </info>
         The following sections describe the actions that may be performed within the
         storage system. The first section addresses actions that can be taken on the account
         level of the storage system. The second section addresses actions that may be performed
@@ -855,7 +855,7 @@
   Server: Apache
   Content-Type: application/json; charset=utf-8
                       </literallayout>
-              <programlisting language="json">
+              <programlisting language="javascript">
   [
     {"name":"test_container_1", "count":2, "bytes":78},
     {"name":"test_container_2", "count":1, "bytes":17}
@@ -898,8 +898,8 @@
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Containers-d1e1166">
+            <info>Changed title for clarity dsh 2012-03-09 </info>
             <title>Controlling a Large List of Containers</title>
-            <remark>Changed title for clarity dsh 2012-03-09 </remark>
             <para>The system returns a maximum of 10,000 container names per request. To
               retrieve subsequent container names, another request must be made with a 'marker'
               parameter. The marker indicates where the last list left off; the system returns
@@ -1047,7 +1047,7 @@
                   serialized response.</para>
               </listitem>
             </varlistentry>
-            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12 -->
+            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12
             <varlistentry>
               <term><code>path</code></term>
               <listitem>
@@ -1123,7 +1123,7 @@
   Content-Length: 387
   Content-Type: application/json; charset=utf-8
                     </literallayout>
-              <programlisting language="json">
+              <programlisting language="javascript">
  [
    {"name":"test_obj_1",
     "hash":"4281c348eaf83e70ddce0e07221c3d28",
@@ -1178,8 +1178,8 @@
             </example>
           </section>
           <section xml:id="List_Large_Number_of_Objects-d1e1521">
+            <info>Changed title for clarity -- dsh - 2012-03-09</info>
             <title>Controlling a Large List of Objects</title>
-            <remark>Changed title for clarity -- dsh - 2012-03-09</remark>
             <para>The system returns a maximum of 10,000 object names per request. To retrieve
               subsequent object names, another request must be made with the 'marker' parameter. The
               marker indicates where the last list left off and the system returns object names
@@ -1396,7 +1396,7 @@
         </section>
         <section xml:id="Delete_Container-d1e1765">
           <title>Delete Container</title>
-          <remark>Edited first two paragrpahs for clarity -- dsh - 2012-03-09</remark>
+          <info>Edited first two paragrpahs for clarity -- dsh - 2012-03-09</info>
           <para>&DELETE; operations against a storage container permanently
             remove it. The container must be empty before it can be deleted.</para>
           <para>A &HEAD; request against the container will list any objects it contains.</para>
@@ -1459,7 +1459,7 @@
         <section xml:id="Update_Container_Metadata-d1e1900">
           <title>Create/Update Container Metadata</title>
           <para>
-            <remark>Update container / metadata - from JIRA / doc 1-24 -- dsh 2012-03-07</remark>
+            <info>Update container / metadata - from JIRA / doc 1-24 -- dsh 2012-03-07</info>
             You may create any custom or arbitrary metadata headers as you find useful. They
             must, however, take the format <code>X-Container-Meta-</code>.
           </para>
@@ -1490,8 +1490,8 @@
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
-          <para>To confirm your metadata changes, perform a &HEAD; request on the container. Do not send
-          the metadata in your &HEAD; request.</para>
+          To confirm your metadata changes, perform a &HEAD; request on the container. Do not send
+          the metadata in your &HEAD; request.
           <example>
             <title>View Container Metadata Request</title>
             <literallayout class="monospaced">
@@ -1997,7 +1997,7 @@ X-Container-Bytes-Used: 0
             200 (OK) indicates success; status 404 (Not Found) is returned when the object
             does not exist.</para>
           <para>
-            <remark>JIRA ticket 1-/ 21 metadata / response clarity -- dsh  2012-03-07</remark>            
+            <info>JIRA ticket 1-/ 21 metadata / response clarity -- dsh  2012-03-07</info>            
             You may note that the &HEAD; return code for the object is different from that of the 
             container. &HEAD; requests do not return a message body in the response, so anything in 
             the 2xx response code range notes success. When a &HEAD; query is run against the 
@@ -2077,7 +2077,7 @@ X-Container-Bytes-Used: 0
       <section xml:id="CDN_Account_Operations-d1e2397">
         <title>CDN Account Services</title>
         <para>
-          <remark>Added opening line and rephrased second -- dsh - 2012-03-09</remark>
+          <info>Added opening line and rephrased second -- dsh - 2012-03-09</info>
           The following operations may be performed at the account level of the 
           CDN account. The operations conform to the following format:</para>
         <example>
@@ -2188,7 +2188,7 @@ X-Container-Bytes-Used: 0
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
-              <programlisting language="json">
+              <programlisting language="javascript">
   [
   {"name":"test_container",
    "cdn_enabled":"true",
@@ -2264,7 +2264,7 @@ X-Container-Bytes-Used: 0
                 </literallayout>
         </example>
           <para>
-            <remark>Reworked these two paragraphs to clarify connection between CDN and Storage URLs -- dsh - 2012-03-09</remark>
+            <info>Reworked these two paragraphs to clarify connection between CDN and Storage URLs -- dsh - 2012-03-09</info>
             When you CDN-enable a container, all the objects within it become available 
             through the CDN. Similarly, once a container is CDN-enabled, any objects 
             added to it in the storage service become CDN-enabled. Once you CDN-enable 
@@ -2280,7 +2280,7 @@ X-Container-Bytes-Used: 0
         <section xml:id="CDN-Enabled_Container-d1e2665">
           <title>CDN-Enable a Container</title>
           <para>
-            <remark>Reworked this section to highlight TTL -- dsh - 2012-03-12</remark>
+            <info>Reworked this section to highlight TTL -- dsh - 2012-03-12</info>
             
             Before a container can be CDN-enabled, it must exist in the storage system. 
             To CDN-enable the container, you will &PUT; it to the publicURL created 
@@ -2332,7 +2332,7 @@ X-Container-Bytes-Used: 0
                       </literallayout>
           </example>
           <para>
-            <remark>JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh - 2012-03-07</remark>
+            <info>JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh - 2012-03-07</info>
             In order to remove the container from the CDN, change the 
           <code>X-Log-Retention</code> flag to <code>False</code>, as in the request below. Please
             note, however, that objects remain public until their TTL expires.
@@ -2567,7 +2567,10 @@ X-Container-Bytes-Used: 0
         </section>
       </section>      
       
-
+      
+        </example>
+      </section>
+    </section>
     <section xml:id="StaticWeb" security="writeronly">
       <title>Static Web Services</title>
       <para>This section shows how you can use your CDN-enabled
@@ -2967,13 +2970,13 @@ X-Container-Bytes-Used: 0
           https://lon.auth.api.rackspacecloud.com/v1.0.</para>
         <example>
           <title>cURL Authenticate</title>
-          <screen language="bash">
+          <screen>
    <command>curl</command> <option>-D</option> - \
         <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
         <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
                       </screen>
-          <screen language="bash">
+          <screen>
    <computeroutput>HTTP/1.1 204 No Content
    Server: Apache/2.2.13 (Red Hat)
    Date: Wed, 07 Sep 2011 18:19:26 GMT
@@ -3028,12 +3031,12 @@ X-Container-Bytes-Used: 0
           dump the HTTP response headers to terminal output (stdout).</para>
         <example>
           <title>cURL Get Storage Space</title>
-          <screen language="bash">
+          <screen>
    <command>curl</command> <option>-X HEAD</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
                       </screen>
-          <screen language="bash">
+          <screen>
  <computeroutput>HTTP/1.1 204 No Content
   X-Account-Object-Count: 4943
   X-Account-Bytes-Used: 25603957646
@@ -3054,7 +3057,7 @@ X-Container-Bytes-Used: 0
           this with a &PUT; request; cURL can be used for that, too.</para>
         <example>
           <title>cURL Create Storage Container</title>
-          <screen language="bash">
+          <screen>
    <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images</uri>
@@ -3109,7 +3112,7 @@ X-Container-Bytes-Used: 0
           the authorization system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
-          <screen language="bash">
+          <screen>
    <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <option>-H "X-CDN-Enabled: True"</option> \
@@ -3141,7 +3144,7 @@ X-Container-Bytes-Used: 0
           your local drive (this convention is only valid on UNIX-like systems).</para>
         <example>
           <title>cURL Download a File</title>
-          <screen language="bash">
+          <screen>
    <command>curl</command> <option>-s</option> <option>-D</option> - \
      <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
