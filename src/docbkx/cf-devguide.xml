@@ -13,7 +13,7 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:svg="http://www.w3.org/2000/svg"
-        xmlns:m="http://www.w3.org/1998/Math/MathML"
+        xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
         xmlns:html="http://www.w3.org/1999/xhtml"
 	xml:id="cf-devguide"
         version="5.0">
@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-04-25</pubdate>
+    <pubdate>2012-06-01</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -51,10 +51,21 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2012-04-25</date>
+        <date>2012-06-01</date>
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
+              <para>Added Object Versioning and Static Web information.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-04-25</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+           <listitem>
               <para>Added TempURL and FormPost.
               </para>
             </listitem>
