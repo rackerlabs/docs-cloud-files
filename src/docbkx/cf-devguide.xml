@@ -1914,8 +1914,105 @@
   X-Delete-After: 864000
                     </literallayout>
             </example>
-          </section>
-      </section>
+          </section> <!-- end 4.3.2.6 -->
+          <section xml:id="Object_Versioning-e1e3230"> <!-- begin 4.3.2.7 -->
+            <title>Object Versioning</title>       
+            <para>
+              Object Versioning allows you to store multiple versions of your content to 
+              recover from unintended overwrites and deletions. 
+              It provides an easy method to implement version control which can be used 
+              on any type of content. It is strongly recommended that you put non-current 
+              objects in a separate container from where the current versions exist. 
+              Once you enable Object Versioning, new data written to an object causes the 
+              non-current version to be written to the separate container. Each of the 
+              non-current versions has a timestamp appended to it, so you know when it was created.
+            </para>
+            <para>
+              To enable Object Versioning, create a container where your non-current versions 
+              will be written. Next, set the metadata <code>X-Versions-Location</code> header 
+              on the container that holds the current versions of your objects. 
+              Set the metadata header to point to the new non-current version container you 
+              created. This is where you non-current versions will be stored.
+              Once this is done, each object in your current-version container 
+              will have Object Versioning enabled; changes to the objects automatically create 
+              non-current versions in the separate container.
+              </para>
+              <para>
+                Nothing is written to the non-current version container when you initially
+                &PUT; an object into the current-version container. Only when you make 
+                edits to the objects via &PUT; will you create non-current versions. These non-current 
+                versions are labeled according to the schema below. 
+              </para>
+            <para>
+              Non-current versions are assigned the name 
+              &lt;length&gt;&lt;object_name&gt;/&lt;timestamp&gt;, 
+              where length is the 3-character zero-padded hexidecimal character length of the &lt;object_name&gt; 
+              and &lt;timestamp&gt; is when the it was initially created as a current version.
+            </para>           
+            <para>
+              Any return status in the 2xx range, such as 202 (Accepted), notes success. Status codes 
+              in the 4xx or 5xx range note failure. You should retry your request if you receive an error. 
+              Please note, however, that if you have specified a container that does not exist as your 
+              non-current version container, a status of 412 (Precondition Failed) returns when you edit 
+              the versioned object. If you receive this error, check that the container exists. 
+              </para>
+              <para>
+                A &GET; to a versioned object returns the current version of the object without 
+                having to do any request redirects or metadata lookups.
+              </para>
+              <para>
+                A &POST; to a versioned object only updates the object's metadata; it does
+                not create a new version of the object. In other words, new versions are only 
+                created when the content of the object changes.
+              </para>
+              <para>
+                A &DELETE; to a versioned object removes the current version of the 
+                object and replaces it with the next-most current version, moving it 
+                from the non-current container to the current.
+                This next-most current version carries with it any metadata last set on it.
+                If want to completely remove an object and you have five total versions of it,
+                you must &DELETE; it five times.
+              </para>
+              <para>
+                Note: A large-object manifest file cannot be versioned, but it may point to 
+                versioned segments. 
+              </para>
+            <para>
+              To turn off Object Versioning on your current version container, remove its 
+              <code>X-Versions-Location</code> metadata by sending an empty key value.
+            </para>
+            <example>
+              <title>Object Versioning with cURL</title>
+              <para>
+                First, create a container with the <code>X-Versions-Location</code> header or add 
+                the header to an existing container. Also make sure the container 
+                referenced by the <code>X-Versions-Location</code> exists. In this example, the 
+                name of that container is “versions”; the location for the current version
+                is the container "container".
+              </para>
+                <literallayout class="monospaced">
+  curl -i -XPUT -H "X-Auth-Token: &lt;token&gt;" \
+      -H "X-Versions-Location: versions" http://&lt;storage_url&gt;/container
+  curl -i -XPUT -H "X-Auth-Token: &lt;token&gt;" http://&lt;storage_url&gt;/versions
+                </literallayout>
+              <para>
+                Create an object (the first version):
+              </para>
+              <literallayout class="monospaced">
+  curl -i -XPUT --data-binary 1 -H "X-Auth-Token: &lt;token&gt;" \
+      http://&lt;storage_url&gt;/container/myobject
+              </literallayout>
+              <para>
+                See a listing of the older versions of the object:
+              </para>
+              <literallayout class="monospaced">
+  curl -i -H "X-Auth-Token: &lt;token&gt;" \
+      http://&lt;storage_url&gt;/versions?prefix=myobject/
+              </literallayout>
+              
+            </example>
+          </section> <!-- end 4.3.2.7 -->       
+          </section> <!-- end 4.3.2 -->        
       <section xml:id="Copy_Object-d1e2241">
             <title>Copy Object</title>
             <para>Suppose you upload a file with the wrong object name or content type, or you
