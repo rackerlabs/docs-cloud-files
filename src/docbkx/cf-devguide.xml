@@ -870,7 +870,7 @@
   Server: Apache
   Content-Type: application/json; charset=utf-8
                       </literallayout>
-              <programlisting language="javascript">
+              <programlisting language="json">
   [
     {"name":"test_container_1", "count":2, "bytes":78},
     {"name":"test_container_2", "count":1, "bytes":17}
@@ -1061,7 +1061,7 @@
                   serialized response.</para>
               </listitem>
             </varlistentry>
-            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12
+            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12 -->
             <varlistentry>
               <term><code>path</code></term>
               <listitem>
@@ -1137,7 +1137,7 @@
   Content-Length: 387
   Content-Type: application/json; charset=utf-8
                     </literallayout>
-              <programlisting language="javascript">
+              <programlisting language="json">
  [
    {"name":"test_obj_1",
     "hash":"4281c348eaf83e70ddce0e07221c3d28",
@@ -2316,7 +2316,7 @@
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
-            <programlisting language="javascript">
+              <programlisting language="json">
   [
   {"name":"test_container",
    "cdn_enabled":"true",
@@ -3164,13 +3164,13 @@
           https://lon.auth.api.rackspacecloud.com/v1.0.</para>
         <example>
           <title>cURL Authenticate</title>
-          <screen>
+          <screen language="bash">
    <command>curl</command> <option>-D</option> - \
         <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
         <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
                       </screen>
-          <screen>
+          <screen language="bash">
    <computeroutput>HTTP/1.1 204 No Content
    Server: Apache/2.2.13 (Red Hat)
    Date: Wed, 07 Sep 2011 18:19:26 GMT
@@ -3225,12 +3225,12 @@
           dump the HTTP response headers to terminal output (stdout).</para>
         <example>
           <title>cURL Get Storage Space</title>
-          <screen>
+          <screen language="bash">
    <command>curl</command> <option>-X HEAD</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343</uri>
                       </screen>
-          <screen>
+          <screen language="bash">
  <computeroutput>HTTP/1.1 204 No Content
   X-Account-Object-Count: 4943
   X-Account-Bytes-Used: 25603957646
@@ -3251,7 +3251,7 @@
           this with a &PUT; request; cURL can be used for that, too.</para>
         <example>
           <title>cURL Create Storage Container</title>
-          <screen>
+          <screen language="bash">
    <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <uri>https://storage.clouddrive.com/v1/CF_xer7_343/images</uri>
@@ -3306,7 +3306,7 @@
           the authorization system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
-          <screen>
+          <screen language="bash">
    <command>curl</command> <option>-X PUT</option> <option>-D</option> - \
         <option>-H "X-Auth-Token: fc81aaa6-98a1-9ab0-94ba-aba9a89aa9ae"</option> \
         <option>-H "X-CDN-Enabled: True"</option> \
@@ -3338,7 +3338,7 @@
           your local drive (this convention is only valid on UNIX-like systems).</para>
         <example>
           <title>cURL Download a File</title>
-          <screen>
+          <screen language="bash">
    <command>curl</command> <option>-s</option> <option>-D</option> - \
      <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
