@@ -116,7 +116,6 @@
                 purge, indicating you must contact support to request
                 a container purge operation.</para>
             </listitem>
-            
           </itemizedlist>
         </revdescription>
       </revision>
@@ -127,7 +126,6 @@
             <listitem>
               <para>Added more detail about reasons to perform a CDN purge, clarifying that it isn't required for deleting objects.</para>
             </listitem>
-            
           </itemizedlist>
         </revdescription>
       </revision>
@@ -140,7 +138,6 @@
                 feature, including changing examples to match the streaming headers and URLs
                 returned.</para>
             </listitem>
-            
           </itemizedlist>
         </revdescription>
       </revision>
@@ -151,7 +148,6 @@
             <listitem>
               <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
             </listitem>
-            
           </itemizedlist>
         </revdescription>
       </revision>
@@ -173,7 +169,6 @@
             <listitem>
               <para>Added information about new headers including CORS headers.</para>
             </listitem>
-            
           </itemizedlist>
         </revdescription>
       </revision>
