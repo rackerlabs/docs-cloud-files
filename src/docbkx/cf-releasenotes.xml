@@ -80,7 +80,7 @@
 		<itemizedlist>
 			<title>Enhancements</title>
 			<listitem>
-				<para>There were no enchacements to existing functionality in this release.
+				<para>There were no enhacements to existing functionality in this release.
 				</para>
 			</listitem>
 		</itemizedlist>
@@ -109,8 +109,8 @@
 					Object Versioning in the <emphasis role="italic">Cloud Files API Developer Guide</emphasis>
 				</para>
 				<para><link
-					xlink:href="http://docs.rackspace.com/cf/api/v1.0/cf-devguide/content/index.html"
-					>docs.rackspace.com/cf/api/v1.0/cf-devguide/content/index.html</link>.
+					xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html"
+					>http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html</link>.
 				</para>
 			</listitem>			
 			
