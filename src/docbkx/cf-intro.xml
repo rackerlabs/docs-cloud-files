@@ -106,7 +106,7 @@
             <para>Simplicity of security mechanisms and CDN functionality</para>
           </listitem>
           <listitem>
-            <para>Affordability of the service with a price of just 10 cents / gigabyte of storage</para>
+            <para>Affordability of the service with a price of just 10 cents / gigabyte of storage per month</para>
           </listitem>
           <listitem>
             <para>Flexibility in terms, paying as you go</para>
@@ -161,7 +161,7 @@
       </section>
       <section xml:id="Affordability-d1e221">
         <title>Affordability</title>
-        <para> Pricing for Cloud Files with CDN starts at 10 cents per gigabyte of storage and 18
+        <para> Pricing for Cloud Files with CDN starts at 10 cents per gigabyte of storage per month and 18
         cents per gigabyte of bandwidth outbound to any edge location around the globe. There is no
         charge for inbound bandwidth and there are no per-requests fees for CDN. For the latest
         pricing information, please refer to the Cloud Files web site at <link
