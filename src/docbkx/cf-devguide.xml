@@ -51,6 +51,17 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2012-06-11</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added Bulk Import information.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2012-06-01</date>
         <revdescription>
           <itemizedlist spacing="compact">
@@ -1736,6 +1747,7 @@
             be the same as the Content-Type set during the PUT request that created the manifest.
             You can easily change the Content-Type by reissuing the &PUT; request.</para>
           </section>
+          <!-- Chunked Transfer encoding begin -->
           <section xml:id="Chunked_Transfer_Encoding-d1e2092">
               <title>Chunked Transfer Encoding</title>
               <para>Users can upload data without needing to know in advance the amount of data to be
@@ -1768,7 +1780,40 @@
                   </literallayout>
               </example>
           </section>
-        <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
+          <!-- Chunked Transfer encoding END -->
+          <!-- Bulk Import begin -->
+          <section xml:id="Bulk_Import-d1e2094">
+            <title>Bulk Importing Data</title>
+            <remark security="writeronly">added 06-11-2012</remark>
+            <para>
+              Bulk Importing data is available for users who have a very large amount of
+              data to import into Cloud Files. With bulk importing, you send a physical
+              device containing your data to Rackspace and we load it directly into our datacenters.
+              This helps you avoid the time and cost of uploading large amounts of
+              data over the Internet. After the transfer is complete, we will either
+              ship your device back to you, or destroy it via degaussing, whichever
+              you prefer.
+            </para>
+            <para>
+              We accept USB, SATA, and eSATA devices. Your file system may be NTFS, ext2,
+              ext3, ext4, or FAT32. Because Cloud Files does not use hierarchical directory
+              structures, nested sub-directories in your data are converted to 
+              object names; your top-level folders become containers,
+              and nested directory names become part of the object names. For instance, 
+              "Chapter28/Ahab/ivoryleg" results in a container named "Chapter28" with an 
+              object named "Ahab/ivoryleg" inside it. See the section on Pseudo-Hierarchical Folders
+              for more information on directory structure in Cloud Files.
+            </para>
+            <para>
+              To begin the Bulk Import process, contact our support technicians, and they will
+              get you started. You will be assigned a Migration Specialist who can 
+              answer any questions you might have along the way. You will be notified when Rackspace
+              receives your device, when we begin the data import, when the data import is 
+              complete, and when the device has been shipped back or destroyed.
+            </para>
+          </section>
+          <!-- Bulk Import END -->
+          <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
           <title>Assigning CORS Headers to Requests</title>
           <para>CORS is a specification that stands for Cross-Origin Resource Sharing. It defines
             how browsers and servers communicate across origins using HTTP headers, such as those
