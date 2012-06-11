@@ -2733,7 +2733,7 @@
         <title>Create Static Website</title>
         <para> You may use your Cloud Files account to create a static
           website on the World Wide Web. First, you must CDN-enable a
-          container. Any HTML or static web pages in the
+          storage container. Any HTML or static web pages in the
           container will become available through a static website
           once you set the <code>X-Container-Meta-Web-Index</code> header to
           index.html or other index page of your choice. You may also
@@ -2761,8 +2761,9 @@
             <term>2.</term>
             <listitem>
               <para> &POST; the
-                  <code>X-Container-Meta-Web-Index</code> to set the
-                index or other primary page of your website. </para>
+                <code>X-Container-Meta-Web-Index</code> on  the storage container to set the
+                index or other primary page of your website. You must write your storage URL and the container name to properly
+                point to the container (&lt;storage URL&gt;&lt;container name&gt;)</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -2779,7 +2780,13 @@
             </listitem>
           </varlistentry>
         </variablelist>
-        <para>Once your container is configured for Static Web and
+        <example>
+            <title>Set up Static Web</title>
+            <literallayout class="monospaced">
+  curl -X POST - -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: 19264db3-c845-40ea-86ed-8a33d89bfe00" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/        
+            </literallayout>
+        </example>
+               <para>Once your container is configured for Static Web and
           your domain host has your CNAME recorded, you will get the
           following results. </para>
         <example>
@@ -2807,7 +2814,7 @@
         </example>
       </section>
       
-      <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
+      <section xml:id="Set_Error_Pages_for_Static_Website-dle4005" security="Writeronly">
         <title>Set Error Pages for Static Website</title>
         <para> 
           <remark security="writeronly">Added for 2012-05-14 release - dsh </remark>

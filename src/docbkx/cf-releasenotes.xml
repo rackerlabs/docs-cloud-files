@@ -62,8 +62,8 @@
 				<para><emphasis role="bold">Static Web &amp; Custom Error Page for Static Web</emphasis></para>
 				<para>
 					Use Cloud Files to create a Web site that uses your containers and objects
-					to deliver content on the World Wide Web. Create a custom error page for your
-					users so that they don't get generic, unbranded error pages like 404 pages.</para>
+					to deliver content on the World Wide Web. <phrase security="writeronly">Create a custom error page for your
+						users so that they don't get generic, unbranded error pages like 404 pages.</phrase></para>
 			</listitem>
 			<listitem>
 				<para><emphasis role="bold">Object Versioning</emphasis></para>
