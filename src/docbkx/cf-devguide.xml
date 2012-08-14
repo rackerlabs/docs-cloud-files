@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-06-12</pubdate>
+    <pubdate>2012-08-13</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,28 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-08-13</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Changed TTL limits and CDN URLs.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2012-07-23</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added CDN object purge limits.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2012-06-12</date>
         <revdescription>
@@ -441,7 +463,7 @@
       <para>A container is a storage compartment for your data and provides a way for you to
         organize your data. You can think of a container as a folder in Windows® or a directory in
         UNIX®. The primary difference between a container and these other file system concepts is
-        that containers cannot be nested. You can, however, create an unlimited number of containers
+        that containers cannot be nested. You can, however, create up to 500,000 containers
         within your account. Data must be stored in a container so you must have at least one
         container defined in your account prior to uploading data. If you expect to have containers
         with millions of objects, we recommend organizing the object storage across multiple
@@ -495,8 +517,10 @@
         combined with its object names and openly distributed in web pages, emails, or other
         applications.</para>
       <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
-          <link xlink:href="http://c10171.r71.cf0.rackcdn.com">http://c10171.r71.cf0.rackcdn.com</link>. If that container houses a screenshot called
-          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of <link xlink:href="http://c10171.r71.cf0.rackcdn.com/wow1.jpg">http://c10171.r71.cf0.rackcdn.com/wow1.jpg</link>. 
+        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com</code>. 
+        If that container houses a screenshot called
+          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of
+        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/wow1.jpg</code>. 
         </para>
       <para>This URL can be embedded in HTML
         pages, email messages, blog posts, etc. When that URL is accessed, a copy of that image is
@@ -659,7 +683,6 @@
           <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Mon, 12 Nov 2007 15:32:21 GMT
-  Server: Apache
   X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_34
   X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_34
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
@@ -835,14 +858,13 @@
                       </literallayout>
           </example>
           <para>A list of containers is returned in the response body, one container per line. A 204
-            (No Content) HTTP return code will be passed back if the account has no
+            (No Content) HTTP return code is passed back if the account has no
             containers.</para>
           <example>
             <title>Containers List Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Thu, 07 Jun 2007 18:57:07 GMT
-  Server: Apache
   Content-Type: text/plain; charset=UTF-8
   Content-Length: 32
                       </literallayout>
@@ -873,7 +895,6 @@
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
-  Server: Apache
   Content-Type: application/json; charset=utf-8
                       </literallayout>
               <programlisting language="json">
@@ -897,7 +918,6 @@
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
-  Server: Apache
   Content-Type: application/xml; charset=utf-8
                       </literallayout>
               <programlisting language="xml">
@@ -1002,7 +1022,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 18:57:07 GMT
-  Server: Apache
   X-Account-Container-Count: 3
   X-Account-Bytes-Used: 323479
                       </literallayout>
@@ -1104,7 +1123,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Thu, 07 Jun 2007 18:50:19 GMT
-  Server: Apache
   Content-Type: text/plain; charset=UTF-8
   Content-Length: 171
                     </literallayout>
@@ -1139,7 +1157,6 @@
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:39:13 GMT
-  Server: Apache
   Content-Length: 387
   Content-Type: application/json; charset=utf-8
                     </literallayout>
@@ -1171,7 +1188,6 @@
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
-  Server: Apache
   Content-Length: 643
   Content-Type: application/xml; charset=utf-8
                     </literallayout>
@@ -1241,7 +1257,7 @@
                     </literallayout>
               <para>Again we have two items returned; there may be more:</para>
               <literallayout class="monospaced">
-  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2&amp;marker=oranges
+  GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2&amp;marker=jonagold
   Host: storage.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
                     </literallayout>
@@ -1378,7 +1394,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:50:19 GMT
-  Server: Apache
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
@@ -1409,7 +1424,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2010 18:50:19 GMT
-  Server: Apache
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
@@ -1436,7 +1450,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 18:57:07 GMT
-  Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
@@ -1505,14 +1518,14 @@
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Mar 2012 20:42:51 GMT
-  Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
           <para>
           To confirm your metadata changes, perform a &HEAD; request on the container. Do not send
-          the metadata in your &HEAD; request.
+          the metadata in your &HEAD; request. If you would like to delete a previously-set
+          metadata header, send the header without content.
           </para>
           <example>
             <title>View Container Metadata Request</title>
@@ -1613,7 +1626,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 200 Ok
   Date: Wed, 11 Jul 2007 19:37:41 GMT
-  Server: Apache
   Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
   ETag: b0dffe8254d152d8fd28f3c5e0404a10
   Content-type: text/html
@@ -1666,18 +1678,20 @@
           </example>
           <!-- changed the status code / below to 411 / (wikipedia)  dsh 02-14-12-->
           <para>No response body is returned. A status code of 201
-          (Created) indicates a successful write; status 411 (Length
+          (Created) indicates a successful write. 
+          Any status in the 400 range denotes failure: 
+          401 (Unauthorized) is returned upon authentication failure,
+          411 (Length
           Required) denotes a missing <code>Content-Length</code> or
             <code>Content-Type</code> header in the request. If the
           MD5 checksum of the data written to the storage system does
           NOT match the (optionally) supplied ETag value, a 422
-          (Unprocessable Entity) response is returned.</para>
+          (Unprocessable Entity) response is returned, etc.</para>
           <example>
             <title>Create/Update Object Response</title>
             <literallayout class="monospaced">
   HTTP/1.1 201 Created
   Date: Thu, 07 Jun 2007 18:57:07 GMT
-  Server: Apache
   ETag: d9f5eb4bba4e2f2f046e54611bc8196b
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
@@ -2127,7 +2141,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 07 Jun 2007 20:59:39 GMT
-  Server: Apache
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
@@ -2166,7 +2179,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Thu, 07 Jun 2007 20:59:39 GMT
-  Server: Apache
   Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
   ETag: 8a964ee2a5e88be344f36c22562a6486
   Content-Length: 512000
@@ -2212,7 +2224,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 202 Accepted
   Date: Thu, 07 Jun 2007 20:59:39 GMT
-  Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
@@ -2222,12 +2233,12 @@
     </chapter>
     <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
     <title>API Operations for CDN Services</title>
-    <para>The following is a description of API calls that can be used
+    <para>The following is a description of the API calls that can be used
       for the Content Delivery Network (CDN) account and container
       operations. All of the ReST methods described below must be
       issued against the CDN management service as defined in the
-        <code>X-CDN-Management-Url</code> returned by a successful
-      authentication. See the section on authentication for more
+        <code>X-CDN-Management-Url</code> header returned by successfully
+      authenticating your account. See the section on authentication for more
       details. </para>
     <section xml:id="CDN_Account_Operations-d1e2397">
       <title>CDN Account Services</title>
@@ -2321,7 +2332,6 @@
           <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Thu, 08 Sep 2011 14:35:45 GMT
-  Server: Apache/2.2.14 (Ubuntu)
   Transfer-Encoding: chunked
   Content-Type: text/plain
                     </literallayout>
@@ -2352,7 +2362,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Thu, 08 Sep 2011 14:41:29 GMT
-  Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
@@ -2362,9 +2371,9 @@
    "cdn_enabled":"true",
    "ttl":28800,
    "log_retention":"true",
-   "cdn_uri":"http://c2.r2.cf1.rackcdn.com",
-   "cdn_ssl_uri":"https://c2.ssl.cf1.rackcdn.com",
-   "cdn_streaming_uri":"https://c2.r2.stream.cf1.rackcdn.com"}
+   "cdn_uri":"http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com",
+   "cdn_ssl_uri":"https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.stg2.rackcdn.com",
+   "cdn_streaming_uri":"http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com"}
   ]
                     </programlisting>
           </example>
@@ -2383,7 +2392,6 @@
             <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Fri, 09 Sep 2011 17:57:28 GMT
-  Server: Apache/2.2.14 (Ubuntu)
   Content-Length: 267
   Content-Type: application/xml; charset=utf-8
                     </literallayout>
@@ -2397,13 +2405,13 @@
         &lt;ttl&gt;86400&lt;/ttl&gt;
         &lt;log_retention&gt;True&lt;/log_retention&gt;
         &lt;cdn_url&gt;
-            http://c2.r2.cf1.rackcdn.com
+            http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com
         &lt;/cdn_url&gt;
         &lt;cdn_ssl_url&gt;
-            https://c2.ssl.cf1.rackcdn.com
+            https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.stg2.rackcdn.com
         &lt;/cdn_ssl_url&gt;
         &lt;cdn_streaming_url&gt;
-            https://c2.r2.stream.cf1.rackcdn.com
+            http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
         &lt;/cdn_streaming_url&gt;
    &lt;/container&gt;
   &lt;/account&gt;
@@ -2441,7 +2449,17 @@
       <para> When you enable a container in the CDN service, you
         automatically generate URLs for SSL and streaming usage. They
         are listed under the <code>X-CDN-SSL-URI</code> and
-          <code>X-CDN-STREAMING-URI</code> headers, respectively. </para>
+          <code>X-CDN-STREAMING-URI</code> headers, respectively. 
+      </para>
+      
+      <para>
+        On August 13, 2012, the format of new CDN URLs changed in order to
+        enhance the security of the Content Delivery Network.. Any URLs set in the
+        older format (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
+        will continue to work. However, any newly generated CDN URLs will have the 
+        new format: <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/mydog.jpg</code>.
+      </para>
+
       <section xml:id="CDN-Enabled_Container-d1e2665">
         <title>CDN-Enable a Container</title>
         <para>
@@ -2465,11 +2483,20 @@
           TTL is the same as setting the HTTP <code>Expires</code> and
             <code>Cache-Control</code> headers for the cached object.
           The minimum TTL is 15 minutes (900 seconds) and the maximum
-          is 50 years (range of 900 to 1577836800 seconds). Setting a
+          is 50 years for a range of 900 to 1576800000 seconds. Setting a
           TTL for a long time, however, does not guarantee that the
           content will stay populated on CDN edge servers for the
-          entire five-year period. The most popular objects stay
+          entire period. The most popular objects stay
           cached based on the edge location's logic. </para>
+        <note><title>Note</title>
+        <para security="review">
+          On August 13, 2012, the maximum TTL was set to 31536000 
+          (one year). If you set new TTL values to a greater time frame, your
+          object will still expire at the one-year mark. However, if you 
+          already had a greater TTL value set on an object, it will 
+          expire at the time you had originally set. 
+        </para>
+        </note>
         <example>
           <title>Container CDN-Enable Request</title>
           <literallayout class="monospaced">
@@ -2490,13 +2517,15 @@
         <example>
           <title>Container CDN-Enable Response </title>
           <literallayout class="monospaced">
-  HTTP/1.1 201 Created
-  Date: Wed, 07 Sep 2011 19:04:30 GMT 
-  Server: Apache/2.2.14 (Ubuntu)
-  Content-Type: text/plain
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: http://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.r71.stream.cf0.rackcdn.com
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Log-Retention: False
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
                       </literallayout>
         </example>
         <para>
@@ -2550,14 +2579,14 @@
           <title>CDN-Enabled Container Metadata Response</title>
           <literallayout class="monospaced">
   HTTP/1.1 204 No Content
-  Date: Wed, 11 Jul 2007 19:37:41 GMT
-  Content-type: text/html
-  X-CDN-Enabled: True
-  X-CDN-URI: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URI: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URI: http://c10171.stream.cf0.rackcdn.com
-  X-TTL: 86400
-  X-Log-Retention: True
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Log-Retention: False
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
                           </literallayout>
         </example>
       </section>
@@ -2602,20 +2631,21 @@
           Content) indicates success; 404 (Not Found) is returned if
           the requested container was not found. The CDN URL, the CDN
           SSL URL, and the CDN Streaming URL are returned in the HTTP
-          headers, <code>X-CDN-URL</code>, <code>X-CDN-SSL-URL</code>,
+          headers, <code>X-CDN-URI</code>, <code>X-CDN-SSL-URL</code>,
           and <code>X-CDN-STREAMING-URL</code>. </para>
         <example>
           <title>Update CDN-Enabled Container Metadata
             Response</title>
           <literallayout class="monospaced">
   HTTP/1.1 204 No Content
-  Date: Thu, 07 Jun 2011 18:57:07 GMT
-  Server: Apache
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Log-Retention: False
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
   Content-Length: 0
-  Content-Type: text/plain; charset=UTF-8
-  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
                       </literallayout>
         </example>
       </section>
@@ -2625,7 +2655,7 @@
           also return an SSL URL. When SSL is available, another
           header gets returned with calls to the CDN Management URL,
             <code>X-CDN-SSL-URL</code>, in addition to
-            <code>X-CDN-URL</code>. This feature enables users to use
+            <code>X-CDN-URI</code>. This feature enables users to use
           https protocol in URLs used for requesting objects stored in
           CDN-enabled containers. </para>
         <example>
@@ -2646,19 +2676,15 @@
         <example>
           <title>CDN-Enabled Container Metadata with SSL</title>
           <literallayout class="monospaced">
-  HTTPS/1.1 204 No Content
-  Date: Thu, 07 Jan 2011 18:57:07 GMT
-  Server: Apache
-  Content-Length: 0
-  Content-Type: text/plain; charset=UTF-8
-  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
-  X-CDN-Enabled: True
-  X-TTL: 259000
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
   X-Log-Retention: False
-  Connection: close
-  Content-Type: text/plain; charset=UTF-8
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
                       </literallayout>
         </example>
       </section>
@@ -2687,19 +2713,15 @@
           <title>CDN-Enabled Container Metadata (Streaming
             Enabled)</title>
           <literallayout class="monospaced">
-  HTTPS/1.1 204 No Content
-  Date: Thu, 07 Sep 2011 18:57:07 GMT
-  Server: Apache
-  Content-Length: 0
-  Content-Type: text/plain; charset=UTF-8
-  X-CDN-URL: http://c10171.r71.cf0.rackcdn.com
-  X-CDN-SSL-URL: https://c10171.ssl.cf0.rackcdn.com
-  X-CDN-STREAMING-URL: http://c10171.r71.stream.cf0.rackcdn.com
-  X-CDN-Enabled: True
-  X-TTL: 259000
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
   X-Log-Retention: False
-  Connection: close
-  Content-Type: text/plain; charset=UTF-8
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
                       </literallayout>
         </example>
       </section>
@@ -2722,19 +2744,24 @@
         <para>You can perform &DELETE; operations against a
           CDN-enabled object when you find it absolutely necessary to
           remove the object from public access and you cannot wait for
-          the TTL to expire. The situation for object purges should be
-          limited to times when it could have serious personal,
+          the TTL to expire. You should limit object purges to
+          situations where there could be serious personal,
           business, or security consequences if it remained in the
-          CDN. For example, suppose someone published your company's
-          quarterly earnings too early. Perhaps the timing of the
-          publish was incorrect, and you need to remove it from public
-          view. You can manually purge CDN-enabled objects without
+          CDN. For example, someone published your company's
+          quarterly earnings too early. You can manually purge CDN-enabled objects without
           having to wait for the TTL to expire, and you can optionally
-          be notified by email that the object has been purged. There
-          are two methods for purging content from the edge: the
-          method for purging individual objects is available through
-          the API, and the method for purging entire containers is
-          available by filing a support ticket.</para>
+          be notified by email that the object has been purged.
+          However, you may only &DELETE; up to 25 objects per day.
+          Any attempt to delete more than this will result in a 498
+          status code error (Rate Limited).
+        </para>
+        <para>          
+          There are two ways you may purge objects from the edge:
+          (1) individually using &DELETE; in the API or (2) by 
+          creating a support ticket to purge entire containers.
+          The 25-object limit does not apply when purging an 
+          entire container via Support.
+          </para>
         <example>
           <title>Purge CDN-Enabled Object</title>
           <literallayout class="monospaced">
@@ -2761,7 +2788,6 @@
           <literallayout class="monospaced">
   HTTP/1.1 204 No Content
   Date: Thu, 13 Jan 2010 18:57:07 GMT
-  Server: Apache
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
                       </literallayout>
@@ -2794,6 +2820,16 @@
           should have an index.html page in each pseudo-directory. If
           you do not have the named index page, visits to
           myhost/subdir/ will return a 404 error. </para>
+        <para>
+          <remark security="writeronly">Added 2012-08-13 to clarify CNAME based
+            on Disqus comments - dsh </remark>
+          In the below instructions, you are directed to create a CNAME
+          with your DNS Server (or name server). This is the domain name of your 
+          site (such as www.rackspace.com). Your CNAME is set up with your 
+          individual DNS Server, which is outside the scope of this documentation. Once
+          you have your CNAME established, map your domain name to your 
+          Cloud Files CDN URL to get your site up and running on the Web.
+        </para>
         <variablelist>
           <title>Set up a Static Website </title>
           <varlistentry>
@@ -2859,7 +2895,7 @@
         </example>
       </section>
       
-      <section xml:id="Set_Error_Pages_for_Static_Website-dle4005" security="Writeronly">
+      <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
         <title>Set Error Pages for Static Website</title>
         <para> 
           <remark security="writeronly">Added for 2012-05-14 release - dsh </remark>
@@ -2909,10 +2945,10 @@
         <para>
           The Temporary URL feature (TempURL) allows you to create limited-time 
           Internet addresses which allow you to grant limited access to your Cloud 
-          Files account. Using TempURL, you may allow others to retrieve or put 
+          Files account. Using TempURL, you may allow others to retrieve or place 
           objects in your Cloud Files account for as long or as short a time as 
           you wish. Access to the TempURL is independent of whether or not your 
-          account is CDN-enabled. Even if you don't CDN-enable a directory, you 
+          account is CDN-enabled. And even if you don't CDN-enable a directory, you 
           can still grant temporary public access through a TempURL.
         </para>
         <para>
@@ -2921,7 +2957,7 @@
           TempURL and know that after a specified time, no one will be able to 
           access your object through the address. Or, if you want to allow your 
           audience to upload objects into your Cloud Files account, you can give 
-          out a TempURL. After the specified time expires, no one will be able to 
+          them a TempURL. After the specified time expires, no one will be able to 
           upload to the address.
         </para>
         <para>
@@ -2942,8 +2978,8 @@
             for encoding your account. 
           </para>
           <para>
-            Once the key is set, you may not change it while you still want others 
-            to be able to access your TempURL. If you change it, the TempURL becomes 
+            Once the key is set, you should not change it while you still want others 
+            to be able to access your temporary URL. If you change it, the TempURL becomes 
             invalid (within 60 seconds, which is the cache time for a key) and others 
             will not be allowed to access it. 
           </para>
@@ -2952,7 +2988,7 @@
             <literallayout class="monospaced">
   POST /&lt;api version&gt;/&lt;account&gt; HTTP/1.1
   Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Auth-Token: &lt;your auth key&gt;
   X-Account-Meta-Temp-Url-Key: &lt;your key&gt;
 </literallayout>           
           </example>
@@ -2964,36 +3000,48 @@
           After the metadata is set, you must create an HMAC-SHA1 (RFC 2104) signature. 
           When you generate the TempURL, you determine which method of access you 
           will grant users, &GET; or &PUT;. You also determine the path to the object 
-          or container you are granting access to. If you allow &PUT; access to your 
-          Cloud Files account, you must indicate the object prefix that will be used 
-          for each file uploaded. Lastly, set the time in UNIX epoch notation, 
-          which is when the TempURL expires.
+          you are granting access to.
+          Lastly, set the time for your TempURL to expire in UNIX epoch notation.
         </para>
         <para>
-          In the Python example below, a URL is generated for an object (my_cat.jpg), 
-          which will be available for 60 seconds.
+          In the below examples, a TempURL is generated for the object my_cat.jpg, 
+          which will be available for 60 seconds. The <code>key</code> in the below 
+          example is the <code>X-Account-Meta-Temp-Url-Key</code>.
         </para>
           <example>
-            <title>Create TempURL</title>
+            <title>Create TempURL (in python)</title>
             <literallayout class="monospaced">
   import hmac
   from hashlib import sha1
+  from sys import argv
   from time import time
-  method = 'GET'
-  expires = int(time() + 60)
-  path = '/v1/AUTH_account/container/my_cat.jpg'
-  key = 'mykey'
-  hmac_body = '%s\n%s\n%s' % (method, expires, path)
-  sig = hmac.new(key, hmac_body, sha1).hexdigest()
+
+  if len(argv) != 5:
+    print 'Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;'
+    print 'Example: GET https://storage101.dfw1.clouddrive.com/v1/' \
+        'MossoCloudFS_12345678-9abc-def0-1234-56789abcdef0/' \
+        'container/my_cat.jpg 60 my_shared_secret_key'
+  else:
+    method, url, seconds, key = argv[1:]
+    method = method.upper()
+    base_url, object_path = url.split('/v1/')
+    object_path = '/v1/' + object_path
+    seconds = int(seconds)
+    expires = int(time() + seconds)
+    hmac_body = '%s\n%s\n%s' % (method, expires, object_path)
+    sig = hmac.new(key, hmac_body, sha1).hexdigest()
+    print '%s%s?temp_url_sig=%sAMP;temp_url_expires=%s' % \
+        (base_url, object_path, sig, expires)
             </literallayout>
           </example>
           <para>
-            Be certain to use the full path, from the /v1/ onward.
+            Be certain to use the full URL to the object, just as you would with a normal request.
           </para>
           <para>
-            In this example, the signature becomes da39a3ee5e6b4b0d3255bfef95601890afd80709 
-            and expires is 1323479485. On your website, you would provide a link to the 
-            below URL:
+            In this example, the signature might be da39a3ee5e6b4b0d3255bfef95601890afd80709 and 
+            the expire time might translate to 1323479485" because the signature and expires 
+            completely depend on the time the code is run. On your website, you would provide 
+            a link to the below URL:
           </para>
           <literallayout class="monospaced">
   https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
@@ -3005,6 +3053,59 @@
           (Unauthorized) status errors. &HEAD; queries are allowed if &GET; or &PUT; 
           are allowed.    
         </para>
+<?hard-pagebreak?>          
+          <example >
+            <title>Create TempURL (in PHP)</title>
+            <literallayout class="monospaced">
+  &lt;?php
+  if ($argc != 5) {
+      echo "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;";
+      echo "Example: GET https://storage101.dfw1.clouddrive.com/v1/" .
+           "MossoCloudFS_12345678-9abc-def0-1234-56789abcdef0/" .
+           "container/my_cat.jpg 60 my_shared_secret_key";
+  } else {
+    $method = $argv[1];
+    $url = $argv[2];
+    $seconds = $argv[3];
+    $key = $argv[4];
+    $method = strtoupper($method);
+    list($base_url, $object_path) =  split("/v1/", $url);
+    $object_path = "/v1/$object_path";
+    $seconds = (int)$seconds;
+    $expires = (int)(time() + $seconds);
+    $hmac_body = "$method\n$expires\n$object_path";
+    $sig = hash_hmac("sha1", $hmac_body, $key);
+    echo "$base_url$object_path?" .
+         "temp_url_sig=$sig&amp;temp_url_expires=$expires";
+  }
+  ?&gt;
+            </literallayout>
+          </example>    
+          <example>
+            <title>Create TempURL (in Ruby)</title>
+            <literallayout class="monospaced">
+  require "openssl"
+
+  unless ARGV.length == 4
+      puts "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;"
+      puts ("Example: GET https://storage101.dfw1.clouddrive.com/v1/" +
+          "MossoCloudFS_12345678-9abc-def0-1234-56789abcdef0/" +
+          "container/path/to/object.file 60 my_shared_secret_key")
+  else
+      method, url, seconds, key = ARGV
+      method = method.upcase
+      base_url, object_path = url.split(/\/v1\//)
+      object_path = '/v1/' + object_path
+      seconds = seconds.to_i
+      expires = (Time.now + seconds).to_i
+      hmac_body = "#{method}\n#{expires}\n#{object_path}"
+      sig = OpenSSL::HMAC.hexdigest("sha1", key, hmac_body)
+      puts ("#{base_url}#{object_path}?" +
+          "temp_url_sig=#{sig}&amp;temp_url_expires=#{expires}")
+  end
+            </literallayout>
+          </example>
+          
         </section>
       </section>
         <section xml:id="FormPost-d1a555">
@@ -3219,7 +3320,6 @@
                       </screen>
           <screen language="bash">
    <computeroutput>HTTP/1.1 204 No Content
-   Server: Apache/2.2.13 (Red Hat)
    Date: Wed, 07 Sep 2011 18:19:26 GMT
    X-Storage-Url: https://storage.clouddrive.com/v1/CF_xer7_343
    X-CDN-Management-Url: https://cdn.clouddrive.com/v1/CF_xer7_343
@@ -3335,8 +3435,7 @@
                       </screen>
           <screen>
    <computeroutput>HTTP/1.1 201 Created
-   Date: Thu, 09 Jul 2009 17:03:36 GMT
-   Server: Apache
+   Date: Thu, 09 Aug 2012 17:03:36 GMT
    Content-Length: 0
    ETag: 805120ec285a7ed28f74024422fe3594 
    Content-Type: text/plain
@@ -3361,18 +3460,20 @@
         <uri>https://cdn.clouddrive.com/v1/CF_xer7_343/images</uri>
                       </screen>
           <screen>
-   <computeroutput>HTTP/1.1 201 Created
-    Date: Wed, 07 Sep 2011 19:00:44 GMT
-    Server: Apache/2.2.14 (Ubuntu)
-    X-CDN-URL: http://c1935.r35.stg2.rackcdn.com
-    X-CDN-SSL-URL: https://c1935.ssl.stg2.rackcdn.com
-    X-CDN-STREAMING-URL: http://c1935.r35.stream.stg2.rackcdn.com
-    Content-Length: 0
-    Content-Type: text/plain
-                      </computeroutput></screen>
+   <computeroutput>
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Log-Retention: False
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
+        </computeroutput></screen>
         </example>
         <para>When the container is CDN-enabled, the service returns its public URL in the
-            <code>X-CDN-URL</code> header of the response, plus the SSL URL in the
+            <code>X-CDN-URI</code> header of the response, plus the SSL URL in the
             <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URL with the
           object name to access the file via the CDN, or use the https:// URL in combination with
           the object name to access the file over a secure SSL connection via the CDN.</para>
@@ -3387,13 +3488,12 @@
           <title>cURL Download a File</title>
           <screen language="bash">
    <command>curl</command> <option>-s</option> <option>-D</option> - \
-     <uri>http://c10171.r71.cf0.rackcdn.com/wow1.jpg</uri> \
+     <uri>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
                       </screen>
           <screen>
    <computeroutput>HTTP/1.1 200 OK
    Date: Thu, 06 Aug 2009 01:40:12 GMT
-   Server: Apache
    Expires: Fri, 07 Aug 2009 01:40:12 GMT
    Last-Modified: Thu, 09 Jul 2009 17:14:46 GMT
    Cache-Control: max-age=86400, public
