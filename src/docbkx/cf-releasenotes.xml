@@ -25,7 +25,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Cloud Files</productname>
-		<pubdate>2012-06-12</pubdate>
+		<pubdate>2012-08-13</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -50,7 +50,77 @@
     		</annotation>
     	</legalnotice>
     </info>
-	<chapter xml:id="cmv1.2">
+	
+	
+	<chapter xml:id="August13">
+		<?dbhtml stop-chunking?>
+		<title>Aug 13, 2012</title>
+		<para>Content Delivery Network (CDN) changes</para>
+		
+		<!-- New Features -->
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>There were no New Features added in this release.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Enchancements --> 	
+		
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para><emphasis role="bold">CDN URLs Changed</emphasis></para>
+				<para>
+					Changed CDN URLs to enhance scale and security of the CDN. Previous
+					existing URLs continue to work as new URLs are rolled out.
+				</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">TTL Limits Change</emphasis></para>
+				<para>
+					Time to Live (TTL) maximum refreshed to one year. Previously
+					set TTLs for existing objects in the CDN continue to work as 
+					new limit is rolled out for new objects.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Resolved Issues --> 
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>Fixed Static Web error handling. Create a custom error page for your
+					users so that they don't get generic, unbranded error pages like 404 pages.</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Documentation Changes --> 		
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Added PHP and Ruby examples to TempURLs; clarified language for TempURLs
+					based on user feedback -- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
+				</para>
+			</listitem>
+			<listitem>
+				<para>Added paragraph on CNAMEs in Static Web based on user feedback
+					-- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					Clarified CDN-purge limits to ease usability of that feature
+					-- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
+				</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	
+	
+	
+	<chapter xml:id="june12">
 		<?dbhtml stop-chunking?>
 		<title>Jun 01, 2012</title>
 		<para>Addition of Object Versioning and Static Web.</para>
@@ -80,7 +150,7 @@
 		<itemizedlist>
 			<title>Enhancements</title>
 			<listitem>
-				<para>There were no enhacements to existing functionality in this release.
+				<para>There were no enhancements to existing functionality in this release.
 				</para>
 			</listitem>
 		</itemizedlist>
@@ -113,15 +183,18 @@
 					>http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html</link>.
 				</para>
 			</listitem>			
-			
-			
 		</itemizedlist>
+	</chapter>
+<!-- end of updates -->
+	
+	<chapter xml:id="Talk_to_us">
+		<?dbhtml stop-chunking?>
+		<title>Talk to Us</title>		
 		<itemizedlist>
-			<title>Talk to Us</title>
 			<para xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
-				Cloud Monitoring? Would you like to give us feedback on how we're doing? </para>
+				Cloud Files? Would you like to give us feedback on how we're doing? </para>
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">
