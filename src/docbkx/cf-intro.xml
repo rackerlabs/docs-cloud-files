@@ -39,6 +39,11 @@
         for software developers interested in developing applications using the Rackspace Cloud
         Files™ Application Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
+    <raxm:metadata
+	xmlns:raxm="http://docs.rackspace.com/api/metadata">
+      <raxm:product version="v1.0">cloudfiles</raxm:product>
+      <raxm:priority>1</raxm:priority>
+    </raxm:metadata>
   </info> 
   <chapter xml:id="Introduction-d1e82">
     <title>Introduction</title>
