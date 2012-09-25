@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-08-13</pubdate>
+    <pubdate>2012-09-25</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,17 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-09-25</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added multi-region, legal, and CDN charge note.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2012-08-13</date>
         <revdescription>
@@ -425,7 +436,25 @@
         </listitem>
       </itemizedlist>
       <para>For additional information about available language bindings, refer to <link linkend="Language-Specific_API_Bindings-d1e574">Language-Specific API Bindings</link>.</para>
-    </section>   
+    </section>
+    
+    <section xml:id="Pricing_Service-d1e1402">
+      <title>Pricing and Service Level</title>
+      
+      <para>Cloud Files is part of the Rackspace Cloud and your use through 
+        the API will be billed as per the pricing schedule at 
+        <link xlink:href="http://www.rackspace.com/cloud/public/files/pricing/">
+          www.rackspace.com/cloud/public/files/pricing
+        </link>
+      </para>
+        <para>The Service Level Agreement (SLA) for Cloud Databases is available at 
+          <link xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_files">
+            www.rackspace.com/cloud/legal/sla/#cloud_files
+          </link>.
+          </para>
+          
+  </section>
+    
   </chapter>
   <chapter xml:id="Concepts-d1e413">
     <title>Concepts</title>
@@ -473,6 +502,11 @@
         restriction applies to the name after it has been URL encoded. For example, a container name
         of <code>Course Docs</code> would be URL encoded as <code>Course%20Docs</code> and therefore
         be 13 bytes in length rather than the expected 11.</para>
+      <para>
+        You may create a container in either of our US data centers: ORD or DFW. However, in order
+        to lower your costs, you should create your most served containers in the same data center 
+        as your server. Otherwise, you will be billed for external bandwidth charges.
+      </para>
     </section>
     <section xml:id="Objects-d1e479">
       <title>Objects</title>
@@ -611,7 +645,7 @@
       </itemizedlist>
       <para>
         Your account may be based in either the US or the UK; this is not determined
-        by your physical location but by the location of the Rackspace retail site which
+        by your physical location but by the location of the Rackspace site which
         was used to create your account: 
       </para>
       <itemizedlist spacing="compact">
@@ -623,9 +657,8 @@
         </listitem>
         <listitem>
           <para> If your account was created via <link
-              xlink:href="http://www.rackspace.co.uk"
-              >http://www.rackspace.co.uk</link>, it is a UK-based
-            account. </para>
+              xlink:href="http://www.rackspace.co.uk">http://www.rackspace.co.uk</link>, 
+            it is a UK-based account. </para>
         </listitem>
       </itemizedlist>
       <para>
@@ -635,23 +668,45 @@
       <simplesect>
         <title>Request</title>
         <para>
-          To authenticate, you must supply your username and API access key in x-headers:
+          To authenticate and get your Auth token, you must supply your username and API Key in x-headers:
         </para>
-        <para>
-          <itemizedlist spacing="compact">
+          <itemizedlist>
             <listitem>
               <para>
+                <phrase>
+                  <remark security="writeronly">2012-09-25 - Retooled the API/Auth token
+                    information below for clarity. Had user complaints that they could not 
+                    find it.</remark></phrase> 
                 Use your Rackspace Cloud
-                username as the username for the API. Place it in the
-                <code>X-Auth-User</code> x-header.
+                username for your username for the API. Place it in the
+                <code>X-Auth-User</code> x-header, like <code>X-Auth-User: jdoe</code>.
               </para>
             </listitem>
             <listitem>
-              <para> Obtain your API access key from the Rackspace Cloud Control Panel in the Your
-                Account | API Access section. Place it in the <code>X-Auth-Key</code> x-header. </para>
+              <itemizedlist>
+                <para><emphasis role="bold">Get Your API Key</emphasis></para>
+                <para>
+                  Log in to the Rackspace Cloud Control Panel and get your API key.
+                </para>
+                <listitem>
+                  <para>In the First Gen Control Panel, your API Key can be found under
+                    Your Account | API Access.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    In the Next Gen Cloud Control Panel, your API Key can be found by 
+                    clicking the downward arrow next to your user name and selecting 
+                    <code>API Keys</code>. 
+                  </para>
+                </listitem>
+              </itemizedlist>  
+                <para>In either Control Panel, click the <code>Show Key</code>
+                  button to get your key. Place your API Key in the <code>X-Auth-Key</code> x-header,
+                  like <code> X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89</code>.
+                </para>
             </listitem>
           </itemizedlist>
-        </para>
         <para> </para>
         <example>
           <title>Authentication Request (US-Based Account)</title>
@@ -665,19 +720,23 @@
       </simplesect>
       <simplesect>
         <title>Response</title>     
-        <para>When authentication is successful, an HTTP status 204 (No Content) is returned with the
+        <para>When you successfully authenticate your session, an HTTP status 204 (No Content) 
+          is returned with the
           <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
           <code>X-Auth-Token</code> headers. The headers can be processed as is, and any 2xx response 
           is a good response. 
-          <!-- As-is processing / note requested by JIRA / DOC 110 dsh 02-03-12 -->
           <phrase>
           <remark security="writeronly">2012-02-29</remark>For example, a 202
-            response means the request has been accepted.</phrase> Also, additional <code>X-</code> headers may
-          be returned. These additional headers are related to other Rackspace services and can be
-          ignored. An HTTP status of 401 (Unauthorized) is returned upon authentication failure. All
-          subsequent container/object operations against Cloud Files should be made against the URL
-          specified in <code>X-Storage-Url</code> or <code>X-CDN-Management-Url</code> and must
-          include the <code>X-Auth-Token</code> header.</para>
+          response means the request has been accepted.</phrase> (Additional <code>x-</code> headers
+          related to other Rackspace services may be returned; they can be ignored.) 
+          An HTTP status of 401 (Unauthorized) is returned upon authentication failure. 
+          Use the URL returned for <code>X-Storage-Url</code> to perform the operations
+          in the Developer's Guide.
+        </para>
+          <para>
+          For most operations, you will need to use your Auth token (<code>X-Auth-Token</code>). 
+          For security, it expires every 24 hours. 
+          </para>
         <example>
           <title>Authentication Response</title>
           <literallayout class="monospaced">
@@ -690,13 +749,11 @@
   Content-Type: text/plain; charset=UTF-8
               </literallayout>
         </example>
-        <para>The <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code> will need to be
-          parsed and used in the connection and request line of all subsequent requests against
-          Cloud Files. In the example response above, users connecting to Cloud Files would send
-          most container/object requests with a host header of <code>storage.clouddrive.com</code>
-          and the request line's version and account as <code>/v1/CF_xer7_34</code>. Authentication 
-          tokens are valid for a 24-hour period. Once a token expires, you must 
-          request a new one.
+        <para>You use the <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code>
+          headers when you perform operations on your Cloud Files account. From the example response 
+          above, users connecting to Cloud Files use the host header <code>storage.clouddrive.com</code>;
+          the sample account name is <code>CF_xer7_34</code>. Auth tokens are valid for a 24 hours. 
+          Once a token expires, you must request a new one.
         </para>
         <para>
           Note: To CDN-enable Containers or adjust CDN attributes, requests must be sent to
@@ -875,8 +932,8 @@
   backups
                       </literallayout>
           </example>
-          <section xml:id="Serialized_List_Output-d1e1108">
-            <title>Serialized List Output</title>
+          <section xml:id="View_Container_Details-d1e1108">
+            <title>View Container Details</title>
             <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
               the storage account URL, the service will serve extended container information
               serialized in the chosen format. The sample responses below are formatted for
@@ -1427,7 +1484,61 @@
   Content-Type: text/plain; charset=UTF-8
                     </literallayout>
           </example>
+          <section xml:id="Multi_region-dl2200">
+            <title>Multi-region Support</title>
+            <para>
+              You may create your container in either of our US data centers, Chicago
+              or Dallas (ORD or DFW, respectively). When you connect to Cloud Files, 
+              you get endpoints for both ORD and DFW. See the example below for what
+              the output looks like. You use the PublicURL for your Cloud Files operations. 
+            </para>
+            <para>
+              You may create your Cloud Files containers in either location. Keep in mind, however, 
+              that in order to avoid external bandwidth charges, your containers and 
+              servers must be in the same data center.
+            </para>
+            <para>
+              You may find it useful to locate your objects in more than one data center 
+              to keep track of your data and backups. Specifically, if you serve an 
+              audience in a particular region, you may find it helpful to locate your 
+              Cloud Files objects as close to that region as possible.
+            </para>
+            <para>
+              Keep in mind, however, that if your audience is world wide, you can always 
+              use the Akamai Content Delivery Network (CDN). The CDN speeds your content 
+              delivery because it is cached at edge locations around the globe, 
+              rather than being served from a single origin server. You can learn more 
+              about CDN-enabling your containers in the section <xref linkend="CDN-Enable_a_Container-d1e2665"
+                xrefstyle="select:name nopage"></xref>.
+            </para>
+            <example>
+              <title>Multi-region Data Center Endpoints</title>
+              <literallayout class="monospaced">
+  "endpoints": [
+    {
+      "region": "DFW",
+      "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
+    },
+    {
+      "region": "ORD",
+      "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
+    }
+  ]
+                    </literallayout>
+            </example>
+          </section>
+          
+          
         </section>
+        
+        
+        
+        
+        
         <section xml:id="Delete_Container-d1e1765">
           <title>Delete Container</title>
           <remark security="writeronly">Edited first two paragrpahs for clarity -- dsh - 2012-03-09</remark>
@@ -1503,7 +1614,7 @@
           <example>
             <title>Update Container Metadata Request</title>
             <literallayout class="monospaced">
-  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  POST /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-Container-Meta-Book: MobyDick
@@ -1978,7 +2089,7 @@
               on any type of content. It is strongly recommended that you put non-current 
               objects in a separate container from where the current versions exist. 
               Once you enable Object Versioning, new data written to an object causes the 
-              non-current version to be written to the separate container. Each of the 
+              last-current version to be written to the separate container. Each of the 
               non-current versions has a timestamp appended to it, so you know when it was created.
             </para>
             <para>
@@ -1994,11 +2105,12 @@
               <para>
                 Nothing is written to the non-current version container when you initially
                 &PUT; an object into the current-version container. Only when you make 
-                edits to the objects via &PUT; will you create non-current versions. These non-current 
+                edits to the objects via &PUT; will you create non-current versions.
+                These non-current 
                 versions are labeled according to the schema below. 
               </para>
             <para>
-              Non-current versions are assigned the name 
+              <emphasis>Naming Schema:</emphasis> Non-current versions are assigned the name 
               &lt;length&gt;&lt;object_name&gt;/&lt;timestamp&gt;, 
               where length is the 3-character zero-padded hexidecimal character length of the &lt;object_name&gt; 
               and &lt;timestamp&gt; is when the it was initially created as a current version.
@@ -2065,7 +2177,11 @@
               </literallayout>
               
             </example>
-          </section> <!-- end 4.3.2.7 -->       
+          </section> <!-- end 4.3.2.7 -->   
+          
+          
+          
+          
           </section> <!-- end 4.3.2 -->        
       <section xml:id="Copy_Object-d1e2241">
             <title>Copy Object</title>
@@ -2340,8 +2456,8 @@
   movies
                     </literallayout>
         </example>
-        <section xml:id="Serialized_List_Output-d1e2566">
-          <title>Serialized List Output</title>
+        <section xml:id="CDN_Container_Details-d1e2566">
+          <title>View CDN Container Details</title>
           <para>If a <code>format=xml</code> or
               <code>format=json</code> argument is appended to the CDN
             management URL, the service will serve extended container
@@ -2459,8 +2575,26 @@
         will continue to work. However, any newly generated CDN URLs will have the 
         new format: <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/mydog.jpg</code>.
       </para>
+      
+      <note><title>Note on CDN Charges</title>
+        <para>
+          Keep an eye on your CDN charges. When you CDN-enable a container,
+          not only can anyone view it, but anyone can link to it. 
+          Rackspace recommends that you monitor
+          your bandwidth usage and charges in the Cloud Control Panel. 
+          This way, you will know if someone is hot linking your content.
+          See the Knowledge Center
+          article 
+          <link xlink:href="http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0">
+            "Protect your Cloud Files CDN Bill from Unexpected Usage"</link>
+          for helpful instructions for keeping yourself informed about
+          your usage charges.
+        </para>
+      </note>
 
-      <section xml:id="CDN-Enabled_Container-d1e2665">
+
+
+      <section xml:id="CDN-Enable_a_Container-d1e2665">
         <title>CDN-Enable a Container</title>
         <para>
           <remark security="writeronly">Reworked this section to highlight TTL -- dsh -
@@ -2488,8 +2622,8 @@
           content will stay populated on CDN edge servers for the
           entire period. The most popular objects stay
           cached based on the edge location's logic. </para>
-        <note><title>Note</title>
-        <para security="review">
+        <note security="reviewer"><title>Note</title>
+        <para security="reviewer">
           On August 13, 2012, the maximum TTL was set to 31536000 
           (one year). If you set new TTL values to a greater time frame, your
           object will still expire at the one-year mark. However, if you 
@@ -2830,41 +2964,57 @@
           you have your CNAME established, map your domain name to your 
           Cloud Files CDN URL to get your site up and running on the Web.
         </para>
-        <variablelist>
+        
+        
+        
+        
+        
+        <orderedlist>
           <title>Set up a Static Website </title>
-          <varlistentry>
-            <term>1.</term>
-            <listitem>
-              <para> Upload your pages to a container. </para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>2.</term>
-            <listitem>
-              <para> &POST; the
-                <code>X-Container-Meta-Web-Index</code> on  the storage container to set the
-                index or other primary page of your website. You must write your storage URL and the container name to properly
-                point to the container (&lt;storage URL&gt;&lt;container name&gt;)</para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>3.</term>
-            <listitem>
-              <para> CDN-Enable your container. </para>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
-            <term>4.</term>
-            <listitem>
-              <para> Go to your domain host and set up a CNAME to your
-                CDN URL. </para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+          <para>
+            The following list gives the step-by-step instructions for setting up a Static Websit
+          </para>
+          <listitem> 
+            <para>Upload your pages to a container. </para>
+          </listitem>
+          <listitem>
+            <para>Set the index (or primary page) for your website by doing a &POST; 
+              to the header <code>X-Container-Meta-Web-Index</code> on your website's 
+              container. See the example below, but
+                remember to change the <code>X-Auth-Token</code> to your Auth token. 
+                You must write your storage URL and the container name to properly
+                point to the container (&lt;storage URL&gt;&lt;container name&gt;)
+            </para>
+            <para>
+                You get your Auth token when you authenticate your session. See the "Request" 
+                and "Response" paragraphs in  
+                <xref linkend="Authentication-d1e639" xrefstyle="select:title nopage"/>
+                  for details on how to get your Auth token.
+            </para>
+          </listitem>
+          <listitem>
+            <para>CDN-Enable your container. See <xref linkend="CDN-Enable_a_Container-d1e2665" 
+              xrefstyle="select:title nopage"></xref> for details.
+              </para>
+          </listitem>
+          <listitem>
+            <para>Go to your domain host and set up a CNAME to your CDN URL. The CNAME is
+              the domain or branded URL you use instead of the CDN URL. If you need to 
+              find your CDN URL (called <code>cdn-uri</code>), do a &GET; 
+              to <code>cdn.clouddrive.com</code>. 
+              See <xref linkend="CDN_Container_Details-d1e2566" xrefstyle="select:title nopage"/> 
+              for details. </para>
+          </listitem>
+          <listitem>
+            <para>
+              To view your website online, go to your CDN URL or your CNAME domain. 
+            </para>
+          </listitem>
+        </orderedlist>
         <example>
             <title>Set up Static Web</title>
             <literallayout class="monospaced">
-  curl -X POST - -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: 19264db3-c845-40ea-86ed-8a33d89bfe00" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/        
+  curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: XXX" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/        
             </literallayout>
         </example>
                <para>Once your container is configured for Static Web and
