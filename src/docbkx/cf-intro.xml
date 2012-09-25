@@ -41,8 +41,9 @@
     </abstract>
     <raxm:metadata
 	xmlns:raxm="http://docs.rackspace.com/api/metadata">
+      <raxm:displayname>Getting Started Guide</raxm:displayname>
       <raxm:product version="v1.0">cloudfiles</raxm:product>
-      <raxm:priority>1</raxm:priority>
+      <raxm:priority>10</raxm:priority>
     </raxm:metadata>
   </info> 
   <chapter xml:id="Introduction-d1e82">
@@ -50,7 +51,7 @@
     <info>
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
       <raxm:type>concept</raxm:type>
-      <raxm:product version="v1.0">files</raxm:product>
+      <raxm:product version="v1.0">cloudfiles</raxm:product> 
       <raxm:priority>0</raxm:priority>
     </raxm:metadata>
     </info>
