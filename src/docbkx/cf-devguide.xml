@@ -342,9 +342,21 @@
         </revdescription>
       </revision>
     </revhistory>
+    <raxm:metadata
+	xmlns:raxm="http://docs.rackspace.com/api/metadata">
+      <raxm:product version="v1.0">cloudfiles</raxm:product>
+      <raxm:priority>1</raxm:priority>
+    </raxm:metadata>
   </info>
   <chapter xml:id="Overview-d1e70">
     <title>Overview</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+          <raxm:type>concept</raxm:type>
+          <raxm:product version="1.0">files</raxm:product>
+          <raxm:priority>1</raxm:priority>   
+      </raxm:metadata> 
+    </info>
     <para>Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage
       service offering. The core storage system is designed to provide a safe, secure, automatically
       re-sizing and network-accessible way to store data. You can store an unlimited quantity of
@@ -458,6 +470,13 @@
   </chapter>
   <chapter xml:id="Concepts-d1e413">
     <title>Concepts</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	<raxm:type>concept</raxm:type> 
+	<raxm:product version="v1.0">files</raxm:product>        
+        <raxm:priority>2</raxm:priority>
+      </raxm:metadata> 
+    </info>
     <para>Cloud Files is not a file system in the traditional sense. You will not be able to map or
       mount virtual disk drives like you can with other forms of storage such as a SAN or NAS. Since
       Cloud Files is a different way of thinking when it comes to storage, you should take a few
@@ -616,6 +635,13 @@
   </chapter>
   <chapter xml:id="General_API_Information-d1e634">
     <title>General API Information</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+	<raxm:type>concept</raxm:type>        
+	<raxm:product version="v1.0">files</raxm:product>
+        <raxm:priority>3</raxm:priority>
+      </raxm:metadata> 
+    </info>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
       <para>Client authentication is provided via a ReST interface using the &GET;
@@ -833,6 +859,13 @@
     </chapter>
     <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
       <title>API Operations for Storage Services</title>
+      <info>
+        <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+          <raxm:type>apiref</raxm:type>
+          <raxm:product version="v1.0">files</raxm:product>
+          <raxm:priority>1</raxm:priority>
+        </raxm:metadata> 
+      </info>
       <para>The following section describes the ReST API for interacting with the storage component
         of Cloud Files. All requests will be directed to the host and URL described in the
           <code>X-Storage-Url</code> HTTP header obtained during successful authentication.</para>
@@ -2349,6 +2382,13 @@
     </chapter>
     <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
     <title>API Operations for CDN Services</title>
+      <info>
+        <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+          <raxm:type>apiref</raxm:type>
+          <raxm:product version="v1.0">files</raxm:product>
+          <raxm:priority>2</raxm:priority>
+        </raxm:metadata> 
+      </info>
     <para>The following is a description of the API calls that can be used
       for the Content Delivery Network (CDN) account and container
       operations. All of the ReST methods described below must be
@@ -3085,6 +3125,13 @@
     
     <chapter xml:id="Public_Access_to_Account-d1a4440">
       <title>Public Access to Your Cloud Files Account</title>
+      <info>
+        <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+            <raxm:type>concept</raxm:type>
+            <raxm:product version="v1.0">files</raxm:product>
+          <raxm:priority>4</raxm:priority>
+        </raxm:metadata> 
+      </info>
       <para>
         This section describes ways you can allow others to post or retrieve objects
         from your Cloud Files account. With the methods described here, users do not
@@ -3405,6 +3452,13 @@
     </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples and Troubleshooting</title>
+    <info>
+      <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+        <raxm:type>concept</raxm:type>
+        <raxm:product version="v1.0">files</raxm:product>
+        <raxm:priority>5</raxm:priority>
+      </raxm:metadata> 
+    </info>
     <para>This section introduces a command-line utility and demonstrates interacting with the ReST
     interfaces through that utility.</para>
     <para>Remember that object and container names must be URL-encoded and UTF-8 encoded. 
