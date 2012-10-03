@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-09-25</pubdate>
+    <pubdate>2012-10-01</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,17 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-10-01</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added Access Log Delivery. Updated auth point.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>  
       <revision>
         <date>2012-09-25</date>
         <revdescription>
@@ -661,7 +672,7 @@
       <itemizedlist spacing="compact">
         <listitem>
           <para>
-            US-based accounts authenticate through <link xlink:href="https://auth.api.rackspacecloud.com/v1.0">https://auth.api.rackspacecloud.com/v1.0</link>.
+            US-based accounts authenticate through <link xlink:href="https://identity.api.rackspacecloud.com/v1.0">https://identity.api.rackspacecloud.com/v1.0</link>.
           </para>
         </listitem>
         <listitem>
@@ -739,7 +750,7 @@
           <title>Authentication Request (US-Based Account)</title>
           <literallayout class="monospaced">
   GET /v1.0 HTTP/1.1
-  Host: auth.api.rackspacecloud.com
+  Host: identity.api.rackspacecloud.com
   X-Auth-User: jdoe
   X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89
                     </literallayout>
@@ -1600,6 +1611,69 @@
                     </literallayout>
           </example>
         </section>
+      
+        <section xml:id="Acess_Log_Delivery-d1e2200">
+          <title>Access Log Delivery</title>
+          <para>
+            To view your object access, turn on Access Log Delivery. You can use 
+            access logs to analyze the number of people who access your objects, 
+            where your they come from, how many requests for each object you 
+            receive, and time-based usage patterns (such as monthly or seasonal usage).
+          </para>
+          <para>
+            Access Log Delivery is set on the container, and every object within 
+            the container is tracked. To enable access logs for a container, 
+            set the metadata flag <code>X-Container-Meta-Access-Log-Delivery</code> 
+            flag to <code>TRUE</code>. If you have multiple containers you want to 
+            track, you must set the metadata header to <code>TRUE</code> for each 
+            container. When your first log is delivered, the container .ACCESS_LOGS 
+            is created. This container holds the access logs for every container 
+            for which you turn on logging. Log files exist until you, the user, 
+            delete them. To turn off logging, set 
+            <code>X-Container-Meta-Access-Log-Delivery</code> flag to <code>FALSE</code>.
+          </para>
+          <para>
+            Log files are named according to this schema: container name, date of 
+            log, hour of access, and MD5_hash such as 
+            <code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
+            </code>; here, "Media" is the name of the container, October 1, 2012 
+            is the date, and 16 is the hour the logs are from. 
+            There may be multiple files for a given hour because the files are
+            delivered multiple times a day and the time to generate them varies.
+            All times given in the access logs are UTC time.
+          </para>
+          <para>
+            Within the gzipped logs, the format of the entries is similar to NCSA 
+            Combined log format, but without cookies. The schema is below; the dashes 
+            ("-") note fields which the format dictates be present but which Cloud Files 
+            does not capture. The format is: <code>%(client_ip) - - 
+              [%(day)/%(month)/%(year):%(hour):%(minute)s:%(second)s %(tz)s] "%(method) 
+              %(request) %(http_version) %(code) %(bytes_out) "%(referrer)" ' '"%(user_agent)"
+            </code>. Example entries are below.
+          </para>
+          <example>
+            <title>Example Access Log Entries</title>
+            <literallayout class="monospaced">
+   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"
+   50.56.228.64 - - [27/08/2012:16:53:49 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
+        /object_%2521 HTTP/1.0" 201 118 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"  
+   50.56.228.64 - - [27/08/2012:16:53:47 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 202 58 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"       
+   50.56.228.64 - - [27/08/2012:16:50:36 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"
+              </literallayout>
+          </example>
+        </section>
+        
         <section xml:id="Retrieve_Container_Metadata-d1e1809">
           <title>Retrieve Container Metadata</title>
           <para>&HEAD; operations against a storage container 
@@ -2706,7 +2780,7 @@
         <para>
           <remark security="writeronly">JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh
             - 2012-03-07</remark> In order to remove the container from
-          the CDN, change the <code>X-Log-Retention</code> flag to
+          the CDN, change the <code>X-CDN-Enabled</code> flag to
             <code>False</code>, as in the request below. Please note,
           however, that objects remain public until their TTL expires. </para>
         <example>
@@ -3521,7 +3595,7 @@
    <command>curl</command> <option>-D</option> - \
         <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
-        <uri>https://auth.api.rackspacecloud.com/v1.0</uri>
+        <uri>https://identity.api.rackspacecloud.com/v1.0</uri>
                       </screen>
           <screen language="bash">
    <computeroutput>HTTP/1.1 204 No Content
@@ -3547,7 +3621,7 @@
           another authorization token. As a best practice example, here is some pseudo-code for
           re-authenticating. The best scalable process flow would be:<orderedlist>
             <listitem>
-              <para>Begin requests by going to auth.api.rackspace.com for an <code>X-Auth-Token</code>.</para>
+              <para>Begin requests by going to identity.api.rackspace.com for an <code>X-Auth-Token</code>.</para>
             </listitem>
             <listitem>
               <para>Send request <code>X-Storage-URL</code> using the <code>X-Auth-Token</code> obtained in Step 1.</para>
@@ -3562,7 +3636,7 @@
                 action.</para>
             </listitem>
             <listitem>
-              <para>If result code is 401 then send a request to auth.api.rackspacecloud.com for a
+              <para>If result code is 401 then send a request to identity.api.rackspacecloud.com for a
                 new <code>X-Auth-Token</code>.</para>
             </listitem>
           </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
