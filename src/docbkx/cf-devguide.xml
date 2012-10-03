@@ -859,11 +859,8 @@
     <figure xml:id="CFinterfaces">
       <title>Cloud Files System Interfaces</title>
       <mediaobject>
-        <imageobject role="fo">
+        <imageobject>
           <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
-        </imageobject>
-        <imageobject role="html">
-          <imagedata scale="60" fileref="figures/CFinterfaces.png"/>
         </imageobject>
       </mediaobject>
     </figure>

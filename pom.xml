@@ -2,12 +2,65 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.rackspace.cloud.files.api</groupId>
     <artifactId>files-docs</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Cloud Files API Docs</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>clouddocs-maven-plugin</artifactId>
+                <version>1.5.1-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>g1</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cf-intro.xml</includes>
+                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
+                        </configuration>			
+                    </execution>
+                    <execution>
+		      <id>g2</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+			<configuration>
+			  <includes>cf-devguide.xml</includes>
+			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
+			</configuration>
+                    </execution>
+                    <execution>
+                        <id>g3</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cf-releasenotes.xml</includes>
+                            <chapterAutolabel>0</chapterAutolabel>
+			    <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
+                         </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <branding>rackspace</branding>
+                    <feedbackEmail>david.hendler@rackspace.com</feedbackEmail>
+		    <!-- Are these needed? What are the defaults? -->
+		    <socialIcons>1</socialIcons>
+		    <enableDisqus>1</enableDisqus>
+		    <enableGoogleAnalytics>1</enableGoogleAnalytics>
+		    <showXslMessages>true</showXslMessages>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <profiles>
         <profile>
             <id>Rackspace Research Repositories</id>
@@ -30,100 +83,4 @@
             </pluginRepositories>
         </profile>
     </profiles>
-    <build>
-        <resources>
-            <resource>
-                <directory>target/docbkx/pdf</directory>
-                <excludes>
-                    <exclude>**/*.fo</exclude>
-                </excludes>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>com.rackspace.cloud.api</groupId>
-                <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.5.0</version>
-                <executions>		 
-                    <execution>
-                        <id>g1</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <includes>cf-intro.xml</includes>
-                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
-                            <postProcess>
-                                <copy
-                                    todir="target/docbkx/webhelp/cf-intro/content/figures">
-                                    <fileset dir="src/docbkx/figures">
-                                        <include name="**/*.png"/>
-                                        <exclude name="**/CFinterfaces.png"/>
-                                    </fileset>
-                                </copy>
-                            </postProcess>
-                        </configuration>			
-                    </execution>
-                    <execution>
-		      <id>g2</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-			<configuration>
-			  <includes>cf-devguide.xml</includes>
-		<security>external</security>
-			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
-			  <postProcess>
-			    <copy
-				todir="target/docbkx/webhelp/cf-devguide/content/figures">
-			      <fileset dir="src/docbkx/figures">
-				<include name="**/CFinterfaces.png"/>
-			      </fileset>
-			    </copy>
-			  </postProcess>
-			</configuration>
-                    </execution>
-                    <execution>
-                        <id>g3</id>
-                        <goals>
-                            <goal>generate-pdf</goal>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <includes>cf-releasenotes.xml</includes>
-                            <!-- Supress chapter numbers -->
-                            <chapterAutolabel>0</chapterAutolabel>
-                            <security>external</security>
-                            <xincludeSupported>true</xincludeSupported>
-                            <!--The entry below enables Disqus-->
-                            <enableDisqus>1</enableDisqus>
-                            <!-- <disqusShortname>rc-docs-beta</disqusShortname>  -->
-                            <enableGoogleAnalytics>1</enableGoogleAnalytics>
-                            <!-- <googleAnalyticsId>UA-26410723-1</googleAnalyticsId> -->
-                            <feedbackEmail>monitoring@RACKSPACE.COM</feedbackEmail>
-                            <!-- The entry below inserts Twitter, Facebook, and Google+ icons in the webhelp output -->
-                            <!-- Enable this when you go out of beta!!! -->
-                            <socialIcons>1</socialIcons>
-                            <metaRobots>1</metaRobots>
-                            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                            <failOnValidationError>no</failOnValidationError>
-                         </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <xincludeSupported>true</xincludeSupported>
-                    <branding>rackspace</branding>
-                    <enableDisqus>1</enableDisqus>
-                    <!-- <enableDisqus>intranet</enableDisqus> -->
-                    <feedbackEmail>david.hendler@rackspace.com, sami.moran@rackspace.com</feedbackEmail>
-		    <socialIcons>1</socialIcons>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

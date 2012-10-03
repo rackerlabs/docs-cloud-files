@@ -293,10 +293,7 @@
           <figure>
             <title>Rackspace Cloud Control Panel</title>
             <mediaobject >
-              <imageobject role="html">
-                <imagedata format="PNG" align="center" fileref="figures/cf-screenshot-ControlPanel.png"/>
-              </imageobject>
-              <imageobject role="fo">
+              <imageobject>
                 <imagedata format="svg" align="center" scale="50" fileref="figures/cf-screenshot-ControlPanel.png"/>
               </imageobject>
             </mediaobject>
@@ -315,10 +312,7 @@
           <figure>
             <title>FireUploader Interface to Cloud Files</title>
             <mediaobject >
-              <imageobject role="html">
-                <imagedata format="PNG" align="center" fileref="figures/cf-screenshot-FireUploader.png"/>
-              </imageobject>
-              <imageobject role="fo">
+              <imageobject>
                 <imagedata format="svg" align="center" scale="50" fileref="figures/cf-screenshot-FireUploader.png"/>
               </imageobject>
             </mediaobject>
@@ -338,10 +332,7 @@
           <figure>
             <title>Cyberduck Interface to Cloud Files</title>
             <mediaobject >
-              <imageobject role="html">
-                <imagedata format="PNG" align="center" fileref="figures/cf-screenshot-Cyberduck.png"/>
-              </imageobject>
-              <imageobject role="fo">
+              <imageobject>
                 <imagedata format="svg" align="center" scale="80" fileref="figures/cf-screenshot-Cyberduck.png"/>
               </imageobject>
             </mediaobject>
