@@ -83,6 +83,9 @@
             </pluginRepositories>
         </profile>
     </profiles>
+    <scm>
+      <connection>scm:git:ssh://git@github.rackspace.com:IX/cloud-files.git</connection>
+    </scm>
     <distributionManagement>
       <site>
 	<id>docs-stagging</id>
