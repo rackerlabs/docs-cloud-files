@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-10-01</pubdate>
+    <pubdate>2012-10-31</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,17 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-10-31</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Updated language binding language and links; updated view CDN-enabled header
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2012-10-01</date>
         <revdescription>
@@ -402,21 +413,20 @@
           <para>HTTP/1.1</para>
         </listitem>
       </itemizedlist>
-      <para>Rackspace also provides Rackspace-supported, language-specific APIs in several popular
-        programming languages. Currently, the supported APIs are C#/.NET, Java, PHP, Python, and
+      <para>Rackspace also provides language-specific APIs in several popular
+        programming languages. Currently, the APIs are C#/.NET, Java, PHP, Python, and
         Ruby. These APIs utilize the ReST API and are provided to help developers rapidly integrate
-        Cloud Files support into their applications without needing to write at the ReST interface.
+        Cloud Files support into their applications without needing to write to the ReST interface.
         Each API includes its own documentation in its native format. For example, the Java API
         includes JavaDocs and the C#/.NET API includes a CHM file.</para>
-      <para>System administrators and other users who are interested in the storage and CDN benefits
+      <para>System administrators and other users interested in the storage and CDN benefits
         of Cloud Files should consider using the File Manager interface within the Rackspace Cloud
         Control Panel, <link xlink:href="http://www.jungledisk.com/">Jungle Disk</link>, or third
         party tools such as <link xlink:href="http://www.fireuploader.com/">Fileuploader</link>,
           <link xlink:href="http://www.cyberduck.ch/">Cyberduck</link>, or <link xlink:href="http://cloudfilesmanager.com/">Cloud Files Manager</link>. The control panel
         provides an easy to use web-based interface for uploading and downloading content to and
         from Cloud Files.</para>
-      <para>For additional information about available language
-        bindings, refer to <link
+      <para>For additional information about available language bindings, refer to the section, <link
           linkend="Language-Specific_API_Bindings-d1e574"
           >Language-Specific API Bindings</link>.</para>
     </section>
@@ -440,23 +450,35 @@
         available at the same site, as are links to official Rackspace support channels, including
         knowledge base articles, forums, phone, chat, and email.</para>
       <para>Language bindings are available. Each binding includes its own documentation (either HTML, PDF, or CHM). They also
-        include code snippets and examples to help you get started. The currently supported API
-        binding for Cloud Files are:</para>
+        include code snippets and examples to help you get started. The API bindings for Cloud Files are:</para>
       <itemizedlist>
         <listitem>
-          <para>PHP (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
+          <para><link
+            xlink:href="https://github.com/rackspace/php-cloudfiles">
+            PHP</link> (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
         </listitem>
         <listitem>
-          <para>Python (requires 2.4 or newer)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/python-cloudfiles">
+              Python</link> (requires 2.4 or newer)</para>
         </listitem>
         <listitem>
-          <para>Java (requires JRE v1.5 or newer)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/java-cloudfiles">
+              Java</link> (requires JRE v1.5 or newer)</para>
         </listitem>
         <listitem>
-          <para>C#/.NET (requires .NET Framework v3.5)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/csharp-cloudfiles">
+              C#/.NET</link> (requires .NET Framework v3.5)</para>
         </listitem>
         <listitem>
-          <para>Ruby (requires 1.8 or newer and mime-tools module)</para>
+          <para><link
+            xlink:href="https://github.com/rackspace/ruby-cloudfiles">
+            Ruby</link> (requires 1.8 or newer and mime-tools module)</para>
         </listitem>
       </itemizedlist>
       <para>For additional information about available language bindings, refer to <link linkend="Language-Specific_API_Bindings-d1e574">Language-Specific API Bindings</link>.</para>
@@ -609,10 +631,10 @@
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
       <title>Language-Specific API Bindings</title>
-      <para>A set of supported API bindings in several popular languages are available to help put
+      <para>A set of API bindings in several popular languages are available to help put
         Cloud Files in the hands of developers. These bindings provide a layer of abstraction on top
         of the base ReST API, allowing programmers to work with a container and object model instead
-        of working directly with HTTP requests and responses. These bindings are free (as in beer
+        of working directly with HTTP requests and responses. The bindings are free (as in beer
         and as in speech) to download, use, and modify. They are all licensed under the MIT License
         as described in the COPYING file packaged with each binding. If you make any improvements
         to an API, you are encouraged (but not required) to submit those changes back to us.</para>
@@ -621,26 +643,39 @@
         to <link xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. 
         Make sure to indicate which language and version you modified and send us a unified diff. </para>
       <para>Each binding includes its own documentation (in HTML, PDF, or CHM format). They also
-        include code snippets and examples to help you get started. The currently supported API
-        binding for Cloud Files are:</para>
+        include code snippets and examples to help you get started. The API
+        bindings for Cloud Files are:</para>      
       <itemizedlist>
         <listitem>
-          <para>PHP (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
+          <para><link
+            xlink:href="https://github.com/rackspace/php-cloudfiles">
+            PHP</link> (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
         </listitem>
         <listitem>
-          <para>Python (requires 2.4 or newer)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/python-cloudfiles">
+              Python</link> (requires 2.4 or newer)</para>
         </listitem>
         <listitem>
-          <para>Java (requires JRE v1.5 or newer)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/java-cloudfiles">
+              Java</link> (requires JRE v1.5 or newer)</para>
         </listitem>
         <listitem>
-          <para>C#/.NET (requires .NET Framework v3.5)</para>
+          <para>
+            <link
+              xlink:href="https://github.com/rackspace/csharp-cloudfiles">
+              C#/.NET</link> (requires .NET Framework v3.5)</para>
         </listitem>
         <listitem>
-          <para>Ruby (requires 1.8 or newer and mime-tools module)</para>
+          <para><link
+            xlink:href="https://github.com/rackspace/ruby-cloudfiles">
+            Ruby</link> (requires 1.8 or newer and mime-tools module)</para>
         </listitem>
       </itemizedlist>
-      <para>There are no other supported language-specific bindings at this time. You are welcome to
+      <para>There are no other language-specific bindings at this time. You are welcome to
         create your own language API bindings and we will help answer any questions during
         development, host your code if you like, and give you full credit for your work.</para>
     </section>
@@ -1283,7 +1318,7 @@
                     </literallayout>
             </example>
             <example>
-              <title>Object Details Request: XML </title>
+              <title>Object Details Response: XML </title>
               <literallayout class="monospaced">
   HTTP/1.1 200 OK
   Date: Tue, 25 Nov 2008 19:42:35 GMT
@@ -1550,7 +1585,7 @@
               use the Akamai Content Delivery Network (CDN). The CDN speeds your content 
               delivery because it is cached at edge locations around the globe, 
               rather than being served from a single origin server. You can learn more 
-              about CDN-enabling your containers in the section <xref linkend="CDN-Enable_a_Container-d1e2665"
+              about CDN-enabling your containers in <xref linkend="CDN-Enable_a_Container-d1e2665"
                 xrefstyle="select:name nopage"></xref>.
             </para>
             <example>
@@ -2049,7 +2084,8 @@
             how browsers and servers communicate across origins using HTTP headers, such as those
             assigned by Cloud Files API requests. These headers are supported with the Cloud Files
             API. You can read more about the definition of the Access-Control- response headers and
-            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/">www.w3.org/TR/access-control/</link>.<itemizedlist>
+            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/">www.w3.org/TR/access-control/</link>.
+            <itemizedlist>
               <listitem>
                 <para>Access-Control-Allow-Credentials</para>
               </listitem>
@@ -2074,11 +2110,15 @@
               <listitem>
                 <para>Origin</para>
               </listitem>
-            </itemizedlist></para>
-          <para>These headers can be assigned to objects only. </para>
+            </itemizedlist>
+          </para>
+          <para>These headers can only be assigned to objects. </para>
           <example>
             <title>Assign CORS Header</title>
-            <para>In the example, the origin header is assigned that indicates where the file came
+            <para>
+              You can only set CORS headers through the Cloud Files API, and not through the
+              control panel. 
+              In the below example, the origin header is assigned that indicates where the file came
               from. This allows you to provide security that requests to your Cloud Files repository
               are indeed from the correct origination:</para>
             <literallayout class="monospaced">
@@ -2570,26 +2610,36 @@
         </example>
         <section xml:id="CDN_Container_Details-d1e2566">
           <title>View CDN Container Details</title>
-          <para>If a <code>format=xml</code> or
-              <code>format=json</code> argument is appended to the CDN
-            management URL, the service will serve extended container
-            information serialized in the chosen format. Other than
-            the <code>?format=xml|json</code> parameter, it will
-            return the same status/errors codes. The sample responses
-            below are formatted for readability.</para>
+          <para>You may view a CDN-enabled container's details
+            by doing a HEAD request on the container where the 
+            Host is the CDN. This will
+            return all the header information, including the
+            CDN Streaming URI, the SSL URI, and the CDN URI.
+            Remember that your HEAD request must be on the CDN
+            host (i.e., cdn.clouddrive.com), or you will return
+            the metadata set on your container.
+          </para>
+          <para>
+            Additionally, you may format the returned information
+            in either XML or JSON format by appending 
+            <code>?format=xml</code> or <code>?format=json</code>
+            to your request. 
+          </para>
+          <para>A return code of 200 (OK) or 204 (No Content) is expected.
+          </para>
           <example>
             <title>CDN-Enabled Containers Details Request: JSON </title>
             <literallayout class="monospaced">
-  GET /v1/&lt;account&gt;?format=json HTTP/1.1
+  HEAD /v1/&lt;account&gt;/&lt;container_name&gt;?format=json
   Host: cdn.clouddrive.com
-  X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
+  X-Auth-Token: &lt;your_auth_token&gt;
                     </literallayout>
           </example>
           <example>
             <title>CDN-Enabled Containers Details Response: JSON </title>
             <literallayout class="monospaced">
   HTTP/1.1 200 OK
-  Date: Thu, 08 Sep 2011 14:41:29 GMT
+  Date: Tue, 30 Oct 2012 14:41:29 GMT
   Content-Length: 127
   Content-Type: application/json; charset=utf-8
                     </literallayout>
@@ -2609,9 +2659,9 @@
             <?dbfo keep-together="always"?>
             <title>CDN-Enabled Containers Details Request: XML</title>
             <literallayout class="monospaced">
-  GET /v1/&lt;account&gt;?format=xml HTTP/1.1
+  HEAD /v1/&lt;account&gt;//&lt;container_name&gt;?format=xml
   Host: cdn.clouddrive.com
-  X-Auth-Token: a6e3359b-3749-440a-9292-0bdcb0e33617
+  X-Auth-Token: &lt;your_auth_token&gt;
                     </literallayout>
           </example>
           <example>
@@ -2619,7 +2669,7 @@
               XML</title>
             <literallayout class="monospaced">
   HTTP/1.1 200 OK
-  Date: Fri, 09 Sep 2011 17:57:28 GMT
+  Date: Tue, 30 Oct 2012 17:57:28 GMT
   Content-Length: 267
   Content-Type: application/xml; charset=utf-8
                     </literallayout>
@@ -3788,7 +3838,7 @@
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
           APIs, however, are designed to re-use these connections between operations and therefore
-          provide much better performance. It is recommended that you use one of the supported
+          provide much better performance. It is recommended that you use one of the
           language APIs in your production applications and limit <code>curl</code> to
           quick-and-easy testing/troubleshooting.</para>
       </section>
