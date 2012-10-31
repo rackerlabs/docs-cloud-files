@@ -1220,7 +1220,7 @@
                   serialized response.</para>
               </listitem>
             </varlistentry>
-            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12 -->
+            <!-- The "path" query is / deprecated and is no / longer supported - dsh 02-13-12 
             <varlistentry>
               <term><code>path</code></term>
               <listitem>
@@ -1230,13 +1230,13 @@
                   preconditions are met - see below).</para>
               </listitem>
             </varlistentry>
+            -->
             <varlistentry>
               <term><code>delimiter</code></term>
               <listitem>
                 <para>For a character <inlineequation>
                     <mathphrase><emphasis>c</emphasis></mathphrase>
-                  </inlineequation>, return all the object names nested in the container (without
-                  the need for the directory marker objects).</para>
+                  </inlineequation>, return all the object names nested in the container.</para>
               </listitem>
             </varlistentry>
           </variablelist>
@@ -2762,20 +2762,21 @@
           <remark security="writeronly">Reworked this section to highlight TTL -- dsh -
             2012-03-12</remark> Before a container can be CDN-enabled,
           it must exist in the storage system. To CDN-enable the
-          container, you will &PUT; it to the publicURL created under
-          Cloud Files during Authentication. (In the examples below,
-          this URL is referred to as cdn.clouddrive.com.) When a
-          container is CDN-enabled, any objects stored in that
-          container are publicly accessible over a CDN by combining
+          container, &PUT; it to the publicURL created under
+          Cloud Files during Authentication and set the <code>X-CDN-Enabled</code>
+          header to TRUE. (In the examples below,
+          the publicURL used is cdn.clouddrive.com.) When a
+          container is CDN-enabled, any objects stored in it
+          are publicly accessible over the Content Delivery Network by combining
           the container's CDN URL with the object name
             (<code>X-CDN-URI/objectName</code>). </para>
-        <para> Any CDN-accessed objects will be cached in the CDN for
-          specified amount of time called the TTL, or Time to Live.
+        <para> Any CDN-accessed objects are cached in the CDN for
+          the specified amount of time called the TTL, or Time to Live.
           The default TTL value is 259200 seconds, or 72 hours. Each
-          time the object is accessed after a TTL expiration, the CDN
-          refetches and caches the object for the TTL duration. </para>
-        <para> You may specify the TTL for an object by including the
-          HTTP header <code>X-TTL: integer_seconds</code>. Setting the
+          time the object is accessed after the TTL expires, the CDN
+          refetches and caches the object for the TTL period. </para>
+        <para>You specify the TTL for an object by including the
+          HTTP header <code>X-TTL: &lt;integer_seconds&gt;</code>. Setting the
           TTL is the same as setting the HTTP <code>Expires</code> and
             <code>Cache-Control</code> headers for the cached object.
           The minimum TTL is 15 minutes (900 seconds) and the maximum
@@ -2800,7 +2801,7 @@
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   X-TTL: 2592000
-  X-Log-Retention: True
+  X-CDN-Enabled: True
                     </literallayout>
         </example>
         <para>No content is returned. A status code of 201 (Created)
