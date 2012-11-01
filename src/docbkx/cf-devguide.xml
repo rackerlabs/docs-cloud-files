@@ -376,7 +376,7 @@
     <info>
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
           <raxm:type>concept</raxm:type>
-          <raxm:product version="1.0">cloudfiles</raxm:product>
+          <raxm:product version="v1.0">cloudfiles</raxm:product>
           <raxm:priority>1</raxm:priority>   
       </raxm:metadata> 
     </info>
