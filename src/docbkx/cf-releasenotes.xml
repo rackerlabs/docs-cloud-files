@@ -56,6 +56,55 @@
 	  <raxm:priority>40</raxm:priority>
 	</raxm:metadata>
     </info>
+
+
+	<chapter xml:id="Nov16">
+		<?dbhtml stop-chunking?>
+		<title>Nov 16, 2012</title>
+		<para>CORSE Container Headers</para>
+		
+		<!-- New Features -->
+		<itemizedlist>
+			<title>New Features</title>
+			<listitem>
+				<para>Added CORS Container Headers.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Enchancements --> 	
+		
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>
+					None.
+				</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Resolved Issues --> 
+		<itemizedlist>
+			<title>Resolved Issues</title>
+			<listitem>
+				<para>None.</para>
+			</listitem>
+		</itemizedlist>
+		
+		<!-- Documentation Changes --> 		
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Added end_marker to object list sorting.
+				</para>
+			</listitem>
+			<listitem>
+				<para>Simplified Account and Container searching.
+				</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+
 	
 	
 	<chapter xml:id="Oct01">

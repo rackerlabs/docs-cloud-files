@@ -33,6 +33,7 @@
                         <phase>generate-sources</phase>
 			<configuration>
 			  <includes>cf-devguide.xml</includes>
+			    <security>external</security>
 			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
 			</configuration>
                     </execution>
