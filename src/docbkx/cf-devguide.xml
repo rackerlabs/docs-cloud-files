@@ -38,7 +38,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-11-16</pubdate>
+    <pubdate>2012-11-30</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -50,6 +50,17 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2012-11-30</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Fixed internal linking.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2012-11-16</date>
         <revdescription>
@@ -1023,7 +1034,7 @@
               in <code>X-Auth-Token</code>. When you do your own requests, you must
               use your own auth token. You can check how to generate this
               token in <xref linkend="Authentication-d1e639"
-                xrefstyle="select:title nopage"></xref>.
+                xrefstyle="select:label quotedtitle nopage"></xref>.
             </para>
             <example>
               <title>View Account Information Request</title>
@@ -1056,7 +1067,7 @@
               (<code>X-Storage-Url</code>). The list is limited to
               10,000 containers at a time. See the below section, 
               <xref linkend="List_Large_Number_of_Containers-d1e1166"
-                xrefstyle="select:title nopage"></xref>,
+                xrefstyle="select:label quotedtitle nopage"></xref>,
               for information on limiting and navigating the list.
               A 200 (OK) code returns 
               if there are containers and a 204 (No Content) code 
@@ -1091,6 +1102,7 @@
   backups
                       </literallayout>
           </example>
+
           <section xml:id="View_Container_Details-d1e1108">
             <title>Format Container List</title>
             <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
@@ -1314,7 +1326,7 @@
           do a &HEAD; request against the container's URL. To set and
           edit your custom metadata, 
           see <xref linkend="Update_Container_Metadata-d1e1900"
-            xrefstyle="select:title nopage"></xref>.
+            xrefstyle="select:label quotedtitle nopage"></xref>.
           A 204 (No Content) code 
           returns and there is no information in the
           response body.
@@ -1359,7 +1371,7 @@
             &PUT; request. The custom metadata is assigned to a container via HTTP headers identified
             with the <code>X-Container-Meta-XXXX</code> prefix. See 
             <xref linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
-              xrefstyle="select:title nopage"></xref> for details on setting custom metadata.
+              xrefstyle="select:label quotedtitle nopage"></xref> for details on setting custom metadata.
           </para>
           <example>
             <title>Container Create Request </title>
@@ -1438,7 +1450,7 @@
               delivery because it is cached at edge locations around the globe, 
               rather than being served from a single origin server. You can learn more 
               about CDN-enabling your containers in <xref linkend="CDN-Enable_a_Container-d1e2665"
-                xrefstyle="select:title nopage"></xref>.
+                xrefstyle="select:label quotedtitle nopage"></xref>.
             </para>
             <example>
               <title>Multi-region Data Center Endpoints</title>
@@ -1680,10 +1692,10 @@
     <para>
       CORS headers allow the access, but 
       FormPost (<xref linkend="FormPost-d1a555"
-        xrefstyle="select:title nopage"></xref>) 
+        xrefstyle="select:label quotedtitle nopage"></xref>) 
       enables users to post to your site and 
       TempURL (<xref linkend="TempURL-d1a4450"
-        xrefstyle="select:title nopage"></xref>)
+        xrefstyle="select:label quotedtitle nopage"></xref>)
       limits how long users can use a given URL.
     </para>
     <para>
@@ -1730,7 +1742,7 @@
             time modified (in GMT), and content type. The list is limited
             to 10,000 containers at a time. See the below section, 
             <xref linkend="List_Large_Number_of_Objects-d1e1521"
-              xrefstyle="select:title nopage"></xref>
+              xrefstyle="select:label quotedtitle nopage"></xref>
             , for information on limiting and controlling the list. 
             A 200 (OK) code returns if there are
             objects and a 204 (No Content) code returns if there are no objects.
@@ -1919,7 +1931,7 @@
    
    
         </section>
-      
+        
         <section xml:id="Acess_Log_Delivery-d1e2200">
           <title>Access Log Delivery</title>
           <para>
@@ -1981,7 +1993,7 @@
               </literallayout>
           </example>
         </section>
-        
+<!--         
         <section xml:id="Retrieve_Container_Metadata-d1e1809">
           <title>Retrieve Container Metadata</title>
           <para>&HEAD; operations against a storage container 
@@ -2025,11 +2037,10 @@
           cannot exceed 5 GB and must have names that do not exceed 1024 bytes after URL
           encoding. If you try to upload an object larger than 5 GB, a 413 (Request Entity Too Large)
           code will be returned.
-          <!-- Error code note was / requested by JIRA tick / DOC-1-11 dsh 02-03-12 -->
-          
+         
           However, objects larger than 5 GB may be segmented and concatenated 
           together so that you can upload 5 GB segments and download a single concatenated object. 
-          You can work with the segments and manifests directly with HTTP requests.</para>
+          You can work with the segments and manifests directly with HTTP requests. -->
         <section xml:id="Retrieve_Object-d1e1856">
           <title>Retrieve Object</title>
           <para>&GET; operations against an object are used to retrieve the object's
@@ -3381,7 +3392,7 @@
         <orderedlist>
           <title>Set up a Static Website </title>
           <para>
-            The following list gives the step-by-step instructions for setting up a Static Websit
+            The following list gives the step-by-step instructions for setting up a Static Website.
           </para>
           <listitem> 
             <para>Upload your pages to a container. </para>
@@ -3397,13 +3408,13 @@
             <para>
                 You get your Auth token when you authenticate your session. See the "Request" 
                 and "Response" paragraphs in  
-                <xref linkend="Authentication-d1e639" xrefstyle="select:title nopage"/>
+              <xref linkend="Authentication-d1e639" xrefstyle="select:label quotedtitle nopage"/>
                   for details on how to get your Auth token.
             </para>
           </listitem>
           <listitem>
             <para>CDN-Enable your container. See <xref linkend="CDN-Enable_a_Container-d1e2665" 
-              xrefstyle="select:title nopage"></xref> for details.
+              xrefstyle="select:label quotedtitle nopage"></xref> for details.
               </para>
           </listitem>
           <listitem>
@@ -3411,7 +3422,7 @@
               the domain or branded URL you use instead of the CDN URL. If you need to 
               find your CDN URL (called <code>cdn-uri</code>), do a &GET; 
               to <code>cdn.clouddrive.com</code>. 
-              See <xref linkend="CDN_Container_Details-d1e2566" xrefstyle="select:title nopage"/> 
+              See <xref linkend="CDN_Container_Details-d1e2566" xrefstyle="select:label quotedtitle nopage"/> 
               for details. </para>
           </listitem>
           <listitem>
