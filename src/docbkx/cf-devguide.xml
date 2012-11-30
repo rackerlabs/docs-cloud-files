@@ -1022,8 +1022,8 @@
               The examples in this section use a sample auth account, listed
               in <code>X-Auth-Token</code>. When you do your own requests, you must
               use your own auth token. You can check how to generate this
-              token in <xref linkend="General_API_Information-d1e634"
-                xrefstyle="select:name nopage"></xref>
+              token in <xref linkend="Authentication-d1e639"
+                xrefstyle="select:title nopage"></xref>.
             </para>
             <example>
               <title>View Account Information Request</title>
@@ -1056,7 +1056,7 @@
               (<code>X-Storage-Url</code>). The list is limited to
               10,000 containers at a time. See the below section, 
               <xref linkend="List_Large_Number_of_Containers-d1e1166"
-                xrefstyle="select:name nopage"></xref>,
+                xrefstyle="select:title nopage"></xref>,
               for information on limiting and navigating the list.
               A 200 (OK) code returns 
               if there are containers and a 204 (No Content) code 
@@ -1314,7 +1314,7 @@
           do a &HEAD; request against the container's URL. To set and
           edit your custom metadata, 
           see <xref linkend="Update_Container_Metadata-d1e1900"
-            xrefstyle="select:name nopage"></xref>.
+            xrefstyle="select:title nopage"></xref>.
           A 204 (No Content) code 
           returns and there is no information in the
           response body.
@@ -1359,7 +1359,7 @@
             &PUT; request. The custom metadata is assigned to a container via HTTP headers identified
             with the <code>X-Container-Meta-XXXX</code> prefix. See 
             <xref linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
-              xrefstyle="select:name nopage"></xref> for details on setting custom metadata.
+              xrefstyle="select:title nopage"></xref> for details on setting custom metadata.
           </para>
           <example>
             <title>Container Create Request </title>
@@ -1438,7 +1438,7 @@
               delivery because it is cached at edge locations around the globe, 
               rather than being served from a single origin server. You can learn more 
               about CDN-enabling your containers in <xref linkend="CDN-Enable_a_Container-d1e2665"
-                xrefstyle="select:name nopage"></xref>.
+                xrefstyle="select:title nopage"></xref>.
             </para>
             <example>
               <title>Multi-region Data Center Endpoints</title>
@@ -1680,10 +1680,10 @@
     <para>
       CORS headers allow the access, but 
       FormPost (<xref linkend="FormPost-d1a555"
-        xrefstyle="select:name nopage"></xref>) 
+        xrefstyle="select:title nopage"></xref>) 
       enables users to post to your site and 
       TempURL (<xref linkend="TempURL-d1a4450"
-        xrefstyle="select:name nopage"></xref>)
+        xrefstyle="select:title nopage"></xref>)
       limits how long users can use a given URL.
     </para>
     <para>
@@ -1730,7 +1730,7 @@
             time modified (in GMT), and content type. The list is limited
             to 10,000 containers at a time. See the below section, 
             <xref linkend="List_Large_Number_of_Objects-d1e1521"
-              xrefstyle="select:name nopage"></xref>
+              xrefstyle="select:title nopage"></xref>
             , for information on limiting and controlling the list. 
             A 200 (OK) code returns if there are
             objects and a 204 (No Content) code returns if there are no objects.
