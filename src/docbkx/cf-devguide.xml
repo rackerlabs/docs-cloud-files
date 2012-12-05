@@ -51,6 +51,17 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2012-12-05</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added iOS Streaming.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2012-11-30</date>
         <revdescription>
           <itemizedlist spacing="compact">
@@ -3244,8 +3255,8 @@
       </section>
       <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
         <title>Streaming CDN-Enabled Containers </title>
-        <para>&HEAD; operations against a CDN-enabled container can
-          also return a streaming URL. Like SSL, streaming is always
+        <para>A &HEAD; request against a CDN-enabled container
+          returns the streaming URL. Like SSL, streaming is always
           enabled, and you use the streaming URL for links to content
           that you want to stream, such as video. </para>
         <example>
@@ -3270,15 +3281,112 @@
   HTTP/1.1 204 No Content
   X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
   X-Ttl: 259200
-  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
-  X-Cdn-Enabled: True
-  X-Log-Retention: False
+  X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com
   X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl.cf1.rackcdn.com
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
+  X-Log-Retention: False
   X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
   Content-Length: 0
                       </literallayout>
         </example>
       </section>
+      
+      
+      <!-- -->
+      
+      <section xml:id="iOS-Streaming-d1f3725">
+        <title>iOS Streaming</title>
+        <para>
+          The Cloud Files CDN allows you to stream video to iOS devices 
+          without needing to convert your video. Once you CDN-enable your 
+          container, you have the tools necessary for streaming media 
+          to multiple devices. To leverage this ability, you must check 
+          the client's User Agent with JavaScript. An example of the 
+          User Agent check and how to use it is given below.       
+        </para>
+        
+        <para>
+          First, CDN-enable your container; <xref linkend="CDN-Enable_a_Container-d1e2665" 
+            xrefstyle="select:label quotedtitle nopage"></xref>
+          for instructions. Two streaming URLs are created: the container's Streaming URL 
+          (<code>X-Cdn-Streaming-Uri</code>) and its iOS Streaming URL 
+          (<code>X-Cdn-Ios-Uri</code>). Do a &HEAD; request to the CDN-enabled container 
+          to view these URLs.  
+        </para>
+       
+        <para>
+          Second, link to your content in a HTML page using a VIDEO element. Set 
+          the SRC attribute of the VIDEO element to the full Streaming URL 
+          for your container plus the name of your content. In the below 
+          example, the streaming video is MobyDick.mp4. 
+        </para>
+        
+        <example>
+          <title>HTML 5 Video Element</title>
+          <literallayout class="monospaced">
+  &lt;video width=”640” height=”480” id="videotag"&gt;
+	 &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+	 r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
+ &lt;/video&gt;
+                      </literallayout>
+        </example>
+            
+        <para>
+          Third, add a JavaScript to the HEAD of your HTML page to check 
+          if the User Agent is an iOS device. If it is, the JavaScript 
+          uses the container's iOS Streaming URL (<code>x-Ios-Uri</code>) 
+            instead of the regular Streaming URL. The Cloud Files CDN 
+            delivers the properly formatted content for iOS devices only
+            when the iOS Streaming URL is called. Here, the JavaScript 
+            sets the SRC attribute of the VIDEO element "videotag" to 
+            the iOS Streaming URL. Remember to add your content's name 
+            to the end of the URL.
+        </para>
+            
+        <example>
+          <title>JavaScript for User Agent Check</title>
+          <literallayout class="monospaced">
+&lt;script type=”text/javascript”&gt;
+
+    function isIOS(){
+        return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
+i))) != null;
+    }
+
+    function init(){
+        if (isIOS()){
+           document.getElementById(“videotag”).src = “http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+           iosr.cf0.rackcdn.com/MobyDick.mp4”;
+        }
+    }
+
+&lt;/script&gt;
+               </literallayout>
+        </example>
+        
+        <para>          
+          Lastly, add <code>init()</code> to the BODY element of your HTML 
+          page to call the User Agent check when the page loads. 
+        </para>
+        
+        <example>
+          <title>Load JavaScript in HTML page</title>
+          <literallayout class="monospaced">
+  &lt;body onload=”init()”&gt;
+                      </literallayout>
+        </example>
+        
+        <para>
+          With these pieces of code in place, the proper content streams to your users, no matter their device.
+        </para>
+
+      </section>
+      
+      <!-- -->
+      
+      
     </section>
     <section xml:id="CDN_Object_Services">
       <title>CDN Object Services</title>
