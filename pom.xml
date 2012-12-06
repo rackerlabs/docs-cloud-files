@@ -106,15 +106,4 @@
     <scm>
       <connection>scm:git:ssh://git@github.rackspace.com:IX/cloud-files.git</connection>
     </scm>
-    <distributionManagement>
-      <site>
-	<id>docs-stagging</id>
-	<url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-      </site>
-      <repository>
-	<id>docs-stagging</id>
-	<name>docs-stagging</name>
-	<url>http://10.14.208.16:8081/nexus/content/repositories/docs-stagging/</url>
-      </repository>
-    </distributionManagement>
 </project>
