@@ -409,7 +409,7 @@
     <info>
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
           <raxm:type>concept</raxm:type>
-          <raxm:product version="v1.0">cloudfiles</raxm:product>
+          <raxm:product version="v1.0">files</raxm:product>
           <raxm:priority>1</raxm:priority>   
       </raxm:metadata> 
     </info>
@@ -540,7 +540,7 @@
     <info>
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
 	<raxm:type>concept</raxm:type> 
-	<raxm:product version="v1.0">cloudfiles</raxm:product>        
+	<raxm:product version="v1.0">files</raxm:product>        
         <raxm:priority>2</raxm:priority>
       </raxm:metadata> 
     </info>
@@ -718,7 +718,7 @@
     <info>
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
 	<raxm:type>concept</raxm:type>        
-	<raxm:product version="v1.0">cloudfiles</raxm:product> 
+	<raxm:product version="v1.0">files</raxm:product> 
         <raxm:priority>3</raxm:priority>
       </raxm:metadata> 
     </info>
@@ -939,7 +939,7 @@
       <info>
         <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
           <raxm:type>apiref</raxm:type>
-          <raxm:product version="v1.0">cloudfiles</raxm:product> 
+          <raxm:product version="v1.0">files</raxm:product> 
           <raxm:priority>1</raxm:priority>
         </raxm:metadata> 
       </info>
@@ -2756,7 +2756,7 @@
       <info>
         <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
           <raxm:type>apiref</raxm:type>
-          <raxm:product version="v1.0">cloudfiles</raxm:product> 
+          <raxm:product version="v1.0">files</raxm:product> 
           <raxm:priority>2</raxm:priority>
         </raxm:metadata> 
       </info>
@@ -3616,7 +3616,7 @@ i))) != null;
       <info>
         <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
             <raxm:type>concept</raxm:type>
-            <raxm:product version="v1.0">cloudfiles</raxm:product> 
+            <raxm:product version="v1.0">files</raxm:product> 
           <raxm:priority>4</raxm:priority>
         </raxm:metadata> 
       </info>
@@ -3943,7 +3943,7 @@ i))) != null;
     <info>
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
         <raxm:type>concept</raxm:type>
-        <raxm:product version="v1.0">cloudfiles</raxm:product> 
+        <raxm:product version="v1.0">files</raxm:product> 
         <raxm:priority>5</raxm:priority>
       </raxm:metadata> 
     </info>
