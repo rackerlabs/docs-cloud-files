@@ -42,7 +42,7 @@
     <raxm:metadata
 	xmlns:raxm="http://docs.rackspace.com/api/metadata">
       <raxm:displayname>Getting Started Guide</raxm:displayname>
-      <raxm:product version="v1.0">cloudfiles</raxm:product>
+      <raxm:product version="v1.0">files</raxm:product>
       <raxm:priority>10</raxm:priority>
     </raxm:metadata>
   </info> 
