@@ -499,21 +499,22 @@
       <itemizedlist>
         <listitem>
           <para><link
-            xlink:href="https://github.com/rackspace/php-cloudfiles">
+            xlink:href="http://docs.rackspace.com/sdks/guide/content/php.html">
             PHP</link> (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
         </listitem>
         <listitem>
           <para>
             <link
-              xlink:href="https://github.com/rackspace/python-cloudfiles">
+              xlink:href="http://docs.rackspace.com/sdks/guide/content/python.html">
               Python</link> (requires 2.4 or newer)</para>
         </listitem>
         <listitem>
           <para>
             <link
-              xlink:href="https://github.com/rackspace/java-cloudfiles">
+              xlink:href="http://docs.rackspace.com/sdks/guide/content/java.html">
               Java</link> (requires JRE v1.5 or newer)</para>
         </listitem>
+        <!-- Removed 2-1-13 per Ed Leae of the DRG 
         <listitem>
           <para>
             <link
