@@ -514,18 +514,7 @@
               xlink:href="http://docs.rackspace.com/sdks/guide/content/java.html">
               Java</link> (requires JRE v1.5 or newer)</para>
         </listitem>
-        <!-- Removed 2-1-13 per Ed Leae of the DRG 
-        <listitem>
-          <para>
-            <link
-              xlink:href="https://github.com/rackspace/csharp-cloudfiles">
-              C#/.NET</link> (requires .NET Framework v3.5)</para>
-        </listitem>
-        <listitem>
-          <para><link
-            xlink:href="https://github.com/rackspace/ruby-cloudfiles">
-            Ruby</link> (requires 1.8 or newer and mime-tools module)</para>
-        </listitem>
+
       </itemizedlist>
       <para>For additional information about available language bindings, refer to <link linkend="Language-Specific_API_Bindings-d1e574">Language-Specific API Bindings</link>.</para>
     </section>
