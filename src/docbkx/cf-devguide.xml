@@ -3146,6 +3146,12 @@
           Cloud Files storage system.</para>
         <example>
           <title>CDN-Enabled Container Metadata Request</title>
+          <note>
+            <para>The examples in this Developer's Guide use 
+              <code>cdn.clouddrive.com</code> for an endpoint, but you should use 
+              whatever your authentication request provides (<code>cdn, cdn1, cdn2, or cdn3</code>).
+            </para>
+          </note>
           <literallayout class="monospaced">
   HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
