@@ -24,11 +24,12 @@
         <year>2010</year>
         <year>2011</year>
         <year>2012</year>
+       <year>2013</year>
         <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2012-06-12</pubdate>
+    <pubdate>2013-03-01</pubdate>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
@@ -174,8 +175,8 @@
       </section>
       <section xml:id="Affordability-d1e221">
         <title>Affordability</title>
-        <para> Pricing for Cloud Files with CDN starts at 10 cents per gigabyte of storage per month and 18
-        cents per gigabyte of bandwidth outbound to any edge location around the globe. There is no
+        <para> Pricing for Cloud Files with CDN starts at 10 cents per gigabyte of storage per month and 
+         12 cents per gigabyte of bandwidth outbound to any edge location around the globe. There is no
         charge for inbound bandwidth and there are no per-requests fees for CDN. For the latest
         pricing information, please refer to the Cloud Files web site at <link
           xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
