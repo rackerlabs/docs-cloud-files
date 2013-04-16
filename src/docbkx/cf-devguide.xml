@@ -1890,6 +1890,7 @@
              <code>Marker</code> tells Cloud Files where to begin your list of objects 
              and <code>end_marker</code> notes where to end the list. You may use 
               either of them independently, or together, separated by an &amp;. If 
+              you use them on their own, your list will display up to 10,000 objects. 
               you use them on their own, your list will display up to 10,000 containers. 
               Note that the <code>marker</code> and <code>end_marker</code> values 
               should be URL-encoded prior to sending the HTTP request.
