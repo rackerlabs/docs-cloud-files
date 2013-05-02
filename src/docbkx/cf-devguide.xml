@@ -89,8 +89,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added end_marker list parameter and CORSE container headers.
-              </para>
+              <para>Added end_marker list parameter and CORS container
+                headers. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -3825,10 +3825,9 @@ i))) != null;
             form request into a object PUT in Cloud Files. Once you enable FormPost on your 
             account, you need only create the form in your website using the guidelines below. 
           </para>
-          <para>
-            As with all objects in Cloud Files, the object file size limit is 5 gb. If your 
-            users try to uplaod an object larger than 5 gb, they will get a file size error.
-           </para>
+          <para> As with all objects in Cloud Files, the object file
+        size limit is 5 gb. If your users try to upload an object
+        larger than 5 gb, they will get a file size error. </para>
           <section xml:id="Set_Account_Metadata-d1a666">
             <title>Set Account Metadata Key</title>
             <para>

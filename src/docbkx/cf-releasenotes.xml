@@ -21,11 +21,14 @@
 			<year>2010</year>
 			<year>2011</year>
 			<year>2012</year>
+			<year xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">2013</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
-		<productname>Cloud Files</productname>
-		<pubdate>2012-12-05</pubdate>
+		<productname>Cloud Files™</productname>
+		<pubdate>2013-03-01</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -60,7 +63,7 @@
 	<chapter xml:id="Mar01">
 		<?dbhtml stop-chunking?>
 		<title>Mar 01, 2013</title>
-		<para>CORSE Container Headers</para>
+		<para>Lowered Pricing on Bandwidth</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -106,7 +109,7 @@
 	<chapter xml:id="Dec05">
 		<?dbhtml stop-chunking?>
 		<title>Dec 05, 2012</title>
-		<para>CORSE Container Headers</para>
+		<para>iOS Streaming</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -153,7 +156,7 @@
 	<chapter xml:id="Nov16">
 		<?dbhtml stop-chunking?>
 		<title>Nov 16, 2012</title>
-		<para>CORSE Container Headers</para>
+		<para>CORS Container Headers</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
