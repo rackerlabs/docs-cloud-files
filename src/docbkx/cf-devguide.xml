@@ -39,7 +39,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-02-01</pubdate>
+    <pubdate>2013-05-14</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -51,6 +51,26 @@
       </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2013-05-14</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added Static Large Object (SLO) support. </para>
+            </listitem>
+            <listitem>
+              <para>Added Bulk Operations  (Delete and Archive Auto
+                Extraction).</para>
+            </listitem>
+            <listitem>
+              <para>Added Container Quotas. </para>
+            </listitem>
+            <listitem>
+              <para>Added TempURL file name overrides</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-02-01</date>
         <revdescription>
@@ -3651,15 +3671,15 @@ i))) != null;
       </para>
       <section xml:id="TempURL-d1a4450">
         <title>TempURL</title>
-        <para>
-          The Temporary URL feature (TempURL) allows you to create limited-time 
-          Internet addresses which allow you to grant limited access to your Cloud 
-          Files account. Using TempURL, you may allow others to retrieve or place 
-          objects in your Cloud Files account for as long or as short a time as 
-          you wish. Access to the TempURL is independent of whether or not your 
-          account is CDN-enabled. And even if you don't CDN-enable a directory, you 
-          can still grant temporary public access through a TempURL.
-        </para>
+        <para> The Temporary URL feature (TempURL) allows you to
+        create limited-time Internet addresses that allow you to grant
+        limited access to your Cloud Files account. Using TempURL, you
+        may allow others to retrieve or place objects in your Cloud
+        Files account for as long or as short a time as you wish.
+        Access to the TempURL is independent of whether or not your
+        account is CDN-enabled. And even if you don't CDN-enable a
+        directory, you can still grant temporary public access through
+        a TempURL. </para>
         <para>
           This feature is useful if you want to allow a limited audience to download 
           a file from your Cloud Files account or website. You can give out the 
@@ -3816,6 +3836,28 @@ i))) != null;
           </example>
           
         </section>
+        <section xml:id="Override_TempURL_File_Names-d1a4461"> 
+        <title>Override TempURL File Names</title>
+        <para>TempURLs support a "filename" query parameter to
+          override the Content-Disposition header and indicate to the
+          browser a file name in which to save the file. </para>
+        <para>In this example, you see the usual TempURL without the
+          file name override: </para>
+        <literallayout class="monospaced">
+  https://swift-cluster.example.com/v1/AUTH_account/container/object?
+  temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+  temp_url_expires=1323479485 
+           </literallayout>
+        <para>In this example, you see "&amp;filename=bob.txt"
+          appended to the TempURL to indicate to the browser to save
+          the file as "bob.txt":</para>
+        <literallayout class="monospaced">
+  https://swift-cluster.example.com/v1/AUTH_account/container/object?
+  temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+  temp_url_expires=1323479485&amp;
+  filename=bob.txt 
+           </literallayout>
+      </section>
       </section>
         <section xml:id="FormPost-d1a555">
           <title>FormPost</title>
