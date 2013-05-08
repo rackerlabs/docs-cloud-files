@@ -12,7 +12,7 @@
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>1.8.0</version>
                 <executions>
                     <execution>
                         <id>g1</id>
@@ -52,8 +52,7 @@
                 </executions>
                 <configuration>
                     <branding>rackspace</branding>
-                    <feedbackEmail>david.hendler@rackspace.com</feedbackEmail>
-                    <publicationNotificationEmails>david.hendler@rackspace.com</publicationNotificationEmails>
+                    <feedbackEmail>michael.mcgrail@rackspace.com</feedbackEmail>
 		    <!-- Are these needed? What are the defaults? -->
 		    <socialIcons>1</socialIcons>
 		    <enableDisqus>1</enableDisqus>
