@@ -52,21 +52,23 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-05-14</date>
+        <date>2013-05-08</date>
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added Bulk Operations (Delete and Archive Auto
-                Extraction). </para>
+              <para>Added Section 4.1 Bulk Operations (Delete and
+                Archive Auto Extraction). </para>
             </listitem>
             <listitem>
-              <para>Added Container Quotas. </para>
+              <para>Added Section 4.2 Container Quotas. </para>
             </listitem>
             <listitem>
-              <para>Added Static Large Object (SLO) support. </para>
+              <para>Added Section 4.3 Static Large Object (SLO)
+                support. </para>
             </listitem>
             <listitem>
-              <para>Added TempURL file name overrides</para>
+              <para>Added Section 4.4 TempURL file name
+                overrides</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -996,20 +998,20 @@
       <section xml:id="Bulk_Operations-d1e11123">
       <title>Bulk Operations (Delete and Archive Auto
         Extraction)</title>
-      <para>Middleware that conducts many operations on a single
-        request.</para>
+      <para>Bulk Operations involve middleware that conduct many
+        operations on a single request.</para>
         <section xml:id="BExtract_archieve-d1e11223">
         <title>Extract Archive</title>
         <para>Expand tar files into a swift account. Request must be a
           PUT with the query parameter ?extract-archive=format
           specifying the format of archive file. Accepted formats are
           tar, tar.gz, and tar.bz2. </para>
-        <para>For a PUT to the following url:</para>
+        <para>For a PUT to use the following url:</para>
         <para>/v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</para>
         <para>UPLOAD_PATH is where the files will be expanded to.
           UPLOAD_PATH can be a container, a pseudo-directory within a
           container, or an empty string. The destination of a file in
-          the archive will be built as follows:</para>
+          the archive will be built as follows: </para>
         <para>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</para>
         <para>Where FILE_PATH is the file name from the listing in the
           tar file.</para>
@@ -1017,77 +1019,97 @@
           be auto created accordingly and files in the tar that would
           not map to any container (files in the base directory) will
           be ignored.</para>
-        <para>Only regular files will be uploaded. Empty directories,
-          symlinks, etc., will not be uploaded.</para>
-        <para>If all valid files were uploaded successfully will
-          return an HTTPCreated response. If any files failed to be
-          created will return an HTTPBadGateway response. In both
-          cases the response body will specify the number of files
-          successfully uploaded and a list of the files that failed.
-          The return body will be formatted in the way specified in
-          the request’s Accept header. Acceptable formats are
-          text/plain, application/json, application/xml, and
-          text/xml.</para>
-        <para>There are proxy logs created for each file (which
-          becomes a subrequest) in the tar. The subrequest’s proxy log
-          will have a swift.source set to “EA” the log’s content
-          length will reflect the unzipped size of the file. If double
-          proxy-logging is used the leftmost logger will not have a
-          swift.source set and the content length will reflect the
-          size of the payload sent to the proxy (the unexpanded size
-          of the tar.gz).</para>
+        <para>You can create up to 1,000 new containers per extraction
+          request. Also note that only regular files will be uploaded.
+          Empty directories, symlinks, etc., will not be
+          uploaded.</para>
+        <para>The response from bulk operations functions differently
+          from other swift responses. This is because a short request
+          body sent from the client could result in many operations on
+          the proxy server and precautions need to be made to prevent
+          the request from timing out due to lack of activity. To this
+          end, the client will always receive a 200 Ok response,
+          regardless of the actual success of the call. The body of
+          the response must be parsed to determine the actual success
+          of the operation. In addition to this the client may receive
+          zero or more whitespace characters prepended to the actual
+          response body while the proxy server is completing the
+          request. </para>
+        <para>The format of the response body defaults to text/plain
+          but can be either json or xml depending on the Accept
+          header. Acceptable formats are text/plain, application/json,
+          application/xml, and text/xml. An example body is as
+          follows: </para>
+        <literallayout class="monospaced">
+  {"Response Code": "201 Created",
+     "Response Body": "",
+     "Errors": [],
+     "Number Files Created": 10}
+                </literallayout>
+        <para>If all valid files were uploaded successfully the
+          Response Code will be a 201 Created. If any files failed to
+          be created the response code corresponds to the subrequest's
+          error. Possible codes are 400, 401, 502 (on server errors),
+          etc. In both cases the response body will specify the number
+          of files successfully uploaded and a list of the files that
+          failed. </para>
       </section>
         <section xml:id="Bulk_Delete-d1e11323">
         <title>Bulk Delete</title>
-        <para>Will delete multiple objects or containers from their
+        <para> Will delete multiple objects or containers from their
           account with a single request. Responds to DELETE requests
           with query parameter ?bulk-delete set. The Content-Type
           should be set to text/plain. The body of the DELETE request
           will be a newline separated list of url encoded objects to
-          delete. You can only delete 1000 (configurable) objects per
+          delete. You can delete 10,000 (configurable) objects per
           request. The objects specified in the DELETE request body
-          must be URL encoded and in the form:</para>
-        <para>/container_name/obj_name</para>
+          must be URL encoded and in the form: </para>
+        <para>/container_name/my%20image.jpg</para>
         <para>or for a container (which must be empty at time of
           delete)</para>
         <para>/container_name</para>
-        <para>If all items were successfully deleted (or did not
-          exist), will return an HTTPOk. If any failed to delete, will
-          return an HTTPBadGateway. In both cases the response body
-          will specify the number of items successfully deleted, not
-          found, and a list of those that failed. The return body will
-          be formatted in the way specified in the request’s Accept
-          header. Acceptable formats are text/plain, application/json,
-          application/xml, and text/xml.</para>
-        <para>There are proxy logs created for each object or
-          container (which becomes a subrequest) that is deleted. The
-          subrequest’s proxy log will have a swift.source set to “BD”
-          the log’s content length of 0. If double proxy-logging is
-          used the leftmost logger will not have a swift.source set
-          and the content length will reflect the size of the payload
-          sent to the proxy (the list of objects/containers to be
-          deleted).</para>
+        <para>The response is similar to bulk deletes as in every
+          response will be a 200 Ok and you must parse the response
+          body for actual results. An example response is: </para>
+        <literallayout class="monospaced">
+  {"Number Not Found": 0,
+     "Response Code": "200 OK",
+     "Response Body": "",
+     "Errors": [],
+     "Number Deleted": 6}
+
+                </literallayout>
+        <para> If all items were successfully deleted (or did not
+          exist), the Response Code will be a 200 Ok. If any failed to
+          delete, the response code corresponds to the subrequest's
+          error. Possible codes are 400, 401, 502 (on server errors),
+          etc. In all cases the response body will specify the number
+          of items successfully deleted, not found, and a list of
+          those that failed. The return body will be formatted in the
+          way specified in the request's Accept header. Acceptable
+          formats are text/plain, application/json, application/xml,
+          and text/xml. </para>
       </section>
     </section>
       <section xml:id="Container_Quotas-d1e977">
         <title>Container Quotas</title>
       <para>The container_quotas middleware implements simple quotas
-        that can be imposed on swift containers by a user with the
-        ability to set container metadata, most likely the account
-        administrator. This can be useful for limiting the scope of
+        that can be imposed on swift containers by a user (most likely
+        the account administrator) with the ability to set container
+        metadata. This can be useful for limiting the scope of
         containers that are delegated to non-admin users, exposed to
         formpost uploads, or just as a self-imposed sanity
         check.</para>
-      <para>Any object PUT operations that exceed these quotas return
-        a 413 response (request entity too large) with a descriptive
+      <para>Any object PUT operations that exceed the quotas return a
+        413 response (request entity too large) with a descriptive
         body.</para>
-      <para>Quotas are subject to several limitations: eventual
+      <para>Quotas are subject to the following limitations: Eventual
         consistency, the timeliness of the cached container_info (60
-        second ttl by default), and it’s unable to reject chunked
-        transfer uploads that exceed the quota (though once the quota
-        is exceeded, new chunked transfers will be refused).</para>
-      <para>Quotas are set by adding meta values to the container, and
-        are validated when set:</para>
+        second ttl by default), it’s unable to reject chunked transfer
+        uploads that exceed the quota (though once the quota is
+        exceeded, new chunked transfers will be refused).</para>
+      <para>Quotas are set by adding meta values to the container and
+        are validated when set as follows:</para>
       <informaltable frame="void">
         <col width="50%"/>
         <col width="50%"/>
@@ -1110,15 +1132,15 @@
       <section xml:id="Static_Large_Object_Support-d1e666">
       <title>Static Large Object Support (SLO)</title>
       <para>This feature is very similar to Dynamic Large Object (DLO)
-        support in that it allows the user to upload many objects
-        concurrently and afterwards download them as a single object.
-        It is different in that it does not rely on eventually
+        support since it allows the user to upload many objects
+        concurrently and afterwards downloads them as a single object.
+        But it is different because it does not rely on eventual
         consistent container listings to do so. Instead, a user
         defined manifest of the object segments is used.</para>
         <section xml:id="Uploading_the_Manifest-d1e101">
         <title>Uploading the Manifest</title>
         <para>After the user has uploaded the objects to be
-          concatenated a manifest is uploaded. The request must be a
+          concatenated, a manifest is uploaded. The request must be a
           PUT with the query parameter:</para>
         <literallayout class="monospaced">
   ?multipart-manifest=put                </literallayout>
@@ -1131,89 +1153,111 @@
         <literallayout class="monospaced">
  json: [{"path": "/cont/object",   "etag": "etagoftheobjectsegment",   "size_bytes": 1048576}, ...]               </literallayout>
         <para>The number of object segments is limited to a
-          configurable amount, default 1000. Each segment, except for
-          the final one, must be at least 1 megabyte (configurable).
+          configurable amount (default 1000). Each segment, except for
+          the final one, must be at least one megabyte (configurable).
           On upload, the middleware will head every segment passed in
           and verify the size and etag of each. If any of the objects
           do not match (not found, size/etag mismatch, below minimum
-          size) then the user will receive a 4xx error response. If
+          size) the user will receive a 4xx error response. If
           everything does match, the user will receive a 2xx response
           and the SLO object is ready for downloading.</para>
         <para>Behind the scenes, on success, a json manifest generated
           from the user input is sent to object servers with an extra
           “X-Static-Large-Object: True” header and a modified
-          Content-Type. The parameter: swift_bytes=$total_size will be
-          appended to the existing Content-Type, where total_size is
-          the sum of all the included segments’ size_bytes. This extra
-          parameter will be hidden from the user.</para>
+          Content-Type. The parameter is: swift_bytes=$total_size it
+          will be appended to the existing Content-Type, where
+          total_size is the sum of all the included segments
+          size_bytes. This extra parameter is hidden from the
+          user.</para>
         <para>Manifest files can reference objects in separate
-          containers, which will improve concurrent upload speed.
-          Objects can be referenced by multiple manifests.</para>
+          containers, which improves concurrent upload speed. Objects
+          can be referenced by multiple manifests.</para>
       </section>
         <section xml:id="Retrieving_a_Large_Object-d1e103">
         <title>Retrieving a Large Object</title>
-        <para>A GET request to the manifest object will return the
-          concatenation of the objects from the manifest much like
+        <para>A GET request to the manifest object returns the
+          concatenation of the objects from the manifest similar to
           DLO. If any of the segments from the manifest are not found
-          or their Etag/Content Length no longer match the connection
-          will drop. In this case a 409 Conflict will be logged in the
+          or their Etag/Content Length no longer match, the connection
+          will drop. As a result a 409 Conflict will be logged in the
           proxy logs and the user will receive incomplete
           results.</para>
-        <para>The headers from this GET or HEAD request will return
-          the metadata attached to the manifest object itself with
-          some exceptions:</para>
+        <para>The headers from this GET or HEAD request returns the
+          metadata attached to the manifest object itself with some
+          exceptions:</para>
         <literallayout class="monospaced">
-  Content-Length: the total size of the SLO (the sum of the sizes of the segments in the manifest)
+  Content-Length: The total size of the SLO (the sum of the sizes of the segments in the manifest).
 
-X-Static-Large-Object: True Etag: the etag of the SLO (generated the same way as DLO)
+X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as DLO).
               </literallayout>
         <para>A GET request with the query parameter:</para>
         <literallayout class="monospaced">
  ?multipart-manifest=get         </literallayout>
-        <para>Will return the actual manifest file itself. This is
-          generated json and does not match the data sent from the
-          original multipart-manifest=put. This call’s main purpose is
-          for debugging.</para>
+        <para>returns the actual manifest file itself. It is generated
+          json and does not match the data sent from the original
+          multipart-manifest=put. The call’s main purpose is for
+          debugging.</para>
         <para>When the manifest object is uploaded you are more or
           less guaranteed that every segment in the manifest exists
-          and matched the specifications. However, there is nothing
-          that prevents the user from breaking the SLO download by
-          deleting/replacing a segment referenced in the manifest. It
-          is left to the user use caution in handling the
+          and that it matches the specifications. However, there is
+          nothing that prevents the user from breaking the SLO
+          download by deleting/replacing a segment referenced in the
+          manifest. The user should use caution when handling the
           segments.</para>
         <literallayout class="monospaced">
  json: [{"path": "/cont/object",   "etag": "etagoftheobjectsegment",   "size_bytes": 1048576}, ...]               </literallayout>
         <para>The number of object segments is limited to a
-          configurable amount, default 1000. Each segment, except for
-          the final one, must be at least 1 megabyte (configurable).
+          configurable amount (default 1000). Each segment except for
+          the final one, must be at least one megabyte (configurable).
           On upload, the middleware will head every segment passed in
-          and verify the size and etag of each. If any of the objects
-          do not match (not found, size/etag mismatch, below minimum
-          size) then the user will receive a 4xx error response. If
-          everything does match, the user will receive a 2xx response
-          and the SLO object is ready for downloading.</para>
+          and will verify the size and etag of each. If any of the
+          objects do not match (not found, size/etag mismatch, or
+          below minimum size) then the user receives a 4xx error
+          response. If everything does match, the user receives a 2xx
+          response and as a result the SLO object is ready for
+          downloading.</para>
         <para>Behind the scenes, on success, a json manifest generated
           from the user input is sent to object servers with an extra
           “X-Static-Large-Object: True” header and a modified
-          Content-Type. The parameter: swift_bytes=$total_size will be
-          appended to the existing Content-Type, where total_size is
-          the sum of all the included segments’ size_bytes. This extra
-          parameter will be hidden from the user.</para>
+          Content-Type. The parameter is: swift_bytes=$total_size. It
+          will be appended to the existing Content-Type, where
+          total_size is the sum of all the included segments’
+          size_bytes. This extra parameter will be hidden from the
+          user.</para>
         <para>Manifest files can reference objects in separate
-          containers, which will improve concurrent upload speed.
-          Objects can be referenced by multiple manifests.</para>
+          containers, which improves concurrent upload speed. Objects
+          can be referenced by multiple manifests.</para>
       </section>
         <section xml:id="Deleting_a_Large_Object-d1e104">
         <title>Deleting a Large Object </title>
-        <para>A DELETE request will just delete the manifest object
+        <para>A DELETE request just deletes the manifest object
           itself. A DELETE with a query parameter:</para>
         <literallayout class="monospaced">
   ?multipart-manifest=delete
               </literallayout>
-        <para>It will delete all the segments referenced in the
-          manifest and then, if successful, the manifest itself. The
-          failure response will be similar to the bulk delete
+        <para>will delete all  segments referenced in the manifest and
+          then, if successful, the manifest itself. The failure
+          response will be similar to the bulk delete
           middleware.</para>
+      </section>
+        <section xml:id="Modifying_a_Large_Object-dle211">
+        <title>Modifying a Large Object </title>
+        <para>PUTs/POSTs will work as expected, PUTs will  overwrite
+          the manifest object for example.</para>
+      </section>
+        <section xml:id="Container_Listings-d1e212">
+        <title>Container Listings </title>
+        <para>In a container listing, the size listed for SLO manifest
+          objects will be the total_size of the concatenated segments
+          in the manifest. The overall X-Container-Bytes-Used for the
+          container (and subsequently for the account) will not
+          reflect the total_size of the manifest but the actual size
+          of the json data stored. The reason for this discrepancy is
+          that the container listing should reflect the size of the
+          manifest object when downloaded. We do not, however, want to
+          count the bytes-used twice (for both the manifest and the
+          segments it’s referring to) in the container and account
+          metadata which can be used for stats purposes.</para>
       </section>
     </section>
       <section xml:id="Storage_Account_Services-d1e1555">
@@ -4052,6 +4096,19 @@ i))) != null;
           </example>
           
         </section>
+      <section xml:id="TempURL_File_Name_Overrides-d1e213">
+        <title>TempURL File Name Overrides</title>
+        <para>TempURLs support the "filename" query parameter to
+          override the Content-Disposition header which indicates to
+          the browser what to save the file as. For instance, the
+          usual TempURL of:</para>
+        <literallayout class="monospaced">
+  https://swift-cluster.example.com/v1/AUTH_account/container/object?temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires=1323479485    </literallayout>
+        <para>could have "&amp;filename=bob.txt" appended to indicate
+          to the browser to save the file as "bob.txt":</para>
+        <literallayout class="monospaced">
+https://swift-cluster.example.com/v1/AUTH_account/container/object?temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires=1323479485&amp;filename=bob.txt </literallayout>
+      </section>
         <section xml:id="Override_TempURL_File_Names-d1a4461"> 
         <title>Override TempURL File Names</title>
         <para>TempURLs support a "filename" query parameter to
