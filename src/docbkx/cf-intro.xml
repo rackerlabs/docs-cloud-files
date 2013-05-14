@@ -29,7 +29,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-03-01</pubdate>
+    <pubdate>2013-05-14</pubdate>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
@@ -248,12 +248,10 @@
           session tokens automatically expire after 24 hours, 
           forcing clients to resend their credentials.
         </para>
-        <para>
-          The API Access Key is only available after login to the customer's Rackspace Cloud
-          control panel. 
-          Users must enter their valid username and password to gain access to view the
-          API Access Key or to generate a new key.
-        </para>
+        <para> The API Access Key is only available after login to the
+        customer's Rackspace Cloud Control Panel. Users must enter
+        their valid username and password to gain access to view the
+        API Access Key or to generate a new key. </para>
         <para>
           It is important to note that Cloud Files does not apply any transformations 
           to data before storing it. 
@@ -281,25 +279,24 @@
         there are several other ways for users to interact with Cloud Files.
       </para>
       <section xml:id="Control_Panel-d1e294">
-        <title>Control Panel</title>
-        <para>
-          The Rackspace Cloud control panel is one way to access Cloud Files. 
-          Files can be uploaded and
-          downloaded through the control panel. 
-          This is a tool to understand at a high level how Cloud Files works. 
-          It gives system administrators a view of the various containers and objects 
-          stored on Cloud Files. 
-          It also provides a means of updating
-          individual files and the metadata that describes those files.
-          <figure>
-            <title>Rackspace Cloud Control Panel</title>
-            <mediaobject >
-              <imageobject>
-                <imagedata format="svg" align="center" scale="50" fileref="figures/cf-screenshot-ControlPanel.png"/>
-              </imageobject>
-            </mediaobject>
-          </figure>
-        </para>
+        <title>Classic Control Panel</title>
+        <para>The Rackspace Cloud Classic Control Panel is one way to
+        access Cloud Files. Files can be uploaded and downloaded
+        through the Classic Control Panel. This is a tool to
+        understand at a high level how Cloud Files works. It gives
+        system administrators a view of the various containers and
+        objects stored on Cloud Files. It also provides a means of
+        updating individual files and the metadata that describes
+        those files. <figure>
+          <title>Rackspace Cloud Control Panel</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata format="svg" align="center" scale="50"
+                fileref="figures/cf-screenshot-ControlPanel.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </para>
       </section>
       <section xml:id="FireUploader_GUI-d1e314">
         <title>FireUploader GUI</title>

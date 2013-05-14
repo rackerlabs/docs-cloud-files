@@ -57,21 +57,21 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para xlink:href="#Bulk_Operations-d1e11123">Added
-                Section 4.1 Bulk Operations (Delete and Archive Auto
-                Extraction). </para>
+              <para>Added <xref linkend="Container_Quotas-d1e2222"
+                />.</para>
             </listitem>
             <listitem>
-              <para xlink:href="#Container_Quotas-d1e977">Added
-                Section 4.2 Container Quotas. </para>
+              <para>Added <xref linkend="Bulk_Operations-d1e2223"
+                />.</para>
             </listitem>
             <listitem>
-              <para xlink:href="#Static_Large_Object_Support-d1e666"
-                >Added Section 4.3 Static Large Object (SLO) Support. </para>
+              <para linkend="Container_Quotas-d1e1444">Added <xref
+                  linkend="Static_Large_Object-d1e2226"/>.</para>
             </listitem>
             <listitem>
-              <para xlink:href="#TempURL_File_Name_Overrides-d1e213">
-                Added Section 6.1.3 TempURL File Name Overrides</para>
+              <para linkend="Container_Quotas-d1e1444">Added <xref
+                  linkend="TempURL_File_Name_Overrides-d1e213"
+                />.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -489,13 +489,18 @@
         Cloud Files support into their applications without needing to write to the ReST interface.
         Each API includes its own documentation in its native format. For example, the Java API
         includes JavaDocs and the C#/.NET API includes a CHM file.</para>
-      <para>System administrators and other users interested in the storage and CDN benefits
-        of Cloud Files should consider using the File Manager interface within the Rackspace Cloud
-        Control Panel, <link xlink:href="http://www.jungledisk.com/">Jungle Disk</link>, or third
-        party tools such as <link xlink:href="http://www.fireuploader.com/">Fileuploader</link>,
-          <link xlink:href="http://www.cyberduck.ch/">Cyberduck</link>, or <link xlink:href="http://cloudfilesmanager.com/">Cloud Files Manager</link>. The control panel
-        provides an easy to use web-based interface for uploading and downloading content to and
-        from Cloud Files.</para>
+      <para>System administrators and other users interested in the
+        storage and CDN benefits of Cloud Files should consider using
+        the File Manager interface within the Rackspace Cloud Control
+        Panel, <link xlink:href="http://www.jungledisk.com/">Jungle
+          Disk</link>, or third party tools such as <link
+          xlink:href="http://www.fireuploader.com/"
+          >Fileuploader</link>, <link
+          xlink:href="http://www.cyberduck.ch/">Cyberduck</link>, or
+          <link xlink:href="http://cloudfilesmanager.com/">Cloud Files
+          Manager</link>. The Control Panel provides an easy to use
+        web-based interface for uploading and downloading content to
+        and from Cloud Files.</para>
       <para>For additional information about available language bindings, refer to the section, <link
           linkend="Language-Specific_API_Bindings-d1e574"
           >Language-Specific API Bindings</link>.</para>
@@ -824,20 +829,17 @@
             <listitem>
               <itemizedlist>
                 <para><emphasis role="bold">Get Your API Key</emphasis></para>
-                <para>
-                  Log in to the Rackspace Cloud Control Panel and get your API key.
-                </para>
+                <para> Log in to the Rackspace Cloud Control Panel and
+                get your API key. </para>
                 <listitem>
-                  <para>In the First Gen Control Panel, your API Key can be found under
-                    Your Account | API Access.
-                  </para>
+                  <para>In the Classic Control Panel, your API Key can
+                  be found under Your Account | API Access. </para>
                 </listitem>
                 <listitem>
-                  <para>
-                    In the Next Gen Cloud Control Panel, your API Key can be found by 
-                    clicking the downward arrow next to your user name and selecting 
-                    <code>API Keys</code>. 
-                  </para>
+                  <para>In the Next Gen Cloud Control Panel, your API
+                  Key can be found by clicking the downward arrow next
+                  to your user name and selecting <code>API
+                    Keys</code>. </para>
                 </listitem>
               </itemizedlist>  
                 <para>In either Control Panel, click the <code>Show Key</code>
@@ -998,273 +1000,6 @@
         level of the storage system. The second section addresses actions that may be performed
         on containers. The third section addresses actions that may be performed on objects.
       </para>
-      <section xml:id="Bulk_Operations-d1e11123">
-      <title>Bulk Operations (Delete and Archive Auto
-        Extraction)</title>
-      <para>Bulk Operations involve middleware that conduct many
-        operations on a single request.</para>
-        <section xml:id="BExtract_archieve-d1e11223">
-        <title>Extract Archive</title>
-        <para>This request expands tar files into a swift account. The
-          request must be a PUT with the query parameter
-          ?extract-archive=format specifying the format of archive
-          file. Accepted formats are tar, tar.gz, and tar.bz2. </para>
-        <para>For a PUT  use the following url:</para>
-        <para>/v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</para>
-        <para>UPLOAD_PATH is the location where the files will be
-          expanded. An UPLOAD_PATH can be a container, a
-          pseudo-directory within a container, or an empty string.</para> <para> The
-          destination of a file in the archive is built as follows: </para>
-        <para>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</para>
-        <para>Where FILE_PATH is the file name from the listing in the
-          tar file.</para>
-        <para>If the UPLOAD_PATH is an empty string, containers will
-          be auto created accordingly and files in the tar that do not
-          map to any container (files in the base directory) will be
-          ignored.</para>
-        <para>You can create up to 1,000 new containers per extraction
-          request. Also note that only regular files will be uploaded.
-          Empty directories, symlinks, etc., will not be
-          uploaded.</para>
-        <para>The response from bulk operations functions differently
-          from other swift responses. This occurs because a short
-          request body sent from the client could result in many
-          operations on the proxy server and precautions need to be
-          made to prevent the request from timing out due to lack of
-          activity. To this end, the client will always receive a 200
-          Ok response, regardless of the actual success of the call.
-          The body of the response must be parsed to determine the
-          actual success of the operation. In addition the client may
-          receive zero or more whitespace characters prepended to the
-          actual response body while the proxy server is completing
-          the request. </para>
-        <para>The format of the response body defaults to text/plain
-          but can be either json or xml depending on the Accept
-          header. Acceptable formats are text/plain, application/json,
-          application/xml, and text/xml. The following is an example
-          body: </para>
-        <literallayout class="monospaced">
-  {"Response Code": "201 Created",
-     "Response Body": "",
-     "Errors": [],
-     "Number Files Created": 10}
-                </literallayout>
-        <para>If all valid files were uploaded successfully, the
-          response code will be a 201 created. If any files failed to
-          be created, the response code corresponds to the
-          subrequest's error. Possible codes are 400, 401, 502 (on
-          server errors), etc.. In both cases the response body
-          specifies the number of files successfully uploaded and a
-          list of the files that failed. </para>
-      </section>
-        <section xml:id="Bulk_Delete-d1e11323">
-        <title>Bulk Delete</title>
-        <para>This request will delete multiple objects or containers
-          from their account with a single request. It responds to
-          DELETE requests with query parameter ?bulk-delete set.
-          AContent-Type request should be set to text/plain. The body
-          of the DELETE request will be a newline separated list of
-          URL encoded objects to delete. You can delete 10,000
-          (configurable) objects per request. The objects specified in
-          the DELETE request body must be URL encoded and in the form: </para>
-        <para>/container_name/my%20image.jpg</para>
-        <para>or for a container (which must be empty at time of
-          delete)</para>
-        <para>/container_name</para>
-        <para>The response is similar to bulk deletes in that every
-          response will be a 200 Ok and the response body must be
-          parsed for actual results. The following is an example
-          response: </para>
-        <literallayout class="monospaced">
-  {"Number Not Found": 0,
-     "Response Code": "200 OK",
-     "Response Body": "",
-     "Errors": [],
-     "Number Deleted": 6}
-
-                </literallayout>
-        <para>If all items were successfully deleted (or did not
-          exist), the Response Code will be a 200 Ok. If any failed to
-          delete, the response code corresponds to the subrequest's
-          error. Possible codes are 400, 401, 502 (on server errors),
-          etc. In all cases the response body will specify the number
-          of items successfully deleted, not found, and a list of
-          those that failed. The return body will be formatted in the
-          way specified in the request's Accept header. Acceptable
-          formats are text/plain, application/json, application/xml,
-          and text/xml. </para>
-      </section>
-    </section>
-      <section xml:id="Container_Quotas-d1e977">
-        <title>Container Quotas</title>
-      <para>The container_quotas middleware implements simple quotas
-        that can be imposed on swift containers by a user (most likely
-        the account administrator) with the ability to set container
-        metadata. This can be useful for limiting the scope of
-        containers that are delegated to non-admin users, exposed to
-        formpost uploads, or just as a self-imposed sanity
-        check.</para>
-      <para>Any object PUT operations that exceed the quotas return a
-        413 response (request entity too large) with a descriptive
-        body.</para>
-      <para>Quotas are subject to the following limitations: Eventual
-        consistency, the timeliness of the cached container_info (60
-        second ttl by default), an inability to reject chunked
-        transfer uploads that exceed the quota (though once the quota
-        is exceeded, new chunked transfers will be refused).</para>
-      <para>Quotas are set by adding meta values to the container and
-        are validated when set as follows:</para>
-      <informaltable frame="void">
-        <col width="50%"/>
-        <col width="50%"/>
-        <tbody>
-          <tr>
-            <td><emphasis role="bold">Metadata</emphasis></td>
-            <td><emphasis role="bold">Use</emphasis></td>
-          </tr>
-          <tr>
-            <td>X-Container-Meta-Quota-Bytes</td>
-            <td>Maximum size of the container, in bytes.</td>
-          </tr>
-          <tr>
-            <td>X-Container-Meta-Quota-Count</td>
-            <td>Maximum object count of the container.</td>
-          </tr>
-        </tbody>
-      </informaltable>
-      </section>
-      <section xml:id="Static_Large_Object_Support-d1e666">
-      <title>Static Large Object Support (SLO)</title>
-      <para>This feature is very similar to Dynamic Large Object (DLO)
-        support since it allows the user to upload many objects
-        concurrently and afterwards downloads them as a single object.
-        However it is different since it does not rely on eventual
-        consistent container listings to do so. Instead, a user
-        defined manifest of the object segments is used.</para>
-        <section xml:id="Uploading_the_Manifest-d1e101">
-        <title>Uploading the Manifest</title>
-        <para>After the user has uploaded the objects to be
-          concatenated, a manifest is uploaded. The request must be a
-          PUT with the query parameter:</para>
-        <literallayout class="monospaced">
-  ?multipart-manifest=put                </literallayout>
-        <para>The body of this request will be an ordered list of
-          files in json data format. The data to be supplied for each
-          segment is:</para>
-        <literallayout class="monospaced">
- path: the path to the segment (not including account)       /container/object_name etag: the etag given back when the segment was PUT size_bytes: the size of the segment in bytes                </literallayout>
-        <para>The format of the list will be:</para>
-        <literallayout class="monospaced">
- json: [{"path": "/cont/object",   "etag": "etagoftheobjectsegment",   "size_bytes": 1048576}, ...]               </literallayout>
-        <para>The number of object segments is limited to a
-          configurable amount (default 1000). Each segment, except for
-          the final one, must be at least one megabyte (configurable).
-          On upload, the middleware will head every segment passed in
-          and verify the size and etag of each. If any of the objects
-          do not match (not found, size/etag mismatch, below minimum
-          size), the user will receive a 4xx error response. If
-          everything does match, the user will receive a 2xx response
-          and the SLO object is ready for downloading.</para>
-        <para>Behind the scenes, on success, a json manifest generated
-          from the user input is sent to object servers with an extra
-          “X-Static-Large-Object: True” header and a modified
-          Content-Type. The parameter is: swift_bytes=$total_size. It
-          will be appended to the existing Content-Type, where
-          total_size is the sum of all the included segments
-          size_bytes. This extra parameter is hidden from the
-          user.</para>
-        <para>Manifest files can reference objects in separate
-          containers, which improves concurrent upload speed. Objects
-          can be referenced by multiple manifests.</para>
-      </section>
-        <section xml:id="Retrieving_a_Large_Object-d1e103">
-        <title>Retrieving a Large Object</title>
-        <para>A GET request to the manifest object returns the
-          concatenation of the objects from the manifest similar to
-          DLO. If any of the segments from the manifest are not found
-          or their Etag/Content Length no longer match, the connection
-          will drop. As a result a 409 Conflict will be logged in the
-          proxy logs and the user will receive incomplete
-          results.</para>
-        <para>The headers from this GET or HEAD request return the
-          metadata attached to the manifest object itself with some
-          exceptions:</para>
-        <literallayout class="monospaced">
-Content-Length: The total size of the SLO (the sum of the sizes of the segments in the manifest).
-
-X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as DLO).
-              </literallayout>
-        <para>A GET request with the query parameter:</para>
-        <literallayout class="monospaced">
- ?multipart-manifest=get         </literallayout>
-        <para>returns the actual manifest file itself. It is generated
-          json and does not match the data sent from the original
-          multipart-manifest=put. The call’s main purpose is for
-          debugging.</para>
-        <para>When the manifest object is uploaded you are more or
-          less guaranteed that every segment in the manifest exists
-          and that it matches the specifications. However, there is
-          nothing that prevents the user from breaking the SLO
-          download by deleting/replacing a segment referenced in the
-          manifest. The user should use caution when handling the
-          segments.</para>
-        <literallayout class="monospaced">
- json: [{"path": "/cont/object",   "etag": "etagoftheobjectsegment",   "size_bytes": 1048576}, ...]               </literallayout>
-        <para>The number of object segments is limited to a
-          configurable amount (default 1000). Each segment except for
-          the final one, must be at least one megabyte (configurable).
-          On upload, the middleware will head every segment passed in
-          and will verify the size and etag of each. If any of the
-          objects do not match (not found, size/etag mismatch, or
-          below minimum size), then the user receives a 4xx error
-          response. If everything does match, the user receives a 2xx
-          response and as a result the SLO object is ready for
-          downloading.</para>
-        <para>Behind the scenes, on success, a json manifest generated
-          from the user input is sent to object servers with an extra
-          “X-Static-Large-Object: True” header and a modified
-          Content-Type. The parameter is: swift_bytes=$total_size. It
-          will be appended to the existing Content-Type, where
-          total_size is the sum of all the included segments’
-          size_bytes. This extra parameter will be hidden from the
-          user.</para>
-        <para>Manifest files can reference objects in separate
-          containers, which improves concurrent upload speed. Objects
-          can be referenced by multiple manifests.</para>
-      </section>
-        <section xml:id="Deleting_a_Large_Object-d1e104">
-        <title>Deleting a Large Object </title>
-        <para>A DELETE request just deletes the manifest object
-          itself. A DELETE with a query parameter:</para>
-        <literallayout class="monospaced">
-  ?multipart-manifest=delete
-              </literallayout>
-        <para>will delete all  segments referenced in the manifest and
-          then, if successful, the manifest itself. The failure
-          response will be similar to the bulk delete
-          middleware.</para>
-      </section>
-        <section xml:id="Modifying_a_Large_Object-dle211">
-        <title>Modifying a Large Object </title>
-        <para>PUTs/POSTs will work as expected. PUTs overwrite the
-          manifest object for example.</para>
-      </section>
-        <section xml:id="Container_Listings-d1e212">
-        <title>Container Listings </title>
-        <para>In a container listing, the size listed for SLO manifest
-          objects will be the total_size of the concatenated segments
-          in the manifest. The overall X-Container-Bytes-Used for the
-          container (and subsequently for the account) will not
-          reflect the total_size of the manifest but instead the
-          actual size of the json data stored. The reason for this
-          discrepancy is that the container listing should reflect the
-          size of the manifest object when downloaded. You do not,
-          however, want to count the bytes-used twice (for both the
-          manifest and the segments it’s referring to) in the
-          container and account metadata which can be used for stats
-          purposes.</para>
-      </section>
-    </section>
       <section xml:id="Storage_Account_Services-d1e1555">
       <title>Storage Account Services</title>
       <para>The following operations can be performed at the account
@@ -2236,6 +1971,45 @@ X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as
    
    
         </section>
+        <section xml:id="Container_Quotas-d1e2222" >
+        <title>Container Quotas</title>
+        <para>The container_quotas middleware implements simple quotas
+          that can be imposed on swift containers by a user (most
+          likely the account administrator) with the ability to set
+          container metadata. This can be useful for limiting the
+          scope of containers that are delegated to non-admin users,
+          exposed to formpost uploads, or just as a self-imposed
+          sanity check.</para>
+        <para>Any object PUT operations that exceed the quotas return
+          a 413 response (request entity too large) with a descriptive
+          body.</para>
+        <para>Quotas are subject to the following limitations:
+          Eventual consistency, the timeliness of the cached
+          container_info (60 second ttl by default), an inability to
+          reject chunked transfer uploads that exceed the quota
+          (though once the quota is exceeded, new chunked transfers
+          will be refused).</para>
+        <para>Quotas are set by adding meta values to the container
+          and are validated when set as follows:</para>
+        <informaltable frame="void">
+          <col width="50%"/>
+          <col width="50%"/>
+          <tbody>
+            <tr>
+              <td><emphasis role="bold">Metadata</emphasis></td>
+              <td><emphasis role="bold">Use</emphasis></td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Quota-Bytes</td>
+              <td>Maximum size of the container, in bytes.</td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Quota-Count</td>
+              <td>Maximum object count of the container.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+      </section>
         
         <section xml:id="Acess_Log_Delivery-d1e2200">
           <title>Access Log Delivery</title>
@@ -2607,12 +2381,15 @@ X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as
           <!-- Bulk Import END -->
           <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
           <title>Assigning CORS Headers to Requests</title>
-          <para>CORS is a specification that stands for Cross-Origin Resource Sharing. It defines
-            how browsers and servers communicate across origins using HTTP headers, such as those
-            assigned by Cloud Files API requests. These headers are supported with the Cloud Files
-            API. You can read more about the definition of the Access-Control- response headers and
-            Origin response header at <link xlink:href="http://www.w3.org/TR/access-control/">www.w3.org/TR/access-control/</link>.
-            <itemizedlist>
+          <para>CORS is a specification that stands for Cross-Origin
+            Resource Sharing. It defines how browsers and servers
+            communicate across origins using HTTP headers, such as
+            those assigned by Cloud Files API requests. These headers
+            are supported with the Cloud Files API. You can read more
+            about the definition of the Access-Control response
+            headers and Origin response header at <link
+              xlink:href="http://www.w3.org/TR/access-control/"
+              >www.w3.org/TR/access-control/</link>. <itemizedlist>
               <listitem>
                 <para>Access-Control-Allow-Credentials</para>
               </listitem>
@@ -2642,12 +2419,13 @@ X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as
           <para>These headers can only be assigned to objects. </para>
           <example>
             <title>Assign CORS Header</title>
-            <para>
-              You can only set CORS headers through the Cloud Files API, and not through the
-              control panel. 
-              In the below example, the origin header is assigned that indicates where the file came
-              from. This allows you to provide security that requests to your Cloud Files repository
-              are indeed from the correct origination:</para>
+            <para> You can only set CORS headers through the Cloud
+              Files API, and not through the Cloud Control Panel. In
+              the below example, the origin header is assigned that
+              indicates where the file came from. This allows you to
+              provide security that requests to your Cloud Files
+              repository are indeed from the correct
+              origination:</para>
             <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -3052,6 +2830,277 @@ X-Static-Large-Object: True Etag: The etag of the SLO (generated the same way as
                     </literallayout>
           </example>
         </section>
+        <section xml:id="Bulk_Operations-d1e2223">
+        <title>Bulk Operations (Delete and Archive Auto
+          Extraction)</title>
+        <para>Bulk Operations involve middleware that conduct many
+          operations on a single request.</para>
+          <section xml:id="Extract_Archive-d1e2224">
+          <title>Extract Archive</title>
+          <para>This request expands tar files into a swift account.
+            The request must be a PUT with the query parameter
+            ?extract-archive=format specifying the format of archive
+            file. Accepted formats are tar, tar.gz, and tar.bz2. </para>
+          <para>For a PUT use the following url:</para>
+          <para>/v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</para>
+          <para>UPLOAD_PATH is the location where the files will be
+            expanded. An UPLOAD_PATH can be a container, a
+            pseudo-directory within a container, or an empty
+            string.</para>
+          <para> The destination of a file in the archive is built as
+            follows: </para>
+          <para>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</para>
+          <para>Where FILE_PATH is the file name from the listing in
+            the tar file.</para>
+          <para>If the UPLOAD_PATH is an empty string, containers will
+            be auto created accordingly and files in the tar that do
+            not map to any container (files in the base directory)
+            will be ignored.</para>
+          <para>You can create up to 1,000 new containers per
+            extraction request. Also note that only regular files will
+            be uploaded. Empty directories, symlinks, etc., will not
+            be uploaded.</para>
+          <para>The response from bulk operations functions
+            differently from other swift responses. This occurs
+            because a short request body sent from the client could
+            result in many operations on the proxy server and
+            precautions need to be made to prevent the request from
+            timing out due to lack of activity. To this end, the
+            client will always receive a 200 Ok response, regardless
+            of the actual success of the call. The body of the
+            response must be parsed to determine the actual success of
+            the operation. In addition the client may receive zero or
+            more whitespace characters prepended to the actual
+            response body while the proxy server is completing the
+            request. </para>
+          <para>The format of the response body defaults to text/plain
+            but can be either json or xml depending on the Accept
+            header. Acceptable formats are text/plain,
+            application/json, application/xml, and text/xml. The
+            following is an example of a successful request with both
+            the headers returned and the response body formatted in
+            json: </para>
+          <literallayout class="monospaced">
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: txa7fd1603cfe04bdb920cd-005191226d
+Date: Mon, 13 May 2013 17:27:10 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Files Created": 10,
+  "Response Status": "201 Created",
+  "Errors": [
+    
+  ],
+  "Response Body": ""
+}</literallayout>
+          <para>Here is an example with errors:</para>
+          <literallayout>HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: tx9f12e16f047049cc91147-005191245f
+Date: Mon, 13 May 2013 17:35:27 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Files Created": 10,
+  "Response Status": "400 Bad Request",
+  "Errors": [
+    [
+      "/v1/AUTH_test/test_cont/big_file.wav",
+      "413 Request Entity Too Large"
+    ]
+  ],
+  "Response Body": ""
+}</literallayout>
+          <para>After 1,000 errors, processing of the request will
+            cease, and the completed response is returned to the
+            user.</para>
+          <para>If all valid files were uploaded successfully, the
+            response code will be a 201 created. If any files failed
+            to be created, the response code corresponds to the
+            subrequest's error. Possible codes are 400, 401, 502 (on
+            server errors), etc.. In both cases, the response body
+            specifies the number of files successfully uploaded and a
+            list of the files that failed. </para>
+        </section>
+          <section xml:id="Bulk_Delete-d1e2225" >
+          <title>Bulk Delete</title>
+          <para>This request will delete multiple objects or
+            containers from their account with a single request. It
+            responds to DELETE requests with query parameter
+            ?bulk-delete set. A Content-Type request should be set to
+            text/plain. The body of the DELETE request will be a
+            newline separated list of URL encoded objects to delete.
+            You can delete 10,000 objects per request. The objects
+            specified in the DELETE request body must be URL encoded
+            and in the form: </para>
+          <para>/container_name/my%20image.jpg</para>
+          <para>or for a container (which must be empty at time of
+            delete)</para>
+          <para>/container_name</para>
+          <para>The response is similar to bulk deletes in that every
+            response will be a 200 Ok and the response body must be
+            parsed for actual results. The following is an example of
+            a successful request with both the headers returned and
+            the response body formatted in json: </para>
+          <literallayout class="monospaced">
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx52fe4601dde24e2b8e7cb-0051912ca8
+Date: Mon, 13 May 2013 18:10:48 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Not Found": 1,
+  "Response Status": "200 OK",
+  "Errors": [
+    
+  ],
+  "Number Deleted": 10,
+  "Response Body": ""
+}</literallayout>
+          <para>Here is an example with errors:  </para>
+          <literallayout>Here is an example with errors:
+
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx28552a8cd9cb441dad3ad-0051912d2d
+Date: Mon, 13 May 2013 18:13:01 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Not Found": 0,
+  "Response Status": "400 Bad Request",
+  "Errors": [
+    [
+      "/v1/AUTH_test/non_empty_container",
+      "409 Conflict"
+    ]
+  ],
+  "Number Deleted": 0,
+  "Response Body": ""
+}</literallayout>
+          <para>If all items were successfully deleted (or did not
+            exist), the Response Code will be a 200 Ok. If any failed
+            to delete, the response code corresponds to the
+            subrequest's error. Possible codes are 400, 401, 502 (on
+            server errors), etc. In all cases the response body will
+            specify the number of items successfully deleted, not
+            found, and a list of those that failed. The return body
+            will be formatted in the way specified in the request's
+            Accept header. Acceptable formats are text/plain,
+            application/json, application/xml, and text/xml. </para>
+        </section>
+      </section>
+        <section xml:id="Static_Large_Object-d1e2226" >
+        <title>Static Large Object (SLO) Support</title>
+        <para>This feature is very similar to Dynamic Large Object
+          (DLO) support since it allows the user to upload many
+          objects concurrently and afterwards downloads them as a
+          single object. However it is different since it does not
+          rely on eventual consistent container listings to do so.
+          Instead, a user defined manifest of the object segments is
+          used.</para>
+          <section xml:id="Uploading_the_Manifext-d1e2227">
+          <title>Uploading the Manifest</title>
+          <para>After the user has uploaded the objects to be
+            concatenated, a manifest is uploaded. The request must be
+            a PUT with the query parameter:</para>
+          <literallayout class="monospaced">
+  ?multipart-manifest=put                </literallayout>
+          <para>The body of this request will be an ordered list of
+            files in json data format. The data to be supplied for
+            each segment is:</para>
+          <literallayout class="monospaced">
+ path: the path to the segment (not including account)       /container/object_name<?sbr?> etag: the etag given back when the segment was PUT <?sbr?>size_bytes: the size of the segment in bytes                </literallayout>
+          <para>The format of the list will be:</para>
+          <literallayout class="monospaced">
+ json: [{"path": "/cont/object",   "etag": "etagoftheobjectsegment",   "size_bytes": 1048576}, ...]               </literallayout>
+          <para>The maximum number of object segments per SLO is
+            1,000. Each segment, except for the final one, must be at
+            least one megabyte. On upload, the middleware will head
+            every segment passed in and verify the size and etag of
+            each. If any of the objects do not match (not found,
+            size/etag mismatch, below minimum size), the user will
+            receive a 4xx error response. If everything does match,
+            the user will receive a 2xx response and the SLO object is
+            ready for downloading.</para>
+          <para>Manifest files can reference objects in separate
+            containers, which improves concurrent upload speed.
+            Objects can be referenced by multiple manifests.</para>
+        </section>
+          <section xml:id="Retrieving_a_Large_Object-d1e2227">
+          <title>Retrieving a Large Object</title>
+          <para>A GET request to the manifest object returns the
+            concatenation of the objects from the manifest similar to
+            DLO. If any of the segments from the manifest are not
+            found or their Etag/Content Length no longer match, the
+            connection will drop. As a result a 409 Conflict will be
+            logged in the proxy logs and the user will receive
+            incomplete results.</para>
+          <para>The headers from this GET or HEAD request return the
+            metadata attached to the manifest object itself with some
+            exceptions:</para>
+          <literallayout class="monospaced">
+Content-Length: The total size of the SLO (the sum of the sizes of the segments in the manifest).
+X-Static-Large-Object: True 
+Etag: The etag of the SLO (generated the same way as DLO).
+              </literallayout>
+          <para>A GET request with the query parameter:</para>
+          <literallayout class="monospaced">
+ ?multipart-manifest=get         </literallayout>
+          <para>returns the actual manifest file itself. It is
+            generated json and does not match the data sent from the
+            original multipart-manifest=put. The call’s main purpose
+            is for debugging.</para>
+          <para>When the manifest object is uploaded you are more or
+            less guaranteed that every segment in the manifest exists
+            and that it matches the specifications. However, there is
+            nothing that prevents the user from breaking the SLO
+            download by deleting/replacing a segment referenced in the
+            manifest. The user should use caution when handling the
+            segments.</para>
+        </section>
+          <section xml:id="Deleting_a_Large_Object-d1e2228">
+          <title>Deleting a Large Object </title>
+          <para>A DELETE request just deletes the manifest object
+            itself. A DELETE with a query parameter:</para>
+          <literallayout class="monospaced">
+  ?multipart-manifest=delete
+              </literallayout>
+          <para>will delete all segments referenced in the manifest
+            and then, if successful, the manifest itself. The failure
+            response will be similar to the bulk delete
+            middleware.</para>
+        </section>
+          <section xml:id="Modifying_a_Large_Object-d1e2229">
+          <title>Modifying a Large Object </title>
+          <para>PUTs/POSTs will work as expected. PUTs overwrite the
+            manifest object for example.</para>
+        </section>
+          <section xml:id="Listings_of_Containers-d1e2230">
+          <title>Listings of Containers with SLOs </title>
+          <para>As a convenience to the user, in a container listing,
+            the size listed for SLO manifest objects is the total size
+            of the concatenated segments in the manifest, not the size
+            of the manifest file itself. The overall
+            X-Container-Bytes-Used for the container (and subsequently
+            for the account) reflects the size of the manifest, i.e.,
+            the stored json data. This allows the user to see the
+            total size of the SLO in a container listing call, but
+            does not inflate the byte-used displayed for the
+            container, and subsequently, for the account.</para>
+        </section>
+      </section>
       </section>
     </chapter>
     <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
@@ -4102,17 +4151,19 @@ i))) != null;
           
         </section>
       <section xml:id="TempURL_File_Name_Overrides-d1e213">
-        <title>TempURL File Name Overrides</title>
+        <title>Override TempURL File Names</title>
         <para>TempURLs support the "filename" query parameter to
-          override the Content-Disposition header which indicates to
-          the browser what to save the file as. For instance, the
-          usual TempURL of:</para>
+          override the Content-Disposition header and indicate to the
+          browser a file name in which to save the file. In this
+          example, you see the usual TempURL without the file name
+          override:</para>
         <literallayout class="monospaced">
-  https://swift-cluster.example.com/v1/AUTH_account/container/object?temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires=1323479485    </literallayout>
-        <para>could have "&amp;filename=bob.txt" appended to indicate
-          to the browser to save the file as "bob.txt":</para>
+https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485</literallayout>
+        <para>In this example, you see "&amp;filename=bob.txt"
+          appended to the TempURL to indicate to the browser to save
+          the file as "bob.txt":</para>
         <literallayout class="monospaced">
-https://swift-cluster.example.com/v1/AUTH_account/container/object?temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires=1323479485&amp;filename=bob.txt </literallayout>
+https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt</literallayout>
       </section>
       </section>
         <section xml:id="FormPost-d1a555">
