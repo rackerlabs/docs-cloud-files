@@ -28,7 +28,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Cloud Files™</productname>
-		<pubdate>2013-05-14</pubdate>
+		<pubdate>2013-05-20</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -41,9 +41,9 @@
 		</abstract>
 		<revhistory>
 			<revision>
-				<date>2013-05-14</date>
+				<date>2013-05-20</date>
 				<revdescription>
-					<para>May 14, 2013 Release</para>
+					<para>May 20, 2013 Release</para>
 				</revdescription>
 			</revision>
 		</revhistory>
@@ -61,7 +61,7 @@
     </info>
 	<chapter xml:id="May01">
 		<?dbhtml stop-chunking?>
-		<title>May 14, 2013</title>
+		<title>May 20, 2013</title>
 		<para>Bulk Operations (Delete and Archive Auto Extraction),
 			Container Quotas, Static Large Object Support (SLO),
 			TempURL File Name Overrides</para>
