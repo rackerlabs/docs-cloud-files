@@ -62,20 +62,20 @@
 	<chapter xml:id="May01">
 		<?dbhtml stop-chunking?>
 		<title>May 20, 2013</title>
-		<para>Bulk Operations (Delete and Archive Auto Extraction),
-			Container Quotas, Static Large Object Support (SLO),
-			TempURL File Name Overrides</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		<!-- New Features -->
 		<itemizedlist>
 			<title>New Features</title>
-			<listitem>
-				<para>Bulk Operations (Delete and Archive Auto Extraction).</para>
-			</listitem>
 			<listitem>
 				<para>Container Quotas. </para>
 			</listitem>
 			<listitem>
 				<para>Static Large Object Support (SLO). </para>
+			</listitem>
+			<listitem>
+				<para>Bulk Operations (Delete and Archive Auto
+					Extraction).</para>
 			</listitem>
 			<listitem>
 				<para>TempURL File Name Overrides. </para>
@@ -107,7 +107,8 @@
 	<chapter xml:id="Mar01">
 		<?dbhtml stop-chunking?>
 		<title>Mar 01, 2013</title>
-		<para>Lowered Pricing on Bandwidth</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -153,7 +154,8 @@
 	<chapter xml:id="Dec05">
 		<?dbhtml stop-chunking?>
 		<title>Dec 05, 2012</title>
-		<para>iOS Streaming</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -200,7 +202,8 @@
 	<chapter xml:id="Nov16">
 		<?dbhtml stop-chunking?>
 		<title>Nov 16, 2012</title>
-		<para>CORS Container Headers</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -249,7 +252,8 @@
 	<chapter xml:id="Oct01">
 		<?dbhtml stop-chunking?>
 		<title>Oct 01, 2012</title>
-		<para>Access Log Delivery changes</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -296,7 +300,8 @@
 	<chapter xml:id="September25">
 		<?dbhtml stop-chunking?>
 		<title>Sept 25, 2012</title>
-		<para>Multi-region changes</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -353,7 +358,8 @@
 	<chapter xml:id="August13">
 		<?dbhtml stop-chunking?>
 		<title>Aug 13, 2012</title>
-		<para>Content Delivery Network (CDN) changes</para>
+		<para>This release contains enhancements, resolved issues, and
+			documentation changes for Cloud Files.</para>
 		
 		<!-- New Features -->
 		<itemizedlist>
@@ -421,7 +427,8 @@
 	<chapter xml:id="june12">
 		<?dbhtml stop-chunking?>
 		<title>Jun 01, 2012</title>
-		<para>Addition of Object Versioning and Static Web.</para>
+		<para>This release contains new features and documentation changes
+			for Cloud Files.</para>
 
 <!-- New Features -->
 		<itemizedlist>

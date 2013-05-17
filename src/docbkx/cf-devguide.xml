@@ -48,8 +48,8 @@
     <abstract>
       <para> This document is intended for software developers
         interested in developing applications using the Rackspace
-        Cloud Files™  Application Programming Interface
-          (<abbrev>API</abbrev>). </para>
+        Cloud Files™ Application Programming Interface
+          (<abbrev>API</abbrev>).  </para>
     </abstract>
     <revhistory>
       <revision>
@@ -57,8 +57,21 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
+              <para>Added a link in <xref linkend="Overview-d1e70"/>
+                to the Knowledge Center article, "Best Practices for
+                Using Cloud Files,"  at  <link
+                  xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
+                  >http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>.</para>
+            </listitem>
+            <listitem>
               <para>Added <xref linkend="Container_Quotas-d1e2222"
-                />.</para>
+                /></para>
+            </listitem>
+            <listitem>
+              <para>Created a new section <xref
+                  linkend="Storage_Objects-d1e4300"/>. This section
+                includes new and previously existing information
+                specifically related to storage objects.</para>
             </listitem>
             <listitem>
               <para linkend="Container_Quotas-d1e1444">Added <xref
@@ -463,8 +476,14 @@
       Web Service interface (ReST: Representational State Transfer). There are also
       language-specific APIs that utilize the ReSTful API but make it much easier for developers to
       integrate into their applications.</para>
-    <para>For more details on the Cloud Files service, please refer to <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files">http://www.rackspacecloud.com/cloud_hosting_products/files</link>
-    </para>
+    <para>For more details on the Cloud Files service, please refer to
+        <link
+        xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
+        >http://www.rackspacecloud.com/cloud_hosting_products/files</link>
+      and to the Knowledge Center article, "Best Practices for Using
+      Cloud Files," at  <link
+        xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
+        >http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>. </para>
     <para>We welcome feedback, comments, and bug reports at <link
         xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
@@ -1127,7 +1146,7 @@
         <example>
           <title>View Containers List Response</title>
           <literallayout class="monospaced">
-  HTTP/1.1 200 Ok
+  HTTP/1.1 200 OK
   Date: Thu, 07 Jun 2007 18:57:07 GMT
   Content-Type: text/plain; charset=UTF-8
   Content-Length: 32
@@ -1620,7 +1639,8 @@
         
         <section xml:id="Delete_Container-d1e1765">
           <title>Delete Container</title>
-          <remark security="writeronly">Edited first two paragrpahs for clarity -- dsh - 2012-03-09</remark>
+          <remark security="writeronly">Edited first two paragraphs
+          for clarity -- dsh - 2012-03-09</remark>
           <para>&DELETE; operations against a storage container permanently
             remove it. The container must be empty before it can be deleted.</para>
           <para>A &HEAD; request against the container will list any objects it contains.</para>
@@ -1808,7 +1828,7 @@
           <example>
             <title>Objects List Response</title>
             <literallayout class="monospaced">
-  HTTP/1.1 200 Ok
+  HTTP/1.1 200 OK
   Date: Thu, 07 Jun 2007 18:50:19 GMT
   Content-Type: text/plain; charset=UTF-8
   Content-Length: 171
@@ -1979,10 +1999,10 @@
         <para>The container_quotas middleware implements simple quotas
           that can be imposed on swift containers by a user (most
           likely the account administrator) with the ability to set
-          container metadata. This can be useful for limiting the
-          scope of containers that are delegated to non-admin users,
-          exposed to formpost uploads, or just as a self-imposed
-          sanity check.</para>
+          container metadata. Setting container quotas can be useful
+          for limiting the scope of containers that are delegated to
+          non-admin users, exposed to formpost uploads, or just as a
+          self-imposed sanity check.</para>
         <para>Any object PUT operations that exceed the quotas return
           a 413 response (request entity too large) with a descriptive
           body.</para>
@@ -1993,7 +2013,7 @@
           </listitem>
           <listitem>
             <para>The timeliness of the cached container_info (60
-              second ttl by default)</para>
+              second TTL by default)</para>
           </listitem>
           <listitem>
             <para>An inability to reject chunked transfer uploads that
@@ -2001,26 +2021,33 @@
               new chunked transfers will be refused)</para>
           </listitem>
         </itemizedlist>
-        <para>Quotas are set by adding meta values to the container
-          and are validated when set as follows:</para>
-        <informaltable frame="void">
-          <col width="50%"/>
-          <col width="50%"/>
-          <tbody>
-            <tr>
-              <td><emphasis role="bold">Metadata</emphasis></td>
-              <td><emphasis role="bold">Use</emphasis></td>
-            </tr>
-            <tr>
-              <td>X-Container-Meta-Quota-Bytes</td>
-              <td>Maximum size of the container, in bytes.</td>
-            </tr>
-            <tr>
-              <td>X-Container-Meta-Quota-Count</td>
-              <td>Maximum object count of the container.</td>
-            </tr>
-          </tbody>
-        </informaltable>
+        <para>Quotas are set by adding metadata values to the
+          container and are validated when set as shown in the
+          following table.</para>
+        <para>
+          <table frame="void">
+            <caption>Metadata Values for Setting Container
+              Quotas</caption>
+            <col width="50%"/>
+            <col width="50%"/>
+            <thead>
+              <tr>
+                <th>Metadata</th>
+                <th>Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>X-Container-Meta-Quota-Bytes</td>
+                <td>Maximum size of the container, in bytes.</td>
+              </tr>
+              <tr>
+                <td>X-Container-Meta-Quota-Count</td>
+                <td>Maximum object count of the container.</td>
+              </tr>
+            </tbody>
+          </table>
+        </para>
       </section>
         
         <section xml:id="Acess_Log_Delivery-d1e2200">
@@ -2130,10 +2157,10 @@
          
           However, objects larger than 5 GB may be segmented and concatenated 
           together so that you can upload 5 GB segments and download a single concatenated object. 
-          You can work with the segments and manifests directly with HTTP requests. --> <!-- end 4.3.2 -->
+          You can work with the segments and manifests directly with HTTP requests.  --> <!-- end 4.3.2 -->
       </section>
       <section xml:id="Storage_Objects-d1e4300">
-      <title>Storage Objects Services</title>
+      <title>Storage Object Services</title>
       <para>This section documents information and services for
         storage objects.</para>
         <section xml:id="Retrieve_Object-d1e4301">
@@ -2195,12 +2222,12 @@
         </example>
         <para>The object's data is returned in the response body.
           Object metadata is returned as HTTP headers. A status of 200
-          (Ok) indicates success; status 404 (Not Found) is returned
+          (OK) indicates success; status 404 (Not Found) is returned
           if no such object exists.</para>
         <example>
           <title>Retrieve Object Response</title>
           <literallayout class="monospaced">
-  HTTP/1.1 200 Ok
+  HTTP/1.1 200 OK
   Date: Wed, 11 Jul 2007 19:37:41 GMT
   Last-Modified: Fri, 12 Jun 2007 13:40:18 GMT
   ETag: b0dffe8254d152d8fd28f3c5e0404a10
@@ -2368,27 +2395,36 @@
         </section>
         <section xml:id="Static_Large_Object-d1e2226">
           <title>Static Large Object (SLO) Creation</title>
-          <para>This feature is very similar to Dynamic Large Object
-            (DLO) support since it allows the user to upload many
-            objects concurrently and afterwards downloads them as a
-            single object. However it is different since it does not
-            rely on eventual consistent container listings to do so.
-            Instead, a user defined manifest of the object segments is
-            used.</para>
+          <para>Static Large Object (SLO) support is very similar to
+            Dynamic Large Object (DLO) support since it allows you to
+            upload many objects concurrently and afterwards downloads
+            them as a single object. However, it is different because
+            it does not rely on eventual consistent container listings
+            to do so. Instead, a user-defined manifest of the object
+            segments is used.</para>
           <section xml:id="Uploading_the_Segments-d1e2228">
             <title>Uploading the Segments</title>
             <para>The first thing to do is to upload your object
               segments. All the segments, except the last one, need to
               be larger than 1 megabyte (1048576 bytes). It may help
               organizationally to keep them in the same container, but
-              it is not required. You will need three pieces of
+              it is not required. You will need the following
               information about each segment when you build the
-              manifest later - the path to the object in your account
-              (/container_name/object_name), the object's size in
-              bytes, and the Etag header from the successful 201
-              response of the PUT when you uploaded the segment. This
-              Etag will be the MD5 checksum of the segment's data.
-            </para>
+              manifest later: </para>
+            <itemizedlist>
+              <listitem>
+                <para>The path to the object in your account
+                  (/container_name/object_name)</para>
+              </listitem>
+              <listitem>
+                <para>The object's size in bytes</para>
+              </listitem>
+              <listitem>
+                <para>The ETag header from the successful 201 response
+                  of the PUT when you uploaded the segment. This ETag
+                  is the MD5 checksum of the segment's data. </para>
+              </listitem>
+            </itemizedlist>
           </section>
           <section xml:id="Uploading_the_Manifext-d1e2227">
             <title>Uploading the Manifest</title>
@@ -2398,15 +2434,15 @@
             <literallayout class="monospaced">
 ?multipart-manifest=put
  </literallayout>
-            <para>The body of this request will be an ordered list of
-              files in json data format. The data to be supplied for
-              each segment is:</para>
+            <para>The body of this request is an ordered list of files
+              in json data format. The data to be supplied for each
+              segment is:</para>
             <literallayout class="monospaced">
 path: the path to the segment (not including account)  /container/object_name
-etag: the etag given back when the segment was PUT
+ETag: the ETag given back when the segment was PUT
 size_bytes: the size of the segment in bytes
                     </literallayout>
-            <para>The format of the list will be:</para>
+            <para>The format of the list is:</para>
             <literallayout class="monospaced">
  json: [{"path": "/cont/object",   
          "etag": "etagoftheobjectsegment",   
@@ -2418,8 +2454,8 @@ size_bytes: the size of the segment in bytes
               segments per SLO is 1,000. Each segment, except for the
               final one, must be at least one megabyte. On upload, the
               middleware will head every segment passed in and verify
-              the size and etag of each. If any of the objects do not
-              match (not found, size/etag mismatch, below minimum
+              the size and ETag of each. If any of the objects do not
+              match (not found, size/ETag mismatch, below minimum
               size), the user will receive a 4xx error response. If
               everything does match, the user will receive a 2xx
               response and the SLO object is ready for
@@ -2433,7 +2469,7 @@ size_bytes: the size of the segment in bytes
             <para>A GET request to the manifest object returns the
               concatenation of the objects from the manifest similar
               to DLO. If any of the segments from the manifest are not
-              found or their Etag/Content Length no longer match, the
+              found or their ETag/Content Length no longer match, the
               connection will drop. As a result, a 409 Conflict will
               be logged in the proxy logs, and the user will receive
               incomplete results.</para>
@@ -2443,7 +2479,7 @@ size_bytes: the size of the segment in bytes
             <literallayout class="monospaced">
 Content-Length: The total size of the SLO (the sum of the sizes of the segments in the manifest).
 X-Static-Large-Object: True 
-Etag: The etag of the SLO (generated the same way as DLO).
+ETag: The ETag of the SLO (generated the same way as DLO).
               </literallayout>
             <literallayout>The GET request with the query parameter returns the actual manifest file.</literallayout>
             <literallayout class="monospaced">
@@ -2771,7 +2807,7 @@ Etag: The etag of the SLO (generated the same way as DLO).
             <emphasis>Naming Schema:</emphasis> Non-current versions
             are assigned the name
             &lt;length&gt;&lt;object_name&gt;/&lt;timestamp&gt;, where
-            length is the 3-character zero-padded hexidecimal
+            length is the 3-character zero-padded hexadecimal
             character length of the &lt;object_name&gt; and
             &lt;timestamp&gt; is when the it was initially created as
             a current version. </para>
@@ -3054,21 +3090,25 @@ Etag: The etag of the SLO (generated the same way as DLO).
             The request must be a PUT with the query parameter
             ?extract-archive=format specifying the format of archive
             file. Accepted formats are tar, tar.gz, and tar.bz2. </para>
-          <para>For a PUT use the following URL:</para>
-          <para>/v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</para>
-          <para>UPLOAD_PATH is the location where the files will be
-            expanded. An UPLOAD_PATH can be a container, a
-            pseudo-directory within a container, or an empty
-            string.</para>
+          <para>For a PUT, use the following URL:</para>
+          <para>
+              /<code>v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz
+            </code></para>
+          <para><code>UPLOAD_PATH</code> is the location where the
+            files are expanded. An <code>UPLOAD_PATH</code> can be a
+            container, a pseudo-directory within a container, or an
+            empty string.</para>
           <para> The destination of a file in the archive is built as
             follows: </para>
-          <para>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</para>
-          <para>Where FILE_PATH is the file name from the listing in
-            the tar file.</para>
-          <para>If the UPLOAD_PATH is an empty string, containers will
-            be auto created accordingly and files in the tar that do
-            not map to any container (files in the base directory)
-            will be ignored.</para>
+          <para>
+            <code>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</code>
+          </para>
+          <para><code>FILE_PATH</code> is the file name from the
+            listing in the tar file.</para>
+          <para>If the <code>UPLOAD_PATH</code> is an empty string,
+            containers will be auto-created accordingly, and files in
+            the tar that do not map to any container (files in the
+            base directory) will be ignored.</para>
           <para>You can create up to 1,000 new containers per
             extraction request. Also note that only regular files will
             be uploaded. Empty directories, symlinks, etc., will not
@@ -3079,7 +3119,7 @@ Etag: The etag of the SLO (generated the same way as DLO).
             result in many operations on the proxy server and
             precautions need to be made to prevent the request from
             timing out due to lack of activity. To this end, the
-            client will always receive a 200 Ok response, regardless
+            client will always receive a 200 OK response, regardless
             of the actual success of the call. The body of the
             response must be parsed to determine the actual success of
             the operation. In addition the client may receive zero or
@@ -3090,10 +3130,11 @@ Etag: The etag of the SLO (generated the same way as DLO).
             but can be either json or xml depending on the Accept
             header. Acceptable formats are text/plain,
             application/json, application/xml, and text/xml. The
-            following is an example of a successful request with both
-            the headers returned and the response body formatted in
-            json: </para>
-          <literallayout class="monospaced">
+            following example is a successful request with both the
+            headers returned and the response body formatted in json. </para>
+          <example>
+            <title>Extract  Archive Response</title>
+            <literallayout class="monospaced">
 HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3110,8 +3151,12 @@ Transfer-Encoding: chunked
 }
 
 </literallayout>
-          <para>Here is an example with errors:</para>
-          <literallayout>
+          </example>
+          <para>The example that follows shows the response with
+            errors.</para>
+          <example>
+            <title>Extract Archive Response with Errors</title>
+            <literallayout class="monospaced">
 HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3133,18 +3178,20 @@ Transfer-Encoding: chunked
 }
 
 </literallayout>
+          </example>
           <para>The list of errors is a list of tuples in the form
-            [object_path, error_response]. The object_path given is
-            the full path of where the object was to be put and the
-            error_response is the failing HTTP status of the response
-            for that individual PUT. After 1,000 errors, processing of
-            the request will cease, and the completed response is
-            returned to the user. </para>
+              <code>[object_path, error_response]</code>. The
+              <code>object_path</code> given is the full path of where
+            the object was to be put. The <code>error_response</code>
+            is the failing HTTP status of the response for that
+            individual PUT. After 1,000 errors, processing of the
+            request will cease, and the completed response is returned
+            to the user. </para>
           <para>If all valid files were uploaded successfully, the
-            response code will be a 201 created. If any files failed
+            response code will be a 201 Created. If any files failed
             to be created, the response code corresponds to the
             subrequest's error. Possible codes are 400, 401, 502 (on
-            server errors), etc.. In both cases, the response body
+            server errors), etc. In both cases, the response body
             specifies the number of files successfully uploaded and a
             list of the files that failed. </para>
         </section>
@@ -3158,18 +3205,22 @@ Transfer-Encoding: chunked
             DELETE request will be a newline separated list of URL
             encoded objects to delete. You can delete 10,000 objects
             per request. The objects specified in the DELETE request
-            body must be URL encoded and in the form: </para>
-          <para>/container_name/my%20image.jpg</para>
+            body must be URL-encoded and in the form: </para>
+          <para><code> /container_name/my%20image.jpg</code>
+          </para>
           <para>or for a container (which must be empty at time of
             delete)</para>
-          <para>/container_name</para>
+          <para>
+            <code>/container_name</code>
+          </para>
           <para>The response is similar to the extract archive
             responses in that every response will be a 200 OK and the
             response body must be parsed for actual results. The
-            following is an example of a successful request with both
-            the headers returned and the response body formatted in
-            json: </para>
-          <literallayout class="monospaced">
+            following example shows a successful request with both the
+            headers returned and the response body formatted in json. </para>
+          <example>
+            <title>Bulk Delete Response</title>
+            <literallayout class="monospaced">
 HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3187,8 +3238,12 @@ Transfer-Encoding: chunked
 }
 
 </literallayout>
-          <para>Here is an example with errors: </para>
-          <literallayout>
+          </example>
+          <para>The example that follows shows the response with
+            errors.</para>
+          <example>
+            <title>Bulk Delete Response with Errors</title>
+            <literallayout>
 HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3211,21 +3266,23 @@ Transfer-Encoding: chunked
 }
 
 </literallayout>
+          </example>
           <para>If all items were successfully deleted (or did not
-            exist), the Response Code will be a 200 Ok. If any failed
+            exist), the Response Code will be a 200 OK. If any failed
             to delete, the response code corresponds to the
             subrequest's error. Possible codes are 400, 401, 502 (on
-            server errors), etc. In all cases the response body will
-            specify the number of items successfully deleted, not
-            found, and a list of those that failed. The return body
-            will be formatted in the way specified in the request's
-            Accept header. Acceptable formats are text/plain,
+            server errors), etc. In all cases, the response body
+            specifies the number of items successfully deleted, not
+            found, and a list of those that failed. The return body is
+            formatted in the way specified in the request's Accept
+            header. Acceptable formats are text/plain,
             application/json, application/xml, and text/xml. </para>
           <para>The list of errors is a list of tuples in the form
-            [object_path, error_response]. The object_path given is
-            the full path of where the object (or container) was to be
-            deleted and the error_response is the failing HTTP status
-            of the response for that individual DELETE. </para>
+              <code>[object_path, error_response]</code>. The
+              <code>object_path</code> given is the full path of where
+            the object (or container) was to be deleted. The
+              <code>error_response</code> is the failing HTTP status
+            of the response for that individual DELETE.  </para>
         </section>
       </section>
     </section>
@@ -3477,13 +3534,14 @@ Transfer-Encoding: chunked
           <code>X-CDN-STREAMING-URI</code> headers, respectively. 
       </para>
       
-      <para>
-        On August 13, 2012, the format of new CDN URLs changed in order to
-        enhance the security of the Content Delivery Network.. Any URLs set in the
-        older format (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
-        will continue to work. However, any newly generated CDN URLs will have the 
-        new format: <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/mydog.jpg</code>.
-      </para>
+      <para> On August 13, 2012, the format of new CDN URLs changed in
+        order to enhance the security of the Content Delivery Network.
+        Any URLs set in the older format
+          (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
+        will continue to work. However, any newly generated CDN URLs
+        will have the new format:
+          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
+          r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
       
       <note><title>Note on CDN Charges</title>
         <para>
@@ -3573,11 +3631,12 @@ Transfer-Encoding: chunked
                       </literallayout>
         </example>
         <para>
-          <remark security="writeronly">JIRA doc ticket / 1-2-6 regards C / DN disalbe -- dsh
-            - 2012-03-07</remark> In order to remove the container from
-          the CDN, change the <code>X-CDN-Enabled</code> flag to
-            <code>False</code>, as in the request below. Please note,
-          however, that objects remain public until their TTL expires. </para>
+          <remark security="writeronly">JIRA doc ticket / 1-2-6
+            regards C / DN disable -- dsh - 2012-03-07</remark> In
+          order to remove the container from the CDN, change the
+            <code>X-CDN-Enabled</code> flag to <code>False</code>, as
+          in the request below. Please note, however, that objects
+          remain public until their TTL expires. </para>
         <example>
           <title>Container CDN-Disable Request</title>
           <literallayout class="monospaced">
@@ -4279,20 +4338,27 @@ i))) != null;
         </section>
       <section xml:id="TempURL_File_Name_Overrides-d1e213">
         <title>Override TempURL File Names</title>
-        <para>TempURLs support the "filename" query parameter to
+        <para>TempURLs support the filename query parameter to
           override the Content-Disposition header and indicate to the
-          browser a file name in which to save the file. In this
-          example, you see the usual TempURL without the file name
-          override:</para>
-        <literallayout class="monospaced">
+          browser a file name in which to save the file. In the
+          following example, you see the usual TempURL without the
+          file name override.</para>
+        <example>
+          <title>TempURL without File Name Override</title>
+          <literallayout class="monospaced">
 https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485
             </literallayout>
-        <para>In this example, you see "&amp;filename=bob.txt"
-          appended to the TempURL to indicate to the browser to save
-          the file as "bob.txt":</para>
-        <literallayout class="monospaced">
+        </example>
+        <para>In the following example, you see
+            <code>&amp;filename=bob.txt</code> appended to the TempURL
+          to indicate to the browser to save the file as
+            <code>bob.txt</code>:</para>
+        <example>
+          <title>TempURL with File Name Override</title>
+          <literallayout class="monospaced">
 https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt
             </literallayout>
+        </example>
       </section>
       </section>
         <section xml:id="FormPost-d1a555">
@@ -4304,8 +4370,8 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
             account, you need only create the form in your website using the guidelines below. 
           </para>
           <para> As with all objects in Cloud Files, the object file
-        size limit is 5 gb. If your users try to upload an object
-        larger than 5 gb, they will get a file size error. </para>
+        size limit is 5 GB. If your users try to upload an object
+        larger than 5 GB, they will get a file size error. </para>
           <section xml:id="Set_Account_Metadata-d1a666">
             <title>Set Account Metadata Key</title>
             <para>
@@ -4376,13 +4442,13 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
               (2xx is success) and a possible message for further information if there 
               is an error, such as “max_file_size exceeded”.
               </para>
-              <para>              
-                <emphasis>Required:</emphasis> The <code>max_file_size</code> 
-                attribute must be included and indicates the 
-              largest single file upload allowed, in bytes. Although you may limit the 
-              size of the individual file uploaded to your Cloud Files account here, 
-              the max_file_size may not exceed 5 gb.
-              </para>
+              <para>
+          <emphasis>Required:</emphasis> The
+            <code>max_file_size</code> attribute must be included and
+          indicates the largest single file upload allowed, in bytes.
+          Although you may limit the size of the individual file
+          uploaded to your Cloud Files account here, the max_file_size
+          may not exceed 5 GB. </para>
               <para>              
                 <emphasis>Required:</emphasis> The <code>max_file_count</code> attribute indicates the maximum number of 
               files that can be uploaded with the form.
