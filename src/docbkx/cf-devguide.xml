@@ -273,7 +273,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added more detail about reasons to perform a CDN purge, clarifying that it isn't required for deleting objects.</para>
+              <para>Added more detail about reasons to perform a CDN
+                purge, clarifying that it is not required for deleting
+                objects.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -472,10 +474,12 @@
       content behind a Content Distribution Network. Cloud Files users get access to this network
       automatically without having to worry about contracts, additional costs, or technical
       hurdles.</para>
-    <para>Cloud Files allows users to store and retrieve files and CDN-enabled content via a simple
-      Web Service interface (ReST: Representational State Transfer). There are also
-      language-specific APIs that utilize the ReSTful API but make it much easier for developers to
-      integrate into their applications.</para>
+    <para>Cloud Files allows users to store and retrieve files and
+      CDN-enabled content through a simple Web Service interface
+      (ReST: Representational State Transfer). There are also
+      language-specific APIs that utilize the ReSTful API but make it
+      much easier for developers to integrate into their
+      applications.</para>
     <para>For more details on the Cloud Files service, please refer to
         <link
         xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
@@ -669,10 +673,13 @@
     </section>
     <section xml:id="Operations-d1e509">
       <title>Operations</title>
-      <para>Operations are the actions you perform within your account. Creating or deleting
-        containers, uploading or downloading objects, etc. The full list of operations is documented
-        in the ReST API section. Operations may be performed via the ReST web service API or a
-        language-specific API; currently, we support Python, PHP, Java, Ruby, and C#/.NET.</para>
+      <para>Operations are the actions you perform within your
+        account. Creating or deleting containers, uploading or
+        downloading objects, and so on. The full list of operations is
+        documented in the ReST API section. Operations may be
+        performed through the ReST web service API or a
+        language-specific API; currently, we support Python, PHP,
+        Java, Ruby, and C#/.NET.</para>
       <important>
         <para> All operations must include a valid authorization token. </para>
       </important>
@@ -693,20 +700,27 @@
           <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of
         <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/wow1.jpg</code>. 
         </para>
-      <para>This URL can be embedded in HTML
-        pages, email messages, blog posts, etc. When that URL is accessed, a copy of that image is
-        fetched from the Cloud Files storage system and cached in a CDN and served from there for
-        all subsequent requests for a configurable cache time to live (TTL) value. Setting the TTL
-        of a CDN-enabled container translates to setting the <code>Expires</code> and
-          <code>Cache-Control</code> HTTP headers. Cloud Files continues to serve content via the
-        CDN until it receives a delete request, although extremely long TTL values do not guarantee
-        that an object is served from a CDN edge location. When the TTL expires, the CDN checks
-        Cloud Files to ensure that it has the most up-to-date content. A purge request forces the
-        CDN to check with Cloud Files for the most up-to-date version of the file. </para>
-      <para>Containers tracked in the CDN management service are completely separate and distinct
-        from the containers defined in the storage service. It is possible for a container to be
-        CDN-enabled even if it doesn't exist in the storage system. Users may want the ability to
-        pre-generate CDN URLs before actually uploading content and this separation gives them that
+      <para>This URL can be embedded in HTML pages, email messages,
+        blog posts, and so on. When that URL is accessed, a copy of
+        that image is fetched from the Cloud Files storage system and
+        cached in a CDN and served from there for all subsequent
+        requests for a configurable cache time to live (TTL) value.
+        Setting the TTL of a CDN-enabled container translates to
+        setting the <code>Expires</code> and
+          <code>Cache-Control</code> HTTP headers. Cloud Files
+        continues to serve content through the CDN until it receives a
+        delete request, although extremely long TTL values do not
+        guarantee that an object is served from a CDN edge location.
+        When the TTL expires, the CDN checks Cloud Files to ensure
+        that it has the most up-to-date content. A purge request
+        forces the CDN to check with Cloud Files for the most
+        up-to-date version of the file. </para>
+      <para>Containers tracked in the CDN management service are
+        completely separate and distinct from the containers defined
+        in the storage service. It is possible for a container to be
+        CDN-enabled even if it does not exist in the storage system.
+        Users may want the ability to pre-generate CDN URLs before
+        actually uploading content and this separation gives them that
         ability.</para>
       <para>However, for the content to be served from the CDN, the container names <emphasis role="strong">MUST</emphasis> match in both the CDN management service and the storage
         service. For example, you could CDN-enable a container called <code>images</code> and be
@@ -722,12 +736,15 @@
         and as in speech) to download, use, and modify. They are all licensed under the MIT License
         as described in the COPYING file packaged with each binding. If you make any improvements
         to an API, you are encouraged (but not required) to submit those changes back to us.</para>
-      <para>
-        The API bindings are hosted at <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html">
-        docs.rackspace.com/sdks/guide/content/intro.html</link>. 
-        If you have changes you'd like to see in the Cloud Files bindings, email them
-        to <link xlink:href="mailto:cloudfiles@rackspacecloud.com">cloudfiles@rackspacecloud.com</link>. 
-        Make sure to indicate which language and version you modified and send us a unified diff. </para>
+      <para> The API bindings are hosted at <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+          > docs.rackspace.com/sdks/guide/content/intro.html</link>.
+        If you have changes you would like to see in the Cloud Files
+        bindings, email them to <link
+          xlink:href="mailto:cloudfiles@rackspacecloud.com"
+          >cloudfiles@rackspacecloud.com</link>. Make sure to indicate
+        which language and version you modified and send us a unified
+        diff. </para>
       <para>
         Each binding includes its own documentation (in HTML, PDF, or CHM format). They also
         include code snippets and examples to help you get started. The API
@@ -781,10 +798,12 @@
     </info>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
-      <para>Client authentication is provided via a ReST interface using the &GET;
-        method, with <code>v1.0</code> supplied as the path. Additionally, two headers are required,
-        <code>X-Auth-User</code> and <code>X-Auth-Key</code> with values for the username and API
-        Access Key respectively.</para>
+      <para>Client authentication is provided through a ReST interface
+        using the &GET; method, with <code>v1.0</code> supplied as the
+        path. Additionally, two headers are required,
+          <code>X-Auth-User</code> and <code>X-Auth-Key</code> with
+        values for the username and API Access Key
+        respectively.</para>
       <para> Each ReST request against the Cloud Files system requires the inclusion of a specific
         authorization token HTTP x-header, defined as <code>X-Auth-Token</code>. Clients obtain this
         token, along with the Cloud Servers API URL, by first using the Rackspace Cloud
@@ -813,15 +832,16 @@
       </para>
       <itemizedlist spacing="compact">
         <listitem>
-          <para>
-            If your account was
-            created via <link xlink:href="http://www.rackspacecloud.com">http://www.rackspacecloud.com</link>, it is a US-based account.
-          </para>   
+          <para> If your account was created through <link
+              xlink:href="http://www.rackspacecloud.com"
+              >http://www.rackspacecloud.com</link>, it is a US-based
+            account. </para>   
         </listitem>
         <listitem>
-          <para> If your account was created via <link
-              xlink:href="http://www.rackspace.co.uk">http://www.rackspace.co.uk</link>, 
-            it is a UK-based account. </para>
+          <para> If your account was created through <link
+              xlink:href="http://www.rackspace.co.uk"
+              >http://www.rackspace.co.uk</link>, it is a UK-based
+            account. </para>
         </listitem>
       </itemizedlist>
       <para>
@@ -855,10 +875,9 @@
                   be found under Your Account | API Access. </para>
                 </listitem>
                 <listitem>
-                  <para>In the Next Gen Cloud Control Panel, your API
-                  Key can be found by clicking the downward arrow next
-                  to your user name and selecting <code>API
-                    Keys</code>. </para>
+                  <para>In the Cloud Control Panel, your API Key can
+                  be found by clicking the downward arrow next to your
+                  user name and selecting <code>API Keys</code>.  </para>
                 </listitem>
               </itemizedlist>  
                 <para>In either Control Panel, click the <code>Show Key</code>
@@ -1246,8 +1265,8 @@
             lower the number of returned objects. </para>
           <example>
             <title>List Large Number of Containers</title>
-            <para>For example, let's use a listing of five container
-              names</para>
+            <para>For example, use a listing of five container
+              names:</para>
             <literallayout class="monospaced">
   apples
   bananas
@@ -1255,8 +1274,7 @@
   oranges
   pears
                     </literallayout>
-            <para>We'll use a limit of two to show how things
-              work:</para>
+            <para>Use a limit of two to show how things work:</para>
             <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;?limit=2
   Host: storage.clouddrive.com
@@ -1428,12 +1446,14 @@
             container. You may create up to 500,000 containers in your Cloud Files account.</para>
           <para>Containers are storage compartments for your data. The URL encoded name must be less
             than 256 bytes and cannot contain a forward slash '/' character.</para>
-          <para>Containers can be assigned custom metadata by including additional HTTP headers on the
-            &PUT; request. The custom metadata is assigned to a container via HTTP headers identified
-            with the <code>X-Container-Meta-XXXX</code> prefix. See 
-            <xref linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
-              xrefstyle="select:label quotedtitle nopage"></xref> for details on setting custom metadata.
-          </para>
+          <para>Containers can be assigned custom metadata by
+          including additional HTTP headers on the &PUT; request. The
+          custom metadata is assigned to a container through HTTP
+          headers identified with the
+            <code>X-Container-Meta-XXXX</code> prefix. See <xref
+            linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
+            xrefstyle="select:label quotedtitle nopage"/> for details
+          on setting custom metadata. </para>
           <example>
             <title>Container Create Request </title>
             <literallayout class="monospaced">
@@ -1779,14 +1799,15 @@
               </tr>
               <tr>
                 <td>X-Container-Meta-Access-Control-Max-Age</td>
-                <td>The maximum age for the browser to cache the options
-                  request, in seconds (5, 10, 1000, etc.).
-                </td>
+                <td>The maximum age for the browser to cache the
+                  options request, in seconds (5, 10, 1000, and so
+                  on). </td>
               </tr>
               <tr>
                 <td>X-Container-Meta-Access-Control-Allow-Headers</td>
-                <td>Which custom metadata headers you allow to be assigned
-                  to objects in this container, i.e., X-Foo, X-Bar, etc.</td>
+                <td>Which custom metadata headers you allow to be
+                  assigned to objects in this container, i.e., X-Foo,
+                  X-Bar, and so on.</td>
               </tr>
             </tbody>
           </table>
@@ -1946,7 +1967,8 @@
               was given), you may assume there are more object names.</para>
             <example>
               <title>List Large Number of Objects</title>
-              <para>For an example, let's use a listing of five object names:</para>
+              <para>For an example, use a listing of five object
+              names:</para>
               <literallayout class="monospaced">
   gala
   grannysmith
@@ -1954,7 +1976,7 @@
   jonagold
   reddelicious
                     </literallayout>
-              <para>We'll use a limit of two to show how things work:</para>
+              <para>Use a limit of two to show how things work:</para>
               <literallayout class="monospaced">
   GET /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;?limit=2
   Host: storage.clouddrive.com
@@ -2265,8 +2287,8 @@
           change detection but not direct comparison.</para>
         <para>Objects can be assigned custom metadata by including
           additional HTTP headers on the &PUT; request.</para>
-        <para>The object can be created with custom metadata via HTTP
-          headers identified with the <code>X-Object-Meta-</code>
+        <para>The object can be created with custom metadata through
+          HTTP headers identified with the <code>X-Object-Meta-</code>
           prefix.</para>
         <example>
           <title>Create/Update Object Request</title>
@@ -2291,7 +2313,8 @@
             <code>Content-Type</code> header in the request. If the
           MD5 checksum of the data written to the storage system does
           NOT match the (optionally) supplied ETag value, a 422
-          (Unprocessable Entity) response is returned, etc.</para>
+          (Unprocessable Entity) response is returned, and so
+          on.</para>
         <example>
           <title>Create/Update Object Response</title>
           <literallayout class="monospaced">
@@ -2585,8 +2608,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             datacenters. This helps you avoid the time and cost of
             uploading large amounts of data over the Internet. After
             the transfer is complete, we will either ship your device
-            back to you, or destroy it via degaussing, whichever you
-            prefer. </para>
+            back to you, or destroy it through degaussing, whichever
+            you prefer. </para>
           <para> We accept USB, SATA, and eSATA devices. Your file
             system may be NTFS, ext2, ext3, ext4, or FAT32. Because
             Cloud Files does not use hierarchical directory
@@ -2800,9 +2823,9 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           <para> Nothing is written to the non-current version
             container when you initially &PUT; an object into the
             current-version container. Only when you make edits to the
-            objects via &PUT; will you create non-current versions.
-            These non-current versions are labeled according to the
-            schema below. </para>
+            objects through &PUT; will you create non-current
+            versions. These non-current versions are labeled according
+            to the schema below. </para>
           <para>
             <emphasis>Naming Schema:</emphasis> Non-current versions
             are assigned the name
@@ -2927,7 +2950,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           when you authenticate your session; as in the example below,
           it is listed as <code>InternalURL</code>. However, a rule of
           thumb is that its name is your Cloud Files storage URL with
-            "<code>snet-</code>" pre-pended to it. If you don't know
+            "<code>snet-</code>" pre-pended to it. If you do not know
           which Data Center you are working in, you can find it in the
           Cloud Control Panel. </para>
         <example>
@@ -3111,8 +3134,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             base directory) will be ignored.</para>
           <para>You can create up to 1,000 new containers per
             extraction request. Also note that only regular files will
-            be uploaded. Empty directories, symlinks, etc., will not
-            be uploaded.</para>
+            be uploaded. Empty directories, symlinks, and so on, will
+            not be uploaded.</para>
           <para>The response from bulk operations functions
             differently from other swift responses. This occurs
             because a short request body sent from the client could
@@ -3191,9 +3214,9 @@ Transfer-Encoding: chunked
             response code will be a 201 Created. If any files failed
             to be created, the response code corresponds to the
             subrequest's error. Possible codes are 400, 401, 502 (on
-            server errors), etc. In both cases, the response body
-            specifies the number of files successfully uploaded and a
-            list of the files that failed. </para>
+            server errors), and so on. In both cases, the response
+            body specifies the number of files successfully uploaded
+            and a list of the files that failed. </para>
         </section>
           <section xml:id="Bulk_Delete-d1e2338">
           <title>Bulk Delete</title>
@@ -3271,7 +3294,7 @@ Transfer-Encoding: chunked
             exist), the Response Code will be a 200 OK. If any failed
             to delete, the response code corresponds to the
             subrequest's error. Possible codes are 400, 401, 502 (on
-            server errors), etc. In all cases, the response body
+            server errors), and so on. In all cases, the response body
             specifies the number of items successfully deleted, not
             found, and a list of those that failed. The return body is
             formatted in the way specified in the request's Accept
@@ -3662,9 +3685,9 @@ Transfer-Encoding: chunked
           that the object will be cached in the CDN system before
           being refetched. The enabled status indicates whether the
           container is currently marked to allow public serving of
-          objects via CDN. The log_retention setting specifies whether
-          the CDN access logs should be collected and stored in the
-          Cloud Files storage system.</para>
+          objects through CDN. The log_retention setting specifies
+          whether the CDN access logs should be collected and stored
+          in the Cloud Files storage system.</para>
         <example>
           <title>CDN-Enabled Container Metadata Request</title>
           <note>
@@ -3705,10 +3728,10 @@ Transfer-Encoding: chunked
         <para>Rackspace can perform operations against a CDN-enabled
           container. You can either wait for the TTL to expire or you
           can request the purge of an entire container. Once you have
-          made the request via a support ticket, the system purges the
-          object from the CDN, and sends an email to the address (or
-          multiple addresses) that you indicate through the ticket.
-          The email address notification is optional.</para>
+          made the request through a support ticket, the system purges
+          the object from the CDN, and sends an email to the address
+          (or multiple addresses) that you indicate through the
+          ticket. The email address notification is optional.</para>
       </section>
       <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
         <title>Update CDN-Enabled Container Metadata</title>
@@ -3759,7 +3782,7 @@ Transfer-Encoding: chunked
         </example>
       </section>
       <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
-        <title>CDN-Enabled Containers Served via SSL</title>
+        <title>CDN-Enabled Containers Served through SSL</title>
         <para>&HEAD; operations against a CDN-enabled container can
           also return an SSL URL. When SSL is available, another
           header gets returned with calls to the CDN Management URL,
@@ -3961,13 +3984,11 @@ i))) != null;
           Any attempt to delete more than this will result in a 498
           status code error (Rate Limited).
         </para>
-        <para>          
-          There are two ways you may purge objects from the edge:
-          (1) individually using &DELETE; in the API or (2) by 
-          creating a support ticket to purge entire containers.
-          The 25-object limit does not apply when purging an 
-          entire container via Support.
-          </para>
+        <para> There are two ways you may purge objects from the edge:
+          (1) individually using &DELETE; in the API or (2) by
+          creating a support ticket to purge entire containers. The
+          25-object limit does not apply when purging an entire
+          container through Support. </para>
         <example>
           <title>Purge CDN-Enabled Object</title>
           <literallayout class="monospaced">
@@ -4177,7 +4198,7 @@ i))) != null;
         may allow others to retrieve or place objects in your Cloud
         Files account for as long or as short a time as you wish.
         Access to the TempURL is independent of whether or not your
-        account is CDN-enabled. And even if you don't CDN-enable a
+        account is CDN-enabled. And even if you do not CDN-enable a
         directory, you can still grant temporary public access through
         a TempURL. </para>
         <para>
@@ -4540,7 +4561,7 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
           <term><option>-X METHOD</option></term>
           <listitem>
             <para>Specify the HTTP method to request (&GET;, &HEAD;,
-              etc.)</para>
+              and so on.)</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -4592,36 +4613,45 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
           headers of the response. After authentication, you can use cURL to perform
             &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
           services.</para>
-        <para>While an authentication token lasts, you can continue to perform requests. 
-          <phrase>However,
-          once a token expires, it will return an HTTP error code 401 (Unauthorized). 
-          Given that a token is good for 24 hours, even long-running jobs do not need to re-authenticate
-          on every request. You won't need to request another <code>X-Auth-Token</code> again 
-            until the existing one expires.</phrase> At that point, you must obtain
-          another authorization token. As a best practice example, here is some pseudo-code for
-          re-authenticating. The best scalable process flow would be:<orderedlist>
-            <listitem>
-              <para>Begin requests by going to identity.api.rackspace.com for an <code>X-Auth-Token</code>.</para>
-            </listitem>
-            <listitem>
-              <para>Send request <code>X-Storage-URL</code> using the <code>X-Auth-Token</code> obtained in Step 1.</para>
-            </listitem>
-            <listitem>
-              <para>Repeat step 2 using the same <code>X-Auth-Token</code> retrieved in Step 1 until either the
-                job finishes or you get a result code of 401 (Unauthorized). </para>
-            </listitem>
-          </orderedlist><itemizedlist>
-            <listitem>
-              <para>If the job finishes, you can allow the token to expire with no further
-                action.</para>
-            </listitem>
-            <listitem>
-              <para>If result code is 401 then send a request to identity.api.rackspacecloud.com for a
-                new <code>X-Auth-Token</code>.</para>
-            </listitem>
-          </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
-          receiving an error can be found in the OpenStack Swift project in client.py, which is
-          freely available. </para>
+        <para>While an authentication token lasts, you can continue to
+        perform requests. <phrase>However, once a token expires, it
+          will return an HTTP error code 401 (Unauthorized). Given
+          that a token is good for 24 hours, even long-running jobs do
+          not need to re-authenticate on every request. You will not
+          need to request another <code>X-Auth-Token</code> again
+          until the existing one expires.</phrase> At that point, you
+        must obtain another authorization token. As a best practice
+        example, here is some pseudo-code for re-authenticating. The
+        best scalable process flow would be:<orderedlist>
+          <listitem>
+            <para>Begin requests by going to
+              identity.api.rackspace.com for an
+                <code>X-Auth-Token</code>.</para>
+          </listitem>
+          <listitem>
+            <para>Send request <code>X-Storage-URL</code> using the
+                <code>X-Auth-Token</code> obtained in Step 1.</para>
+          </listitem>
+          <listitem>
+            <para>Repeat step 2 using the same
+                <code>X-Auth-Token</code> retrieved in Step 1 until
+              either the job finishes or you get a result code of 401
+              (Unauthorized). </para>
+          </listitem>
+        </orderedlist><itemizedlist>
+          <listitem>
+            <para>If the job finishes, you can allow the token to
+              expire with no further action.</para>
+          </listitem>
+          <listitem>
+            <para>If result code is 401 then send a request to
+              identity.api.rackspacecloud.com for a new
+                <code>X-Auth-Token</code>.</para>
+          </listitem>
+        </itemizedlist>A Python-based example of how to check for
+        errors and re-authenticate upon receiving an error can be
+        found in the OpenStack Swift project in client.py, which is
+        freely available. </para>
       </section>
       <section xml:id="Determining_Storage_Usage-d1e2976">
         <title>Determining Storage Usage with cURL</title>
@@ -4676,12 +4706,15 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
       </section>
       <section xml:id="Uploading_a_Storage_Object-d1e3067">
         <title>Uploading a Storage Object with cURL</title>
-        <para>After creating a container, you can upload a local file. For this example, let's
-          upload a screenshot image. The <code>-T</code> switch specifies the full path to the local
-          file to upload. Please note that if you intend to distribute this object via the CDN you
-          MUST make sure that the object's <code>Content-Type</code> is set correctly. This is the
-          mechanism by which a user's web browser knows how to display the file or launch a helper
-          application to view the file.</para>
+        <para>After creating a container, you can upload a local file.
+        For this example, upload a screenshot image. The
+          <code>-T</code> switch specifies the full path to the local
+        file to upload. Please note that if you intend to distribute
+        this object through the CDN you MUST make sure that the
+        object's <code>Content-Type</code> is set correctly. This is
+        the mechanism by which a user's web browser knows how to
+        display the file or launch a helper application to view the
+        file.</para>
         <example>
           <title>cURL Upload Storage Object</title>
           <screen>
@@ -4703,12 +4736,14 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
       </section>
       <section xml:id="CDN-Enabling_the_Container-d1e3123">
         <title>CDN-Enabling the Container with cURL</title>
-        <para>After creating a container and storing a file in it, you can choose to share the file.
-          Since the data in Cloud Files is all private, you can share your screenshot via the CDN.
-          To CDN-enable a container, issue a &PUT; request against the CDN management service. The
-          default TTL is 72 hours and supports a minimum of 15 minutes (900 seconds) and a maximum
-          of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system, not
-          the authorization system.</para>
+        <para>After creating a container and storing a file in it, you
+        can choose to share the file. Since the data in Cloud Files is
+        all private, you can share your screenshot through the CDN. To
+        CDN-enable a container, issue a &PUT; request against the CDN
+        management service. The default TTL is 72 hours and supports a
+        minimum of 15 minutes (900 seconds) and a maximum of 50 years
+        (1577836800 seconds). Note that the target URL specifies the
+        CDN system, not the authorization system.</para>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen language="bash">
@@ -4731,18 +4766,22 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
   Content-Length: 0
         </computeroutput></screen>
         </example>
-        <para>When the container is CDN-enabled, the service returns its public URL in the
-            <code>X-CDN-URI</code> header of the response, plus the SSL URL in the
-            <code>X-CDN-SSL-URL</code> header of the response. Now you can combine this URL with the
-          object name to access the file via the CDN, or use the https:// URL in combination with
-          the object name to access the file over a secure SSL connection via the CDN.</para>
+        <para>When the container is CDN-enabled, the service returns
+        its public URL in the <code>X-CDN-URI</code> header of the
+        response, plus the SSL URL in the <code>X-CDN-SSL-URL</code>
+        header of the response. Now you can combine this URL with the
+        object name to access the file through the CDN, or use the
+        https:// URL in combination with the object name to access the
+        file over a secure SSL connection through the CDN.</para>
         <para>You can verify the CDN's cache settings that you specified with your TTL value by
           sending a &GET; request to the object's CDN URL and viewing the response
           headers. The TTL value you specify translates to the <code>Expires</code> and
             <code>Cache-Control</code> headers of the CDN's cached Object.</para>
-        <para>The cURL command below issues a &GET; request which downloads the entire file but
-          writes it to <code>/dev/null</code>, a data sink that won't actually save the content to
-          your local drive (this convention is only valid on UNIX-like systems).</para>
+        <para>The cURL command below issues a &GET; request which
+        downloads the entire file but writes it to
+          <code>/dev/null</code>, a data sink that will not actually
+        save the content to your local drive (this convention is only
+        valid on UNIX-like systems).</para>
         <example>
           <title>cURL Download a File</title>
           <screen language="bash">
@@ -4765,9 +4804,10 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
       </section>
       <section xml:id="Other_cURL_Commands-d1e3222">
         <title>Other cURL Commands</title>
-        <para>You can issue any of the ReST methods defined for Cloud Files with the cURL utility.
-          For example, you can use cURL to send &POST; and &DELETE; requests even though we haven't
-          provided specific examples.</para>
+        <para>You can issue any of the ReST methods defined for Cloud
+        Files with the cURL utility. For example, you can use cURL to
+        send &POST; and &DELETE; requests even though we have not
+        provided specific examples.</para>
         <para>It should be noted that generally each time <code>curl</code> is invoked to perform an
           operation, a separate TCP/IP and SSL connection is created and thrown away. The language
           APIs, however, are designed to re-use these connections between operations and therefore
