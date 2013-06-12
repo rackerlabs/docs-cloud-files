@@ -56,7 +56,7 @@
 	    xmlns:raxm="http://docs.rackspace.com/api/metadata">
 	  <raxm:displayname>Release Notes</raxm:displayname>
 	  <raxm:product version="v1">files</raxm:product>
-	  <raxm:priority>40</raxm:priority>
+	  <raxm:priority>30</raxm:priority>
 	</raxm:metadata>
     </info>
 	<chapter xml:id="May01">
