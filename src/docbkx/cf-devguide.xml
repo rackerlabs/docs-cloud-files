@@ -53,6 +53,22 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2013-06-17 </date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>In <xref
+                  linkend="Purge_CDN-Enabled_Objects-d1e3858"/> and
+                  <xref
+                  linkend="Purge_CDN-Enabled_Containers_or_Objects-d1e2747"
+                />, added a note about removing a CDN-enabled
+                container by setting <code>X-CDN-Enabled</code> to
+                False in HEAD.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2013-06-14 </date>
         <revdescription>
           <itemizedlist>
@@ -3619,16 +3635,16 @@ Transfer-Encoding: chunked
           The default TTL value is 259200 seconds, or 72 hours. Each
           time the object is accessed after the TTL expires, the CDN
           refetches and caches the object for the TTL period. </para>
-        <para>You specify the TTL for an object by including the
-          HTTP header <code>X-TTL: &lt;integer_seconds&gt;</code>. Setting the
-          TTL is the same as setting the HTTP <code>Expires</code> and
-            <code>Cache-Control</code> headers for the cached object.
-          The minimum TTL is 15 minutes (900 seconds) and the maximum
-          is 50 years for a range of 900 to 1576800000 seconds. Setting a
-          TTL for a long time, however, does not guarantee that the
-          content will stay populated on CDN edge servers for the
-          entire period. The most popular objects stay
-          cached based on the edge location's logic. </para>
+        <para>You specify the TTL for an object by including the HTTP
+          header <code>X-TTL: &lt;integer_seconds&gt;</code>. Setting
+          the TTL is the same as setting the HTTP <code>Expires</code>
+          and <code>Cache-Control</code> headers for the cached
+          object. The minimum TTL is 15 minutes (900 seconds) and the
+          maximum is 50 years for a range of 900 to 1576800000
+          seconds. Setting a TTL for a long time, however, does not
+          guarantee that the content will stay populated on CDN edge
+          servers for the entire period. The most popular objects stay
+          cached based on the edge location's logic.  </para>
         <note><title>Note</title>
         <para>
           On August 13, 2012, the maximum TTL was set to 31536000 
@@ -3748,6 +3764,10 @@ Transfer-Encoding: chunked
           the object from the CDN, and sends an email to the address
           (or multiple addresses) that you indicate through the
           ticket. The email address notification is optional.</para>
+        <para> Note: In order to remove the container from the CDN,
+          change the <code>X-CDN-Enabled</code> flag to
+            <code>False</code> as shown in <xref
+            linkend="CDN-Enable_a_Container-d1e2665"/>. </para>
       </section>
       <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
         <title>Update CDN-Enabled Container Metadata</title>
@@ -4005,6 +4025,10 @@ i))) != null;
           creating a support ticket to purge entire containers. The
           25-object limit does not apply when purging an entire
           container through Support. </para>
+        <para> Note: In order to remove the container from the CDN,
+          change the <code>X-CDN-Enabled</code> flag to
+            <code>False</code> as shown in <xref
+            linkend="CDN-Enable_a_Container-d1e2665"/>. </para>
         <example>
           <title>Purge CDN-Enabled Object</title>
           <literallayout class="monospaced">
