@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book [
-
+      <!-- Some useful entities borrowed from HTML -->
+        <!ENTITY ndash  "&#x2013;">
+        <!ENTITY mdash  "&#x2014;">
+        <!ENTITY hellip "&#x2026;">
+        
         <!-- Useful for describing APIs -->
         <!ENTITY COPY   '<command>COPY</command>'>
         <!ENTITY DELETE '<command>DELETE</command>'>
         <!ENTITY GET    '<command>GET</command>'>
         <!ENTITY HEAD   '<command>HEAD</command>'>
         <!ENTITY PUT    '<command>PUT</command>'>
-        <!ENTITY POST   '<command>POST</command>'>
+        <!ENTITY POST   '<command>POST</command>'> 
+        
+          <!-- changing authentication endpoints; define entities for US & UK rather than maintaining in text -->
+        <!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v1.1/">
+        <!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v1.1/">
+        <!ENTITY ENDPOINT-US-20 "https://identity.api.rackspacecloud.com/v2.0/">
+        <!ENTITY ENDPOINT-UK-20 "https://lon.identity.api.rackspacecloud.com/v2.0/">     
+        
 ]>
   <book xmlns="http://docbook.org/ns/docbook"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -53,9 +64,21 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-06-17 </date>
+        <date>2013-06-27</date>
         <revdescription>
           <itemizedlist>
+            <listitem>
+              <para>In <xref linkend="Authentication-d1e639"/>,
+                changed references for authentication to point to
+                v2.0.</para>
+            </listitem>
+          </itemizedlist>
+          <itemizedlist>
+            <listitem>
+              <para>In <xref linkend="Authentication-d1e2929"/>,
+                updated the example to show v2.0 for
+                authentication.</para>
+            </listitem>
             <listitem>
               <para>In <xref
                   linkend="Purge_CDN-Enabled_Objects-d1e3858"/> and
@@ -840,15 +863,16 @@
       <para> To access the Authentication Service, you must know whether your account is
         US-based or UK-based: 
       </para>
-      <itemizedlist spacing="compact">
+      <itemizedlist spacing="compact"
+        xmlns:m="http://www.w3.org/1998/Math/MathML">
         <listitem>
-          <para>
-            US-based accounts authenticate through <link xlink:href="https://identity.api.rackspacecloud.com/v1.0">https://identity.api.rackspacecloud.com/v1.0</link>.
+          <para> US-based accounts authenticate through <link
+              xlink:href="&ENDPOINT-US-20;">&ENDPOINT-US-20;</link>.
           </para>
         </listitem>
         <listitem>
-          <para>
-            UK-based accounts authenticate through <link xlink:href="https://lon.identity.api.rackspacecloud.com/v1.0">https://lon.identity.api.rackspacecloud.com/v1.0</link>.
+          <para> UK-based accounts authenticate through <link
+              xlink:href="&ENDPOINT-UK-20;">&ENDPOINT-UK-20;</link>.
           </para>
         </listitem>
       </itemizedlist>
@@ -4624,19 +4648,20 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
           which will need to be passed in for each request using the <code>X-Auth-Token</code>
           header. 
         </para>
-        <para>
-          The following example demonstrates how to use cURL to obtain the authorization
-          token and the URL of the storage system. Note that your account may be based in either the
-          US or the UK; this is not determined by your physical location, but by the location of the
-          Rackspace retail site where the account was created. This example uses the US-based URL
-          https://identity.api.rackspacecloud.com/v1.0.</para>
+        <para> The following example demonstrates how to use cURL to
+        obtain the authorization token and the URL of the storage
+        system. Note that your account may be based in either the US
+        or the UK; this is not determined by your physical location,
+        but by the location of the Rackspace retail site where the
+        account was created. This example uses the US-based URL
+        https://identity.api.rackspacecloud.com/v2.0.</para>
         <example>
           <title>cURL Authenticate</title>
           <screen language="bash">
    <command>curl</command> <option>-D</option> - \
         <option>-H "X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89"</option> \
         <option>-H "X-Auth-User: jdoe"</option> \
-        <uri>https://identity.api.rackspacecloud.com/v1.0</uri>
+        <uri>https://identity.api.rackspacecloud.com/v2.0</uri>
                       </screen>
           <screen language="bash">
    <computeroutput>HTTP/1.1 204 No Content
