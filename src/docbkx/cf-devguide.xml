@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate/>
+    <pubdate>2013-07-02</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -635,17 +635,15 @@
     <section xml:id="Pricing_Service-d1e1402">
       <title>Pricing and Service Level</title>
       
-      <para>Cloud Files is part of the Rackspace Cloud and your use through 
-        the API will be billed as per the pricing schedule at 
-        <link xlink:href="http://www.rackspace.com/cloud/public/files/pricing/">
-          www.rackspace.com/cloud/public/files/pricing
-        </link>
-      </para>
-        <para>The Service Level Agreement (SLA) for Cloud Databases is available at 
-          <link xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_files">
-            www.rackspace.com/cloud/legal/sla/#cloud_files
-          </link>.
-          </para>
+      <para>Cloud Files is part of the Rackspace Cloud and your use
+        through the API will be billed as per the pricing schedule at
+          <link
+          xlink:href="http://www.rackspace.com/cloud/public/files/pricing/"
+          > www.rackspace.com/cloud/public/files/pricing</link>. </para>
+        <para>The Service Level Agreement (SLA) for Cloud Files is
+        available at <link
+          xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_files"
+          > www.rackspace.com/cloud/legal/sla/#cloud_files</link>. </para>
           
   </section>
     
@@ -659,10 +657,12 @@
         <raxm:priority>2</raxm:priority>
       </raxm:metadata> 
     </info>
-    <para>Cloud Files is not a file system in the traditional sense. You will not be able to map or
-      mount virtual disk drives like you can with other forms of storage such as a SAN or NAS. Since
-      Cloud Files is a different way of thinking when it comes to storage, you should take a few
-      moments to review the key concepts listed below.</para>
+    <para>Cloud Files is not a file system in the traditional sense.
+      You will not be able to map or mount virtual disk drives like
+      you can with other forms of storage such as a SAN or NAS. Since
+      Cloud Files is a different way of thinking when it comes to
+      storage, you should take a few moments to review the key
+      concepts listed below. </para>
     <section xml:id="Accounts-d1e421">
       <title>Accounts</title>
       <para>The Cloud Files system is designed to be used by many different customers. Your user
