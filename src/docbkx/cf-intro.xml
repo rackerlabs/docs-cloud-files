@@ -29,7 +29,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-05-20</pubdate>
+    <pubdate/>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
@@ -337,6 +337,46 @@
           </figure>
       </para>
       </section>
+      <section xml:id="cloudStorageApp-d1e337">
+      <title>Rackspace Cloud Storage App for Microsoft
+        SharePoint</title>
+      <para>Rackspace Cloud Storage App for Microsoft SharePoint
+        enables you to work with files inside of Rackspace Cloud Files
+        alongside SharePoint content. You can download the Cloud
+        Storage App from the <link
+          xlink:href="http://office.microsoft.com/en-us/store/rackspace-cloud-storage-app-for-microsoft-sharepoint-WA104094200.aspx?redir=0"
+          >SharePoint Store</link>. Cloud Storage App reduces costs
+        and frees valuable space on a SharePoint deployment's
+        Microsoft SQL Server databases by storing data in your cloud
+        account. The app also gives you the ability to expose Cloud
+        Files containers and objects directly in SharePoint websites
+        where you can download, upload, modify, and share files with
+        others. With Cloud Storage App, you can perform the following
+        tasks: </para>
+      <itemizedlist>
+        <listitem>
+          <para>Manage Cloud Files objects directly inside your
+            SharePoint portal</para>
+        </listitem>
+        <listitem>
+          <para>Add objects to Cloud File containers using a
+            drag-and-drop user interface</para>
+        </listitem>
+        <listitem>
+          <para>Delete objects from Cloud File containers one at a
+            time or in bulk</para>
+        </listitem>
+        <listitem>
+          <para>Collaborate with others, even users who do not have
+            SharePoint credentials, by generating temporary URLs that
+            expire after a certain number of days</para>
+        </listitem>
+      </itemizedlist>
+      <para>For more information about the Rackspace Cloud Storage App
+        for Microsoft SharePoint, see <link
+          xlink:href="http://www.rackspace.com/knowledge_center/article/cloud-storage-app-for-microsoft-sharepoint-overview"
+          >http://www.rackspace.com/knowledge_center/article/cloud-storage-app-for-microsoft-sharepoint-overview</link>. </para>
+    </section>
     </chapter>
     <chapter xml:id="Developing_Applications_for_Cloud_Files-d1e361">
       <title>Developing Applications for Cloud Files</title>
