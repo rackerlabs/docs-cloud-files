@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-07-02</pubdate>
+    <pubdate/>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -63,6 +63,19 @@
           (<abbrev>API</abbrev>).  </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2013-07-18</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para linkend="Create_the_Form-d1a777">Clarified
+                information about <code>redirect</code> and
+                  <code>expires</code> in <xref
+                  linkend="Create_the_Form-d1a777"/>. </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-07-02</date>
         <revdescription>
@@ -4492,7 +4505,7 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
             </example>
             <para>Any 2xx response indicates success.</para>
           </section>
-          <section xml:id="Set_Account_Metadata-d1a777">
+          <section xml:id="Create_the_Form-d1a777">
           <title>Create the Form</title>
             <para>
               To communicate between your website and your Cloud Files account, 
@@ -4537,6 +4550,10 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
               (2xx is success) and a possible message for further information if there 
               is an error, such as “max_file_size exceeded”.
               </para>
+        <note>
+          <para>Although <code>redirect</code> is optional for the
+            form,  it must be present in the HMAC body.</para>
+        </note>
               <para>
           <emphasis>Required:</emphasis> The
             <code>max_file_size</code> attribute must be included and
@@ -4548,11 +4565,16 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
                 <emphasis>Required:</emphasis> The <code>max_file_count</code> attribute indicates the maximum number of 
               files that can be uploaded with the form.
               </para>
-              <para>              
-                <emphasis>Required:</emphasis> The <code>expires</code> attribute is the Unix timestamp when the form is 
-              invalidated. This gives your website users a limited time to have the 
-              form open. Time must be in Unix epoch format.
-              </para>
+              <para>
+          <emphasis>Required:</emphasis> The <code>expires</code>
+          attribute is the Unix timestamp when the form is
+          invalidated. This gives your website users a limited time to
+          have the form open. Time must be in Unix epoch format.  </para>
+        <note>
+          <para><code>expires</code> in the web form and
+              <code>expires</code> in the HMAC must be the
+            same.</para>
+        </note>
               <para>
                 <emphasis>Required:</emphasis> The <code>signature</code> attribute is the HMAC-SHA1 signature of the form. 
                 Here is sample code for computing the signature in Python:
