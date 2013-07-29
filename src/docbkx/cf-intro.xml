@@ -279,15 +279,15 @@
         there are several other ways for users to interact with Cloud Files.
       </para>
       <section xml:id="Control_Panel-d1e294">
-        <title>Classic Control Panel</title>
-        <para>The Rackspace Cloud Classic Control Panel is one way to
-        access Cloud Files. Files can be uploaded and downloaded
-        through the Classic Control Panel. This is a tool to
-        understand at a high level how Cloud Files works. It gives
-        system administrators a view of the various containers and
-        objects stored on Cloud Files. It also provides a means of
-        updating individual files and the metadata that describes
-        those files. <figure>
+        <title>Cloud Control Panel</title>
+        <para>The Rackspace Cloud Control Panel is one way to access
+        Cloud Files. This tool provides a way to understand, at a high
+        level, how Cloud Files works. It gives system administrators a
+        view of the various containers and objects stored in Cloud
+        Files. You can create containers in the Cloud Control Panel,
+        and then upload, download, and delete files.  It also provides
+        a means of updating individual files and the metadata that
+        describes those files. <figure>
           <title>Rackspace Cloud Control Panel</title>
           <mediaobject>
             <imageobject>
@@ -297,6 +297,10 @@
           </mediaobject>
         </figure>
       </para>
+        <para>Access this screen by logging in to your Cloud Control
+          Panel at <link xlink:href="https://mycloud.rackspace.com">http://mycloud.rackspace.com</link>, and then clicking on
+          <command>Files</command> (along the top) to view the Cloud
+        Files page. </para>
       </section>
       <section xml:id="FireUploader_GUI-d1e314">
         <title>FireUploader GUI</title>
@@ -401,13 +405,12 @@
       </section>
       <section xml:id="Language-Specific_API_Bindings-d1e381">
         <title>Language-Specific API Bindings</title>
-        <para>
-          In addition to the ReST API, 
-          there are language-specific API documents and assets for C#/.NET, Python, PHP, Java
-          and Ruby. These developer resources are documented on the Cloud Files web site at
-          <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files/api/"
-            >http://www.rackspacecloud.com/cloud_hosting_products/files/api/</link>.
-        </para>
+        <para> In addition to the ReST API, there are
+        language-specific API documents and assets for C#/.NET,
+        Python, PHP, Java and Ruby. These developer resources are
+        documented on the API Documentation web site at <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/index.html"
+          >http://docs.rackspace.com/sdks/guide/content/index.html</link>. </para>
       </section>
       <section xml:id="Caveats-d1e393">
         <title>Caveats</title>
@@ -470,8 +473,8 @@
       </para>
       <para>
         The system status page at 
-        <link xlink:href="http://http://status.rackspacecloud.com/cloudfiles/"
-          >http://http://status.rackspacecloud.com/cloudfiles/</link>        
+        <link xlink:href="http://status.rackspacecloud.com/cloudfiles/"
+          >http://status.rackspacecloud.com/cloudfiles/</link>        
         can be reviewed
         if you believe the Cloud Files system is not functioning to your expectations. 
         This page is updated to reflect up-to-date information

@@ -25,6 +25,7 @@
                             <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
                         </configuration>			
                     </execution>
+                    <!--
                     <execution>
 		      <id>g2</id>
                         <goals>
@@ -49,6 +50,7 @@
 			    <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
                          </configuration>
                     </execution>
+                    -->
                 </executions>
                 <configuration>
                     <branding>rackspace</branding>
