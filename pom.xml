@@ -14,7 +14,6 @@
                 <artifactId>clouddocs-maven-plugin</artifactId>
                 <version>1.8.0</version>
                 <executions>
-                    <!--
                     <execution>
                         <id>g1</id>
                         <goals>
@@ -26,8 +25,7 @@
                             <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
                         </configuration>			
                     </execution>
-                    -->
-                    <execution>
+ <!--                   <execution>
 		      <id>g2</id>
                         <goals>
                             <goal>generate-webhelp</goal>
@@ -39,7 +37,7 @@
 			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
 			</configuration>
                     </execution>
-                    <!--
+
                     <execution>
                         <id>g3</id>
                         <goals>
