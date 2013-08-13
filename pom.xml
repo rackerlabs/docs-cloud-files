@@ -8,11 +8,26 @@
     <packaging>jar</packaging>
     <name>Cloud Files API Docs</name>
     <build>
-        <plugins>
+      <plugins>
+
+	  <plugin>
+            <groupId>com.rackspace.cloud.api</groupId>
+            <artifactId>olink-maven-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+		<phase>initialize</phase>
+		<goals>
+		  <goal>olink</goal>
+		</goals>
+              </execution>
+            </executions>
+	  </plugin>
+
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>1.8.0</version>
+                <version>1.9.0</version>
                 <executions>
                     <execution>
                         <id>g1</id>
