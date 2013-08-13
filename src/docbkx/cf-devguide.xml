@@ -1943,6 +1943,10 @@
   the_mad.avi
                     </literallayout>
           </example>
+        <para>For information on filtering the results of a container
+          list, see <xref
+            linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
+          />. </para>
           <section xml:id="Serialized_List_Output-d1e1460">
             <title>Format Object List</title>
             <para>If a <code>format=xml</code> or <code>format=json</code> argument is appended to
@@ -3146,17 +3150,24 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           for expiring objects. </para>
         <para> To remove previously-set object metadata, do a &POST;
           request to the object name with
-            <code>X-Remove-Object-Meta-XXXX: foo</code> where XXXX is
+            <code>X-Remove-Object-Meta-XXXX: Foo</code> where XXXX is
           the name of your custom header. Foo is any term, and it will
           not be used; you must, however, send some value with the
           request, otherwise it will be ignored. </para>
+        <para>For information on working with metadata when copying
+          objects, see <xref linkend="Copy_Object-d1e2241"/>.</para>
         <note>
-          <title>Note Deleting Object Metadata</title>
+          <title>Deleting Object Metadata</title>
           <para> All the object metadata is set at the same time. If
-            you want to edit or remove one header, simply post the
-            other headers without it. This means, though, that if you
-            delete one entry without posting the others, the others
-            will be deleted at that time. </para>
+            you want to edit or remove one header, simply
+              <command>POST</command> the other headers without it.
+            This means, though, that if you delete one entry without
+            posting the others, the others will be deleted at that
+            time. </para>
+          <para>To remove metadata on objects,  you can omit the
+            header with the <command>POST</command> request to delete
+            the header. To remove container metadata, you must send
+            the header with an empty value to remove it.</para>
         </note>
         <example>
           <title>Update Object Metadata Request</title>
