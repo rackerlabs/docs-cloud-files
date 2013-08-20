@@ -1060,16 +1060,22 @@
           following tasks:</para>
         <itemizedlist>
           <listitem>
-            <para>Create account users (refer to <link
+            <para>Create account users (see <link
                 xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_.html"
                 >
                 http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_.html</link>)</para>
           </listitem>
           <listitem>
-            <para>Assign roles to account users (refer to <link
-                xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html"
+            <para>Add global roles to users (see <link
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html"
                 >
-                http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html</link>)</para>
+              http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html</link>)</para>
+          </listitem>
+          <listitem>
+            <para>Delete global role from users (see <link
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html"
+                >
+              http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html</link>)</para>
           </listitem>
         </itemizedlist>
         <note>
@@ -1078,12 +1084,55 @@
             full access to all capabilities by default.</para>
         </note>
       </section>
+      <section xml:id="RBACGlobal_n_ProductRoles">
+        <title>RBAC Global vs. Product Roles in the Control
+          Panel</title>
+        <para>The API user may set global and product-specific roles
+          that on the surface, appear to conflict. When this happens,
+          the more permissive role wins. For example, if a user has
+          both global observer role and product-specific admin role,
+          the product admin role overrides the global observer role
+          for the specified product. All other products stay observer
+          only. The admin role is the more permissive one, providing
+          more authority, so it takes precedence.</para>
+        <para> The following table shows two examples of the
+          resolution of apparently conflicting user roles: </para>
+        <table rules="all">
+          <caption>Global vs. Product Roles in the Control
+            Panel</caption>
+          <col width="33%"/>
+          <col width="33%"/>
+          <col width="33%"/>
+          <thead>
+            <tr>
+              <th>Permission Configuration</th>
+              <th>Control Panel View of Permission</th>
+              <th>Can User Perform Product Admin Functions in Control
+                Panel?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Global Observer and Cloud Files Admin</td>
+              <td>Looks like user has only global observer role.</td>
+              <td>Yes, but only for Cloud Files. Rest of products are
+                observer only.</td>
+            </tr>
+            <tr>
+              <td>Global Admin and Cloud Files Observer</td>
+              <td>Looks like user has only global admin role.</td>
+              <td>Yes, for all. The Cloud Files observer role is
+                ignored.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
       <section xml:id="rolesAvailable">
-        <title>Roles Available to Cloud Files </title>
+        <title>Cloud Files Product Roles and Capabilities </title>
         <para>Currently, two roles can be used to access the Cloud
           Files API. These roles, admin and observer, apply to this
           specific product. The following table describes these roles
-          and their permissions.</para>
+          and their permissions. </para>
         <table rules="all" xml:id="RBAC_product_roles_table">
           <caption>Cloud Files Product Roles and
             Capabilities</caption>
@@ -1097,12 +1146,12 @@
           </thead>
           <tbody>
             <tr>
-              <td>cloudFiles:admin</td>
+              <td>object-store:admin</td>
               <td>Create, Read, Update, and Delete permissions across
                 a specific product, where access is granted</td>
             </tr>
             <tr>
-              <td>cloudFiles:observer</td>
+              <td>object-store:observer</td>
               <td>Read permission across a specific product, where
                 access is granted</td>
             </tr>
@@ -1145,7 +1194,7 @@
             http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-cloud-files</link></para>
         <!--
           <para>The following table shows the roles that each Cloud
-          Files operation can have. </para>
+          Files operation can have.  </para>
         <table rules="all">
           <caption>Cloud Files Operations and Their Roles</caption>
           <col width="30%"/>
