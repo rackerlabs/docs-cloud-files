@@ -120,7 +120,7 @@
             <para>Simplicity of security mechanisms and CDN functionality</para>
           </listitem>
           <listitem>
-            <para>Affordability of the service with a price of just 10 cents / gigabyte of storage per month</para>
+            <para>Affordability of the service </para>
           </listitem>
           <listitem>
             <para>Flexibility in terms, paying as you go</para>
@@ -175,12 +175,26 @@
       </section>
       <section xml:id="Affordability-d1e221">
         <title>Affordability</title>
-        <para> Pricing for Cloud Files with CDN starts at 10 cents per gigabyte of storage per month and 
-         12 cents per gigabyte of bandwidth outbound to any edge location around the globe. There is no
-        charge for inbound bandwidth and there are no per-requests fees for CDN. For the latest
-        pricing information, please refer to the Cloud Files web site at <link
-          xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
-          >http://www.rackspacecloud.com/cloud_hosting_products/files</link>. </para>
+        <para> Pricing for Cloud Files starts at </para>
+      <para><itemizedlist>
+          <listitem>
+            <para>10 cents per gigabyte of storage per month</para>
+          </listitem>
+          <listitem>
+            <para>12 cents per gigabyte for CDN bandwidth – bandwidth
+              from the edge location to the user</para>
+          </listitem>
+          <listitem>
+            <para>12 cents per gigabyte for outgoing bandwidth without
+              CDN – bandwidth out from Cloud Files that is not on the
+              CDN</para>
+          </listitem>
+        </itemizedlist>There is no charge for inbound bandwidth and
+        there are no per-requests fees for CDN. For the latest pricing
+        information, please refer to Cloud Files and CDN at the
+        following web site <link
+          xlink:href="http://www.rackspace.com/cloud/public-pricing/"
+          >http://www.rackspace.com/cloud/public-pricing/</link>. </para>
       </section>
       <section xml:id="Flexibility-d1e233">
         <title>Flexibility</title>
