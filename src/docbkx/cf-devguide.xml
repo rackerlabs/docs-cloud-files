@@ -1371,6 +1371,153 @@
       </mediaobject>
     </figure>
     </section>
+ <!--   
+    <section xml:id="synopsisOfOperations">
+      <title>Cloud Files API Operations Synopsis</title>
+      <para>The following table summarizes all of the operations that
+        are available in the Cloud Files API:</para>
+      <table rules="all">
+        <caption>Synopsis of Cloud Files API Operations</caption>
+        <col width="20%"/>
+        <col width="10%"/>
+        <col width="50%"/>
+        <col width="20%"/>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Verb</th>
+            <th>URI</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Account
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>View Account Details</td>
+            <td><command>HEAD</command></td>
+            <td><code>{api version}/{storage account
+                  URL}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker<?sbr?>=<parameter>string</parameter>&amp;format=<parameter>json
+                  or xml</parameter></code></td>
+            <td>Views metadata on an account.</td>
+          </tr>
+          <tr>
+            <td>List Containers</td>
+            <td><command>GET</command></td>
+            <td><literal>{api version}/{storage account
+              URL}?limit=integer&amp;marker=string&amp;end_marker<?sbr?>=string&amp;format=json
+                or xml</literal></td>
+            <td>Views a list of containers in an account.</td>
+          </tr>
+          <tr>
+            <td colspan="4"/>
+          </tr>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Container
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>View Container Details (Objects and Metadata)</td>
+            <td><command>HEAD</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;format=<parameter>json
+                  or xml</parameter></code></td>
+            <td>Views objects and metadata in a container. </td>
+          </tr>
+          <tr>
+            <td>Create Container</td>
+            <td><command>PUT</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Creates containers, or storage compartments, for your
+              data.</td>
+          </tr>
+          <tr>
+            <td>Delete Container</td>
+            <td><command>DELETE</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Permanently removes a container. (The container must
+              be empty before it can be removed.)</td>
+          </tr>
+          <tr>
+            <td>Edit or Set Container Metadata</td>
+            <td><command>POST</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Writes metadata on a container.</td>
+          </tr>
+          <tr>
+            <td>List Objects in a Container</td>
+            <td><command>GET</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Views the names and details of objects within a
+              container.</td>
+          </tr>
+          <tr>
+            <td colspan="4"/>
+          </tr>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Object
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>Retrieve Object</td>
+            <td><command>GET</command></td>
+            <td><code>{api version}/{storage account
+                URL}/{container}/{object}</code></td>
+            <td>Retrieve the object's data.</td>
+          </tr>
+          <tr>
+            <td>Create/Update Object</td>
+            <td><command>PUT</command></td>
+            <td><code>{api version}/{storage account
+                URL}/{container}/{object}</code></td>
+            <td>Write or overwrite an object's content and
+              metadata.</td>
+          </tr>
+          <tr>
+            <td>Copy Object</td>
+            <td><command>PUT</command></td>
+            <td>{api version}/{account}/container/destobject</td>
+            <td>Copy an existing object to another object in Cloud
+              Files. (The destination container must exist before
+              attempting the copy.)</td>
+          </tr>
+          <tr>
+            <td>Delete Object</td>
+            <td><command>DELETE</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Permanently remove an object from the storage system
+              (data and metadata).</td>
+          </tr>
+          <tr>
+            <td>Retrieve Object Metadata</td>
+            <td><command>HEAD</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Retrieve object metadata and other standard HTTP
+              headers.</td>
+          </tr>
+          <tr>
+            <td>Update Object Metadata</td>
+            <td><command>POST</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Set your own object metadata.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section> -->
     </chapter>
     <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
       <title>API Operations for Storage Services</title>
@@ -1420,7 +1567,7 @@
       <para> This section shows how to view and control the display of
         your Cloud Files account details. You may use the below
         optional parameters to help control the amount of information
-        displayed. </para>
+        displayed.  </para>
       <variablelist>
         <title>Query Parameters</title>
         <varlistentry>
@@ -2151,7 +2298,7 @@
       The three CORS headers set for containers are:
     </para>
         <para>
-          <table frame="void" width="500">
+          <table rules="all" width="500">
             <caption>CORS Container Headers</caption>
             <tbody>
               <tr>
@@ -2387,12 +2534,12 @@
         <section xml:id="Container_Quotas-d1e2222" >
         <title>Container Quotas</title>
         <para>The container_quotas middleware implements simple quotas
-          that can be imposed on swift containers by a user (most
-          likely the account administrator) with the ability to set
-          container metadata. Setting container quotas can be useful
-          for limiting the scope of containers that are delegated to
-          non-admin users, exposed to formpost uploads, or just as a
-          self-imposed sanity check.</para>
+          that can be imposed on Cloud Files containers by a user
+          (most likely the account administrator) with the ability to
+          set container metadata. Setting container quotas can be
+          useful for limiting the scope of containers that are
+          delegated to non-admin users, exposed to formpost uploads,
+          or just as a self-imposed sanity check.</para>
         <para>Any object PUT operations that exceed the quotas return
           a 413 response (request entity too large) with a descriptive
           body.</para>
@@ -2415,7 +2562,7 @@
           container and are validated when set as shown in the
           following table.</para>
         <para>
-          <table frame="void">
+          <table rules="all">
             <caption>Metadata Values for Setting Container
               Quotas</caption>
             <col width="50%"/>
@@ -2549,6 +2696,58 @@
           together so that you can upload 5 GB segments and download a single concatenated object. 
           You can work with the segments and manifests directly with HTTP requests.  --> <!-- end 4.3.2 -->
       </section>
+    <section xml:id="createStaticWebsite">
+      <title>Create Static Website</title>
+      <para>You can use your Cloud Files account to create a static
+        website. This mode is normally only active for anonymous
+        requests. To use it with authenticated requests, set the
+        header X-Web- Mode to TRUE on the request. The staticweb
+        filter should be added to the pipeline in your
+        /etc/cloudfiles/proxy-server.conf file just after any auth
+        middleware. Beneath the pipeline, the staticweb middleware
+        configuration must be added. For example:</para>
+      <literallayout>[DEFAULT]
+...
+[pipeline:main]
+pipeline = healthcheck cache tempauth staticweb proxy-server
+...
+[filter:staticweb]
+use = egg:cloudfiles#staticweb
+# Seconds to cache container x-container-meta-web-* header values.
+# cache_timeout = 300
+# You can override the default log routing for this filter here:
+# set log_name = staticweb
+# set log_facility = LOG_LOCAL0
+# set log_level = INFO
+# set access_log_name = staticweb
+# set access_log_facility = LOG_LOCAL0
+# set access_log_level = INFO
+# set log_headers = False</literallayout>
+      <para>Your publicly readable containers will be checked for two
+        headers, X-Container-Meta- Web-Index and
+        X-Container-Meta-Web-Error . (The latter header is discussed
+        below, under Set Error Pages for Static Website .) With
+        X-Container-Meta-Web-Index , you determine the index file (or
+        default page served, such as index.html ) displays your
+        website. When someone initially enters your site, they don't
+        have to specify the index file; index.html file displays
+        automatically. If you create sub-directories for your site by
+        creating pseudo-directories in your container, the index page
+        displays by default for each sub- directory. If your
+        pseudo-directory does not have a file with the same name as
+        your index file, visits to the sub-directory return a 404
+        error.</para>
+      <para>You also have the option of displaying a list of files in
+        your pseudo-directory instead of a web page. You do this by
+        setting the X-Container-Meta-Web-Listings header to TRUE . You
+        may add style to your file listing by setting
+        X-Container-Meta-Web- Listings-CSS: to a style sheet (for
+        example, lists.css).</para>
+      <section>
+        <title>Static Web Middleware through Cloud Files</title>
+        <para/>
+      </section>
+    </section>
       <section xml:id="Storage_Objects-d1e4300">
       <title>Storage Object Services</title>
       <para>This section documents information and services for
@@ -2687,7 +2886,7 @@
           <title>Create/Update Object Response</title>
           <literallayout class="monospaced">
   HTTP/1.1 201 Created
-  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Date: Thu, 07 Jun 2010 18:57:07 GMT
   ETag: d9f5eb4bba4e2f2f046e54611bc8196b
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
@@ -2722,7 +2921,7 @@
             new segments, the original manifest will still be
             available to download the first set of segments.</para>
           <example>
-            <title>Upload Segment of a Large Object</title>
+            <title>Upload Segment of a Large Object Request</title>
             <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -2731,6 +2930,9 @@
   Content-Length: 1
   X-Object-Meta-PIN: 1234
                   </literallayout>
+          </example>
+          <example>
+            <title>Upload Segment of a Large Object Response</title>
             <literallayout class="monospaced">
   s
                     </literallayout>
@@ -2745,7 +2947,8 @@
           <para>You can continue uploading segments like this example
             shows, prior to uploading the manifest.</para>
           <example>
-            <title>Upload Next Segment of the Large Object</title>
+            <title>Upload Next Segment of the Large Object
+              Request</title>
             <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -2754,6 +2957,10 @@
   Content-Length: 1
   X-Object-Meta-PIN: 1234
                   </literallayout>
+          </example>
+          <example>
+            <title>Upload Next Segment of the Large Object
+              Response</title>
             <literallayout class="monospaced">
   w
                     </literallayout>
@@ -2765,7 +2972,7 @@
             larger but you do not need to recreate the manifest file
             for subsequent additional segments.</para>
           <example>
-            <title>Upload Manifest</title>
+            <title>Upload Manifest Request</title>
             <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -2774,6 +2981,9 @@
   X-Object-Meta-PIN: 1234
   X-Object-Manifest: container/object/segments
                   </literallayout>
+          </example>
+          <example>
+            <title>Upload Manifest Response</title>
             <literallayout class="monospaced">
   [...]
                     </literallayout>
@@ -2821,7 +3031,8 @@
             <title>Uploading the Manifest</title>
             <para>After the user has uploaded the objects to be
               concatenated, a manifest is uploaded. The request must
-              be a PUT with the query parameter:</para>
+              be a PUT with the following query parameter at the end
+              of the manifest object name:</para>
             <literallayout class="monospaced">
 ?multipart-manifest=put
  </literallayout>
@@ -3484,10 +3695,11 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           operations on a single request.</para>
           <section xml:id="Extract_Archive-d1e2338">
           <title>Extract Archive</title>
-          <para>This request expands tar files into a swift account.
-            The request must be a PUT with the query parameter
-            ?extract-archive=format specifying the format of archive
-            file. Accepted formats are tar, tar.gz, and tar.bz2. </para>
+          <para>This request expands tar files into a Cloud Files
+            account. The request must be a PUT with the query
+            parameter ?extract-archive=format specifying the format of
+            archive file. Accepted formats are tar, tar.gz, and
+            tar.bz2. </para>
           <para>For a PUT, use the following URL:</para>
           <para>
               /<code>v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz
@@ -3512,7 +3724,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             be uploaded. Empty directories, symlinks, and so on, will
             not be uploaded.</para>
           <para>The response from bulk operations functions
-            differently from other swift responses. This occurs
+            differently from other Cloud Files responses. This occurs
             because a short request body sent from the client could
             result in many operations on the proxy server and
             precautions need to be made to prevent the request from
@@ -3528,8 +3740,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             but can be either json or xml depending on the Accept
             header. Acceptable formats are text/plain,
             application/json, application/xml, and text/xml. The
-            following example is a successful request with both the
-            headers returned and the response body formatted in json. </para>
+            following example shows the response body, formatted in
+            json, from a successful request with both the headers. </para>
           <example>
             <title>Extract  Archive Response</title>
             <literallayout class="monospaced">
@@ -3614,8 +3826,8 @@ Transfer-Encoding: chunked
           <para>The response is similar to the extract archive
             responses in that every response will be a 200 OK and the
             response body must be parsed for actual results. The
-            following example shows a successful request with both the
-            headers returned and the response body formatted in json. </para>
+            following example shows the response body, formatted in
+            json, from a successful request with both the headers. </para>
           <example>
             <title>Bulk Delete Response</title>
             <literallayout class="monospaced">
@@ -4750,7 +4962,7 @@ i))) != null;
         <example>
           <title>TempURL without File Name Override</title>
           <literallayout class="monospaced">
-https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485
+https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485
             </literallayout>
         </example>
         <para>In the following example, you see
@@ -4760,7 +4972,7 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
         <example>
           <title>TempURL with File Name Override</title>
           <literallayout class="monospaced">
-https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt
+https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt
             </literallayout>
         </example>
       </section>
@@ -5366,4 +5578,71 @@ https://swift-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_u
           quick-and-easy testing/troubleshooting.</para>
       </section>
   </chapter>
+  <glossary>
+    <title>Glossary</title>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Account</glossterm>
+      <glossdef>
+        <para>The Cloud Files system is designed to be used by many
+          different customers. Your user account is your slice of the
+          Cloud Files system. A user must identify themselves with a
+          valid Username and their API Access Key. Once authenticated,
+          that user has full read/write access to the Objects (files)
+          stored under that user account.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>CDN-enabled containers</glossterm>
+      <glossdef>
+        <para>To publish your data so that it can be served by
+          Akamai's Content Distribution Network (CDN), you need to
+          “publish to CDN” the container that houses that data. When a
+          container is published any files will be publicly accessible
+          and not require an authentication token for read access.
+          Uploading content into a CDN-enabled container is a secure
+          operation and will require a valid authentication token.
+          Each published container has a unique Uniform Resource
+          Locator (URL) that can be combined with its object name and
+          openly distributed in web pages, emails, or other
+          applications. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Container</glossterm>
+      <glossdef>
+        <para>A storage compartment for your data that provides a way
+          for you to organize that data.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Object</glossterm>
+      <glossdef>
+        <para>The basic storage entity and its metadata that
+          represents the files that you store in your Cloud Files
+          account.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Operations</glossterm>
+      <glossdef>
+        <para>Operations are the actions you perform against your
+          account in Cloud Files, such as creating or deleting
+          containers, uploading or downloading objects, etc.
+          Operations are performed via the ReST web service API or a
+          language-specific API.</para>
+      </glossdef>
+    </glossentry>
+  </glossary>
+  <glossary>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Permissions</glossterm>
+      <glossdef>
+        <para>There are no permissions or access-controls around
+          containers or objects other than being split into separate
+          accounts. Users must authenticate with a valid API Access
+          Key, but once authenticated they can create/delete
+          containers and objects only within that account. </para>
+      </glossdef>
+    </glossentry>
+  </glossary>
  </book>
