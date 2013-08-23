@@ -2696,58 +2696,6 @@
           together so that you can upload 5 GB segments and download a single concatenated object. 
           You can work with the segments and manifests directly with HTTP requests.  --> <!-- end 4.3.2 -->
       </section>
-    <section xml:id="createStaticWebsite">
-      <title>Create Static Website</title>
-      <para>You can use your Cloud Files account to create a static
-        website. This mode is normally only active for anonymous
-        requests. To use it with authenticated requests, set the
-        header X-Web- Mode to TRUE on the request. The staticweb
-        filter should be added to the pipeline in your
-        /etc/cloudfiles/proxy-server.conf file just after any auth
-        middleware. Beneath the pipeline, the staticweb middleware
-        configuration must be added. For example:</para>
-      <literallayout>[DEFAULT]
-...
-[pipeline:main]
-pipeline = healthcheck cache tempauth staticweb proxy-server
-...
-[filter:staticweb]
-use = egg:cloudfiles#staticweb
-# Seconds to cache container x-container-meta-web-* header values.
-# cache_timeout = 300
-# You can override the default log routing for this filter here:
-# set log_name = staticweb
-# set log_facility = LOG_LOCAL0
-# set log_level = INFO
-# set access_log_name = staticweb
-# set access_log_facility = LOG_LOCAL0
-# set access_log_level = INFO
-# set log_headers = False</literallayout>
-      <para>Your publicly readable containers will be checked for two
-        headers, X-Container-Meta- Web-Index and
-        X-Container-Meta-Web-Error . (The latter header is discussed
-        below, under Set Error Pages for Static Website .) With
-        X-Container-Meta-Web-Index , you determine the index file (or
-        default page served, such as index.html ) displays your
-        website. When someone initially enters your site, they don't
-        have to specify the index file; index.html file displays
-        automatically. If you create sub-directories for your site by
-        creating pseudo-directories in your container, the index page
-        displays by default for each sub- directory. If your
-        pseudo-directory does not have a file with the same name as
-        your index file, visits to the sub-directory return a 404
-        error.</para>
-      <para>You also have the option of displaying a list of files in
-        your pseudo-directory instead of a web page. You do this by
-        setting the X-Container-Meta-Web-Listings header to TRUE . You
-        may add style to your file listing by setting
-        X-Container-Meta-Web- Listings-CSS: to a style sheet (for
-        example, lists.css).</para>
-      <section>
-        <title>Static Web Middleware through Cloud Files</title>
-        <para/>
-      </section>
-    </section>
       <section xml:id="Storage_Objects-d1e4300">
       <title>Storage Object Services</title>
       <para>This section documents information and services for
@@ -4642,16 +4590,36 @@ i))) != null;
           should have an index.html page in each pseudo-directory. If
           you do not have the named index page, visits to
           myhost/subdir/ will return a 404 error. </para>
+        <remark security="writeronly">Added 2013-08-23 based on email
+          from Rick Hawkins:S pecifically these are the headers
+          relating to Static Web which I did not find in our
+          documentation: X-Container-Meta-Web-Listings: true
+          X-Container-Meta-Web-Listings-CSS: listing.css
+          X-Container-Meta-Web-Directory-Type     -cyr </remark>
+        <para>You also have the option of displaying a list of files
+          in your pseudo-directory instead of a web page. You do this
+          by setting the <code>X-Container-Meta-Web-Listings</code>
+          header to <code>true</code>. If listings are enabled, you
+          may add style to your file listing by setting
+            <code>X-Container-Meta-Web-Listings-CSS</code> to a style
+          sheet (for example, <code>listing.css</code>).</para>
+        <para>You can modify the content-type of directory marker
+          objects by setting the
+            <code>X-Container-Meta-Web-Directory-Type</code> header.
+          If the header is not set, <code>application/directory</code>
+          is used by default. Directory marker objects are 0-byte
+          objects that represent directories to create a simulated
+          hierarchical structure.</para>
         <para>
-          <remark security="writeronly">Added 2012-08-13 to clarify CNAME based
-            on Disqus comments - dsh </remark>
-          In the below instructions, you are directed to create a CNAME
-          with your DNS Server (or name server). This is the domain name of your 
-          site (such as www.rackspace.com). Your CNAME is set up with your 
-          individual DNS Server, which is outside the scope of this documentation. Once
-          you have your CNAME established, map your domain name to your 
-          Cloud Files CDN URL to get your site up and running on the Web.
-        </para>
+          <remark security="writeronly">Added 2012-08-13 to clarify
+            CNAME based on Disqus comments - dsh </remark>In the below
+          instructions, you are directed to create a CNAME with your
+          DNS Server (or name server). This is the domain name of your
+          site (such as www.rackspace.com). Your CNAME is set up with
+          your individual DNS Server, which is outside the scope of
+          this documentation. Once you have your CNAME established,
+          map your domain name to your Cloud Files CDN URL to get your
+          site up and running on the Web. </para>
         
         
         
@@ -4735,12 +4703,13 @@ i))) != null;
       
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
         <title>Set Error Pages for Static Website</title>
-        <para> 
-          <remark security="writeronly">Added for 2012-05-14 release - dsh </remark>
-          You may create and set custom error pages for visitors to your website; 
-          currently, only 401 (Unauthorized) and 404 (Not Found) errors are supported. 
-          To do this, set the metadata header, <code>X-Container-Meta-Web-Error</code>.
-        </para>
+        <para>
+          <remark security="writeronly">Added for 2012-05-14 release -
+            dsh </remark> You may create and set custom error pages
+          for visitors to your website. Currently, only 401
+          (Unauthorized) and 404 (Not Found) errors are supported. To
+          do this, set the metadata header,
+            <code>X-Container-Meta-Web-Error</code>. </para>
         <para>
           Error pages are served with the &lt;status&gt; code prepended to the name 
           of the error page you set. For instance, if you set 
