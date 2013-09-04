@@ -74,6 +74,12 @@
               <para>Updated responses to show application/json in
                   <xref linkend="Bulk_Delete-d1e2338"/>.</para>
             </listitem>
+            <listitem>
+              <para>Added X-Container-Meta-Web-Listings,
+                X-Container-Meta-Web-Listings-CSS, and
+                X-Container-Meta-Web-Directory-Type to <xref
+                  linkend="Create_Static_Website-dle4000"/>.</para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>
