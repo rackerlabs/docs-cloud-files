@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
     <name>Cloud Files API Docs</name>
     <build>
+      <sourceDirectory>src</sourceDirectory>
       <plugins>
 
 	  <plugin>
