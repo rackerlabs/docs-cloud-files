@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-09-11</pubdate>
+    <pubdate>2013-09-17</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -64,7 +64,7 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-09-11</date>
+        <date>2013-09-17</date>
         <revdescription>
           <itemizedlist>
             <listitem>
@@ -2078,7 +2078,11 @@
           for clarity -- dsh - 2012-03-09</remark>
           <para>&DELETE; operations against a storage container permanently
             remove it. The container must be empty before it can be deleted.</para>
-          <para>A &HEAD; request against the container will list any objects it contains.</para>
+        <remark security="writeronly">2013-09-09: Changed HEAD to GET
+          here based on Disqus comment and confirmation by Rick
+          Hawkins -- cyr </remark>
+          <para>A &GET; request against the container will list any
+          objects it contains.</para>
           <example>
             <title>Container Delete Request</title>
             <literallayout class="monospaced">
