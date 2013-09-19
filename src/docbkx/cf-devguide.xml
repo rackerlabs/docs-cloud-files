@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-09-17</pubdate>
+    <pubdate/>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -64,12 +64,12 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-09-17</date>
+        <date>2013-09-19</date>
         <revdescription>
           <itemizedlist>
-            <listitem>
+         <!--   <listitem>
               <para>Added <xref linkend="RBAC"/>.</para>
-            </listitem>
+            </listitem> -->
             <listitem>
               <para>Updated responses to show application/json in
                   <xref linkend="Bulk_Delete-d1e2338"/>.</para>
@@ -569,8 +569,8 @@
       hurdles.</para>
     <para>Cloud Files allows users to store and retrieve files and
       CDN-enabled content through a simple Web Service interface
-      (ReST: Representational State Transfer). There are also
-      language-specific APIs that utilize the ReSTful API but make it
+      (REST: Representational State Transfer). There are also
+      language-specific APIs that utilize the RESTful API but make it
       much easier for developers to integrate into their
       applications.</para>
     <para>For more details on the Cloud Files service, please refer to
@@ -585,26 +585,32 @@
         xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
       <title>Intended Audience</title>
-      <para>This guide is intended to assist software developers who want to develop applications
-        using the Rackspace Cloud Files API. It fully documents the ReST application programming
-        interface (API) that allows developers to interact with the storage and CDN components of
-        the Cloud Files system. To use the information provided here, you should first have a
-        general understanding of the Rackspace Cloud Files service and have access to an active
-        Rackspace Cloud Files account. You should also be familiar with: </para>
+      <para>This guide is intended to assist software developers who
+        want to develop applications using the Rackspace Cloud Files
+        API. It fully documents the REST application programming
+        interface (API) that allows developers to interact with the
+        storage and CDN components of the Cloud Files system. To use
+        the information provided here, you should first have a general
+        understanding of the Rackspace Cloud Files service and have
+        access to an active Rackspace Cloud Files account. You should
+        also be familiar with: </para>
       <itemizedlist spacing="compact">
         <listitem>
-          <para>ReSTful web services</para>
+          <para>RESTful web services</para>
         </listitem>
         <listitem>
           <para>HTTP/1.1</para>
         </listitem>
       </itemizedlist>
-      <para>Rackspace also provides language-specific APIs in several popular
-        programming languages. Currently, the APIs are C#/.NET, Java, PHP, Python, and
-        Ruby. These APIs utilize the ReST API and are provided to help developers rapidly integrate
-        Cloud Files support into their applications without needing to write to the ReST interface.
-        Each API includes its own documentation in its native format. For example, the Java API
-        includes JavaDocs and the C#/.NET API includes a CHM file.</para>
+      <para>Rackspace also provides language-specific APIs in several
+        popular programming languages. Currently, the APIs are
+        C#/.NET, Java, PHP, Python, and Ruby. These APIs utilize the
+        REST API and are provided to help developers rapidly integrate
+        Cloud Files support into their applications without needing to
+        write to the REST interface. Each API includes its own
+        documentation in its native format. For example, the Java API
+        includes JavaDocs and the C#/.NET API includes a CHM
+        file.</para>
       <para>System administrators and other users interested in the
         storage and CDN benefits of Cloud Files should consider using
         the File Manager interface within the Rackspace Cloud Control
@@ -706,9 +712,11 @@
     </section>
     <section xml:id="Authentication-d1e433">
       <title>Authentication</title>
-      <para>The language and ReST APIs below describe how to authenticate against the Authentication
-        service to receive Cloud Files connection parameters and an authentication token. The token
-        must be passed in for all subsequent container/object operations during the time it is
+      <para>The language and REST APIs below describe how to
+        authenticate against the Authentication service to receive
+        Cloud Files connection parameters and an authentication token.
+        The token must be passed in for all subsequent
+        container/object operations during the time it is
         valid.</para>
       <note>
         <para>The language-specific APIs handle authentication, token passing, and HTTPS
@@ -769,8 +777,8 @@
       <para>Operations are the actions you perform within your
         account. Creating or deleting containers, uploading or
         downloading objects, and so on. The full list of operations is
-        documented in the ReST API section. Operations may be
-        performed through the ReST web service API or a
+        documented in the REST API section. Operations may be
+        performed through the REST web service API or a
         language-specific API; currently, we support Python, PHP,
         Java, Ruby, and C#/.NET.</para>
       <important>
@@ -827,13 +835,17 @@
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
       <title>Language-Specific API Bindings</title>
-      <para>A set of API bindings in several popular languages are available to help put
-        Cloud Files in the hands of developers. These bindings provide a layer of abstraction on top
-        of the base ReST API, allowing programmers to work with a container and object model instead
-        of working directly with HTTP requests and responses. The bindings are free (as in beer
-        and as in speech) to download, use, and modify. They are all licensed under the MIT License
-        as described in the COPYING file packaged with each binding. If you make any improvements
-        to an API, you are encouraged (but not required) to submit those changes back to us.</para>
+      <para>A set of API bindings in several popular languages are
+        available to help put Cloud Files in the hands of developers.
+        These bindings provide a layer of abstraction on top of the
+        base REST API, allowing programmers to work with a container
+        and object model instead of working directly with HTTP
+        requests and responses. The bindings are free (as in beer and
+        as in speech) to download, use, and modify. They are all
+        licensed under the MIT License as described in the COPYING
+        file packaged with each binding. If you make any improvements
+        to an API, you are encouraged (but not required) to submit
+        those changes back to us.</para>
       <para> The API bindings are hosted at <link
           xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
           > docs.rackspace.com/sdks/guide/content/intro.html</link>.
@@ -896,18 +908,21 @@
     </info>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
-      <para>Client authentication is provided through a ReST interface
+      <para>Client authentication is provided through a REST interface
         using the &GET; method, with <code>v1.0</code> supplied as the
         path. Additionally, two headers are required,
           <code>X-Auth-User</code> and <code>X-Auth-Key</code> with
         values for the username and API Access Key
         respectively.</para>
-      <para> Each ReST request against the Cloud Files system requires the inclusion of a specific
-        authorization token HTTP x-header, defined as <code>X-Auth-Token</code>. Clients obtain this
-        token, along with the Cloud Servers API URL, by first using the Rackspace Cloud
-        Authentication Service and supplying a valid username and API access key. </para>
-      <para> The Rackspace Cloud Authentication Service is a ReSTful web service. It is
-        the entry point to all Rackspace Cloud APIs. </para>
+      <para> Each REST request against the Cloud Files system requires
+        the inclusion of a specific authorization token HTTP x-header,
+        defined as <code>X-Auth-Token</code>. Clients obtain this
+        token, along with the Cloud Servers API URL, by first using
+        the Rackspace Cloud Authentication Service and supplying a
+        valid username and API access key. </para>
+      <para> The Rackspace Cloud Authentication Service is a RESTful
+        web service. It is the entry point to all Rackspace Cloud
+        APIs. </para>
       <para> To access the Authentication Service, you must know whether your account is
         US-based or UK-based: 
       </para>
@@ -1042,11 +1057,11 @@
           (like multi-region), you must use v2. </para>
       </simplesect>
     </section>
-    <?hard-pagebreak?>
+ <!--   <?hard-pagebreak?>
     <section xml:id="RBAC"
       xmlns:wadl="http://wadl.dev.java.net/2009/02"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Role Based Access Control (RBAC)</title>
+      <title>Role Based Access Control</title>
       <para>Role Based Access Control (RBAC) restricts access to the
         capabilities of Rackspace Cloud services, including the Cloud
         Files API, to authorized users only. RBAC enables Rackspace
@@ -1056,9 +1071,9 @@
           linkend="RBAC_product_roles_table"/>). The permissions to
         perform certain operations in the Cloud Files API – create,
         read, update, delete – are assigned to specific roles. The
-        account owner assigns these roles, either global
-        (multiproduct) or product-specific (for example, Cloud Files),
-        to account users.</para>
+        account owner assigns these roles, either multiproduct
+        (global) or product-specific (for example, Cloud Files), to
+        account users.</para>
       <section xml:id="assigningRoles">
         <title>Assigning Roles to Account Users</title>
         <para>The account owner (identity:user-admin) can create
@@ -1208,15 +1223,19 @@
           permitted to invoke which calls, please review <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
             > the Knowledge Center article</link>.</para>
-      </section>
-    </section>
+      </section> 
+    </section> -->
     <section xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API Operations</title>
-    <para>The Cloud Files API is implemented as a set of ReSTful (Representational State Transfer)
-      web services. All authentication and container/object operations can be performed with
-      standard HTTP calls. See the <link xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Wikipedia
-        article</link> on ReST for more information.</para>
-    <para>The following constraints apply to the ReST API's HTTP requests:</para>
+    <para>The Cloud Files API is implemented as a set of RESTful
+        (Representational State Transfer) web services. All
+        authentication and container/object operations can be
+        performed with standard HTTP calls. See the <link
+          xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
+          >Wikipedia article</link> on REST for more
+        information.</para>
+    <para>The following constraints apply to the REST API's HTTP
+        requests:</para>
     <itemizedlist>
       <listitem>
         <para>Maximum number of HTTP headers per request: 90</para>
@@ -1237,26 +1256,33 @@
         <para>Maximum length of object name: 1024 bytes</para>
       </listitem>
     </itemizedlist>
-    <para>Container and object names should be properly URL-encoded prior to interacting with the
-      ReST interface (the language APIs handle URL encoding/decoding) and the container
-      and object names must be UTF-8 encoded. The length restrictions
-      should be checked against the URL-encoded string.</para>
-    <para>Each ReST request against the Cloud Files system requires the inclusion of a specific
-          <firstterm>authorization token</firstterm> HTTP header defined as
-          <code>X-Auth-Token</code>. Clients obtain this token, along with the Cloud Files URLs, by
-        first using the Authentication service and supplying a valid Username and API Access Key. </para>
-    <para>There are actually two different sets of ReST services that make up the full Cloud Files
-      product. The first ReST service identified with <code>X-Storage-Url</code> is used for
-      managing the data stored in the system. Example operations are creating containers and
-      uploading objects. The second ReST service is for managing the CDN feature of Cloud Files and
-      is identified by <code>X-CDN-Management-Url</code>.</para>
+    <para>Container and object names should be properly URL-encoded
+        prior to interacting with the REST interface (the language
+        APIs handle URL encoding/decoding) and the container and
+        object names must be UTF-8 encoded. The length restrictions
+        should be checked against the URL-encoded string.</para>
+    <para>Each REST request against the Cloud Files system requires
+        the inclusion of a specific <firstterm>authorization
+          token</firstterm> HTTP header defined as
+          <code>X-Auth-Token</code>. Clients obtain this token, along
+        with the Cloud Files URLs, by first using the Authentication
+        service and supplying a valid Username and API Access Key. </para>
+    <para>There are actually two different sets of REST services that
+        make up the full Cloud Files product. The first REST service
+        identified with <code>X-Storage-Url</code> is used for
+        managing the data stored in the system. Example operations are
+        creating containers and uploading objects. The second REST
+        service is for managing the CDN feature of Cloud Files and is
+        identified by <code>X-CDN-Management-Url</code>.</para>
     <para>In the following sections, the purpose of each HTTP method depends upon which service the
         call is made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
         used to create a container or upload an object, while a &PUT; request against the
           <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
-    <para>The language-specific APIs mask this system separation from the programmer. They simply
-      create a container and mark it <emphasis>public</emphasis> and it handles calling out to the
-      appropriate back-end services using the appropriate ReST API.</para>
+    <para>The language-specific APIs mask this system separation from
+        the programmer. They simply create a container and mark it
+          <emphasis>public</emphasis> and it handles calling out to
+        the appropriate back-end services using the appropriate REST
+        API.</para>
     <note>
       <para>All requests to authenticate and operate against Cloud Files are performed using SSL
         over HTTP (HTTPS) on TCP port 443.</para>
@@ -1432,9 +1458,11 @@
           <raxm:priority>1</raxm:priority>
         </raxm:metadata> 
       </info>
-      <para>The following section describes the ReST API for interacting with the storage component
-        of Cloud Files. All requests will be directed to the host and URL described in the
-          <code>X-Storage-Url</code> HTTP header obtained during successful authentication.</para>
+      <para>The following section describes the REST API for
+      interacting with the storage component of Cloud Files. All
+      requests will be directed to the host and URL described in the
+        <code>X-Storage-Url</code> HTTP header obtained during
+      successful authentication.</para>
       <para>The following are some requirements for the use of the storage services:</para>
       <itemizedlist>
         <listitem>
@@ -1734,8 +1762,9 @@
       
       <section xml:id="Container_Quotas-d1e1444">
         <title>Storage Container Services</title>
-        <para>This section documents the ReST operations that can be performed on containers. All
-          operations are valid HTTP request methods and will resemble this format:</para>
+        <para>This section documents the REST operations that can be
+        performed on containers. All operations are valid HTTP request
+        methods and will resemble this format:</para>
         <example><?dbfo keep-together="always"?>
           <title>Storage Container HTTP Request: General Structure</title>
           <literallayout class="monospaced">
@@ -2594,7 +2623,7 @@
       <section xml:id="Storage_Object_Services-d1e1848">
         <title>Storage Object Services</title>
         <para>An object represents the data and any metadata for the files stored in the
-          system. Through the ReST interface, metadata for an object can be included by adding
+          system. Through the REST interface, metadata for an object can be included by adding
           custom HTTP headers to the request and the data payload as the request body. Objects
           cannot exceed 5 GB and must have names that do not exceed 1024 bytes after URL
           encoding. If you try to upload an object larger than 5 GB, a 413 (Request Entity Too Large)
@@ -3762,13 +3791,13 @@ Transfer-Encoding: chunked
           <raxm:priority>2</raxm:priority>
         </raxm:metadata> 
       </info>
-    <para>The following is a description of the API calls that can be used
-      for the Content Delivery Network (CDN) account and container
-      operations. All of the ReST methods described below must be
-      issued against the CDN management service as defined in the
-        <code>X-CDN-Management-Url</code> header returned by successfully
-      authenticating your account. See the section on authentication for more
-      details. </para>
+    <para>The following is a description of the API calls that can be
+      used for the Content Delivery Network (CDN) account and
+      container operations. All of the REST methods described below
+      must be issued against the CDN management service as defined in
+      the <code>X-CDN-Management-Url</code> header returned by
+      successfully authenticating your account. See the section on
+      authentication for more details. </para>
     <section xml:id="CDN_Account_Operations-d1e2397">
       <title>CDN Account Services</title>
       <para>
@@ -3971,7 +4000,7 @@ Transfer-Encoding: chunked
     <?hard-pagebreak?>
     <section xml:id="CDN_Container_Services-d1e2632">
       <title>CDN Container Services</title>
-      <para>This section documents the ReST operations against the CDN
+      <para>This section documents the REST operations against the CDN
         management service that can be performed on containers. All
         operations are valid HTTP request methods and will resemble
         this format:</para>
@@ -4404,7 +4433,7 @@ i))) != null;
     </section>
     <section xml:id="CDN_Object_Services">
       <title>CDN Object Services</title>
-      <para>This section documents the ReST operations against the CDN
+      <para>This section documents the REST operations against the CDN
         management service that can be performed on objects. Any
         objects stored in a CDN-enabled container are publicly
         accessible over a CDN by combining the container's CDN URL
@@ -4687,10 +4716,13 @@ i))) != null;
           downloads a large object. If the time expires while a file is being retrieved, 
           the download will continue until it is finished. Only the link will expire.
         </para>
-        <para>
-          When you create a TempURL, Cloud Files validates a GET- or PUT-accessible URL
-          which is time-limited.
-        </para>
+        <para> When you create a TempURL, Cloud Files validates a GET-
+        or PUT-accessible URL, which is time-limited. </para>
+      <note>
+        <para>The TempURL is the same thing as TempURL Secret, and is
+          set using the TempURL metadata key described in the next
+          section. The TempURL is the actual URL.</para>
+      </note>
         <section xml:id="Set_Account_Metadata-d1a4460">
           <title>Set Account Temp URL Metadata Key</title>
           <para>
@@ -5016,8 +5048,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <raxm:priority>5</raxm:priority>
       </raxm:metadata> 
     </info>
-    <para>This section introduces a command-line utility and demonstrates interacting with the ReST
-    interfaces through that utility.</para>
+    <para>This section introduces a command-line utility and
+      demonstrates interacting with the REST interfaces through that
+      utility.</para>
     <para>Remember that object and container names must be URL-encoded and UTF-8 encoded. 
       Refer to <link linkend="API_Operations_for_Storage_Services-d1e942">a full list of the requirements</link>
       if you see problems. Object names must be less than 1024 bytes in length after URL encoding. 
@@ -5032,9 +5065,10 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
       <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
         OS X® and can be downloaded for Windows®. For more information on cURL, 
         visit <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se</link>. </para>
-      <para>cURL allows you to transmit and receive HTTP requests and responses from the
-        command-line or from within a shell script. This makes it possible to work with the ReST API
-        directly without using one of the client APIs. </para>
+      <para>cURL allows you to transmit and receive HTTP requests and
+        responses from the command-line or from within a shell script.
+        This makes it possible to work with the REST API directly
+        without using one of the client APIs. </para>
       <para>The following cURL command-line options will be used</para>
       <variablelist>
         <title>cURL Command-Line Options</title>
@@ -5061,10 +5095,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
     </section>
       <section xml:id="Authentication-d1e2929">
         <title>Authentication with cURL</title>
-        <para>In order to use the ReST API, you will first need to obtain a authorization token,
-          which will need to be passed in for each request using the <code>X-Auth-Token</code>
-          header. 
-        </para>
+        <para>In order to use the REST API, you will first need to
+        obtain a authorization token, which will need to be passed in
+        for each request using the <code>X-Auth-Token</code> header. </para>
         <para> The following examples demonstrates how to use cURL to
         obtain the authorization token and the URL of the storage
         system. Note that your account may be based in either the US
@@ -5443,7 +5476,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
       </section>
       <section xml:id="Other_cURL_Commands-d1e3222">
         <title>Other cURL Commands</title>
-        <para>You can issue any of the ReST methods defined for Cloud
+        <para>You can issue any of the REST methods defined for Cloud
         Files with the cURL utility. For example, you can use cURL to
         send &POST; and &DELETE; requests even though we have not
         provided specific examples.</para>
@@ -5505,7 +5538,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <para>Operations are the actions you perform against your
           account in Cloud Files, such as creating or deleting
           containers, uploading or downloading objects, etc.
-          Operations are performed via the ReST web service API or a
+          Operations are performed via the REST web service API or a
           language-specific API.</para>
       </glossdef>
     </glossentry>

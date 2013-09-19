@@ -29,7 +29,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate/>
+    <pubdate>2013-08-20</pubdate>
     <legalnotice role="rs-api">
         <annotation>
             <remark>Copyright details are filled in by the template.</remark>
@@ -69,13 +69,11 @@
       content behind the industry-leading Akamai Content Distribution Network (CDN). Cloud Files users get access to this network automatically
       without having to worry about contracts, additional costs, or technical hurdles.
     </para>
-    <para>
-      Cloud Files allows users to store/retrieve files and CDN-enable content via a simple 
-      ReST (Representational
-      State Transfer) web service interface. 
-      There are also language-specific APIs that utilize the ReST API to make it much
-      easier for developers to integrate into their applications.
-    </para>
+    <para> Cloud Files allows users to store/retrieve files and
+      CDN-enable content via a simple REST (Representational State
+      Transfer) web service interface. There are also
+      language-specific APIs that utilize the REST API to make it much
+      easier for developers to integrate into their applications. </para>
     <para>
      For more details on the Cloud Files service, please refer to 
       <link xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
@@ -215,14 +213,12 @@
         Non-developers have a simple web interface that can be used to quickly and easily upload
         data and enable CDN access. Multiple third party tools make it even more flexible for users
         of specific environments such as the Mac OS. </para>
-        <para>
-          Developers can use the ReST web service and language-specific APIs in 
-          PHP, Python, Java, Ruby, and C#/.NET. 
-          The APIs provide full support for managing content in Cloud Files and 
-          publishing content over the CDN. 
-          The API allows
-          developers to work in the language they feel most comfortable using.
-        </para>
+        <para> Developers can use the REST web service and
+        language-specific APIs in PHP, Python, Java, Ruby, and
+        C#/.NET. The APIs provide full support for managing content in
+        Cloud Files and publishing content over the CDN. The API
+        allows developers to work in the language they feel most
+        comfortable using. </para>
       </section>
       <section xml:id="World-Class_Support-d1e248">
         <title>World-Class Support</title>
@@ -288,10 +284,9 @@
     </chapter>
     <chapter xml:id="Tools_and_Applications_for_Cloud_Files-d1e286">
       <title>Tools and Applications for Cloud Files</title>
-      <para>
-        In addition to the ReST API and its language-specific bindings, 
-        there are several other ways for users to interact with Cloud Files.
-      </para>
+      <para> In addition to the REST API and its language-specific
+      bindings, there are several other ways for users to interact
+      with Cloud Files. </para>
       <section xml:id="Control_Panel-d1e294">
         <title>Cloud Control Panel</title>
         <para>The Rackspace Cloud Control Panel is one way to access
@@ -404,22 +399,21 @@
         solution into new applications or provide automated ways of accessing the system. 
       </para>
       <section xml:id="ReST_API-d1e369">
-        <title>ReST API</title>
-        <para>
-          Cloud Files allows users to store/retrieve files via a simple 
-          Web Service (ReST: Representational State Transfer) interface. 
-          New Cloud Files storage applications such as the tools described in the previous sections 
-          can be designed
-          and developed by using the ReST application programming interface. 
-          For more details on developing Cloud Files applications, please refer to the 
-          Rackspace Cloud Files API Developer Guide at 
-          <link xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf"
-            >http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>.
-        </para>
+        <title>REST API</title>
+        <para> Cloud Files allows users to store/retrieve files via a
+        simple Web Service (REST: Representational State Transfer)
+        interface. New Cloud Files storage applications such as the
+        tools described in the previous sections can be designed and
+        developed by using the REST application programming interface.
+        For more details on developing Cloud Files applications,
+        please refer to the Rackspace Cloud Files API Developer Guide
+        at <link
+          xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf"
+          >http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
       </section>
       <section xml:id="Language-Specific_API_Bindings-d1e381">
         <title>Language-Specific API Bindings</title>
-        <para> In addition to the ReST API, there are
+        <para> In addition to the REST API, there are
         language-specific API documents and assets for C#/.NET,
         Python, PHP, Java and Ruby. These developer resources are
         documented on the API Documentation web site at <link
