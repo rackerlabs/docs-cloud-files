@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate/>
+    <pubdate>2013-09-19</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -1057,7 +1057,8 @@
           (like multi-region), you must use v2. </para>
       </simplesect>
     </section>
- <!--   <?hard-pagebreak?>
+    <?hard-pagebreak?>
+<!--    
     <section xml:id="RBAC"
       xmlns:wadl="http://wadl.dev.java.net/2009/02"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -1092,7 +1093,7 @@
               Create account users</link></para>
           </listitem>
           <listitem>
-            <para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-admin-devguide/content/POST_addRole_v2.0_OS-KSADM_roles_.html">
+            <para><link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
               Assign roles to account users</link></para>
           </listitem>
           <listitem>
@@ -1223,8 +1224,10 @@
           permitted to invoke which calls, please review <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
             > the Knowledge Center article</link>.</para>
-      </section> 
-    </section> -->
+      </section>
+     
+    </section>
+-->   
     <section xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API Operations</title>
     <para>The Cloud Files API is implemented as a set of RESTful
@@ -1448,6 +1451,140 @@
         </tbody>
       </table>
     </section> -->
+<!--    
+    <section xml:id="Limits-d1e942">
+      <title>Limits</title>
+      <para>All accounts, by default, have a preconfigured set of
+        thresholds (or limits) to manage capacity and prevent abuse of
+        the system. The system recognizes two kinds of limits: rate
+        limits and absolute limits. Rate limits are thresholds that
+        are reset after a certain amount of time passes. Absolute
+        limits are fixed.</para>
+      <section xml:id="Rate_Limits-d1e942">
+        <title>Rate Limits</title>
+        <para>Rate limits are specified in terms of both a
+          human-readable wild-card URI and a machine- processable
+          regular expression. The regular expression boundary matcher
+          '^' takes effect after the root URI path. For example, the
+          regular expression ^/v1.0/instances would match the bolded
+          portion of the following URI:
+          https://ord.databases.api.rackspacecloud.com /
+          v1.0/instances . The following table specifies the default
+          rate limits for all API operations for all GET , POST , PUT
+          , and DELETE calls for databases and database
+          instances:</para>
+        <table frame="border">
+          <caption>Default Rate Limits</caption>
+          <col width="33%"/>
+          <col width="33%"/>
+          <col width="33%"/>
+          <thead>
+            <tr>
+              <th/>
+              <th/>
+              <th/>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td/>
+              <td/>
+              <td/>
+            </tr>
+            <tr>
+              <td/>
+              <td/>
+              <td/>
+            </tr>
+            <tr>
+              <td/>
+              <td/>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section xml:id="Absolute_Limits-d1e942">
+        <title>Absolute Limits</title>
+        <para>Refer to the following table for the absolute limits
+          that are set.</para>
+        <table frame="border">
+          <caption>Absolute Limits</caption>
+          <col width="30%"/>
+          <col width="45%"/>
+          <col width="25%"/>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Limit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Containers per account</td>
+              <td>Maximum number of containers per account</td>
+              <td>500,000</td>
+            </tr>
+            <tr>
+              <td>Container listing</td>
+              <td>Maximum number of containers that can be listed at
+                one time</td>
+              <td>10,000 containers</td>
+            </tr>
+            <tr>
+              <td>Pseudo-hierarchical folders/directories</td>
+              <td>Simulated hierarchical structure within a single
+                container by adding forward slash characters
+                  (<code>/</code>) in the object name</td>
+              <td>No limit</td>
+            </tr>
+            <tr>
+              <td>The container metadata restrictions are the same as
+                object metadata: you can have 4096 bytes maximum
+                overall metadata, with 90 distinct metadata items at
+                the most. Each may have a 128 character name length
+                with a 256 max value length each. </td>
+              <td/>
+              <td/>
+            </tr>
+            <tr>
+              <td>maximum number of object segments per SLO is
+                1,000</td>
+              <td/>
+              <td/>
+            </tr>
+            <tr>
+              <td>The maximum TTL for CDN-enabled container is 1 year
+                -31536000 seconds </td>
+              <td/>
+              <td/>
+            </tr>
+            <tr>
+              <td>Container name length</td>
+              <td>Maximum length of container name</td>
+              <td>256 bytes</td>
+            </tr>
+            <tr>
+              <td>Object name length</td>
+              <td>Maximum length of object name</td>
+              <td>1024 bytes</td>
+            </tr>
+            <tr>
+              <td>File size for upload</td>
+              <td>Maximum size for upload</td>
+              <td>5 GB (Segment files > 5 GB into smaller files)</td>
+            </tr>
+            <tr>
+              <td>CDN file size limit</td>
+              <td>Maximu size of file that can be served from CDN</td>
+              <td>10 GB</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+-->    
     </chapter>
     <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
       <title>API Operations for Storage Services</title>
@@ -1751,9 +1888,9 @@
             <literallayout class="monospaced">
   pears
                     </literallayout>
-            <para>With this one-item response we received less than
-              the limit number of container names, indicating that
-              this is the end of the list.</para>
+            <para>With this one-item response, we received less than
+              the limit number of container names, which indicates
+              that this is the end of the list.</para>
           </example>
         </section>
       </section>
@@ -2210,30 +2347,24 @@
         </section>
   <section xml:id="CORS_Container_Header-d1e1300">
     <title>CORS Container Headers</title>
-    <para>   
-      CORS (Cross Origin Resource Sharing) container headers allow 
-      users to upload files from one website--or origin--to your 
-      Cloud Files account. When you set 
-      the CORS headers on your container, you tell Cloud Files 
-      which sites may post to your account, how often 
-      your container checks its allowed sites list, and
-      whether or not metadata headers can be passed with the objects.
-    </para>
-    <para>
-      CORS headers allow the access, but 
-      FormPost (<xref linkend="FormPost-d1a555"
-        xrefstyle="select:label quotedtitle nopage"></xref>) 
-      enables users to post to your site and 
-      TempURL (<xref linkend="TempURL-d1a4450"
-        xrefstyle="select:label quotedtitle nopage"></xref>)
-      limits how long users can use a given URL.
-    </para>
-    <para>
-      To set the CORS headers, do a &POST; to the 
-      container's URL. A 204 (No Content) code returns, 
-      and there is nothing given in the response body.
-      The three CORS headers set for containers are:
-    </para>
+    <para>CORS (Cross Origin Resource Sharing) container headers allow
+          users to upload files from one website--or origin--to your
+          Cloud Files account. When you set the CORS headers on your
+          container, you tell Cloud Files which sites may post to your
+          account, how often your container checks its allowed sites
+          list, and whether or not metadata headers can be passed with
+          the objects. </para>
+    <para>CORS headers allow the access, but FormPost (<xref
+            linkend="FormPost-d1a555"
+            xrefstyle="select:label quotedtitle nopage"/>) enables
+          users to post to your site and TempURL (<xref
+            linkend="TempURL-d1a4450"
+            xrefstyle="select:label quotedtitle nopage"/>) limits how
+          long users can use a given URL. </para>
+    <para>To set the CORS headers, do a &POST; to the container's URL.
+          A 204 (No Content) code returns, and there is nothing given
+          in the response body. The three CORS headers set for
+          containers are: </para>
         <para>
           <table rules="all" width="500">
             <caption>CORS Container Headers</caption>
@@ -3738,7 +3869,7 @@ Transfer-Encoding: chunked
             errors.</para>
           <example>
             <title>Bulk Delete Response with Errors</title>
-            <literallayout>
+            <literallayout class="monospaced">
 HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3772,12 +3903,26 @@ Transfer-Encoding: chunked
             formatted in the way specified in the request's Accept
             header. Acceptable formats are text/plain,
             application/json, application/xml, and text/xml. </para>
+ <!--           
+          <note>
+            <para>Although you can set the format in the request using
+              either the query parameter <code>?format</code> or the
+              Accept header, the Accept header is the method that
+              works in all cases. The query parameter, for example
+                <code>?format=json</code> was added and kept for
+              backwards compatibility. However, the
+                <code>?format</code> query parameter is not added to
+              the bulk delete feature because it would be a
+              continuation of the "2 ways to do one thing problem"
+              that the query parameter caused.  </para>
+          </note>
+-->          
           <para>The list of errors is a list of tuples in the form
               <code>[object_path, error_response]</code>. The
               <code>object_path</code> given is the full path of where
-            the object (or container) was to be deleted. The
+            the object (or container) was to be deleted.
               <code>error_response</code> is the failing HTTP status
-            of the response for that individual DELETE.  </para>
+            of the response for that individual DELETE. </para>
         </section>
       </section>
     </section>
@@ -4059,19 +4204,20 @@ Transfer-Encoding: chunked
       <section xml:id="CDN-Enable_a_Container-d1e2665">
         <title>CDN-Enable a Container</title>
         <para>
-          <remark security="writeronly">Reworked this section to highlight TTL -- dsh -
-            2012-03-12</remark> Before a container can be CDN-enabled,
-          it must exist in the storage system. To CDN-enable the
-          container, &PUT; it to the publicURL created under
-          Cloud Files during Authentication and set the <code>X-CDN-Enabled</code>
-          header to TRUE. (In the examples below,
-          the publicURL used is cdn.clouddrive.com.) When a
-          container is CDN-enabled, any objects stored in it
-          are publicly accessible over the Content Delivery Network by combining
-          the container's CDN URL with the object name
-            (<code>X-CDN-URI/objectName</code>). </para>
-        <para> Any CDN-accessed objects are cached in the CDN for
-          the specified amount of time called the TTL, or Time to Live.
+          <remark security="writeronly">Reworked this section to
+            highlight TTL -- dsh - 2012-03-12</remark>Before a
+          container can be CDN-enabled, it must exist in the storage
+          system. To CDN-enable the container, &PUT; it to the
+          publicURL created under Cloud Files during Authentication
+          and set the <code>X-CDN-Enabled</code> header to TRUE. (In
+          the examples below, the publicURL used is
+          cdn.clouddrive.com.) When a container is CDN-enabled, any
+          objects stored in it are publicly accessible over the
+          Content Delivery Network by combining the container's CDN
+          URL with the object name
+          (<code>X-CDN-URI/objectName</code>). </para>
+        <para>Any CDN-accessed objects are cached in the CDN for the
+          specified amount of time called the TTL, or Time to Live.
           The default TTL value is 259200 seconds, or 72 hours. Each
           time the object is accessed after the TTL expires, the CDN
           refetches and caches the object for the TTL period. </para>
@@ -4444,6 +4590,15 @@ i))) != null;
         cache it again for another TTL(value) seconds. The minimum TTL
         that can be set is 15 minutes (900 seconds); the maximum TTL
         is 50 years (range of 900 to 1577836800 seconds). </para>
+      <note>
+        <title>Note</title>
+        <para> On August 13, 2012, the maximum TTL was set to 31536000
+          (one year). If you set new TTL values to a greater time
+          frame, your object will still expire at the one-year mark.
+          However, if you already had a greater TTL value set on an
+          object, it will expire at the time you had originally set.
+        </para>
+      </note>
       <section xml:id="Purge_CDN-Enabled_Objects-d1e3858">
         <title>Purge CDN-Enabled Objects</title>
         <para>You can perform &DELETE; operations against a
@@ -5048,7 +5203,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <raxm:priority>5</raxm:priority>
       </raxm:metadata> 
     </info>
-    <para>This section introduces a command-line utility and
+    <para>This section introduces the cURL command-line utility and
       demonstrates interacting with the REST interfaces through that
       utility.</para>
     <para>Remember that object and container names must be URL-encoded and UTF-8 encoded. 
@@ -5062,13 +5217,15 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
   
     <section xml:id="Using_cURL-d1e2863">
       <title>Using cURL</title>
-      <para>cURL is a command-line tool which is available on most UNIX®-like environments and Mac
-        OS X® and can be downloaded for Windows®. For more information on cURL, 
-        visit <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se</link>. </para>
-      <para>cURL allows you to transmit and receive HTTP requests and
-        responses from the command-line or from within a shell script.
-        This makes it possible to work with the REST API directly
-        without using one of the client APIs. </para>
+      <para>cURL is a command-line tool that you can use to interact
+        with REST interfaces. cURL lets you to transmit and receive
+        HTTP requests and responses from the command line or a shell
+        script, which enables you to work with the API directly
+        without using one of the client APIs. It is available for
+        Linux® distributions, Mac OS X® , and Windows®. For more
+        information about cURL, see <link
+          xlink:href="http://curl.haxx.se/"
+        >http://curl.haxx.se</link>. </para>
       <para>The following cURL command-line options will be used</para>
       <variablelist>
         <title>cURL Command-Line Options</title>
@@ -5416,6 +5573,15 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         minimum of 15 minutes (900 seconds) and a maximum of 50 years
         (1577836800 seconds). Note that the target URL specifies the
         CDN system, not the authorization system.</para>
+      <note>
+        <title>Note</title>
+        <para> On August 13, 2012, the maximum TTL was set to 31536000
+          (one year). If you set new TTL values to a greater time
+          frame, your object will still expire at the one-year mark.
+          However, if you already had a greater TTL value set on an
+          object, it will expire at the time you had originally set.
+        </para>
+      </note>
         <example>
           <title>cURL CDN-Enable Container</title>
           <screen language="bash">
@@ -5542,8 +5708,6 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           language-specific API.</para>
       </glossdef>
     </glossentry>
-  </glossary>
-  <glossary>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Permissions</glossterm>
       <glossdef>
