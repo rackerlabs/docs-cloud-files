@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-09-19</pubdate>
+    <pubdate>2013-09-26</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -64,12 +64,26 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2013-09-26</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added <xref linkend="RBAC"/>.</para>
+            </listitem>
+            <listitem>
+              <para>Updated <xref
+                  linkend="CORS_Container_Header-d1e1300"/>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2013-09-19</date>
         <revdescription>
           <itemizedlist>
-         <!--   <listitem>
+            <listitem>
               <para>Added <xref linkend="RBAC"/>.</para>
-            </listitem> -->
+            </listitem> 
             <listitem>
               <para>Updated responses to show application/json in
                   <xref linkend="Bulk_Delete-d1e2338"/>.</para>
@@ -524,9 +538,8 @@
               </para>
             </listitem>
             <listitem>
-              <para> 
-                Added "delimiter" as a Query Parameter and server-side object copy example.
-              </para>
+              <para> Added <parameter>delimiter</parameter> as a Query
+                Parameter and server-side object copy example. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -774,13 +787,15 @@
     </section>
     <section xml:id="Operations-d1e509">
       <title>Operations</title>
-      <para>Operations are the actions you perform within your
-        account. Creating or deleting containers, uploading or
-        downloading objects, and so on. The full list of operations is
-        documented in the REST API section. Operations may be
-        performed through the REST web service API or a
-        language-specific API; currently, we support Python, PHP,
-        Java, Ruby, and C#/.NET.</para>
+      <para linkend="Operations-d1e509">Operations are the actions you
+        perform within your account. Creating or deleting containers,
+        uploading or downloading objects, and so on. The full list of
+        operations is documented in the REST API sections <xref
+          linkend="API_Operations_for_Storage_Services-d1e942"/> and
+          <xref linkend="API_Operations_for_Storage_Services-d1e942"
+        />. Operations may be performed through the REST web service
+        API or a language-specific API; currently, we support Python,
+        PHP, Java, Ruby, and C#/.NET.</para>
       <important>
         <para> All operations must include a valid authorization token. </para>
       </important>
@@ -1058,7 +1073,7 @@
       </simplesect>
     </section>
     <?hard-pagebreak?>
-<!--    
+    
     <section xml:id="RBAC"
       xmlns:wadl="http://wadl.dev.java.net/2009/02"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -1224,16 +1239,14 @@
           permitted to invoke which calls, please review <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
             > the Knowledge Center article</link>.</para>
-      </section>
-     
+      </section>    
     </section>
--->   
+  
     <section xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API Operations</title>
-    <para>The Cloud Files API is implemented as a set of RESTful
-        (Representational State Transfer) web services. All
-        authentication and container/object operations can be
-        performed with standard HTTP calls. See the <link
+    <para>The Cloud Files API is implemented as a set of RESTful web
+        services. All authentication and container/object operations
+        can be performed with standard HTTP calls. See the <link
           xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
           >Wikipedia article</link> on REST for more
         information.</para>
@@ -1451,38 +1464,70 @@
         </tbody>
       </table>
     </section> -->
-<!--    
+ <!--  
     <section xml:id="Limits-d1e942">
       <title>Limits</title>
-      <para>All accounts, by default, have a preconfigured set of
-        thresholds (or limits) to manage capacity and prevent abuse of
-        the system. The system recognizes two kinds of limits: rate
-        limits and absolute limits. Rate limits are thresholds that
-        are reset after a certain amount of time passes. Absolute
-        limits are fixed.</para>
+      <remark>REVIEWER: Does Cloud Files have both rate limits and
+        absolute limits? </remark>
+      <para>Accounts are configured with default thresholds, or
+        limits, that manage capacity and prevent abuse of the
+        system.</para>
+      <para>The system recognizes the following types of
+        limits:</para>
+      <itemizedlist>
+        <listitem>
+          <para>rate limits</para>
+          <para>Rate limits are thresholds that are reset after a
+            certain amount of time passes. Rate limits control the
+            frequency at which the user can issue specific API
+            requests. For more information, see <xref
+              linkend="Rate_Limits-d1e942"/>. </para>
+        </listitem>
+        <listitem>
+          <para>absolute limits</para>
+          <para>Absolute limits are fixed. Absolute limits control the
+            total number of specific objects that the user can possess
+            simultaneously. For more information, see <xref
+              linkend="Absolute_Limits-d1e942"/>.</para>
+        </listitem>
+      </itemizedlist>
+      <note>
+        <para>If the default limits are too low for your particular
+          application, please contact Rackspace Cloud support to
+          request an increase. All requests require reasonable
+          justification.</para>
+      </note>
       <section xml:id="Rate_Limits-d1e942">
         <title>Rate Limits</title>
+        <remark>REVIEWER: Does Cloud Files have any rate limits to
+          list here? Instead of rate limits, are most limits set by
+          setting metadata?</remark>
+        <para>Rate limits are reset after a certain amount of time
+          passes. Rate limits control the frequency at which the user
+          can issue specific API requests. </para>
         <para>Rate limits are specified in terms of both a
-          human-readable wild-card URI and a machine- processable
-          regular expression. The regular expression boundary matcher
-          '^' takes effect after the root URI path. For example, the
-          regular expression ^/v1.0/instances would match the bolded
-          portion of the following URI:
-          https://ord.databases.api.rackspacecloud.com /
-          v1.0/instances . The following table specifies the default
-          rate limits for all API operations for all GET , POST , PUT
-          , and DELETE calls for databases and database
-          instances:</para>
-        <table frame="border">
+          human-readable wildcard URI and a machine-processable
+          regular expression. The human-readable limit is intended for
+          displaying in graphical user interfaces. The
+          machine-processable form is intended to be used directly by
+          client applications.</para>
+        <para>The regular expression boundary matcher  ^  for the rate
+          limit takes effect after the root URI path. For example, the
+          regular expression <literal>^/container</literal> would
+          match the bolded portion of the following URI: . </para>
+        <programlisting>https://snet-storage101.dfw1.clouddrive.com/v1<emphasis role="bold">/container</emphasis></programlisting>
+        <para>The following table specifies the default rate limits
+          for different Cloud Files API operations.</para>
+        <table rules="all">
           <caption>Default Rate Limits</caption>
           <col width="33%"/>
           <col width="33%"/>
           <col width="33%"/>
           <thead>
             <tr>
-              <th/>
-              <th/>
-              <th/>
+              <th>Verb</th>
+              <th>URI</th>
+              <th>Limits</th>
             </tr>
           </thead>
           <tbody>
@@ -1506,9 +1551,12 @@
       </section>
       <section xml:id="Absolute_Limits-d1e942">
         <title>Absolute Limits</title>
+        <para>Absolute limits are fixed. Absolute limits control the
+          total number of specific objects that the user can have or
+          process in Cloud Files. </para>
         <para>Refer to the following table for the absolute limits
           that are set.</para>
-        <table frame="border">
+        <table rules="all">
           <caption>Absolute Limits</caption>
           <col width="30%"/>
           <col width="45%"/>
@@ -1540,25 +1588,22 @@
               <td>No limit</td>
             </tr>
             <tr>
-              <td>The container metadata restrictions are the same as
-                object metadata: you can have 4096 bytes maximum
-                overall metadata, with 90 distinct metadata items at
-                the most. Each may have a 128 character name length
-                with a 256 max value length each. </td>
-              <td/>
-              <td/>
+              <td>Container and object metadata limits </td>
+              <td>Maximum metadata limits</td>
+              <td>4096 bytes maximum overall metadata, with 90
+                distinct metadata items at the most. Each may have a
+                128 character name length with a 256 max value length
+                each.</td>
             </tr>
             <tr>
-              <td>maximum number of object segments per SLO is
-                1,000</td>
-              <td/>
-              <td/>
+              <td>Number of object segments per SLO</td>
+              <td>Maximum number of object segments per SLO</td>
+              <td>1,000</td>
             </tr>
             <tr>
-              <td>The maximum TTL for CDN-enabled container is 1 year
-                -31536000 seconds </td>
-              <td/>
-              <td/>
+              <td>TTL for a CDN-enabled container</td>
+              <td>Maximum TTL for a CDN-enabled container</td>
+              <td>1 year -31536000 seconds</td>
             </tr>
             <tr>
               <td>Container name length</td>
@@ -1577,14 +1622,16 @@
             </tr>
             <tr>
               <td>CDN file size limit</td>
-              <td>Maximu size of file that can be served from CDN</td>
+              <td>Maximum size of file that can be served from
+                CDN</td>
               <td>10 GB</td>
             </tr>
           </tbody>
         </table>
       </section>
     </section>
--->    
+ -->
+    
     </chapter>
     <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
       <title>API Operations for Storage Services</title>
@@ -1979,19 +2026,16 @@
         
         <section xml:id="View-Container_Info-d1e1285">
           <title>View Container Details</title>
-        <para>
-          To see how many objects are in a container 
-          (<code>X-Container-Object-Count</code>)
-          and the custom metadata you have set on the container 
-          (<code>X-Container-Meta-TraitX</code>),
-          do a &HEAD; request against the container's URL. To set and
-          edit your custom metadata, 
-          see <xref linkend="Update_Container_Metadata-d1e1900"
-            xrefstyle="select:label quotedtitle nopage"></xref>.
-          A 204 (No Content) code 
-          returns and there is no information in the
-          response body.
-        </para>
+        <para>To see how many objects are in a container
+            (<code>X-Container-Object-Count</code>) and the custom
+          metadata you have set on the container
+            (<code>X-Container-Meta-TraitX</code>), do a &HEAD;
+          request against the container's URL. To set and edit your
+          custom metadata, see <xref
+            linkend="Update_Container_Metadata-d1e1900"
+            xrefstyle="select:label quotedtitle nopage"/>. A 204 (No
+          Content) code returns and there is no information in the
+          response body. </para>
           <example>
             <title>View Container Details Request</title>
             <literallayout class="monospaced">
@@ -2018,8 +2062,6 @@
                     </literallayout>
           </example>
         </section>
-        
-        <!-- ************* -->
         
         <!-- ************** -->
         <section xml:id="Create_Container-d1e1694">
@@ -2345,54 +2387,6 @@
                     </literallayout>
           </example>          
         </section>
-  <section xml:id="CORS_Container_Header-d1e1300">
-    <title>CORS Container Headers</title>
-    <para>CORS (Cross Origin Resource Sharing) container headers allow
-          users to upload files from one website--or origin--to your
-          Cloud Files account. When you set the CORS headers on your
-          container, you tell Cloud Files which sites may post to your
-          account, how often your container checks its allowed sites
-          list, and whether or not metadata headers can be passed with
-          the objects. </para>
-    <para>CORS headers allow the access, but FormPost (<xref
-            linkend="FormPost-d1a555"
-            xrefstyle="select:label quotedtitle nopage"/>) enables
-          users to post to your site and TempURL (<xref
-            linkend="TempURL-d1a4450"
-            xrefstyle="select:label quotedtitle nopage"/>) limits how
-          long users can use a given URL. </para>
-    <para>To set the CORS headers, do a &POST; to the container's URL.
-          A 204 (No Content) code returns, and there is nothing given
-          in the response body. The three CORS headers set for
-          containers are: </para>
-        <para>
-          <table rules="all" width="500">
-            <caption>CORS Container Headers</caption>
-            <tbody>
-              <tr>
-                <td>X-Container-Meta-Access-Control-Allow-Origin</td>
-                <td>Which URLs can make Cross Origin
-                  Requests. Format is http://www.example.com. 
-                  Separate URLs with a space. An
-                  asterisk (<code>*</code>) allows all.</td>
-              </tr>
-              <tr>
-                <td>X-Container-Meta-Access-Control-Max-Age</td>
-                <td>The maximum age for the browser to cache the
-                  options request, in seconds (5, 10, 1000, and so
-                  on). </td>
-              </tr>
-              <tr>
-                <td>X-Container-Meta-Access-Control-Allow-Headers</td>
-                <td>Which custom metadata headers you allow to be
-                  assigned to objects in this container, i.e., X-Foo,
-                  X-Bar, and so on.</td>
-              </tr>
-            </tbody>
-          </table>
-        </para>
-  </section>    
-        <!-- ************* -->
         
         
  <section xml:id="List_Objects-d1e1284">
@@ -2674,25 +2668,26 @@
             delete them. To turn off logging, set 
             <code>X-Container-Meta-Access-Log-Delivery</code> flag to <code>FALSE</code>.
           </para>
-          <para>
-            Log files are named according to this schema: container name, date of 
-            log, hour of access, and MD5_hash such as 
+          <para> Log files are named according to this schema:
+          container name, date of log, hour of access, and MD5_hash
+          such as
             <code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
-            </code>; here, "Media" is the name of the container, October 1, 2012 
-            is the date, and 16 is the hour the logs are from. 
-            There may be multiple files for a given hour because the files are
-            delivered multiple times a day and the time to generate them varies.
-            All times given in the access logs are UTC time.
-          </para>
-          <para>
-            Within the gzipped logs, the format of the entries is similar to NCSA 
-            Combined log format, but without cookies. The schema is below; the dashes 
-            ("-") note fields which the format dictates be present but which Cloud Files 
-            does not capture. The format is: <code>%(client_ip) - - 
-              [%(day)/%(month)/%(year):%(hour):%(minute)s:%(second)s %(tz)s] "%(method) 
-              %(request) %(http_version) %(code) %(bytes_out) "%(referrer)" ' '"%(user_agent)"
-            </code>. Example entries are below.
-          </para>
+          </code>; here, <code>Media</code> is the name of the
+          container, October 1, 2012 is the date, and 16 is the hour
+          the logs are from. There may be multiple files for a given
+          hour because the files are delivered multiple times a day
+          and the time to generate them varies. All times given in the
+          access logs are UTC time. </para>
+          <para> Within the gzipped logs, the format of the entries is
+          similar to NCSA Combined log format, but without cookies.
+          The schema is below. The dashes (<parameter>"-"</parameter>)
+          note fields which the format dictates be present but which
+          Cloud Files does not capture. The format is:
+            <code>%(client_ip) - -
+            [%(day)/%(month)/%(year):%(hour):%(minute)s:%(second)s
+            %(tz)s] "%(method) %(request) %(http_version) %(code)
+            %(bytes_out) "%(referrer)" ' '"%(user_agent)" </code>.
+          Example entries are below. </para>
           <example>
             <title>Example Access Log Entries</title>
             <literallayout class="monospaced">
@@ -2762,7 +2757,7 @@
          
           However, objects larger than 5 GB may be segmented and concatenated 
           together so that you can upload 5 GB segments and download a single concatenated object. 
-          You can work with the segments and manifests directly with HTTP requests.  --> <!-- end 4.3.2 -->
+          You can work with the segments and manifests directly with HTTP requests.  -->
       </section>
       <section xml:id="Storage_Objects-d1e4300">
       <title>Storage Object Services</title>
@@ -3211,11 +3206,12 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             structures, nested sub-directories in your data are
             converted to object names; your top-level folders become
             containers, and nested directory names become part of the
-            object names. For instance, "Chapter28/Ahab/ivoryleg"
-            results in a container named "Chapter28" with an object
-            named "Ahab/ivoryleg" inside it. See the section on
-            Pseudo-Hierarchical Folders for more information on
-            directory structure in Cloud Files. </para>
+            object names. For instance,
+              <code>Chapter28/Ahab/ivoryleg</code> results in a
+            container named <code>Chapter28</code> with an object
+            named <code>Ahab/ivoryleg</code> inside it. See the
+            section on Pseudo-Hierarchical Folders for more
+            information on directory structure in Cloud Files. </para>
           <para> To begin the Bulk Import process, contact our support
             technicians, and they will get you started. You will be
             assigned a Migration Specialist who can answer any
@@ -3224,62 +3220,6 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             begin the data import, when the data import is complete,
             and when the device has been shipped back or destroyed.
           </para>
-        </section>
-        <!-- Bulk Import END -->
-        <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
-          <title>Assigning CORS Headers to Requests</title>
-          <para>CORS is a specification that stands for Cross-Origin
-            Resource Sharing. It defines how browsers and servers
-            communicate across origins using HTTP headers, such as
-            those assigned by Cloud Files API requests. These headers
-            are supported with the Cloud Files API. You can read more
-            about the definition of the Access-Control response
-            headers and Origin response header at <link
-              xlink:href="http://www.w3.org/TR/access-control/"
-              >www.w3.org/TR/access-control/</link>. <itemizedlist>
-              <listitem>
-                <para>Access-Control-Allow-Credentials</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Allow-Methods</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Allow-Origin</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Expose-Headers</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Max-Age</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Request-Headers</para>
-              </listitem>
-              <listitem>
-                <para>Access-Control-Request-Method</para>
-              </listitem>
-              <listitem>
-                <para>Origin</para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>These headers can only be assigned to objects. </para>
-          <example>
-            <title>Assign CORS Header</title>
-            <para> You can only set CORS headers through the Cloud
-              Files API, and not through the Cloud Control Panel. In
-              the below example, the origin header is assigned that
-              indicates where the file came from. This allows you to
-              provide security that requests to your Cloud Files
-              repository are indeed from the correct
-              origination:</para>
-            <literallayout class="monospaced">
-  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-  Origin: http://storage.clouddrive.com
-                     </literallayout>
-          </example>
         </section>
         <section
           xml:id="Enabling_File_Compression_with_the_Content-Encoding_Header-d1e2198">
@@ -3298,7 +3238,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
               assigned with an attachment type that indicates how the
               file should be downloaded:</para>
             <literallayout class="monospaced">
-  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
   Content-Type: video/mp4
@@ -3484,7 +3424,6 @@ ETag: The ETag of the SLO (generated the same way as DLO).
               </literallayout>
           </example>
         </section>
-        <!-- end 4.3.2.7 -->
       </section>
       <section xml:id="Copy_Object-d1e2241">
         <title>Copy Object</title>
@@ -3498,12 +3437,12 @@ ETag: The ETag of the SLO (generated the same way as DLO).
         <para>There are two ways to copy an existing object to another
           object in Cloud Files. One way is to do a &PUT; to the new
           object (the target) location, but add the
-            <code>“X-Copy-From”</code> header to designate the source
-          of the data. The header value should be the container and
+            <code>X-Copy-From</code> header to designate the source of
+          the data. The header value should be the container and
           object name of the source object in the form of
-          “/container/object”. Also, the <code>X-Copy-From</code>
-          &PUT; requests require a Content-Length header, even if it
-          is zero (0).</para>
+            <parameter>/container/object</parameter>. Also, the
+            <code>X-Copy-From</code> &PUT; requests require a
+          Content-Length header, even if it is zero (0).</para>
         <literallayout class="monospaced">
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;destobject&gt; HTTP/1.1
   Host: &lt;storage URL&gt;
@@ -3512,11 +3451,13 @@ ETag: The ETag of the SLO (generated the same way as DLO).
   Content-Length: 0                    
               </literallayout>
         <para>The second way to do an object copy is similar. Do a
-          &COPY; to the existing object, and include the “Destination”
-          header to specify the target of the copy. The header value
-          is the container and new object name in the form of
-          “/container/object”. Unlike the first method, this method
-          does not require a Content-Length header. <!--  Content Length header / note required by JIRA / tick DOC-100 dsh 02-03-12 -->
+          &COPY; to the existing object, and include the
+            <code>Destination</code> header to specify the target of
+          the copy. The header value is the container and new object
+          name in the form of
+          <parameter>/container/object</parameter>. Unlike the first
+          method, this method does not require a
+            <code>Content-Length</code> header. <!--  Content Length header / note required by JIRA / tick DOC-100 dsh 02-03-12 -->
           <literallayout class="monospaced">
   COPY /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;sourceobject&gt; HTTP/1.1
   Host: &lt;storage URL&gt;
@@ -3525,6 +3466,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
               </literallayout></para>
         <para>With both of these methods, the destination container
           must exist before attempting the copy.</para>
+        <para>The response code for a successful object copy is
+            <code>201 Created</code>. </para>
         <para>
           <!-- Reworked this sentence / to remove the subjunctive / mood and make active dsh 02-06-12 -->
           If you wanted to move the object rather than copy it, you
@@ -3545,7 +3488,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           when you authenticate your session; as in the example below,
           it is listed as <code>InternalURL</code>. However, a rule of
           thumb is that its name is your Cloud Files storage URL with
-            "<code>snet-</code>" pre-pended to it. If you do not know
+            <code>snet-</code> pre-pended to it. If you do not know
           which Data Center you are working in, you can find it in the
           Cloud Control Panel. </para>
         <example>
@@ -3631,10 +3574,11 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           run against the container, it queries the container
           databases, and it does not retrieve the content of them,
           thus the 204 (No Content) return code. However, when a
-          &HEAD; query is run against the object, it returns an "OK"
-          response because it can view the content. In other words,
-          the object &HEAD; query has a container length, but the
-          container &HEAD; query has zero content length. </para>
+          &HEAD; query is run against the object, it returns an
+            <code>OK</code> response because it can view the content.
+          In other words, the object &HEAD; query has a container
+          length, but the container &HEAD; query has zero content
+          length. </para>
         <example>
           <?dbfo keep-together="always"?>
           <title>Object Metadata Response</title>
@@ -3903,7 +3847,7 @@ Transfer-Encoding: chunked
             formatted in the way specified in the request's Accept
             header. Acceptable formats are text/plain,
             application/json, application/xml, and text/xml. </para>
- <!--           
+ <!-- <remark>cyr addition in response to Disqus comment - information from David Goetz </remark>          
           <note>
             <para>Although you can set the format in the request using
               either the query parameter <code>?format</code> or the
@@ -4522,17 +4466,16 @@ Transfer-Encoding: chunked
                       </literallayout>
         </example>
             
-        <para>
-          Third, add a JavaScript to the HEAD of your HTML page to check 
-          if the User Agent is an iOS device. If it is, the JavaScript 
-          uses the container's iOS Streaming URL (<code>x-Ios-Uri</code>) 
-            instead of the regular Streaming URL. The Cloud Files CDN 
-            delivers the properly formatted content for iOS devices only
-            when the iOS Streaming URL is called. Here, the JavaScript 
-            sets the SRC attribute of the VIDEO element "videotag" to 
-            the iOS Streaming URL. Remember to add your content's name 
-            to the end of the URL.
-        </para>
+        <para> Third, add a JavaScript to the HEAD of your HTML page
+          to check if the User Agent is an iOS device. If it is, the
+          JavaScript uses the container's iOS Streaming URL
+            (<code>x-Ios-Uri</code>) instead of the regular Streaming
+          URL. The Cloud Files CDN delivers the properly formatted
+          content for iOS devices only when the iOS Streaming URL is
+          called. Here, the JavaScript sets the SRC attribute of the
+          VIDEO element <code>videotag</code> to the iOS Streaming
+          URL. Remember to add your content's name to the end of the
+          URL. </para>
             
         <example>
           <title>JavaScript for User Agent Check</title>
@@ -4733,12 +4676,10 @@ i))) != null;
                 You must write your storage URL and the container name to properly
                 point to the container (&lt;storage URL&gt;&lt;container name&gt;)
             </para>
-            <para>
-                You get your Auth token when you authenticate your session. See the "Request" 
-                and "Response" paragraphs in  
-              <xref linkend="Authentication-d1e639" xrefstyle="select:label quotedtitle nopage"/>
-                  for details on how to get your Auth token.
-            </para>
+            <para> You get your Auth token when you authenticate your
+              session. See <xref linkend="Authentication-d1e639"
+                xrefstyle="select:label quotedtitle nopage"/> for
+              details on how to get your Auth token. </para>
           </listitem>
           <listitem>
             <para>CDN-Enable your container. See <xref linkend="CDN-Enable_a_Container-d1e2665" 
@@ -4846,6 +4787,286 @@ i))) != null;
         from your Cloud Files account. With the methods described here, users do not
         need your password or login information in order to have access to your account.
       </para>
+      <section xml:id="CORS_Container_Header-d1e1300">
+      <title>CORS </title>
+      <para>Cross-Origin Resource Sharing (CORS) is a mechanism to
+        allow code running in a browser to make requests to a domain
+        other than the one from which it originated. CORS container
+        headers allow users to upload files from one website, or
+        origin, to your Cloud Files account. When you set the CORS
+        headers on your container, you tell Cloud Files which sites
+        may post to your account, how often your container checks its
+        allowed sites list, and what headers to expose to the browser
+        in the request response. </para>
+      <note>
+        <para>You can also use FormPost (<xref
+            linkend="FormPost-d1a555"
+            xrefstyle="select:label quotedtitle nopage"/>) to enable
+          users to post to your site and TempURL (<xref
+            linkend="TempURL-d1a4450"
+            xrefstyle="select:label quotedtitle nopage"/>) to limit
+          how long users can use a given URL.</para>
+      </note>
+      <para>Cloud Files supports CORS request to containers and
+        objects. CORS metadata is held on the container only. The
+        values given apply to the container itself and all objects
+        within it.</para>
+      <para>The following table lists the supported headers. </para>
+      <para>
+        <table rules="all" width="500">
+          <caption>Supported CORS Container Headers</caption>
+          <tbody>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Allow-Origin</td>
+              <td>Origins allowed to make Cross Origin requests,
+                separated by a space when there are multiples.  </td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Max-Age</td>
+              <td>Maximum age for the Origin to hold the preflight
+                results, in seconds (5, 10, 1000, and so on). </td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Expose-Headers</td>
+              <td>Headers exposed to the browser in the actual request
+                response, separated by a space when there are
+                multiples. </td>
+            </tr>
+          </tbody>
+        </table>
+      </para>
+      <para>Before a browser issues an actual request, it might issue
+        a preflight request. The preflight request is an HTTP
+          <command>OPTIONS</command> call to verify that the origin is
+        allowed to make the request. The sequence of events is:</para>
+      <orderedlist>
+        <listitem>
+          <para>The browser makes an <command>OPTIONS</command>
+            request to Cloud Files.</para>
+        </listitem>
+        <listitem>
+          <para>Cloud Files returns 200 or 401 to the browser based on
+            the allowed origins.</para>
+        </listitem>
+        <listitem>
+          <para>If Cloud Files returns 200, the browser makes the
+            actual request (<command>DELETE</command>,
+              <command>GET</command>, <command>HEAD</command>,
+              <command>POST</command>, <command>PUT</command>) to
+            Cloud Files. </para>
+        </listitem>
+      </orderedlist>
+      <para>When a browser receives a response to an actual request,
+        it only exposes those headers listed in the
+          <code>X-Container-Meta-Access-Control-Expose-Headers</code>
+        header. By default, Cloud Files returns the following values
+        for this header:</para>
+      <itemizedlist>
+        <listitem>
+          <para>the simple response headers as listed at <link
+              xlink:href="http://www.w3.org/TR/cors/#simple-response-header/"
+              >www.w3.org/TR/cors/#simple-response-header/</link></para>
+        </listitem>
+        <listitem>
+          <para>the headers <code>etag</code>,
+              <code>x-timestamp</code>, <code>x-trans-id</code></para>
+        </listitem>
+        <listitem>
+          <para>all metadata headers (<code>X-Container-Meta-*</code>
+            for containers and <code>X-Object-Meta-*</code> for
+            objects)</para>
+        </listitem>
+        <listitem>
+          <para>headers listed in
+              <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
+        </listitem>
+      </itemizedlist>
+      <para>To see some CORS Javascript in action, follow these
+        steps:</para>
+      <orderedlist>
+        <listitem>
+          <para>Download the <xref linkend="Test-CORS-Page-d1003"/>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Host the page on a web server and take note of the
+            protocol and hostname (origin) you will be using to
+            request the page, for example
+              <code>http://localhost</code>.</para>
+        </listitem>
+        <listitem>
+          <para>Locate a container you would like to query. (Of
+            course, the Cloud Files cluster hosting this container
+            should have CORS support.)</para>
+        </listitem>
+        <listitem>
+          <para>Append the origin of the test page to the container’s
+              <code>X-Container-Meta-Access-Control-Allow-Origin</code>
+            header, using a request similar to the following
+            example.</para>
+        </listitem>
+      </orderedlist>
+      <example>
+        <title>CORS POST Request</title>
+        <literallayout class="monospaced">curl -X POST -H 'X-Auth-Token: <replaceable>yourAuthToken</replaceable>' \
+  -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
+  http://192.168.56.3:8080/v1/AUTH_test/cont1</literallayout>
+      </example>
+      <para>At this point, the container is accessible to CORS clients
+        hosted on <code>http://localhost</code>. Open the test CORS
+        page in your browser and following these steps:</para>
+      <orderedlist>
+        <listitem>
+          <para>Populate the Token field.</para>
+        </listitem>
+        <listitem>
+          <para>Populate the URL filed with the URl of either a
+            container or object.</para>
+        </listitem>
+        <listitem>
+          <para>Select the request method.</para>
+        </listitem>
+        <listitem>
+          <para>Hit Submit.</para>
+        </listitem>
+      </orderedlist>
+      <para>If the request succeeds, you should see the response
+        header and body. If the request did not succeed, the response
+        status will be 0.</para>
+      <example xml:id="Test-CORS-Page-d1003">
+        <title>Test CORS Page</title>
+        <literallayout class="monospaced">&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Test CORS&lt;/title>
+  &lt;/head>
+  &lt;body>
+
+    Token&lt;br>&lt;input id="token" type="text" size="64">&lt;br>&lt;br>
+
+    Method&lt;br>
+    &lt;select id="method">
+        &lt;option value="GET">GET&lt;/option>
+        &lt;option value="HEAD">HEAD&lt;/option>
+        &lt;option value="POST">POST&lt;/option>
+        &lt;option value="DELETE">DELETE&lt;/option>
+        &lt;option value="PUT">PUT&lt;/option>
+    &lt;/select>&lt;br>&lt;br>
+
+    URL (Container or Object)&lt;br>&lt;input id="url" size="64" type="text">&lt;br>&lt;br>
+
+    &lt;input id="submit" type="button" value="Submit" onclick="submit(); return false;">
+
+    &lt;pre id="response_headers">&lt;/pre>
+    &lt;p>
+    &lt;hr>
+    &lt;pre id="response_body">&lt;/pre>
+
+    &lt;script type="text/javascript">
+      function submit() {
+          var token = document.getElementById('token').value;
+          var method = document.getElementById('method').value;
+          var url = document.getElementById('url').value;
+
+          document.getElementById('response_headers').textContent = null;
+          document.getElementById('response_body').textContent = null;
+
+          var request = new XMLHttpRequest();
+
+          request.onreadystatechange = function (oEvent) {
+              if (request.readyState == 4) {
+                  responseHeaders = 'Status: ' + request.status;
+                  responseHeaders = responseHeaders + '\nStatus Text: ' + request.statusText;
+                  responseHeaders = responseHeaders + '\n\n' + request.getAllResponseHeaders();
+                  document.getElementById('response_headers').textContent = responseHeaders;
+                  document.getElementById('response_body').textContent = request.responseText;
+              }
+          }
+
+          request.open(method, url);
+          request.setRequestHeader('X-Auth-Token', token);
+          request.send(null);
+      }
+    &lt;/script>
+
+  &lt;/body>
+&lt;/html></literallayout>
+      </example>
+ <!--
+        <note>
+        <para>For more information about CORS headers, see <xref
+            linkend="Assigning_CORS_Headers_to_Requests-d1e2120"
+          />.</para>
+      </note>
+      <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
+        <title>Assigning CORS Headers to Requests</title>
+        <para>Cross-Origin Resource Sharing (CORS) is a specification
+          that defines how browsers and servers communicate across
+          origins using HTTP headers, such as those assigned by Cloud
+          Files API requests. The Cloud Files API supports the
+          following headers. You can assign these headers to objects
+          only.</para>
+          
+         <remark>9/24/2013 - This comes from Ed Leafe but I'm checking to see if it is accurate. Openstack info from David Goetz indicates CORS supports both containers and objects.</remark> 
+          <remark>CORS headers only apply at the container level and can
+            only be set on the container. A CORS header then governs
+            how requests for objects in that container are handled. </remark>
+-
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>Access-Control-Allow-Credentials</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Allow-Methods</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Allow-Origin</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Expose-Headers</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Max-Age</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Request-Headers</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Request-Method</para>
+            </listitem>
+            <listitem>
+              <para>Origin</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>You can read more about the definition of the
+          Access-Control response headers and Origin response header
+          at <link xlink:href="http://www.w3.org/TR/access-control/"
+            >www.w3.org/TR/access-control/</link>.</para>
+        <para>You can only set CORS headers through the Cloud Files
+          API, and not through the Cloud Control Panel. In the
+          following example, the origin header is assigned that
+          indicates where the file came from. This allows you to
+          provide security that requests to your Cloud Files
+          repository are indeed from the correct origination:</para>
+        <example>
+          <title>Assign CORS Header Request</title>
+          <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Origin: http://storage.clouddrive.com
+                     </literallayout>
+        </example>
+        <note>
+          <para>For more information about CORS headers, see <xref
+              linkend="CORS_Container_Header-d1e1300"/>.</para>
+        </note>
+      </section>
+      -->
+    </section>
       <section xml:id="TempURL-d1a4450">
         <title>TempURL</title>
         <para> The Temporary URL feature (TempURL) allows you to
@@ -4946,12 +5167,11 @@ i))) != null;
           <para>
             Be certain to use the full URL to the object, just as you would with a normal request.
           </para>
-          <para>
-            In this example, the signature might be da39a3ee5e6b4b0d3255bfef95601890afd80709 and 
-            the expire time might translate to 1323479485" because the signature and expires 
-            completely depend on the time the code is run. On your website, you would provide 
-            a link to the below URL:
-          </para>
+          <para> In this example, the signature might be
+          da39a3ee5e6b4b0d3255bfef95601890afd80709 and the expire time
+          might translate to 1323479485 because the signature and
+          expires completely depend on the time when the code runs. On
+          your website, you would provide a link to the below URL: </para>
           <literallayout class="monospaced">
   https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
   temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
@@ -5110,10 +5330,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
               <code>https://storage.clouddrive.com/v1/CF_xer7_34/container/user_prefix</code>.
               </para>
               <para>
-                <emphasis>Required:</emphasis> The form <code>method</code> must be 
-                "<code>POST</code>" and the <code>enctype</code> must be set as 
-                “<code>multipart/form-data</code>”.
-              </para>
+          <emphasis>Required:</emphasis> The form <code>method</code>
+          must be <code>POST</code> and the <code>enctype</code> must
+          be set as <code>multipart/form-data</code>. </para>
               <para>              
                 <emphasis>Optional:</emphasis> The <code>redirect</code> attribute 
                 is the URL of the page that displays on your website 
