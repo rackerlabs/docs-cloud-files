@@ -4787,286 +4787,6 @@ i))) != null;
         from your Cloud Files account. With the methods described here, users do not
         need your password or login information in order to have access to your account.
       </para>
-      <section xml:id="CORS_Container_Header-d1e1300">
-      <title>CORS </title>
-      <para>Cross-Origin Resource Sharing (CORS) is a mechanism to
-        allow code running in a browser to make requests to a domain
-        other than the one from which it originated. CORS container
-        headers allow users to upload files from one website, or
-        origin, to your Cloud Files account. When you set the CORS
-        headers on your container, you tell Cloud Files which sites
-        may post to your account, how often your container checks its
-        allowed sites list, and what headers to expose to the browser
-        in the request response. </para>
-      <note>
-        <para>You can also use FormPost (<xref
-            linkend="FormPost-d1a555"
-            xrefstyle="select:label quotedtitle nopage"/>) to enable
-          users to post to your site and TempURL (<xref
-            linkend="TempURL-d1a4450"
-            xrefstyle="select:label quotedtitle nopage"/>) to limit
-          how long users can use a given URL.</para>
-      </note>
-      <para>Cloud Files supports CORS request to containers and
-        objects. CORS metadata is held on the container only. The
-        values given apply to the container itself and all objects
-        within it.</para>
-      <para>The following table lists the supported headers. </para>
-      <para>
-        <table rules="all" width="500">
-          <caption>Supported CORS Container Headers</caption>
-          <tbody>
-            <tr>
-              <td>X-Container-Meta-Access-Control-Allow-Origin</td>
-              <td>Origins allowed to make Cross Origin requests,
-                separated by a space when there are multiples.  </td>
-            </tr>
-            <tr>
-              <td>X-Container-Meta-Access-Control-Max-Age</td>
-              <td>Maximum age for the Origin to hold the preflight
-                results, in seconds (5, 10, 1000, and so on). </td>
-            </tr>
-            <tr>
-              <td>X-Container-Meta-Access-Control-Expose-Headers</td>
-              <td>Headers exposed to the browser in the actual request
-                response, separated by a space when there are
-                multiples. </td>
-            </tr>
-          </tbody>
-        </table>
-      </para>
-      <para>Before a browser issues an actual request, it might issue
-        a preflight request. The preflight request is an HTTP
-          <command>OPTIONS</command> call to verify that the origin is
-        allowed to make the request. The sequence of events is:</para>
-      <orderedlist>
-        <listitem>
-          <para>The browser makes an <command>OPTIONS</command>
-            request to Cloud Files.</para>
-        </listitem>
-        <listitem>
-          <para>Cloud Files returns 200 or 401 to the browser based on
-            the allowed origins.</para>
-        </listitem>
-        <listitem>
-          <para>If Cloud Files returns 200, the browser makes the
-            actual request (<command>DELETE</command>,
-              <command>GET</command>, <command>HEAD</command>,
-              <command>POST</command>, <command>PUT</command>) to
-            Cloud Files. </para>
-        </listitem>
-      </orderedlist>
-      <para>When a browser receives a response to an actual request,
-        it only exposes those headers listed in the
-          <code>X-Container-Meta-Access-Control-Expose-Headers</code>
-        header. By default, Cloud Files returns the following values
-        for this header:</para>
-      <itemizedlist>
-        <listitem>
-          <para>the simple response headers as listed at <link
-              xlink:href="http://www.w3.org/TR/cors/#simple-response-header/"
-              >www.w3.org/TR/cors/#simple-response-header/</link></para>
-        </listitem>
-        <listitem>
-          <para>the headers <code>etag</code>,
-              <code>x-timestamp</code>, <code>x-trans-id</code></para>
-        </listitem>
-        <listitem>
-          <para>all metadata headers (<code>X-Container-Meta-*</code>
-            for containers and <code>X-Object-Meta-*</code> for
-            objects)</para>
-        </listitem>
-        <listitem>
-          <para>headers listed in
-              <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
-        </listitem>
-      </itemizedlist>
-      <para>To see some CORS Javascript in action, follow these
-        steps:</para>
-      <orderedlist>
-        <listitem>
-          <para>Download the <xref linkend="Test-CORS-Page-d1003"/>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>Host the page on a web server and take note of the
-            protocol and hostname (origin) you will be using to
-            request the page, for example
-              <code>http://localhost</code>.</para>
-        </listitem>
-        <listitem>
-          <para>Locate a container you would like to query. (Of
-            course, the Cloud Files cluster hosting this container
-            should have CORS support.)</para>
-        </listitem>
-        <listitem>
-          <para>Append the origin of the test page to the container’s
-              <code>X-Container-Meta-Access-Control-Allow-Origin</code>
-            header, using a request similar to the following
-            example.</para>
-        </listitem>
-      </orderedlist>
-      <example>
-        <title>CORS POST Request</title>
-        <literallayout class="monospaced">curl -X POST -H 'X-Auth-Token: <replaceable>yourAuthToken</replaceable>' \
-  -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
-  http://192.168.56.3:8080/v1/AUTH_test/cont1</literallayout>
-      </example>
-      <para>At this point, the container is accessible to CORS clients
-        hosted on <code>http://localhost</code>. Open the test CORS
-        page in your browser and following these steps:</para>
-      <orderedlist>
-        <listitem>
-          <para>Populate the Token field.</para>
-        </listitem>
-        <listitem>
-          <para>Populate the URL filed with the URl of either a
-            container or object.</para>
-        </listitem>
-        <listitem>
-          <para>Select the request method.</para>
-        </listitem>
-        <listitem>
-          <para>Hit Submit.</para>
-        </listitem>
-      </orderedlist>
-      <para>If the request succeeds, you should see the response
-        header and body. If the request did not succeed, the response
-        status will be 0.</para>
-      <example xml:id="Test-CORS-Page-d1003">
-        <title>Test CORS Page</title>
-        <literallayout class="monospaced">&lt;!DOCTYPE html>
-&lt;html>
-  &lt;head>
-    &lt;meta charset="utf-8">
-    &lt;title>Test CORS&lt;/title>
-  &lt;/head>
-  &lt;body>
-
-    Token&lt;br>&lt;input id="token" type="text" size="64">&lt;br>&lt;br>
-
-    Method&lt;br>
-    &lt;select id="method">
-        &lt;option value="GET">GET&lt;/option>
-        &lt;option value="HEAD">HEAD&lt;/option>
-        &lt;option value="POST">POST&lt;/option>
-        &lt;option value="DELETE">DELETE&lt;/option>
-        &lt;option value="PUT">PUT&lt;/option>
-    &lt;/select>&lt;br>&lt;br>
-
-    URL (Container or Object)&lt;br>&lt;input id="url" size="64" type="text">&lt;br>&lt;br>
-
-    &lt;input id="submit" type="button" value="Submit" onclick="submit(); return false;">
-
-    &lt;pre id="response_headers">&lt;/pre>
-    &lt;p>
-    &lt;hr>
-    &lt;pre id="response_body">&lt;/pre>
-
-    &lt;script type="text/javascript">
-      function submit() {
-          var token = document.getElementById('token').value;
-          var method = document.getElementById('method').value;
-          var url = document.getElementById('url').value;
-
-          document.getElementById('response_headers').textContent = null;
-          document.getElementById('response_body').textContent = null;
-
-          var request = new XMLHttpRequest();
-
-          request.onreadystatechange = function (oEvent) {
-              if (request.readyState == 4) {
-                  responseHeaders = 'Status: ' + request.status;
-                  responseHeaders = responseHeaders + '\nStatus Text: ' + request.statusText;
-                  responseHeaders = responseHeaders + '\n\n' + request.getAllResponseHeaders();
-                  document.getElementById('response_headers').textContent = responseHeaders;
-                  document.getElementById('response_body').textContent = request.responseText;
-              }
-          }
-
-          request.open(method, url);
-          request.setRequestHeader('X-Auth-Token', token);
-          request.send(null);
-      }
-    &lt;/script>
-
-  &lt;/body>
-&lt;/html></literallayout>
-      </example>
- <!--
-        <note>
-        <para>For more information about CORS headers, see <xref
-            linkend="Assigning_CORS_Headers_to_Requests-d1e2120"
-          />.</para>
-      </note>
-      <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
-        <title>Assigning CORS Headers to Requests</title>
-        <para>Cross-Origin Resource Sharing (CORS) is a specification
-          that defines how browsers and servers communicate across
-          origins using HTTP headers, such as those assigned by Cloud
-          Files API requests. The Cloud Files API supports the
-          following headers. You can assign these headers to objects
-          only.</para>
-          
-         <remark>9/24/2013 - This comes from Ed Leafe but I'm checking to see if it is accurate. Openstack info from David Goetz indicates CORS supports both containers and objects.</remark> 
-          <remark>CORS headers only apply at the container level and can
-            only be set on the container. A CORS header then governs
-            how requests for objects in that container are handled. </remark>
--
-        <para>
-          <itemizedlist>
-            <listitem>
-              <para>Access-Control-Allow-Credentials</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Allow-Methods</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Allow-Origin</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Expose-Headers</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Max-Age</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Request-Headers</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Request-Method</para>
-            </listitem>
-            <listitem>
-              <para>Origin</para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>You can read more about the definition of the
-          Access-Control response headers and Origin response header
-          at <link xlink:href="http://www.w3.org/TR/access-control/"
-            >www.w3.org/TR/access-control/</link>.</para>
-        <para>You can only set CORS headers through the Cloud Files
-          API, and not through the Cloud Control Panel. In the
-          following example, the origin header is assigned that
-          indicates where the file came from. This allows you to
-          provide security that requests to your Cloud Files
-          repository are indeed from the correct origination:</para>
-        <example>
-          <title>Assign CORS Header Request</title>
-          <literallayout class="monospaced">
-  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-  Origin: http://storage.clouddrive.com
-                     </literallayout>
-        </example>
-        <note>
-          <para>For more information about CORS headers, see <xref
-              linkend="CORS_Container_Header-d1e1300"/>.</para>
-        </note>
-      </section>
-      -->
-    </section>
       <section xml:id="TempURL-d1a4450">
         <title>TempURL</title>
         <para> The Temporary URL feature (TempURL) allows you to
@@ -5412,6 +5132,287 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
             </para>           
           </section>
         </section>
+    <section xml:id="CORS_Container_Header-d1e1300">
+      <title>CORS </title>
+      <para>Cross-Origin Resource Sharing (CORS) is a mechanism to
+        allow code running in a browser to make requests to a domain
+        other than the one from which it originated. CORS container
+        headers allow users to upload files from one website, or
+        origin, to your Cloud Files account. When you set the CORS
+        headers on your container, you tell Cloud Files which sites
+        may post to your account, how often your container checks its
+        allowed sites list, and what headers to expose to the browser
+        in the request response. </para>
+      <note>
+        <para>You use CORS with FormPost (<xref
+            linkend="FormPost-d1a555"
+            xrefstyle="select:label quotedtitle nopage"/>) to enable
+          users to post to your site and TempURL (<xref
+            linkend="TempURL-d1a4450"
+            xrefstyle="select:label quotedtitle nopage"/>) to limit
+          how long users can use a given URL.</para>
+      </note>
+      <para>Cloud Files supports CORS request to containers and
+        objects. CORS metadata is held on the container only. The
+        values given apply to the container itself and all objects
+        within it.</para>
+      <?hard-pagebreak?>    
+      <para>The following table lists the supported headers. </para>
+      <para>
+        <table rules="all" width="500">
+          <caption>Supported CORS Container Headers</caption>
+          <tbody>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Allow-Origin</td>
+              <td>Origins allowed to make Cross Origin requests,
+                separated by a space when there are multiples. </td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Max-Age</td>
+              <td>Maximum age for the Origin to hold the preflight
+                results, in seconds (5, 10, 1000, and so on). </td>
+            </tr>
+            <tr>
+              <td>X-Container-Meta-Access-Control-Expose-Headers</td>
+              <td>Headers exposed to the browser in the actual request
+                response, separated by a space when there are
+                multiples. </td>
+            </tr>
+          </tbody>
+        </table>
+      </para>
+      <para>Before a browser issues an actual request, it might issue
+        a preflight request. The preflight request is an HTTP
+          <command>OPTIONS</command> call to verify that the origin is
+        allowed to make the request. The sequence of events is:</para>
+      <orderedlist>
+        <listitem>
+          <para>The browser makes an <command>OPTIONS</command>
+            request to Cloud Files.</para>
+        </listitem>
+        <listitem>
+          <para>Cloud Files returns 200 or 401 to the browser based on
+            the allowed origins.</para>
+        </listitem>
+        <listitem>
+          <para>If Cloud Files returns 200, the browser makes the
+            actual request (<command>DELETE</command>,
+              <command>GET</command>, <command>HEAD</command>,
+              <command>POST</command>, <command>PUT</command>) to
+            Cloud Files. </para>
+        </listitem>
+      </orderedlist>
+      <para>When a browser receives a response to an actual request,
+        it only exposes those headers listed in the
+          <code>X-Container-Meta-Access-Control-Expose-Headers</code>
+        header. By default, Cloud Files returns the following values
+        for this header:</para>
+      <itemizedlist>
+        <listitem>
+          <para>the simple response headers as listed at <link
+              xlink:href="http://www.w3.org/TR/cors/#simple-response-header/"
+              >www.w3.org/TR/cors/#simple-response-header/</link></para>
+        </listitem>
+        <listitem>
+          <para>the headers <code>etag</code>,
+              <code>x-timestamp</code>, <code>x-trans-id</code></para>
+        </listitem>
+        <listitem>
+          <para>all metadata headers (<code>X-Container-Meta-*</code>
+            for containers and <code>X-Object-Meta-*</code> for
+            objects)</para>
+        </listitem>
+        <listitem>
+          <para>headers listed in
+              <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
+        </listitem>
+      </itemizedlist>
+      <para>To see some CORS Javascript in action, follow these
+        steps:</para>
+      <orderedlist>
+        <listitem>
+          <para>Download the <xref linkend="Test-CORS-Page-d1003"/>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Host the page on a web server and take note of the
+            protocol and hostname (origin) you will be using to
+            request the page, for example
+              <code>http://localhost</code>.</para>
+        </listitem>
+        <listitem>
+          <para>Locate a container you would like to query. (Of
+            course, the Cloud Files cluster hosting this container
+            should have CORS support.)</para>
+        </listitem>
+        <listitem>
+          <para>Append the origin of the test page to the container’s
+              <code>X-Container-Meta-Access-Control-Allow-Origin</code>
+            header, using a request similar to the following
+            example.</para>
+        </listitem>
+      </orderedlist>
+      <example>
+        <title>CORS POST Request</title>
+        <literallayout class="monospaced">curl -X POST -H 'X-Auth-Token: <replaceable>yourAuthToken</replaceable>' \
+  -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
+  http://192.168.56.3:8080/v1/AUTH_test/cont1</literallayout>
+      </example>
+      <para>At this point, the container is accessible to CORS clients
+        hosted on <code>http://localhost</code>. Open the test CORS
+        page in your browser and following these steps:</para>
+      <orderedlist>
+        <listitem>
+          <para>Populate the Token field.</para>
+        </listitem>
+        <listitem>
+          <para>Populate the URL filed with the URl of either a
+            container or object.</para>
+        </listitem>
+        <listitem>
+          <para>Select the request method.</para>
+        </listitem>
+        <listitem>
+          <para>Hit Submit.</para>
+        </listitem>
+      </orderedlist>
+      <para>If the request succeeds, you should see the response
+        header and body. If the request did not succeed, the response
+        status will be 0.</para>
+      <example xml:id="Test-CORS-Page-d1003">
+        <title>Test CORS Page</title>
+        <literallayout class="monospaced">&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Test CORS&lt;/title>
+  &lt;/head>
+  &lt;body>
+
+    Token&lt;br>&lt;input id="token" type="text" size="64">&lt;br>&lt;br>
+
+    Method&lt;br>
+    &lt;select id="method">
+        &lt;option value="GET">GET&lt;/option>
+        &lt;option value="HEAD">HEAD&lt;/option>
+        &lt;option value="POST">POST&lt;/option>
+        &lt;option value="DELETE">DELETE&lt;/option>
+        &lt;option value="PUT">PUT&lt;/option>
+    &lt;/select>&lt;br>&lt;br>
+
+    URL (Container or Object)&lt;br>&lt;input id="url" size="64" type="text">&lt;br>&lt;br>
+
+    &lt;input id="submit" type="button" value="Submit" onclick="submit(); return false;">
+
+    &lt;pre id="response_headers">&lt;/pre>
+    &lt;p>
+    &lt;hr>
+    &lt;pre id="response_body">&lt;/pre>
+
+    &lt;script type="text/javascript">
+      function submit() {
+          var token = document.getElementById('token').value;
+          var method = document.getElementById('method').value;
+          var url = document.getElementById('url').value;
+
+          document.getElementById('response_headers').textContent = null;
+          document.getElementById('response_body').textContent = null;
+
+          var request = new XMLHttpRequest();
+
+          request.onreadystatechange = function (oEvent) {
+              if (request.readyState == 4) {
+                  responseHeaders = 'Status: ' + request.status;
+                  responseHeaders = responseHeaders + '\nStatus Text: ' + request.statusText;
+                  responseHeaders = responseHeaders + '\n\n' + request.getAllResponseHeaders();
+                  document.getElementById('response_headers').textContent = responseHeaders;
+                  document.getElementById('response_body').textContent = request.responseText;
+              }
+          }
+
+          request.open(method, url);
+          request.setRequestHeader('X-Auth-Token', token);
+          request.send(null);
+      }
+    &lt;/script>
+
+  &lt;/body>
+&lt;/html></literallayout>
+      </example>
+      <!--
+        <note>
+        <para>For more information about CORS headers, see <xref
+            linkend="Assigning_CORS_Headers_to_Requests-d1e2120"
+          />.</para>
+      </note>
+      <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
+        <title>Assigning CORS Headers to Requests</title>
+        <para>Cross-Origin Resource Sharing (CORS) is a specification
+          that defines how browsers and servers communicate across
+          origins using HTTP headers, such as those assigned by Cloud
+          Files API requests. The Cloud Files API supports the
+          following headers. You can assign these headers to objects
+          only.</para>
+          
+         <remark>9/24/2013 - This comes from Ed Leafe but I'm checking to see if it is accurate. Openstack info from David Goetz indicates CORS supports both containers and objects.</remark> 
+          <remark>CORS headers only apply at the container level and can
+            only be set on the container. A CORS header then governs
+            how requests for objects in that container are handled. </remark>
+-
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>Access-Control-Allow-Credentials</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Allow-Methods</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Allow-Origin</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Expose-Headers</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Max-Age</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Request-Headers</para>
+            </listitem>
+            <listitem>
+              <para>Access-Control-Request-Method</para>
+            </listitem>
+            <listitem>
+              <para>Origin</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>You can read more about the definition of the
+          Access-Control response headers and Origin response header
+          at <link xlink:href="http://www.w3.org/TR/access-control/"
+            >www.w3.org/TR/access-control/</link>.</para>
+        <para>You can only set CORS headers through the Cloud Files
+          API, and not through the Cloud Control Panel. In the
+          following example, the origin header is assigned that
+          indicates where the file came from. This allows you to
+          provide security that requests to your Cloud Files
+          repository are indeed from the correct origination:</para>
+        <example>
+          <title>Assign CORS Header Request</title>
+          <literallayout class="monospaced">
+  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+  Host: storage.clouddrive.com
+  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  Origin: http://storage.clouddrive.com
+                     </literallayout>
+        </example>
+        <note>
+          <para>For more information about CORS headers, see <xref
+              linkend="CORS_Container_Header-d1e1300"/>.</para>
+        </note>
+      </section>
+      -->
+    </section>
     </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples and Troubleshooting</title>
