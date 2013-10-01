@@ -80,10 +80,7 @@
       <revision>
         <date>2013-09-19</date>
         <revdescription>
-          <itemizedlist>
-            <listitem>
-              <para>Added <xref linkend="RBAC"/>.</para>
-            </listitem> 
+          <itemizedlist> 
             <listitem>
               <para>Updated responses to show application/json in
                   <xref linkend="Bulk_Delete-d1e2338"/>.</para>
@@ -1086,10 +1083,9 @@
         capabilities, based on roles defined by Rackspace (see <xref
           linkend="RBAC_product_roles_table"/>). The permissions to
         perform certain operations in the Cloud Files API – create,
-        read, update, delete – are assigned to specific roles. The
-        account owner assigns these roles, either multiproduct
-        (global) or product-specific (for example, Cloud Files), to
-        account users.</para>
+        read, update, delete – are assigned to specific roles, and
+        these roles can be assigned by the Cloud account admin user to
+        account users of the account. </para>
       <section xml:id="assigningRoles">
         <title>Assigning Roles to Account Users</title>
         <para>The account owner (identity:user-admin) can create
@@ -3651,8 +3647,16 @@ ETag: The ETag of the SLO (generated the same way as DLO).
         <section xml:id="Bulk_Operations-d1e2338" >
         <title>Bulk Operations (Delete and Archive Auto
           Extraction)</title>
-        <para>Bulk Operations involve middleware that conduct many
+        <para>Bulk Operations involve middleware that conducts many
           operations on a single request.</para>
+<!--          
+          <remark>9-30-2013 cyr: The following note was originally requested by Chuck Thier, but David Goetz sent email saying not to make this doc change. He expects to make code changes at some point in the future to take care of this. </remark>
+        <note>
+          <para>Bulk operations can take a long time. They might cause
+            client timeouts and require that you increase client
+            timeout limits. </para>
+        </note>
+-->        
           <section xml:id="Extract_Archive-d1e2338">
           <title>Extract Archive</title>
           <para>This request expands tar files into a Cloud Files
