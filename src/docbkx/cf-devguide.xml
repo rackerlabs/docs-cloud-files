@@ -78,6 +78,10 @@
                 include additional endpoints from the service
                 catalog.</para>
             </listitem>
+            <listitem>
+              <para>Updated <xref linkend="Authentication-d1e639"/> to
+                show information for Rackspace Identitfy v2.0.</para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>
@@ -942,6 +946,358 @@
       specific API operation.</para>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML"> Every REST
+        request against the Cloud Files service requires the inclusion
+        of a specific authorization token, supplied by the
+          <code>X-Auth-Token</code> HTTP header. Customers obtain this
+        token by first using the Rackspace Cloud Authentication
+        Service and supplying a valid username and API access key. </para>
+      <section xml:id="Geographic_Endpoints"
+        xmlns:m="http://www.w3.org/1998/Math/MathML">
+        <title>Geographic Endpoints</title>
+        <para> The Rackspace Cloud Authentication Service serves as
+          the entry point to all Rackspace Cloud APIs and is itself a
+          RESTful web service. </para>
+        <para> To access the Authentication Service, you must know
+          whether your account is US-based or UK-based: </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para> US-based accounts authenticate through <link
+                xlink:href="&ENDPOINT-US-20;">&ENDPOINT-US-20;</link>.
+            </para>
+          </listitem>
+          <listitem>
+            <para> UK-based accounts authenticate through <link
+                xlink:href="&ENDPOINT-UK-20;">&ENDPOINT-UK-20;</link>.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para> Your account may be based in either the US or the UK;
+          this is not determined by your physical location but by the
+          location of the Rackspace retail site which was used to
+          create your account: </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para> If your account was created via <link
+                xlink:href="http://www.rackspacecloud.com"
+                >http://www.rackspacecloud.com</link>, it is a
+              US-based account. </para>
+          </listitem>
+          <listitem>
+            <para> If your account was created via <link
+                xlink:href="http://www.rackspace.co.uk"
+                >http://www.rackspace.co.uk</link>, it is a UK-based
+              account. </para>
+          </listitem>
+        </itemizedlist>
+        <para> If you are unsure how your account was created, use the
+          Rackspace contact information at either site to ask for
+          help. </para>
+      </section>
+      <section xml:id="Retrieving_Auth_Token"
+        xmlns:m="http://www.w3.org/1998/Math/MathML">
+        <title>Retrieving the Authentication Token</title>
+        <informaltable rules="all">
+          <tbody>
+            <tr>
+              <td colspan="1">&POST; </td>
+              <td colspan="1"> v2.0/tokens </td>
+              <td colspan="4"> Authenticate to receive a token and a
+                service catalog. </td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <simpara> Normal Response Code(s):
+            <returnvalue>200</returnvalue>,
+            <returnvalue>203</returnvalue>
+        </simpara>
+        <simpara> Error Response Code(s): unauthorized
+            (<errorcode>401</errorcode>), userDisabled
+            (<errorcode>403</errorcode>), badRequest
+            (<errorcode>400</errorcode>), authFault
+            (<errorcode>500</errorcode>), serviceUnavailable
+            (<errorcode>503</errorcode>) </simpara>
+        <para> The authenticate operation provides clients with an
+          authentication token and a list of regional cloud endpoints.
+          The sample requests and responses in this section illustrate
+          a general case. In your authentication request, use your own
+          credentials rather than the sample values shown here for
+            <code>username</code> and <code>apiKey</code>. When you
+          authenticate successfully, the response to your
+          authentication request will include a catalog of the
+          services to which you have subscribed rather than the sample
+          values shown here.</para>
+        <example>
+          <title>Auth Request: XML</title>
+          <programlistingco>
+            <areaspec>
+              <area xml:id="credentials.xml.user" units="linecolumn"
+                coords="13 17"/>
+              <area xml:id="credentials.xml.key" units="linecolumn"
+                coords="14 15"/>
+            </areaspec>
+            <programlisting language="xml">
+<xi:include href="samples/credentials-20.xml" parse="text"/>
+                    </programlisting>
+          </programlistingco>
+        </example>
+        <example>
+          <title>Auth Request: JSON</title>
+          <programlistingco>
+            <areaspec>
+              <area xml:id="credentials.json.user" units="linecolumn"
+                coords="14 22"/>
+              <area xml:id="credentials.json.key" units="linecolumn"
+                coords="15 20"/>
+            </areaspec>
+            <programlisting language="json">
+<xi:include href="samples/credentials-20.json" parse="text"/>
+                    </programlisting>
+          </programlistingco>
+        </example>
+        <calloutlist>
+          <callout arearefs="credentials.xml.user">
+            <para> The username supplied here is your common Rackspace
+              Cloud username. </para>
+          </callout>
+          <callout arearefs="credentials.xml.key">
+            <para> The key is your API access key. The key can be
+              obtained from the Rackspace Cloud Control Panel in the
+                <guimenu>&lt;Your Account></guimenu>/<guimenuitem>API
+                Access</guimenuitem> section (login here: <link
+                xlink:href="http://mycloud.rackspace.com/">Control
+                Panel Login</link>). </para>
+          </callout>
+        </calloutlist>
+        <example>
+          <title>Auth Response: XML</title>
+          <programlistingco>
+            <areaspec>
+              <area xml:id="response.xml.namespaces"
+                units="linecolumn" coords="7 9"/>
+              <area xml:id="response.xml.token" units="linecolumn"
+                coords="15 10"/>
+              <area xml:id="response.xml.dfltregion"
+                units="linecolumn" coords="16 67"/>
+              <area xml:id="response.xml.role" units="linecolumn"
+                coords="17 12"/>
+              <area xml:id="response.xml.catalog" units="linecolumn"
+                coords="22 21"/>
+              <area xml:id="response.xml.servicetype"
+                units="linecolumn" coords="51 34"/>
+              <area xml:id="response.xml.servicename"
+                units="linecolumn" coords="51 54"/>
+              <area xml:id="response.xml.region" units="linecolumn"
+                coords="52 30"/>
+              <area xml:id="response.xml.tenant" units="linecolumn"
+                coords="53 66"/>
+              <area xml:id="response.xml.url" units="linecolumn"
+                coords="54 9"/>
+            </areaspec>
+            <programlisting language="xml"><xi:include href="samples/auth-20.xml" parse="text"/></programlisting>
+          </programlistingco>
+        </example>
+        <example xml:id="auth-response-example-json">
+          <title>Auth Response: JSON</title>
+          <programlistingco>
+            <areaspec>
+              <area xml:id="response.json.namespaces"
+                units="linecolumn" coords="200 1"/>
+              <area xml:id="response.json.token" units="linecolumn"
+                coords="9 8"/>
+              <area xml:id="response.json.dfltregion"
+                units="linecolumn" coords="16 45"/>
+              <area xml:id="response.json.role" units="linecolumn"
+                coords="17 12"/>
+              <area xml:id="response.json.catalog" units="linecolumn"
+                coords="30 8"/>
+              <area xml:id="response.json.servicetype"
+                units="linecolumn" coords="114 16"/>
+              <area xml:id="response.json.servicename"
+                units="linecolumn" coords="113 16"/>
+              <area xml:id="response.json.region" units="linecolumn"
+                coords="104 24"/>
+              <area xml:id="response.json.tenant" units="linecolumn"
+                coords="101 24"/>
+              <area xml:id="response.json.url" units="linecolumn"
+                coords="102 24"/>
+            </areaspec>
+            <programlisting language="json"><xi:include href="samples/auth-20.json" parse="text"/>
+                    </programlisting>
+          </programlistingco>
+        </example>
+        <note>
+          <para>The information shown in the Auth Response examples is
+            for US-based accounts. If you authenticate against the
+            UK-endpoint for auth, you will see the service catalog
+            information for UK-based accounts.</para>
+        </note>
+        <calloutlist>
+          <callout arearefs="response.xml.namespaces">
+            <para> In XML responses only, a list of namespaces
+              identifies API extensions that add functionality to the
+              core API. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.token">
+            <para> This token can be presented to a service as
+              evidence of authentication. Tokens are valid for a
+              finite duration; a token's default lifespan is
+              twenty-four hours. </para>
+            <para> The token's <code>expires</code> attribute denotes
+              the time after which the token will automatically become
+              invalid. A token may be manually revoked before the time
+              identified by the <code>expires</code> attribute;
+                <code>expires</code> predicts a token's maximum
+              possible lifespan but does not guarantee that it will
+              reach that lifespan. Clients are encouraged to cache a
+              token until it expires. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.dfltregion">
+            <para> Users can be assigned a default region so that,
+              when there is a choice between multiple endpoints
+              associated with a service in the user's catalog, the
+              endpoint for the user's default region will be selected
+              if it is available. In this example, the user's default
+              region is DFW and several of the services in the user's
+              catalog offer endpoints in that region and the ORD
+              region; this user's work will be directed to the DFW
+              region whenever possible. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.role">
+            <para> Users can be assigned multiple roles, with each
+              role providing specific privileges. In this example,
+                <code>jsmith</code> is the administrative user for the
+              account, holding the fully-privileged
+                <code>identity:admin</code> role. Other users might
+              hold other roles with different privileges. Roles need
+              not be associated with actual job functions such as
+              Administrator, Operator, Developer, Tester, or Trainer. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.catalog">
+            <para> The service catalog lists the services this user
+              can access. In this example, the user can access one
+              database service, one loadbalancing service, two compute
+              services (Cloud Servers OpenStack and Cloud Servers),
+              two object storage services (Cloud Files Content
+              Distribution Network (CDN), and Cloud Files), and one
+              DNS service. The catalog listing for each service
+              provides at least one endpoint URL for that service.
+              Other information, such as regions, versions, and
+              tenants, is provided if it's relevant to this user's
+              access to this service. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.servicetype">
+            <para> The service type attribute identifies services that
+              perform similar functions, whatever those services might
+              be named. In this example, the services named
+              cloudServers and cloudServersOpenstack are both
+              identified as <code>type="compute"</code>, identifying
+              them as compute services even though the word "compute"
+              does not appear in their names. </para>
+            <important>
+              <para>Use service type as the primary value for locating
+                a service. If multiple endpoints of the same service
+                type exist in the same region, use service name as the
+                tiebreaker.</para>
+            </important>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.servicename">
+            <para> The service name attribute identifies each unique
+              service in the catalog. Once a service is created, its
+              name does not change. However, new services of the same
+              service type may be added to the catalog with new names. </para>
+            <important>
+              <para> If you are programmatically parsing an
+                authentication response, use service type rather than
+                service name as the basis for determining whether a
+                user has access to a particular kind of service.
+                Service type is stable across all releases; new
+                service types may be developed, but existing service
+                types are not renamed. In this example,
+                  <code>type="compute"</code> identifies all the
+                available compute services, one of which is named
+                cloudServers and one of which is named
+                cloudServersOpenStack. New compute service names may
+                be added in future releases; whatever the compute
+                services are named, you can always recognize them by
+                parsing for <code>type="compute"</code> in the
+                authentication response's service catalog. </para>
+            </important>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.region">
+            <para> A service may expose endpoints in different
+              regions. Regional endpoints allow clients to provision
+              resources in a manner that provides high availability. </para>
+            <para> Some services are not region-specific. These
+              services supply a single non-regional endpoint and do
+              not provide access to internal URLs. </para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.tenant">
+            <para> Some services recognize specification of a tenant.
+              If a service does recognize tenants, the format of the
+              tenant specification is defined only by the service; for
+              details about whether and how to specify a tenant, check
+              the documentation for the service you are using.</para>
+            <para> </para>
+          </callout>
+          <callout arearefs="response.xml.url">
+            <para> An endpoint can be assigned public and internal
+              URLs. A public URL is accessible from anywhere. Access
+              to a public URL usually incurs traffic charges. Internal
+              URLs are only accessible to services within the same
+              region. Access to an internal URL is free of charge. </para>
+            <para> </para>
+          </callout>
+        </calloutlist>
+        <para>Authentication tokens are typically valid for 24 hours.
+          Applications should be designed to re-authenticate after
+          receiving a 401 (Unauthorized) response from a service
+          endpoint. </para>
+        <important>
+          <para>If you are programmatically parsing an authentication
+            response, please be aware that service names are stable
+            for the life of the particular service and can be used as
+            keys. You should also be aware that a user's service
+            catalog can include multiple uniquely-named services which
+            perform similar functions. For example,
+            cloudServersOpenStack is the OpenStack version of compute
+            whereas cloudServers is the legacy version of compute; the
+            same user can have access to both services. In Auth 2.0,
+            the service type attribute can be used as a key by which
+            to recognize similar services; see the tip below.</para>
+        </important>
+        <tip>
+          <para>Beginning with Auth 2.0, the service catalog includes
+            a service type attribute to identify services that perform
+            similar functions but have different names; for example,
+              <code>type="compute"</code> identifies compute services
+            such as cloudServers and cloudServersOpenStack. Some
+            developers have found the service type attribute to be
+            useful in parsing the service catalog. For additional
+            information on Auth 2.0 (also known as the Cloud Identity
+            Service), refer to the <citetitle>Cloud Identity Client
+              Developer Guide</citetitle> at <link
+              xlink:href="http://docs.rackspace.com"
+              >http://docs.rackspace.com/</link>.</para>
+        </tip>
+        <para>Cloud Files service endpoints are published in the
+          service catalog in the Auth response with the account
+          number, which is a required element of the service
+          endpoints. The examples shown here are for authentication
+          for US customers. Customers with UK-based accounts will see
+          different values in the service catalog. Refer to the next
+          section for more information about service endpoints. </para>
+      </section>
+
+<!--
       <para>The Cloud Files API is implemented using a RESTful web
         service interface. Like other products in the Rackspace Cloud
         suite, the Cloud Files service shares a common token-based
@@ -1001,6 +1357,9 @@
         If you are unsure how your account was created, use the Rackspace contact
         information at either site to ask for help.
       </para>
+      
+      
+     
       <simplesect>
         <title>Request</title>
         <para>
@@ -1009,14 +1368,14 @@
           <itemizedlist>
             <listitem>
               <para>
-                <phrase>
-                  <remark security="writeronly">2012-09-25 - Retooled the API/Auth token
-                    information below for clarity. Had user complaints that they could not 
-                    find it.</remark></phrase> 
-                Use your Rackspace Cloud
-                username for your username for the API. Place it in the
-                <code>X-Auth-User</code> x-header, like <code>X-Auth-User: jdoe</code>.
-              </para>
+              <phrase>
+                <remark security="writeronly">2012-09-25 - Retooled
+                  the API/Auth token information below for clarity.
+                  Had user complaints that they could not find it.
+                  2013-10-25 Updated per Joe Savak.</remark>
+              </phrase> Use your Rackspace Cloud username for the API.
+              In the example below, <code>demoauthor</code> is used
+              for <code>username</code>. </para>
             </listitem>
             <listitem>
               <itemizedlist>
@@ -1033,13 +1392,27 @@
                   user name and selecting <code>API Keys</code>.  </para>
                 </listitem>
               </itemizedlist>  
-                <para>In either Control Panel, click the <code>Show Key</code>
-                  button to get your key. Place your API Key in the <code>X-Auth-Key</code> x-header,
-                  like <code> X-Auth-Key: a86850deb2742ec3cb41518e26aa2d89</code>.
-                </para>
+                <para>In either Control Panel, click the <code>Show
+                Key</code> button to get your key.  In the example
+              below,  <code>aaaaa-bbbbb-ccccc-12345678</code> is used
+              for <code>apiKey</code>.</para>
             </listitem>
           </itemizedlist>
         <para> </para>
+        <example>
+          <title>Authenticate (with Username and API Key Credentials)
+            Request: JSON</title>
+          <literallayout language="bash">{
+       "auth": {
+             "RAX-KSKEY:apiKeyCredentials": {
+                       "username": "demoauthor",
+                       "apiKey": "aaaaa-bbbbb-ccccc-12345678"
+             }
+      }
+}</literallayout>
+        </example>
+        
+ <remark 10-25-2013 Example for v1 of Identity. Joe Savak requested change to show v2 example. </remark>        
         <example>
           <title>Authentication Request (US-Based Account)</title>
           <literallayout class="monospaced">
@@ -1050,7 +1423,11 @@
                     </literallayout>
         </example>
       </simplesect>
-      <simplesect>
+     
+</simplesect> 
+<simplesect>
+
+
         <title>Response</title>     
         <para>When you successfully authenticate your session, an HTTP status 204 (No Content) 
           is returned with the
@@ -1095,6 +1472,7 @@
           or v2 for authentication. However, to access new features
           (like multi-region), you must use v2. </para>
       </simplesect>
+      -->
     </section>
     <?hard-pagebreak?>
     
@@ -5640,6 +6018,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         </varlistentry>
       </variablelist>
     </section>
+    
+  
+    
       <section xml:id="Authentication-d1e2929">
         <title>Authentication with cURL</title>
         <para>In order to use the REST API, you will first need to
@@ -5651,6 +6032,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         or the UK; this is not determined by your physical location,
         but by the location of the Rackspace retail site where the
         account was created. </para>
+        
+ <!--       
+        
       <para>This example uses the US-based URL
         https://identity.api.rackspacecloud.com/v1.0.</para>
         <example>
@@ -5672,10 +6056,10 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
    Content-Type: application/octet-stream
                       </computeroutput></screen>
         </example>
-        <para>The storage URL, CDN management URL, and authentication token are returned in the
-          headers of the response. After authentication, you can use cURL to perform
-            &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
-          services.</para>
+        
+-->        
+        
+
       <para>This example uses the US-based URL
         https://identity.api.rackspacecloud.com/v2.0.</para>
       <example>
@@ -5832,6 +6216,10 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
 }
 </computeroutput></screen>
       </example>
+        <para>The storage URL, CDN management URL, and authentication token are returned in the
+          headers of the response. After authentication, you can use cURL to perform
+          &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
+          services.</para>
         <para>While an authentication token lasts, you can continue to
         perform requests. <phrase>However, once a token expires, it
           will return an HTTP error code 401 (Unauthorized). Given
@@ -5872,6 +6260,8 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         found in the OpenStack Swift project in client.py, which is
         freely available. </para>
       </section>
+      
+      
       <section xml:id="Determining_Storage_Usage-d1e2976">
         <title>Determining Storage Usage with cURL</title>
         <para>A &HEAD; request can be sent to the storage service to determine how much
