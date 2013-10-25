@@ -82,6 +82,12 @@
               <para>Updated <xref linkend="Authentication-d1e639"/> to
                 show information for Rackspace Identitfy v2.0.</para>
             </listitem>
+            <listitem>
+              <para>Updated <xref linkend="Create_the_Form-d1a777"/>
+                to indicate that the value of <code>redirect</code>
+                (see Example 7.9) can be empty to indicate that no
+                redirect is included on the form. </para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>
@@ -5657,6 +5663,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
             <para>
               Be certain to use the full path in your Cloud Files account, from the /v1/ onward.
             </para>
+          <para>The <code>redirect</code> value can be an empty string
+            to indicate that no redirect is included on the
+            form.</para>
             <para>
               <code>Key</code> is the value of the <code>X-Account-Meta-Temp-URL-Key</code> 
               header set for the account.
