@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-09-26</pubdate>
+    <pubdate>2013-10-25</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -63,6 +63,24 @@
           (<abbrev>API</abbrev>).  </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2013-10-25</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added <xref
+                  linkend="Service-Access-Endpoints-d1e003"/>, which
+                includes all endpoints for Cloud Files including the
+                newest one in Hong Kong.</para>
+            </listitem>
+            <listitem>
+              <para>Updated <xref linkend="Multi_region-dl2200"/> to
+                include additional endpoints from the service
+                catalog.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-09-26</date>
         <revdescription>
@@ -585,12 +603,12 @@
       applications.</para>
     <para>For more details on the Cloud Files service, please refer to
         <link
-        xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
-        >http://www.rackspacecloud.com/cloud_hosting_products/files</link>
-      and to the Knowledge Center article, "Best Practices for Using
-      Cloud Files," at  <link
+        xlink:href="http://http://www.rackspace.com/cloud/files/"
+        >http://www.rackspace.com/cloud/files/</link> and to the
+      Knowledge Center article <link
         xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
-        >http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>. </para>
+        >Best Practices for Using Cloud
+        Files</link>. </para>
     <para>We welcome feedback, comments, and bug reports at <link
         xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
@@ -652,8 +670,8 @@
           xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
           docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
       <para>For more details about the Cloud Files service, please refer to <link
-          xlink:href="http://www.rackspacecloud.com/cloud_hosting_products/files"
-          >www.rackspacecloud.com/cloud_hosting_products/files</link>. Related documents are
+        xlink:href="http://http://www.rackspace.com/cloud/files/"
+        >http://www.rackspace.com/cloud/files/</link>. Related documents are
         available at the same site, as are links to official Rackspace support channels, including
         knowledge base articles, forums, phone, chat, and email.</para>
       <para>Language bindings are available. Each binding includes its own documentation (either HTML, PDF, or CHM). They also
@@ -691,8 +709,8 @@
           > www.rackspace.com/cloud/public/files/pricing</link>. </para>
         <para>The Service Level Agreement (SLA) for Cloud Files is
         available at <link
-          xlink:href="http://www.rackspace.com/cloud/legal/sla/#cloud_files"
-          > www.rackspace.com/cloud/legal/sla/#cloud_files</link>. </para>
+          xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files"
+          > http://www.rackspace.com/information/legal/cloud/sla?page=files</link>. </para>
           
   </section>
     
@@ -717,7 +735,7 @@
       <para>The Cloud Files system is designed to be used by many different customers. Your user
         account is your portion of the Cloud Files system. A user must identify themselves with
         their Rackspace Cloud username and API Access Key and once authenticated, that user has full
-        read/write access to the files stored under that user account. Please visit <link xlink:href="http://www.rackspacecloud.com/signup">http://www.rackspacecloud.com/signup</link> to obtain a Cloud Files account and enable
+        read/write access to the files stored under that user account. Please visit <link xlink:href="https://cart.rackspace.com/cloud/?cp_id=cloud_files">http://www.rackspacecloud.com/signup</link> to obtain a Cloud Files account and enable
         your API Access Key. </para>
     </section>
     <section xml:id="Authentication-d1e433">
@@ -919,8 +937,16 @@
         <raxm:priority>3</raxm:priority>
       </raxm:metadata> 
     </info>
+    <para>The information in this chapter is relevant to all Cloud
+      Files API operations. See later chapters for information about a
+      specific API operation.</para>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
+      <para>The Cloud Files API is implemented using a RESTful web
+        service interface. Like other products in the Rackspace Cloud
+        suite, the Cloud Files service shares a common token-based
+        authentication system that allows seamless access between
+        products and services.</para>
       <para>Client authentication is provided through a REST interface
         using the &GET; method, with <code>v1.0</code> supplied as the
         path. Additionally, two headers are required,
@@ -1239,11 +1265,11 @@
       </section>    
     </section>
     
-<!--    
+    
       
     <section xml:id="Service-Access-Endpoints-d1e003"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Service Endpoints</title>
+      <title>Service Access Endpoints</title>
       <para>Cloud Files is a regionalized service. The user of the
         service is therefore responsible for appropriate replication,
         caching, and overall maintenance of Cloud Files data across
@@ -1278,6 +1304,15 @@
               <td colspan="5"
                 ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
             </tr>
+            <tr>
+              <td colspan="2" rowspan="2">Hong Kong (HKG)</td>
+              <td colspan="5"
+                    ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+            </tr>
+            <tr>
+              <td colspan="5"
+                    ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+            </tr>
             <tr align="left">
               <td colspan="2" rowspan="2">London (LON)</td>
               <td colspan="5"
@@ -1297,14 +1332,13 @@
                 ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
             </tr>
             <tr>
-              <td colspan="2">Sydney (SYD)</td>
+              <td colspan="2" rowspan="2">Sydney (SYD)</td>
               <td colspan="5"
                 ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
             </tr>
             <tr>
-              <td colspan="2"/>
               <td colspan="5"
-                ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
             </tr>
           </tbody>
         </table>
@@ -1342,232 +1376,7 @@
         from all the servers in the different environments.</para>
         
     </section>
-    
--->
-    
-    <section xml:id="Overview_of_API_Operations-d1e823">
-    <title>Overview of API Operations</title>
-    <para>The Cloud Files API is implemented as a set of RESTful web
-        services. All authentication and container/object operations
-        can be performed with standard HTTP calls. See the <link
-          xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
-          >Wikipedia article</link> on REST for more
-        information.</para>
-    <para>The following constraints apply to the REST API's HTTP
-        requests:</para>
-    <itemizedlist>
-      <listitem>
-        <para>Maximum number of HTTP headers per request: 90</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of all HTTP headers: 4096 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length per HTTP request line: 8192 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of HTTP request: 5 gigabytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of container name: 256 bytes</para>
-      </listitem>
-      <listitem>
-        <para>Maximum length of object name: 1024 bytes</para>
-      </listitem>
-    </itemizedlist>
-    <para>Container and object names should be properly URL-encoded
-        prior to interacting with the REST interface (the language
-        APIs handle URL encoding/decoding) and the container and
-        object names must be UTF-8 encoded. The length restrictions
-        should be checked against the URL-encoded string.</para>
-    <para>Each REST request against the Cloud Files system requires
-        the inclusion of a specific <firstterm>authorization
-          token</firstterm> HTTP header defined as
-          <code>X-Auth-Token</code>. Clients obtain this token, along
-        with the Cloud Files URLs, by first using the Authentication
-        service and supplying a valid Username and API Access Key. </para>
-    <para>There are actually two different sets of REST services that
-        make up the full Cloud Files product. The first REST service
-        identified with <code>X-Storage-Url</code> is used for
-        managing the data stored in the system. Example operations are
-        creating containers and uploading objects. The second REST
-        service is for managing the CDN feature of Cloud Files and is
-        identified by <code>X-CDN-Management-Url</code>.</para>
-    <para>In the following sections, the purpose of each HTTP method depends upon which service the
-        call is made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
-        used to create a container or upload an object, while a &PUT; request against the
-          <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
-    <para>The language-specific APIs mask this system separation from
-        the programmer. They simply create a container and mark it
-          <emphasis>public</emphasis> and it handles calling out to
-        the appropriate back-end services using the appropriate REST
-        API.</para>
-    <note>
-      <para>All requests to authenticate and operate against Cloud Files are performed using SSL
-        over HTTP (HTTPS) on TCP port 443.</para>
-    </note>
-    <?hard-pagebreak?>
-    <para>The following diagram illustrates the various system interfaces and the ease with which
-      content can be distributed over the CDN. The process is simple: authenticate, create a
-      container, upload objects, mark the container as public, and begin serving that content from a
-      powerful CDN.</para>  
-    <figure xml:id="CFinterfaces">
-      <title>Cloud Files System Interfaces</title>
-      <mediaobject>
-        <imageobject>
-          <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
-        </imageobject>
-      </mediaobject>
-    </figure>
-    </section>
- <!--   
-    <section xml:id="synopsisOfOperations">
-      <title>Cloud Files API Operations Synopsis</title>
-      <para>The following table summarizes all of the operations that
-        are available in the Cloud Files API:</para>
-      <table rules="all">
-        <caption>Synopsis of Cloud Files API Operations</caption>
-        <col width="20%"/>
-        <col width="10%"/>
-        <col width="50%"/>
-        <col width="20%"/>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Verb</th>
-            <th>URI</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="4"><emphasis role="bold">Storage Account
-                Services</emphasis></td>
-          </tr>
-          <tr>
-            <td>View Account Details</td>
-            <td><command>HEAD</command></td>
-            <td><code>{api version}/{storage account
-                  URL}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker<?sbr?>=<parameter>string</parameter>&amp;format=<parameter>json
-                  or xml</parameter></code></td>
-            <td>Views metadata on an account.</td>
-          </tr>
-          <tr>
-            <td>List Containers</td>
-            <td><command>GET</command></td>
-            <td><literal>{api version}/{storage account
-              URL}?limit=integer&amp;marker=string&amp;end_marker<?sbr?>=string&amp;format=json
-                or xml</literal></td>
-            <td>Views a list of containers in an account.</td>
-          </tr>
-          <tr>
-            <td colspan="4"/>
-          </tr>
-          <tr>
-            <td colspan="4"><emphasis role="bold">Storage Container
-                Services</emphasis></td>
-          </tr>
-          <tr>
-            <td>View Container Details (Objects and Metadata)</td>
-            <td><command>HEAD</command></td>
-            <td><code>{api version}/{storage account
-                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;format=<parameter>json
-                  or xml</parameter></code></td>
-            <td>Views objects and metadata in a container. </td>
-          </tr>
-          <tr>
-            <td>Create Container</td>
-            <td><command>PUT</command></td>
-            <td><code>{api version}/{storage account
-                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-            <td>Creates containers, or storage compartments, for your
-              data.</td>
-          </tr>
-          <tr>
-            <td>Delete Container</td>
-            <td><command>DELETE</command></td>
-            <td><code>{api version}/{storage account
-                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-            <td>Permanently removes a container. (The container must
-              be empty before it can be removed.)</td>
-          </tr>
-          <tr>
-            <td>Edit or Set Container Metadata</td>
-            <td><command>POST</command></td>
-            <td><code>{api version}/{storage account
-                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-            <td>Writes metadata on a container.</td>
-          </tr>
-          <tr>
-            <td>List Objects in a Container</td>
-            <td><command>GET</command></td>
-            <td><code>{api version}/{storage account
-                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-            <td>Views the names and details of objects within a
-              container.</td>
-          </tr>
-          <tr>
-            <td colspan="4"/>
-          </tr>
-          <tr>
-            <td colspan="4"><emphasis role="bold">Storage Object
-                Services</emphasis></td>
-          </tr>
-          <tr>
-            <td>Retrieve Object</td>
-            <td><command>GET</command></td>
-            <td><code>{api version}/{storage account
-                URL}/{container}/{object}</code></td>
-            <td>Retrieve the object's data.</td>
-          </tr>
-          <tr>
-            <td>Create/Update Object</td>
-            <td><command>PUT</command></td>
-            <td><code>{api version}/{storage account
-                URL}/{container}/{object}</code></td>
-            <td>Write or overwrite an object's content and
-              metadata.</td>
-          </tr>
-          <tr>
-            <td>Copy Object</td>
-            <td><command>PUT</command></td>
-            <td>{api version}/{account}/container/destobject</td>
-            <td>Copy an existing object to another object in Cloud
-              Files. (The destination container must exist before
-              attempting the copy.)</td>
-          </tr>
-          <tr>
-            <td>Delete Object</td>
-            <td><command>DELETE</command></td>
-            <td>{api version}/{account}/container/object</td>
-            <td>Permanently remove an object from the storage system
-              (data and metadata).</td>
-          </tr>
-          <tr>
-            <td>Retrieve Object Metadata</td>
-            <td><command>HEAD</command></td>
-            <td>{api version}/{account}/container/object</td>
-            <td>Retrieve object metadata and other standard HTTP
-              headers.</td>
-          </tr>
-          <tr>
-            <td>Update Object Metadata</td>
-            <td><command>POST</command></td>
-            <td>{api version}/{account}/container/object</td>
-            <td>Set your own object metadata.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section> -->
- <!--  
+    <!--  
     <section xml:id="Limits-d1e942">
       <title>Limits</title>
       <remark>REVIEWER: Does Cloud Files have both rate limits and
@@ -1735,7 +1544,235 @@
     </section>
  -->
     
+
+    
+
+ <!-- 
+   <remark>CYR started as a beginning table of operations in prep for creating a WADL</remark>
+    <section xml:id="synopsisOfOperations">
+      <title>Cloud Files API Operations Synopsis</title>
+      <para>The following table summarizes all of the operations that
+        are available in the Cloud Files API:</para>
+      <table rules="all">
+        <caption>Synopsis of Cloud Files API Operations</caption>
+        <col width="20%"/>
+        <col width="10%"/>
+        <col width="50%"/>
+        <col width="20%"/>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Verb</th>
+            <th>URI</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Account
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>View Account Details</td>
+            <td><command>HEAD</command></td>
+            <td><code>{api version}/{storage account
+                  URL}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker<?sbr?>=<parameter>string</parameter>&amp;format=<parameter>json
+                  or xml</parameter></code></td>
+            <td>Views metadata on an account.</td>
+          </tr>
+          <tr>
+            <td>List Containers</td>
+            <td><command>GET</command></td>
+            <td><literal>{api version}/{storage account
+              URL}?limit=integer&amp;marker=string&amp;end_marker<?sbr?>=string&amp;format=json
+                or xml</literal></td>
+            <td>Views a list of containers in an account.</td>
+          </tr>
+          <tr>
+            <td colspan="4"/>
+          </tr>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Container
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>View Container Details (Objects and Metadata)</td>
+            <td><command>HEAD</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;format=<parameter>json
+                  or xml</parameter></code></td>
+            <td>Views objects and metadata in a container. </td>
+          </tr>
+          <tr>
+            <td>Create Container</td>
+            <td><command>PUT</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Creates containers, or storage compartments, for your
+              data.</td>
+          </tr>
+          <tr>
+            <td>Delete Container</td>
+            <td><command>DELETE</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Permanently removes a container. (The container must
+              be empty before it can be removed.)</td>
+          </tr>
+          <tr>
+            <td>Edit or Set Container Metadata</td>
+            <td><command>POST</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Writes metadata on a container.</td>
+          </tr>
+          <tr>
+            <td>List Objects in a Container</td>
+            <td><command>GET</command></td>
+            <td><code>{api version}/{storage account
+                  URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
+                  or
+                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
+            <td>Views the names and details of objects within a
+              container.</td>
+          </tr>
+          <tr>
+            <td colspan="4"/>
+          </tr>
+          <tr>
+            <td colspan="4"><emphasis role="bold">Storage Object
+                Services</emphasis></td>
+          </tr>
+          <tr>
+            <td>Retrieve Object</td>
+            <td><command>GET</command></td>
+            <td><code>{api version}/{storage account
+                URL}/{container}/{object}</code></td>
+            <td>Retrieve the object's data.</td>
+          </tr>
+          <tr>
+            <td>Create/Update Object</td>
+            <td><command>PUT</command></td>
+            <td><code>{api version}/{storage account
+                URL}/{container}/{object}</code></td>
+            <td>Write or overwrite an object's content and
+              metadata.</td>
+          </tr>
+          <tr>
+            <td>Copy Object</td>
+            <td><command>PUT</command></td>
+            <td>{api version}/{account}/container/destobject</td>
+            <td>Copy an existing object to another object in Cloud
+              Files. (The destination container must exist before
+              attempting the copy.)</td>
+          </tr>
+          <tr>
+            <td>Delete Object</td>
+            <td><command>DELETE</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Permanently remove an object from the storage system
+              (data and metadata).</td>
+          </tr>
+          <tr>
+            <td>Retrieve Object Metadata</td>
+            <td><command>HEAD</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Retrieve object metadata and other standard HTTP
+              headers.</td>
+          </tr>
+          <tr>
+            <td>Update Object Metadata</td>
+            <td><command>POST</command></td>
+            <td>{api version}/{account}/container/object</td>
+            <td>Set your own object metadata.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section> -->
+  </chapter>
+ 
+    <chapter xml:id="Overview_of_API_Operations-d1e823">
+      <title>Overview of API Operations</title>
+      <para>The Cloud Files API is implemented as a set of RESTful web
+        services. All authentication and container/object operations
+        can be performed with standard HTTP calls. See the <link
+          xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
+          >Wikipedia article</link> on REST for more
+        information.</para>
+      <para>The following constraints apply to the REST API's HTTP
+        requests:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Maximum number of HTTP headers per request: 90</para>
+        </listitem>
+        <listitem>
+          <para>Maximum length of all HTTP headers: 4096 bytes</para>
+        </listitem>
+        <listitem>
+          <para>Maximum length per HTTP request line: 8192 bytes</para>
+        </listitem>
+        <listitem>
+          <para>Maximum length of HTTP request: 5 gigabytes</para>
+        </listitem>
+        <listitem>
+          <para>Maximum length of container name: 256 bytes</para>
+        </listitem>
+        <listitem>
+          <para>Maximum length of object name: 1024 bytes</para>
+        </listitem>
+      </itemizedlist>
+      <para>Container and object names should be properly URL-encoded
+        prior to interacting with the REST interface (the language
+        APIs handle URL encoding/decoding) and the container and
+        object names must be UTF-8 encoded. The length restrictions
+        should be checked against the URL-encoded string.</para>
+      <para>Each REST request against the Cloud Files system requires
+        the inclusion of a specific <firstterm>authorization
+          token</firstterm> HTTP header defined as
+        <code>X-Auth-Token</code>. Clients obtain this token, along
+        with the Cloud Files URLs, by first using the Authentication
+        service and supplying a valid Username and API Access Key. </para>
+      <para>There are actually two different sets of REST services that
+        make up the full Cloud Files product. The first REST service
+        identified with <code>X-Storage-Url</code> is used for
+        managing the data stored in the system. Example operations are
+        creating containers and uploading objects. The second REST
+        service is for managing the CDN feature of Cloud Files and is
+        identified by <code>X-CDN-Management-Url</code>.</para>
+      <para>In the following sections, the purpose of each HTTP method depends upon which service the
+        call is made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
+        used to create a container or upload an object, while a &PUT; request against the
+        <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
+      <para>The language-specific APIs mask this system separation from
+        the programmer. They simply create a container and mark it
+        <emphasis>public</emphasis> and it handles calling out to
+        the appropriate back-end services using the appropriate REST
+        API.</para>
+      <note>
+        <para>All requests to authenticate and operate against Cloud Files are performed using SSL
+          over HTTP (HTTPS) on TCP port 443.</para>
+      </note>
+      <?hard-pagebreak?>
+      <para>The following diagram illustrates the various system interfaces and the ease with which
+        content can be distributed over the CDN. The process is simple: authenticate, create a
+        container, upload objects, mark the container as public, and begin serving that content from a
+        powerful CDN.</para>  
+      <figure xml:id="CFinterfaces">
+        <title>Cloud Files System Interfaces</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </chapter>
+ 
     <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
       <title>API Operations for Storage Services</title>
       <info>
@@ -2235,49 +2272,71 @@
           </example>
           <section xml:id="Multi_region-dl2200">
             <title>Multi-region Support</title>
-            <para>
-              You may create your container in either of our US data centers, Chicago
-              or Dallas (ORD or DFW, respectively). When you connect to Cloud Files, 
-              you get endpoints for both ORD and DFW. See the example below for what
-              the output looks like. You use the PublicURL for your Cloud Files operations. 
+            <para>You can create your Cloud Files containers in any
+            Rackspace data center. When you connect to Cloud Files,
+            you get the endpoints shown in <xref
+              linkend="Service-Catalog-Endpoints-d1e001"/>. You use
+            the <code>publicURL</code> for your Cloud Files
+            operations. For more information about the service access
+            endpoints, see <xref
+              linkend="Service-Access-Endpoints-d1e003"/>.</para>
+          <note>
+            <para>In order to avoid external bandwidth charges, your
+              containers and servers must be in the same data center.
             </para>
-            <para>
-              You may create your Cloud Files containers in either location. Keep in mind, however, 
-              that in order to avoid external bandwidth charges, your containers and 
-              servers must be in the same data center.
-            </para>
+          </note>
             <para>
               You may find it useful to locate your objects in more than one data center 
               to keep track of your data and backups. Specifically, if you serve an 
               audience in a particular region, you may find it helpful to locate your 
               Cloud Files objects as close to that region as possible.
             </para>
-            <para>
-              Keep in mind, however, that if your audience is world wide, you can always 
-              use the Akamai Content Delivery Network (CDN). The CDN speeds your content 
-              delivery because it is cached at edge locations around the globe, 
-              rather than being served from a single origin server. You can learn more 
-              about CDN-enabling your containers in <xref linkend="CDN-Enable_a_Container-d1e2665"
-                xrefstyle="select:label quotedtitle nopage"></xref>.
-            </para>
-            <example>
-              <title>Multi-region Data Center Endpoints</title>
+          <note>
+            <para>If your audience is world wide, you might consider
+              using the Akamai Content Delivery Network (CDN). The CDN
+              speeds your content delivery because it is cached at
+              edge locations around the globe, rather than being
+              served from a single origin server. You can learn more
+              about CDN-enabling your containers in <xref
+                linkend="CDN-Enable_a_Container-d1e2665"
+                xrefstyle="select:label quotedtitle nopage"/>. </para>
+          </note>
+            <example xml:id="Service-Catalog-Endpoints-d1e001">
+              <title>Multi-region Data Center Endpoints from the
+              Service Catalog</title>
               <literallayout class="monospaced">
-  "endpoints": [
-    {
-      "region": "DFW",
-      "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
-      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
-      "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
-    },
-    {
-      "region": "ORD",
-      "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
-      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
-      "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
-    }
-  ]
-                    </literallayout>
+"endpoints":[
+   {
+     "region":"DFW",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "internalURL":"https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"ORD",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "internalURL":"https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"SYD",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://storage101.syd2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "internalURL":"https://snet-storage101.syd2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"IAD",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "internalURL":"https://snet-storage101.iad3.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"HKG",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "internalURL":"https://snet-storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   }
+]</literallayout>
             </example>
           </section>
           <section xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580">
