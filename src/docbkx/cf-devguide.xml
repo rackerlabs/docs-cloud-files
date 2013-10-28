@@ -655,12 +655,11 @@
         Panel, <link xlink:href="http://www.jungledisk.com/">Jungle
           Disk</link>, or third party tools such as <link
           xlink:href="http://www.fireuploader.com/"
-          >Fileuploader</link>, <link
-          xlink:href="http://www.cyberduck.ch/">Cyberduck</link>, or
-          <link xlink:href="http://cloudfilesmanager.com/">Cloud Files
-          Manager</link>. The Control Panel provides an easy to use
-        web-based interface for uploading and downloading content to
-        and from Cloud Files.</para>
+          >Fileuploader</link> or  <link
+          xlink:href="http://www.cyberduck.ch/">Cyberduck</link>. The
+        Control Panel provides an easy to use web-based interface for
+        uploading and downloading content to and from Cloud
+        Files.</para>
       <para>For additional information about available language bindings, refer to the section, <link
           linkend="Language-Specific_API_Bindings-d1e574"
           >Language-Specific API Bindings</link>.</para>
@@ -1519,7 +1518,7 @@
               Assign roles to account users</link></para>
           </listitem>
           <listitem>
-            <para><link xlink:href="http://docs-internal.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
+            <para><link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html">
               Delete roles from account users</link></para>
           </listitem>
         </itemizedlist>
