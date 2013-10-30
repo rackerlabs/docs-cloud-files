@@ -4,7 +4,6 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xml:id="cf-releasenotes"
     version="5.0">
-  <?rax  pdf.url="../../../cf-releasenotes-latest.pdf" canonical.url.base="http://docs.rackspace.com/cm/api/v1.0/cf-releasenotes/content"?> 
     <title>Cloud Files Release Notes</title>
 
     <info>
