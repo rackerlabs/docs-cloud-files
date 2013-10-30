@@ -749,12 +749,29 @@
     </section>
     <section xml:id="Authentication-d1e433">
       <title>Authentication</title>
-      <para>The language and REST APIs below describe how to
+      <para><xref linkend="Authentication-d1e639"/> describes how to
         authenticate against the Authentication service to receive
         Cloud Files connection parameters and an authentication token.
         The token must be passed in for all subsequent
-        container/object operations during the time it is
-        valid.</para>
+        container/object operations during the time it is valid. </para>
+      <para>See the following sections for more information:<itemizedlist>
+          <listitem>
+            <para><xref linkend="Service-Access-Endpoints-d1e003"/>
+              shows the service access endpoints for Cloud
+              Files.</para>
+          </listitem>
+          <listitem>
+            <para><xref linkend="Service-Catalog-Endpoints-d1e001"/>
+              shows service catalog information for Cloud
+              Files.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>For more information about authentication, see the
+          <citetitle>Cloud Identity Client Developer Guide,
+          v2.0</citetitle> at <link
+          xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html"
+          > docs.rackspace.com</link>.</para>
       <note>
         <para>The language-specific APIs handle authentication, token passing, and HTTPS
           request/response communication.</para>
@@ -2121,17 +2138,22 @@
         <code>X-Auth-Token</code>. Clients obtain this token, along
         with the Cloud Files URLs, by first using the Authentication
         service and supplying a valid Username and API Access Key. </para>
-      <para>There are actually two different sets of REST services that
-        make up the full Cloud Files product. The first REST service
-        identified with <code>X-Storage-Url</code> is used for
-        managing the data stored in the system. Example operations are
-        creating containers and uploading objects. The second REST
-        service is for managing the CDN feature of Cloud Files and is
-        identified by <code>X-CDN-Management-Url</code>.</para>
-      <para>In the following sections, the purpose of each HTTP method depends upon which service the
-        call is made against. For example, a &PUT; request against <code>X-Storage-Url</code> can be
-        used to create a container or upload an object, while a &PUT; request against the
-        <code>X-CDN-Management-Url</code> is used to CDN-enable a container.</para>
+      <para>There are actually two different sets of REST services
+      that make up the full Cloud Files product. The first REST
+      service identified with <code>cloudFiles</code> in the service
+      catalog (see <xref linkend="Service-Catalog-Endpoints-d1e001"/>)
+      is used for managing the data stored in the system. Example
+      operations are creating containers and uploading objects. The
+      second REST service is for managing the CDN feature of Cloud
+      Files and is identified by <code>cloudFilesCDN</code> in the
+      service catalog.</para>
+      <para>In the following sections, the purpose of each HTTP method
+      depends upon which service the call is made against. For
+      example, a &PUT; request against one of the
+        <code>cloudFiles</code> endpoints can be used to create a
+      container or upload an object, while a &PUT; request against the
+      one of the <code>cloufFilesCDN</code> endpoints is used to
+      CDN-enable a container.</para>
       <para>The language-specific APIs mask this system separation from
         the programmer. They simply create a container and mark it
         <emphasis>public</emphasis> and it handles calling out to
@@ -2167,9 +2189,9 @@
       </info>
       <para>The following section describes the REST API for
       interacting with the storage component of Cloud Files. All
-      requests will be directed to the host and URL described in the
-        <code>X-Storage-Url</code> HTTP header obtained during
-      successful authentication.</para>
+      requests will be directed to the host and endpoings described in
+      the <code>cloudFiles</code>  obtained during successful
+      authentication.</para>
       <para>The following are some requirements for the use of the storage services:</para>
       <itemizedlist>
         <listitem>
@@ -2292,9 +2314,9 @@
         <title>List Containers</title>
         <para> The container is the basic storage unit in Cloud Files.
           To view a list of the containers in your account, do a
-            <code>GET</code> request against your storage account URL
-            (<code>X-Storage-Url</code>). The list is limited to
-          10,000 containers at a time. See the below section, <xref
+            <code>GET</code> request against your storage account URL.
+          The list is limited to 10,000 containers at a time. See the
+          below section, <xref
             linkend="Controlling_a_Large_List_of_Containers-d1e107"
             xrefstyle="select:label quotedtitle nopage"/>, for
           information on limiting and navigating the list. A 200 (OK)
@@ -2685,9 +2707,40 @@
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </note>
             <example xml:id="Service-Catalog-Endpoints-d1e001">
-              <title>Multi-region Data Center Endpoints from the
-              Service Catalog</title>
+              <title>Example of Multi-region Data Center Endpoints
+              from the Service Catalog</title>
               <literallayout class="monospaced">
+
+{"name":"cloudFilesCDN",
+"endpoints":[
+   {
+     "region":"DFW",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"SYD",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://cdn4.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+      "region":"ORD",
+      "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+      "publicURL":"https://cdn2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"IAD",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://cdn5.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   },
+   {
+     "region":"HKG",
+     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
+     "publicURL":"https://cdn6.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
+   }
+],
+"type":"rax:object-cdn"},
+{"name":"cloudFiles",
 "endpoints":[
    {
      "region":"DFW",
@@ -2719,7 +2772,8 @@
      "publicURL":"https://storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
      "internalURL":"https://snet-storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
    }
-]</literallayout>
+],
+"type":"object-store"}</literallayout>
             </example>
           </section>
           <section xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580">
@@ -4436,10 +4490,11 @@ Transfer-Encoding: chunked
     <para>The following is a description of the API calls that can be
       used for the Content Delivery Network (CDN) account and
       container operations. All of the REST methods described below
-      must be issued against the CDN management service as defined in
-      the <code>X-CDN-Management-Url</code> header returned by
-      successfully authenticating your account. See the section on
-      authentication for more details. </para>
+      must be issued against the CDN management service as defined by
+      the endpoints in the service catalog under
+        <code>cloudFilesCDN</code>  after successfully authenticating
+      your account. See the section on authentication for more
+      details. </para>
     <section xml:id="CDN_Account_Operations-d1e2397">
       <title>CDN Account Services</title>
       <para>
@@ -4455,12 +4510,11 @@ Transfer-Encoding: chunked
       </example>
       <section xml:id="List_CDN-Enabled_Containers-d1e2414">
         <title>List CDN-Enabled Containers</title>
-        <para>&GET; operations against the
-            <code>X-CDN-Management-Url</code> for an account are
-          performed to retrieve a list of existing CDN-enabled
-          containers. Like the storage system’s &GET; container, the
-          CDN management service allows the following query
-          parameters:</para>
+        <para>&GET; operations against the <code>cloudFilesCDN</code>
+          endpoints for an account are performed to retrieve a list of
+          existing CDN-enabled containers. Like the storage system’s
+          &GET; container, the CDN management service allows the
+          following query parameters:</para>
         <variablelist>
           <title>Query Parameters</title>
           <varlistentry>
@@ -6071,6 +6125,64 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
       <para>This example uses the US-based URL
         https://identity.api.rackspacecloud.com/v2.0.</para>
       <example>
+        <title>cURL Authenticate Request with Username and API Key
+          Credentials and Response:JSON</title>
+        <screen language="bash">
+<command>curl -k -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d 
+'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"&lt;username>", "apiKey":"&lt;apikey>" } } }' -H 
+"Content-type: application/json" </command>
+ </screen>
+        <screen language="bash">
+   <computeroutput>{
+    "access": {
+        "serviceCatalog": [
+            {
+                "endpoints": [
+                    {
+                        "publicURL": "https://cdn1.clouddrive.com/v1/&lt;account_hash>",
+                        "region": "DFW",
+…
+                    },
+                    ...
+                ],
+                "name": "cloudFilesCDN",
+                "type": "rax:object-cdn"
+            },
+            {
+                "endpoints": [
+                    {
+                        "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/&lt;account_hash>",
+                        "publicURL": "https://storage101.dfw1.clouddrive.com/v1/&lt;account_hash>",
+                        "region": "DFW",
+…
+                    },
+
+                    ...
+                ],
+                "name": "cloudFiles",
+                "type": "object-store"
+            },
+            ...
+        ],
+        "token": {
+            "RAX-AUTH:authenticatedBy": [
+                "APIKEY"
+            ],
+            "expires": "2013-10-29T05:36:28.683-05:00",
+            "id": "&lt;auth_token>",
+        },
+        ...
+    }
+}
+
+
+
+</computeroutput></screen>
+      </example>
+        
+ <!-- <remark> 10282013 cyr this example use userid and password instead of userid and apikye </remark>       
+        
+      <example>
         <title>cURL Authenticate Request with Username and Password
           Credentials (v2.0) and Response:JSON</title>
         <screen language="bash">
@@ -6224,10 +6336,13 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
 }
 </computeroutput></screen>
       </example>
-        <para>The storage URL, CDN management URL, and authentication token are returned in the
-          headers of the response. After authentication, you can use cURL to perform
-          &GET;, &HEAD;, &DELETE;, &POST; and &PUT; requests on the storage and CDN
-          services.</para>
+      
+ -->     
+      
+        <para>The storage URL, CDN management URL, and authentication
+        token are returned in the response. After authentication, you
+        can use cURL to perform &GET;, &HEAD;, &DELETE;, &POST; and
+        &PUT; requests on the storage and CDN services.</para>
         <para>While an authentication token lasts, you can continue to
         perform requests. <phrase>However, once a token expires, it
           will return an HTTP error code 401 (Unauthorized). Given
@@ -6240,18 +6355,17 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         best scalable process flow would be:<orderedlist>
           <listitem>
             <para>Begin requests by going to
-              identity.api.rackspace.com for an
-                <code>X-Auth-Token</code>.</para>
+              identity.api.rackspace.com for an authentication token. </para>
           </listitem>
           <listitem>
-            <para>Send request <code>X-Storage-URL</code> using the
-                <code>X-Auth-Token</code> obtained in Step 1.</para>
+            <para>Send requests to the Cloud Files service access
+              endpoints and set the <code>X-Auth-Token</code> header
+              with the authentication token obtained in Step 1.</para>
           </listitem>
           <listitem>
-            <para>Repeat step 2 using the same
-                <code>X-Auth-Token</code> retrieved in Step 1 until
-              either the job finishes or you get a result code of 401
-              (Unauthorized). </para>
+            <para>Repeat step 2 using the same authentication token
+              retrieved in Step 1 until either the job finishes or you
+              get a result code of 401 (Unauthorized). </para>
           </listitem>
         </orderedlist><itemizedlist>
           <listitem>
@@ -6259,9 +6373,11 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
               expire with no further action.</para>
           </listitem>
           <listitem>
-            <para>If result code is 401 then send a request to
-              identity.api.rackspacecloud.com for a new
-                <code>X-Auth-Token</code>.</para>
+            <para>If result code is 401,  send a request to
+              identity.api.rackspacecloud.com to get a new
+              authentication token to use in the Cloud Files
+                <code>X-Auth-Token</code> header in your
+              request.</para>
           </listitem>
         </itemizedlist>A Python-based example of how to check for
         errors and re-authenticate upon receiving an error can be
