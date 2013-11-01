@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-10-25</pubdate>
+    <pubdate>2013-11-01</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -63,6 +63,32 @@
           (<abbrev>API</abbrev>).  </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2013-11-01</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Replaced references to <code>X-Storage-Url</code>
+                and <code>X-CDN -Management–Url</code> throughout this
+                document with references to the
+                  <code>cloudFiles</code> and
+                  <code>cloudFilesCDN</code> endpoints in the service
+                catalog based on use of Identity v2.0 rather than
+                Identity v1.0.</para>
+            </listitem>
+            <listitem>
+              <para>Updated <xref linkend="Authentication-d1e433"/> to
+                include new references to additional information about
+                the service access endpoints and the service catalog.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Updated <xref linkend="Authentication-d1e2929"/>
+                to show a cURL example for Identity v2.0 only.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-10-25</date>
         <revdescription>
@@ -2172,7 +2198,7 @@
         <title>Cloud Files System Interfaces</title>
         <mediaobject>
           <imageobject>
-            <imagedata scale="60" fileref="figures/CFinterfaces.svg"/>
+            <imagedata scale="60" fileref="figures/CFinterfaces.png"/>
           </imageobject>
         </mediaobject>
       </figure>
