@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate>2013-11-01</pubdate>
+    <pubdate/>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -63,6 +63,12 @@
           (<abbrev>API</abbrev>).  </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2013-11-07</date>
+        <revdescription>
+          <para>Started adding Nick Wagoner's revisions today</para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-11-01</date>
         <revdescription>
@@ -622,17 +628,19 @@
           <raxm:priority>1</raxm:priority>   
       </raxm:metadata> 
     </info>
-    <para>Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage
-      service offering. The core storage system is designed to provide a safe, secure, automatically
-      re-sizing and network-accessible way to store data. You can store an unlimited quantity of
-      files and each file can be as large as 5 gigabytes. Users can store as much as they want and
-      pay only for storage space they actually use.</para>
+    <para>Rackspace Cloud Files™ is an affordable, redundant,
+      scalable, and dynamic storage service offering. The core storage
+      system is designed to provide a secure, network-accessible way
+      to store data. You can store an unlimited number of files. Each
+      file can be as large as 5 gigabytes. You can store as much as
+      you want and pay only for storage space that you actually
+      use.</para>
     <para>Additionally, Cloud Files provides a simple yet powerful way to publish and distribute
       content behind a Content Distribution Network. Cloud Files users get access to this network
       automatically without having to worry about contracts, additional costs, or technical
       hurdles.</para>
     <para>Cloud Files allows users to store and retrieve files and
-      CDN-enabled content through a simple Web Service interface
+      CDN-enabled content through a simple Web Services interface
       (REST: Representational State Transfer). There are also
       language-specific APIs that utilize the RESTful API but make it
       much easier for developers to integrate into their
@@ -645,8 +653,9 @@
         xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
         >Best Practices for Using Cloud
         Files</link>. </para>
-    <para>We welcome feedback, comments, and bug reports at <link
-        xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>. </para>
+    <para>Rackspace welcomes feedback, comments, and bug reports at
+        <link xlink:href="mailto:support@rackspacecloud.com"
+        >support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
       <title>Intended Audience</title>
       <para>This guide is intended to assist software developers who
@@ -666,27 +675,25 @@
           <para>HTTP/1.1</para>
         </listitem>
       </itemizedlist>
-      <para>Rackspace also provides language-specific APIs in several
-        popular programming languages. Currently, the APIs are
-        C#/.NET, Java, PHP, Python, and Ruby. These APIs utilize the
-        REST API and are provided to help developers rapidly integrate
-        Cloud Files support into their applications without needing to
-        write to the REST interface. Each API includes its own
-        documentation in its native format. For example, the Java API
-        includes JavaDocs and the C#/.NET API includes a CHM
-        file.</para>
       <para>System administrators and other users interested in the
         storage and CDN benefits of Cloud Files should consider using
         the File Manager interface within the Rackspace Cloud Control
         Panel, <link xlink:href="http://www.jungledisk.com/">Jungle
           Disk</link>, or third party tools such as <link
           xlink:href="http://www.fireuploader.com/"
-          >Fileuploader</link> or  <link
+          >Fileuploader</link> or <link
           xlink:href="http://www.cyberduck.ch/">Cyberduck</link>. The
-        Control Panel provides an easy to use web-based interface for
-        uploading and downloading content to and from Cloud
-        Files.</para>
-      <para>For additional information about available language bindings, refer to the section, <link
+        Rackspace Cloud Control Panel provides an easy to use
+        web-based interface for uploading and downloading content to
+        and from Cloud Files.</para>
+      <para>Rackspace also provides language-specific APIs in several
+        popular programming languages. For customers who are
+        interested in accessing Cloud Files using one of the
+        language-specific API, refer to <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+            ><citetitle>Rackspace Cloud SDKs Software Development Kit
+            Guide</citetitle></link>. For information in this book
+        about language-specific APIs, refer to <link
           linkend="Language-Specific_API_Bindings-d1e574"
           >Language-Specific API Bindings</link>.</para>
     </section>
@@ -694,8 +701,8 @@
     <section xml:id="Document_Change_History-d1e141">
       <title>Document Change History</title>
       <para>This version of the Developer Guide replaces and obsoletes
-      all previous versions. The most recent changes are described in
-      the table below:</para>
+        all earlier versions. The most recent changes are described in
+        the table below:</para>
       <?rax revhistory?>
     </section>
     <section xml:id="Additional_Resources-d1e388">
@@ -704,50 +711,37 @@
         website at <link
           xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf">
           docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
-      <para>For more details about the Cloud Files service, please refer to <link
-        xlink:href="http://http://www.rackspace.com/cloud/files/"
-        >http://www.rackspace.com/cloud/files/</link>. Related documents are
-        available at the same site, as are links to official Rackspace support channels, including
-        knowledge base articles, forums, phone, chat, and email.</para>
-      <para>Language bindings are available. Each binding includes its own documentation (either HTML, PDF, or CHM). They also
-        include code snippets and examples to help you get started. The API bindings for Cloud Files are:</para>
-      <itemizedlist>
-        <listitem>
-          <para><link
-            xlink:href="http://docs.rackspace.com/sdks/guide/content/php.html">
-            PHP</link> (requires 5.x and the modules: cURL, FileInfo, mbstring)</para>
-        </listitem>
-        <listitem>
-          <para>
-            <link
-              xlink:href="http://docs.rackspace.com/sdks/guide/content/python.html">
-              Python</link> (requires 2.4 or newer)</para>
-        </listitem>
-        <listitem>
-          <para>
-            <link
-              xlink:href="http://docs.rackspace.com/sdks/guide/content/java.html">
-              Java</link> (requires JRE v1.5 or newer)</para>
-        </listitem>
-
-      </itemizedlist>
-      <para>For additional information about available language bindings, refer to <link linkend="Language-Specific_API_Bindings-d1e574">Language-Specific API Bindings</link>.</para>
+      <para>For more details about the Cloud Files service, please
+        refer to <link
+          xlink:href="http://http://www.rackspace.com/cloud/files/"
+          >http://www.rackspace.com/cloud/files/</link>. Related
+        documents are available at the same site, as are links to
+        official Rackspace support channels, including Knowledge
+        Center articles, forums, phone, chat, and email.</para>
+      <para>For information about the Rackspace language-specific APIs
+        that you can use for Cloud Files, refer to <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+            ><citetitle>Rackspace Cloud SDKs Software Development Kit
+            Guide</citetitle></link>. Each language-specific API
+        includes its own documentation (either HTML, PDF, or CHM)
+        including code snippets and examples to help you get started.
+        For information in this book about the language-specific APIs,
+        refer to <link linkend="Language-Specific_API_Bindings-d1e574"
+          >Language-Specific API Bindings</link>.</para>
     </section>
     
-    <section xml:id="Pricing_Service-d1e1402">
-      <title>Pricing and Service Level</title>
-      
-      <para>Cloud Files is part of the Rackspace Cloud and your use
-        through the API will be billed as per the pricing schedule at
-          <link
+    <section xml:id="Pricing_Service-d1e1402"><title>Pricing and
+        Service Level</title><para>Cloud Files is part of the
+        Rackspace Cloud and your use through the API will be billed
+        according to the pricing schedule at <link
           xlink:href="http://www.rackspace.com/cloud/public/files/pricing/"
-          > www.rackspace.com/cloud/public/files/pricing</link>. </para>
-        <para>The Service Level Agreement (SLA) for Cloud Files is
-        available at <link
+          > www.rackspace.com/cloud/public/files/pricing</link>.
+        </para><para>The Service Level Agreement (SLA) for Cloud Files
+        is available at <link
           xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files"
-          > http://www.rackspace.com/information/legal/cloud/sla?page=files</link>. </para>
-          
-  </section>
+          >
+          http://www.rackspace.com/information/legal/cloud/sla#files</link>.
+      </para></section>
     
   </chapter>
   <chapter xml:id="Concepts-d1e413">
@@ -767,19 +761,23 @@
       concepts listed below. </para>
     <section xml:id="Accounts-d1e421">
       <title>Accounts</title>
-      <para>The Cloud Files system is designed to be used by many different customers. Your user
-        account is your portion of the Cloud Files system. A user must identify themselves with
-        their Rackspace Cloud username and API Access Key and once authenticated, that user has full
-        read/write access to the files stored under that user account. Please visit <link xlink:href="https://cart.rackspace.com/cloud/?cp_id=cloud_files">http://www.rackspacecloud.com/signup</link> to obtain a Cloud Files account and enable
-        your API Access Key. </para>
+      <para>The Cloud Files system is designed to be used by many
+        different customers. Your user account is your portion of the
+        Cloud Files system. A user must identify themselves with their
+        Rackspace Cloud user name and API access key and once
+        authenticated, that user has full read/write access to the
+        files stored under that user account. Please visit <link
+          xlink:href="https://cart.rackspace.com/cloud/?cp_id=cloud_files"
+          >http://www.rackspacecloud.com/signup</link> to obtain a
+        Cloud Files account and enable your API access key. </para>
     </section>
     <section xml:id="Authentication-d1e433">
       <title>Authentication</title>
       <para><xref linkend="Authentication-d1e639"/> describes how to
-        authenticate against the Authentication service to receive
-        Cloud Files connection parameters and an authentication token.
-        The token must be passed in for all subsequent
-        container/object operations during the time it is valid. </para>
+        authenticate against the Rackspace Cloud Identity service to
+        receive Cloud Files connection parameters and an
+        authentication token. The token must be passed in for Cloud
+        Files operations during the time it is valid. </para>
       <para>See the following sections for more information:<itemizedlist>
           <listitem>
             <para><xref linkend="Service-Access-Endpoints-d1e003"/>
@@ -805,30 +803,41 @@
     </section>
     <section xml:id="Permissions-d1e448">
       <title>Permissions</title>
-      <para>In Cloud Files, each user has their own storage account and has full access to that
-        account. Users must authenticate with their credentials as described above, but once
-        authenticated they can create/delete containers and objects within that account. </para>
+      <para>In Cloud Files, you have your own storage account and has
+        full access to that account. You must authenticate with your
+        credentials as described in <xref
+          linkend="Authentication-d1e639"/>, but once authenticated
+        you can perform all Cloud Files operations within that
+        account. </para>
     </section>
     <section xml:id="Containers-d1e458">
       <title>Containers</title>
-      <para>A container is a storage compartment for your data and provides a way for you to
-        organize your data. You can think of a container as a folder in Windows® or a directory in
-        UNIX®. The primary difference between a container and these other file system concepts is
-        that containers cannot be nested. You can, however, create up to 500,000 containers
-        within your account. Data must be stored in a container so you must have at least one
-        container defined in your account prior to uploading data. If you expect to have containers
-        with millions of objects, we recommend organizing the object storage across multiple
+      <para>A container is a storage compartment that provides a way
+        for you to organize your data. You can think of a container as
+        a folder in Windows® or a directory in UNIX®. The primary
+        difference between a container and these other file system
+        concepts is that containers cannot be nested. You can,
+        however, create up to 500,000 containers within your account.
+        Data must be stored in a container so you must have at least
+        one container defined in your account prior to uploading data.
+        If you expect to have containers with millions of objects, we
+        recommend organizing the object storage across multiple
         containers.</para>
-      <para>The only restrictions on container names is that they cannot contain a forward slash
-          (<code>/</code>) and must be less than 256 bytes in length. Please note that the length
-        restriction applies to the name after it has been URL encoded. For example, a container name
-        of <code>Course Docs</code> would be URL encoded as <code>Course%20Docs</code> and therefore
-        be 13 bytes in length rather than the expected 11.</para>
-      <para>
-        You may create a container in either of our US data centers: ORD or DFW. However, in order
-        to lower your costs, you should create your most served containers in the same data center 
-        as your server. Otherwise, you will be billed for external bandwidth charges.
-      </para>
+      <para>The only restrictions on container names is that they
+        cannot contain a forward slash (<code>/</code>) and must be
+        less than 256 bytes in length. Note that the length
+        restriction applies to the name after it has been URL encoded.
+        For example, a container name of <code>Course Docs</code>
+        would be URL encoded as <code>Course%20Docs</code> and is 13
+        bytes in length rather than the expected 11.</para>
+      <para>You can create a container in any of our US data centers.
+        (See <xref linkend="Service-Access-Endpoints-d1e003"/> for a
+        list.) However, in order to lower your costs, you should
+        create your most served containers in the same data center as
+        your server. Otherwise, you will be billed for external
+        bandwidth charges. Note that this is true when computations
+        are performed on objects but is not true for static content
+        served to end users directly.</para>
     </section>
     <section xml:id="Objects-d1e479">
       <title>Objects</title>
@@ -857,47 +866,52 @@
       <para linkend="Operations-d1e509">Operations are the actions you
         perform within your account. Creating or deleting containers,
         uploading or downloading objects, and so on. The full list of
-        operations is documented in the REST API sections <xref
+        operations is documented in the REST API sections, <xref
           linkend="API_Operations_for_Storage_Services-d1e942"/> and
           <xref linkend="API_Operations_for_Storage_Services-d1e942"
         />. Operations may be performed through the REST web service
-        API or a language-specific API; currently, we support Python,
-        PHP, Java, Ruby, and C#/.NET.</para>
+        API or a language-specific AP. (See <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+            ><citetitle>Rackspace Cloud SDKs Software Development Kit
+            Guide</citetitle></link> for information about the
+        Rackspace language-specific APIs.)</para>
       <important>
         <para> All operations must include a valid authorization token. </para>
       </important>
     </section>
     <section xml:id="CDN-Enabled_Containers-d1e524">
-      <title>CDN-Enabled Containers</title>
-      <para>To publish data that is to be served by a Content
-        Distribution Network (CDN), containers are publicly accessible
-        and do not require an authentication token for read access.
-        Uploading content into a CDN-enabled container is a secure
-        operation and requires a valid authentication token.</para>
-      <para>Each CDN-enabled container has a unique Uniform Resource Locator (URL) that can be
-        combined with its object names and openly distributed in web pages, emails, or other
-        applications.</para>
-      <para>For example, a CDN-enabled container named <code>photos</code> might be referenced as
-        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com</code>. 
-        If that container houses a screenshot called
-          <code>wow1.jpg</code>, then that image can be served by a CDN with the full URL of
-        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/wow1.jpg</code>. 
-        </para>
+      <title>CDN-enabled Containers</title>
+      <para>CDN-enabled containers serve content through Akamai's
+        content delivery network (CDN). CDN-enabled containers are
+        publicly accessible for read access, so they do not require an
+        authorization token for read access. However, uploading
+        content into a CDN-enabled container is a secure operation and
+        requires a valid authentication token.</para>
+      <para>Each CDN-enabled container has a unique URL that can be
+        combined with its object names and openly distributed in web
+        pages, emails, or other applications.</para>
+      <para>For example, a CDN-enabled container named
+          <code>photos</code> might be referenced as
+          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
+          r10.cf1.rackcdn.com</code>. If that container houses a
+        screenshot called <code>wow1.jpg</code>, that image can be
+        served by a CDN with the full URL of
+          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/wow1.jpg</code>. </para>
       <para>This URL can be embedded in HTML pages, email messages,
-        blog posts, and so on. When that URL is accessed, a copy of
-        that image is fetched from the Cloud Files storage system and
-        cached in a CDN and served from there for all subsequent
-        requests for a configurable cache time to live (TTL) value.
-        Setting the TTL of a CDN-enabled container translates to
-        setting the <code>Expires</code> and
-          <code>Cache-Control</code> HTTP headers. Cloud Files
-        continues to serve content through the CDN until it receives a
-        delete request, although extremely long TTL values do not
-        guarantee that an object is served from a CDN edge location.
-        When the TTL expires, the CDN checks Cloud Files to ensure
-        that it has the most up-to-date content. A purge request
-        forces the CDN to check with Cloud Files for the most
-        up-to-date version of the file. </para>
+        blog posts, and so on. The first time that URL is accessed, a
+        copy of that image is fetched from the Cloud Files storage
+        system. The copy is cached in a CDN and served from there for
+        all subsequent requests for a configurable cache time to live
+        (TTL) value. Setting the TTL of a CDN-enabled container
+        translates to setting the <code>Expires</code> and
+          <code>Cache-Control</code> HTTP headers. Note that extremely
+        long TTL values do not guarantee that an object is served from
+        a CDN edge location. When the TTL expires, the CDN checks
+        Cloud Files to ensure that it has the most up-to-date content.
+        A purge request forces the CDN to check with Cloud Files for
+        the most up-to-date version of the file. </para>
+      <para>Cloud Files continues to serve content through the CDN
+        until it receives a delete request.</para>
       <note>
         <para>For more information about TTL, including its default,
           minimum, and maximum values, see <xref
@@ -916,31 +930,33 @@
         the storage service.</para>
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
-      <title>Language-Specific API Bindings</title>
-      <para>A set of API bindings in several popular languages are
+      <title>Language-Specific APIs </title>
+      <para>Language-specific APIs in several popular languages are
         available to help put Cloud Files in the hands of developers.
-        These bindings provide a layer of abstraction on top of the
-        base REST API, allowing programmers to work with a container
-        and object model instead of working directly with HTTP
-        requests and responses. The bindings are free (as in beer and
-        as in speech) to download, use, and modify. They are all
-        licensed under the MIT License as described in the COPYING
-        file packaged with each binding. If you make any improvements
-        to an API, you are encouraged (but not required) to submit
-        those changes back to us.</para>
-      <para> The API bindings are hosted at <link
+        These language-specific APIs provide a layer of abstraction on
+        top of the base REST API, allowing programmers to work with a
+        container and object model instead of working directly with
+        HTTP requests and responses. The language-specific APIs are
+        free to download, use, and modify. They are licensed under the
+        MIT license as described in the COPYING file packaged with
+        each API. If you make any improvements to an API, you are
+        encouraged (but not required) to submit those changes back to
+        Rackspace.</para>
+      <para>Detailed information about the language-specific APIs is
+        in the <link
           xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
-          > docs.rackspace.com/sdks/guide/content/intro.html</link>.
-        If you have changes you would like to see in the Cloud Files
-        bindings, email them to <link
+          ><citetitle>Rackspace Cloud SDKs Software Development Kit
+            Guide</citetitle></link>.
+        If you have changes that you would like to see in the Cloud
+        File language-specific APIs, email them to <link
           xlink:href="mailto:cloudfiles@rackspacecloud.com"
           >cloudfiles@rackspacecloud.com</link>. Make sure to indicate
-        which language and version you modified and send us a unified
+        which language and version you modified and send a unified
         diff. </para>
-      <para>
-        Each binding includes its own documentation (in HTML, PDF, or CHM format). They also
-        include code snippets and examples to help you get started. The API
-        bindings for Cloud Files are:</para>      
+      <para> Each language-specific API has its own documentation (in
+        HTML, PDF, or CHM format) includeing code snippets and
+        examples to help you get started. </para>
+<!-- CYR: 11-07-2013 Removing list of specific language because this are out of date. Providing the link above to the SDKs intro will get customers to the latest information.      
       <itemizedlist>
         <listitem>
           <para><link
@@ -959,6 +975,7 @@
               xlink:href="http://docs.rackspace.com/sdks/guide/content/java.html">
               Java</link> (requires JRE v1.5 or newer)</para>
         </listitem>
+-->      
  <!-- Removing these as of 2-01-13, per Ed Leafe of the Developer Relations Group. These
    are the older bindings and they are actively getting releases for Ruby and .Net.
    <listitem>
@@ -972,11 +989,13 @@
             xlink:href="https://github.com/rackspace/ruby-cloudfiles">
             Ruby</link> (requires 1.8 or newer and mime-tools module)</para>
         </listitem>
-        -->
+        
       </itemizedlist>
-      <para>There are no other language-specific bindings at this time. You are welcome to
-        create your own language API bindings and we will help answer any questions during
-        development, host your code if you like, and give you full credit for your work.</para>
+-->     
+      <para>You are welcome to create your own language-specific APIs.
+        Rackspace will help answer any questions during development,
+        host your code if you like, and give you full credit for your
+        work.</para>
     </section>
   </chapter>
 
@@ -999,7 +1018,7 @@
         of a specific authorization token, supplied by the
           <code>X-Auth-Token</code> HTTP header. Customers obtain this
         token by first using the Rackspace Cloud Authentication
-        Service and supplying a valid username and API access key. </para>
+        Service and supplying a valid user name and API access key. </para>
       <section xml:id="Geographic_Endpoints"
         xmlns:m="http://www.w3.org/1998/Math/MathML">
         <title>Geographic Endpoints</title>
@@ -1105,8 +1124,8 @@
         </example>
         <calloutlist>
           <callout arearefs="credentials.xml.user">
-            <para> The username supplied here is your common Rackspace
-              Cloud username. </para>
+            <para> The <code>username</code> supplied here is your
+              common Rackspace Cloud user name. </para>
           </callout>
           <callout arearefs="credentials.xml.key">
             <para> The key is your API access key. The key can be
@@ -2154,16 +2173,20 @@
         </listitem>
       </itemizedlist>
       <para>Container and object names should be properly URL-encoded
-        prior to interacting with the REST interface (the language
-        APIs handle URL encoding/decoding) and the container and
-        object names must be UTF-8 encoded. The length restrictions
-        should be checked against the URL-encoded string.</para>
-      <para>Each REST request against the Cloud Files system requires
-        the inclusion of a specific <firstterm>authorization
-          token</firstterm> HTTP header defined as
+      prior to interacting with the REST interface and the container
+      and object names must be UTF-8 encoded. The length restrictions
+      should be checked against the URL-encoded string.</para>
+    <note>
+      <para>The language-specific APIs handle URL encoding and
+        decoding.</para>
+    </note>
+      <para>Each REST request against Cloud Files requires the
+      inclusion of an authorization token in the HTTP header
         <code>X-Auth-Token</code>. Clients obtain this token, along
-        with the Cloud Files URLs, by first using the Authentication
-        service and supplying a valid Username and API Access Key. </para>
+      with the Cloud Files URLs, by first using the Authentication
+      service and supplying a valid user name and API access key. For
+      more information, see <xref linkend="Authentication-d1e639"
+      />.</para>
       <para>There are actually two different sets of REST services
       that make up the full Cloud Files product. The first REST
       service identified with <code>cloudFiles</code> in the service
@@ -2180,11 +2203,10 @@
       container or upload an object, while a &PUT; request against the
       one of the <code>cloufFilesCDN</code> endpoints is used to
       CDN-enable a container.</para>
-      <para>The language-specific APIs mask this system separation from
-        the programmer. They simply create a container and mark it
-        <emphasis>public</emphasis> and it handles calling out to
-        the appropriate back-end services using the appropriate REST
-        API.</para>
+      <para>The language-specific APIs mask this system separation
+      from the programmer. They simply create a container and mark it
+        <emphasis>public</emphasis>, calling the appropriate back-end
+      services by using the appropriate REST APIs.</para>
       <note>
         <para>All requests to authenticate and operate against Cloud Files are performed using SSL
           over HTTP (HTTPS) on TCP port 443.</para>
@@ -2193,7 +2215,12 @@
       <para>The following diagram illustrates the various system interfaces and the ease with which
         content can be distributed over the CDN. The process is simple: authenticate, create a
         container, upload objects, mark the container as public, and begin serving that content from a
-        powerful CDN.</para>  
+        powerful CDN.</para>
+    <note>
+      <para>Marking the container as public simply means enabling the
+        container to be distributed over the CDN. A CDN-enabled
+        container is publicly accessible. </para>
+    </note>  
       <figure xml:id="CFinterfaces">
         <title>Cloud Files System Interfaces</title>
         <mediaobject>
@@ -2214,9 +2241,9 @@
         </raxm:metadata> 
       </info>
       <para>The following section describes the REST API for
-      interacting with the storage component of Cloud Files. All
-      requests will be directed to the host and endpoints described in
-      the <code>cloudFiles</code> obtained during successful
+      interacting with the Cloud Files storage component. All requests
+      will be directed to the host and endpoints described in the
+        <code>cloudFiles</code> obtained during successful
       authentication.</para>
       <para>The following are some requirements for the use of the storage services:</para>
       <itemizedlist>
@@ -6592,32 +6619,52 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <para>The Cloud Files system is designed to be used by many
           different customers. Your user account is your slice of the
           Cloud Files system. A user must identify themselves with a
-          valid Username and their API Access Key. Once authenticated,
-          that user has full read/write access to the Objects (files)
-          stored under that user account.</para>
+          valid user name and their API access key. Once
+          authenticated, that user has full read/write access to the
+          Objects (files) stored under that user account.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Authentication</glossterm>
+      <glossdef>
+        <para>Authentication requires getting an authentication token
+          by using the Rackspace Cloud Identity service. While the
+          authentication token is valid (which in most cases is 24
+          hours), you must pass it  to Cloud Files to perform all
+          Cloud Files operations.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>CDN-enabled containers</glossterm>
       <glossdef>
         <para>To publish your data so that it can be served by
-          Akamai's Content Distribution Network (CDN), you need to
+          Akamai's content delivery network (CDN), you need to
           “publish to CDN” the container that houses that data. When a
           container is published any files will be publicly accessible
           and not require an authentication token for read access.
           Uploading content into a CDN-enabled container is a secure
           operation and will require a valid authentication token.
-          Each published container has a unique Uniform Resource
-          Locator (URL) that can be combined with its object name and
-          openly distributed in web pages, emails, or other
-          applications. </para>
+          Each published container has a unique URL that can be
+          combined with its object name and openly distributed in web
+          pages, emails, or other applications. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Container</glossterm>
       <glossdef>
-        <para>A storage compartment for your data that provides a way
-          for you to organize that data.</para>
+        <para>A storage compartment that provides a way for you to
+          organize data.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Language-specific API</glossterm>
+      <glossdef>
+        <para>Language-specific APIs in several popular languages are
+          available to help put Cloud Files in the hands of
+          developers. These APIs provide a layer of abstraction on top
+          of the base REST API, allowing programmers to work with a
+          container and object model instead of working directly with
+          HTTP requests and responses. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -6643,8 +6690,8 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
       <glossdef>
         <para>There are no permissions or access-controls around
           containers or objects other than being split into separate
-          accounts. Users must authenticate with a valid API Access
-          Key, but once authenticated they can create/delete
+          accounts. Users must authenticate with a valid API access
+          key, but once authenticated they can create/delete
           containers and objects only within that account. </para>
       </glossdef>
     </glossentry>
