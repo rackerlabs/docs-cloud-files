@@ -2215,8 +2215,8 @@
       </info>
       <para>The following section describes the REST API for
       interacting with the storage component of Cloud Files. All
-      requests will be directed to the host and endpoings described in
-      the <code>cloudFiles</code>  obtained during successful
+      requests will be directed to the host and endpoints described in
+      the <code>cloudFiles</code> obtained during successful
       authentication.</para>
       <para>The following are some requirements for the use of the storage services:</para>
       <itemizedlist>
