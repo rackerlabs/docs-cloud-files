@@ -64,9 +64,22 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-11-07</date>
+        <date>2013-11-22</date>
         <revdescription>
-          <para>Started adding Nick Wagoner's revisions today</para>
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para>Added service catalog information for
+                    <code>cloudfilesCDN</code> endpoints (<xref
+                    linkend="cloudfileCDN-service-catalog-de100"
+                  />).</para>
+              </listitem>
+              <listitem>
+                <para>Made miscellaneous updates throughout this book
+                  to improve wording and consistency.</para>
+              </listitem>
+            </itemizedlist>
+          </para>
         </revdescription>
       </revision>
       <revision>
@@ -112,7 +125,7 @@
             </listitem>
             <listitem>
               <para>Updated <xref linkend="Authentication-d1e639"/> to
-                show information for Rackspace Identitfy v2.0.</para>
+                show information for Rackspace Identity v2.0.</para>
             </listitem>
             <listitem>
               <para>Updated <xref linkend="Create_the_Form-d1a777"/>
@@ -811,7 +824,7 @@
       </note>
     </section>
     <section xml:id="Permissions-d1e448">
-      <title>Permissions</title>
+      <title>Permissions </title>
       <para>In Cloud Files, you have your own storage account and has
         full access to that account. You must authenticate with your
         credentials as described in <xref
@@ -911,7 +924,8 @@
           r10.cf1.rackcdn.com</code>. If that container houses a
         screenshot called <code>wow1.jpg</code>, that image can be
         served by a CDN with the full URL of
-          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/wow1.jpg</code>. </para>
+          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.
+            rackcdn.com/wow1.jpg</code>. </para>
       <para>This URL can be embedded in items like HTML pages, email
         messages, or blog posts. The first time that URL is accessed,
         a copy of that image is fetched from the Cloud Files storage
@@ -926,7 +940,7 @@
         A purge request forces the CDN to check with Cloud Files for
         the most up-to-date version of the file. </para>
       <para>Cloud Files continues to serve content through the CDN
-        until it receives a delete request.</para>
+        until it receives a delete request. </para>
       <note>
         <para>For more information about TTL, including its default,
           minimum, and maximum values, see <xref
@@ -969,8 +983,8 @@
         which language and version you modified and send a unified
         diff. </para>
       <para> Each language-specific API has its own documentation (in
-        HTML, PDF, or CHM format) includeing code snippets and
-        examples to help you get started. </para>
+        HTML, PDF, or CHM format) including code snippets and examples
+        to help you get started. </para>
 <!-- CYR: 11-07-2013 Removing list of specific language because this are out of date. Providing the link above to the SDKs intro will get customers to the latest information.      
       <itemizedlist>
         <listitem>
@@ -1089,11 +1103,11 @@
             </tr>
           </tbody>
         </informaltable>
-        <simpara> Normal Response Code(s):
+        <simpara> Normal Status Code(s):
             <returnvalue>200</returnvalue>,
             <returnvalue>203</returnvalue>
         </simpara>
-        <simpara> Error Response Code(s): unauthorized
+        <simpara> Error Status Code(s): unauthorized
             (<errorcode>401</errorcode>), userDisabled
             (<errorcode>403</errorcode>), badRequest
             (<errorcode>400</errorcode>), authFault
@@ -2225,7 +2239,6 @@
         <para>All requests to authenticate and operate against Cloud Files are performed using SSL
           over HTTP (HTTPS) on TCP port 443.</para>
       </note>
-      <?hard-pagebreak?>
       <para>The following diagram illustrates the various system interfaces and the ease with which
         content can be distributed over the CDN. The process is simple: authenticate, create a
         container, upload objects, mark the container as public, and begin serving that content from a
@@ -3089,14 +3102,14 @@
         <para>The query parameters that you can use where
             [<code>?parm=value]</code> is shown in the example below
           are:</para>
-        <table frame="void">
+        <table rules="all">
           <caption>List Objects Query Parameters</caption>
           <col width="30%"/>
           <col width="70%"/>
           <thead>
             <tr>
               <th>Parameter</th>
-              <th>Descrption</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -4277,7 +4290,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
 </programlisting></para>
         <para>With both of these methods, the destination container
           must exist before attempting the copy.</para>
-        <para>The response code for a successful object copy is 201
+        <para>The status code for a successful object copy is 201
           (Created). </para>
         <para>
           <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->
@@ -4384,12 +4397,12 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             response clarity -- dsh 2012-03-07</remark> Note that the
           &HEAD; return code for an object is different than that of a
           container. &HEAD; requests do not return a message body in
-          the response, so a 2xx response code  denotes success. When
-          a &HEAD; request is performed against the container, it
+          the response, so a 2xx status code denotes success. When a
+          &HEAD; request is performed against the container, it
           queries the container databases, and it does not retrieve
           the content from them. Thus this returns the 204 (No
-          Content) response code. However, when a &HEAD; request is
-          performed against the object, it returns a 200 OK response
+          Content) status code. However, when a &HEAD; request is
+          performed against the object, it returns a 200 OK status
           code because it can view the content. </para>
         <example>
           <?dbfo keep-together="always"?>
@@ -4581,7 +4594,7 @@ Transfer-Encoding: chunked
             response is returned. </para>
           <para>If all valid files were uploaded successfully, the
             response status will be a 201 Created. If any files failed
-            to be created, the response code corresponds to the
+            to be created, the status code corresponds to the
             subrequest's error. Possible codes are 400, 401, and 502.
             In both cases, the response body specifies the number of
             files successfully uploaded and a list of the files that
@@ -4590,12 +4603,12 @@ Transfer-Encoding: chunked
           <section xml:id="Bulk_Delete-d1e2338">
           <title>Bulk Delete</title>
           <para>Bulk Delete request deletes multiple objects or
-            containers from an account with a single request. It
-            responds to <command>DELETE</command> requests with query
-            parameter <code>?bulk-delete set</code>. The
+            containers from an account with a single request. A Bulk
+            Delete request is a <command>DELETE</command> request with
+            the query parameter <code>?bulk-delete set</code>. The
               <code>Content-Type</code> header of the request, if set,
             must be set to <code>text/plain</code>. The body of the
-              <command>DELETE</command> requestis a newline-separated
+              <command>DELETE</command> request a newline-separated
             list of URL-encoded objects to delete. You can delete
             10,000 objects per request. The objects specified in the
               <command>DELETE</command> request body must be
@@ -4660,15 +4673,15 @@ Transfer-Encoding: chunked
 </programlisting>
           </example>
           <para>If all items were successfully deleted (or did not
-            exist), the response code will be a 200 OK. If any failed
-            to delete, the response code corresponds to the
-            subrequest's error. Possible codes are 400, 401, and 502.
-            In all cases, the <code>Response Body</code> specifies the
-            number of items successfully deleted or not found as well
-            as a list of those that failed. The return body is
-            formatted in the way specified in the request's
-              <code>Accept</code> header. Acceptable formats are
-              <code>text/plain</code>, <code>application/json</code>,
+            exist), the status code is 200 OK. If any failed to
+            delete, the status code corresponds to the subrequest's
+            error. Possible codes are 400, 401, and 502. In all cases,
+            the <code>Response Body</code> specifies the number of
+            items successfully deleted or not found as well as a list
+            of those that failed. The return body is formatted in the
+            way specified in the request's <code>Accept</code> header.
+            Acceptable formats are <code>text/plain</code>,
+              <code>application/json</code>,
               <code>application/xml</code>, and <code>text/xml</code>. </para>
  <!-- <remark>cyr addition in response to Disqus comment - information from David Goetz </remark>          
           <note>
@@ -5009,7 +5022,7 @@ Transfer-Encoding: chunked
               (<code>cdn, cdn1, cdn2, or cdn3</code>). </para>
         </note>
         <example xml:id="cloudfileCDN-service-catalog-de100">
-          <title>cloudfilesCDN Section of Service Catatlog</title>
+          <title>cloudfilesCDN Section of the Service Catalog</title>
         
         <programlisting>
   "access": {
@@ -5641,7 +5654,7 @@ i))) != null;
 curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: XXX" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/        
   </programlisting>
         </example>
-               <para>After your container has an indel page set and
+               <para>After your container has an index page set and
           your domain host has your CNAME recorded, your static
           website is ready. </para>
         <example>
@@ -5823,8 +5836,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: XXX" 
            </programlisting>
         <para> If you do not provide users with the exact TempURL,
           they get a 401 (Unauthorized) status code. &HEAD; queries
-          are allowed if &GET; or &PUT; are allowed. </para>
-<?hard-pagebreak?>          
+          are allowed if &GET; or &PUT; are allowed. </para>        
           <example >
             <title>Create TempURL (in PHP)</title>
           <programlisting>
@@ -6077,24 +6089,24 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         objects. CORS metadata is held on the container only. The
         values given apply to the container itself and all objects
         within it.</para>
-      <?hard-pagebreak?>    
+   
       <para>The following table lists the supported headers. </para>
       <para>
         <table rules="all" width="500">
           <caption>Supported CORS Container Headers</caption>
           <tbody>
             <tr>
-              <td>X-Container-Meta-Access-Control-Allow-Origin</td>
+              <td><code>X-Container-Meta-Access-Control-Allow-Origin</code></td>
               <td>Origins allowed to make Cross Origin requests,
                 separated by a space when there are multiples. </td>
             </tr>
             <tr>
-              <td>X-Container-Meta-Access-Control-Max-Age</td>
+              <td><code>X-Container-Meta-Access-Control-Max-Age</code></td>
               <td>Maximum age for the Origin to hold the preflight
                 results, in seconds (for example, 5, 10, or 1000). </td>
             </tr>
             <tr>
-              <td>X-Container-Meta-Access-Control-Expose-Headers</td>
+              <td><code>X-Container-Meta-Access-Control-Expose-Headers</code></td>
               <td>Headers exposed to the browser in the actual request
                 response, separated by a space when there are
                 multiples. </td>
