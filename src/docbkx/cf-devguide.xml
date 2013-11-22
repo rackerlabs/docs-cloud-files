@@ -75,7 +75,7 @@
           <itemizedlist>
             <listitem>
               <para>Replaced references to <code>X-Storage-Url</code>
-                and <code>X-CDN -Management–Url</code> throughout this
+                and <code>X-Cdn-Management–Url</code> throughout this
                 document with references to the
                   <code>cloudFiles</code> and
                   <code>cloudFilesCDN</code> endpoints in the service
@@ -148,7 +148,7 @@
             </listitem>
             <listitem>
               <para>Added <code>X-Container-Meta-Web-Listings</code>,
-                  <code>X-Container-Meta-Web-Listings-CSS</code>, and
+                  <code>X-Container-Meta-Web-Listings-Css</code>, and
                   <code>X-Container-Meta-Web-Directory-Type</code> to
                   <xref linkend="Create_Static_Website-dle4000"
                 />.</para>
@@ -201,8 +201,9 @@
                   <xref
                   linkend="Purge_CDN-Enabled_Containers_or_Objects-d1e2747"
                 />, added a note about removing a CDN-enabled
-                container by setting <code>X-CDN-Enabled</code> to
-                False in HEAD.</para>
+                container by setting <code>X-Cdn-Enabled</code> to
+                  <code>False</code> in
+                <command>HEAD</command>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -466,7 +467,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>In the 6.1.1 Authorization example, changed X-Auth-Token to X-Auth-Key.</para>
+              <para>In the 6.1.1 Authorization example, changed
+                  <code>X-Auth-Token</code> to
+                <code>X-Auth-Key</code>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -563,7 +566,8 @@
               <para>Updated CDN URLs to match new format.</para>
             </listitem>
             <listitem>
-              <para>Fixed error referring to X-Auth-User instead of X-Auth-Key.  </para>
+              <para>Fixed error referring to <code>X-Auth-User</code>
+                instead of <code>X-Auth-Key</code>. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -578,9 +582,9 @@
               </para>
             </listitem>
             <listitem>
-              <para> 
-                Fixed error in examples referring to X-Auth-Key where it should be X-Auth-Token.
-              </para>
+              <para> Fixed error in examples referring to
+                  <code>X-Auth-Key</code> where it should be
+                  <code>X-Auth-Token</code>. </para>
             </listitem>
             <listitem>
               <para>
@@ -1508,7 +1512,7 @@
         <title>Response</title>     
         <para>When you successfully authenticate your session, an HTTP status 204 (No Content) 
           is returned with the
-          <code>X-Storage-Url</code>, <code>X-CDN-Management-Url</code>, and
+          <code>X-Storage-Url</code>, <code>X-Cdn-Management-Url</code>, and
           <code>X-Auth-Token</code> headers. The headers can be processed as is, and any 2xx response 
           is a good response. 
           <phrase>
@@ -1534,7 +1538,7 @@
   Content-Type: text/plain; charset=UTF-8
               </literallayout>
         </example>
-        <para>You use the <code>X-Storage-Url</code> and <code>X-CDN-Management-Url</code>
+        <para>You use the <code>X-Storage-Url</code> and <code>X-Cdn-Management-Url</code>
           headers when you perform operations on your Cloud Files account. From the example response 
           above, users connecting to Cloud Files use the host header <code>storage.clouddrive.com</code>;
           the sample account name is <code>CF_xer7_34</code>. Auth tokens are valid for a 24 hours. 
@@ -2289,10 +2293,9 @@
     </itemizedlist>
       <section xml:id="Storage_Account_Services-d1e1555">
       <title>Storage Account Services</title>
-      <para>The following operations can be performed at the account
-        level of the URL. The example shows the general structure for
-        the requests, ending with the Cloud Files account
-        string.</para>
+      <para>You perform the following operations at the account level.
+        The example shows the general structure for the requests,
+        ending with the Cloud Files account string.</para>
       <example>
         <title>Storage Account HTTP Request: General Structure</title>
         <programlisting>
@@ -2322,10 +2325,11 @@
                 <mathphrase><emphasis>x</emphasis></mathphrase>
               </inlineequation>, returns container names greater than
               the specified marker. Only strings using UTF-8 encoding
-              are valid.
-              <!--  Note re: UTF / 8 for transparency JI/RA DOC-98 dsh 02-03-12 --></para>
+              are valid.   </para>
           </listitem>
         </varlistentry>
+<!--02-03-12 dsh: Note re: UTF / 8 for transparency JIRA DOC-98
+-->          
         <varlistentry>
           <term><code>end_marker</code></term>
           <listitem>
@@ -2387,7 +2391,7 @@
         <section xml:id="List_containers-d1e121">
         <title>List Containers</title>
         <para> The container is the basic storage unit in Cloud Files.
-          To view a list of the containers in your account, do a
+          To view a list of the containers in your account, perform a
             <code>GET</code> request against your storage account URL.
           The list is limited to 10,000 containers at a time. See the
           below section, <xref
@@ -2425,13 +2429,13 @@
         </example>
           <section xml:id="Format_Container_List-d1e124">
           <title>Format Container List</title>
-          <para>If <code>?format=xml</code> or
-              <code>?format=json</code> is appended to the storage
+          <para>If you append <code>?format=xml</code> or
+              <code>?format=json</code> query parameter to the storage
             account URL, the service returns container information
-            serialized in the chosen format. To format your results,
-            the formatting parameter must be written before any other
-            parameters. The sample responses below are formatted for
-            readability.</para>
+            serialized in the specified format. To format your
+            results, you must place this query parameter before any
+            other parameters. The sample responses below are formatted
+            for readability.</para>
           <example>
             <title>Container Details Request: JSON</title>
             <programlisting>
@@ -2581,6 +2585,8 @@
         amount of information displayed. </para>
           <variablelist>
             <title>Query Parameters</title>
+        <para>All query parameters must be send using UTF-8
+          encoding.</para>
             <varlistentry>
               <term><code>limit</code></term>
               <listitem>
@@ -2597,8 +2603,7 @@
                 <para>Given a string <inlineequation>
                 <mathphrase><emphasis>x</emphasis></mathphrase>
               </inlineequation>, returns object names greater than the
-              specified marker. Only strings using UTF-8 encoding are
-              valid. </para>
+              specified marker.  </para>
               </listitem>
             </varlistentry>
             <varlistentry>
@@ -2607,8 +2612,7 @@
                 <para>Given a string <inlineequation>
                 <mathphrase><emphasis>x</emphasis></mathphrase>
               </inlineequation>, returns object names less than the
-              specified end marker. Only strings using UTF-8 encoding
-              are valid. </para>
+              specified end marker.  </para>
               </listitem>
             </varlistentry>
             <varlistentry>
@@ -2634,8 +2638,13 @@
               <listitem>
                 <para>For a character <inlineequation>
                 <mathphrase><emphasis>c</emphasis></mathphrase>
-              </inlineequation>, returns all the object names nested
-              in the container.</para>
+              </inlineequation>, returns the pseudo directory
+              structure, using c as the nesting character (by
+              convention, most use “/” to indicate a pseudo
+              directory). For more information on pseudo directories,
+              view <xref
+                linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
+              />. </para>
               </listitem>
             </varlistentry>
           </variablelist>
@@ -2650,15 +2659,15 @@
           request against the container's URL. To set and edit your
           custom metadata, see <xref
             linkend="Update_Container_Metadata-d1e1900"
-            xrefstyle="select:label quotedtitle nopage"/>. A 204 (No
-          Content) code returns and there is no information in the
-          response body. </para>
+            xrefstyle="select:label quotedtitle nopage"/>. </para>
+        <para>A 204 (No Content) code returns and there is no
+          information in the response body. </para>
           <example>
             <title>View Container Details Request</title>
           <programlisting>
   HEAD /v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c/MobyDick?format=json
   Accept-Encoding: gzip
-  x-Auth-Token: be221903-f12a-469f-b16c-48106ff22ebe
+  X-Auth-Token: be221903-f12a-469f-b16c-48106ff22ebe
 </programlisting>
           </example>
           <example>
@@ -2686,8 +2695,9 @@
           <para>&PUT; operations against a storage container are used
           to create that container. You can create up to 500,000
           containers in your Cloud Files account.</para>
-          <para>Containers are storage compartments for your data. The URL encoded name must be less
-            than 256 bytes and cannot contain a forward slash '/' character.</para>
+          <para>Containers are storage compartments for your data. The
+          URL-encoded name must be less than 256 bytes and cannot
+          contain a forward slash '/' character.</para>
           <para>Containers can be assigned custom metadata by
           including additional HTTP headers on the &PUT; request. The
           custom metadata is assigned to a container through HTTP
@@ -2991,16 +3001,15 @@
   Content-Type: text/plain; charset=UTF-8
 </programlisting>
           </example>
+        <para/>
         </section>
-        
-        <!-- ******** -->
         
         <section xml:id="Update_Container_Metadata-d1e1900">
           <title>Set or Edit Container Metadata</title>
           <para> You can set custom metadata headers for a container.
           They must, however, take the format
-            <code>X-Container-Meta-XXXX</code>, where XXXX is the name
-          of your custom metadata. </para>
+            <code>X-Container-Meta-XXXX</code>, where
+            <code>XXXX</code> is the name of your custom metadata. </para>
           <para> To set or edit container metadata, perform  a &POST;
           request to the container URL. Subsequent &POST;s to the
           header using the same metadata name overwrite the previous
@@ -3010,10 +3019,11 @@
           metadata in your &HEAD; request. </para>
           <para> To remove previously-set container metadata, perform
           a &POST; request to the container with
-            <code>X-Remove-Container-Meta-XXXX: foo</code>, where XXXX
-          is the name of your custom header. Foo can be any term, and
-          it will not be used. However,  you must send a value with
-          the request, or otherwise, it will be ignored. </para>
+            <code>X-Remove-Container-Meta-XXXX: foo</code>, where
+            <code>XXXX</code> is the name of your custom header.
+            <code>Foo</code> can be any term, and it will not be used.
+          However, you must send a value with the request, or
+          otherwise, it will be ignored. </para>
           <example>
             <title>Update Container Metadata Request</title>
           <programlisting>
@@ -3170,8 +3180,8 @@
           />. </para>
           <section xml:id="Serialized_List_Output-d1e1460">
             <title>Format Object List</title>
-            <para>If <code>?format=xml</code> or
-              <code>?format=json</code> is appended to the storage
+            <para>If you append <code>?format=xml</code> or
+              <code>?format=json</code> query parameter to the storage
             account URL, the service returns additional object
             information in the specified format. The status codes are
             the same when using <code>?format=xml</code> or
@@ -3331,21 +3341,17 @@
         <para>Any object PUT operations that exceed the quotas return
           a 413 response (request entity too large) with a descriptive
           body.</para>
-        <para>Quotas are subject to the following limitations: </para>
-        <itemizedlist>
-          <listitem>
-            <para>Eventual consistency</para>
-          </listitem>
-          <listitem>
-            <para>Timeliness of the cached container_info (60 second
-              TTL by default)</para>
-          </listitem>
-          <listitem>
-            <para>Inability to reject chunked transfer uploads that
-              exceed the quota (although once the quota is exceeded,
-              new chunked transfers will be refused)</para>
-          </listitem>
-        </itemizedlist>
+        <para>Because the storage system is a true distributed system
+          and because it accepts simultaneous requests, the quotas may
+          not be enforced exactly. For example, if the quota is 5 GB
+          and two users try to store a 5 GB file at the exact same
+          time, both would be allowed to store the file since at the
+          time of both requests the container had sufficient remaining
+          quota. </para>
+        <para>Also, for chunked file uploads, the storage system
+          cannot reject transfers that will eventually exceed the
+          quota because the storage system does not know whether the
+          end of the file will exceed the quota. </para>
         <para>Quotas are set by adding metadata to the container. The
           available metadata values are described in the following
           table.</para>
@@ -3363,11 +3369,11 @@
             </thead>
             <tbody>
               <tr>
-                <td>X-Container-Meta-Quota-Bytes</td>
+                <td><code>X-Container-Meta-Quota-Bytes</code></td>
                 <td>Maximum size of the container, in bytes.</td>
               </tr>
               <tr>
-                <td>X-Container-Meta-Quota-Count</td>
+                <td><code>X-Container-Meta-Quota-Count</code></td>
                 <td>Maximum object count of the container.</td>
               </tr>
             </tbody>
@@ -3409,11 +3415,11 @@
           is below. The dashes (<parameter>"-"</parameter>) note
           fields which the NCSA combined log format dictates be
           present but which Cloud Files does not capture. The format
-          is: <code>%(client_ip) - -
-            [%(day)/%(month)/%(year):%(hour):%(minute)s:%(second)s
-            %(tz)s] "%(method) %(request) %(http_version) %(code)
-            %(bytes_out) "%(referrer)" ' '"%(user_agent)" </code>.
-          Example entries are below. </para>
+          is: </para>
+        <para><code>client_ip - - [day/month/year:hour:minute:second
+            timezone “method request HTTP_version” return_code
+            bytes_sent “referrer” “user_agent”</code></para>
+        <para>Example entries are below. </para>
           <example>
             <title>Example Access Log Entries</title>
           <programlisting>
@@ -3523,20 +3529,32 @@
           specifying OFFSET-LENGTH where either OFFSET or LENGTH can
           be optional (not both at the same time). The following are
           supported forms of the header:</para>
-        <itemizedlist>
-          <listitem>
-            <para><code>Range: bytes=-5</code> indicating the last
-              five bytes of the object</para>
-          </listitem>
-          <listitem>
-            <para><code>Range: bytes=10-15</code> indicating the five
-              bytes after a 10-byte offset</para>
-          </listitem>
-          <listitem>
-            <para><code>Range: bytes=32-</code> indicating all data
-              after the first 32 bytes of the object</para>
-          </listitem>
-        </itemizedlist>
+        <table rules="all" >
+          <caption>Cloud Files Supported Range Formats</caption>
+          <col width="50%"/>
+          <col width="50%"/>
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Range: bytes=0-9  </td>
+              <td>Returns byte offsets 0-9, the first 10 bytes.
+                (Offset 0 is the first byte.)  </td>
+            </tr>
+            <tr>
+              <td>Range: bytes=-5</td>
+              <td>Returns the last 5 bytes</td>
+            </tr>
+            <tr>
+              <td>Range: bytes=32-</td>
+              <td>Returns the final bytes, starting at offset 32 </td>
+            </tr>
+          </tbody>
+        </table>
         <example>
           <title>Retrieve Object Request</title>
           <programlisting>
@@ -3675,13 +3693,12 @@
   s
                 </programlisting>
           </example>
-          <para>No response body is returned. A status code of 201
+          <para>No response body is returned. : A status code of 201
             (Created) indicates a successful write. Status 411 (Length
-            Required) denotes a missing <code>Content-Length</code> or
-              <code>Content-Type</code> header in the request. If the
-            MD5 checksum calculated by the storage system does NOT
-            match the optionally supplied ETag value, a 422
-            (Unprocessable Entity) response is returned.</para>
+            Required) indicates that the Content-Length header is
+            missing. If the MD5 checksum calculated by the storage
+            system does NOT match the optionally supplied ETag value,
+            a 422 (Unprocessable Entity) response is returned.</para>
           <para>You can continue uploading segments as this example
             shows, prior to uploading the manifest.</para>
           <example>
@@ -4023,9 +4040,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           </example>
         </section>
         <section xml:id="Expiring_Objects-e1e3228">
-          <!-- begin 4.3.2.6 -->
-          <title>Expiring Objects with the X-Delete-After and
-            X-Delete-At Headers</title>
+          <title>Expiring Objects with the <code>X-Delete-After</code>
+            and <code>X-Delete-At</code> Headers</title>
           <para>When an object is assigned either an
               <code>X-Delete-After</code> or <code>X-Delete-At</code>
             header when doing a &PUT; or &POST; on the object, it is
@@ -4057,7 +4073,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           <para>For existing objects that you want to assign
             expiration headers to, use the &POST; operation.</para>
           <example>
-            <title>Delete At Example</title>
+            <title>Delete-At Request</title>
             <para>In the example, the <code>X-Delete-At</code> header
               is assigned with a Unix Epoch timestamp in integer form
               for Mon, 11 Jun 2012 15:38:25 GMT. Use <link
@@ -4073,13 +4089,10 @@ ETag: The ETag of the SLO (generated the same way as DLO).
                  </programlisting>
           </example>
           <example>
-            <title>Delete After Example</title>
-            <para>
-              <!-- 02-06012 dsh: Reworded this here /  paragraph to make more sense / and match what I see  -->
-              In this example, the <code>X-Delete-After</code> header
-              is assigned a value in seconds, equivalent to 10 days.
-              After this time, the object shall expire.
-              <!-- 02-06-12 dsh: Removed, "The system then converts the time necessary for an <code>X-Delete-At</code> header operation." Doesn't seem to match--></para>
+            <title>Delete-After Request</title>
+            <para>  In this example, the <code>X-Delete-After</code>
+              header is assigned a value in seconds, equivalent to 10
+              days. After this time, the object expires. </para>
             <programlisting>
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
   Host: storage.clouddrive.com
@@ -4089,9 +4102,7 @@ ETag: The ETag of the SLO (generated the same way as DLO).
 </programlisting>
           </example>
         </section>
-        <!-- end 4.3.2.6 -->
         <section xml:id="Object_Versioning-e1e3230">
-          <!-- begin 4.3.2.7 -->
           <title>Object Versioning</title>
           <para> Object Versioning allows you to store multiple
             versions of your content to recover from unintended
@@ -4161,29 +4172,67 @@ ETag: The ETag of the SLO (generated the same way as DLO).
             metadata by sending an empty key value. </para>
           <example>
             <title>Object Versioning with cURL</title>
-            <para> First, create a container with the
-                <code>X-Versions-Location</code> header or add the
-              header to an existing container. Also make sure the
-              container referenced by the
-                <code>X-Versions-Location</code> exists. In this
-              example, the name of that container is "versions". The
+            <para>Make sure a version-storing container exists by
+              creating it if necessary. This example names it
+                <code>versions</code>. Then create a container with
+              the <code>X-Versions-Location</code> header. In this
+              example, this container is named <code>current</code>.
+              You can also add the <code>X-Versions-Location</code>
+              header to an existing container. In this example, the
+              name of the container is <code>versions</code>. The
               location for the current version is the container
-              "container". </para>
-            <programlisting>
-  curl -i -XPUT -H "X-Auth-Token: &lt;token&gt;" \
-      -H "X-Versions-Location: versions" http://&lt;storage_url&gt;/container
-  curl -i -XPUT -H "X-Auth-Token: &lt;token&gt;" http://&lt;storage_url&gt;/versions
-            </programlisting>
-            <para> Create an object (the first version): </para>
-            <programlisting>
- curl -i -XPUT --data-binary 1 -H "X-Auth-Token: &lt;token&gt;" \
-      http://&lt;storage_url&gt;/container/myobject
-              </programlisting>
-            <para> See a listing of the older versions of the object: </para>
-            <programlisting>
- curl -i -H "X-Auth-Token: &lt;token&gt;" \
-      http://&lt;storage_url&gt;/versions?prefix=myobject/
-             </programlisting>
+                <code>current</code>.</para>
+            <orderedlist>
+              <listitem>
+                <para>Create a container named
+                  <code>versions</code>.</para>
+                <programlisting>
+  curl -i -XPUT -H "X-Auth-Token: &lt;token>" http://&lt;storage_url>/versions
+</programlisting>
+              </listitem>
+              <listitem>
+                <para>Create a container named <code>current</code>
+                  with the <code>X-Versions-Location</code> header
+                  that references <code>versions</code>.</para>
+                <programlisting>
+  curl -i -XPUT -H "X-Auth-Token: &lt;token>" \
+      -H "X-Versions-Location: versions" http://&lt;storage_url>/current
+</programlisting>
+              </listitem>
+              <listitem>
+                <para>Create an object (the first version).</para>
+                <programlisting>
+  curl -i -XPUT --data-binary 1 -H "X-Auth-Token: &lt;token>" \
+      http://&lt;storage_url>/current/myobject
+</programlisting>
+              </listitem>
+              <listitem>
+                <para>Now create a new version of that object.</para>
+                <programlisting>
+  curl -i -XPUT --data-binary 2 -H "X-Auth-Token: &lt;token>" \
+      http://&lt;storage_url>/current/myobject
+</programlisting>
+              </listitem>
+              <listitem>
+                <para>See a listing of the older versions of the
+                  object. (The example includes the hex number for the
+                  length of the filename.)</para>
+                <programlisting>
+  curl -i -H "X-Auth-Token: &lt;token>" \
+      http://&lt;storage_url>/versions?prefix=008myobject/
+</programlisting>
+              </listitem>
+              <listitem>
+                <para>Now delete the current version of the object and
+                  see that the older version is gone.</para>
+                <programlisting>
+  curl -i -XDELETE -H "X-Auth-Token: &lt;token>" \
+      http://&lt;storage_url>/current/myobject
+  curl -i -H "X-Auth-Token: &lt;token>" \
+      http://&lt;storage_url>/versions?prefix=008myobject/
+</programlisting>
+              </listitem>
+            </orderedlist>
           </example>
         </section>
       </section>
@@ -4244,8 +4293,8 @@ ETag: The ETag of the SLO (generated the same way as DLO).
           way to change the content type of an existing object without
           re-uploading the content and using bandwidth.</para>
         <!-- 02-06-12 dsh: Added ServiceNet / discussion to clarify / costs of copying  -->
-        <para> Your account will not be charged when you copy or move
-          your objects within the same data center using the internal
+        <para> Your account is not charged when you copy or move your
+          objects within the same data center using the internal
           network URL as the storage URL. The internal network is
           called ServiceNet. Your ServiceNet endpoint can be found the
           service catalog when you authenticate your session. (For
@@ -4546,10 +4595,10 @@ Transfer-Encoding: chunked
             parameter <code>?bulk-delete set</code>. The
               <code>Content-Type</code> header of the request, if set,
             must be set to <code>text/plain</code>. The body of the
-              <command>DELETE</command> request will be a newline
-            separated list of URL encoded objects to delete. You can
-            delete 10,000 objects per request. The objects specified
-            in the <command>DELETE</command> request body must be
+              <command>DELETE</command> requestis a newline-separated
+            list of URL-encoded objects to delete. You can delete
+            10,000 objects per request. The objects specified in the
+              <command>DELETE</command> request body must be
             URL-encoded and in the form: </para>
           <para><code> /container_name/object_name</code>
           </para>
@@ -4687,9 +4736,11 @@ Transfer-Encoding: chunked
         <title>List CDN-Enabled Containers</title>
         <para>&GET; operations against the <code>cloudFilesCDN</code>
           endpoints for an account retrieve a list of CDN-enabled
-          containers. The &GET; operation for the CDN management
-          service allows the following query parameters to control the
-          information that is displayed:</para>
+          containers. (See <xref
+            linkend="cloudfileCDN-service-catalog-de100"/>.) The &GET;
+          operation for the CDN management service allows the
+          following query parameters to control the information that
+          is displayed:</para>
         <variablelist>
           <title>Query Parameters</title>
           <varlistentry>
@@ -4745,7 +4796,7 @@ Transfer-Encoding: chunked
         <para>Using <code>limit</code> and <code>marker</code>
           provides a mechanism to iterate through the entire list of
           containers. Keep in mind that the value for marker needs to
-          be URL encoded before issuing the request.</para>
+          be URL-encoded before issuing the request.</para>
         <para>Cloud Files provides filtering support to return only
           the list of containers that are CDN-enabled. Passing the
           query parameter <code>?enabled_only=true</code> suppresses
@@ -4781,9 +4832,12 @@ Transfer-Encoding: chunked
           <title>View CDN Container Details</title>
           <para>You can view CDN-enabled container details by
             performing a <command>HEAD</command> request on a
-            container where the <code>Host</code> is the CDN
-            management URL. This returns all the header information,
-            including the following: <itemizedlist>
+            container where the <code>Host</code> is one of the
+              <code>cdnCloudFiles</code> service access endpoints from
+            the service catalog (see <xref
+              linkend="cloudfileCDN-service-catalog-de100"/>). This
+            returns all the header information, including the
+            following: <itemizedlist>
               <listitem>
                 <para>CDN streaming URI
                     (<code>X-Cdn-Streaming-Uri</code>)</para>
@@ -4896,15 +4950,14 @@ Transfer-Encoding: chunked
         a container is CDN-enabled, any objects added to it through
         the storage service become CDN-enabled. After you CDN-enable a
         container, its publicly-available URL can be found with the
-        header <code>X-CDN-URI</code>, and its objects may be accessed
-        at <code>X-CDN-URI/objectName</code>. By knowing this pattern,
+        header <code>X-Cdn-Uri</code>, and its objects may be accessed
+        at <code>X-Cdn-Uri/objectName</code>. By knowing this pattern,
         you can pre-generate the URL for an object before it is added
         to the container. </para>
       <para> When you enable a container in the CDN service, you
         automatically generate URLs for SSL and streaming usage. They
-        are listed under the <code>X-CDN-SSL-URI</code> and
-          <code>X-CDN-STREAMING-URI</code> headers, respectively. 
-      </para>
+        are listed under the <code>X-Cdn-Ssl-Uri</code> and
+          <code>X-Cdn-Streaming-Uri</code> headers, respectively. </para>
       
       <para> On August 13, 2012, the format of new CDN URLs changed in
         order to enhance the security of the Content Delivery Network.
@@ -5021,14 +5074,14 @@ Transfer-Encoding: chunked
   PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-  X-TTL: 2592000
-  X-CDN-Enabled: True
+  X-Ttl: 2592000
+  X-Cdn-Enabled: True
             </programlisting>
         </example>
         <para>No content is returned. A status code of 201 (Created)
           indicates that the container was CDN-enabled as requested.
           The response contains an HTTP <code>X-Cdn-Uri</code> header
-          to indicate the URL that can be combined with object names
+          to indicate the URI that you can combine with object names
           to serve objects through the CDN. If the container is
           already CDN-enabled, a 202 (Accepted) status code is
           returned and the TTL is adjusted.</para>
@@ -5075,7 +5128,7 @@ Transfer-Encoding: chunked
             <listitem>
               <para><code>X-Cdn-Uri</code>: can be combined with any
                 object name within the container to form the publicly
-                accessible URL for that object for distribution over a
+                accessible URI for that object for distribution over a
                 CDN system</para>
             </listitem>
             <listitem>
@@ -5244,9 +5297,9 @@ Transfer-Encoding: chunked
       <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
         <title>Streaming CDN-Enabled Containers </title>
         <para>A &HEAD; operation against a CDN-enabled container
-          returns the streaming URI, <code>X-CDN-STREAMING-URI</code>.
-          Like the SSL URI, <code>X-CDN-SSL-URI</code>, streaming is
-          always enabled, and you use the streaming URL for links to
+          returns the streaming URI, <code>X-Cdn-Streaming-Uri</code>.
+          Like the SSL URI, <code>X-Cdn-Ssl-Uri</code>, streaming is
+          always enabled, and you use the streaming URI for links to
           content that you want to stream, such as video. </para>
         <para>For information about streaming to iOS devices, see
             <xref linkend="iOS-Streaming-d1f3725"/>.</para>
@@ -5369,9 +5422,8 @@ i))) != null;
                  </programlisting>
         </example>
         
-        <para>
-          With these pieces of code in place, the proper content streams to your users, no matter their device.
-        </para>
+        <para> With these pieces of code in place, the proper content
+          streams will be set for iOS devices. </para>
 
       </section>
       
@@ -5384,14 +5436,14 @@ i))) != null;
       <para>This section documents the REST operations for the CDN
         management service that you can perform on objects. Any object
         stored in a CDN-enabled container is publicly accessible over
-        a CDN by combining the container's CDN URL with the object
+        a CDN by combining the container's CDN URI with the object
         name. Any object accessed is cached in the CDN for the Time To
         Live (TTL) value (which is specified in number of seconds).
         The default is 72 hours (259200 seconds). On the next access
         after the TTL expiration, the CDN re-fetches the object and
         caches it until the TTL expires again. The minimum TTL is 15
         minutes (900 seconds). The maximum TTL is 1 year (31536000
-        seconds). If you set a maximum TTL greater than 1 year,  your
+        seconds). If you set a maximum TTL greater than 1 year, your
         object still expires at the one-year mark.</para>
       <note>
         <title>Note</title>
@@ -5455,8 +5507,9 @@ i))) != null;
           occurred. </para>
         <para>The CDN URI is returned in the HTTP header,
             <code>X-CDN-URI</code>. </para>
-        <para>Purging a large number of objects may take a long time,
-          so please be patient while waiting for a response. </para>
+        <para>Purging objects may take a long time because there are
+          so many edge servers around the globe. So please be patient
+          while waiting for a response. </para>
         <example>
           <title>Purge CDN-Enabled Object Response </title>
           <programlisting>
@@ -5554,10 +5607,10 @@ i))) != null;
               performing a &POST; to the header
                 <code>X-Container-Meta-Web-Index</code> on your
               website's container. See the example below, but remember
-              to change the <code>X-Auth-Token</code> to your Auth
-              token. You must write your storage URL and the container
-              name to properly point to the container (&lt;storage
-              URL&gt;&lt;container name&gt;) </para>
+              to change the <code>X-Auth-Token</code> to your
+              authentication token. You must write your storage URL
+              and the container name to properly point to the
+              container (&lt;storage URL&gt;&lt;container name&gt;) </para>
             <para> You get your Auth token when you authenticate your
               session as shown in <xref
                 linkend="Authentication-d1e639"
@@ -5570,7 +5623,7 @@ i))) != null;
           </listitem>
           <listitem>
             <para>Go to your domain host and set up a CNAME using your
-              CDN URI (X- <code>cdn-uri</code>). The CNAME is the
+              CDN URI (<code>X-Cdn-Uri</code>). The CNAME is the
               domain or branded URI you use instead of the CDN URI. If
               you need to find your CDN URI, perform a &GET; to
                 <code>cdn.clouddrive.com</code> as shown in <xref
@@ -5687,27 +5740,25 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: XXX" 
           downloads a large object. If the time expires while a file is being retrieved, 
           the download will continue until it is finished. Only the link will expire.
         </para>
-        <para> When you create a TempURL, Cloud Files validates a GET-
-        or PUT-accessible URL, which is time-limited. </para>
+        <para> When you create a TempURL, Cloud Files validates a
+        GET-accessible or PUT-accessible URL, which is time-limited. </para>
       <note>
         <para>The TempURL is the same thing as TempURL Secret, and is
           set using the TempURL metadata key described in the next
           section. The TempURL is the actual URL.</para>
       </note>
         <section xml:id="Set_Account_Metadata-d1a4460">
-          <title>Set Account Temp URL Metadata Key</title>
-          <para>
-            To create a Temporary URL, you must first set the metadata header 
-            <code>X-Account-Meta-Temp-URL-Key</code> on your Cloud Files account 
-            to a key that only you know. This key can be any arbitrary sequence as it is  
-            for encoding your account. 
-          </para>
-          <para>
-            Once the key is set, you should not change it while you still want others 
-            to be able to access your temporary URL. If you change it, the TempURL becomes 
-            invalid (within 60 seconds, which is the cache time for a key) and others 
-            will not be allowed to access it. 
-          </para>
+          <title>Set Account TempURL Metadata Key</title>
+          <para> To create a TemURL, you must first set the metadata
+          header <code>X-Account-Meta-Temp-URL-Key</code> on your
+          Cloud Files account to a key that only you know. This key
+          can be any arbitrary sequence as it is for encoding your
+          account. </para>
+          <para> Once the key is set, you should not change it while
+          you still want others to be able to access your TempURL. If
+          you change it, the TempURL becomes invalid (within 60
+          seconds, which is the cache time for a key) and others will
+          not be allowed to access it. </para>
           <example>
             <title>Set Account Metadata Key for Public Access</title>
           <programlisting>
@@ -5771,8 +5822,8 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: XXX" 
   temp_url_expires=1323479485
            </programlisting>
         <para> If you do not provide users with the exact TempURL,
-          they will get a 401 (Unauthorized) status code. &HEAD;
-          queries are allowed if &GET; or &PUT; are allowed. </para>
+          they get a 401 (Unauthorized) status code. &HEAD; queries
+          are allowed if &GET; or &PUT; are allowed. </para>
 <?hard-pagebreak?>          
           <example >
             <title>Create TempURL (in PHP)</title>
@@ -5865,13 +5916,11 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         larger than 5 GB, they will get a file size error. </para>
           <section xml:id="Set_Account_Metadata-d1a666">
             <title>Set Account Metadata Key</title>
-            <para>
-              To allow FormPost actions on your Cloud Files account, you must first set the 
-              metadata header  
-              <code>X-Account-Meta-Temp-URL-Key</code> on your Cloud Files account to a key that 
-              only you know. This key can be any arbitrary sequence as it is  
-              for encoding your account. 
-            </para>
+            <para> To allow FormPost actions on your Cloud Files
+          account, you must first set the metadata header
+            <code>X-Account-Meta-Temp-Url-Key</code> on your Cloud
+          Files account to a key that only you know. This key can be
+          any arbitrary sequence as it is for encoding your account. </para>
             <para> Once the key is set, you cannot change it while you
           still want others to access your account. If you change it,
           the actions from a FormPost become invalid (within 60
@@ -5909,11 +5958,12 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           </example>
             <para>
           <emphasis>Required:</emphasis>
-          <code>Form action</code> is the Cloud Files URL (CF-url) to
-          the destination where files will be uploaded. For instance,
+          <code>Form action</code> is the Cloud Files URL
+            (<code>CF-url</code>) to the destination where files will
+          be uploaded. For instance,
             <code>https://storage.clouddrive.com/v1/CF_xer7_34/container</code>.
           The name of each uploaded object will have the
-          &lt;CF-url&gt; appended to the front of it. </para>
+            <code>&lt;CF-url&gt;</code> appended to the front of it. </para>
         <note>
           <para>You can also include a prefix to separate uploads,
             such as assigning each user a certain prefix:
@@ -5934,7 +5984,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           error, such as “max_file_size exceeded”. </para>
         <note>
           <para>Although <code>redirect</code> is optional for the
-            form,  it must be present in the HMAC body.</para>
+            form, it must be present in the HMAC body. </para>
         </note>
               <para>
           <emphasis>Required:</emphasis> The
@@ -5981,8 +6031,8 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           <para>The <code>redirect</code> value can be an empty string
             to indicate that no redirect is included on the
             form.</para>
-            <para>The <code>key</code>  value is the value of the
-              <code>X-Account-Meta-Temp-URL-Key</code> header set for
+            <para>The <code>key</code> value is the value of the
+              <code>X-Account-Meta-Temp-Url-Key</code> header set for
             the account. </para>
             <para> The <code>max_file_count</code> value used to
             generate the <code>signature</code> must be the same as
@@ -6140,7 +6190,7 @@ curl -X POST -H 'X-Auth-Token: <emphasis role="bold"><replaceable>yourAuthToken<
           <para>Populate the Token field.</para>
         </listitem>
         <listitem>
-          <para>Populate the URL filed with the URl of either a
+          <para>Populate the URL filed with the URL of either a
             container or object.</para>
         </listitem>
         <listitem>
@@ -6302,11 +6352,14 @@ curl -X POST -H 'X-Auth-Token: <emphasis role="bold"><replaceable>yourAuthToken<
     <para>This section introduces the cURL command-line utility and
       demonstrates interacting with the REST interfaces through that
       utility.</para>
-    <para>Remember that object and container names must be URL-encoded and UTF-8 encoded. 
-      Refer to <link linkend="API_Operations_for_Storage_Services-d1e942">a full list of the requirements</link>
-      if you see problems. Object names must be less than 1024 bytes in length after URL encoding. 
-      For example, an object name of C++final(v2).txt should be URL encoded as C%2B%2Bfinal%28v2%29.txt and therefore be 24 bytes in length 
-      rather than the expected 16.</para>
+    <para>Remember that object and container names must be URL-encoded
+      and UTF-8 encoded. Refer to <link
+        linkend="API_Operations_for_Storage_Services-d1e942">a full
+        list of the requirements</link> if you see problems. Object
+      names must be less than 1024 bytes in length after URL encoding.
+      For example, an object name of C++final(v2).txt should be
+      URL-encoded as C%2B%2Bfinal%28v2%29.txt and therefore be 24
+      bytes in length rather than the expected 16.</para>
     <para>Also, tokens expire after 24 hours. Be sure you request a
       new token programmatically only when the one you have is
       expired. </para>
@@ -6778,7 +6831,7 @@ curl -X POST -H 'X-Auth-Token: <emphasis role="bold"><replaceable>yourAuthToken<
         </example>
         <para>When the container is CDN-enabled, the service returns
         its public URL in the <code>X-CDN-URI</code> header of the
-        response, plus the SSL URL in the <code>X-CDN-SSL-URL</code>
+        response, plus the SSL URL in the <code>X-Cdn-Ssl-Uri</code>
         header of the response. Now you can combine this URL with the
         object name to access the file through the CDN, or use the
         https:// URL in combination with the object name to access the
@@ -6872,11 +6925,12 @@ curl -X POST -H 'X-Auth-Token: <emphasis role="bold"><replaceable>yourAuthToken<
           unique URL that can be combined with its object name and
           openly distributed in web pages, emails, or other
           applications. For example, a CDN-enabled container named
-          “photos” can be referenced as “
-          http://c0344252.cdn.cloudfiles.rackspacecloud.com ”. If that
-          container houses an image called “cute_kids.jpg”, that image
-          can be served by Akamai's CDN with the full URL of
-          “http://c0344252.cdn.cloudfiles.rackspacecloud.com/cute_kids.jpg”. </para>
+            <code>photos</code> can be referenced as
+            <code>http://c0344252.cdn.cloudfiles.rackspacecloud.com</code>.
+          If that container houses an image called
+            <code>cute_kids.jpg</code>, that image can be served by
+          Akamai's CDN with the full URL of
+            <code>http://c0344252.cdn.cloudfiles.rackspacecloud.com/cute_kids.jpg</code>. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
