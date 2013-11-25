@@ -50,7 +50,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Cloud Files™</productname>
-    <pubdate/>
+    <pubdate>2013-11-22</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the template.</remark>
@@ -669,7 +669,7 @@
       applications.</para>
     <para>For more details on the Cloud Files service, please refer to
         <link
-        xlink:href="http://http://www.rackspace.com/cloud/files/"
+        xlink:href="http://www.rackspace.com/cloud/files/"
         >http://www.rackspace.com/cloud/files/</link> and to the
       Knowledge Center article <link
         xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
