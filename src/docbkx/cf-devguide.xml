@@ -3766,8 +3766,8 @@
               manifest object. This new object may be larger than
               5GB.</para>
           </note>
-          <para>There are two types of manifest object as
-            follows:</para>
+          <para>There are two types of manifest objects as
+          follows:</para>
           <itemizedlist>
             <listitem>
               <para>Static Large Objects: The manifest object content
