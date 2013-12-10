@@ -855,13 +855,14 @@
         for you to organize your data. You can think of a container as
         a folder in Windows® or a directory in UNIX®. The primary
         difference between a container and these other file system
-        concepts is that containers cannot be nested. You can,
-        however, create up to 500,000 containers within your account.
-        Data must be stored in a container so you must have at least
-        one container defined in your account prior to uploading data.
-        If you expect to have containers with millions of objects,
-        Rackspace recommends organizing the object storage across
-        multiple containers.</para>
+        concepts is that containers cannot be nested. You can have up
+        to 500,000 containers in your account. Data must be stored in
+        a container so you must have at least one container defined in
+        your account prior to uploading data. </para>
+      <para>If you expect to write more than 100 objects per second to
+        a single container, Rackspace recommends organizing those
+        objects across multiple containers to improve
+        performance.</para>
       <para>The only restrictions on container names is that they
         cannot contain a forward slash (<code>/</code>) and must be
         less than 256 bytes in length. Note that the length
@@ -1625,18 +1626,19 @@
         <itemizedlist>
           <listitem>
             <para><link
-                xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_.html"
-                > Create account users</link></para>
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_User_Calls.html"
+              > Create account users</link></para>
           </listitem>
           <listitem>
             <para><link
-                xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html"
-                > Assign roles to account users</link></para>
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls.html"
+              > Assign roles to account users</link></para>
           </listitem>
           <listitem>
             <para><link
-                xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__.html"
-                > Delete roles from account users</link></para>
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole_v2.0_users__userId__roles_OS-KSADM__roleId__Role_Calls.html"
+              > Delete roles from account
+              users</link></para>
           </listitem>
         </itemizedlist>
         <note>
@@ -1761,7 +1763,7 @@
           available to all roles. To see which operations are
           permitted to invoke which calls, please review <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
-            > the Knowledge Center article</link>.</para>
+            >the Knowledge Center article</link>.</para>
       </section>
     </section>
     <section xml:id="Service-Access-Endpoints-d1e003"
@@ -2197,7 +2199,7 @@
       be performed with standard HTTP calls. See the <link
         xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
         >Wikipedia article</link> on REST for more information.</para>
-    <para>The following constraints apply to the REST API's HTTP
+    <para>The following constraints apply to REST API HTTP
       requests:</para>
     <itemizedlist>
       <listitem>
@@ -2219,12 +2221,15 @@
         <para>Maximum length of object name: 1024 bytes</para>
       </listitem>
     </itemizedlist>
-    <para>Container and object names should be properly URL-encoded
-      prior to interacting with the REST interface and the container
-      and object names must be UTF-8 encoded. The length restrictions
-      should be checked against the URL-encoded string.</para>
+    <para>Container and object names must be UTF-8 encoded and then
+      should be properly URL-encoded prior to interacting with the
+      ReST interface. You might be using an API binding that performs
+      the URL-encoding on your behalf. If so, do not URL-encode before
+      calling the API binding, or you will double-encode container and
+      object names. The length restrictions should be checked against
+      the URL-encoded string.</para>
     <note>
-      <para>The language-specific APIs handle URL encoding and
+      <para>The language-specific APIs handle URL-encoding and
         decoding.</para>
     </note>
     <para>Each REST request against Cloud Files requires the inclusion
@@ -2234,15 +2239,22 @@
       service and supplying a valid user name and API access key. For
       more information, see <xref linkend="Authentication-d1e639"
       />.</para>
-    <para>There are actually two different sets of REST services that
-      make up the full Cloud Files product. The first REST service
-      identified with <code>cloudFiles</code> in the service catalog
-      (see <xref linkend="Service-Catalog-Endpoints-d1e001"/>) is used
-      for managing the data stored in the system. Example operations
-      are creating containers and uploading objects. The second REST
-      service is for managing the CDN feature of Cloud Files and is
-      identified by <code>cloudFilesCDN</code> in the service
-      catalog.</para>
+    <para>The two sets of REST services that make up the full Cloud
+      Files product are:<itemizedlist>
+        <listitem>
+          <para>The REST service identified with
+              <code>cloudFiles</code> in the service catalog (see
+              <xref linkend="Service-Catalog-Endpoints-d1e001"/>)
+            manages the data storage in the system. Example operations
+            are creating containers and uploading objects.</para>
+        </listitem>
+        <listitem>
+          <para>The REST service identified with
+              <code>cloudFilesCDN</code> in the service catalog (see
+              <xref linkend="cloudfileCDN-service-catalog-de100"/>)
+            manages the CDN feature of Cloud Files.</para>
+        </listitem>
+      </itemizedlist></para>
     <para>In the following sections, the purpose of each HTTP method
       depends upon which service the call is made against. For
       example, a &PUT; request against one of the
@@ -2252,8 +2264,8 @@
       CDN-enable a container.</para>
     <para>The language-specific APIs mask this system separation from
       the programmer. They simply create a container and mark it
-        <emphasis>public</emphasis>, calling the appropriate back-end
-      services by using the appropriate REST APIs.</para>
+        <emphasis>public</emphasis> and handle calling the appropriate
+      back-end services by using the appropriate REST APIs.</para>
     <note>
       <para>All requests to authenticate and operate against Cloud
         Files are performed using SSL over HTTP (HTTPS) on TCP port
@@ -2291,7 +2303,7 @@
     </info>
     <para>The following section describes the REST API for interacting
       with the Cloud Files storage component. All requests will be
-      directed to the host and endpoints described in the
+      directed to the host and endpoints described in
         <code>cloudFiles</code> obtained during successful
       authentication.</para>
     <para>The following are some requirements for the storage
@@ -3609,9 +3621,9 @@
         <para>You can ensure end-to-end data integrity by including an
           MD5 checksum of your object's data in the <code>ETag</code>
           header. You are not required to include the
-            <code>ETag</code> header, but it is recommended to ensure
-          that the storage system successfully stores your object's
-          content.</para>
+            <code>ETag</code> header, but Rackspace recommends its use
+          to ensure that the storage system successfully stores your
+          object's content.</para>
         <para>You can cause an object to expire after a certain date
           and time by using the <code>X-Delete-At</code> or
             <code>X-Delete-After</code> headers during an object &PUT;
@@ -3838,9 +3850,9 @@ In addition to those listed in Anne's great response, a failed upload might retu
               <td>The segment objects must be uploaded before the
                 manifest object.</td>
               <td>You can upload manifest and segment objects in any
-                order. You are recommended to upload the manifest
-                object after the segments in case a premature download
-                of the manifest occurs. However, this is not
+                order. Rackspace recommends that you upload the
+                manifest object after the segments in case a premature
+                download of the manifest occurs. However, this is not
                 enforced.</td>
             </tr>
             <tr>
@@ -4397,8 +4409,8 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para> Object Versioning allows you to store multiple versions
           of your content to recover from unintended overwrites and
           deletions. It provides an easy method to implement version
-          control which can be used on any type of content. It is
-          strongly recommended that you put non-current objects in a
+          control which can be used on any type of content. Rackspace
+          strongly recommends that you put non-current objects in a
           separate container from where the current versions exist.
           Once you enable Object Versioning, new data written to an
           object causes the last-current version to be written to the
@@ -4459,7 +4471,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para> To turn off Object Versioning on your current version
           container, remove its <code>X-Versions-Location</code>
           metadata by sending an empty key value. (You can do this by
-          changing <code>X-Versions-Location:</code>  to
+          changing <code>X-Versions-Location:</code> to
             <code>X-Versions-Location;</code> in your
             <command>POST</command> request.)</para>
         <example>
@@ -5222,7 +5234,7 @@ Transfer-Encoding: chunked
                 <para>CDN streaming URI
                     (<code>X-Cdn-Streaming-Uri</code>) – A URI for
                   video streaming that uses Adobe’s HTTP Dynamic
-                  Streaming.  </para>
+                  Streaming. </para>
               </listitem>
               <listitem>
                 <para>CDN SSL URI (<code>X-Cdn-Ssl-Uri</code>) – The
@@ -5440,7 +5452,7 @@ Transfer-Encoding: chunked
         </example>
         <para>Any CDN-accessed objects are cached in the CDN for the
           specified amount of time called the Time To Live (TTL). If
-          you do not specify the TTL, the  default value is 259200
+          you do not specify the TTL, the default value is 259200
           seconds, or 72 hours. Each time the object is accessed after
           the TTL expires, the CDN refetches and caches the object for
           the next TTL period. </para>
@@ -7280,8 +7292,8 @@ curl -X POST -H 'X-Auth-Token: <emphasis role="bold"><replaceable>yourAuthToken<
         separate TCP/IP and SSL connection is created and thrown away.
         The language APIs, however, are designed to re-use these
         connections between operations and therefore provide much
-        better performance. It is recommended that you use one of the
-        language APIs in your production applications and limit
+        better performance. Rackspace recommends that you use one of
+        the language APIs in your production applications and limit
           <code>curl</code> to quick-and-easy
         testing/troubleshooting.</para>
     </section>
