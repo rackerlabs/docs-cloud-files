@@ -64,6 +64,20 @@
     </abstract>
     <revhistory>
       <revision>
+        <date/>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated the instructions for locating the API Key,
+                Tenant ID, and account number in the Cloud Control
+                Panel in <xref linkend="Retrieving_Auth_Token"
+                  xmlns:m="http://www.w3.org/1998/Math/MathML"
+                />.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2013-11-26</date>
         <revdescription>
           <itemizedlist>
@@ -1179,16 +1193,56 @@
         </example>
         <calloutlist>
           <callout arearefs="credentials.xml.user">
-            <para>The <code>username</code> supplied here is your
-              common Rackspace Cloud user name. </para>
+            <para>The username supplied here is your common Rackspace
+              Cloud username. </para>
           </callout>
           <callout arearefs="credentials.xml.key">
-            <para>The key is your API access key. The key can be
-              obtained from the Rackspace Cloud Control Panel in the
-                <guimenu>&lt;Your Account></guimenu>/<guimenuitem>API
-                Access</guimenuitem> section (login here: <link
-                xlink:href="http://mycloud.rackspace.com/">Control
-                Panel Login</link>). </para>
+            <para>The key is your API access key. </para>
+            <para><emphasis role="bold">To find your API
+                Key:</emphasis>
+            </para>
+            <orderedlist>
+              <listitem>
+                <para>Log in to the Cloud Control Panel (<link
+                    xlink:href="https://mycloud.rackspace.com"
+                    >https://mycloud.rackspace.com</link>).</para>
+              </listitem>
+              <listitem>
+                <para>On the upper-right side of the top navigation
+                  pane, click your username.</para>
+              </listitem>
+              <listitem>
+                <para>From the menu, select <guilabel>Account
+                    Settings</guilabel>.</para>
+              </listitem>
+              <listitem>
+                <para>In the Login Details section of the Account
+                  Settings page, locate the <guilabel>API
+                    Key</guilabel> field and click
+                    <guibutton>Show</guibutton>.</para>
+              </listitem>
+              <listitem>
+                <para> Copy the value of the API Key and paste it into
+                  a text editor of your choice.</para>
+              </listitem>
+              <listitem>
+                <para>Click <guibutton>Hide</guibutton> to hide the
+                  value of the API Key.</para>
+              </listitem>
+            </orderedlist>
+            <para>You also need your cloud account number. In the
+              documentation, the account number is often referred to
+              as your tenant name or tenant ID (technically, the ID is
+              different from the name, but at Rackspace, they are the
+              same thing). Together, three components—your username,
+              your API Key, and your tenant ID or cloud account
+              number—form the authentication credentials that are
+              required to connect to the Rackspace cloud.</para>
+            <para>To find your tenant ID or cloud account number,
+              locate your username on the upper-right side of the top
+              navigation pane in the Cloud Control Panel. The tenant
+              ID or account number is in parentheses just to the right
+              of your username.</para>
           </callout>
         </calloutlist>
         <example>
@@ -4244,6 +4298,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             </itemizedlist>
             <para>The GET request with the following query parameter
               returns the actual manifest file contents:</para>
+            <!-- Need an example of what the response looks like -->
             <programlisting>
 ?multipart-manifest=get  
 </programlisting>
@@ -4468,12 +4523,9 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <para>A large-object manifest file cannot be versioned, but
             it may point to versioned segments. </para>
         </note>
-        <para> To turn off Object Versioning on your current version
+        <para>To turn off Object Versioning on your current version
           container, remove its <code>X-Versions-Location</code>
-          metadata by sending an empty key value. (You can do this by
-          changing <code>X-Versions-Location:</code> to
-            <code>X-Versions-Location;</code> in your
-            <command>POST</command> request.)</para>
+          metadata by sending a key value that is an empty string. </para>
         <example>
           <title>Object Versioning with cURL</title>
           <para>Make sure a version-storing container exists by
@@ -4557,8 +4609,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
           object name of the source object in the form of
             <code>/container/object</code>. The
             <code>X-Copy-From</code> &PUT; request requires a
-            <code>Content-Length</code> header, even if it is zero
-          (0). </para>
+            <code>Content-Length</code> header by the HTTP
+          specification, but the storage system does not use the
+            <code>Content-Length</code> to perform the operation. For
+          this reason, you can simply send a
+            <code>Content-Length</code> of zero (0). </para>
         <note>
           <para> You cannot copy an object larger than 5 GB (by
             default). For more information about large objects, see
@@ -4813,7 +4868,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
             the transfer is complete, Rackspace either ships your
             device back to you, or destroys it after degaussing,
             whichever you prefer. </para>
-          <para> Rackspace accepts USB, SATA, and eSATA devices. Your
+          <note>
+            <para>Bulk import is available for U.S. data centers
+              only.</para>
+          </note>
+          <para>Rackspace accepts USB, SATA, and eSATA devices. Your
             file system may be NTFS, ext2, ext3, ext4, or FAT32.
             Because Cloud Files does not use hierarchical directory
             structures, nested sub-directories in your data are
@@ -4827,7 +4886,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             Files, see <xref
               linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
             />. </para>
-          <para> To begin the bulk import process, contact Rackspace
+          <para>To begin the bulk import process, contact Rackspace
             support technicians. You will be assigned a migration
             specialist who can answer any questions you might have
             along the way. You are notified when Rackspace receives
@@ -4864,7 +4923,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
                 <para>an empty string</para>
                 <para>If the <code>UPLOAD_PATH</code> is an empty
                   string, Cloud Files automatically creates containers
-                  in which to place the files.</para>
+                  in which to place the files. Files in the base
+                  directory of the tar file (that is, files that are
+                  not in a folder of the unzipped tar file) are
+                  ignored. </para>
               </listitem>
             </itemizedlist></para>
           <para>The destination of a file in the archive is built as
@@ -4874,8 +4936,6 @@ In addition to those listed in Anne's great response, a failed upload might retu
           </para>
           <para><code>FILE_PATH</code> is the file name from the
             listing in the tar file.</para>
-          <para>Files in the tar file that do not map to any container
-            (files in the base directory) are ignored.</para>
           <para>You can create up to 1,000 new containers per
             extraction request. Also note that only regular files are
             uploaded. Objects such as empty directories and symlinks
@@ -4941,7 +5001,7 @@ Transfer-Encoding: chunked
     ]
   ],
   "Response Body": ""
-}
+} 
 </programlisting>
           </example>
           <para>The list of errors is a list of tuples in the form
@@ -6316,7 +6376,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         object PUT in Cloud Files. Once you enable FormPost on your
         account, you need only create the form in your website using
         the guidelines below. </para>
-      <para> As with all objects in Cloud Files, the object file size
+      <para>As with all objects in Cloud Files, the object file size
         limit is 5 GB. If your users try to upload an object larger
         than 5 GB, they will get a file size error. </para>
       <section xml:id="Set_Account_Metadata-d1a666">
