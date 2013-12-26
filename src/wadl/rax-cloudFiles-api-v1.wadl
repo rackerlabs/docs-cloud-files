@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- (C) 2013 OpenStack Foundation, All Rights Reserved -->
-<application xmlns="http://wadl.dev.java.net/2009/02"
+
+<!DOCTYPE application [
+    <!ENTITY % common  SYSTEM "../wadl/common.ent">
+    %common;
+    
+    
+]>
+
+<application 
+    xmlns="http://wadl.dev.java.net/2009/02"
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:xsd="http://docs.rackspacecloud.com/xsd/v1.0"
     xmlns:db="http://docbook.org/ns/docbook"
     xmlns:csapi="http://docs.openstack.org/compute/api/v1.1">
-    <resources base="https://storage.swiftdrive.com/">
+
+<!--*******************************************************-->
+<!--             All Resources                             -->
+<!--*******************************************************-->
+
+    <resources base="https://storage101.ord1.clouddrive.com/">
         <resource id="version" path="v1">
-            <resource id="account" path="{account}"
-                type="#ContainersList">
+            <resource id="account" path="{account}">
                 <param name="tenant_id" style="template"
                     type="xsd:string">
                     <doc>
@@ -17,11 +30,12 @@
                             unique identifier of the tenant.</p>
                     </doc>
                 </param>
+                <method href="#listcontainers"/>
                 <method href="#retrieveaccountmeta"/>
                 <method href="#updateaccountmeta"/>
                 <method href="#deleteaccountmeta"/>
-                <resource id="container" path="{container}"
-                    type="#ObjectsList">
+
+                <resource id="container" path="{container}">
                     <param name="container" style="template"
                         type="xsd:string">
                         <doc>
@@ -30,12 +44,13 @@
                                 container.</p>
                         </doc>
                     </param>
+                    <method href="#listObjects"/>
                     <method href="#createcontainer"/>
                     <method href="#deletecontainer"/>
                     <method href="#retrievecontainermeta"/>
                     <method href="#updateacontainermeta"/>
-                    <resource id="object" path="{object}"
-                        type="#RetrieveObject">
+
+                    <resource id="object" path="{object}">
                         <param name="object" style="template"
                             type="xsd:string">
                             <doc>
@@ -55,9 +70,10 @@
             </resource>
         </resource>
     </resources>
-    <!--*******************************************************-->
-    <!--               Resource Types                          -->
-    <!--*******************************************************-->
+<!--*******************************************************-->
+<!--               Resource Types                          -->
+<!--*******************************************************-->
+<!--    
     <resource_type id="ContainersList">
         <method href="#listContainers"/>
     </resource_type>
@@ -67,9 +83,10 @@
     <resource_type id="RetrieveObject">
         <method href="#retrieveobject"/>
     </resource_type>
-    <!--*******************************************************-->
-    <!--               All Methods                             -->
-    <!--*******************************************************-->
+-->    
+<!--*******************************************************-->
+<!--               All Methods                             -->
+<!--*******************************************************-->
     <method name="GET" id="listContainers">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="List Containers">
@@ -209,6 +226,8 @@
         </request>
         <response status="204"> </response>
     </method>
+    
+    
     <method name="PUT" id="createcontainer">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Create Container">
@@ -368,6 +387,8 @@
             </representation>
         </response>
     </method>
+    
+    
     <method name="PUT" id="createobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Create or Update Object">
@@ -429,6 +450,7 @@
         </request>
         <response status="201"> </response>
     </method>
+<!--    
     <method name="PUT" id="putcopiedobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
@@ -459,6 +481,7 @@
         </request>
         <response status="201"> </response>
     </method>
+-->    
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
