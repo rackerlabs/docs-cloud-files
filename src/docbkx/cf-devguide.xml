@@ -76,7 +76,10 @@
             </listitem>
             <listitem>
               <para>Added <xref linkend="tableAPIOperations"/>, which
-                lists and briefly describes all API operations.</para>
+                lists and briefly describes all API operations. Also
+                added tables showing the API operations at the
+                beginning of each section that describes the
+                operations.</para>
             </listitem>
             <listitem>
               <para>Added service access endpoints for the CDN
@@ -107,6 +110,15 @@
               <para>Added <xref
                   linkend="Delete-Account-Metadata-de101"/>.</para>
             </listitem>
+            <listitem>
+              <para>In all examples, updated the
+                  <code>X-Auth-Token</code> to use the current format
+                returned by an authentication request (no dashes).
+                Also updated examples to use real values for
+                  <replaceable>account</replaceable>,
+                  <replaceable>container</replaceable>, and
+                  <replaceable>object</replaceable>. </para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>
@@ -120,8 +132,8 @@
                 Static Large Objects.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Extract_Archive-d1e2338"/>
-                to include a note about using a blank
+              <para>Updated <xref linkend="Extract-Archive-d1eoe"/> to
+                include a note about using a blank
                   <code>Content-Type</code> to have Cloud Files
                 determine the file type for the archive.</para>
             </listitem>
@@ -222,7 +234,7 @@
             <listitem>
               <para>Updated responses to show
                   <code>application/json</code> in <xref
-                  linkend="Bulk_Delete-d1e2338"/>.</para>
+                  linkend="Bulk-Delete-d1eoe"/>.</para>
             </listitem>
             <listitem>
               <para>Added <code>X-Container-Meta-Web-Listings</code>,
@@ -324,7 +336,7 @@
                 />.</para>
             </listitem>
             <listitem>
-              <para>Added <xref linkend="Bulk_Operations-d1e2338"
+              <para>Added <xref linkend="Bulk-Operations-d1eoe"
                 />.</para>
             </listitem>
             <listitem>
@@ -2359,14 +2371,14 @@
             manages the data storage in the system. Example operations
             are creating containers and uploading objects. This
             service is referred to as the <emphasis role="bold"
-              >storage management service</emphasis>.</para>
+              >storage service</emphasis>.</para>
         </listitem>
         <listitem>
           <para>The REST service identified with
               <code>cloudFilesCDN</code> in the service catalog (see
               <xref linkend="cloudfileCDN-service-catalog-de100"/>)
             manages the CDN feature of Cloud Files. This service is
-            referred to as the <emphasis role="bold">CDN management
+            referred to as the <emphasis role="bold">CDN
               service</emphasis>.</para>
         </listitem>
       </itemizedlist></para>
@@ -2460,7 +2472,7 @@
           <td>Deletes an empty container.</td>
         </tr>
         <tr>
-          <td>View Container Details </td>
+          <td>Get Container Details </td>
           <td><command>HEAD</command></td>
           <td><code>v1/{account}/{container}</code></td>
           <td>Gets container metadata, including the number of objects
@@ -2752,7 +2764,10 @@
     </itemizedlist>
     <section xml:id="Storage_Account_Services-d1e1555">
       <title>Storage Account Services</title>
-      <para>Perform the following operations at the account level: </para>      
+      <para> This section shows how to view and control the display of
+        your Cloud Files account details. </para>
+      <para>You can perform the following operations at the account
+        level: </para>      
       <informaltable rules="all">
         <thead>
           <tr>
@@ -2784,20 +2799,16 @@
           </tr>
         </tbody>
       </informaltable>
-   
-      <para>For example, the URI for the requests end with the account
-        string as shown next. </para>
+      <para>The following example shows the general structure for the
+        requests, which ends with your account number.</para>
       <example>
         <title>Storage Account HTTP Request: General Structure</title>
         <programlisting>
-  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/{<replaceable>account</replaceable>} HTTP/1.1
+  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable> HTTP/1.1
 </programlisting>
       </example>
-
-      <para> This section shows how to view and control the display of
-        your Cloud Files account details. You can use the optional
-        parameters described below to help control the amount of
-        information displayed. </para>
+      <para>You can use the optional parameters described below to help
+        control the amount of information displayed. </para>
       <variablelist>
         <title>Query Parameters</title>
         <varlistentry>
@@ -2842,13 +2853,45 @@
       </variablelist>
       <para>At this time, a <code>prefix</code> query parameter is not
         supported at the account level.</para>
+      <para> The examples in this section use a sample information
+        for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account (for example, 1234)</para>
+        </listitem>
+        <listitem>
+          <para><code>X-Auth-Token</code> (for example,
+            f064c46a782c444cb4ba4b6434288f7c)</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must use your own account
+        number and authentication token. (You can check how to
+        generate an authentication token in <xref
+          linkend="Authentication-d1e639"
+          xrefstyle="select:label quotedtitle nopage"/>.) </para>
       <section xml:id="List-Account-Containers-de101">
         <title>List Account Containers</title>
         <para> The container is the basic storage unit in Cloud Files.
           To view a list of the containers in your account, perform a
-            <code>GET</code> request against your storage account URL.
-          The list is limited to 10,000 containers at a time. See the
-          section, <xref linkend="Controlling-Large-List-de101"
+            <code>GET</code> request against your storage account URL. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>GET</command></td>
+              <td><code>v1/{account}</code></td>
+              <td>Lists containers in an account.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>The list is limited to 10,000 containers at a time. See
+          the section, <xref linkend="Controlling-Large-List-de101"
             xrefstyle="select:label quotedtitle nopage"/>, for
           information on limiting and navigating the list. A 200 (OK)
           code returns if there are containers and a 204 (No Content)
@@ -2861,7 +2904,7 @@
         <example>
           <title>View Containers List Request</title>
           <programlisting>
-  GET /v1/{account} HTTP/1.1
+  GET /v1/1234 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
               </programlisting>
@@ -2870,7 +2913,7 @@
           <title>View Containers List Response</title>
           <programlisting>
   HTTP/1.1 200 OK
-  Date: Thu, 07 Jun 2007 18:57:07 GMT
+  Date: Thu, 07 Jun 2012 18:57:07 GMT
   Content-Type: text/plain; charset=UTF-8
   Content-Length: 32
   
@@ -2892,7 +2935,7 @@
           <example>
             <title>Container Details Request: JSON</title>
             <programlisting>
-  GET /v1/{account}?format=json HTTP/1.1
+  GET /v1/1234?format=json HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -2914,7 +2957,7 @@
           <example>
             <title>Container Details Request: XML</title>
             <programlisting>
-  GET /v1/{account}?format=xml HTTP/1.1
+  GET /v1/1234?format=xml HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -2981,7 +3024,7 @@
                     </programlisting>
             <para>Use a limit of two to show how things work:</para>
             <programlisting>
-  GET /v1/{account}?limit=2
+  GET /v1/1234?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -2993,7 +3036,7 @@
               are more container names to list and make another
               request with a marker of the last item returned:</para>
             <programlisting>
-  GET /v1/{account}?limit=2&amp;marker=bananas
+  GET /v1/1234?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   
@@ -3003,7 +3046,7 @@
             <para>Again, two items are returned. There may be
               more.</para>
             <programlisting>
-  GET /v1/{account}?limit=2&amp;marker=oranges
+  GET /v1/1234?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
@@ -3023,18 +3066,28 @@
           and how many total bytes your account uses
             (<code>X-Account-Bytes-Used</code>), perform a &HEAD;
           request on your storage account URL. This displays your
-          Account Information. A 204 (No Content) code returns and
-          there is no information in the response body. </para>
-        <para> The examples in this section use a sample auth account,
-          listed in <code>X-Auth-Token</code>. When you do your own
-          requests, you must use your own auth token. You can check
-          how to generate this token in <xref
-            linkend="Authentication-d1e639"
-            xrefstyle="select:label quotedtitle nopage"/>. </para>
+          account information.<informaltable rules="all">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>URI</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><command>HEAD</command></td>
+                <td><code>v1/{account}</code></td>
+                <td>Gets account metadata.</td>
+              </tr>
+            </tbody>
+          </informaltable></para>
+        <para> A 204 (No Content) code returns and there is no
+          information in the response body. </para>
         <example>
           <title>View Account Information Request</title>
           <programlisting>
-  HEAD /v1/{account} HTTP/1.1
+  HEAD /v1/1234 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
              </programlisting>
@@ -3057,13 +3110,30 @@
         <title>Create or Update Account Metadata</title>
         <para>You can associate custom metadata headers with the
           account level URI. These headers must take the format
-            <code>X-Account-Meta-*</code>.</para>
-        <para>To create or update an account metadata header use the
-            <command>POST</command> operation. Subsequent requests for
-          the same key/value pair overwrite the previous value.</para>
+            <code>X-Account-Meta-*</code>. To create or update an
+          account metadata header use the <command>POST</command>
+          operation. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>POST</command></td>
+              <td><code>v1/{account}</code></td>
+              <td>Creates or updates account metadata.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>Subsequent requests for the same key/value pair
+          overwrite the previous value.</para>
         <example>
           <title>Create or Update Account Metadata Request</title>
-          <programlisting>POST /v1/{account} HTTP/1.1
+          <programlisting>POST /v1/1234 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Account-Meta-Book: MobyDick
@@ -3079,12 +3149,13 @@ Content-Type: text/html; charset=UTF-8
 Date: Sat, 09 Jun 2012 19:16:29 GMT</programlisting>
         </example>
         <para>To confirm your metadata changes, perform a
-            <command>HEAD</command> operation on the account. Do not
+            <command>HEAD</command> operation on the account (see
+            <xref linkend="View_Account_Details-d1e108"/>). Do not
           send the metadata in your <command>HEAD</command>
           operation.</para>
         <example>
           <title>View Account Metadata Request</title>
-          <programlisting>HEAD /v1/{account} HTTP/1.1
+          <programlisting>HEAD /v1/1234 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
         </example>
@@ -3106,15 +3177,32 @@ Date: Sat, 09 Jun 2012 19:16:59 GMT</programlisting>
         <title>Delete Account Metadata</title>
         <para>To delete a metadata header, send an empty value for
           that particular header, for example for the
-            <code>X-Account_Meta-Book</code> header. If the tool you
-          use to communicate with Cloud Files, such as an older
-          version of cURL, does not support empty headers, send the
+            <code>X-Account_Meta-Book</code> header. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>POST</command></td>
+              <td><code>v1/{account}</code></td>
+              <td>Deletes account metadata.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>If the tool you use to communicate with Cloud Files,
+          such as an older version of cURL, does not support empty
+          headers, send the
               <code>X-Remove-Account-Meta-<replaceable>name</replaceable>:
               <replaceable>arbitrary value</replaceable></code>
           header. For example, <code>X-Remove-Account_Meta-Book:
             x</code>. The arbitrary value is ignored.<example>
             <title>Delete Account Metadata Request</title>
-            <programlisting>POST /v1/{account} HTTP/1.1
+            <programlisting>POST /v1/1234 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Remove-Account-Meta-Book: x
@@ -3125,22 +3213,66 @@ X-Remove-Account-Meta-Book: x
     </section>
     <section xml:id="Storage_Container_Services-d1e1444">
       <title>Storage Container Services</title>
-      <para>This following operations can be performed on containers.
-        The example shows the general structure for the requests,
-        which includes the Cloud Files account and the container
-        name.</para>
+      <para>This section shows how to view and control information for
+        containers in your Cloud Files account. </para>
+      <para>You can perform the following operations for containers: </para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>URI</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><command>GET</command></td>
+            <td><code>v1/{account}/{container}</code></td>
+            <td>Lists the objects in a container.</td>
+          </tr>
+          <tr>
+            <td><command>PUT</command></td>
+            <td><code>v1/{account}/{container}</code></td>
+            <td>Creates a container, or storage compartment, for your
+              data.</td>
+          </tr>
+          <tr>
+            <td><command>DELETE</command></td>
+            <td><code>v1/{account}/{container}</code></td>
+            <td>Deletes an empty container.</td>
+          </tr>
+          <tr>
+            <td><command>HEAD</command></td>
+            <td><code>v1/{account}/{container}</code></td>
+            <td>Gets container metadata, including the number of
+              objects and the total bytes of all objects stored in the
+              container. </td>
+          </tr>
+          <tr>
+            <td><command>POST</command></td>
+            <td><code>v1/{account}/{container}</code></td>
+            <td>Creates or updates the container metadata by
+              associating custom metadata headers with the container
+              level URI. These headers must have the format
+                <code>X-Container-Meta-*</code>.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>The following example shows the general structure for the
+        requests, which includes your account number and your
+        container name.</para>
       <example>
         <?dbfo keep-together="always"?>
         <title>Storage Container HTTP Request: General
           Structure</title>
         <programlisting>
-<replaceable> HTTP_METHOD_NAME</replaceable> /v1/&lt;<replaceable>account</replaceable>&gt;/&lt;container&gt; HTTP/1.1
+<replaceable> HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable>/<replaceable>container</replaceable> HTTP/1.1
 </programlisting>
       </example>
-      <para> This section shows how to view and control information
-        for containers in your Cloud Files account. You can use the
-        below optional parameters to help control the amount of
-        information displayed. </para>
+      <para>This section shows how to view and control information for
+        containers in your Cloud Files account. </para>
+      <para>You can use the below optional parameters to help control
+        the amount of information displayed. </para>
       <variablelist>
         <title>Query Parameters</title>
         <para>All query parameters must be send using UTF-8
@@ -3206,14 +3338,48 @@ X-Remove-Account-Meta-Book: x
           </listitem>
         </varlistentry>
       </variablelist>
+      <para> The examples in this section use a sample information
+        for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account (for example, 1234)</para>
+        </listitem>
+        <listitem>
+          <para><code>X-Auth-Token</code> (for example,
+            f064c46a782c444cb4ba4b6434288f7c)</para>
+        </listitem>
+        <listitem>
+          <para>container (for example, MyContainer)</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must provide your own account
+        number, authentication token, and container name. </para>
       <section xml:id="View-Container_Info-d1e1285">
-        <title>View Container Details</title>
+        <title>Get Container Details</title>
         <para>To see how many objects are in a container
             (<code>X-Container-Object-Count</code>) and the custom
           metadata you have set on the container
             (<code>X-Container-Meta-</code> prefix), perform a &HEAD;
-          request against the container's URL. To set and edit your
-          custom metadata, see <xref
+          request against the container's URL. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>HEAD</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Gets container metadata, including the number of
+                objects and the total bytes of all objects stored in
+                the container. </td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>To set and edit your custom metadata, see <xref
             linkend="Update_Container_Metadata-d1e1900"
             xrefstyle="select:label quotedtitle nopage"/>. </para>
         <para>A 204 (No Content) code returns and there is no
@@ -3221,7 +3387,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>View Container Details Request</title>
           <programlisting>
-  HEAD /v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c/MobyDick?format=json
+  HEAD /v1/1234/MobyDick?format=json
   Accept-Encoding: gzip
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3247,8 +3413,26 @@ X-Remove-Account-Meta-Book: x
       <section xml:id="Create_Container-d1e1694">
         <title>Create Container</title>
         <para>&PUT; operations against a storage container are used to
-          create that container. You can create up to 500,000
-          containers in your Cloud Files account.</para>
+          create that container. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>PUT</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Creates a container, or storage compartment, for
+                your data.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>You can create up to 500,000 containers in your Cloud
+          Files account.</para>
         <para>Containers are storage compartments for your data. The
           URL-encoded name must be less than 256 bytes and cannot
           contain a forward slash '/' character.</para>
@@ -3263,7 +3447,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Container Create Request </title>
           <programlisting>
-  PUT /v1/{account}/{container} HTTP/1.1
+  PUT /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3274,7 +3458,7 @@ X-Remove-Account-Meta-Book: x
           (Accepted) is returned when the container already existed.
           If you request a &PUT; to a container with an
             <code>X-Container-Meta-</code> prefix in the header, your
-          &GET;/&HEAD; request responses carry the metadata prefix
+          &GET; or &HEAD; request responses carry the metadata prefix
           from the container in subsequent requests.</para>
         <example>
           <title>Container Create Response</title>
@@ -3298,7 +3482,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Container Create Request with Metadata </title>
           <programlisting>
-  PUT /v1/{account}/{container} HTTP/1.1
+  PUT /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-InspectedBy: JackWolf
@@ -3450,7 +3634,7 @@ X-Remove-Account-Meta-Book: x
               container, use &GET; without a <code>delimiter</code> or
                 <code>prefix</code>. </para>
             <programlisting>
-  GET /v1/{account}/backups
+  GET /v1/1234/backups
 </programlisting>
             <para> The system returns status code 200 OK and the
               requested list of the objects. </para>
@@ -3471,7 +3655,7 @@ X-Remove-Account-Meta-Book: x
               use <code>delimiter</code> with pseudo directories, use
               the parameter slash (<code>/</code>). </para>
             <programlisting>
-  GET /v1/{account}/backups?delimiter=/
+  GET /v1/1234/backups?delimiter=/
 </programlisting>
             <para> The system returns status code 200 (OK) and the
               requested matching objects. Because the request used the
@@ -3489,7 +3673,7 @@ X-Remove-Account-Meta-Book: x
             inside a pseudo directory, including further nested pseudo
             directories. </para>
           <programlisting>
-  GET /v1/{account}/backups?prefix=photos/&#38;delimiter=/
+  GET /v1/1234/backups?prefix=photos/&#38;delimiter=/
 </programlisting>
           <para> The system returns status code 200 (OK) and the
             objects and pseudo directories within the top level pseudo
@@ -3509,7 +3693,7 @@ X-Remove-Account-Meta-Book: x
             the files contained within <code>dogs</code>, enter the
             below command. </para>
           <programlisting>
-  GET /v1/{account}/backups?prefix=photos/animals/dogs/&#38;delimiter=/
+  GET /v1/1234/backups?prefix=photos/animals/dogs/&#38;delimiter=/
 </programlisting>
           <para> The system returns status code 200 (OK) and the
             objects and pseudo directories within the nested pseudo
@@ -3528,15 +3712,32 @@ X-Remove-Account-Meta-Book: x
         <para>&DELETE; operations against a storage container
           permanently remove it. The container must be empty before it
           can be deleted.</para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>DELETE</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Deletes an empty container.</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <remark security="writeronly">2013-09-09 cyr: Changed HEAD to
           GET here based on Disqus comment and confirmation by Rick
           Hawkins</remark>
         <para>A &GET; request against the container will list any
-          objects it contains.</para>
+          objects it contains. (See <xref
+            linkend="View-Container_Info-d1e1285"/>.)</para>
         <example>
           <title>Container Delete Request</title>
           <programlisting>
-  DELETE /v1/{account}/{container} HTTP/1.1
+  DELETE /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3556,7 +3757,6 @@ X-Remove-Account-Meta-Book: x
   Content-Type: text/plain; charset=UTF-8
 </programlisting>
         </example>
-        <para/>
       </section>
       <section xml:id="Update_Container_Metadata-d1e1900">
         <title>Set or Edit Container Metadata</title>
@@ -3568,6 +3768,25 @@ X-Remove-Account-Meta-Book: x
           request to the container URL. Subsequent &POST;s to the
           header using the same metadata name overwrite the previous
           value. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>POST</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Creates or updates the container metadata by
+                associating custom metadata headers with the container
+                level URI. These headers must have the format
+                  <code>X-Container-Meta-*</code>.</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para> To view your metadata changes, perform a &HEAD; request
           on the container URL. Do not try to send the metadata in
           your &HEAD; request. </para>
@@ -3581,7 +3800,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Update Container Metadata Request</title>
           <programlisting>
-  POST /v1/{account}/{container} HTTP/1.1
+  POST /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-Book: MobyDick
@@ -3603,7 +3822,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>View Container Metadata Request</title>
           <programlisting>
-  HEAD /v1/{account}/{container} HTTP/1.1
+  HEAD /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3627,7 +3846,24 @@ X-Remove-Account-Meta-Book: x
         <title>List Objects in a Container</title>
         <para>To view the names and details of objects within a
           container, perform a &GET; request against the container
-          URL. The information returned is size (in bytes), hash,
+          URL. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>GET</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Lists the objects in a container.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>The information returned is size (in bytes), hash,
           object name, date and time modified (in GMT), and content
           type. The list is limited to 10,000 objects at a time. For
           information on limiting and controlling the list, see <xref
@@ -3638,8 +3874,7 @@ X-Remove-Account-Meta-Book: x
           not exist, or an incorrect account is given, a 404 (Not
           Found) code returns. </para>
         <para>The query parameters that you can use where
-            [<code>?parm=value]</code> is shown in the example below
-          are:</para>
+            [<code>?parm=value]</code> are shown below:</para>
         <table rules="all">
           <caption>List Objects Query Parameters</caption>
           <col width="30%"/>
@@ -3697,7 +3932,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Objects List Request</title>
           <programlisting>
-  GET /v1/{account}/{container}[?parm=value] HTTP/1.1
+  GET /v1/1234/MyContainer[?parm=value] HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3743,7 +3978,7 @@ X-Remove-Account-Meta-Book: x
           <example>
             <title>Object Details Request: JSON </title>
             <programlisting>
-  GET /v1/{account}/{container}?format=json HTTP/1.1
+  GET /v1/1234/MyContainer?format=json HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -3774,7 +4009,7 @@ X-Remove-Account-Meta-Book: x
           <example>
             <title>Object Details Request: XML</title>
             <programlisting>
-  GET /v1/{account}/{container}?format=xml HTTP/1.1
+  GET /v1/1234/MyContainer?format=xml HTTP/1.1
   Host: storage.clouddrive.com
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
 </programlisting>
@@ -3843,7 +4078,7 @@ X-Remove-Account-Meta-Book: x
 </programlisting>
             <para>Use a limit of two to show how things work.</para>
             <programlisting>
-  GET /v1/{account}/{container}?limit=2
+  GET /v1/1234/AppleType?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -3854,7 +4089,7 @@ X-Remove-Account-Meta-Book: x
               are more object names to list and make another request
               with a marker of the last item returned.</para>
             <programlisting>
-  GET /v1/{account}/{container}?limit=2&amp;marker=grannysmith
+  GET /v1/1234/AppleType?limit=2&amp;marker=grannysmith
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   honeycrisp
@@ -3863,7 +4098,7 @@ X-Remove-Account-Meta-Book: x
             <para>Again, two items returned are returned, but there
               may be more.</para>
             <programlisting>
-  GET /v1/{account}/{container}?limit=2&amp;marker=jonagold
+  GET /v1/1234/AppleType?limit=2&amp;marker=jonagold
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -4037,12 +4272,122 @@ X-Remove-Account-Meta-Book: x
     </section>
     <section xml:id="Storage_Object_Services-d1e4300">
       <title>Storage Object Services</title>
-      <para>This section documents services for storage
-        objects.</para>
+      <para> This section shows how to view and control information
+        for objects in your Cloud Files account. </para>
+      <para>An object represents the data and metadata for the files
+        stored in the system. Through the REST interface, you can
+        include metadata for an object by adding custom HTTP headers
+        to the request and the data payload as the request body.
+        Objects cannot exceed 5 GB and must have names that do not
+        exceed 1024 bytes after URL encoding. However, you can segment
+        a large object into 5 GB segments and upload the segments.
+        Then, you can download the segments as a single concatenated
+        object. You can use HTTP requests to work with the segments
+        and manifests directly.</para>
+      <para>You can perform the following operations for storage
+        objects:</para>
+      <informaltable rules="all">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>URI</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><command>GET</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Gets data for the specified object.</td>
+          </tr>
+          <tr>
+            <td><command>PUT</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Creates or updates the content and metadata for the
+              specified object.</td>
+          </tr>
+          <tr>
+            <td><command>PUT</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Copies an existing object to another object with a new
+              name in Cloud Files. (The destination container must
+              exist before attempting the copy.)</td>
+          </tr>
+          <tr>
+            <td><command>DELETE</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Permanently deletes an object from the storage system
+              (data and metadata). ( In combination with the COPY
+              command, you can use COPY and then DELETE to effectively
+              move an object.)</td>
+          </tr>
+          <tr>
+            <td><command>HEAD</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Gets object metadata and other standard HTTP
+              headers.</td>
+          </tr>
+          <tr>
+            <td><command>POST</command></td>
+            <td><code>v1/{account}/{container}/{object}</code></td>
+            <td>Sets your own object metadata. Metadata must be in the
+              format <code>X-Object-Meta-*</code>. You can also assign
+                <code>X-Delete-At</code> or
+                <code>X-Delete-After</code> to expiring objects. You
+              cannot use this operation to change other headers, such
+              as <code>Content-Type</code>. </td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para>The following example shows the general structure for the
+        requests, which include your account number, your container
+        name, and your object name.</para>
+      <example>
+        <?dbfo keep-together="always"?>
+        <title>Storage Object HTTP Request: General Structure</title>
+        <programlisting>
+<replaceable> HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable>/<replaceable>container</replaceable>/<replaceable>object</replaceable> HTTP/1.1
+</programlisting>
+      </example>
+      <para> The examples in this section use a sample information
+        for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account (for example, 1234)</para>
+        </listitem>
+        <listitem>
+          <para><code>X-Auth-Token</code> (for example,
+            f064c46a782c444cb4ba4b6434288f7c)</para>
+        </listitem>
+        <listitem>
+          <para>container (for example, MyContainer)</para>
+        </listitem>
+        <listitem>
+          <para>object (for example, MyObject)</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must provide your own account
+        number, authentication token, container name, and object name. </para>
       <section xml:id="Retrieve_Object-d1e4301">
         <title>Retrieve Object</title>
         <para>&GET; operations against an object are used to retrieve
           the object's data.</para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>GET</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Gets data for the specified object.</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para>Note that you can perform conditional &GET; requests by
           using certain HTTP headers as documented in RFC 2616 found
           at <link xlink:href="http://www.ietf.org/rfc/rfc2616.txt"
@@ -4102,7 +4447,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Retrieve Object Request</title>
           <programlisting>
-  GET /v1/{account}/{container}/{object} HTTP/1.1
+  GET /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -4128,6 +4473,23 @@ X-Remove-Account-Meta-Book: x
         <title>Create or Update Object</title>
         <para>&PUT; operations are used to write, or overwrite, an
           object's content and metadata.</para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>PUT</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Creates or updates the content and metadata for the
+                specified object.</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para>You can ensure end-to-end data integrity by including an
           MD5 checksum of your object's data in the <code>ETag</code>
           header. You are not required to include the
@@ -4174,7 +4536,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Create or Update Object Request</title>
           <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4244,7 +4606,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             <title>Upload Unspecified Quantity of Content
               Request</title>
             <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Transfer-Encoding: chunked
@@ -4309,11 +4671,13 @@ In addition to those listed in Anne's great response, a failed upload might retu
             <para>Dynamic Large Objects: The manifest object has no
               content. However, it has <code>X-Object-Manifest</code>
               metadata. The value of this is
-                <code>{container}/{prefix}</code> , where
-                <code>{container}</code> is the name of the container
-              where the segment objects are stored and
-                <code>{prefix}</code> is a string that all the segment
-              objects have in common. </para>
+                  <code><replaceable>container</replaceable>/<replaceable>prefix</replaceable></code>
+              , where
+                <code><replaceable>container</replaceable></code> is
+              the name of the container where the segment objects are
+              stored and
+                <code><replaceable>prefix</replaceable></code> is a
+              string that all the segment objects have in common. </para>
           </listitem>
           <listitem>
             <para>Static Large Objects: The manifest object content is
@@ -4399,10 +4763,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
                   <command>PUT</command> a static manifest
                 object.</td>
               <td>The <code>X-Object-Manifest</code> value is the
-                  <code>&lt;container>/&lt;prefix></code> indicating
-                where the segment objects are located. You supply this
-                request header in the <command>PUT</command>
-                operation</td>
+                    <code><replaceable>container</replaceable>/<replaceable>prefix</replaceable></code>
+                indicating where the segment objects are located. You
+                supply this request header in the
+                  <command>PUT</command> operation</td>
             </tr>
             <tr>
               <td>Making a copy of the manifest object</td>
@@ -4450,12 +4814,15 @@ In addition to those listed in Anne's great response, a failed upload might retu
             that their names sort in the order in which they should be
             concatenated. You also create and upload a manifest file.
             The manifest file is simply a zero-byte file with the
-            extra <code>X-Object-Manifest: {container}/{prefix}</code>
-            header, where <code>{container}</code> is the container
-            that the object segments are in and <code>{prefix}</code>
-            is the common prefix for all the segments. The container
-            and common prefix must be UTF-8 encoded and URL-encoded in
-            the <code>X-Object-Manifest</code> header.</para>
+            extra <code>X-Object-Manifest:
+                <replaceable>container</replaceable>/<replaceable>prefix</replaceable></code>
+            header, where
+              <code><replaceable>container</replaceable></code> is the
+            container that the object segments are in and
+                <code><replaceable>prefix</replaceable></code> is the
+            common prefix for all the segments. The container and
+            common prefix must be UTF-8 encoded and URL-encoded in the
+              <code>X-Object-Manifest</code> header.</para>
           <para>It is best to upload all the segments first and then
             create or update the manifest. With this method, the full
             object will not be available for downloading until the
@@ -4474,7 +4841,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <example>
             <title>Upload Segment of a Large Object Request</title>
             <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4500,7 +4867,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             <title>Upload Next Segment of the Large Object
               Request</title>
             <programlisting>
- PUT /v1/{account}/{container}/{object} HTTP/1.1
+ PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4523,7 +4890,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <example>
             <title>Upload Manifest Request</title>
             <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Length: 0
@@ -4605,7 +4972,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               <listitem>
                 <para><code>path</code> &#x2013; the container and
                   object name in the following format:
-                    <code>&lt;container_name>/&lt;object_name></code></para>
+                      <code><replaceable>containerName</replaceable>/<replaceable>objectName</replaceable></code></para>
               </listitem>
               <listitem>
                 <para><code>etag</code> &#x2013; the <code>ETag</code>
@@ -4637,7 +5004,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               <listitem>
                 <para><code>path</code> &#x2013; the container and
                   object name in the following format:
-                    <code>&lt;container_name>/&lt;object_name></code></para>
+                      <code><replaceable>containerName</replaceable>/<replaceable>objectName</replaceable></code></para>
               </listitem>
               <listitem>
                 <para><code>etag</code> &#x2013; the <code>ETag</code>
@@ -4774,7 +5141,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               the manifest, and then, if all are successfully deleted,
               the manifest object itself. A failure response will be
               similar to those for the bulk delete operation (<xref
-                linkend="Bulk_Delete-d1e2338"/>).</para>
+                linkend="Bulk-Delete-d1eoe"/>).</para>
             <programlisting>
 ?multipart-manifest=delete
 </programlisting>
@@ -4822,7 +5189,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             assigned with an attachment type that indicates how the
             file should be downloaded:</para>
           <programlisting>
-  PUT /v1/{account}/{container} HTTP/1.1
+  PUT /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: video/mp4
@@ -4844,7 +5211,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             assigned with an attachment type that indicates how the
             file should be downloaded.</para>
           <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/tiff
@@ -4893,7 +5260,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               >http://www.epochconverter.com/</link> for example
             timestamps and a batch converter.</para>
           <programlisting>
- PUT /v1/{account}/{container}/{object} HTTP/1.1
+ PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/jpeg
@@ -4906,7 +5273,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             header is assigned a value in seconds, equivalent to 10
             days. After this time, the object expires. </para>
           <programlisting>
-  PUT /v1/{account}/{container}/{object} HTTP/1.1
+  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/jpeg
@@ -5056,12 +5423,31 @@ In addition to those listed in Anne's great response, a failed upload might retu
           and thus also save the associated bandwidth charges, if any
           were to apply. </para>
         <para>There are two ways to copy an existing object to another
-          object in Cloud Files. One way is to use a &PUT; request to
-          the new object (the target) location, but add the
-            <code>X-Copy-From</code> header to designate the source of
-          the data. The header value should be the container and
-          object name of the source object in the form of
-            <code>/container/object</code>. The
+          object in Cloud Files. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>PUT</command> or
+                <command>COPY</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Copies an existing object to another object with a
+                new name in Cloud Files. (The destination container
+                must exist before attempting the copy.)</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>One way is to use a &PUT; request to the new object (the
+          target) location, but add the <code>X-Copy-From</code>
+          header to designate the source of the data. The header value
+          should be the container and object name of the source object
+          in the form of <code>/container/object</code>. The
             <code>X-Copy-From</code> &PUT; request requires a
             <code>Content-Length</code> header by the HTTP
           specification, but the storage system does not use the
@@ -5076,10 +5462,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Copy Object Method 1</title>
           <programlisting>
-  PUT /v1/&lt;account&gt;/&lt;destcontainer&gt;/&lt;destobject&gt; HTTP/1.1
-  Host: &lt;storage URL&gt;
-  X-Auth-Token: &lt;yourAuthToken>
-  X-Copy-From: /&lt;sourcecontainer&gt;/&lt;sourceobject&gt;
+  PUT /v1/<replaceable>account</replaceable>/<replaceable>destcontainer</replaceable>/<replaceable>destobject</replaceable> HTTP/1.1
+  Host: <replaceable>storageURL</replaceable>
+  X-Auth-Token: <replaceable>yourAuthToken</replaceable>
+  X-Copy-From: /<replaceable>sourcecontainer</replaceable>/<replaceable>sourceobject</replaceable>
   Content-Length: 0                    
 </programlisting>
         </example>
@@ -5093,10 +5479,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <example>
             <title>Copy Object Method 2</title>
             <programlisting>
-  COPY /v1&lt;account&gt;/&lt;sourcecontainer&gt;/&lt;sourceobject&gt; HTTP/1.1
-  Host: &lt;storage URL&gt;
-  X-Auth-Token: &lt;yourAuthToken&gt;
-  Destination: /&lt;destcontainer&gt;/&lt;destobject&gt;
+  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourcecontainer</replaceable>/<replaceable>sourceobject</replaceable> HTTP/1.1
+  Host: <replaceable>storageURL</replaceable>
+  X-Auth-Token: <replaceable>yourAuthToken</replaceable>
+  Destination: /<replaceable>destcontainer</replaceable>/<replaceable>destobject</replaceable>
 </programlisting>
           </example></para>
         <para>With both of these methods, the destination container
@@ -5117,7 +5503,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               diminishing improvement). </para>
             <para>Another option is bulk importing of data. For
               information about bulk imports, see <xref
-                linkend="Bulk-Importing-Data-d1e0"/>.</para>
+                linkend="Bulk-Import-de101"/>.</para>
           </note>
           <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->If
           you want to move the object rather than copy it, you need to
@@ -5165,6 +5551,25 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para>&DELETE; operations on an object are used to permanently
           remove an object from the storage system (data and
           metadata).</para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>DELETE</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Permanently deletes an object from the storage
+                system (data and metadata). ( In combination with the
+                COPY command, you can use COPY and then DELETE to
+                effectively move an object.)</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para>Deleting an object is processed immediately at the time
           of the request. Any subsequent &GET;, &HEAD;, &POST;, or
           &DELETE; operations will return a 404 (Not Found) error
@@ -5179,7 +5584,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Object Delete Request</title>
           <programlisting>
-  DELETE /v1/{account}/{container}/{object} HTTP/1.1
+  DELETE /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -5196,18 +5601,35 @@ In addition to those listed in Anne's great response, a failed upload might retu
               </programlisting>
         </example>
         <para>For information about bulk deletions, see <xref
-            linkend="Bulk_Delete-d1e2338"/>.</para>
+            linkend="Bulk-Delete-d1eoe"/>.</para>
       </section>
       <section xml:id="Retrieve_Object_Metadata-d1e2301">
         <title>Retrieve Object Metadata</title>
         <para>&HEAD; operations on an object are used to retrieve
           object metadata and other standard HTTP headers.</para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>HEAD</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Gets object metadata and other standard HTTP
+                headers.</td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para>The only required header to be sent in the request is
           the authorization token.</para>
         <example>
           <title>Object Metadata Request</title>
           <programlisting>
-  HEAD /v1/{account}/{container}/{object} HTTP/1.1
+  HEAD /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
            </programlisting>
@@ -5248,10 +5670,32 @@ In addition to those listed in Anne's great response, a failed upload might retu
       <section xml:id="Update_Object_Metadata-d1e2338">
         <title>Update Object Metadata</title>
         <para> You can set or update your custom metadata for existing
-          objects by using a &POST; request to the object name.
-          Metadata is set by using a header: <code>X-Object-Meta-XXXX:
-            Foo</code> where <code>XXXX</code> is the custom field and
-            <code>Foo</code> is the value. You can also set values for
+          objects by using a &POST; request to the object name. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>POST</command></td>
+              <td><code>v1/{account}/{container}/{object}</code></td>
+              <td>Sets your own object metadata. Metadata must be in
+                the format <code>X-Object-Meta-*</code>. You can also
+                assign <code>X-Delete-At</code> or
+                  <code>X-Delete-After</code> to expiring objects. You
+                cannot use this operation to change other headers,
+                such as <code>Content-Type</code>. </td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>Metadata is set by using a header:
+            <code>X-Object-Meta-XXXX: Foo</code> where
+            <code>XXXX</code> is the custom field and <code>Foo</code>
+          is the value. You can also set values for
             <code>X-Delete-At</code> and <code>X-Delete-After</code>
           to set expirations for objects. </para>
         <para> To remove previously-set object metadata, perform a
@@ -5278,7 +5722,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         </note>
         <example>
           <title>Update Object Metadata Request</title>
-          <programlisting>  POST /v1/{account}/{container}/{object} HTTP/1.1
+          <programlisting>POST /v1/1234/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Object-Meta-Fruit: Apple
@@ -5298,306 +5742,6 @@ In addition to those listed in Anne's great response, a failed upload might retu
                    </programlisting>
         </example>
       </section>
-      <section xml:id="Bulk_Operations-d1e2338">
-        <title>Bulk Operations </title>
-        <para>This section describes bulk operations that are
-          available with Cloud Files.</para>
-        <!--          
-          <remark>9-30-2013 cyr: The following note was originally requested by Chuck Thier, but David Goetz sent email saying not to make this doc change. He expects to make code changes at some point in the future to take care of this. </remark>
-        <note>
-          <para>The bulk operations, extract archive and bulk delete, can take a long time. They might cause
-            client timeouts and require that you increase client
-            timeout limits. </para>
-        </note>
--->
-        <section xml:id="Bulk-Importing-Data-d1e0">
-          <title>Bulk Importing of Data</title>
-          <remark security="writeronly">06-11-2012 dsh: added </remark>
-          <para>If you have a very large amount of data to import into
-            Cloud Files, bulk importing of data is available. With
-            bulk importing, you send a physical device containing your
-            data to Rackspace and Rackspace loads it directly into
-            Cloud Files. By doing this, you avoid the time and cost of
-            uploading large amounts of data over the Internet. After
-            the transfer is complete, Rackspace either ships your
-            device back to you, or destroys it after degaussing,
-            whichever you prefer. </para>
-          <note>
-            <para>Bulk import is available for U.S. data centers
-              only.</para>
-          </note>
-          <para>Rackspace accepts USB, SATA, and eSATA devices. Your
-            file system may be NTFS, ext2, ext3, ext4, or FAT32.
-            Because Cloud Files does not use hierarchical directory
-            structures, nested sub-directories in your data are
-            converted to object names. Your top-level folders become
-            containers, and nested directory names become part of the
-            object names. For instance,
-              <code>Chapter28/Ahab/ivoryleg</code> results in a
-            container named <code>Chapter28</code> with an object
-            named <code>Ahab/ivoryleg</code> inside of it. For more
-            information on simulating directory structures in Cloud
-            Files, see <xref
-              linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
-            />. </para>
-          <para>To begin the bulk import process, contact Rackspace
-            support technicians. You will be assigned a migration
-            specialist who can answer any questions you might have
-            along the way. You are notified when Rackspace receives
-            your device, begins the data import, completes data
-            import, and ships back or destroys the device. </para>
-        </section>
-        <section xml:id="Extract_Archive-d1e2338">
-          <title>Extract Archive</title>
-          <para>An extract archive request expands tar files into a
-            Cloud Files account. The request is a
-              <command>PUT</command> with the query parameter
-              <code>?extract-archive=format</code> specifying the
-            format of archive file. Accepted formats are
-              <code>tar</code>, <code>tar.gz</code>, and
-              <code>tar.bz2</code>. </para>
-          <note>
-            <para>The bulk operation involves middleware that conducts
-              many operations on a single request.</para>
-          </note>
-          <para>For the <command>PUT</command> request, use the
-            following URL:</para>
-          <para>
-              /<code>v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz
-            </code></para>
-          <para><code>UPLOAD_PATH</code> is the location where the
-            files are expanded and can specify any of the following: <itemizedlist>
-              <listitem>
-                <para>a container</para>
-              </listitem>
-              <listitem>
-                <para>a pseudo directory within a container</para>
-              </listitem>
-              <listitem>
-                <para>an empty string</para>
-                <para>If the <code>UPLOAD_PATH</code> is an empty
-                  string, Cloud Files automatically creates containers
-                  in which to place the files. Files in the base
-                  directory of the tar file (that is, files that are
-                  not in a folder of the unzipped tar file) are
-                  ignored. </para>
-              </listitem>
-            </itemizedlist></para>
-          <para>The destination of a file in the archive is built as
-            follows: </para>
-          <para>
-            <code>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</code>
-          </para>
-          <para><code>FILE_PATH</code> is the file name from the
-            listing in the tar file.</para>
-          <para>You can create up to 1,000 new containers per
-            extraction request. Also note that only regular files are
-            uploaded. Objects such as empty directories and symlinks
-            are not uploaded.</para>
-          <para>The responses from bulk operations are not like other
-            Cloud Files responses because a short request body sent
-            from the client could result in many operations on the
-            proxy server and precautions need to be made to prevent
-            the request from timing out due to a lack of activity. To
-            this end, the client always receives a 200 OK response,
-            regardless of the actual success of the call. The body of
-            the response, which can be delivered over a greater amount
-            of time, must be parsed to determine the actual success of
-            the operation. In addition, the client may receive
-            whitespace characters prepended to the response body while
-            the proxy server is completing the request. </para>
-          <para>The format of the response body defaults to text plain
-            but can be either JSON or XML depending on the
-              <code>Accept</code> header. Acceptable formats are
-              <code>text/plain</code>, <code>application/json</code>,
-              <code>application/xml</code>, and <code>text/xml</code>.
-            The following example shows the response body, formatted
-            in JSON, from a successful request. </para>
-          <example>
-            <title>Extract Archive Response</title>
-            <programlisting>
-HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-X-Trans-Id: txa7fd1603cfe04bdb920cd-005191226d
-Date: Mon, 13 May 2013 17:27:10 GMT
-Transfer-Encoding: chunked
-
-{
-  "Number Files Created": 10,
-  "Response Status": "201 Created",
-  "Errors": [],
-  "Response Body": ""
-}
-</programlisting>
-          </example>
-          <para>The example that follows shows the response with
-            errors.</para>
-          <example>
-            <title>Extract Archive Response with Errors</title>
-            <programlisting>
-HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-X-Trans-Id: tx9f12e16f047049cc91147-005191245f
-Date:  Mon, 13 May 2013 17:35:27 GMT
-Transfer-Encoding: chunked
-
-{
-  "Number Files Created": 10,
-  "Response Status": "400 Bad Request",
-  "Errors": [
-    [
-      "/v1/AUTH_test/test_cont/big_file.wav",
-      "413 Request Entity Too Large"
-    ]
-  ],
-  "Response Body": ""
-} 
-</programlisting>
-          </example>
-          <para>The list of errors is a list of tuples in the form
-              <code>[object_path, error_response]</code>. The
-              <code>object_path</code> given is the full path of where
-            the object was to be put. The <code>error_response</code>
-            is the failing HTTP status of the response for that
-            individual <command>PUT</command>. After 1,000 errors,
-            processing of the request ends, and the completed response
-            is returned. </para>
-          <para>If all valid files were uploaded successfully, the
-              <code>Response Status</code> in the response body is 201
-            Created. If any files failed to be created, the
-              <code>Response Status</code> corresponds to the
-            subrequest's error. Possible codes are 400, 401, and 502.
-            In both cases, the response body specifies the number of
-            files successfully uploaded and a list of the files that
-            failed. (The actual HTTP status code is always 200 OK, so
-            the response code in the response body is the one you
-            should monitor.)</para>
-          <note>
-            <para>If you send a <code>Content-Type</code> on the
-                <command>PUT</command> request, the specified
-                <code>Content-Type</code> applies to every object in
-              the archive. If you set <code>Content-Type</code> to a
-              blank string, Cloud Files determines the
-                <code>Content-Type</code> based on the individual file
-              type. For example, if you have MIME type files, use a
-              blank string for <code>Content-Type</code> to set the
-              MIME type for files within the archive.</para>
-          </note>
-        </section>
-        <section xml:id="Bulk_Delete-d1e2338">
-          <title>Bulk Delete</title>
-          <para>Bulk Delete request deletes multiple objects or
-            containers from an account with a single request. A Bulk
-            Delete request is a <command>DELETE</command> request with
-            the query parameter <code>?bulk-delete set</code>. The
-              <code>Content-Type</code> header of the request, if set,
-            must be set to <code>text/plain</code>. The body of the
-              <command>DELETE</command> request a newline-separated
-            list of URL-encoded objects to delete. You can delete
-            10,000 objects per request. </para>
-          <note>
-            <para>The bulk operation involves middleware that conducts
-              many operations on a single request.</para>
-          </note>
-          <para>The objects specified in the <command>DELETE</command>
-            request body must be URL-encoded and in the form: </para>
-          <para><code> /container_name/object_name</code>
-          </para>
-          <para>or for containers (which must be empty at time of
-            delete)</para>
-          <para>
-            <code>/container_name</code>
-          </para>
-          <para>The response is similar to the extract archive
-            responses in that every response will be 200 OK and the
-            response body must be parsed for actual results. The
-            following example shows the response body, formatted in
-            JSON, from a successful request. </para>
-          <example>
-            <title>Bulk Delete Response</title>
-            <programlisting>
-HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=UTF-8
-X-Trans-Id: tx52fe4601dde24e2b8e7cb-0051912ca8
-Date: Mon, 13 May 2013 18:10:48 GMT
-Transfer-Encoding: chunked
-
-{
-  "Number Not Found": 1,
-  "Response Status": "200 OK",
-  "Errors": [],
-  "Number Deleted": 10,
-  "Response Body": ""
-}
-</programlisting>
-          </example>
-          <para>The example that follows shows the response with
-            errors.</para>
-          <example>
-            <title>Bulk Delete Response with Errors</title>
-            <programlisting>
-HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=UTF-8
-X-Trans-Id: tx28552a8cd9cb441dad3ad-0051912d2d
-Date: Mon, 13 May 2013 18:13:01 GMT
-Transfer-Encoding: chunked
-
-{
-  "Number Not Found": 0,
-  "Response Status": "400 Bad Request",
-  "Errors": [
-    [
-      "/v1/AUTH_test/non_empty_container",
-      "409 Conflict"
-    ]
-  ],
-  "Number Deleted": 0,
-  "Response Body": ""
-}
-</programlisting>
-          </example>
-          <para>If all items were successfully deleted (or did not
-            exist), the status code is 200 OK. If any failed to
-            delete, the status code corresponds to the subrequest's
-            error. Possible codes are 400, 401, and 502. In all cases,
-            the <code>Response Body</code> specifies the number of
-            items successfully deleted or not found as well as a list
-            of those that failed. The return body is formatted in the
-            way specified in the request's <code>Accept</code> header.
-            Acceptable formats are <code>text/plain</code>,
-              <code>application/json</code>,
-              <code>application/xml</code>, and <code>text/xml</code>. </para>
-          <!-- <remark>cyr addition in response to Disqus comment - information from David Goetz </remark>          
-          <note>
-            <para>Although you can set the format in the request using
-              either the query parameter <code>?format</code> or the
-              Accept header, the Accept header is the method that
-              works in all cases. The query parameter, for example
-                <code>?format=json</code> was added and kept for
-              backwards compatibility. However, the
-                <code>?format</code> query parameter is not added to
-              the bulk delete feature because it would be a
-              continuation of the "2 ways to do one thing problem"
-              that the query parameter caused.  </para>
-          </note>
--->
-          <para>The list of errors is a list of tuples in the form
-              <code>[object_path, error_response]</code>. The
-              <code>object_path</code> is the full path of where the
-            object (or container) was to be deleted. The
-              <code>error_response</code> is the failing HTTP status
-            of the response for that individual
-              <command>DELETE</command>. </para>
-        </section>
-      </section>
     </section>
   </chapter>
   <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
@@ -5610,13 +5754,14 @@ Transfer-Encoding: chunked
         <raxm:priority>2</raxm:priority>
       </raxm:metadata>
     </info>
-    <para>This section describes the Cloud Files account and container
-      API operations for the Content Delivery Network (CDN) services.
-      All REST methods described below must be issued against the CDN
-      management service as defined by the endpoints in the service
-      catalog under <code>cloudFilesCDN</code> after successfully
-      authenticating your account. For details about authentication,
-      see <xref linkend="Authentication-d1e639"/>. </para>
+    <para>This section describes the Cloud Files account, container,
+      and object API operations for the Content Delivery Network (CDN)
+      services. All REST methods described below must be issued
+      against the CDN management service as defined by the endpoints
+      in the service catalog under <code>cloudFilesCDN</code> (see
+        <xref linkend="Service-Access-Endpoints-d1e003"/>) after
+      successfully authenticating your account. For details about
+      authentication, see <xref linkend="Authentication-d1e639"/>. </para>
     <para>A CDN-enabled container is a public container that is served
       by Akamai's Content Distribution Network. The files in a
       CDN-enabled container are publicly accessible and do not require
@@ -5629,24 +5774,41 @@ Transfer-Encoding: chunked
       <title>CDN Account Services</title>
       <para>
         <remark security="writeronly">Added opening line and rephrased
-          second -- dsh - 2012-03-09</remark> The following operations
-        may be performed at the account level of the CDN account. The
-        operations conform to the following format:</para>
+          second -- dsh - 2012-03-09</remark>You can perform the
+        operations in this section at the account level of the CDN
+        account. The operations conform to the following
+        format:</para>
       <example>
         <title>CDN HTTP Request: General Structure</title>
         <literallayout class="monospaced">
-  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/{<replaceable>account</replaceable>} HTTP\1.1
+  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/{<replaceable>account</replaceable>} HTTP/1.1
                 </literallayout>
       </example>
       <section xml:id="List_CDN-Enabled_Containers-d1e2414">
         <title>List CDN-Enabled Containers</title>
         <para>&GET; operations against the <code>cloudFilesCDN</code>
           endpoints for an account retrieve a list of CDN-enabled
-          containers. (See <xref
-            linkend="cloudfileCDN-service-catalog-de100"/>.) The &GET;
-          operation for the CDN management service allows the
-          following query parameters to control the information that
-          is displayed:</para>
+          containers. (For the CDN endpoints, see <xref
+            linkend="Service-Access-Endpoints-d1e003"/>.) </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>GET</command></td>
+              <td><code>v1/{account}</code></td>
+              <td>Lists containers in an account.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>The &GET; operation for the CDN management service
+          allows the following query parameters to control the
+          information that is displayed:</para>
         <variablelist>
           <title>Query Parameters</title>
           <varlistentry>
@@ -5657,6 +5819,8 @@ Transfer-Encoding: chunked
                 </inlineequation>, limits the number of results to <inlineequation>
                   <mathphrase><emphasis>n</emphasis></mathphrase>
                 </inlineequation> values.</para>
+              <para>Using <code>limit</code> provides a mechanism to
+                iterate through the entire list of containers.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5668,6 +5832,10 @@ Transfer-Encoding: chunked
                 the specified marker. Only strings using UTF-8
                 encoding are valid.
                 <!--02-03-12 dsh:  Note re: UTF / 8 for transparency JI/RA DOC-98  --></para>
+              <para>Using <code>marker</code> provides a mechanism to
+                iterate through the entire list of containers. Keep in
+                mind that the value for <code>marker</code> needs to
+                be URL-encoded before issuing the request.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5684,8 +5852,9 @@ Transfer-Encoding: chunked
             <term><code>format</code></term>
             <listitem>
               <para>Specify either <code>json</code> or
-                  <code>xml</code> to return the respective serialized
-                response.</para>
+                  <code>xml</code> to return the output in a
+                serialized format in either JSON or XML,
+                respectively.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5693,35 +5862,29 @@ Transfer-Encoding: chunked
             <listitem>
               <para>Set to <code>true</code> to return only
                 CDN-enabled containers.</para>
+              <para>Passing the query parameter
+                  <code>?enabled_only=true</code> suppresses any
+                private (non-CDN-enabled) containers from appearing in
+                the list. Thus, Cloud Files provides filtering support
+                to return only the list of containers that are
+                CDN-enabled. </para>
             </listitem>
           </varlistentry>
         </variablelist>
-        <para>Using the <code>format</code> query parameter, you can
-          request the output in a serialized format in either JSON or
-          XML.</para>
-        <para>Using <code>limit</code> and <code>marker</code>
-          provides a mechanism to iterate through the entire list of
-          containers. Keep in mind that the value for marker needs to
-          be URL-encoded before issuing the request.</para>
-        <para>Cloud Files provides filtering support to return only
-          the list of containers that are CDN-enabled. Passing the
-          query parameter <code>?enabled_only=true</code> suppresses
-          any private (non-CDN-enabled) containers from appearing in
-          the list.</para>
-        <para>The list of CDN-enabled containers is returned in the
-          response body, one container name per line.</para>
         <example>
           <?dbfo keep-together="always"?>
           <title>CDN-Enabled Containers List Request</title>
           <programlisting>
-  GET /v1/{account}?enabled_only=true HTTP/1.1
+  GET /v1/1234?enabled_only=true HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                   </programlisting>
         </example>
-        <para>A list of containers is returned in the response body,
-          one container per line. A 204 (No Content) HTTP status code
-          is passed back if the account has no containers.</para>
+        <para>The list of CDN-enabled containers is returned in the
+          response body, one container name per line. A 204 (No
+          Content) HTTP status code is passed back if the account has
+          no containers. Otherwise, status code 200 (OK) is
+          returned.</para>
         <example>
           <title>CDN-Enabled Containers List Response</title>
           <programlisting>
@@ -5734,135 +5897,26 @@ Transfer-Encoding: chunked
   movies
                   </programlisting>
         </example>
-        <section xml:id="CDN_Container_Details-d1e2566">
-          <title>View CDN Container Details</title>
-          <para>You can view CDN-enabled container details by
-            performing a <command>HEAD</command> request on a
-            container where the <code>Host</code> is one of the
-              <code>cdnCloudFiles</code> service access endpoints from
-            the service catalog (see <xref
-              linkend="cloudfileCDN-service-catalog-de100"/>). This
-            returns all the header information, including the
-            following: <itemizedlist>
-              <listitem>
-                <para>CDN streaming URI
-                    (<code>X-Cdn-Streaming-Uri</code>) – A URI for
-                  video streaming that uses Adobe’s HTTP Dynamic
-                  Streaming. </para>
-              </listitem>
-              <listitem>
-                <para>CDN SSL URI (<code>X-Cdn-Ssl-Uri</code>) – The
-                  URI for downloading the object over HTTPS, using
-                  SSL. (The user cannot have custom SSL certificates
-                  because our CDN partner does not provide that
-                  feature.)</para>
-              </listitem>
-              <listitem>
-                <para>CDN URI (<code>X-Cdn-Uri</code>) – The URI for
-                  downloading the object over HTTP.</para>
-              </listitem>
-              <listitem>
-                <para>iOS streaming URI (<code>X-Cdn-Ios-Uri</code>) –
-                  The URI for video streaming that uses Apple’s HTTP
-                  Live Streaming. (See <xref
-                    linkend="iOS-Streaming-d1f3725"/>.)</para>
-              </listitem>
-            </itemizedlist></para>
-          <note>
-            <para>Remember that your <command>HEAD</command> request
-              must be on the CDN host (i.e.,
-                <code>cdn.clouddrive.com</code>). Otherwise, you will
-              see the metadata for your private container as described
-              in <xref linkend="View-Container_Info-d1e1285"/>.
-            </para>
-          </note>
-          <para> Additionally, you can format the returned information
-            in either XML or JSON by appending
-              <code>?format=xml</code> or <code>?format=json</code> to
-            your request. </para>
-          <para>A 204 (No Content) HTTP status code is returned if the
-            account has no containers. Otherwise, status code of 200
-            (OK) is returned.</para>
-          <example>
-            <title>CDN-Enabled Container Details Request: JSON </title>
-            <programlisting>
-  HEAD /v1/{account}/{container_name}?format=json
-  Host: cdn.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-                    </programlisting>
-          </example>
-          <example>
-            <title>CDN-Enabled Container Details Response: JSON </title>
-            <programlisting>
-  HTTP/1.1 200 OK
-  Date: Tue, 30 Oct 2012 14:41:29 GMT
-  Content-Length: 127
-  Content-Type: application/json; charset=utf-8
- 
-  [
-  {"name":"test_container",
-   "cdn_enabled":"true",
-   "ttl":28800,
-   "log_retention":"true",
-   "cdn_uri":"http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com",
-   "cdn_ssl_uri":"https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.stg2.rackcdn.com",
-   "cdn_streaming_uri":"http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com"}
-  ]
-                       </programlisting>
-          </example>
-          <example>
-            <?dbfo keep-together="always"?>
-            <title>CDN-Enabled Container Details Request: XML</title>
-            <programlisting>
-  HEAD /v1/{account}/{container_name}?format=xml
-  Host: cdn.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c&gt;
-                 </programlisting>
-          </example>
-          <example>
-            <title>CDN-Enabled Container Details Response: XML</title>
-            <programlisting>
-  HTTP/1.1 200 OK
-  Date: Tue, 30 Oct 2012 17:57:28 GMT
-  Content-Length: 267
-  Content-Type: application/xml; charset=utf-8
-            
-  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-  &lt;account name="WidgetsRUs.button"&gt;
-    &lt;container&gt;
-        &lt;name&gt;images&lt;/name&gt;
-        &lt;cdn_enabled&gt;True&lt;/cdn_enabled&gt;
-        &lt;ttl&gt;86400&lt;/ttl&gt;
-        &lt;log_retention&gt;True&lt;/log_retention&gt;
-        &lt;cdn_url&gt;
-            http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com
-        &lt;/cdn_url&gt;
-        &lt;cdn_ssl_url&gt;
-            https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.stg2.rackcdn.com
-        &lt;/cdn_ssl_url&gt;
-        &lt;cdn_streaming_url&gt;
-            http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
-        &lt;/cdn_streaming_url&gt;
-   &lt;/container&gt;
-  &lt;/account&gt;
-                                  </programlisting>
-          </example>
-        </section>
+        <para>To view the CDN container details, see <xref
+            linkend="View-CDN-Container-Details-d1e0e"/>.</para>
       </section>
     </section>
     <?hard-pagebreak?>
     <section xml:id="CDN_Container_Services-d1e2632">
       <title>CDN Container Services</title>
       <para>This section documents the REST operations for the CDN
-        management service that can be performed on containers. All
-        operations are valid HTTP methods and resemble this
-        format:</para>
+        management service that can be performed on containers in your
+        Cloud Files account. </para>
+      <para>The following example shows the general structure for the
+        requests, which includes your account number and your
+        container name.</para>
       <example>
+        <?dbfo keep-together="always"?>
         <title>CDN-Enabled Container HTTP Request: General
           Structure</title>
-        <literallayout class="monospaced">
-  <replaceable>METHOD-NAME</replaceable> /v1/{<replaceable>account</replaceable>}/{<replaceable>container</replaceable>} HTTP/1.1
-                </literallayout>
+        <programlisting>
+<replaceable> HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable>/<replaceable>container</replaceable> HTTP/1.1
+</programlisting>
       </example>
       <para>
         <remark security="writeronly">2012-03-09 dsh: Reworked these
@@ -5873,9 +5927,10 @@ Transfer-Encoding: chunked
         the storage service become CDN-enabled. After you CDN-enable a
         container, its publicly-available URL can be found with the
         header <code>X-Cdn-Uri</code>, and its objects may be accessed
-        at <code>X-Cdn-Uri/objectName</code>. By knowing this pattern,
-        you can pre-generate the URL for an object before it is added
-        to the container. </para>
+        at
+          <code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>.
+        By knowing this pattern, you can pre-generate the URL for an
+        object before it is added to the container. </para>
       <para> When you enable a container in the CDN service, you
         automatically generate URLs for SSL and streaming usage. They
         are listed under the <code>X-Cdn-Ssl-Uri</code> and
@@ -5910,16 +5965,34 @@ Transfer-Encoding: chunked
           system. To CDN-enable the container, perform &PUT; request
           against it using the <code>publicURL</code> noted in the
           service catalog for Cloud Files during Authentication and
-          set the <code>X-CDN-Enabled</code> header to TRUE. <xref
-            linkend="cloudfileCDN-service-catalog-de100"/> provides an
-          example of the information in the service catalog for
-            <code>cloudfilesCDN</code>. (In the examples below, the
-            <code>publicURL</code> used is
+          set the <code>X-CDN-Enabled</code> header to
+            <code>TRUE</code>. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>PUT</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Creates a container, or storage compartment, for
+                your data.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para><xref linkend="cloudfileCDN-service-catalog-de100"/>
+          provides an example of the information in the service
+          catalog for <code>cloudfilesCDN</code>. (In the examples
+          below, the <code>publicURL</code> used is
             <code>cdn.clouddrive.com</code>.) When a container is
           CDN-enabled, any objects stored in it are publicly
           accessible over the content delivery network by combining
           the container's CDN URL with the object name
-            (<code>X-CDN-URI/objectName</code>). </para>
+              (<code>X-CDN-URI/<replaceable>objectName</replaceable></code>). </para>
         <note>
           <para>The examples in this guide use
               <code>cdn.clouddrive.com</code> for an endpoint, but you
@@ -5993,7 +6066,7 @@ Transfer-Encoding: chunked
         <example>
           <title>Container CDN-Enable Request</title>
           <programlisting>
-  PUT /v1/{account}/{container} HTTP/1.1
+  PUT /v1/1234/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Ttl: 259200
@@ -6023,7 +6096,7 @@ Transfer-Encoding: chunked
         </example>
         <para>
           <remark security="writeronly">2012-03-07 dsh: JIRA doc
-            ticket / 1-2-6 regards C / DN disable</remark> In order to
+            ticket / 1-2-6 regards CDN disable</remark> In order to
           remove the container from the CDN, change the
             <code>X-CDN-Enabled</code> flag to <code>False</code>, as
           in the request below. However, please note that objects
@@ -6032,28 +6105,51 @@ Transfer-Encoding: chunked
         <example>
           <title>Container CDN-Disable Request</title>
           <programlisting>
-  PUT /v1/{account}/{container} HTTP/1.1
+  PUT /v1/1234/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-CDN-Enabled: False
                    </programlisting>
         </example>
       </section>
-      <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
+      <section xml:id="View-CDN-Container-Details-d1e0e">
         <title>List a CDN-Enabled Container's Metadata</title>
-        <para>A &HEAD; operation against a CDN-enabled container is
-          used to retrieve the CDN attributes of the container.</para>
+        <para>You can view CDN-enabled container details by performing
+          a <command>HEAD</command> request on a container where the
+            <code>Host</code> header value is one of the
+            <code>cdnCloudFiles</code> service access endpoints. (For
+          a list of the endpoints, see <xref
+            linkend="Service-Access-Endpoints-d1e003"/>). </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>HEAD</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Gets container metadata, including the number of
+                objects and the total bytes of all objects stored in
+                the container. </td>
+            </tr>
+          </tbody>
+        </informaltable>
         <para>If the container is (or ever has been) CDN-enabled, the
-          following headers are returned in the response as shown in
-            <xref linkend="CDN-Container-Metadata-Response-d1e001"/>:<itemizedlist>
+          following headers are returned in the response (as shown in
+          the following examples): <itemizedlist>
             <listitem>
-              <para><code>X-Cdn-Uri</code>: can be combined with any
-                object name within the container to form the publicly
-                accessible URI for that object for distribution over a
-                CDN system</para>
+              <para><code>X-Cdn-Uri</code>: specifies a URI for
+                downloading the object over HTTP. This URI can be
+                combined with any object name within the container to
+                form the publicly accessible URI for that object for
+                distribution over a CDN system.</para>
             </listitem>
             <listitem>
-              <para><code>X-Ttl</code>: specifies the value is the
+              <para><code>X-Ttl</code>: specifies the value in the
                 number of seconds that the object is cached in the CDN
                 system before being refetched</para>
             </listitem>
@@ -6061,7 +6157,7 @@ Transfer-Encoding: chunked
               <para><code>X-Cdn-Enabled</code>: <code>True</code> or
                   <code>False</code> to specify whether the container
                 is currently marked to allow public serving of objects
-                through CDN </para>
+                through CDN</para>
             </listitem>
             <listitem>
               <para><code>X-Log-Retention</code>: <code>True</code> or
@@ -6070,12 +6166,14 @@ Transfer-Encoding: chunked
                 storage system</para>
             </listitem>
             <listitem>
-              <para><code>X-Cdn-Ssl-Uri</code>: specifies SSL is
-                available for the container</para>
+              <para><code>X-Cdn-Ssl-Uri</code>: specifies a URI for
+                downloading the object over HTTPS, using SSL. (The
+                user cannot have custom SSL certificates because our
+                CDN partner does not provide that feature.)</para>
             </listitem>
             <listitem>
-              <para><code>X-Cdn-Streaming-Uri</code>: specifies the
-                URI for video streaming that uses Adobe’s HTTP Dynamic
+              <para><code>X-Cdn-Streaming-Uri</code>: specifies a URI
+                for video streaming that uses Adobe’s HTTP Dynamic
                 Streaming</para>
             </listitem>
             <listitem>
@@ -6084,21 +6182,32 @@ Transfer-Encoding: chunked
                 (see <xref linkend="iOS-Streaming-d1f3725"/>)</para>
             </listitem>
           </itemizedlist></para>
+        <note>
+          <para>Remember that your <command>HEAD</command> request
+            must be on the CDN host (i.e.,
+              <code>cdn.clouddrive.com</code>). Otherwise, you will
+            see the metadata for your private container as described
+            in <xref linkend="View-Container_Info-d1e1285"/>. </para>
+        </note>
+        <para> Additionally, you can format the returned information
+          in either XML or JSON by appending <code>?format=xml</code>
+          or <code>?format=json</code> to your request. </para>
+        <para>A 204 (No Content) HTTP status code is returned if the
+          account has no containers. Otherwise, status code of 200
+          (OK) is returned.</para>
         <example>
           <title>CDN-Enabled Container Metadata Request</title>
           <programlisting>
-  HEAD /v1/{account}/{container} HTTP/1.1
-  Host: cdn.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-             </programlisting>
-        </example>
-        <para>The HTTP status code is 204 (No Content) if the
-          container exists, and 404 (Not Found) if it does not. </para>
-        <example xml:id="CDN-Container-Metadata-Response-d1e001">
-          <title>CDN-Enabled Container Metadata Response</title>
-          <programlisting>
+HEAD /v1/1234/MyContainer HTTP/1.1
+Host: cdn.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+</programlisting>
+          <example>
+            <title>CDN-Enabled Container Metadata Response</title>
+            <programlisting>
   HTTP/1.1 204 No Content
-  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.
+  X-Cdn-Ssl-Uri: https://
+83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.
     ssl.cf0.rackcdn.com
   X-Ttl: 259200
   X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1.
@@ -6109,7 +6218,74 @@ Transfer-Encoding: chunked
     659bfc1ac1.r49.stream.cf0.rackcdn.com
   X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
   Content-Length: 0
-                 </programlisting>
+</programlisting>
+          </example>
+        </example>
+        <example>
+          <title>CDN-Enabled Container Details Request: JSON</title>
+          <programlisting>
+HEAD /v1/1234/MyContainer?format=json
+Host: cdn.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+</programlisting>
+        </example>
+        <example>
+          <title>CDN-Enabled Containder Details Response: JSON</title>
+          <programlisting>
+  HTTP/1.1 200 OK
+  Date: Tue, 30 Oct 2012 14:41:29 GMT
+  Content-Length: 127
+  Content-Type: application/json; charset=utf-8
+  [
+  {"name":"test_container",
+   "cdn_enabled":"true",
+   "ttl":28800,
+   "log_retention":"true",
+   "cdn_uri":"http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
+r10.cf1.rackcdn.com",
+   "cdn_ssl_uri":"https://
+83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.stg2.rackcdn.com",
+   "cdn_streaming_uri":"http://
+80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com"}
+  ]
+</programlisting>
+        </example>
+        <example>
+          <title>CDN-Enabled Container Details Request: XML</title>
+          <programlisting>
+HEAD /v1/1234/{container_name}?format=xml
+Host: cdn.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+</programlisting>
+        </example>
+        <example>
+          <title>CDN-Enabled Container Details Response: XML</title>
+          <programlisting>
+HTTP/1.1 200 OK
+Date: Tue, 30 Oct 2012 17:57:28 GMT
+Content-Length: 267
+Content-Type: application/xml; charset=utf-8
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;account name="WidgetsRUs.button">
+  &lt;container>
+      &lt;name>images&lt;/name>
+      &lt;cdn_enabled>True&lt;/cdn_enabled>
+      &lt;ttl>86400&lt;/ttl>
+      &lt;log_retention>True&lt;/log_retention>
+        &lt;cdn_url>
+            http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.
+cf1.rackcdn.com
+        &lt;/cdn_url>
+        &lt;cdn_ssl_url>
+            https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.
+stg2.rackcdn.com
+        &lt;/cdn_ssl_url>
+        &lt;cdn_streaming_url>
+            http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.
+stream.cf0.rackcdn.com
+        &lt;/cdn_streaming_url>
+   &lt;/container>
+  &lt;/account></programlisting>
         </example>
       </section>
       <section
@@ -6133,8 +6309,25 @@ Transfer-Encoding: chunked
       <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
         <title>Update CDN-Enabled Container Metadata</title>
         <para>You can use a &POST; request against a CDN-enabled
-          container to adjust some CDN attributes. You can change only
-          the following metadata on a CDN-enabled container: <itemizedlist>
+          container to adjust some CDN attributes. </para>
+        <informaltable rules="all">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><command>POST</command></td>
+              <td><code>v1/{account}/{container}</code></td>
+              <td>Updates the CDN-enabled container metadata.</td>
+            </tr>
+          </tbody>
+        </informaltable>
+        <para>You can change only the following metadata on a
+          CDN-enabled container: <itemizedlist>
             <listitem>
               <para><code>X-Log-Retention</code>: <code>True</code> or
                   <code>False</code> to specify whether the CDN access
@@ -6160,7 +6353,7 @@ Transfer-Encoding: chunked
         <example>
           <title>Update CDN-Enabled Container Metadata Request</title>
           <programlisting>
-  POST /v1/{account}/{container} HTTP/1.1
+  POST /v1/1234/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-TTL: 86400
@@ -6198,7 +6391,7 @@ Transfer-Encoding: chunked
           <title>CDN-Enabled Container Metadata Request with
             SSL</title>
           <programlisting>
-  HEAD /v1/{account}/{container} HTTP/1.1
+  HEAD /v1/1234/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                      </programlisting>
@@ -6260,7 +6453,7 @@ Transfer-Encoding: chunked
           <title>CDN-Enabled Container Metadata Request with Streaming
             Enabled</title>
           <programlisting>
-  HEAD /v1/{account}/{container} HTTP/1.1
+  HEAD /v1/1234/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                 </programlisting>
@@ -6421,7 +6614,7 @@ i))) != null;
         <example>
           <title>Purge CDN-Enabled Object</title>
           <programlisting>
-  DELETE /v1/{account}/{object} HTTP/1.1
+  DELETE /v1/1234/{object} HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Purge-Email: user@domain.com, user2@domain.com
@@ -6536,7 +6729,8 @@ i))) != null;
               to change the <code>X-Auth-Token</code> to your
               authentication token. You must write your storage URL
               and the container name to properly point to the
-              container (&lt;storage URL&gt;&lt;container name&gt;) </para>
+              container (<code><replaceable>storageURL</replaceable>
+                <replaceable>containerName</replaceable></code>) </para>
             <para> You get your Auth token when you authenticate your
               session as shown in <xref
                 linkend="Authentication-d1e639"
@@ -6553,7 +6747,7 @@ i))) != null;
               domain or branded URI you use instead of the CDN URI. If
               you need to find your CDN URI, perform a &GET; to
                 <code>cdn.clouddrive.com</code> as shown in <xref
-                linkend="CDN_Container_Details-d1e2566"
+                linkend="View-CDN-Container-Details-d1e0e"
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
@@ -6617,7 +6811,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
         <example>
           <title>Set Error Pages for Static Website</title>
           <programlisting>
-  POST /v1/{account}/{container} HTTP/1.1
+  POST /v1/1234/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-Web-Error: error.html            
@@ -6626,6 +6820,303 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
         <para> Any class 200 status codes indicate success. </para>
       </section>
     </section>
+  </chapter>
+    <chapter xml:id="Bulk-Operations-d1eoe">
+      <title>Bulk Operations </title>
+      <para>This chapter describes bulk operations that are available
+        with Cloud Files.</para>
+      <!--          
+          <remark>9-30-2013 cyr: The following note was originally requested by Chuck Thier, but David Goetz sent email saying not to make this doc change. He expects to make code changes at some point in the future to take care of this. </remark>
+        <note>
+          <para>The bulk operations, extract archive and bulk delete, can take a long time. They might cause
+            client timeouts and require that you increase client
+            timeout limits. </para>
+        </note>
+-->
+      <section xml:id="Bulk-Import-de101">
+        <title>Bulk Importing of Data</title>
+        <remark security="writeronly">06-11-2012 dsh: added </remark>
+        <para>If you have a very large amount of data to import into
+          Cloud Files, bulk importing of data is available. With bulk
+          importing, you send a physical device containing your data
+          to Rackspace and Rackspace loads it directly into Cloud
+          Files. By doing this, you avoid the time and cost of
+          uploading large amounts of data over the Internet. After the
+          transfer is complete, Rackspace either ships your device
+          back to you, or destroys it after degaussing, whichever you
+          prefer. </para>
+        <note>
+          <para>Bulk import is available for U.S. data centers
+            only.</para>
+        </note>
+        <para>Rackspace accepts USB, SATA, and eSATA devices. Your
+          file system may be NTFS, ext2, ext3, ext4, or FAT32. Because
+          Cloud Files does not use hierarchical directory structures,
+          nested sub-directories in your data are converted to object
+          names. Your top-level folders become containers, and nested
+          directory names become part of the object names. For
+          instance, <code>Chapter28/Ahab/ivoryleg</code> results in a
+          container named <code>Chapter28</code> with an object named
+            <code>Ahab/ivoryleg</code> inside of it. For more
+          information on simulating directory structures in Cloud
+          Files, see <xref
+            linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
+          />. </para>
+        <para>To begin the bulk import process, contact Rackspace
+          support technicians. You will be assigned a migration
+          specialist who can answer any questions you might have along
+          the way. You are notified when Rackspace receives your
+          device, begins the data import, completes data import, and
+          ships back or destroys the device. </para>
+      </section>
+      <section xml:id="Extract-Archive-d1eoe">
+        <title>Extract Archive</title>
+        <para>An extract archive request expands tar files into a
+          Cloud Files account. The request is a <command>PUT</command>
+          with the query parameter
+            <code>?extract-archive=format</code> specifying the format
+          of archive file. Accepted formats are <code>tar</code>,
+            <code>tar.gz</code>, and <code>tar.bz2</code>. </para>
+        <note>
+          <para>The bulk operation involves middleware that conducts
+            many operations on a single request.</para>
+        </note>
+        <para>For the <command>PUT</command> request, use the
+          following URL:</para>
+        <para>
+            /<code>v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz
+          </code></para>
+        <para><code>UPLOAD_PATH</code> is the location where the files
+          are expanded and can specify any of the following: <itemizedlist>
+            <listitem>
+              <para>a container</para>
+            </listitem>
+            <listitem>
+              <para>a pseudo directory within a container</para>
+            </listitem>
+            <listitem>
+              <para>an empty string</para>
+              <para>If the <code>UPLOAD_PATH</code> is an empty
+                string, Cloud Files automatically creates containers
+                in which to place the files. Files in the base
+                directory of the tar file (that is, files that are not
+                in a folder of the unzipped tar file) are ignored.
+              </para>
+            </listitem>
+          </itemizedlist></para>
+        <para>The destination of a file in the archive is built as
+          follows: </para>
+        <para>
+          <code>/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</code>
+        </para>
+        <para><code>FILE_PATH</code> is the file name from the listing
+          in the tar file.</para>
+        <para>You can create up to 1,000 new containers per extraction
+          request. Also note that only regular files are uploaded.
+          Objects such as empty directories and symlinks are not
+          uploaded.</para>
+        <para>The responses from bulk operations are not like other
+          Cloud Files responses because a short request body sent from
+          the client could result in many operations on the proxy
+          server and precautions need to be made to prevent the
+          request from timing out due to a lack of activity. To this
+          end, the client always receives a 200 OK response,
+          regardless of the actual success of the call. The body of
+          the response, which can be delivered over a greater amount
+          of time, must be parsed to determine the actual success of
+          the operation. In addition, the client may receive
+          whitespace characters prepended to the response body while
+          the proxy server is completing the request. </para>
+        <para>The format of the response body defaults to text plain
+          but can be either JSON or XML depending on the
+            <code>Accept</code> header. Acceptable formats are
+            <code>text/plain</code>, <code>application/json</code>,
+            <code>application/xml</code>, and <code>text/xml</code>.
+          The following example shows the response body, formatted in
+          JSON, from a successful request. </para>
+        <example>
+          <title>Extract Archive Response</title>
+          <programlisting>
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: txa7fd1603cfe04bdb920cd-005191226d
+Date: Mon, 13 May 2013 17:27:10 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Files Created": 10,
+  "Response Status": "201 Created",
+  "Errors": [],
+  "Response Body": ""
+}
+</programlisting>
+        </example>
+        <para>The example that follows shows the response with
+          errors.</para>
+        <example>
+          <title>Extract Archive Response with Errors</title>
+          <programlisting>
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: tx9f12e16f047049cc91147-005191245f
+Date:  Mon, 13 May 2013 17:35:27 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Files Created": 10,
+  "Response Status": "400 Bad Request",
+  "Errors": [
+    [
+      "/v1/AUTH_test/test_cont/big_file.wav",
+      "413 Request Entity Too Large"
+    ]
+  ],
+  "Response Body": ""
+} 
+</programlisting>
+        </example>
+        <para>The list of errors is a list of tuples in the form
+            <code>[object_path, error_response]</code>. The
+            <code>object_path</code> given is the full path of where
+          the object was to be put. The <code>error_response</code> is
+          the failing HTTP status of the response for that individual
+            <command>PUT</command>. After 1,000 errors, processing of
+          the request ends, and the completed response is returned. </para>
+        <para>If all valid files were uploaded successfully, the
+            <code>Response Status</code> in the response body is 201
+          Created. If any files failed to be created, the
+            <code>Response Status</code> corresponds to the
+          subrequest's error. Possible codes are 400, 401, and 502. In
+          both cases, the response body specifies the number of files
+          successfully uploaded and a list of the files that failed.
+          (The actual HTTP status code is always 200 OK, so the
+          response code in the response body is the one you should
+          monitor.)</para>
+        <note>
+          <para>If you send a <code>Content-Type</code> on the
+              <command>PUT</command> request, the specified
+              <code>Content-Type</code> applies to every object in the
+            archive. If you set <code>Content-Type</code> to a blank
+            string, Cloud Files determines the
+              <code>Content-Type</code> based on the individual file
+            type. For example, if you have MIME type files, use a
+            blank string for <code>Content-Type</code> to set the MIME
+            type for files within the archive.</para>
+        </note>
+      </section>
+      <section xml:id="Bulk-Delete-d1eoe">
+        <title>Bulk Delete</title>
+        <para>Bulk Delete request deletes multiple objects or
+          containers from an account with a single request. A Bulk
+          Delete request is a <command>DELETE</command> request with
+          the query parameter <code>?bulk-delete set</code>. The
+            <code>Content-Type</code> header of the request, if set,
+          must be set to <code>text/plain</code>. The body of the
+            <command>DELETE</command> request a newline-separated list
+          of URL-encoded objects to delete. You can delete 10,000
+          objects per request. </para>
+        <note>
+          <para>The bulk operation involves middleware that conducts
+            many operations on a single request.</para>
+        </note>
+        <para>The objects specified in the <command>DELETE</command>
+          request body must be URL-encoded and in the form: </para>
+        <para><code> /container_name/object_name</code>
+        </para>
+        <para>or for containers (which must be empty at time of
+          delete)</para>
+        <para>
+          <code>/container_name</code>
+        </para>
+        <para>The response is similar to the extract archive responses
+          in that every response will be 200 OK and the response body
+          must be parsed for actual results. The following example
+          shows the response body, formatted in JSON, from a
+          successful request. </para>
+        <example>
+          <title>Bulk Delete Response</title>
+          <programlisting>
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+X-Trans-Id: tx52fe4601dde24e2b8e7cb-0051912ca8
+Date: Mon, 13 May 2013 18:10:48 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Not Found": 1,
+  "Response Status": "200 OK",
+  "Errors": [],
+  "Number Deleted": 10,
+  "Response Body": ""
+}
+</programlisting>
+        </example>
+        <para>The example that follows shows the response with
+          errors.</para>
+        <example>
+          <title>Bulk Delete Response with Errors</title>
+          <programlisting>
+HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+X-Trans-Id: tx28552a8cd9cb441dad3ad-0051912d2d
+Date: Mon, 13 May 2013 18:13:01 GMT
+Transfer-Encoding: chunked
+
+{
+  "Number Not Found": 0,
+  "Response Status": "400 Bad Request",
+  "Errors": [
+    [
+      "/v1/AUTH_test/non_empty_container",
+      "409 Conflict"
+    ]
+  ],
+  "Number Deleted": 0,
+  "Response Body": ""
+}
+</programlisting>
+        </example>
+        <para>If all items were successfully deleted (or did not
+          exist), the status code is 200 OK. If any failed to delete,
+          the status code corresponds to the subrequest's error.
+          Possible codes are 400, 401, and 502. In all cases, the
+            <code>Response Body</code> specifies the number of items
+          successfully deleted or not found as well as a list of those
+          that failed. The return body is formatted in the way
+          specified in the request's <code>Accept</code> header.
+          Acceptable formats are <code>text/plain</code>,
+            <code>application/json</code>,
+            <code>application/xml</code>, and <code>text/xml</code>. </para>
+        <!-- <remark>cyr addition in response to Disqus comment - information from David Goetz </remark>          
+          <note>
+            <para>Although you can set the format in the request using
+              either the query parameter <code>?format</code> or the
+              Accept header, the Accept header is the method that
+              works in all cases. The query parameter, for example
+                <code>?format=json</code> was added and kept for
+              backwards compatibility. However, the
+                <code>?format</code> query parameter is not added to
+              the bulk delete feature because it would be a
+              continuation of the "2 ways to do one thing problem"
+              that the query parameter caused.  </para>
+          </note>
+-->
+        <para>The list of errors is a list of tuples in the form
+            <code>[object_path, error_response]</code>. The
+            <code>object_path</code> is the full path of where the
+          object (or container) was to be deleted. The
+            <code>error_response</code> is the failing HTTP status of
+          the response for that individual <command>DELETE</command>.
+        </para>
+      </section>
   </chapter>
   <chapter xml:id="Public_Access_to_Account-d1a4440">
     <title>Public Access to Your Cloud Files Account</title>
@@ -6685,7 +7176,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
         <example>
           <title>Set Account Metadata Key for Public Access</title>
           <programlisting>
-  POST /v1/{account} HTTP/1.1
+  POST /v1/1234 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Account-Meta-Temp-Url-Key: yourKey
@@ -6848,7 +7339,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <example>
           <title>Set Account Metadata Key for Public Access</title>
           <programlisting>
-  POST /v1/{account} HTTP/1.1
+  POST /v1/1234 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Account-Meta-Temp-Url-Key: yourKey
@@ -7378,7 +7869,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
           Credentials and Response:JSON</title>
         <screen language="bash">
 <command>curl -k -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d 
-'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"&lt;username>", "apiKey":"&lt;apikey>" } } }' -H 
+'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"<replaceable>yourUserName</replaceable>", "apiKey":"<replaceable>yourApiKey</replaceable>" } } }' -H 
 "Content-type: application/json" </command>
  </screen>
         <screen language="bash">
@@ -7388,7 +7879,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
             {
                 "endpoints": [
                     {
-                        "publicURL": "https://cdn1.clouddrive.com/v1/&lt;account_hash>",
+                        "publicURL": "https://cdn1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
                         "region": "DFW",
 …
                     },
@@ -7400,8 +7891,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
             {
                 "endpoints": [
                     {
-                        "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/&lt;account_hash>",
-                        "publicURL": "https://storage101.dfw1.clouddrive.com/v1/&lt;account_hash>",
+                        "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
+                        "publicURL": "https://storage101.dfw1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
                         "region": "DFW",
 …
                     },
