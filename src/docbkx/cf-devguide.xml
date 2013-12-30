@@ -148,7 +148,7 @@
               <listitem>
                 <para>Added service catalog information for
                     <code>cloudfilesCDN</code> endpoints (<xref
-                    linkend="cloudfileCDN-service-catalog-de100"
+                    linkend="Service-Access-Endpoints-d1e003"
                   />).</para>
               </listitem>
               <listitem>
@@ -907,9 +907,8 @@
         a container so you must have at least one container defined in
         your account prior to uploading data. </para>
       <para>If you expect to write more than 100 objects per second to
-        a single container, Rackspace recommends organizing those
-        objects across multiple containers to improve
-        performance.</para>
+        a single container, we recommend organizing those objects
+        across multiple containers to improve performance.</para>
       <para>The only restrictions on container names is that they
         cannot contain a forward slash (<code>/</code>) and must be
         less than 256 bytes in length. Note that the length
@@ -1880,66 +1879,64 @@
             <tr align="left">
               <td colspan="2" rowspan="2">Chicago (ORD)</td>
               <td colspan="5"
-                    ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Dallas/Ft. Worth (DFW)</td>
               <td colspan="5"
-                    ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Hong Kong (HKG)</td>
               <td colspan="5"
-                    ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr align="left">
               <td colspan="2" rowspan="2">London (LON)</td>
               <td colspan="5"
-                    ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Northern Virginia (IAD)</td>
               <td colspan="5"
-                    ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Sydney (SYD)</td>
               <td colspan="5"
-                    ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
           </tbody>
         </table>
       </para>
-      <para>Replace the sample account ID number,
-          <parameter>1234</parameter>, with your actual account number
-        returned as part of the authentication service
-        response.</para>
-      <para>You will find the actual account number after the final
-        '/' in the <code>publicURL</code> field and the
+      <para>Replace the sample MossoCloudFS information with the
+        actual MossoCloudFS information returned as part of the
+        authentication service response. You will find this after the
+        final '/' in the <code>publicURL</code> field and the
           <code>internalURL</code> field in the
           <code>cloudFiles</code> section of the service catalog
         returned by the authentication response. For more information
@@ -1985,44 +1982,43 @@
             <tr align="left">
               <td colspan="2">Chicago (ORD)</td>
               <td colspan="5"
-                    ><code>https://cdn2.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Dallas/Ft. Worth (DFW)</td>
               <td colspan="5"
-                    ><code>https://cdn1.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Hong Kong (HKG)</td>
               <td colspan="5"
-                    ><code>https://cdn6.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn6.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr align="left">
               <td colspan="2">London (LON)</td>
               <td colspan="5"
-                    ><code>https://cdn3.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Northern Virginia (IAD)</td>
               <td colspan="5"
-                    ><code>https://cdn5.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn5.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Sydney (SYD)</td>
               <td colspan="5"
-                    ><code>https://cdn4.clouddrive.com/v1/<parameter>1234</parameter>/</code></td>
+                    ><code>https://cdn4.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
             </tr>
           </tbody>
         </table>
       </para>
       <para>As with the storage component service, replace the sample
-        account ID number, <parameter>1234</parameter>, with your
-        actual account number returned as part of the authentication
-        service response. For the CDN management service, you will
-        find the actual account number after the final '/' in the
-          <code>publicURL</code> field in the
-          <code>cloudFilesCDN</code> section of the service catalog
-        returned by the authentication response.  </para>
+        MossoCloudFS information with the actual MossoCloudFS
+        information returned as part of the authentication service
+        response. For the CDN management service, you will find this
+        information after the final '/' in the <code>publicURL</code>
+        field in the <code>cloudFilesCDN</code> section of the service
+        catalog returned by the authentication response. </para>
     </section>
 <!--  
     <section xml:id="Limits-d1e942">
@@ -2123,7 +2119,7 @@
       <example>
         <title>Example Request URL (contract version in <emphasis
             role="strong">bold</emphasis>)</title>
-        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/1234</programlisting>
+        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</replaceable></programlisting>
       </example>
       <note>
         <para>This document pertains to contract version 1.</para>
@@ -2367,19 +2363,18 @@
         <listitem>
           <para>The REST service identified with
               <code>cloudFiles</code> in the service catalog (see
-              <xref linkend="Service-Catalog-Endpoints-d1e001"/>)
-            manages the data storage in the system. Example operations
-            are creating containers and uploading objects. This
-            service is referred to as the <emphasis role="bold"
-              >storage service</emphasis>.</para>
+              <xref linkend="Retrieving_Auth_Token"/>) manages the
+            data storage in the system. Example operations are
+            creating containers and uploading objects. This service is
+            referred to as the <emphasis role="bold">storage
+              service</emphasis>.</para>
         </listitem>
         <listitem>
           <para>The REST service identified with
               <code>cloudFilesCDN</code> in the service catalog (see
-              <xref linkend="cloudfileCDN-service-catalog-de100"/>)
-            manages the CDN feature of Cloud Files. This service is
-            referred to as the <emphasis role="bold">CDN
-              service</emphasis>.</para>
+              <xref linkend="Retrieving_Auth_Token"/>) manages the CDN
+            feature of Cloud Files. This service is referred to as the
+              <emphasis role="bold">CDN service</emphasis>.</para>
         </listitem>
       </itemizedlist></para>
     <?hard-pagebreak?> 
@@ -2857,7 +2852,8 @@
         for:</para>
       <itemizedlist>
         <listitem>
-          <para>account (for example, 1234)</para>
+          <para>account (for example,
+            MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123)</para>
         </listitem>
         <listitem>
           <para><code>X-Auth-Token</code> (for example,
@@ -2904,7 +2900,7 @@
         <example>
           <title>View Containers List Request</title>
           <programlisting>
-  GET /v1/1234 HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
               </programlisting>
@@ -2935,7 +2931,7 @@
           <example>
             <title>Container Details Request: JSON</title>
             <programlisting>
-  GET /v1/1234?format=json HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?format=json HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -2957,7 +2953,7 @@
           <example>
             <title>Container Details Request: XML</title>
             <programlisting>
-  GET /v1/1234?format=xml HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?format=xml HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -3024,7 +3020,7 @@
                     </programlisting>
             <para>Use a limit of two to show how things work:</para>
             <programlisting>
-  GET /v1/1234?limit=2
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -3036,7 +3032,7 @@
               are more container names to list and make another
               request with a marker of the last item returned:</para>
             <programlisting>
-  GET /v1/1234?limit=2&amp;marker=bananas
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   
@@ -3046,7 +3042,7 @@
             <para>Again, two items are returned. There may be
               more.</para>
             <programlisting>
-  GET /v1/1234?limit=2&amp;marker=oranges
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
@@ -3087,7 +3083,7 @@
         <example>
           <title>View Account Information Request</title>
           <programlisting>
-  HEAD /v1/1234 HTTP/1.1
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
              </programlisting>
@@ -3133,7 +3129,7 @@
           overwrite the previous value.</para>
         <example>
           <title>Create or Update Account Metadata Request</title>
-          <programlisting>POST /v1/1234 HTTP/1.1
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Account-Meta-Book: MobyDick
@@ -3155,7 +3151,7 @@ Date: Sat, 09 Jun 2012 19:16:29 GMT</programlisting>
           operation.</para>
         <example>
           <title>View Account Metadata Request</title>
-          <programlisting>HEAD /v1/1234 HTTP/1.1
+          <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
         </example>
@@ -3202,7 +3198,7 @@ Date: Sat, 09 Jun 2012 19:16:59 GMT</programlisting>
           header. For example, <code>X-Remove-Account_Meta-Book:
             x</code>. The arbitrary value is ignored.<example>
             <title>Delete Account Metadata Request</title>
-            <programlisting>POST /v1/1234 HTTP/1.1
+            <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Remove-Account-Meta-Book: x
@@ -3342,7 +3338,8 @@ X-Remove-Account-Meta-Book: x
         for:</para>
       <itemizedlist>
         <listitem>
-          <para>account (for example, 1234)</para>
+          <para>account (for example,
+            MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123)</para>
         </listitem>
         <listitem>
           <para><code>X-Auth-Token</code> (for example,
@@ -3387,7 +3384,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>View Container Details Request</title>
           <programlisting>
-  HEAD /v1/1234/MobyDick?format=json
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MobyDick?format=json
   Accept-Encoding: gzip
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3447,7 +3444,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Container Create Request </title>
           <programlisting>
-  PUT /v1/1234/MyContainer HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3475,14 +3472,14 @@ X-Remove-Account-Meta-Book: x
           overall metadata, with 90 distinct metadata items at the
           most. Each may have a 128 character name length with a 256
           max value length each. Any valid UTF-8 http header value is
-          allowed for metadata. However, Rackspace recommends that you
+          allowed for metadata. However, we recommend that you
           URL-encode any non-ASCII values using a "%" symbol, followed
           by the two-digit hexadecimal ISO-Latin code for the
           character.</para>
         <example>
           <title>Container Create Request with Metadata </title>
           <programlisting>
-  PUT /v1/1234/MyContainer HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-InspectedBy: JackWolf
@@ -3509,11 +3506,11 @@ X-Remove-Account-Meta-Book: x
           <para>You can create your Cloud Files containers in any
             Rackspace data center. When you connect to Cloud Files,
             you get the endpoints shown in <xref
-              linkend="Service-Catalog-Endpoints-d1e001"/>. You use
-            the <code>publicURL</code> for your Cloud Files
-            operations. For more information about the service access
-            endpoints, see <xref
-              linkend="Service-Access-Endpoints-d1e003"/>.</para>
+              linkend="Service-Access-Endpoints-d1e003"/>. You use the
+              <code>publicURL</code> for your Cloud Files operations.
+            To see an example of the service catalog, which lists the
+            service access endpoints, see the auth response examples
+            in <xref linkend="Retrieving_Auth_Token"/>.</para>
           <note>
             <para>In order to avoid external bandwidth charges, your
               containers and servers must be in the same data center.
@@ -3535,75 +3532,6 @@ X-Remove-Account-Meta-Book: x
                 linkend="CDN-Enable_a_Container-d1e2665"
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </note>
-          <example xml:id="Service-Catalog-Endpoints-d1e001">
-            <title>Multi-region Data Center Endpoints from the Service
-              Catalog</title>
-            <programlisting>
-{"name":"cloudFilesCDN",
-"endpoints":[
-   {
-     "region":"DFW",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"SYD",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://cdn4.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-      "region":"ORD",
-      "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-      "publicURL":"https://cdn2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"IAD",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://cdn5.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"HKG",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://cdn6.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   }
-],
-"type":"rax:object-cdn"},
-{"name":"cloudFiles",
-"endpoints":[
-   {
-     "region":"DFW",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "internalURL":"https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"ORD",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "internalURL":"https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"SYD",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://storage101.syd2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "internalURL":"https://snet-storage101.syd2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"IAD",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "internalURL":"https://snet-storage101.iad3.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   },
-   {
-     "region":"HKG",
-     "tenantId":"MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "publicURL":"https://storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321",
-     "internalURL":"https://snet-storage101.hkg1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-   }
-],
-"type":"object-store"}
-</programlisting>
-          </example>
         </section>
         <section
           xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580">
@@ -3623,10 +3551,9 @@ X-Remove-Account-Meta-Book: x
               container, the objects are organized in a pseudo
               directory called <code>photos</code>. Keep in mind that
               the container name is not displayed in the example, but
-              that it is a part of the object URLs. For instance, the
-              URL of the picture <code>me.jpg</code> is
-                <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>.
-            </para>
+              that it is a part of the object URIs. For instance, the
+              URI of the picture <code>me.jpg</code> is
+                <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>. </para>
           </note>
           <example>
             <title>Pseudo Hierarchical Folders and Directories</title>
@@ -3634,7 +3561,7 @@ X-Remove-Account-Meta-Book: x
               container, use &GET; without a <code>delimiter</code> or
                 <code>prefix</code>. </para>
             <programlisting>
-  GET /v1/1234/backups
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
 </programlisting>
             <para> The system returns status code 200 OK and the
               requested list of the objects. </para>
@@ -3655,7 +3582,7 @@ X-Remove-Account-Meta-Book: x
               use <code>delimiter</code> with pseudo directories, use
               the parameter slash (<code>/</code>). </para>
             <programlisting>
-  GET /v1/1234/backups?delimiter=/
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
 </programlisting>
             <para> The system returns status code 200 (OK) and the
               requested matching objects. Because the request used the
@@ -3673,15 +3600,15 @@ X-Remove-Account-Meta-Book: x
             inside a pseudo directory, including further nested pseudo
             directories. </para>
           <programlisting>
-  GET /v1/1234/backups?prefix=photos/&#38;delimiter=/
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/
 </programlisting>
           <para> The system returns status code 200 (OK) and the
             objects and pseudo directories within the top level pseudo
             directory. </para>
           <programlisting>
-  photos/animals/
-  photos/me.jpg
+  photos/animals/ 
   photos/plants/
+  photos/me.jpg
 </programlisting>
           <para> There is no limit to the amount of nested pseudo
             directories you can create. In order to navigate through
@@ -3693,7 +3620,7 @@ X-Remove-Account-Meta-Book: x
             the files contained within <code>dogs</code>, enter the
             below command. </para>
           <programlisting>
-  GET /v1/1234/backups?prefix=photos/animals/dogs/&#38;delimiter=/
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/
 </programlisting>
           <para> The system returns status code 200 (OK) and the
             objects and pseudo directories within the nested pseudo
@@ -3737,7 +3664,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Container Delete Request</title>
           <programlisting>
-  DELETE /v1/1234/MyContainer HTTP/1.1
+  DELETE /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3800,7 +3727,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Update Container Metadata Request</title>
           <programlisting>
-  POST /v1/1234/MyContainer HTTP/1.1
+  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-Book: MobyDick
@@ -3822,7 +3749,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>View Container Metadata Request</title>
           <programlisting>
-  HEAD /v1/1234/MyContainer HTTP/1.1
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3932,7 +3859,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Objects List Request</title>
           <programlisting>
-  GET /v1/1234/MyContainer[?parm=value] HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer[?parm=value] HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -3978,7 +3905,7 @@ X-Remove-Account-Meta-Book: x
           <example>
             <title>Object Details Request: JSON </title>
             <programlisting>
-  GET /v1/1234/MyContainer?format=json HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json HTTP/1.1
   Host: storage.clouddrive.com
   Content-Length: 0
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
@@ -4009,7 +3936,7 @@ X-Remove-Account-Meta-Book: x
           <example>
             <title>Object Details Request: XML</title>
             <programlisting>
-  GET /v1/1234/MyContainer?format=xml HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=xml HTTP/1.1
   Host: storage.clouddrive.com
   X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
 </programlisting>
@@ -4078,7 +4005,7 @@ X-Remove-Account-Meta-Book: x
 </programlisting>
             <para>Use a limit of two to show how things work.</para>
             <programlisting>
-  GET /v1/1234/AppleType?limit=2
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -4089,7 +4016,7 @@ X-Remove-Account-Meta-Book: x
               are more object names to list and make another request
               with a marker of the last item returned.</para>
             <programlisting>
-  GET /v1/1234/AppleType?limit=2&amp;marker=grannysmith
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   honeycrisp
@@ -4098,7 +4025,7 @@ X-Remove-Account-Meta-Book: x
             <para>Again, two items returned are returned, but there
               may be more.</para>
             <programlisting>
-  GET /v1/1234/AppleType?limit=2&amp;marker=jonagold
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
@@ -4353,7 +4280,8 @@ X-Remove-Account-Meta-Book: x
         for:</para>
       <itemizedlist>
         <listitem>
-          <para>account (for example, 1234)</para>
+          <para>account (for example,
+            MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123)</para>
         </listitem>
         <listitem>
           <para><code>X-Auth-Token</code> (for example,
@@ -4447,7 +4375,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Retrieve Object Request</title>
           <programlisting>
-  GET /v1/1234/MyContainer/MyObject HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -4493,8 +4421,8 @@ X-Remove-Account-Meta-Book: x
         <para>You can ensure end-to-end data integrity by including an
           MD5 checksum of your object's data in the <code>ETag</code>
           header. You are not required to include the
-            <code>ETag</code> header, but Rackspace recommends its use
-          to ensure that the storage system successfully stores your
+            <code>ETag</code> header, but we recommend its use to
+          ensure that the storage system successfully stores your
           object's content.</para>
         <para>You can cause an object to expire after a certain date
           and time by using the <code>X-Delete-At</code> or
@@ -4536,7 +4464,7 @@ X-Remove-Account-Meta-Book: x
         <example>
           <title>Create or Update Object Request</title>
           <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4606,7 +4534,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             <title>Upload Unspecified Quantity of Content
               Request</title>
             <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Transfer-Encoding: chunked
@@ -4724,9 +4652,9 @@ In addition to those listed in Anne's great response, a failed upload might retu
               <td>The segment objects must be uploaded before the
                 manifest object.</td>
               <td>You can upload manifest and segment objects in any
-                order. Rackspace recommends that you upload the
-                manifest object after the segments in case a premature
-                download of the manifest occurs. However, this is not
+                order. We recommend that you upload the manifest
+                object after the segments in case a premature download
+                of the manifest occurs. However, this is not
                 enforced.</td>
             </tr>
             <tr>
@@ -4841,7 +4769,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <example>
             <title>Upload Segment of a Large Object Request</title>
             <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4867,7 +4795,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             <title>Upload Next Segment of the Large Object
               Request</title>
             <programlisting>
- PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+ PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -4890,7 +4818,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <example>
             <title>Upload Manifest Request</title>
             <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Length: 0
@@ -5189,7 +5117,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             assigned with an attachment type that indicates how the
             file should be downloaded:</para>
           <programlisting>
-  PUT /v1/1234/MyContainer HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: video/mp4
@@ -5211,7 +5139,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             assigned with an attachment type that indicates how the
             file should be downloaded.</para>
           <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/tiff
@@ -5252,7 +5180,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para>For existing objects that you want to assign expiration
           headers to, use the &POST; operation.</para>
         <example>
-          <title>Delete-At Request</title>
+          <title>Delete-At Request for an Object</title>
           <para>In the example, the <code>X-Delete-At</code> header is
             assigned with a Unix Epoch timestamp in integer form for
             Mon, 11 Jun 2012 15:38:25 GMT. Use <link
@@ -5260,7 +5188,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               >http://www.epochconverter.com/</link> for example
             timestamps and a batch converter.</para>
           <programlisting>
- PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+ PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/jpeg
@@ -5268,12 +5196,12 @@ In addition to those listed in Anne's great response, a failed upload might retu
                  </programlisting>
         </example>
         <example>
-          <title>Delete-After Request</title>
+          <title>Delete-After Request for an Object</title>
           <para> In this example, the <code>X-Delete-After</code>
             header is assigned a value in seconds, equivalent to 10
             days. After this time, the object expires. </para>
           <programlisting>
-  PUT /v1/1234/MyContainer/MyObject HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   Content-Type: image/jpeg
@@ -5517,15 +5445,17 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para>Your account is not charged when you copy or move your
           objects within the same data center using the internal
           network URL as the storage URL. The internal network is
-          called ServiceNet. You can find your ServiceNet endpoint
-          the service catalog created when you authenticate your
-          session. (For information on how to authenticate your
-          session, see <xref linkend="Authentication-d1e639"/>.) As
-          shown in example below, it is listed as
+          called ServiceNet. You can find your ServiceNet endpoint the
+          service catalog created when you authenticate your session.
+          For information on how to authenticate your session, see
+            <xref linkend="Authentication-d1e639"/>. As shown in the
+          partial service catalog example below, it is listed as
             <code>internalURL</code>. The name is your Cloud Files
           storage URL with <code>snet-</code> pre-pended to it. If you
           do not know which data center you are working in, you can
-          find it in the Cloud Control Panel.</para>
+          find it in the Cloud Control Panel. (For more information
+          about service access endpoints, see <xref
+            linkend="Service-Access-Endpoints-d1e003"/>.)</para>
         <example>
           <title>Data Center Endpoints</title>
           <programlisting>
@@ -5584,7 +5514,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Object Delete Request</title>
           <programlisting>
-  DELETE /v1/1234/MyContainer/MyObject HTTP/1.1
+  DELETE /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -5629,7 +5559,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Object Metadata Request</title>
           <programlisting>
-  HEAD /v1/1234/MyContainer/MyObject HTTP/1.1
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
            </programlisting>
@@ -5722,7 +5652,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         </note>
         <example>
           <title>Update Object Metadata Request</title>
-          <programlisting>POST /v1/1234/MyContainer/MyObject HTTP/1.1
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Object-Meta-Fruit: Apple
@@ -5758,10 +5688,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
       and object API operations for the Content Delivery Network (CDN)
       services. All REST methods described below must be issued
       against the CDN management service as defined by the endpoints
-      in the service catalog under <code>cloudFilesCDN</code> (see
-        <xref linkend="Service-Access-Endpoints-d1e003"/>) after
-      successfully authenticating your account. For details about
-      authentication, see <xref linkend="Authentication-d1e639"/>. </para>
+      in the service catalog under <code>cloudFilesCDN</code> after
+      successfully authenticating your account. For the list of
+      endpoints, see <xref linkend="Service-Access-Endpoints-d1e003"
+      />. For details about authentication, see <xref
+        linkend="Authentication-d1e639"/>. </para>
     <para>A CDN-enabled container is a public container that is served
       by Akamai's Content Distribution Network. The files in a
       CDN-enabled container are publicly accessible and do not require
@@ -5775,13 +5706,13 @@ In addition to those listed in Anne's great response, a failed upload might retu
       <para>
         <remark security="writeronly">Added opening line and rephrased
           second -- dsh - 2012-03-09</remark>You can perform the
-        operations in this section at the account level of the CDN
-        account. The operations conform to the following
+        operation in this section at the account level of the CDN
+        account. The operation conforms to the following
         format:</para>
       <example>
-        <title>CDN HTTP Request: General Structure</title>
+        <title>CDN Account HTTP Request: General Structure</title>
         <literallayout class="monospaced">
-  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/{<replaceable>account</replaceable>} HTTP/1.1
+  <replaceable>HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable> HTTP/1.1
                 </literallayout>
       </example>
       <section xml:id="List_CDN-Enabled_Containers-d1e2414">
@@ -5830,12 +5761,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
                   <mathphrase><emphasis>x</emphasis></mathphrase>
                 </inlineequation>, returns object names greater than
                 the specified marker. Only strings using UTF-8
-                encoding are valid.
+                encoding for the value for <code>marker</code> are
+                valid.
                 <!--02-03-12 dsh:  Note re: UTF / 8 for transparency JI/RA DOC-98  --></para>
               <para>Using <code>marker</code> provides a mechanism to
-                iterate through the entire list of containers. Keep in
-                mind that the value for <code>marker</code> needs to
-                be URL-encoded before issuing the request.</para>
+                iterate through the entire list of containers. </para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5845,7 +5775,8 @@ In addition to those listed in Anne's great response, a failed upload might retu
                   <mathphrase><emphasis>x</emphasis></mathphrase>
                 </inlineequation>, returns container names less than
                 the specified end marker. Only strings using UTF-8
-                encoding are valid.</para>
+                encoding for the value for <code>end_marker</code>are
+                valid.</para>
             </listitem>
           </varlistentry>
           <varlistentry>
@@ -5875,7 +5806,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <?dbfo keep-together="always"?>
           <title>CDN-Enabled Containers List Request</title>
           <programlisting>
-  GET /v1/1234?enabled_only=true HTTP/1.1
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?enabled_only=true HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                   </programlisting>
@@ -5912,8 +5843,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         container name.</para>
       <example>
         <?dbfo keep-together="always"?>
-        <title>CDN-Enabled Container HTTP Request: General
-          Structure</title>
+        <title>CDN Container HTTP Request: General Structure</title>
         <programlisting>
 <replaceable> HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable>/<replaceable>container</replaceable> HTTP/1.1
 </programlisting>
@@ -5925,39 +5855,39 @@ In addition to those listed in Anne's great response, a failed upload might retu
         objects within it become available on the CDN. Similarly, once
         a container is CDN-enabled, any objects added to it through
         the storage service become CDN-enabled. After you CDN-enable a
-        container, its publicly-available URL can be found with the
+        container, its publicly-available URI can be found with the
         header <code>X-Cdn-Uri</code>, and its objects may be accessed
         at
           <code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>.
-        By knowing this pattern, you can pre-generate the URL for an
+        By knowing this pattern, you can pre-generate the URI for an
         object before it is added to the container. </para>
       <para> When you enable a container in the CDN service, you
-        automatically generate URLs for SSL and streaming usage. They
+        automatically generate URIs for SSL and streaming usage. They
         are listed under the <code>X-Cdn-Ssl-Uri</code> and
           <code>X-Cdn-Streaming-Uri</code> headers, respectively. </para>
-      <para> On August 13, 2012, the format of new CDN URLs changed in
+      <para> On August 13, 2012, the format of new CDN URIs changed in
         order to enhance the security of the Content Delivery Network.
-        Any URLs set in the older format
+        Any URIs set in the older format
           (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
-        will continue to work. However, any newly generated CDN URLs
-        will have the new format:
+        continue to work. However, any newly generated CDN URIs have
+        the new format:
           <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
           r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
       <note>
         <title>Note on CDN Charges</title>
         <para> Keep an eye on your CDN charges. When you CDN-enable a
           container, not only can anyone view it, but anyone can link
-          to it. Rackspace recommends that you monitor your bandwidth
-          usage and charges in the Cloud Control Panel. This way, you
-          know if someone is hot linking your content. See the
-          Knowledge Center article <link
+          to it. We recommend that you monitor your bandwidth usage
+          and charges in the Cloud Control Panel. This way, you know
+          if someone is hot linking your content. See the Knowledge
+          Center article <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0"
             > "Protect your Cloud Files CDN Bill from Unexpected
             Usage"</link> for helpful instructions for keeping
           yourself informed about your usage charges. </para>
       </note>
       <section xml:id="CDN-Enable_a_Container-d1e2665">
-        <title>CDN-Enable a Container</title>
+        <title>CDN-Enable and CDN-Disable a Container</title>
         <para>
           <remark security="writeronly">Reworked this section to
             highlight TTL -- dsh - 2012-03-12</remark>Before a
@@ -5966,7 +5896,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           against it using the <code>publicURL</code> noted in the
           service catalog for Cloud Files during Authentication and
           set the <code>X-CDN-Enabled</code> header to
-            <code>TRUE</code>. </para>
+            <code>True</code>. </para>
         <informaltable rules="all">
           <thead>
             <tr>
@@ -5984,60 +5914,23 @@ In addition to those listed in Anne's great response, a failed upload might retu
             </tr>
           </tbody>
         </informaltable>
-        <para><xref linkend="cloudfileCDN-service-catalog-de100"/>
-          provides an example of the information in the service
-          catalog for <code>cloudfilesCDN</code>. (In the examples
-          below, the <code>publicURL</code> used is
-            <code>cdn.clouddrive.com</code>.) When a container is
-          CDN-enabled, any objects stored in it are publicly
-          accessible over the content delivery network by combining
-          the container's CDN URL with the object name
-              (<code>X-CDN-URI/<replaceable>objectName</replaceable></code>). </para>
+        <para><xref linkend="Retrieving_Auth_Token"/> provides an
+          example of the information in the service catalog for
+            <code>cloudfilesCDN</code>. </para>
+        <para>When a container is CDN-enabled, any objects stored in
+          it are publicly accessible over the content delivery network
+          by combining the container's CDN URI with the object name
+              (<code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>). </para>
         <note>
           <para>The examples in this guide use
-              <code>cdn.clouddrive.com</code> for an endpoint, but you
-            should use whatever your authentication request provides
-              (<code>cdn, cdn1, cdn2, cdn3, cdn4, cdn5, or
-            cdn6</code>). </para>
+              <code>cdn.clouddrive.com</code> for an endpoint for
+            operations against the CDN management service, but you
+            should use whatever your authentication request provides.
+            For more information about your authentication request,
+            see <xref linkend="Authentication-d1e639"/>. For more
+            information about service access endpoints, see <xref
+              linkend="Service-Access-Endpoints-d1e003"/>. </para>
         </note>
-        <example xml:id="cloudfileCDN-service-catalog-de100">
-          <title>cloudfilesCDN Section of the Service Catalog</title>
-          <programlisting>
-  "access": {
-        "serviceCatalog": [
-            {
-                "endpoints": [
-                    {
-                        "publicURL": "https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321", 
-                        "region": "DFW", 
-                        "tenantId": "MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-                    }, 
-                    {
-                        "publicURL": "https://cdn5.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321", 
-                        "region": "IAD", 
-                        "tenantId": "MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-                    }, 
-                    {
-                        "publicURL": "https://cdn2.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321", 
-                        "region": "ORD", 
-                        "tenantId": "MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-                    }, 
-                    {
-                        "publicURL": "https://cdn4.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321", 
-                        "region": "SYD", 
-                        "tenantId": "MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-                    }, 
-                    {
-                        "publicURL": "https://cdn6.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321", 
-                        "region": "HKG", 
-                        "tenantId": "MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880321"
-                    }
-                ], 
-                "name": "cloudFilesCDN", 
-                "type": "rax:object-cdn"
-            }
-      </programlisting>
-        </example>
         <para>Any CDN-accessed objects are cached in the CDN for the
           specified amount of time called the Time To Live (TTL). If
           you do not specify the TTL, the default value is 259200
@@ -6045,7 +5938,8 @@ In addition to those listed in Anne's great response, a failed upload might retu
           the TTL expires, the CDN refetches and caches the object for
           the next TTL period. </para>
         <para>You can specify the TTL for an object by including the
-          HTTP header <code>X-TTL: &lt;integer_seconds&gt;</code>.
+          HTTP header <code>X-TTL:
+              <replaceable>integer_seconds</replaceable></code>.
           Setting the TTL is the same as setting the HTTP
             <code>Expires</code> and <code>Cache-Control</code>
           headers for the cached object. The minimum TTL is 15 minutes
@@ -6066,11 +5960,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Container CDN-Enable Request</title>
           <programlisting>
-  PUT /v1/1234/MyContainer HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Ttl: 259200
-  X-Cdn-Enabled: True
+  <emphasis role="bold">X-Cdn-Enabled: True</emphasis>
             </programlisting>
         </example>
         <para>No content is returned. A status code of 201 (Created)
@@ -6096,26 +5990,26 @@ In addition to those listed in Anne's great response, a failed upload might retu
         </example>
         <para>
           <remark security="writeronly">2012-03-07 dsh: JIRA doc
-            ticket / 1-2-6 regards CDN disable</remark> In order to
+            ticket / 1-2-6 regards CDN disable</remark>In order to
           remove the container from the CDN, change the
             <code>X-CDN-Enabled</code> flag to <code>False</code>, as
-          in the request below. However, please note that objects
-          remain on the CDN edge server and are served to the public
-          until their TTL expires. </para>
+          in the request below. However, note that objects remain on
+          the CDN edge server and are served to the public until their
+          TTL expires. </para>
         <example>
           <title>Container CDN-Disable Request</title>
           <programlisting>
-  PUT /v1/1234/MyContainer HTTP/1.1
+  PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-  X-CDN-Enabled: False
+  <emphasis role="bold">X-CDN-Enabled: False</emphasis>
                    </programlisting>
         </example>
       </section>
       <section xml:id="View-CDN-Container-Details-d1e0e">
         <title>List a CDN-Enabled Container's Metadata</title>
         <para>You can view CDN-enabled container details by performing
-          a <command>HEAD</command> request on a container where the
+          a <command>HEAD</command> operation on a container where the
             <code>Host</code> header value is one of the
             <code>cdnCloudFiles</code> service access endpoints. (For
           a list of the endpoints, see <xref
@@ -6139,8 +6033,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           </tbody>
         </informaltable>
         <para>If the container is (or ever has been) CDN-enabled, the
-          following headers are returned in the response (as shown in
-          the following examples): <itemizedlist>
+          following headers are returned in the response: <itemizedlist>
             <listitem>
               <para><code>X-Cdn-Uri</code>: specifies a URI for
                 downloading the object over HTTP. This URI can be
@@ -6154,16 +6047,16 @@ In addition to those listed in Anne's great response, a failed upload might retu
                 system before being refetched</para>
             </listitem>
             <listitem>
-              <para><code>X-Cdn-Enabled</code>: <code>True</code> or
-                  <code>False</code> to specify whether the container
-                is currently marked to allow public serving of objects
-                through CDN</para>
+              <para><code>X-Cdn-Enabled</code>: specifies
+                  <code>True</code> or <code>False</code> to indicate
+                whether the container is currently marked to allow
+                public serving of objects through CDN</para>
             </listitem>
             <listitem>
-              <para><code>X-Log-Retention</code>: <code>True</code> or
-                  <code>False</code> to specify whether the CDN access
-                logs should be collected and stored in the Cloud Files
-                storage system</para>
+              <para><code>X-Log-Retention</code>: specifies
+                  <code>True</code> or <code>False</code> to indicate
+                whether the CDN access logs should be collected and
+                stored in the Cloud Files storage system</para>
             </listitem>
             <listitem>
               <para><code>X-Cdn-Ssl-Uri</code>: specifies a URI for
@@ -6183,7 +6076,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
             </listitem>
           </itemizedlist></para>
         <note>
-          <para>Remember that your <command>HEAD</command> request
+          <para>Remember that your <command>HEAD</command> operation
             must be on the CDN host (i.e.,
               <code>cdn.clouddrive.com</code>). Otherwise, you will
             see the metadata for your private container as described
@@ -6198,7 +6091,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>CDN-Enabled Container Metadata Request</title>
           <programlisting>
-HEAD /v1/1234/MyContainer HTTP/1.1
+HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -6224,7 +6117,7 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
         <example>
           <title>CDN-Enabled Container Details Request: JSON</title>
           <programlisting>
-HEAD /v1/1234/MyContainer?format=json
+HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -6253,7 +6146,7 @@ r10.cf1.rackcdn.com",
         <example>
           <title>CDN-Enabled Container Details Request: XML</title>
           <programlisting>
-HEAD /v1/1234/{container_name}?format=xml
+HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=xml
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
@@ -6287,28 +6180,173 @@ stream.cf0.rackcdn.com
    &lt;/container>
   &lt;/account></programlisting>
         </example>
-      </section>
-      <section
-        xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
-        <title>Purge CDN-Enabled Containers</title>
-        <para>Rackspace can remove, or purge, a CDN-enabled container
-          from the network. You can either wait for the TTL to expire,
-          or you can request the purge of an entire container. Once
-          you have made the request to Rackspace through a support
-          ticket, the system purges the object from the CDN, and sends
-          an email to the address (or multiple addresses) that you
-          indicate through the ticket. The email address notification
-          is optional.</para>
-        <note>
-          <para>In order to remove the container from the CDN, change
-            the <code>X-CDN-Enabled</code> flag to <code>False</code>
-            as shown in <xref linkend="CDN-Enable_a_Container-d1e2665"
-            />. </para>
-        </note>
+        <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
+          <title>CDN-Enabled Containers Served through SSL</title>
+          <para>A &HEAD; operation for a CDN-enabled container returns
+            an SSL URI, <code>X-Cdn-Ssl-Uri</code>, in addition to the
+            other headers associated with CDN. This feature enables
+            you to use https protocol in URIs used for requesting
+            objects stored in CDN-enabled containers. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata Request with
+              SSL</title>
+            <programlisting>
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+                     </programlisting>
+          </example>
+          <para>No content is returned. A status code of 204 (No
+            Content) indicates success. Status code 404 (Not Found) is
+            returned if the requested container was not found. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata Response with
+              SSL</title>
+            <programlisting>
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Log-Retention: False
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
+                 </programlisting>
+          </example>
+        </section>
+        <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
+          <title>Streaming CDN-Enabled Containers </title>
+          <para>In addition to the other headers associated with CDN,
+            a &HEAD; operation against a CDN-enabled container returns
+            the following streaming URIs to enable the streaming
+            feature: </para>
+          <itemizedlist>
+            <listitem>
+              <para><code>X-Cdn-Streaming-Uri</code>: specifies a URI
+                for video streaming that uses Adobe’s HTTP Dynamic
+                Streaming</para>
+            </listitem>
+            <listitem>
+              <para><code>X-Cdn-Ios-Uri</code>: specifies the URI for
+                video streaming that uses Apple’s HTTP Live Streaming
+                (see <xref linkend="iOS-Streaming-d1f3725"/>)</para>
+            </listitem>
+          </itemizedlist>
+          <para>Streaming is a method of relaying data, such as video
+            and audio material, over the network as a steady
+            continuous stream, allowing playback to proceed while
+            subsequent data is being received.</para>
+          <para>For information about streaming to iOS devices, see
+              <xref linkend="iOS-Streaming-d1f3725"/>.</para>
+          <example>
+            <title>CDN-Enabled Container Metadata Request with
+              Streaming Enabled</title>
+            <programlisting>
+  HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+  Host: cdn.clouddrive.com
+  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+                </programlisting>
+          </example>
+          <para>No content is returned. A status code of 204 (No
+            Content) indicates success. Status code 404 (Not Found) is
+            returned if the requested container was not found. </para>
+          <example>
+            <title>CDN-Enabled Container Metadata Response with
+              Streaming Enabled</title>
+            <programlisting>
+  HTTP/1.1 204 No Content
+  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+  X-Ttl: 259200
+  X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com
+  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+  X-Cdn-Enabled: True
+  X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl.cf1.rackcdn.com
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
+  X-Log-Retention: False
+  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+  Content-Length: 0
+                   </programlisting>
+          </example>
+        </section>
+        <section xml:id="iOS-Streaming-d1f3725">
+          <title>iOS Streaming</title>
+          <para>The Cloud Files CDN allows you to stream video to iOS
+            devices without needing to convert your video. Once you
+            CDN-enable your container, you have the tools necessary
+            for streaming media to multiple devices. To leverage this
+            ability, you must check the client's User Agent with
+            JavaScript. An example of the User Agent check and how to
+            use it is given below. </para>
+          <para>First, CDN-enable your container. See <xref
+              linkend="CDN-Enable_a_Container-d1e2665"
+              xrefstyle="select:label quotedtitle nopage"/> for
+            instructions. Two streaming URIs are created: the
+            container's streaming URI
+              (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming
+            URI (<code>X-Cdn-Ios-Uri</code>). Perform a &HEAD; request
+            against the CDN-enabled container to view these URIs. </para>
+          <para>Second, link to your content in a HTML page using a
+              <code>&lt;video></code> element. Set the SRC attribute
+            of the VIDEO element to the full streaming URI for your
+            container plus the name of your content. In the below
+            example, the streaming video is MobyDick.mp4. </para>
+          <example>
+            <title>HTML 5 Video Element</title>
+            <programlisting>
+  &lt;video width=”640” height=”480” id="videotag"&gt;
+	 &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+	 r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
+  &lt;/video&gt;
+                      </programlisting>
+          </example>
+          <para> Third, add JavaScript to the <code>&lt;head></code>
+            element of your HTML page to check if the User Agent is an
+            iOS device. If it is, the JavaScript should use the
+            container's iOS streaming URI (<code>x-Cdn-Ios-Uri</code>)
+            instead of the regular streaming URI. The Cloud Files CDN
+            delivers the properly formatted content for iOS devices
+            only when the iOS streaming URI is used. Here, the
+            JavaScript sets the SRC attribute of the
+              <code>&lt;video></code> element <code>videotag</code> to
+            the iOS Streaming URI. Remember to add your content's name
+            to the end of the iOS streaming URI. </para>
+          <example>
+            <title>JavaScript for User Agent Check</title>
+            <programlisting>
+&lt;script type=”text/javascript”&gt;
+
+    function isIOS(){
+        return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
+i))) != null;
+    }
+
+    function init(){
+        if (isIOS()){
+           document.getElementById(“videotag”).src = “http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+           iosr.cf0.rackcdn.com/MobyDick.mp4”;
+        }
+    }
+
+&lt;/script&gt;
+               </programlisting>
+          </example>
+          <para> Finally, add <code>init()</code> to the
+              <code>&lt;body></code> element of your HTML page to call
+            the User Agent check when the page loads. </para>
+          <example>
+            <title>Load JavaScript in HTML page</title>
+            <programlisting>
+  &lt;body onload=”init()”&gt;
+                 </programlisting>
+          </example>
+          <para> With these pieces of code in place, the proper
+            content streams will be set for iOS devices. </para>
+        </section>
       </section>
       <section xml:id="Update_CDN-Enabled_Container_Metadata-d1e2787">
         <title>Update CDN-Enabled Container Metadata</title>
-        <para>You can use a &POST; request against a CDN-enabled
+        <para>You can use a &POST; operation against a CDN-enabled
           container to adjust some CDN attributes. </para>
         <informaltable rules="all">
           <thead>
@@ -6329,31 +6367,31 @@ stream.cf0.rackcdn.com
         <para>You can change only the following metadata on a
           CDN-enabled container: <itemizedlist>
             <listitem>
-              <para><code>X-Log-Retention</code>: <code>True</code> or
-                  <code>False</code> to specify whether the CDN access
-                logs should be collected and stored in the Cloud Files
-                storage system</para>
+              <para><code>X-Log-Retention</code>: specifies
+                  <code>True</code> or <code>False</code> to indicate
+                whether the CDN access logs should be collected and
+                stored in the Cloud Files storage system</para>
             </listitem>
             <listitem>
-              <para><code>X-CDN-enabled</code>:<code>True</code> or
-                  <code>False</code>to enable or disable public
-                sharing over the CDN. Keep in mind that if you have
-                content currently cached in the CDN, setting your
-                container back to private will NOT purge the CDN
-                cache. You have to wait for the TTL to expire or purge
-                the objects. (To purge objects, see <xref
-                  linkend="Purge_CDN-Enabled_Objects-d1e3858"
+              <para><code>X-CDN-enabled</code>:
+                  specifies<code>True</code> or <code>False</code> to
+                enable or disable public sharing over the CDN. Keep in
+                mind that if you have content currently cached in the
+                CDN, setting your container back to private will NOT
+                purge the CDN cache. You have to wait for the TTL to
+                expire or purge the objects. (To purge objects, see
+                  <xref linkend="Purge_CDN-Enabled_Objects-d1e3858"
                 />.)</para>
             </listitem>
             <listitem>
-              <para><code>X-TTL</code>: to specify a TTL value in
+              <para><code>X-TTL</code>: specifies a TTL value in
                 seconds</para>
             </listitem>
           </itemizedlist></para>
         <example>
           <title>Update CDN-Enabled Container Metadata Request</title>
           <programlisting>
-  POST /v1/1234/MyContainer HTTP/1.1
+  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-TTL: 86400
@@ -6363,7 +6401,7 @@ stream.cf0.rackcdn.com
         </example>
         <para>No content is returned. A status code of 204 (No
           Content) indicates success. Status code 404 (Not Found) is
-          returned if the requested container was not found. </para>
+          returned if the requested container is not found. </para>
         <example>
           <title>Update CDN-Enabled Container Metadata
             Response</title>
@@ -6380,196 +6418,47 @@ stream.cf0.rackcdn.com
               </programlisting>
         </example>
       </section>
-      <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
-        <title>CDN-Enabled Containers Served through SSL</title>
-        <para>A &HEAD; operation for a CDN-enabled container returns
-          an SSL URI, <code>X-Cdn-Ssl-Uri</code>, in addition to the
-          other headers associated with CDN. This feature enables you
-          to use https protocol in URIs used for requesting objects
-          stored in CDN-enabled containers. </para>
-        <example>
-          <title>CDN-Enabled Container Metadata Request with
-            SSL</title>
-          <programlisting>
-  HEAD /v1/1234/MyContainer HTTP/1.1
-  Host: cdn.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-                     </programlisting>
-        </example>
-        <para>No content is returned. A status code of 204 (No
-          Content) indicates success. Status code 404 (Not Found) is
-          returned if the requested container was not found. </para>
-        <example>
-          <title>CDN-Enabled Container Metadata Response with
-            SSL</title>
-          <programlisting>
-  HTTP/1.1 204 No Content
-  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
-  X-Ttl: 259200
-  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
-  X-Cdn-Enabled: True
-  X-Log-Retention: False
-  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
-  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
-  Content-Length: 0
-                 </programlisting>
-        </example>
-      </section>
-      <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
-        <title>Streaming CDN-Enabled Containers </title>
-        <para>A &HEAD; operation against a CDN-enabled container
-          returns the streaming URIs: </para>
-        <itemizedlist>
-          <listitem>
-            <para><code>X-Cdn-Uri</code>: can be combined with any
-              object name within the container to form the publicly
-              accessible URI for that object for distribution over a
-              CDN system</para>
-          </listitem>
-          <listitem>
-            <para><code>X-Cdn-Ssl-Uri</code>: specifies SSL is
-              available for the container</para>
-          </listitem>
-          <listitem>
-            <para><code>X-Cdn-Streaming-Uri</code>: specifies the URI
-              for video streaming that uses Adobe’s HTTP Dynamic
-              Streaming</para>
-          </listitem>
-          <listitem>
-            <para><code>X-Cdn-Ios-Uri</code>: specifies the URI for
-              video streaming that uses Apple’s HTTP Live Streaming
-              (see <xref linkend="iOS-Streaming-d1f3725"/>)</para>
-          </listitem>
-        </itemizedlist>
-        <para>For information about streaming to iOS devices, see
-            <xref linkend="iOS-Streaming-d1f3725"/>.</para>
+      <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
+        <title>Purge CDN-Enabled Containers</title>
+        <para>Rackspace can remove, or purge, a CDN-enabled container
+          from the network. You can either wait for the TTL to expire,
+          or you can request the purge of an entire container. Once
+          you have made the request to Rackspace through a support
+          ticket, the system purges the object from the CDN, and sends
+          an email to the address (or multiple addresses) that you
+          indicate through the ticket. The email address notification
+          is optional.</para>
         <note>
-          <para>Streaming is a method of relaying data, such as video
-            and audio material, over the network as a steady
-            continuous stream, allowing playback to proceed while
-            subsequent data is being received.</para>
+          <para>In order to remove the container from the CDN, change
+            the <code>X-CDN-Enabled</code> flag to <code>False</code>
+            as shown in <xref linkend="CDN-Enable_a_Container-d1e2665"
+            />. </para>
         </note>
-        <example>
-          <title>CDN-Enabled Container Metadata Request with Streaming
-            Enabled</title>
-          <programlisting>
-  HEAD /v1/1234/MyContainer HTTP/1.1
-  Host: cdn.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-                </programlisting>
-        </example>
-        <para>No content is returned. A status code of 204 (No
-          Content) indicates success. Status code 404 (Not Found) is
-          returned if the requested container was not found. </para>
-        <example>
-          <title>CDN-Enabled Container Metadata Response with
-            Streaming Enabled</title>
-          <programlisting>
-  HTTP/1.1 204 No Content
-  X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
-  X-Ttl: 259200
-  X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com
-  X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
-  X-Cdn-Enabled: True
-  X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl.cf1.rackcdn.com
-  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
-  X-Log-Retention: False
-  X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
-  Content-Length: 0
-                   </programlisting>
-        </example>
       </section>
-      <!-- -->
-      <section xml:id="iOS-Streaming-d1f3725">
-        <title>iOS Streaming</title>
-        <para>The Cloud Files CDN allows you to stream video to iOS
-          devices without needing to convert your video. Once you
-          CDN-enable your container, you have the tools necessary for
-          streaming media to multiple devices. To leverage this
-          ability, you must check the client's User Agent with
-          JavaScript. An example of the User Agent check and how to
-          use it is given below. </para>
-        <para> First, CDN-enable your container. See <xref
-            linkend="CDN-Enable_a_Container-d1e2665"
-            xrefstyle="select:label quotedtitle nopage"/> for
-          instructions. Two streaming URIs are created: the
-          container's streaming URI (<code>X-Cdn-Streaming-Uri</code>)
-          and its iOS streaming URI (<code>X-Cdn-Ios-Uri</code>).
-          Perform a &HEAD; request against the CDN-enabled container
-          to view these URIs. </para>
-        <para> Second, link to your content in a HTML page using a
-            <code>&lt;video></code> element. Set the SRC attribute of
-          the VIDEO element to the full streaming URI for your
-          container plus the name of your content. In the below
-          example, the streaming video is MobyDick.mp4. </para>
-        <example>
-          <title>HTML 5 Video Element</title>
-          <programlisting>
-  &lt;video width=”640” height=”480” id="videotag"&gt;
-	 &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
-	 r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
-  &lt;/video&gt;
-                      </programlisting>
-        </example>
-        <para> Third, add JavaScript to the <code>&lt;head></code>
-          element of your HTML page to check if the User Agent is an
-          iOS device. If it is, the JavaScript should use the
-          container's iOS streaming URI (<code>x-Cdn-Ios-Uri</code>)
-          instead of the regular streaming URI. The Cloud Files CDN
-          delivers the properly formatted content for iOS devices only
-          when the iOS streaming URI is used. Here, the JavaScript
-          sets the SRC attribute of the <code>&lt;video></code>
-          element <code>videotag</code> to the iOS Streaming URI.
-          Remember to add your content's name to the end of the iOS
-          streaming URI. </para>
-        <example>
-          <title>JavaScript for User Agent Check</title>
-          <programlisting>
-&lt;script type=”text/javascript”&gt;
-
-    function isIOS(){
-        return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
-i))) != null;
-    }
-
-    function init(){
-        if (isIOS()){
-           document.getElementById(“videotag”).src = “http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
-           iosr.cf0.rackcdn.com/MobyDick.mp4”;
-        }
-    }
-
-&lt;/script&gt;
-               </programlisting>
-        </example>
-        <para> Finally, add <code>init()</code> to the
-            <code>&lt;body></code> element of your HTML page to call
-          the User Agent check when the page loads. </para>
-        <example>
-          <title>Load JavaScript in HTML page</title>
-          <programlisting>
-  &lt;body onload=”init()”&gt;
-                 </programlisting>
-        </example>
-        <para> With these pieces of code in place, the proper content
-          streams will be set for iOS devices. </para>
-      </section>
-      <!-- -->
     </section>
     <section xml:id="CDN_Object_Services">
       <title>CDN Object Services</title>
       <para>This section documents the REST operations for the CDN
-        management service that you can perform on objects. Any object
-        stored in a CDN-enabled container is publicly accessible over
-        a CDN by combining the container's CDN URI with the object
-        name. Any object accessed is cached in the CDN for the Time To
-        Live (TTL) value (which is specified in number of seconds).
-        The default is 72 hours (259200 seconds). On the next access
-        after the TTL expiration, the CDN re-fetches the object and
-        caches it until the TTL expires again. The minimum TTL is 15
-        minutes (900 seconds). The maximum TTL is 1 year (31536000
-        seconds). If you set a maximum TTL greater than 1 year, your
-        object still expires at the one-year mark.</para>
+        management service that you can perform on objects. All
+        operations are valid HTTP methods and resemble this
+        format:</para>
+      <example>
+        <?dbfo keep-together="always"?>
+        <title>CDN Container HTTP Request: General Structure</title>
+        <programlisting>
+<replaceable> HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable>/<replaceable>container</replaceable>/<replaceable>object</replaceable> HTTP/1.1
+</programlisting>
+      </example>
+      <para>Any object stored in a CDN-enabled container is publicly
+        accessible over a CDN by combining the container's CDN URI
+        with the object name. Any object accessed is cached in the CDN
+        for the Time To Live (TTL) value (which is specified in number
+        of seconds). The default is 72 hours (259200 seconds). On the
+        next access after the TTL expiration, the CDN re-fetches the
+        object and caches it until the TTL expires again. The minimum
+        TTL is 15 minutes (900 seconds). The maximum TTL is 1 year
+        (31536000 seconds). If you set a maximum TTL greater than 1
+        year, your object still expires at the one-year mark.</para>
       <note>
         <title>Note</title>
         <para> Before August 13, 2012, the maximum TTL was 50 years
@@ -6582,21 +6471,46 @@ i))) != null;
         <title>Purge CDN-Enabled Objects</title>
         <para>When you find it necessary to remove a CDN-enabled
           object from public access before the TTL expires, you can
-          perform &DELETE; operations against the object. You should
-          limit object purges to situations where there could be
-          serious personal, business, or security consequences if it
-          remained publicly accessible on the CDN. For example,
-          someone published your company's quarterly earnings too
-          early. You can manually purge CDN-enabled objects without
-          having to wait for the TTL to expire, and you can optionally
-          be notified by email that the object has been purged.
-          However, you can only &DELETE; up to 25 objects per day
-          using the API. An attempt to delete more objects results in
-          a 498 (Rate Limited) status code. </para>
-        <para> Following are the two ways you can purge objects from
-          the CDN: <itemizedlist>
+          perform a &DELETE; operation against the object, or you can
+          create a support ticket to purge the entire container. </para>
+        <note><para>You should limit object purges to situations where there
+          could be serious personal, business, or security
+          consequences if it remained publicly accessible on the CDN.
+          For example, someone published your company's quarterly
+          earnings too early. </para></note>
+        <para> Following are the ways you can purge objects from the
+          CDN: <itemizedlist>
             <listitem>
               <para>By using &DELETE; in the API </para>
+              <informaltable rules="all">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>URI</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><command>DELETE</command></td>
+                    <td><code>v1/{account}/{container}/{object}</code></td>
+                    <td>Deletes CDN-enabled objects.</td>
+                  </tr>
+                </tbody>
+              </informaltable>
+              <para>You can manually purge CDN-enabled objects without
+                having to wait for the TTL to expire, and you can
+                optionally be notified by email that the object has
+                been purged. However, you can only &DELETE; up to 25
+                objects per day using the API. </para>
+              <para>An attempt to delete more objects results in a 400
+                (Bad Request) status code with
+                  <code>X-Purge-Failed-Reason: You have the maximum
+                  number of daily object purges</code>.</para>
+              <para>If there is already a purge request in progress
+                for an object, a 400 (Bad Request) status code is
+                returned with <code>X-Purge-Failed-Reason: That object
+                  is already in the queue to be purged</code>.</para>
             </listitem>
             <listitem>
               <para>By creating a support ticket to purge an entire
@@ -6614,7 +6528,7 @@ i))) != null;
         <example>
           <title>Purge CDN-Enabled Object</title>
           <programlisting>
-  DELETE /v1/1234/{object} HTTP/1.1
+  DELETE /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
   Host: cdn.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Purge-Email: user@domain.com, user2@domain.com
@@ -6631,7 +6545,7 @@ i))) != null;
           (Forbidden) indicates that an authorization problem
           occurred. </para>
         <para>The CDN URI is returned in the HTTP header,
-            <code>X-CDN-URI</code>. </para>
+            <code>X-Cdn-Uri</code>. </para>
         <para>Purging objects may take a long time because there are
           so many edge servers around the globe. So please be patient
           while waiting for a response. </para>
@@ -6640,6 +6554,7 @@ i))) != null;
           <programlisting>
   HTTP/1.1 204 No Content
   Date: Thu, 13 Jan 2010 18:57:07 GMT
+  X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
   Content-Length: 0
   Content-Type: text/plain; charset=UTF-8
     </programlisting>
@@ -6650,7 +6565,7 @@ i))) != null;
       <title>Static Website</title>
       <para>
         <remark security="writeronly">2012-05-14 dsh: Added for
-          2012-05-14 release</remark> This section shows how you can
+          2012-05-14 release</remark> This section describes how to
         use your CDN-enabled containers to create static websites in
         Cloud Files. </para>
       <section xml:id="Create_Static_Website-dle4000">
@@ -6737,7 +6652,7 @@ i))) != null;
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
-            <para>CDN-Enable your container as shown in <xref
+            <para>CDN-enable your container as shown in <xref
                 linkend="CDN-Enable_a_Container-d1e2665"
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
@@ -6809,9 +6724,9 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
         <para>Set the <code>X-Container-Meta-Web-Error</code> metadata
           once for your entire static website. </para>
         <example>
-          <title>Set Error Pages for Static Website</title>
+          <title>Set Error Pages for Static Website Request</title>
           <programlisting>
-  POST /v1/1234/MyContainer HTTP/1.1
+  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Container-Meta-Web-Error: error.html            
@@ -7164,7 +7079,7 @@ Transfer-Encoding: chunked
       <section xml:id="Set_Account_Metadata-d1a4460">
         <title>Set Account TempURL Metadata Key</title>
         <para> To create a TemURL, you must first set the metadata
-          header <code>X-Account-Meta-Temp-URL-Key</code> on your
+          header <code>X-Account-Meta-Temp-Url-Key</code> on your
           Cloud Files account to a key that only you know. This key
           can be any arbitrary sequence as it is for encoding your
           account. </para>
@@ -7176,7 +7091,7 @@ Transfer-Encoding: chunked
         <example>
           <title>Set Account Metadata Key for Public Access</title>
           <programlisting>
-  POST /v1/1234 HTTP/1.1
+  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Account-Meta-Temp-Url-Key: yourKey
@@ -7339,7 +7254,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         <example>
           <title>Set Account Metadata Key for Public Access</title>
           <programlisting>
-  POST /v1/1234 HTTP/1.1
+  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   X-Account-Meta-Temp-Url-Key: yourKey
@@ -8298,8 +8213,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         separate TCP/IP and SSL connection is created and thrown away.
         The language APIs, however, are designed to re-use these
         connections between operations and therefore provide much
-        better performance. Rackspace recommends that you use one of
-        the language APIs in your production applications and limit
+        better performance. We recommend that you use one of the
+        language APIs in your production applications and limit
           <code>curl</code> to quick-and-easy
         testing/troubleshooting.</para>
     </section>
