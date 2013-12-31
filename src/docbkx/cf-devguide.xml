@@ -87,7 +87,7 @@
                   linkend="Service-Access-Endpoints-d1e003"/>.</para>
             </listitem>
             <listitem>
-              <para>Updated account information in  <xref
+              <para>Updated account information in <xref
                   linkend="Service-Access-Endpoints-d1e003"/> to show
                   MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
                 rather than <replaceable>1234</replaceable>.</para>
