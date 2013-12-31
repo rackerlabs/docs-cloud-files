@@ -87,6 +87,12 @@
                   linkend="Service-Access-Endpoints-d1e003"/>.</para>
             </listitem>
             <listitem>
+              <para>Updated account information in  <xref
+                  linkend="Service-Access-Endpoints-d1e003"/> to show
+                  MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
+                rather than <replaceable>1234</replaceable>.</para>
+            </listitem>
+            <listitem>
               <para>Added <xref linkend="Service_contract_versions"
                 />.</para>
             </listitem>
@@ -97,9 +103,6 @@
             <listitem>
               <para>Added <xref
                   linkend="Request_Response_Types-d1e903"/>.</para>
-            </listitem>
-            <listitem>
-              <para>Added <xref linkend="datetimeformat"/>.</para>
             </listitem>
             <listitem>
               <para>Added <xref
@@ -194,11 +197,6 @@
                   linkend="Service-Access-Endpoints-d1e003"/>, which
                 includes all endpoints for Cloud Files including the
                 newest one in Hong Kong.</para>
-            </listitem>
-            <listitem>
-              <para>Updated <xref linkend="Multi_region-dl2200"/> to
-                include additional endpoints from the service
-                catalog.</para>
             </listitem>
             <listitem>
               <para>Updated <xref linkend="Authentication-d1e639"/> to
@@ -1277,7 +1275,16 @@
               locate your username on the upper-right side of the top
               navigation pane in the Cloud Control Panel. The tenant
               ID or account number is in parentheses just to the right
-              of your username.</para>
+              of your username.<note>
+                <para><emphasis role="bold">For Cloud
+                  Files</emphasis>, the information used in place of
+                  the account number with the API operations is the
+                      <parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>
+                  information found in service catalog of your
+                  authentication response, rather than the account
+                  number found in the Cloud Control Panel, as
+                  described above.</para>
+              </note></para>
           </callout>
         </calloutlist>
         <example>
@@ -1859,10 +1866,11 @@
     <section xml:id="Service-Access-Endpoints-d1e003"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
       <title>Service Access Endpoints</title>
-      <para>Cloud Files is a regionalized service. The user of the
-        service is therefore responsible for appropriate replication,
-        caching, and overall maintenance of Cloud Files data across
-        regional boundaries to other Cloud Files servers. </para>
+      <para>Cloud Files is a regionalized service. You can create your
+        Cloud Files containers in any Rackspace data center. The user
+        of the service is therefore responsible for appropriate
+        replication, caching, and overall maintenance of Cloud Files
+        data across regional boundaries to other Cloud Files servers. </para>
       <para>The endpoints to use for the storage service component of
         your Cloud Files API calls are summarized in the table
         below.</para>
@@ -1879,69 +1887,70 @@
             <tr align="left">
               <td colspan="2" rowspan="2">Chicago (ORD)</td>
               <td colspan="5"
-                    ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Dallas/Ft. Worth (DFW)</td>
               <td colspan="5"
-                    ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Hong Kong (HKG)</td>
               <td colspan="5"
-                    ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr align="left">
               <td colspan="2" rowspan="2">London (LON)</td>
               <td colspan="5"
-                    ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Northern Virginia (IAD)</td>
               <td colspan="5"
-                    ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Sydney (SYD)</td>
               <td colspan="5"
-                    ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                    ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
           </tbody>
         </table>
       </para>
-      <para>Replace the sample MossoCloudFS information with the
-        actual MossoCloudFS information returned as part of the
-        authentication service response. You will find this after the
-        final '/' in the <code>publicURL</code> field and the
-          <code>internalURL</code> field in the
+      <para>Replace the sample MossoCloudFS information in the table
+        above with the actual MossoCloudFS information returned as
+        part of the authentication service response. You will find
+        this after the final '/' in the <code>publicURL</code> field
+        and the <code>internalURL</code> field in the
           <code>cloudFiles</code> section of the service catalog
         returned by the authentication response. For more information
-        about this account number, see sample authentication request
-        and response in the <citetitle>Cloud Identity Client Developer
+        about the account number, see the sample authentication
+        request and response in <xref linkend="Retrieving_Auth_Token"
+        /> as well as the <citetitle>Cloud Identity Client Developer
           Guide</citetitle>. </para>
       <tip>
         <para>If you do not know which data center you are working in
@@ -1965,10 +1974,29 @@
         where you have servers in your data centers and in Rackspace
         data centers, use a public endpoint because it is accessible
         from all the servers in the different environments.</para>
+      <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
+        <para>In order to avoid external bandwidth charges, your
+          containers and servers must be in the same data center. </para>
+        <para> You might find it useful to locate your objects in more
+          than one data center to keep track of your data and backups.
+          Specifically, if you serve an audience in a particular
+          region, you might find it helpful to locate your Cloud Files
+          objects as close to that region as possible. </para>
+      </note>
       <para>The endpoints to use for the CDN management service
         component of your Cloud Files API calls are summarized in the
         table below.</para>
       <para>
+        <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
+          <para>If your audience is world wide, you might consider
+            using the Akamai Content Delivery Network (CDN). The CDN
+            speeds your content delivery because it is cached at edge
+            locations around the globe, rather than being served from
+            a single origin server. You can learn more about
+            CDN-enabling your containers in <xref
+              linkend="CDN-Enable_a_Container-d1e2665"
+              xrefstyle="select:label quotedtitle nopage"/>. </para>
+        </note>
         <table rules="all">
           <caption>Regionalized Service Endpoints for CDN Management
             Services</caption>
@@ -1982,32 +2010,32 @@
             <tr align="left">
               <td colspan="2">Chicago (ORD)</td>
               <td colspan="5"
-                    ><code>https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Dallas/Ft. Worth (DFW)</td>
               <td colspan="5"
-                    ><code>https://cdn1.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Hong Kong (HKG)</td>
               <td colspan="5"
-                    ><code>https://cdn6.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn6.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr align="left">
               <td colspan="2">London (LON)</td>
               <td colspan="5"
-                    ><code>https://cdn3.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Northern Virginia (IAD)</td>
               <td colspan="5"
-                    ><code>https://cdn5.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn5.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2">Sydney (SYD)</td>
               <td colspan="5"
-                    ><code>https://cdn4.clouddrive.com/v1/<parameter>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</parameter>/</code></td>
+                      ><code>https://cdn4.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
           </tbody>
         </table>
@@ -2119,7 +2147,7 @@
       <example>
         <title>Example Request URL (contract version in <emphasis
             role="strong">bold</emphasis>)</title>
-        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeee</replaceable></programlisting>
+        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
       </example>
       <note>
         <para>This document pertains to contract version 1.</para>
@@ -2208,116 +2236,45 @@
     <section xml:id="Request_Response_Types-d1e903"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
       <title>Request and Response Types</title>
-      <para> The Cloud Files API supports both the JSON and XML data
-        serialization formats. The request format is specified using
-        the <code>Content-Type</code> header and is
-          <emphasis>required</emphasis> for calls that have a request
-        body. The response format can be specified in requests either
-        by using the <code>Accept</code> header or by adding an
-          <code>.xml</code> or <code>.json</code> extension to the
-        request URI. Note that it is possible for a response to be
-        serialized using a format different from the request. If no
-        response format is specified, JSON is the default. If
-        conflicting formats are specified using both an
-          <code>Accept</code> header and a query extension, the query
-        extension takes precedence.</para>
-      <table rules="all">
-        <caption>Response Formats</caption>
-        <?dbfo keep-together="always"?>
-        <thead>
-          <tr align="center">
-            <td>Format</td>
-            <td>Accept Header</td>
-            <td>Query Extension</td>
-            <td>Default</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>JSON</td>
-            <td>application/json</td>
-            <td>.json</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>XML</td>
-            <td>application/xml</td>
-            <td>.xml</td>
-            <td>No</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <section xml:id="datetimeformat"
-      xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Date and Time Format</title>
-      <para>For the display and consumption of date and time values,
-        Cloud Files uses a date format that complies with ISO 8601. </para>
-      <example>
-        <title>Service Date and Time Format</title>
-        <programlisting>yyyy-MM-dd'T'HH:mm:ss.SSSZ</programlisting>
-        <para>For example, May 19, 2013 at 8:07:08 A.M., GMT-5 would
-          have the following format: </para>
-        <programlisting>2013-05-19T08:07:08-05:00</programlisting>
-      </example>
-      <para>The following table describes the date and time format
-        codes.</para>
-      <table rules="all">
-        <caption>Explanation of Date and Time Format Codes</caption>
-        <thead>
-          <tr>
-            <td>Code</td>
-            <td>Description</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>yyyy</td>
-            <td>Four-digit year</td>
-          </tr>
-          <tr>
-            <td>MM</td>
-            <td>Two-digit month</td>
-          </tr>
-          <tr>
-            <td>dd</td>
-            <td>Two-digit day of at the month</td>
-          </tr>
-          <tr>
-            <td>T</td>
-            <td>Separator for date and time</td>
-          </tr>
-          <tr>
-            <td>HH</td>
-            <td>Two-digit hour of the day (00-23)</td>
-          </tr>
-          <tr>
-            <td>mm</td>
-            <td>Two-digit minutes of the hour</td>
-          </tr>
-          <tr>
-            <td>ss</td>
-            <td>Two-digit seconds of the minute</td>
-          </tr>
-          <tr>
-            <td>SSS</td>
-            <td>Three-digit milliseconds of the second</td>
-          </tr>
-          <tr>
-            <td>Z</td>
-            <td>RFC 822 time zone</td>
-          </tr>
-        </tbody>
-      </table>
+      <para>You specify the request format using the
+          <code>Content-Type</code> header. The Cloud Files API
+        supports both the JSON (<code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >application/json</code>) and XML (<code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >application/xml</code>) data serialization formats, as well
+        as other formats such as <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >text/plain</code>, <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >text/xml</code>, and <code>text/html</code> along with
+          <code>video</code>, <code>audio</code>, and
+          <code>image</code> types.  For pseudo hierarchical folders
+        and directories, <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >application/directory</code> might be used.</para>
+      <para>You specify the response format in requests by using the
+          <code>Accept</code> header. Note that it is possible for a
+        response to be serialized using a format different from the
+        request. The Cloud Files API supports both the JSON (<code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >application/json</code>) and XML (<code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >application/xml</code>) data serialization formats, as well
+        as other formats such as <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >text/plain</code> and <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+          >text/xml</code> . </para>
     </section>
   </chapter>
   <chapter xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API Operations</title>
     <para>The Cloud Files API is implemented as a set of RESTful web
       services. All authentication and container/object operations can
-      be performed with standard HTTP calls. See the <link
+      be performed with standard HTTP calls. See <link
         xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
-        >Wikipedia article</link> on REST for more information.</para>
+        >Representation State Transfer</link> for more information about REST.</para>
     <para>The following constraints apply to REST API HTTP
       requests:</para>
     <itemizedlist>
@@ -3028,8 +2985,8 @@
   bananas
                  
 </programlisting>
-            <para>Since the operation returned two items, assume there
-              are more container names to list and make another
+            <para>Because the operation returned two items, assume
+              there are more container names to list and make another
               request with a marker of the last item returned:</para>
             <programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
@@ -3039,7 +2996,7 @@
   kiwis
   oranges 
               </programlisting>
-            <para>Again, two items are returned. There may be
+            <para>Again, two items are returned. There might be
               more.</para>
             <programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
@@ -3051,18 +3008,37 @@
             <para>This one-item response shows less than the
                 <code>limit</code> number of container names, and
               indicates that this is the end of the list.</para>
+            <para>By using <code>end_marker</code>, limit the result
+              set to container names less than the given value.</para>
+            <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
+  Host: storage.clouddrive.com
+  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+                    
+  apples
+  bananas
+  kiwis
+</programlisting>
           </example>
         </section>
       </section> 
       <section xml:id="View_Account_Details-d1e108">
         <title>Get Account Details</title>
-        <para> To see how many containers you have in your account
-            (<code>X-Account-Container-Count</code>), how many objects
-          are in your account (<code>X-Account-Object-Count</code>),
-          and how many total bytes your account uses
-            (<code>X-Account-Bytes-Used</code>), perform a &HEAD;
-          request on your storage account URL. This displays your
-          account information.<informaltable rules="all">
+        <para>Perform a &HEAD; request on your storage account URL to
+          get the following account information: <itemizedlist>
+            <listitem>
+              <para>how many containers you have in your account
+                  (<code>X-Account-Container-Count</code>)</para>
+            </listitem>
+            <listitem>
+              <para>how many objects are in your account
+                  (<code>X-Account-Object-Count</code>)</para>
+            </listitem>
+            <listitem>
+              <para>how many total bytes your account uses
+                  (<code>X-Account-Bytes-Used</code>)</para>
+            </listitem>
+          </itemizedlist><informaltable rules="all">
             <thead>
               <tr>
                 <th>Method</th>
@@ -3078,8 +3054,11 @@
               </tr>
             </tbody>
           </informaltable></para>
-        <para> A 204 (No Content) code returns and there is no
-          information in the response body. </para>
+        <para>The HTTP return code is 2xx (between 200 and 299,
+          inclusive) if the request succeeds. In this example, a 204
+          (No Content) code returns and there is no information in the
+          response body. A 401 (Unauthorized) is returned for an
+          invalid account or authentication token.</para>
         <example>
           <title>View Account Information Request</title>
           <programlisting>
@@ -3196,7 +3175,8 @@ Date: Sat, 09 Jun 2012 19:16:59 GMT</programlisting>
               <code>X-Remove-Account-Meta-<replaceable>name</replaceable>:
               <replaceable>arbitrary value</replaceable></code>
           header. For example, <code>X-Remove-Account_Meta-Book:
-            x</code>. The arbitrary value is ignored.<example>
+            x</code>. The <code><replaceable>arbitrary
+              value</replaceable></code> is ignored.<example>
             <title>Delete Account Metadata Request</title>
             <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
@@ -3204,7 +3184,8 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Remove-Account-Meta-Book: x
 </programlisting>
           </example></para>
-        <para/>
+        <para>No response body is returned. A status code from 200 to
+          299 indicates success.</para>
       </section>
     </section>
     <section xml:id="Storage_Container_Services-d1e1444">
@@ -3338,7 +3319,7 @@ X-Remove-Account-Meta-Book: x
         for:</para>
       <itemizedlist>
         <listitem>
-          <para>account (for example,
+          <para><replaceable>account</replaceable> (for example,
             MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123)</para>
         </listitem>
         <listitem>
@@ -3346,18 +3327,19 @@ X-Remove-Account-Meta-Book: x
             f064c46a782c444cb4ba4b6434288f7c)</para>
         </listitem>
         <listitem>
-          <para>container (for example, MyContainer)</para>
+          <para><replaceable>container</replaceable> (for example,
+            MyContainer)</para>
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must provide your own account
-        number, authentication token, and container name. </para>
+        information, authentication token, and container name. </para>
       <section xml:id="View-Container_Info-d1e1285">
         <title>Get Container Details</title>
         <para>To see how many objects are in a container
             (<code>X-Container-Object-Count</code>) and the custom
           metadata you have set on the container
             (<code>X-Container-Meta-</code> prefix), perform a &HEAD;
-          request against the container's URL. </para>
+          request against the container. </para>
         <informaltable rules="all">
           <thead>
             <tr>
@@ -3466,13 +3448,13 @@ X-Remove-Account-Meta-Book: x
 </programlisting>
         </example>
         <para>Using custom container metadata, you can create
-          information in the header to effectively "tag" a container
+          information in the header to effectively tag a container
           with metadata. The container metadata restrictions are the
           same as object metadata. You can have 4096 bytes maximum
           overall metadata, with 90 distinct metadata items at the
           most. Each may have a 128 character name length with a 256
-          max value length each. Any valid UTF-8 http header value is
-          allowed for metadata. However, we recommend that you
+          max value length each. Any valid UTF-8 encoded string value
+          is allowed for metadata. However, we recommend that you
           URL-encode any non-ASCII values using a "%" symbol, followed
           by the two-digit hexadecimal ISO-Latin code for the
           character.</para>
@@ -3491,7 +3473,7 @@ X-Remove-Account-Meta-Book: x
           (Accepted) is returned if the container existed prior to the
           request. If you request a &PUT; to a container with an
             <code>X-Container-Meta-</code> prefix in the header, your
-          &GET;/&HEAD; request responses carry the metadata prefix
+          &GET; or &HEAD; request responses carry the metadata prefix
           from the container in subsequent requests.</para>
         <example>
           <title>Container Create Response</title>
@@ -3501,136 +3483,6 @@ X-Remove-Account-Meta-Book: x
   Content-Type: text/plain; charset=UTF-8
 </programlisting>
         </example>
-        <section xml:id="Multi_region-dl2200">
-          <title>Multi-region Support</title>
-          <para>You can create your Cloud Files containers in any
-            Rackspace data center. When you connect to Cloud Files,
-            you get the endpoints shown in <xref
-              linkend="Service-Access-Endpoints-d1e003"/>. You use the
-              <code>publicURL</code> for your Cloud Files operations.
-            To see an example of the service catalog, which lists the
-            service access endpoints, see the auth response examples
-            in <xref linkend="Retrieving_Auth_Token"/>.</para>
-          <note>
-            <para>In order to avoid external bandwidth charges, your
-              containers and servers must be in the same data center.
-            </para>
-          </note>
-          <para> You might find it useful to locate your objects in
-            more than one data center to keep track of your data and
-            backups. Specifically, if you serve an audience in a
-            particular region, you might find it helpful to locate
-            your Cloud Files objects as close to that region as
-            possible. </para>
-          <note>
-            <para>If your audience is world wide, you might consider
-              using the Akamai Content Delivery Network (CDN). The CDN
-              speeds your content delivery because it is cached at
-              edge locations around the globe, rather than being
-              served from a single origin server. You can learn more
-              about CDN-enabling your containers in <xref
-                linkend="CDN-Enable_a_Container-d1e2665"
-                xrefstyle="select:label quotedtitle nopage"/>. </para>
-          </note>
-        </section>
-        <section
-          xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580">
-          <title>Pseudo Hierarchical Folders and Directories</title>
-          <remark>02-16-12 dsh reworked this section / as path and its
-            elements / are not supported</remark>
-          <para>Although you cannot nest directories in Cloud Files,
-            you can simulate a hierarchical structure within a single
-            container by adding forward slash characters
-              (<code>/</code>) in the object name. To navigate the
-            pseudo directory structure, you can use the
-              <code>delimiter</code> query parameter. See the below
-            examples for an illustration.</para>
-          <note>
-            <para>In the example below, the objects reside in a
-              container called <code>backups</code>. Within that
-              container, the objects are organized in a pseudo
-              directory called <code>photos</code>. Keep in mind that
-              the container name is not displayed in the example, but
-              that it is a part of the object URIs. For instance, the
-              URI of the picture <code>me.jpg</code> is
-                <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>. </para>
-          </note>
-          <example>
-            <title>Pseudo Hierarchical Folders and Directories</title>
-            <para> To display a list of all the objects in the storage
-              container, use &GET; without a <code>delimiter</code> or
-                <code>prefix</code>. </para>
-            <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
-</programlisting>
-            <para> The system returns status code 200 OK and the
-              requested list of the objects. </para>
-            <programlisting>
-  photos/animals/cats/persian.jpg
-  photos/animals/cats/siamese.jpg
-  photos/animals/dogs/corgi.jpg
-  photos/animals/dogs/poodle.jpg
-  photos/animals/dogs/terrier.jpg
-  photos/me.jpg
-  photos/plants/fern.jpg
-  photos/plants/rose.jpg
-</programlisting>
-            <para>
-              <!--02-03-12 dsh  The JIRA ticket / doc-97 subsumed / to this location-->Use
-              the delimiter parameter to limit the displayed results.
-              Any character may be used as a delimiter. However, to
-              use <code>delimiter</code> with pseudo directories, use
-              the parameter slash (<code>/</code>). </para>
-            <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
-</programlisting>
-            <para> The system returns status code 200 (OK) and the
-              requested matching objects. Because the request used the
-              slash, only the pseudo directory <code>photos/</code>
-              displays. Keep in mind that the returned values from a
-              slash <code>delimiter</code> query are not real objects.
-              They have a content-type of application/directory and
-              are in a subdir section of JSON and XML results. </para>
-          </example>
-          <programlisting>
-  photos/
-</programlisting>
-          <para> Use the <code>prefix</code> parameter with the
-              <code>delimiter</code> parameter to view the objects
-            inside a pseudo directory, including further nested pseudo
-            directories. </para>
-          <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/
-</programlisting>
-          <para> The system returns status code 200 (OK) and the
-            objects and pseudo directories within the top level pseudo
-            directory. </para>
-          <programlisting>
-  photos/animals/ 
-  photos/plants/
-  photos/me.jpg
-</programlisting>
-          <para> There is no limit to the amount of nested pseudo
-            directories you can create. In order to navigate through
-            them, use a longer <code>prefix</code> parameter coupled
-            with the <code>delimiter</code> parameter. In the sample
-            output below, there is a pseudo directory called
-              <code>dogs</code> within the pseudo directory
-              <code>animals</code>. In order to navigate directly to
-            the files contained within <code>dogs</code>, enter the
-            below command. </para>
-          <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/
-</programlisting>
-          <para> The system returns status code 200 (OK) and the
-            objects and pseudo directories within the nested pseudo
-            directory. </para>
-          <programlisting>
-  photos/animals/dogs/corgi.jpg
-  photos/animals/dogs/poodle.jpg
-  photos/animals/dogs/terrier.jpg
-</programlisting>
-        </section>
       </section>
       <section xml:id="Delete_Container-d1e1765">
         <title>Delete Container</title>
@@ -4036,6 +3888,104 @@ X-Remove-Account-Meta-Book: x
               list was reached. </para>
           </example>
         </section>
+      </section>
+      <section xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580" >
+        <title>Pseudo Hierarchical Folders and Directories</title>
+        <remark>02-16-12 dsh reworked this section / as path and its
+          elements / are not supported</remark>
+        <para>Although you cannot nest directories in Cloud Files, you
+          can simulate a hierarchical structure within a single
+          container by adding forward slash characters
+          (<code>/</code>) in the object name. To navigate the pseudo
+          directory structure, you can use the <code>delimiter</code>
+          query parameter. See the below examples for an
+          illustration.</para>
+        <note>
+          <para>In the example below, the objects reside in a
+            container called <code>backups</code>. Within that
+            container, the objects are organized in a pseudo directory
+            called <code>photos</code>. Keep in mind that the
+            container name is not displayed in the example, but that
+            it is a part of the object URIs. For instance, the URI of
+            the picture <code>me.jpg</code> is
+              <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>.
+          </para>
+        </note>
+        <example>
+          <title>Pseudo Hierarchical Folders and Directories</title>
+          <para> To display a list of all the objects in the storage
+            container, use &GET; without a <code>delimiter</code> or
+              <code>prefix</code>. </para>
+          <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
+</programlisting>
+          <para> The system returns status code 200 OK and the
+            requested list of the objects. </para>
+          <programlisting>
+  photos/animals/cats/persian.jpg
+  photos/animals/cats/siamese.jpg
+  photos/animals/dogs/corgi.jpg
+  photos/animals/dogs/poodle.jpg
+  photos/animals/dogs/terrier.jpg
+  photos/me.jpg
+  photos/plants/fern.jpg
+  photos/plants/rose.jpg
+</programlisting>
+          <para>
+            <!--02-03-12 dsh  The JIRA ticket / doc-97 subsumed / to this location-->Use
+            the delimiter parameter to limit the displayed results.
+            Any character may be used as a delimiter. However, to use
+              <code>delimiter</code> with pseudo directories, use the
+            parameter slash (<code>/</code>). </para>
+          <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
+</programlisting>
+          <para> The system returns status code 200 (OK) and the
+            requested matching objects. Because the request used the
+            slash, only the pseudo directory <code>photos/</code>
+            displays. Keep in mind that the returned values from a
+            slash <code>delimiter</code> query are not real objects.
+            They have a <code>Content-Type</code> of
+              <code>application/directory</code> and are in a subdir
+            section of JSON and XML results. </para>
+        </example>
+        <programlisting>
+  photos/
+</programlisting>
+        <para> Use the <code>prefix</code> parameter with the
+            <code>delimiter</code> parameter to view the objects
+          inside a pseudo directory, including further nested pseudo
+          directories. </para>
+        <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/
+</programlisting>
+        <para> The system returns status code 200 (OK) and the objects
+          and pseudo directories within the top level pseudo
+          directory. </para>
+        <programlisting>
+  photos/animals/ 
+  photos/plants/
+  photos/me.jpg
+</programlisting>
+        <para> There is no limit to the amount of nested pseudo
+          directories you can create. In order to navigate through
+          them, use a longer <code>prefix</code> parameter coupled
+          with the <code>delimiter</code> parameter. In the sample
+          output below, there is a pseudo directory called
+            <code>dogs</code> within the pseudo directory
+            <code>animals</code>. In order to navigate directly to the
+          files contained within <code>dogs</code>, enter the below
+          command. </para>
+        <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/
+</programlisting>
+        <para> The system returns status code 200 (OK) and the objects
+          and pseudo directories within the nested pseudo directory. </para>
+        <programlisting>
+  photos/animals/dogs/corgi.jpg
+  photos/animals/dogs/poodle.jpg
+  photos/animals/dogs/terrier.jpg
+</programlisting>
       </section>
       <section xml:id="Container_Quotas-d1e2222">
         <title>Container Quotas</title>
@@ -4984,7 +4934,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               the MD5 checksum of the JSON content. The
                 <code>ETag</code> metadata value is then set to be the
               MD5 checksum of the concatenated <code>ETag</code>
-              values of the object segments. You may also set the
+              values of the object segments. You can also set the
                 <code>Content-Type</code> request header and custom
               object metadata. </para>
             <para>When the <command>PUT</command> operation sees the
@@ -5241,10 +5191,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para>
           <emphasis>Naming Schema:</emphasis> Non-current versions are
           assigned the name
-            <code>{length}{object_name}/{timestamp}</code>, where
+            <code>{length}{objectName}/{timestamp}</code>, where
             <code>{length}</code> is the 3-character zero-padded
           hexadecimal character length of the
-            <code>{object_name}</code> and <code>{timestamp}</code>
+            <code>{objectName}</code> and <code>{timestamp}</code>
           from when it was originally created as a current version. </para>
         <para> Any return status in the 2xx range, such as 202
           (Accepted), denotes success. Status codes in the 4xx or 5xx
@@ -5939,7 +5889,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           the next TTL period. </para>
         <para>You can specify the TTL for an object by including the
           HTTP header <code>X-TTL:
-              <replaceable>integer_seconds</replaceable></code>.
+              <replaceable>integerSeconds</replaceable></code>.
           Setting the TTL is the same as setting the HTTP
             <code>Expires</code> and <code>Cache-Control</code>
           headers for the cached object. The minimum TTL is 15 minutes
@@ -6123,7 +6073,7 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </programlisting>
         </example>
         <example>
-          <title>CDN-Enabled Containder Details Response: JSON</title>
+          <title>CDN-Enabled Container Details Response: JSON</title>
           <programlisting>
   HTTP/1.1 200 OK
   Date: Tue, 30 Oct 2012 14:41:29 GMT
@@ -6575,7 +6525,7 @@ i))) != null;
           HTML or static web pages in the container become available
           through a static website once you set the
             <code>X-Container-Meta-Web-Index</code> header to
-            <code>index.html</code> or other index page of your
+            <code>index.html</code> or another index page of your
           choice. You can also create subdirectories in your website
           by creating pseudo directories, as outlined in <xref
             linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
@@ -6625,14 +6575,20 @@ i))) != null;
           instructions below describe using a CNAME with your DNS
           Server (or name server). This is the domain name of your
           site (such as www.rackspace.com). Your CNAME is set up with
-          your individual DNS Server, for which the directions are
-          outside the scope of this documentation. Once you have your
-          CNAME established, set the CNAME to your Cloud Files CDN URI
-          to get your site up and running on the Web. </para>
+          your individual DNS Server. For more information about using
+          CNAMES, see the <citetitle>Cloud DNS Developer
+            Guide</citetitle> at <link
+            xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html"
+            >docs.rackspace.com</link>. Once you have your CNAME
+          established, set the CNAME to your Cloud Files CDN URI to
+          get your site up and running on the Web. </para>
         <orderedlist>
           <title>Set up a Static Website </title>
           <para> The following list gives the step-by-step
             instructions for setting up a Static Website. </para>
+          <listitem>
+            <para>Create a container. </para>
+          </listitem>
           <listitem>
             <para>Upload your pages to a container. </para>
           </listitem>
@@ -6640,16 +6596,15 @@ i))) != null;
             <para>Set the index (or primary page) for your website by
               performing a &POST; to the header
                 <code>X-Container-Meta-Web-Index</code> on your
-              website's container. See the example below, but remember
-              to change the <code>X-Auth-Token</code> to your
-              authentication token. You must write your storage URL
-              and the container name to properly point to the
-              container (<code><replaceable>storageURL</replaceable>
-                <replaceable>containerName</replaceable></code>) </para>
-            <para> You get your Auth token when you authenticate your
+              website's container. See the example below. (Remember to
+              change the <code>X-Auth-Token</code> to your
+              authentication token.) You must use your storage URL and
+              the container name to properly point to the container
+                  (<code><replaceable>storageURL</replaceable>/<replaceable>containerName</replaceable></code>). </para>
+            <para>(You get your Auth token when you authenticate your
               session as shown in <xref
                 linkend="Authentication-d1e639"
-                xrefstyle="select:label quotedtitle nopage"/>. </para>
+                xrefstyle="select:label quotedtitle nopage"/>.) </para>
           </listitem>
           <listitem>
             <para>CDN-enable your container as shown in <xref
@@ -6673,7 +6628,7 @@ i))) != null;
         <example>
           <title>Set up Static Web</title>
           <programlisting language="bash">
-curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/        
+curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/"        
   </programlisting>
         </example>
         <para>After your container has an index page set and your
@@ -6688,8 +6643,8 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
   container/subdir/pageX.html
             </programlisting>
         </example>
-        <para> In the results below, the user's CNAME is myhost, and
-          the <code>X-Container-Meta-Web-Index</code> is set to
+        <para>In the results below, the CNAME is myhost, and the
+            <code>X-Container-Meta-Web-Index</code> is set to
           index.html. The results on the right of the example are the
           pages that display in the Web browser. </para>
         <example>
@@ -6712,9 +6667,9 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           the metadata header <code>X-Container-Meta-Web-Error</code>.
           Currently, only 401 (Unauthorized) and 404 (Not Found)
           status codes are supported. </para>
-        <para> Error pages are served with the status code prepended
-          to the name of the error page you set. For instance, if you
-          set <code>X-Container-Meta-Web-Error</code> to
+        <para>Error pages are served with the status code prepended to
+          the name of the error page you set. For instance, if you set
+            <code>X-Container-Meta-Web-Error</code> to
             <code>error.html</code>, 401 errors display the page
             <code>401error.html</code>. Similarly, 404 errors display
             <code>404error.html</code>. You must have both of these
@@ -6765,18 +6720,17 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
             only.</para>
         </note>
         <para>Rackspace accepts USB, SATA, and eSATA devices. Your
-          file system may be NTFS, ext2, ext3, ext4, or FAT32. Because
-          Cloud Files does not use hierarchical directory structures,
-          nested sub-directories in your data are converted to object
-          names. Your top-level folders become containers, and nested
-          directory names become part of the object names. For
-          instance, <code>Chapter28/Ahab/ivoryleg</code> results in a
-          container named <code>Chapter28</code> with an object named
-            <code>Ahab/ivoryleg</code> inside of it. For more
-          information on simulating directory structures in Cloud
-          Files, see <xref
-            linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
-          />. </para>
+        file system can be NTFS, ext2, ext3, ext4, or FAT32. Because
+        Cloud Files does not use hierarchical directory structures,
+        nested sub-directories in your data are converted to object
+        names. Your top-level folders become containers, and nested
+        directory names become part of the object names. For instance,
+          <code>Chapter28/Ahab/ivoryleg</code> results in a container
+        named <code>Chapter28</code> with an object named
+          <code>Ahab/ivoryleg</code> inside of it. For more
+        information on simulating directory structures in Cloud Files,
+        see <xref
+          linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>. </para>
         <para>To begin the bulk import process, contact Rackspace
           support technicians. You will be assigned a migration
           specialist who can answer any questions you might have along
@@ -6895,12 +6849,12 @@ Transfer-Encoding: chunked
 </programlisting>
         </example>
         <para>The list of errors is a list of tuples in the form
-            <code>[object_path, error_response]</code>. The
-            <code>object_path</code> given is the full path of where
-          the object was to be put. The <code>error_response</code> is
-          the failing HTTP status of the response for that individual
-            <command>PUT</command>. After 1,000 errors, processing of
-          the request ends, and the completed response is returned. </para>
+          <code>[objectPath, errorResponse]</code>. The
+          <code>objectPath</code> given is the full path of where the
+        object was to be put. The <code>errorResponse</code> is the
+        failing HTTP status of the response for that individual
+          <command>PUT</command>. After 1,000 errors, processing of
+        the request ends, and the completed response is returned. </para>
         <para>If all valid files were uploaded successfully, the
             <code>Response Status</code> in the response body is 201
           Created. If any files failed to be created, the
@@ -6940,13 +6894,13 @@ Transfer-Encoding: chunked
         </note>
         <para>The objects specified in the <command>DELETE</command>
           request body must be URL-encoded and in the form: </para>
-        <para><code> /container_name/object_name</code>
-        </para>
+        <para><code> /containerName/objectName</code>
+      </para>
         <para>or for containers (which must be empty at time of
           delete)</para>
         <para>
-          <code>/container_name</code>
-        </para>
+        <code>/containerName</code>
+      </para>
         <para>The response is similar to the extract archive responses
           in that every response will be 200 OK and the response body
           must be parsed for actual results. The following example
@@ -7025,12 +6979,11 @@ Transfer-Encoding: chunked
           </note>
 -->
         <para>The list of errors is a list of tuples in the form
-            <code>[object_path, error_response]</code>. The
-            <code>object_path</code> is the full path of where the
-          object (or container) was to be deleted. The
-            <code>error_response</code> is the failing HTTP status of
-          the response for that individual <command>DELETE</command>.
-        </para>
+          <code>[objectPath, errorResponse]</code>. The
+          <code>objectRath</code> is the full path of where the object
+        (or container) was to be deleted. The
+          <code>errorResponse</code> is the failing HTTP status of the
+        response for that individual <command>DELETE</command>. </para>
       </section>
   </chapter>
   <chapter xml:id="Public_Access_to_Account-d1a4440">
@@ -7078,7 +7031,7 @@ Transfer-Encoding: chunked
       </note>
       <section xml:id="Set_Account_Metadata-d1a4460">
         <title>Set Account TempURL Metadata Key</title>
-        <para> To create a TemURL, you must first set the metadata
+        <para> To create a TempURL, you must first set the metadata
           header <code>X-Account-Meta-Temp-Url-Key</code> on your
           Cloud Files account to a key that only you know. This key
           can be any arbitrary sequence as it is for encoding your
