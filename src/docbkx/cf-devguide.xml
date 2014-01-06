@@ -69,8 +69,8 @@
           <itemizedlist>
             <listitem>
               <para>Updated the instructions for locating the API Key,
-                Tenant ID, and account number in the Cloud Control
-                Panel in <xref linkend="Retrieving_Auth_Token"
+                Tenant ID, and cd Dcouy in the Cloud Control Panel in
+                  <xref linkend="Retrieving_Auth_Token"
                   xmlns:m="http://www.w3.org/1998/Math/MathML"
                 />.</para>
             </listitem>
@@ -232,7 +232,7 @@
             <listitem>
               <para>Updated responses to show
                   <code>application/json</code> in <xref
-                  linkend="Bulk-Delete-d1eoe"/>.</para>
+                  linkend="Bulk_Delete-d1e2338.html"/>.</para>
             </listitem>
             <listitem>
               <para>Added <code>X-Container-Meta-Web-Listings</code>,
@@ -910,9 +910,9 @@
       <para>The only restrictions on container names is that they
         cannot contain a forward slash (<code>/</code>) and must be
         less than 256 bytes in length. Note that the length
-        restriction applies to the name after it has been URL encoded.
+        restriction applies to the name after it has been URL-encoded.
         For example, a container name of <code>Course Docs</code>
-        would be URL encoded as <code>Course%20Docs</code> and is 13
+        would be URL-encoded as <code>Course%20Docs</code> and is 13
         bytes in length rather than the expected 11.</para>
       <para>You can create a container in any Rackspace data center.
         (See <xref linkend="Service-Access-Endpoints-d1e003"/> for a
@@ -937,9 +937,9 @@
           Caribbean Cruise</code> or <code>Album : Aspen Ski
           Trip</code>. </para>
       <para>The only restriction on object names is that they must be
-        less than 1024 bytes in length after URL encoding. For
+        less than 1024 bytes in length after URL-encoding. For
         example, an object name of <code>C++final(v2).txt</code>
-        should be URL encoded as <code>C%2B%2Bfinal%28v2%29.txt</code>
+        should be URL-encoded as <code>C%2B%2Bfinal%28v2%29.txt</code>
         and therefore be 24 bytes in length rather than the expected
         16.</para>
       <para>Cloud Files has a limit on the size of a single uploaded
@@ -1508,7 +1508,7 @@
         </tip>
         <para>Cloud Files service endpoints are published in the
           service catalog in the Auth response with the account
-          number, which is a required element of the service
+          information, which is a required element of the service
           endpoints. The examples shown here are for authentication
           for US customers. Customers with UK-based accounts will see
           different values in the service catalog. Refer to <xref
@@ -1994,8 +1994,7 @@
             locations around the globe, rather than being served from
             a single origin server. You can learn more about
             CDN-enabling your containers in <xref
-              linkend="CDN-Enable_a_Container-d1e2665"
-              xrefstyle="select:label quotedtitle nopage"/>. </para>
+              linkend="CDN-Enable_a_Container-d1e2665"/>. </para>
         </note>
         <table rules="all">
           <caption>Regionalized Service Endpoints for CDN Management
@@ -2048,7 +2047,26 @@
         field in the <code>cloudFilesCDN</code> section of the service
         catalog returned by the authentication response. </para>
     </section>
-<!--  
+    <section xml:id="Service_contract_versions"
+      xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <title>Cloud Files Service Contract Version</title>
+      <para> The Cloud Files version defines the contract and build
+        information for the API. </para>
+      <para> The contract version denotes the data model and behavior
+        that the API supports. The requested contract version is
+        included in all request URIs. Different contract versions of
+        the API may be available at any given time and are not
+        guaranteed to be compatible with one another. </para>
+      <example>
+        <title>Example Request URL (contract version in <emphasis
+            role="strong">bold</emphasis>)</title>
+        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
+      </example>
+      <note>
+        <para>This document pertains to contract version 1.</para>
+      </note>
+    </section>
+    <!--  
     <section xml:id="Limits-d1e942">
       <title>Limits</title>
       <remark>REVIEWER: Does Cloud Files have both rate limits and
@@ -2133,26 +2151,7 @@
           </tbody>
         </table>
       </section>
--->
-    <section xml:id="Service_contract_versions"
-      xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Cloud Files Service Contract Version</title>
-      <para> The Cloud Files version defines the contract and build
-        information for the API. </para>
-      <para> The contract version denotes the data model and behavior
-        that the API supports. The requested contract version is
-        included in all request URIs. Different contract versions of
-        the API may be available at any given time and are not
-        guaranteed to be compatible with one another. </para>
-      <example>
-        <title>Example Request URL (contract version in <emphasis
-            role="strong">bold</emphasis>)</title>
-        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
-      </example>
-      <note>
-        <para>This document pertains to contract version 1.</para>
-      </note>
-    </section>      
+-->      
       <section xml:id="Absolute_Limits-d1e942">
         <title>Absolute Limits</title>
         <para>Absolute limits are fixed. Absolute limits control the
@@ -2299,7 +2298,7 @@
     </itemizedlist>
     <para>Container and object names must be UTF-8 encoded and then
       should be properly URL-encoded prior to interacting with the
-      ReST interface. You might be using an API binding that performs
+      REST interface. You might be using an API binding that performs
       the URL-encoding on your behalf. If so, do not URL-encode before
       calling the API binding, or you will double-encode container and
       object names. The length restrictions should be checked against
@@ -2752,7 +2751,7 @@
         </tbody>
       </informaltable>
       <para>The following example shows the general structure for the
-        requests, which ends with your account number.</para>
+        requests, which ends with your account.</para>
       <example>
         <title>Storage Account HTTP Request: General Structure</title>
         <programlisting>
@@ -2818,7 +2817,7 @@
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account
-        number and authentication token. (You can check how to
+        information and authentication token. (You can check how to
         generate an authentication token in <xref
           linkend="Authentication-d1e639"
           xrefstyle="select:label quotedtitle nopage"/>.) </para>
@@ -2925,7 +2924,7 @@
 
   &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
-  &lt;account name="MichaelBarton"&gt;
+  &lt;account name="name"&gt;
     &lt;container&gt;
       &lt;name&gt;test_container_1&lt;/name&gt;
       &lt;count&gt;2&lt;/count&gt;
@@ -2942,14 +2941,14 @@
         </section>
         <section xml:id="Controlling-Large-List-de101">
           <title>Controlling a Large List of Containers</title>
-          <para> A <code>GET</code> request to the storage account URL
+          <para>A <code>GET</code> request to the storage account URL
             returns a list of up to 10,000 container names. You can
             control and limit this list of results by using the
               <code>marker</code>, <code>end_marker</code>, and
               <code>limit</code> parameters. These parameters provide
             a mechanism to iterate through the entire list of
             containers. Keep in mind that the value for marker needs
-            to be URL encoded before issuing the request.</para>
+            to be URL-encoded before issuing the request.</para>
           <para>
             <code>Marker</code> tells Cloud Files where to begin your
             list of containers and <code>end_marker</code> specifies
@@ -3008,8 +3007,9 @@
             <para>This one-item response shows less than the
                 <code>limit</code> number of container names, and
               indicates that this is the end of the list.</para>
-            <para>By using <code>end_marker</code>, limit the result
-              set to container names less than the given value.</para>
+            <para>By using <code>end_marker</code>, you can limit the
+              result set to container names less than the given
+              value.</para>
             <programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
   Host: storage.clouddrive.com
@@ -3236,8 +3236,8 @@ X-Remove-Account-Meta-Book: x
         </tbody>
       </informaltable>
       <para>The following example shows the general structure for the
-        requests, which includes your account number and your
-        container name.</para>
+        requests, which includes your account and your container
+        name.</para>
       <example>
         <?dbfo keep-together="always"?>
         <title>Storage Container HTTP Request: General
@@ -4156,7 +4156,7 @@ X-Remove-Account-Meta-Book: x
         include metadata for an object by adding custom HTTP headers
         to the request and the data payload as the request body.
         Objects cannot exceed 5 GB and must have names that do not
-        exceed 1024 bytes after URL encoding. However, you can segment
+        exceed 1024 bytes after URL-encoding. However, you can segment
         a large object into 5 GB segments and upload the segments.
         Then, you can download the segments as a single concatenated
         object. You can use HTTP requests to work with the segments
@@ -4217,8 +4217,8 @@ X-Remove-Account-Meta-Book: x
         </tbody>
       </informaltable>
       <para>The following example shows the general structure for the
-        requests, which include your account number, your container
-        name, and your object name.</para>
+        requests, which include your account, your container name, and
+        your object name.</para>
       <example>
         <?dbfo keep-together="always"?>
         <title>Storage Object HTTP Request: General Structure</title>
@@ -4245,7 +4245,8 @@ X-Remove-Account-Meta-Book: x
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must provide your own account
-        number, authentication token, container name, and object name. </para>
+        information, authentication token, container name, and object
+        name. </para>
       <section xml:id="Retrieve_Object-d1e4301">
         <title>Retrieve Object</title>
         <para>&GET; operations against an object are used to retrieve
@@ -5019,7 +5020,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               the manifest, and then, if all are successfully deleted,
               the manifest object itself. A failure response will be
               similar to those for the bulk delete operation (<xref
-                linkend="Bulk-Delete-d1eoe"/>).</para>
+                linkend="Bulk_Delete-d1e2338.html"/>).</para>
             <programlisting>
 ?multipart-manifest=delete
 </programlisting>
@@ -5481,7 +5482,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               </programlisting>
         </example>
         <para>For information about bulk deletions, see <xref
-            linkend="Bulk-Delete-d1eoe"/>.</para>
+            linkend="Bulk_Delete-d1e2338.html"/>.</para>
       </section>
       <section xml:id="Retrieve_Object_Metadata-d1e2301">
         <title>Retrieve Object Metadata</title>
@@ -5789,8 +5790,8 @@ In addition to those listed in Anne's great response, a failed upload might retu
         management service that can be performed on containers in your
         Cloud Files account. </para>
       <para>The following example shows the general structure for the
-        requests, which includes your account number and your
-        container name.</para>
+        requests, which includes your account and your container
+        name.</para>
       <example>
         <?dbfo keep-together="always"?>
         <title>CDN Container HTTP Request: General Structure</title>
@@ -6877,7 +6878,7 @@ Transfer-Encoding: chunked
             type for files within the archive.</para>
         </note>
       </section>
-      <section xml:id="Bulk-Delete-d1eoe">
+      <section xml:id="Bulk_Delete-d1e2338.html">
         <title>Bulk Delete</title>
         <para>Bulk Delete request deletes multiple objects or
           containers from an account with a single request. A Bulk
