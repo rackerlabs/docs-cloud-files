@@ -135,7 +135,7 @@
                 Static Large Objects.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Extract-Archive-d1eoe"/> to
+              <para>Updated <xref linkend="Extract_Archive-d1e2338"/> to
                 include a note about using a blank
                   <code>Content-Type</code> to have Cloud Files
                 determine the file type for the archive.</para>
@@ -334,7 +334,7 @@
                 />.</para>
             </listitem>
             <listitem>
-              <para>Added <xref linkend="Bulk-Operations-d1eoe"
+              <para>Added <xref linkend="Bulk_Operations-d1e2338"
                 />.</para>
             </listitem>
             <listitem>
@@ -2821,7 +2821,7 @@
         generate an authentication token in <xref
           linkend="Authentication-d1e639"
           xrefstyle="select:label quotedtitle nopage"/>.) </para>
-      <section xml:id="List-Account-Containers-de101">
+      <section xml:id="List_containers-d1e121">
         <title>List Account Containers</title>
         <para> The container is the basic storage unit in Cloud Files.
           To view a list of the containers in your account, perform a
@@ -2843,7 +2843,7 @@
           </tbody>
         </informaltable>
         <para>The list is limited to 10,000 containers at a time. See
-          the section, <xref linkend="Controlling-Large-List-de101"
+          the section, <xref linkend="Controlling_a_Large_List_of_Containers-d1e107"
             xrefstyle="select:label quotedtitle nopage"/>, for
           information on limiting and navigating the list. A 200 (OK)
           code returns if there are containers and a 204 (No Content)
@@ -2875,7 +2875,7 @@
   backups
                             </programlisting>
         </example>
-        <section xml:id="Format-Container-List-de101">
+        <section xml:id="Format_Container_List-d1e124">
           <title>Format Container List</title>
           <para>If you append <code>?format=xml</code> or
               <code>?format=json</code> query parameter to the storage
@@ -2939,7 +2939,7 @@
                       </programlisting>
           </example>
         </section>
-        <section xml:id="Controlling-Large-List-de101">
+        <section xml:id="Controlling_a_Large_List_of_Containers-d1e107">
           <title>Controlling a Large List of Containers</title>
           <para>A <code>GET</code> request to the storage account URL
             returns a list of up to 10,000 container names. You can
@@ -4459,7 +4459,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
   Content-Type: text/plain; charset=UTF-8
 </programlisting>
         </example>
-        <section xml:id="Chunked-Transfer-Encoding-d10e">
+        <section xml:id="Chunked_Transfer_Encoding-d1e2092">
           <title>Chunked Transfer Encoding</title>
           <para>You can upload data without needing to know in advance
             the amount of data to be uploaded. You can do this by
@@ -5382,7 +5382,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
               diminishing improvement). </para>
             <para>Another option is bulk importing of data. For
               information about bulk imports, see <xref
-                linkend="Bulk-Import-de101"/>.</para>
+                linkend="Bulk_Import-d1e2094"/>.</para>
           </note>
           <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->If
           you want to move the object rather than copy it, you need to
@@ -5780,7 +5780,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
                   </programlisting>
         </example>
         <para>To view the CDN container details, see <xref
-            linkend="View-CDN-Container-Details-d1e0e"/>.</para>
+          linkend="List_CDN-Enabled_Container_Metadata-d1e2711"/>.</para>
       </section>
     </section>
     <?hard-pagebreak?>
@@ -5957,7 +5957,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
                    </programlisting>
         </example>
       </section>
-      <section xml:id="View-CDN-Container-Details-d1e0e">
+      <section xml:id="List_CDN-Enabled_Container_Metadata-d1e2711">
         <title>List a CDN-Enabled Container's Metadata</title>
         <para>You can view CDN-enabled container details by performing
           a <command>HEAD</command> operation on a container where the
@@ -6618,7 +6618,7 @@ i))) != null;
               domain or branded URI you use instead of the CDN URI. If
               you need to find your CDN URI, perform a &GET; to
                 <code>cdn.clouddrive.com</code> as shown in <xref
-                linkend="View-CDN-Container-Details-d1e0e"
+                  linkend="List_CDN-Enabled_Container_Metadata-d1e2711"
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
@@ -6692,7 +6692,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
       </section>
     </section>
   </chapter>
-    <chapter xml:id="Bulk-Operations-d1eoe">
+  <chapter xml:id="Bulk_Operations-d1e2338">
       <title>Bulk Operations </title>
       <para>This chapter describes bulk operations that are available
         with Cloud Files.</para>
@@ -6704,7 +6704,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
             timeout limits. </para>
         </note>
 -->
-      <section xml:id="Bulk-Import-de101">
+      <section xml:id="Bulk_Import-d1e2094">
         <title>Bulk Importing of Data</title>
         <remark security="writeronly">06-11-2012 dsh: added </remark>
         <para>If you have a very large amount of data to import into
@@ -6717,8 +6717,13 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           back to you, or destroys it after degaussing, whichever you
           prefer. </para>
         <note>
-          <para>Bulk import is available for U.S. data centers
-            only.</para>
+          <para>Bulk import is available for U.S. data centers only.
+          However, if you have a need for bulk importing in a data
+          center outside of the U.S., contact <link
+            xlink:href="http://http://www.rackspace.com/cloud/files/support/"
+            >Rackspace support</link> to see what other options you
+          might have. They will be interested in specifics like the
+          amount of data you need to work with.</para>
         </note>
         <para>Rackspace accepts USB, SATA, and eSATA devices. Your
         file system can be NTFS, ext2, ext3, ext4, or FAT32. Because
@@ -6739,7 +6744,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           device, begins the data import, completes data import, and
           ships back or destroys the device. </para>
       </section>
-      <section xml:id="Extract-Archive-d1eoe">
+    <section xml:id="Extract_Archive-d1e2338">
         <title>Extract Archive</title>
         <para>An extract archive request expands tar files into a
           Cloud Files account. The request is a <command>PUT</command>

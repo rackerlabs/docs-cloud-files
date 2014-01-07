@@ -87,6 +87,9 @@
 <!--*******************************************************-->
 <!--               All Methods                             -->
 <!--*******************************************************-->
+    
+<!-- Storage Account Services Methods -->
+    
     <method name="GET" id="listContainers">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="List Containers">
@@ -227,6 +230,7 @@
         <response status="204"> </response>
     </method>
     
+ <!--  Storage Container Services Methods -->
     
     <method name="PUT" id="createcontainer">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
