@@ -95,27 +95,23 @@
             title="List Containers">
             <para role="shortdesc">Lists storage containers, sorted by
                 name.</para>
+            <para></para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        number limit of results.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer value n, limits the number of results to n values.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Marker
-                        value. Operation returns object names that are
-                        greater than this value.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">End
-                        marker value. Operation returns object names
-                        that are less than this value.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names less in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
@@ -125,7 +121,7 @@
                         xml.</p></doc>
             </param>
         </request>
-        <response status="200">
+        <response status="200 204">
             <representation mediaType="application/xml"/>
             <representation mediaType="application/json" xml:lang="EN">
                 <doc>

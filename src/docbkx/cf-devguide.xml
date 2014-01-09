@@ -68,9 +68,9 @@
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>Updated the instructions for locating the API Key,
-                Tenant ID, and cd Dcouy in the Cloud Control Panel in
-                  <xref linkend="Retrieving_Auth_Token"
+              <para>Updated the instructions for locating the API Key
+                in the Cloud Control Panel in <xref
+                  linkend="Retrieving_Auth_Token"
                   xmlns:m="http://www.w3.org/1998/Math/MathML"
                 />.</para>
             </listitem>
@@ -2253,9 +2253,8 @@
           xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
           >application/directory</code> might be used.</para>
       <para>You specify the response format in requests by using the
-          <code>Accept</code> header. Note that it is possible for a
-        response to be serialized using a format different from the
-        request. The Cloud Files API supports both the JSON (<code
+          <code>Accept</code> header. The Cloud Files API supports
+        both the JSON (<code
           xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
           >application/json</code>) and XML (<code
           xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
@@ -2674,8 +2673,8 @@
     </info>
     <para>The following sections describe the REST API for interacting
       with the Cloud Files storage services component. All requests
-      are directed to the host and endpoints described in
-        the<code>cloudFiles</code> section of the service catalog
+      are directed to the host and endpoints described in the
+        <code>cloudFiles</code> section of the service catalog
       obtained during successful authentication. (For more
       information, see <xref linkend="Authentication-d1e639"/> and
         <xref linkend="Service-Access-Endpoints-d1e003"/>.)</para>
@@ -2695,28 +2694,26 @@
           character restrictions.</para>
       </listitem>
     </itemizedlist>
-    <para>The sections that follow describe the actions that may be
-      performed within the storage system. </para>
+    <para>The following sections describe the operations that you can
+      perform within the storage system: </para>
     <itemizedlist>
       <listitem>
         <para><xref linkend="Storage_Account_Services-d1e1555"/>
-          addresses actions that can be taken on the account level of
-          the storage system.</para>
+          describes operations that you can perform at the account
+          level of the storage system.</para>
       </listitem>
       <listitem>
         <para><xref linkend="Storage_Container_Services-d1e1444"/>
-          addresses actions that may be performed on
+          describes operations that you can perform on
           containers.</para>
       </listitem>
       <listitem>
         <para><xref linkend="Storage_Object_Services-d1e4300"/>
-          addresses actions that may be performed on objects.</para>
+          describes operations that you can perform on objects.</para>
       </listitem>
     </itemizedlist>
     <section xml:id="Storage_Account_Services-d1e1555">
       <title>Storage Account Services</title>
-      <para> This section shows how to view and control the display of
-        your Cloud Files account details. </para>
       <para>You can perform the following operations at the account
         level: </para>      
       <informaltable rules="all">
@@ -2751,7 +2748,8 @@
         </tbody>
       </informaltable>
       <para>The following example shows the general structure for the
-        requests, which ends with your account.</para>
+        requests, which ends with your account information from the
+        service catalog.</para>
       <example>
         <title>Storage Account HTTP Request: General Structure</title>
         <programlisting>
