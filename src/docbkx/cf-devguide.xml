@@ -2773,7 +2773,7 @@
         <varlistentry>
           <term><code>marker</code></term>
           <listitem>
-            <para>Given a string<inlineequation>
+            <para>Given a string <inlineequation>
                 <mathphrase><emphasis>x</emphasis></mathphrase>
               </inlineequation>, returns container names greater than
               the specified marker. Only strings using UTF-8 encoding
@@ -2785,7 +2785,7 @@
         <varlistentry>
           <term><code>end_marker</code></term>
           <listitem>
-            <para>Given a string<inlineequation>
+            <para>Given a string <inlineequation>
                 <mathphrase><emphasis>x</emphasis></mathphrase>
               </inlineequation>, returns container names less than the
               specified end marker. Only strings using UTF-8 encoding
