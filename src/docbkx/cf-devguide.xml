@@ -2763,21 +2763,17 @@
         <varlistentry>
           <term><code>limit</code></term>
           <listitem>
-            <para>For an integer <inlineequation>
-                <mathphrase><emphasis>n</emphasis></mathphrase>
-              </inlineequation>, limits the number of results to <inlineequation>
-                <mathphrase><emphasis>n</emphasis></mathphrase>
-              </inlineequation> values.</para>
+            <para>For an integer <emphasis role="italic">n</emphasis>,
+              limits the number of results to <emphasis role="italic"
+                >n</emphasis> values.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><code>marker</code></term>
           <listitem>
-            <para>Given a string <inlineequation>
-                <mathphrase><emphasis>x</emphasis></mathphrase>
-              </inlineequation>, returns container names greater than
-              the specified marker. Only strings using UTF-8 encoding
-              are valid. </para>
+            <para>Given a string <emphasis role="italic">x</emphasis>,
+              returns container names greater than the specified
+              marker. Only strings using UTF-8 encoding are valid. </para>
           </listitem>
         </varlistentry>
         <!--02-03-12 dsh: Note re: UTF / 8 for transparency JIRA DOC-98
@@ -2785,11 +2781,9 @@
         <varlistentry>
           <term><code>end_marker</code></term>
           <listitem>
-            <para>Given a string <inlineequation>
-                <mathphrase><emphasis>x</emphasis></mathphrase>
-              </inlineequation>, returns container names less than the
-              specified end marker. Only strings using UTF-8 encoding
-              are valid. </para>
+            <para>Given a string <emphasis role="italic">x</emphasis>,
+              returns container names less than the specified end
+              marker. Only strings using UTF-8 encoding are valid. </para>
           </listitem>
         </varlistentry>
         <varlistentry>

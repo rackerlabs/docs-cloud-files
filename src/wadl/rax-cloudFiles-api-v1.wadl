@@ -23,11 +23,11 @@
     <resources base="https://storage101.ord1.clouddrive.com/">
         <resource id="version" path="v1">
             <resource id="account" path="{account}">
-                <param name="tenant_id" style="template"
+                <param name="account_info" style="template"
                     type="xsd:string">
                     <doc>
                         <p xmlns="http://www.w3.org/1999/xhtml">The
-                            unique identifier of the tenant.</p>
+                            unique account identifier.</p>
                     </doc>
                 </param>
                 <method href="#listcontainers"/>
@@ -92,10 +92,18 @@
     
     <method name="GET" id="listContainers">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="List Containers">
+            title="List Account Containers">
             <para role="shortdesc">Lists storage containers, sorted by
                 name.</para>
-            <para></para>
+            <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
+            <para>The list is limited to 10,000 containers at a time. See the section, "Controlling a Large List of Containers," for information on limiting and navigating the list. </para> 
+            <para>Container names are sorted based on a <link
+                xlink:href="http://www.sqlite.org/datatype3.html#collation"
+                >binary comparison</link>, a built-in collating function
+                that compares string data using SQLite's memcmp() function,
+                regardless of text encoding.</para>
+            <para>A list of containers is returned in the response body, one container per line. </para>
+            <para>The HTTP response status code is a value from 200 to 299, inclusive.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
