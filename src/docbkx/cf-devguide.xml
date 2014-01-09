@@ -2876,6 +2876,9 @@
             results, you must place this query parameter before any
             other parameters. The sample responses below are formatted
             for readability.</para>
+          <para>In the responses, <code>count</code> is the number of
+            objects in the container, and <code>bytes</code> is the
+            number of bytes in the container.</para>
           <example>
             <title>Container Details Request: JSON</title>
             <programlisting>
@@ -3015,7 +3018,7 @@
         </section>
       </section> 
       <section xml:id="View_Account_Details-d1e108">
-        <title>Get Account Details</title>
+        <title>Get Account Metadata</title>
         <para>Perform a &HEAD; request on your storage account URL to
           get the following account information: <itemizedlist>
             <listitem>
@@ -3076,7 +3079,7 @@
       <section xml:id="Create-Update_Account-Metadata-de101">
         <title>Create or Update Account Metadata</title>
         <para>You can associate custom metadata headers with the
-          account level URI. These headers must take the format
+          account level URI. These headers must have the format
             <code>X-Account-Meta-*</code>. To create or update an
           account metadata header use the <command>POST</command>
           operation. </para>

@@ -31,6 +31,20 @@
             <representation mediaType="application/json"/>
         </response>
 
+           '>
+
+ <!--
+          Fault on Get Account MetaData
+ -->
+     <!ENTITY headAcctMetaFaults
+           '
+        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:unauthorized"/>
+            <representation mediaType="application/json"/>
+        </response>
+
+           '>
+
 
         <!-- Not used by all of Cloud Queues API operations
         <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
@@ -61,13 +75,10 @@
             <representation mediaType="application/xml" element="dbaas:serviceUnavailable"/>
             <representation mediaType="application/json"/>
         </response>
-        -->
-        
-        
-           '>
-     <!--
+
           Faults on LIST MESSAGES
       -->
+      
      <!ENTITY getListFaults
            '
         <response status=" 204" xmlns="http://wadl.dev.java.net/2009/02">
