@@ -45,6 +45,7 @@
       <year>2011</year>
       <year>2012</year>
       <year>2013</year>
+      <year>2014</year>
       <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>API v1</releaseinfo>
@@ -2661,6 +2662,26 @@
       </mediaobject>
     </figure>
   </chapter>
+  <chapter xml:id="API_Operations_d1e000" 
+           xmlns="http://docbook.org/ns/docbook"
+           role="api-reference">
+    <title>API Operations</title>
+    <para>This chapter describes each of the API operations provided
+      by the Cloud Files service.</para>
+    <section xml:id="accountServicesOperations_d1e000">
+      <title>Account Services</title>
+      <para>You can perform the operations in the following table at the account level.</para>
+      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
+        </wadl:resource> 
+        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#account">    
+        </wadl:resource>  
+      </wadl:resources>
+    </section>   
+
+  </chapter>
+  
+  
   <chapter xml:id="API_Operations_for_Storage_Services-d1e942">
     <title>API Operations for Storage Services</title>
     <info>
@@ -3185,9 +3206,8 @@ X-Remove-Account-Meta-Book: x
     </section>
     <section xml:id="Storage_Container_Services-d1e1444">
       <title>Storage Container Services</title>
-      <para>This section shows how to view and control information for
-        containers in your Cloud Files account. </para>
-      <para>You can perform the following operations for containers: </para>
+      <para>You can perform the following operations for containers in
+        your Cloud Files account: </para>
       <informaltable rules="all">
         <thead>
           <tr>

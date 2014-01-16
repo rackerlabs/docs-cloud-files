@@ -23,12 +23,13 @@
 <!--*******************************************************-->
 
     <resources base="https://storage101.ord1.clouddrive.com/">
-        <resource id="version" path="v1">
+        <resource id="versions" path="v1">
+     
             <resource id="account" path="{account}">
-                <param name="account_info" style="template"
+                <param name="account" style="template"
                     type="xsd:string">
                     <doc>
-                        <p xmlns="http://www.w3.org/1999/xhtml">The
+                        <p xmlns="http://www.w3.org/1999/xhtml">Your
                             unique account identifier.</p>
                     </doc>
                 </param>
@@ -58,7 +59,7 @@
                             <doc>
                                 <p
                                    xmlns="http://www.w3.org/1999/xhtml"
-                                   > The unique identifier of the
+                                   >The unique identifier of the
                                    object.</p>
                             </doc>
                         </param>
@@ -70,7 +71,7 @@
                     </resource>
                 </resource>
             </resource>
-        </resource>
+        </resource>  
     </resources>
 <!--*******************************************************-->
 <!--               Resource Types                          -->
@@ -93,10 +94,11 @@
 <!-- Storage Account Services Methods -->
     
     <method name="GET" id="listContainers">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="List Account Containers">
-            <para role="shortdesc">Lists storage containers, sorted by
-                name.</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Account Containers">
+            <para role="shortdesc">
+                Lists storage containers sorted by name.
+            </para>
+            <para>This operation lists the storage containers in your account and sorts them by name. </para>
             <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
             <para>The list is limited to 10,000 containers at a time. See the section, "Controlling a Large List of Containers," for information on limiting and navigating the list. </para> 
             <para>Container names are sorted based on a binary comparison (
@@ -186,6 +188,7 @@
             </param>
             <representation mediaType="application/xml" element="files:Files" >
                 <doc>
+                    <para xmlns="http://docbook.org/ns/docbook">The following examples show List Account Containers requests:</para> 
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_request.xml"/>
                 </doc>
             </representation>    
@@ -198,6 +201,7 @@
         <response status="200 204">
             <representation mediaType="application/xml" xml:lang="EN">
                 <doc>
+                    <para xmlns="http://docbook.org/ns/docbook">The following examples show the List Account Containers responses:</para>
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
                 </doc>
             </representation>
@@ -210,27 +214,35 @@
     </method>
 
     <method name="HEAD" id="retrieveaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Account Metadata">
-            <para role="shortdesc">Gets container metadata, such as
-                the number of containers and the total bytes stored in
-                Cloud Files for the account.</para>
-            <para>Perform a <code>HEAD</code> operation on your storage account URL to get how many containers you have in your account (X-Account-Container-Count) and how many total bytes your account uses (<code>X-Account-Bytes-Used</code>).</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Account Metadata">
+            <para role="shortdesc">
+                Gets account metadata.</para>
+            <para>Perform a <code>HEAD</code> operation on your storage account URL to get the following information: </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>How many objects are in your account (<code>X-Account-Object-Count</code>)</para>
+                </listitem>
+                <listitem>
+                    <para>How many total bytes your account uses (<code>X-Account-Bytes-Used</code>)</para>
+                </listitem>
+                <listitem>
+                    <para>How many containers you have in your account (<code>X-Account-Container-Count</code>)</para>
+                </listitem>
+            </itemizedlist>        
             <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code returns and there is no information in the response body. A 401 (Unauthorized) is returned for an invalid account or authentication token.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="text/xml" element="files:Files" >
-                <doc>
+            <representation mediaType="text/xml" element="files:Files">
+                <doc title="Get Account Metadata Request" >
                     <xsdxt:code href="../wadl/samples/cf-getAccountMetadata_request.txt"/>
                 </doc>
             </representation>             
         </request>
         <response status="204">
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Account-Container-Count" style="header"
-                required="true" type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        number of containers.</p></doc>
+                name="X-Account-Object-Count" style="header" required="true" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number of objects that are stored in Cloud Files for the account.
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Account-Bytes-Used" style="header"
@@ -238,8 +250,14 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number of bytes that are stored in Cloud Files for the account.
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Account-Container-Count" style="header"
+                required="true" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The total 
+                        number of containers that are stored in the Cloud Files for the account.</p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files">
-                <doc>
+                <doc title="Get Account Metadata Response" > 
                     <xsdxt:code href="../wadl/samples/cf-getAccountMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -248,34 +266,32 @@
     </method>
     
     <method name="POST" id="updateaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Account Metadata">
-            <para role="shortdesc">Creates or updates account metadata
-                by associating custom metadata headers with the
-                account level URI. These headers must have the format
-                <code>X-Account-Meta-*</code>.</para>
-            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-*</code>, where * is replaced with a name.</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create or Update Account Metadata">
+            <para role="shortdesc">
+                Creates or updates account metadata by associating custom metadata headers with the account level URI. These headers must have the format <code>X-Account-Meta-<replaceable>name</replaceable></code>, where <replaceable>name</replaceable> is replaced with your metadata name.
+            </para>
+            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-<replaceable>name</replaceable></code>, where <replaceable>name</replaceable>name is replaced with your metadata name.</para>
             <para>Subsequent <code>POST</code> operations for the same key/value pair overwrite the previous value.</para> 
             <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. No response body is returned.</para>
-            <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see "Get Account Metadata".) Do not send the metadata in your <code>HEAD</code> operation.</para> 
+            <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <code>HEAD</code> operation.</para> 
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Account-Meta" style="header" required="false"
+                name="X-Account-Meta-name" style="header" required="true"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        account metadata. The asterisk (*) represents
-                        the name of metadata.</p></doc>
+                        account metadata. This header ends with the name of the metadata.
+                </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc>
+                <doc title="Create or Update Account Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-updateAccountMetadata_request.txt"/>
                 </doc>
             </representation>   
         </request>
         <response status="204"> 
             <representation mediaType="text/xml" element="files:Files">
-                <doc>
+                <doc title="Create or Update Account Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-updateAccountMetadata_response.txt"/>
                 </doc>
             </representation>       
@@ -283,60 +299,54 @@
     </method>
     
     <method name="POST" id="deleteaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Account Metadata">
-            <para role="shortdesc">Deletes a metadata
-                header.</para>
-            <para>To delete a metadata header, send
-                an empty value for that particular header, such as for
-                the <code>X-Account-Meta-Book</code> header.</para>
-            <para>If the tool you use to communicate with Cloud Files, such as an older version of cURL, does not support empty headers, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. For example, <code>X-Remove-Account-Meta-Book: x</code>. The <code><replaceable>arbitrary value</replaceable></code> is ignored. </para>
-            <para>A status code of 2xx
-                (between 200 and 299, inclusive) indicates
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Account Metadata">
+            <para role="shortdesc">
+                Deletes a metadata header.</para>
+            <para>To delete a metadata header, use the <code>POST</code> operation to send
+                an empty value for that particular header.</para>
+            <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the example request below, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
+            <para>A status code of 2xx (between 200 and 299, inclusive) indicates
                 success. No response body is returned.  </para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Remove-Account-Meta" style="header"
-                required="false" type="xsd:string">
+                name="X-Remove-Account-Meta-name" style="header"
+                required="true" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>If the tool you use to
-                        communicate with Cloud Files, such as an older
-                        version of cURL, does not support empty
-                        headers, send the
-                            <code>X-Remove-Account-Meta-<replaceable>name</replaceable>:
-                                <replaceable>arbitrary value</replaceable></code> header.</para></wadl:doc>
+                    xml:lang="EN"><para>Header to send to delete account metadata. Replace <replaceable>name</replaceable> with your metadata name.</para></wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc>
+                <doc title="Delete Account Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-deleteAccountMetadata_request.txt"/>
                 </doc>
             </representation>   
         </request>
         <response status="204"> 
             <representation mediaType="text/xml" element="files:Files">
-                <doc>
+                <doc title="Delete Account Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteAccountMetadata_response.txt"/>
                 </doc>
             </representation> 
         </response>
     </method>
-    
+   
  <!--  Storage Container Services Methods  -->
-    
+ <!--   
     <method name="PUT" id="createcontainer">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create Container">
-            <para role="shortdesc">Creates a container.</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create Container">
+            <para role="shortdesc">
+                Creates a container.
+            </para>
+            <para>This operation creates a Cloud Files container.</para>
+            
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Meta" style="header"
+                name="X-Container-Meta-name" style="header"
                 required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        custom container metadata. The asterisk (*)
-                        represents the name of metadata. Stored in
-                        header.</p></doc>
+                        custom container metadata. The <replaceable>name</replaceable> at the end
+                        represents the name of metadata..</p></doc>
             </param>
             <representation mediaType="application/http">
                 <doc xml:lang="EN">
@@ -546,6 +556,7 @@
         </request>
         <response status="201"> </response>
     </method>
+-->    
 <!--    
     <method name="PUT" id="putcopiedobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
@@ -577,7 +588,8 @@
         </request>
         <response status="201"> </response>
     </method>
--->    
+-->
+<!--    
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
@@ -671,4 +683,5 @@
         </wadl:doc>
         <response status="204"> </response>
     </method>
+-->    
 </application>
