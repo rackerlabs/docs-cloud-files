@@ -1,14 +1,8 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf370
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+HTTP/1.1 200 OK
+Date: Tue, 25 Nov 2008 19:39:13 GMT
+Content-Type: application/json; charset=utf-8
 
-\f0\fs24 \cf0 HTTP/1.1 200 OK\
-Date: Tue, 25 Nov 2008 19:39:13 GMT\
-Content-Type: application/json; charset=utf-8\
-\
-[\
-    \{"name":"test_container_1", "count":2, "bytes":78\},\
-    \{"name":"test_container_2", "count":1, "bytes":17\}\
-] }
+[
+    {"name":"test_container_1", "count":2, "bytes":78},
+    {"name":"test_container_2", "count":1, "bytes":17}
+] 

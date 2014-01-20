@@ -93,14 +93,14 @@
     
 <!-- Storage Account Services Methods -->
     
-    <method name="GET" id="listContainers">
+    <method name="GET" id="listcontainers">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Account Containers">
             <para role="shortdesc">
                 Lists storage containers sorted by name.
             </para>
             <para>This operation lists the storage containers in your account and sorts them by name. </para>
             <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
-            <para>The list is limited to 10,000 containers at a time. See the section, "Controlling a Large List of Containers," for information on limiting and navigating the list. </para> 
+            <para>The list is limited to 10,000 containers at a time. See "Controlling a Large List of Containers" below for information on limiting and navigating the list. </para> 
             <para>Container names are sorted based on a binary comparison (
                 <link
                 xlink:href="http://www.sqlite.org/datatype3.html#collation"
@@ -108,16 +108,32 @@
                 that compares string data using SQLite's memcmp() function,
                 regardless of text encoding.</para>
             <para>A list of containers is returned in the response body, one container per line. </para>
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers and a 204 (No Content) code returns if there are no containers.</para>
-            <para><note>At this time, a <code>prefix</code> query parameter is not supported at the account level.</note></para>
-            <para><title>Format Container List </title></para>
-            <para>If you append the <code>?format=xml</code> or <code>?format=json</code> query parameter to the storage account URL, the service returns container information serialized in the specified format. To format your results, you must place this query parameter before any other parameters. The sample responses below are formatted for readability. In the responses, <code>count</code> is the number of objects in the container, and <code>bytes</code> is the number of bytes in the container.</para>
-            <para><title>Controlling a Large List of Containers</title></para>
-            <para>A <code>GET</code>operation on the storage account URL returns a list of up to 10,000 container names. You can control and limit this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters. These parameters provide a mechanism to iterate through the entire list of containers. Keep in mind that the value for <code>marker</code> needs to be URL-encoded before issuing the request.</para>
-            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers and <code>end_marker</code>end_marker specifies where to end the list. You can use them independently or together, separated by an <code>&amp;</code>. If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values should be URL-encoded prior to sending the HTTP request.</para>
+            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>
+           
+            <para><emphasis role="bold">Format Container List</emphasis> </para>
+            <para>If you append the <code>?format=xml</code> or <code>?format=json</code> query parameter to the storage account URL, the service returns container information serialized in the specified format. To format your results, you must place this query parameter before any other parameters. </para>
+            <para>The example responses below are formatted for readability.The example responses include the following body parameters: </para>
+            
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para><code>name</code> is the name of the container.</para>
+                </listitem>
+                <listitem>
+                    <para><code>count</code> is the number of objects in the container.</para>
+                </listitem>
+                <listitem>
+                    <para><code>bytes</code> is the number of bytes in the container.</para>
+                </listitem>
+            </itemizedlist>
+            
+            <para><emphasis role="bold">Controlling a Large List of Containers</emphasis></para>
+            <para>A <code>GET</code> operation on the storage account URL returns a list of up to 10,000 container names. You can control and limit this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters. These parameters provide a mechanism to iterate through the entire list of containers. </para>
+            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers and <code>end_marker</code> specifies where to end the list. You can use them independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values should be URL-encoded prior to sending the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects. </para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
-            <para>For example, user a listing of five container names:</para>
+            <note><para>At this time, a <code>prefix</code> query parameter is not supported at the account level.</para></note>
+            <para>As an example, start with an account that has five container names, as follows:</para>
+            
             <para><programlisting>
   apples
   bananas
@@ -125,7 +141,7 @@
   oranges
   pears
             </programlisting></para>
-            <para>Use a limit of two to show how things work:</para>
+            <para>Use a limit of 2 to show how things work:</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
   Host: storage.clouddrive.com
@@ -134,7 +150,7 @@
   apples
   bananas
             </programlisting></para>
-            <para>Because the operation returned two items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
+            <para>Because the operation returned 2 items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
@@ -143,7 +159,7 @@
   kiwis
   oranges 
             </programlisting></para>
-            <para>Again, two items are returned. There might be more.</para>
+            <para>Again, 2 items are returned, and you assume that there may be more. So you make another GET request for 2 more.</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -151,7 +167,7 @@
                     
   pears
             </programlisting></para>
-            <para>This one-item response shows less than the limit number of container names, and indicates that this is the end of the list.</para>
+            <para>This one-item response shows less than the limit of 2 container names requested, and indicates that this is the end of the list.</para>
             <para>By using <code>end_marker</code>, you can limit the result set to container names less than the given value.</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
@@ -162,6 +178,7 @@
   bananas
   kiwis
             </programlisting></para>
+            
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -183,12 +200,11 @@
                 name="format" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the serialized response format. Either json or
+                        the serialized response format - either json or
                         xml.</p></doc>
             </param>
             <representation mediaType="application/xml" element="files:Files" >
-                <doc>
-                    <para xmlns="http://docbook.org/ns/docbook">The following examples show List Account Containers requests:</para> 
+                <doc>                     
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_request.xml"/>
                 </doc>
             </representation>    
@@ -199,9 +215,25 @@
             </representation>           
         </request>
         <response status="200 204">
+          
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="name" style="plain" required="true" type="xsd:string" path="$.name">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
+                    </p></doc>
+                </param>        
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="count" style="plain" required="true" type="xsd:int" path="$.count">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
+                    </p></doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="bytes" style="plain" required="true" type="xsd:int" path="$.bytes">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container
+                </p></doc>
+            </param>
+           
             <representation mediaType="application/xml" xml:lang="EN">
-                <doc>
-                    <para xmlns="http://docbook.org/ns/docbook">The following examples show the List Account Containers responses:</para>
+                <doc>                 
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
                 </doc>
             </representation>
@@ -229,7 +261,7 @@
                     <para>How many containers you have in your account (<code>X-Account-Container-Count</code>)</para>
                 </listitem>
             </itemizedlist>        
-            <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code returns and there is no information in the response body. A 401 (Unauthorized) is returned for an invalid account or authentication token.</para>
+            <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. No request body is required, and no response body is returned.</para>
         </wadl:doc>
         <request>
             <representation mediaType="text/xml" element="files:Files">
@@ -268,19 +300,19 @@
     <method name="POST" id="updateaccountmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create or Update Account Metadata">
             <para role="shortdesc">
-                Creates or updates account metadata by associating custom metadata headers with the account level URI. These headers must have the format <code>X-Account-Meta-<replaceable>name</replaceable></code>, where <replaceable>name</replaceable> is replaced with your metadata name.
+                Creates or updates account metadata.
             </para>
-            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-<replaceable>name</replaceable></code>, where <replaceable>name</replaceable>name is replaced with your metadata name.</para>
+            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace the name with your metadata name. (In the example request below, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
             <para>Subsequent <code>POST</code> operations for the same key/value pair overwrite the previous value.</para> 
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. No response body is returned.</para>
+            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. No request body is required, and no response body is returned.</para>
             <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <code>HEAD</code> operation.</para> 
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Account-Meta-name" style="header" required="true"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        account metadata. This header ends with the name of the metadata.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Header for the
+                        account metadata that you want to create or update. Replace the name at the end of the header with the name for your metadata.
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
@@ -301,19 +333,19 @@
     <method name="POST" id="deleteaccountmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Account Metadata">
             <para role="shortdesc">
-                Deletes a metadata header.</para>
+                Deletes account metadata.</para>
             <para>To delete a metadata header, use the <code>POST</code> operation to send
                 an empty value for that particular header.</para>
             <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the example request below, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
             <para>A status code of 2xx (between 200 and 299, inclusive) indicates
-                success. No response body is returned.  </para>
+                success. No request body is required, and no response body is returned.  </para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Remove-Account-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Header to send to delete account metadata. Replace <replaceable>name</replaceable> with your metadata name.</para></wadl:doc>
+                    xml:lang="EN"><para>Header to send to delete account metadata. Replace the name at the end of the header with the name for your metadata.</para></wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Delete Account Metadata Request">
@@ -329,9 +361,9 @@
             </representation> 
         </response>
     </method>
-   
+  
  <!--  Storage Container Services Methods  -->
- <!--   
+ 
     <method name="PUT" id="createcontainer">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create Container">
             <para role="shortdesc">
@@ -556,8 +588,9 @@
         </request>
         <response status="201"> </response>
     </method>
--->    
-<!--    
+
+<!--  Object services  -->  
+    
     <method name="PUT" id="putcopiedobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
@@ -588,7 +621,7 @@
         </request>
         <response status="201"> </response>
     </method>
--->
+
 <!--    
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
