@@ -1,0 +1,7 @@
+HTTP/1.1 204 No Content
+Date: Thu, 08 Nov 2012 19:08:25 GMT
+Content-Type: text/html; charset=UTF-8
+X-Container-Object-Count: 5
+X-Container-Bytes-Used: 3846773
+X-Container-Meta-Book: MobyDick
+X-Container-Meta-Subject: Whaling

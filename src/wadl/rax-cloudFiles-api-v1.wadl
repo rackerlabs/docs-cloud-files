@@ -47,11 +47,12 @@
                                 container.</p>
                         </doc>
                     </param>
-                    <method href="#listObjects"/>
+                    <method href="#listContainerObjects"/>
                     <method href="#createcontainer"/>
                     <method href="#deletecontainer"/>
-                    <method href="#retrievecontainermeta"/>
                     <method href="#updateacontainermeta"/>
+                    <method href="#retrievecontainermeta"/>
+                    <method href="#deletecontainermeta"/>
 
                     <resource id="object" path="{object}">
                         <param name="object" style="template"
@@ -73,9 +74,10 @@
             </resource>
         </resource>  
     </resources>
-<!--*******************************************************-->
-<!--               Resource Types                          -->
-<!--*******************************************************-->
+<!--***************************************************************-->
+<!--               Resource Types                                  -->
+<!--  These were in the OpenStack WADL. I'm not sure what they do. -->
+<!--***************************************************************-->
 <!--    
     <resource_type id="ContainersList">
         <method href="#listContainers"/>
@@ -216,31 +218,48 @@
         </request>
         <response status="200 204">
           
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="name" style="plain" required="true" type="xsd:string" path="$.name">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
-                    </p></doc>
-                </param>        
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="count" style="plain" required="true" type="xsd:int" path="$.count">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
-                    </p></doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="bytes" style="plain" required="true" type="xsd:int" path="$.bytes">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container
-                </p></doc>
-            </param>
+
            
             <representation mediaType="application/xml" xml:lang="EN">
                 <doc>                 
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
                 </doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="name" style="plain" required="true" type="xsd:string" path="/account/container/name">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
+                    </p></doc>
+                </param>        
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="count" style="plain" required="true" type="xsd:int" path="/account/container/count">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
+                    </p></doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="bytes" style="plain" required="true" type="xsd:int" path="/account/container/bytes">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
+                    </p></doc>
+                </param>    
             </representation>
             <representation mediaType="application/json" xml:lang="EN">
+                
                 <doc>
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.json"/>
                 </doc>
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="name" style="plain" required="true" type="xsd:string" path="$.*.name">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
+                    </p></doc>
+                </param>        
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="count" style="plain" required="true" type="xsd:int" path="$.*.count">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
+                    </p></doc>
+                </param>
+                <param xmlns="http://wadl.dev.java.net/2009/02"
+                    name="bytes" style="plain" required="true" type="xsd:int" path="$.*.bytes">
+                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
+                    </p></doc>
+                </param>
             </representation>
         </response>
     </method>
@@ -261,7 +280,8 @@
                     <para>How many containers you have in your account (<code>X-Account-Container-Count</code>)</para>
                 </listitem>
             </itemizedlist>        
-            <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. No request body is required, and no response body is returned.</para>
+            <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. </para>
+                <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
             <representation mediaType="text/xml" element="files:Files">
@@ -304,7 +324,8 @@
             </para>
             <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace the name with your metadata name. (In the example request below, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
             <para>Subsequent <code>POST</code> operations for the same key/value pair overwrite the previous value.</para> 
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. No request body is required, and no response body is returned.</para>
+            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. </para>
+                <para>This operation does not require a request body and does not return a response body.</para>
             <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <code>HEAD</code> operation.</para> 
         </wadl:doc>
         <request>
@@ -338,7 +359,8 @@
                 an empty value for that particular header.</para>
             <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the example request below, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
             <para>A status code of 2xx (between 200 and 299, inclusive) indicates
-                success. No request body is required, and no response body is returned.  </para>
+                success.</para> 
+            <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -363,96 +385,8 @@
     </method>
   
  <!--  Storage Container Services Methods  -->
- 
-    <method name="PUT" id="createcontainer">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create Container">
-            <para role="shortdesc">
-                Creates a container.
-            </para>
-            <para>This operation creates a Cloud Files container.</para>
-            
-        </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Meta-name" style="header"
-                required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        custom container metadata. The <replaceable>name</replaceable> at the end
-                        represents the name of metadata..</p></doc>
-            </param>
-            <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code
-                        href="samples/createcontainer_httphead.msg"/>
-                </doc>
-            </representation>
-        </request>
-        <response status="201"> </response>
-    </method>
-    <method name="DELETE" id="deletecontainer">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Container">
-            <para role="shortdesc">Deletes an empty container.</para>
-        </wadl:doc>
-        <response status="204"> </response>
-    </method>
-    <method name="HEAD" id="retrievecontainermeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Container Metadata">
-            <para role="shortdesc">Gets container metadata, including
-                the number of objects and the total bytes of all
-                objects stored in the container.</para>
-        </wadl:doc>
-        <response status="204">
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Object-Count" style="header"
-                required="true" type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        number of objects. (stored in
-                    header)</p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Bytes-Used" style="header"
-                required="true" type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The count
-                        of bytes used in total. (stored in
-                    header)</p></doc>
-            </param>
-            <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code
-                        href="samples/getcontainermeta_httphead.msg"/>
-                </doc>
-            </representation>
-        </response>
-    </method>
-    <method name="POST" id="updateacontainermeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Container Metadata">
-            <para role="shortdesc">Creates or updates the arbitrary
-                container metadata by associating custom metadata
-                headers with the container level URI. These headers
-                must have the format, X-Container-Meta-*.</para>
-        </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Meta" style="header"
-                required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        container metadata. * represents the name of
-                        metadata. Stored in header.</p></doc>
-            </param>
-            <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code
-                        href="samples/updatecontainermeta_httphead.msg"
-                    />
-                </doc>
-            </representation>
-        </request>
-        <response status="204"> </response>
-    </method>
-    <method name="GET" id="listObjects">
+    
+    <method name="GET" id="listContainerObjects">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="List Objects">
             <para role="shortdesc">Lists the objects stored in the
@@ -463,42 +397,42 @@
                 name="limit" style="query" required="false"
                 type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        number limit of results.</p></doc>
+                    number limit of results.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the marker, that the object names greater in
-                        value than are returned.</p></doc>
+                    the marker, that the object names greater in
+                    value than are returned.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the marker, that the object names less in
-                        value than are returned.</p></doc>
+                    the marker, that the object names less in
+                    value than are returned.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="prefix" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the prefix, which the returned object names
-                        begin with.</p></doc>
+                    the prefix, which the returned object names
+                    begin with.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the serialized response format, either json or
-                        xml.</p></doc>
+                    the serialized response format, either json or
+                    xml.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="delimiter" style="query" required="false"
                 type="xsd:char">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the delimiter, that all the object names
-                        nested in the container are
+                    the delimiter, that all the object names
+                    nested in the container are
                     returned.</p></doc>
             </param>
         </request>
@@ -511,6 +445,207 @@
             </representation>
         </response>
     </method>
+ 
+    <method name="PUT" id="createcontainer">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create Container">
+            <para role="shortdesc">
+                Creates a container.
+            </para>
+            <para>This operation creates a Cloud Files container. Containers are storage compartments for your data. The URL-encoded name must be less than 256 bytes and cannot contain a forward slash character (/). You can create up to 500,000 containers in your Cloud Files account.</para>
+            <para>You can assign custom metadata for containers by including additional HTTP headers with a <code>X-Container-Meta-</code> prefix on the <command>PUT</command> request. See FIXME for details on setting custom metadata. </para>
+            <para>Using custom container metadata, you can create information in the header to effectively tag a container with metadata. The container metadata restrictions are the same as object metadata. You can have 4096 bytes maximum of overall metadata, with a maximum of 90 distinct metadata items. Each can have a name length of up to 128 characters with a maximum of 256 bytes in the value. Any valid UTF-8 encoded string value is allowed for metadata. In addition for custom metadata, we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal ISO-Latin code for the character.</para>
+            <para>A status code of 201 (Created) indicates that the container was created as requested. Container <command>PUT</command> requests are idempotent, and a code of 202 (Accepted) is returned if the container existed prior to the request. If you request a <command>PUT</command> to a container with an <code>X-Container-Meta-</code> prefix in the header, your <command>GET</command> or <command>HEAD</command> request responses carry the metadata prefix from the container in subsequent requests.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+        </wadl:doc>
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Meta-name" style="header"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. The name at the end
+                        represents the name of your metadata..</p></doc>
+            </param>
+<!--           
+            <representation mediaType="application/http" element="files:Files" >
+                <doc title="Create Container Request">
+                    <xsdxt:code href="../wadl/samples/cf-createContainer_request.txt"/>
+                </doc>
+            </representation>  
+-->            
+            <representation mediaType="text/xml" element="files:Files" >
+                <doc title="Create Container with Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_request.txt"/>
+                </doc>
+            </representation>     
+        </request>
+        <response status="201 202"> 
+<!--            
+            <representation mediaType="application/http" element="files:Files" >
+                <doc title="Create Container Response">
+                    <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
+                </doc>
+            </representation>  
+-->            
+            <representation mediaType="text/xml" element="files:Files" > 
+                <doc title="Create Container with Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_response.txt"/>
+
+                </doc>
+            </representation>     
+        </response>
+    </method>
+   
+    <method name="DELETE" id="deletecontainer">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
+            title="Delete Container">
+            <para role="shortdesc">Deletes an empty container.</para>
+            <para>A <command>DELETE</command> operation against a storage container permanently removes it. The container must be empty before it can be deleted.</para>
+            <para>Before using <command>DELETE</command>, you can use <command>GET</command> operation against the container to list any objects it contains. (See FIXME.)</para>
+            <para>A status code of 204 (No Content) indicates
+                success. A status code of 404 (Not Found) is returned if the requested container is not found. A status code of 409
+                (Conflict) is returned if the container is not empty.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="text/xml" element="files:Files" >
+                <doc title="Delete Container Request">
+                    <xsdxt:code href="../wadl/samples/cf-deleteContainer_request.txt"/>
+                </doc>
+            </representation>     
+        </request>
+        <response status="204"> 
+            <representation mediaType="text/xml" element="files:Files" > 
+                <doc title="Delete Container Response">
+                    <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
+                </doc>
+            </representation>     
+        </response>
+        &deleteContainerFaults;        
+    </method>
+ 
+    <method name="POST" id="updateacontainermeta">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
+            title="Create or Update Container Metadata">
+            <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container level URI. These headers
+                must have the format, X-Container-Meta-name.</para>
+            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where name is the name of your custom metadata. Subsequent <command>POST</command>POST to the header using the same metadata name overwrite the previous value. </para>
+            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see FIXME.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
+            <para>A status code of 204 (No Content) indicates success. Status
+                code 404 (Not Found) is returned when the requested container does not exist.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+        </wadl:doc>
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Meta-name" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. name is the name for the metadata. </p></doc>
+            </param>
+            <representation mediaType="text/xml" element="files:Files" >
+                <doc title="Create or Update Container Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>
+                </doc>
+            </representation>     
+        </request>
+        <response status="204"> 
+            <representation mediaType="application/http">
+                <doc title="Create or Update Container Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
+                </doc>
+            </representation>
+        </response>
+        &getContainerMetadataFaults;
+    </method>
+
+    <method name="HEAD" id="retrievecontainermeta">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
+            title="Get Container Metadata">
+            <para role="shortdesc">Gets container metadata, including
+                the number of objects in the container and the total bytes for all
+                objects stored in the container.</para>
+            <para>Use a <command>HEAD</command> operation against the container to return the following metadata: </para>
+            <itemizedlist spacing="compact">
+                <listitem><para>How many objects are in the container (<code>X-Container-Object-Count</code>)</para></listitem>
+                <listitem><para>The total bytes for all objects stored in the container (<code>X-Container-Bytes-Used</code>)</para></listitem>
+                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
+            </itemizedlist>
+            <para>To set and edit your custom metadata, see FIXME Section 5.2.4: “Set or Edit Container Metadata”.</para>
+            <para>If the container exists, a status code of 2xx (between 200 and 299, inclusive) is returned. If the container does not exist,
+                a status code of 404 (Not Found) is returned.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+        </wadl:doc>       
+        <request>
+            <representation mediaType="text/xml" element="files:Files" >
+                <doc title="Get Container Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_request.txt"/>
+                </doc>
+            </representation>     
+        </request>
+        <response status="204">
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Object-Count" style="header"
+                required="true" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
+                    number of objects in the container. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Bytes-Used" style="header"
+                required="true" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number
+                    of bytes used for all objects in the container.</p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Meta-name" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. </p></doc>
+            </param> 
+            <representation mediaType="application/http">
+                <doc title="Get Container Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
+                </doc>
+            </representation>
+        </response>
+        &getContainerMetadataFaults;
+    </method>
+    
+    <method name="POST" id="deletecontainermeta">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
+            title="Delete Container Metadata">
+            <para role="shortdesc">Deletes container metadata.</para>
+            <para>To delete a metadata header, use <command>POST</command> to send an empty value for that particular header, such as
+                <code>X-Container-Meta-Subject:</code>.</para>
+            <para>If the tool you are using to communicate with Cloud Files does not support sending
+                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-name: arbitrary value</code>, where <code>name</code> is the name of your
+                custom header. <code>arbitrary value</code>can be any value, and it will not be used.  </para>
+            <para>To set and edit your custom metadata, see FIXME Section 5.2.4: “Set or Edit Container Metadata”.</para>
+            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. If the container does not exist,
+                a status code of 404 (Not Found) is returned.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+        </wadl:doc>       
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Remove-Container-Meta-name" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
+                    metadata to be deleted. name represents the name of the metadata.</p></doc>
+            </param>
+            <representation mediaType="text/xml" element="files:Files" >               
+                <doc title="Delete Container Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_request.txt"/>
+                </doc>
+            </representation>     
+        </request>
+        <response status="204">
+
+            <representation mediaType="application/http">
+                <doc title="Delete Container Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_response.txt"/>
+                </doc>
+            </representation>
+        </response>
+        &getContainerMetadataFaults;
+    </method>
+       
+ <!-- Object Methods-->
+ <!--   
     <method name="GET" id="retrieveobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Get Object Data">
@@ -588,9 +723,9 @@
         </request>
         <response status="201"> </response>
     </method>
-
+-->
 <!--  Object services  -->  
-    
+<!--    
     <method name="PUT" id="putcopiedobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
@@ -621,7 +756,7 @@
         </request>
         <response status="201"> </response>
     </method>
-
+-->
 <!--    
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"

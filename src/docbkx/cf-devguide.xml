@@ -2671,7 +2671,8 @@
     
     <section xml:id="accountServicesOperations_d1e000">
       <title>Account Services</title>
-      <para>You can perform the operations in the following table at the account level.</para>
+      <para>You can perform the following operations at the account
+        level of your Cloud Files account.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
         </wadl:resource> 
@@ -2682,19 +2683,16 @@
     
     <section xml:id="containerServicesOperations_d1e000">
       <title>Container Services</title>
-      <para>You can perform the operations on containers in your Cloud Files accoutn.</para>
+      <para>You can perform the following operations on containers in
+        your Cloud Files account.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
-        </wadl:resource> 
-        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#account">    
-        </wadl:resource>
         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#container">    
         </wadl:resource>  
       </wadl:resources>
     </section> 
-    
+<!--    
     <section xml:id="objectServicesOperations_d1e000">
-      <title>Container Services</title>
+      <title>Object Services</title>
       <para>You can perform the operations on containers in your Cloud Files accoutn.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
          <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
@@ -2707,7 +2705,7 @@
          </wadl:resource>  
       </wadl:resources>   
     </section>    
-
+-->
   </chapter>
   
   
@@ -3359,7 +3357,7 @@ X-Remove-Account-Meta-Book: x
           </listitem>
         </varlistentry>
       </variablelist>
-      <para> The examples in this section use a sample information
+      <para> The examples in this section use sample information
         for:</para>
       <itemizedlist>
         <listitem>
@@ -3511,14 +3509,6 @@ X-Remove-Account-Meta-Book: x
   X-Container-Meta-InspectedBy: JackWolf
 </programlisting>
         </example>
-        <para>No content is returned. A status code of 201 (Created)
-          indicates that the container was created as requested.
-          Container &PUT; requests are idempotent and a code of 202
-          (Accepted) is returned if the container existed prior to the
-          request. If you request a &PUT; to a container with an
-            <code>X-Container-Meta-</code> prefix in the header, your
-          &GET; or &HEAD; request responses carry the metadata prefix
-          from the container in subsequent requests.</para>
         <example>
           <title>Container Create Response</title>
           <programlisting>
