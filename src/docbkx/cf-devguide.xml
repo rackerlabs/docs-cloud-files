@@ -2310,27 +2310,25 @@
     <para>Each REST request against Cloud Files requires the inclusion
       of an authorization token in the HTTP header
         <code>X-Auth-Token</code>. Clients obtain this token, along
-      with the Cloud Files URLs, by first using the Authentication
-      service and supplying a valid user name and API access key. For
-      more information, see <xref linkend="Authentication-d1e639"
-      />.</para>
+      with the Cloud Files URIs, by first using the Rackspace
+      authentication service and supplying a valid user name and API
+      access key. For more information, see <xref
+        linkend="Authentication-d1e639"/>.</para>
     <para>The two sets of REST services that make up the full Cloud
       Files product are:<itemizedlist>
         <listitem>
-          <para>The REST service identified with
-              <code>cloudFiles</code> in the service catalog (see
-              <xref linkend="Retrieving_Auth_Token"/>) manages the
-            data storage in the system. Example operations are
-            creating containers and uploading objects. This service is
-            referred to as the <emphasis role="bold">storage
-              service</emphasis>.</para>
+          <para><emphasis role="bold">Storage Service</emphasis>: The
+            REST service identified with <code>cloudFiles</code> in
+            the service catalog (see <xref
+              linkend="Retrieving_Auth_Token"/>) manages the data
+            storage in the system. Example operations are creating
+            containers and uploading objects. </para>
         </listitem>
         <listitem>
-          <para>The REST service identified with
-              <code>cloudFilesCDN</code> in the service catalog (see
-              <xref linkend="Retrieving_Auth_Token"/>) manages the CDN
-            feature of Cloud Files. This service is referred to as the
-              <emphasis role="bold">CDN service</emphasis>.</para>
+          <para><emphasis role="bold">CDN Service</emphasis>: The REST
+            service identified with <code>cloudFilesCDN</code> in the
+            service catalog (see <xref linkend="Retrieving_Auth_Token"
+            />) manages the CDN feature of Cloud Files. </para>
         </listitem>
       </itemizedlist></para>
     <?hard-pagebreak?> 
@@ -2496,152 +2494,7 @@
         </tr>
       </tbody>
     </table>
-    <?hard-pagebreak?>
-    <remark> CYR started as a beginning table of operations in prep
-      for creating a WADL </remark>
-    <!--        
-        <table rules="all">
-          <caption>Synopsis of Cloud Files API Operations</caption>
-          <col width="20%"/>
-          <col width="10%"/>
-          <col width="50%"/>
-          <col width="20%"/>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Verb</th>
-              <th>URI</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="4"><emphasis role="bold">Storage Account
-                Services</emphasis></td>
-            </tr>
-            <tr>
-              <td>View Account Details</td>
-              <td><command>HEAD</command></td>
-              <td><code>{api version}/{storage account
-                URL}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker<?sbr?>=<parameter>string</parameter>&amp;format=<parameter>json
-                  or xml</parameter></code></td>
-              <td>Views metadata on an account.</td>
-            </tr>
-            <tr>
-              <td>List Containers</td>
-              <td><command>GET</command></td>
-              <td><literal>{api version}/{storage account
-                URL}?limit=integer&amp;marker=string&amp;end_marker<?sbr?>=string&amp;format=json
-                or xml</literal></td>
-              <td>Views a list of containers in an account.</td>
-            </tr>
-            <tr>
-              <td colspan="4"/>
-            </tr>
-            <tr>
-              <td colspan="4"><emphasis role="bold">Storage Container
-                Services</emphasis></td>
-            </tr>
-            <tr>
-              <td>View Container Details (Objects and Metadata)</td>
-              <td><command>HEAD</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;format=<parameter>json
-                  or xml</parameter></code></td>
-              <td>Views objects and metadata in a container. </td>
-            </tr>
-            <tr>
-              <td>Create Container</td>
-              <td><command>PUT</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-              <td>Creates containers, or storage compartments, for your
-                data.</td>
-            </tr>
-            <tr>
-              <td>Delete Container</td>
-              <td><command>DELETE</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-              <td>Permanently removes a container. (The container must
-                be empty before it can be removed.)</td>
-            </tr>
-            <tr>
-              <td>Edit or Set Container Metadata</td>
-              <td><command>POST</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-              <td>Writes metadata on a container.</td>
-            </tr>
-            <tr>
-              <td>List Objects in a Container</td>
-              <td><command>GET</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}?limit=<parameter>integer</parameter>&amp;marker=<parameter>string</parameter>&amp;end_marker=<parameter>string</parameter>&amp;prefix=<parameter>string</parameter>&amp;format=<parameter>json
-                  or
-                  xml</parameter>&amp;delimiter=<parameter>char</parameter></code></td>
-              <td>Views the names and details of objects within a
-                container.</td>
-            </tr>
-            <tr>
-              <td colspan="4"/>
-            </tr>
-            <tr>
-              <td colspan="4"><emphasis role="bold">Storage Object
-                Services</emphasis></td>
-            </tr>
-            <tr>
-              <td>Retrieve Object</td>
-              <td><command>GET</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}/{object}</code></td>
-              <td>Retrieve the object's data.</td>
-            </tr>
-            <tr>
-              <td>Create/Update Object</td>
-              <td><command>PUT</command></td>
-              <td><code>{api version}/{storage account
-                URL}/{container}/{object}</code></td>
-              <td>Write or overwrite an object's content and
-                metadata.</td>
-            </tr>
-            <tr>
-              <td>Copy Object</td>
-              <td><command>PUT</command></td>
-              <td>{api version}/{account}/container/destobject</td>
-              <td>Copy an existing object to another object in Cloud
-                Files. (The destination container must exist before
-                attempting the copy.)</td>
-            </tr>
-            <tr>
-              <td>Delete Object</td>
-              <td><command>DELETE</command></td>
-              <td>{api version}/{account}/container/object</td>
-              <td>Permanently remove an object from the storage system
-                (data and metadata).</td>
-            </tr>
-            <tr>
-              <td>Retrieve Object Metadata</td>
-              <td><command>HEAD</command></td>
-              <td>{api version}/{account}/container/object</td>
-              <td>Retrieve object metadata and other standard HTTP
-                headers.</td>
-            </tr>
-            <tr>
-              <td>Update Object Metadata</td>
-              <td><command>POST</command></td>
-              <td>{api version}/{account}/container/object</td>
-              <td>Set your own object metadata.</td>
-            </tr>
-          </tbody>
-        </table>
--->  
+    <?hard-pagebreak?>  
     <para>The following diagram illustrates the various system
       interfaces and the ease with which content can be distributed
       over the CDN. The process is simple: authenticate, create a
@@ -2690,22 +2543,224 @@
         </wadl:resource>  
       </wadl:resources>
     </section> 
-<!--    
+    
     <section xml:id="objectServicesOperations_d1e000">
       <title>Object Services</title>
-      <para>You can perform the operations on containers in your Cloud Files accoutn.</para>
-      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
-         </wadl:resource> 
-         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#account">    
-         </wadl:resource>
-         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#container">    
-         </wadl:resource>  
+      <para>You can perform the following operations on objects in
+        your Cloud Files containers.</para>
+      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">  
          <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#object">    
          </wadl:resource>  
       </wadl:resources>   
     </section>    
--->
+
+  </chapter>
+  <chapter xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580" >
+    <title>Pseudo Hierarchical Folders and Directories</title>
+    <remark>02-16-12 dsh reworked this section / as path and its
+      elements / are not supported</remark>
+    <para>Although you cannot nest directories in Cloud Files, you can
+      simulate a hierarchical structure within a single container by
+      adding forward slash characters (<code>/</code>) in the object
+      name. To navigate the pseudo directory structure, you can use
+      the <code>delimiter</code> query parameter. See the below
+      examples for an illustration.</para>
+    <note>
+      <para>In the example below, the objects reside in a container
+        called <code>backups</code>. Within that container, the
+        objects are organized in a pseudo directory called
+          <code>photos</code>. Keep in mind that the container name is
+        not displayed in the example, but that it is a part of the
+        object URIs. For instance, the URI of the picture
+          <code>me.jpg</code> is
+          <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>.
+      </para>
+    </note>
+    <example>
+      <title>Pseudo Hierarchical Folders and Directories</title>
+      <para> To display a list of all the objects in the storage
+        container, use &GET; without a <code>delimiter</code> or
+          <code>prefix</code>. </para>
+      <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
+</programlisting>
+      <para> The system returns status code 200 OK and the requested
+        list of the objects. </para>
+      <programlisting>
+  photos/animals/cats/persian.jpg
+  photos/animals/cats/siamese.jpg
+  photos/animals/dogs/corgi.jpg
+  photos/animals/dogs/poodle.jpg
+  photos/animals/dogs/terrier.jpg
+  photos/me.jpg
+  photos/plants/fern.jpg
+  photos/plants/rose.jpg
+</programlisting>
+      <para>
+        <!--02-03-12 dsh  The JIRA ticket / doc-97 subsumed / to this location-->Use
+        the delimiter parameter to limit the displayed results. Any
+        character may be used as a delimiter. However, to use
+          <code>delimiter</code> with pseudo directories, use the
+        parameter slash (<code>/</code>). </para>
+      <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
+</programlisting>
+      <para> The system returns status code 200 (OK) and the requested
+        matching objects. Because the request used the slash, only the
+        pseudo directory <code>photos/</code> displays. Keep in mind
+        that the returned values from a slash <code>delimiter</code>
+        query are not real objects. They have a
+          <code>Content-Type</code> of
+          <code>application/directory</code> and are in a subdir
+        section of JSON and XML results. </para>
+    </example>
+    <programlisting>
+  photos/
+</programlisting>
+    <para> Use the <code>prefix</code> parameter with the
+        <code>delimiter</code> parameter to view the objects inside a
+      pseudo directory, including further nested pseudo directories. </para>
+    <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/
+</programlisting>
+    <para> The system returns status code 200 (OK) and the objects and
+      pseudo directories within the top level pseudo directory. </para>
+    <programlisting>
+  photos/animals/ 
+  photos/plants/
+  photos/me.jpg
+</programlisting>
+    <para> There is no limit to the amount of nested pseudo
+      directories you can create. In order to navigate through them,
+      use a longer <code>prefix</code> parameter coupled with the
+        <code>delimiter</code> parameter. In the sample output below,
+      there is a pseudo directory called <code>dogs</code> within the
+      pseudo directory <code>animals</code>. In order to navigate
+      directly to the files contained within <code>dogs</code>, enter
+      the below command. </para>
+    <programlisting>
+  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/
+</programlisting>
+    <para> The system returns status code 200 (OK) and the objects and
+      pseudo directories within the nested pseudo directory. </para>
+    <programlisting>
+  photos/animals/dogs/corgi.jpg
+  photos/animals/dogs/poodle.jpg
+  photos/animals/dogs/terrier.jpg
+</programlisting>
+  </chapter>
+  <chapter xml:id="containerMetadataOptions_d1e001">
+    <title>Additional Container Metadata Options</title>
+    <para>The following section describes additional metadata options
+      for containers in Cloud Files.</para>
+    <section xml:id="Container_Quotas-d1e2222">
+      <title>Container Quotas</title>
+      <para>The container_quotas middleware implements simple quotas
+        that can be imposed on Cloud Files containers by a user (most
+        likely the account administrator) with the access to set
+        container metadata. Setting container quotas can be useful for
+        limiting containers for non-admin users, formpost uploads, or
+        just as a self-imposed sanity check.</para>
+      <para>Any object <code>PUT</code> operations that exceed the
+        quotas return a 413 response (request entity too large) with a
+        descriptive body.</para>
+      <para>Because the storage system is a true distributed system
+        and because it accepts simultaneous requests, the quotas may
+        not be enforced exactly. For example, if the quota is 5 GB and
+        two users try to store a 5 GB file at the exact same time,
+        both would be allowed to store the file since at the time of
+        both requests the container had sufficient remaining quota. </para>
+      <para>Also, for chunked file uploads, the storage system cannot
+        reject transfers that will eventually exceed the quota because
+        the storage system does not know whether the end of the file
+        will exceed the quota. </para>
+      <para>Quotas are set by adding metadata to the container. The
+        available metadata values are described in the following
+        table.</para>
+      <para>
+        <table rules="all">
+          <caption>Metadata Values for Setting Container
+            Quotas</caption>
+          <col width="50%"/>
+          <col width="50%"/>
+          <thead>
+            <tr>
+              <th>Header for Metadata</th>
+              <th>Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>X-Container-Meta-Quota-Bytes</code></td>
+              <td>Maximum size of the container, in bytes</td>
+            </tr>
+            <tr>
+              <td><code>X-Container-Meta-Quota-Count</code></td>
+              <td>Maximum object count of the container</td>
+            </tr>
+          </tbody>
+        </table>
+      </para>
+    </section>
+    <section xml:id="Acess_Log_Delivery-d1e2200">
+      <title>Access Log Delivery</title>
+      <para>You can use Access Log Delivery to analyze the number of
+        requests for each object, the client IP address, and
+        time-based usage patterns (such as monthly or seasonal usage). </para>
+      <para> Access Log Delivery is set on the container, and every
+        object in the container is tracked. To enable access logs for
+        a container, set the metadata flag
+          <code>X-Container-Meta-Access-Log-Delivery</code> flag to
+          <code>True</code>. If you have multiple containers that you
+        want to track, you must set the metadata header to
+          <code>TRUE</code> for each container. When your first log is
+        delivered, the container .ACCESS_LOGS is created. This
+        container holds the access logs for every container for which
+        you turn on logging. Log files exist until you delete them. To
+        turn off logging, set
+          <code>X-Container-Meta-Access-Log-Delivery</code> flag to
+          <code>FALSE</code>. </para>
+      <para> Log files are named according to this pattern: container
+        name, log date, log hour, and MD5_hash such as
+          <code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
+        </code>. In this example, <code>Media</code> is the name of
+        the container, October 1, 2012 is the date, and 16 is the hour
+        the logs are from. There may be multiple files for a given
+        hour because the storage system splits log files based on both
+        time and log file size. All times in the access logs are UTC
+        time. </para>
+      <para> Within the gzipped logs, the format of the entries is
+        similar to National Center for Supercomputing Applications
+        (NCSA) combined log format, but without cookies. The pattern
+        is below. The dashes (<parameter>"-"</parameter>) note fields
+        which the NCSA combined log format dictates be present but
+        which Cloud Files does not capture. The format is: </para>
+      <para><code>client_ip - - [day/month/year:hour:minute:second
+          timezone “method request HTTP_version” return_code
+          bytes_sent “referrer” “user_agent”</code></para>
+      <para>Example entries are below. </para>
+      <example>
+        <title>Example Access Log Entries</title>
+        <programlisting>
+   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"
+   50.56.228.64 - - [27/08/2012:16:53:49 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
+        /object_%2521 HTTP/1.0" 201 118 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"  
+   50.56.228.64 - - [27/08/2012:16:53:47 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 202 58 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"       
+   50.56.228.64 - - [27/08/2012:16:50:36 +0000] "PUT /v1/
+        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
+        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+        CPython/2.7.3 Linux/3.2.0-29-generic"
+</programlisting>
+      </example>
+    </section>
   </chapter>
   
   
@@ -3923,263 +3978,16 @@ X-Remove-Account-Meta-Book: x
           </example>
         </section>
       </section>
-      <section xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580" >
-        <title>Pseudo Hierarchical Folders and Directories</title>
-        <remark>02-16-12 dsh reworked this section / as path and its
-          elements / are not supported</remark>
-        <para>Although you cannot nest directories in Cloud Files, you
-          can simulate a hierarchical structure within a single
-          container by adding forward slash characters
-          (<code>/</code>) in the object name. To navigate the pseudo
-          directory structure, you can use the <code>delimiter</code>
-          query parameter. See the below examples for an
-          illustration.</para>
-        <note>
-          <para>In the example below, the objects reside in a
-            container called <code>backups</code>. Within that
-            container, the objects are organized in a pseudo directory
-            called <code>photos</code>. Keep in mind that the
-            container name is not displayed in the example, but that
-            it is a part of the object URIs. For instance, the URI of
-            the picture <code>me.jpg</code> is
-              <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>.
-          </para>
-        </note>
-        <example>
-          <title>Pseudo Hierarchical Folders and Directories</title>
-          <para> To display a list of all the objects in the storage
-            container, use &GET; without a <code>delimiter</code> or
-              <code>prefix</code>. </para>
-          <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
-</programlisting>
-          <para> The system returns status code 200 OK and the
-            requested list of the objects. </para>
-          <programlisting>
-  photos/animals/cats/persian.jpg
-  photos/animals/cats/siamese.jpg
-  photos/animals/dogs/corgi.jpg
-  photos/animals/dogs/poodle.jpg
-  photos/animals/dogs/terrier.jpg
-  photos/me.jpg
-  photos/plants/fern.jpg
-  photos/plants/rose.jpg
-</programlisting>
-          <para>
-            <!--02-03-12 dsh  The JIRA ticket / doc-97 subsumed / to this location-->Use
-            the delimiter parameter to limit the displayed results.
-            Any character may be used as a delimiter. However, to use
-              <code>delimiter</code> with pseudo directories, use the
-            parameter slash (<code>/</code>). </para>
-          <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
-</programlisting>
-          <para> The system returns status code 200 (OK) and the
-            requested matching objects. Because the request used the
-            slash, only the pseudo directory <code>photos/</code>
-            displays. Keep in mind that the returned values from a
-            slash <code>delimiter</code> query are not real objects.
-            They have a <code>Content-Type</code> of
-              <code>application/directory</code> and are in a subdir
-            section of JSON and XML results. </para>
-        </example>
-        <programlisting>
-  photos/
-</programlisting>
-        <para> Use the <code>prefix</code> parameter with the
-            <code>delimiter</code> parameter to view the objects
-          inside a pseudo directory, including further nested pseudo
-          directories. </para>
-        <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/
-</programlisting>
-        <para> The system returns status code 200 (OK) and the objects
-          and pseudo directories within the top level pseudo
-          directory. </para>
-        <programlisting>
-  photos/animals/ 
-  photos/plants/
-  photos/me.jpg
-</programlisting>
-        <para> There is no limit to the amount of nested pseudo
-          directories you can create. In order to navigate through
-          them, use a longer <code>prefix</code> parameter coupled
-          with the <code>delimiter</code> parameter. In the sample
-          output below, there is a pseudo directory called
-            <code>dogs</code> within the pseudo directory
-            <code>animals</code>. In order to navigate directly to the
-          files contained within <code>dogs</code>, enter the below
-          command. </para>
-        <programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/
-</programlisting>
-        <para> The system returns status code 200 (OK) and the objects
-          and pseudo directories within the nested pseudo directory. </para>
-        <programlisting>
-  photos/animals/dogs/corgi.jpg
-  photos/animals/dogs/poodle.jpg
-  photos/animals/dogs/terrier.jpg
-</programlisting>
-      </section>
-      <section xml:id="Container_Quotas-d1e2222">
-        <title>Container Quotas</title>
-        <para>The container_quotas middleware implements simple quotas
-          that can be imposed on Cloud Files containers by a user
-          (most likely the account administrator) with the access to
-          set container metadata. Setting container quotas can be
-          useful for limiting containers for non-admin users, formpost
-          uploads, or just as a self-imposed sanity check.</para>
-        <para>Any object PUT operations that exceed the quotas return
-          a 413 response (request entity too large) with a descriptive
-          body.</para>
-        <para>Because the storage system is a true distributed system
-          and because it accepts simultaneous requests, the quotas may
-          not be enforced exactly. For example, if the quota is 5 GB
-          and two users try to store a 5 GB file at the exact same
-          time, both would be allowed to store the file since at the
-          time of both requests the container had sufficient remaining
-          quota. </para>
-        <para>Also, for chunked file uploads, the storage system
-          cannot reject transfers that will eventually exceed the
-          quota because the storage system does not know whether the
-          end of the file will exceed the quota. </para>
-        <para>Quotas are set by adding metadata to the container. The
-          available metadata values are described in the following
-          table.</para>
-        <para>
-          <table rules="all">
-            <caption>Metadata Values for Setting Container
-              Quotas</caption>
-            <col width="50%"/>
-            <col width="50%"/>
-            <thead>
-              <tr>
-                <th>Metadata</th>
-                <th>Use</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>X-Container-Meta-Quota-Bytes</code></td>
-                <td>Maximum size of the container, in bytes</td>
-              </tr>
-              <tr>
-                <td><code>X-Container-Meta-Quota-Count</code></td>
-                <td>Maximum object count of the container</td>
-              </tr>
-            </tbody>
-          </table>
-        </para>
-      </section>
-      <section xml:id="Acess_Log_Delivery-d1e2200">
-        <title>Access Log Delivery</title>
-        <para>You can use Access Log Delivery to analyze the number of
-          requests for each object, the client IP address, and
-          time-based usage patterns (such as monthly or seasonal
-          usage). </para>
-        <para> Access Log Delivery is set on the container, and every
-          object in the container is tracked. To enable access logs
-          for a container, set the metadata flag
-            <code>X-Container-Meta-Access-Log-Delivery</code> flag to
-            <code>TRUE</code>. If you have multiple containers that
-          you want to track, you must set the metadata header to
-            <code>TRUE</code> for each container. When your first log
-          is delivered, the container .ACCESS_LOGS is created. This
-          container holds the access logs for every container for
-          which you turn on logging. Log files exist until you delete
-          them. To turn off logging, set
-            <code>X-Container-Meta-Access-Log-Delivery</code> flag to
-            <code>FALSE</code>. </para>
-        <para> Log files are named according to this pattern:
-          container name, log date, log hour, and MD5_hash such as
-            <code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
-          </code>. In this example, <code>Media</code> is the name of
-          the container, October 1, 2012 is the date, and 16 is the
-          hour the logs are from. There may be multiple files for a
-          given hour because the storage system splits log files based
-          on both time and log file size. All times in the access logs
-          are UTC time. </para>
-        <para> Within the gzipped logs, the format of the entries is
-          similar to National Center for Supercomputing Applications
-          (NCSA) combined log format, but without cookies. The pattern
-          is below. The dashes (<parameter>"-"</parameter>) note
-          fields which the NCSA combined log format dictates be
-          present but which Cloud Files does not capture. The format
-          is: </para>
-        <para><code>client_ip - - [day/month/year:hour:minute:second
-            timezone “method request HTTP_version” return_code
-            bytes_sent “referrer” “user_agent”</code></para>
-        <para>Example entries are below. </para>
-        <example>
-          <title>Example Access Log Entries</title>
-          <programlisting>
-   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
-        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
-        CPython/2.7.3 Linux/3.2.0-29-generic"
-   50.56.228.64 - - [27/08/2012:16:53:49 +0000] "PUT /v1/
-        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
-        /object_%2521 HTTP/1.0" 201 118 "-" "python-requests/0.13.8 
-        CPython/2.7.3 Linux/3.2.0-29-generic"  
-   50.56.228.64 - - [27/08/2012:16:53:47 +0000] "PUT /v1/
-        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-        HTTP/1.0" 202 58 "-" "python-requests/0.13.8 
-        CPython/2.7.3 Linux/3.2.0-29-generic"       
-   50.56.228.64 - - [27/08/2012:16:50:36 +0000] "PUT /v1/
-        MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-        HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
-        CPython/2.7.3 Linux/3.2.0-29-generic"
-</programlisting>
-        </example>
-      </section>
-      <!--         
-        <section xml:id="Retrieve_Container_Metadata-d1e1809">
-          <title>Retrieve Container Metadata</title>
-          <para>&HEAD; operations against a storage container 
-            are used to determine the number of objects, and
-          the total bytes of all objects stored in the
-          container. Since the storage system is designed to store
+      <!--  <remark>2014-01-27 cyr: I'm not sure about this statement and why we 
+        took it out, so I will leave it in a comment for a while. </remark
+<para>Since the storage system is designed to store
           large amounts of data, care should be taken when
           representing the total bytes response as an integer; when
           possible, convert it to a 64-bit unsigned integer if your
           platform supports that primitive type.</para>
-          <example>
-            <title>Container Metadata Request</title>
-            <literallayout class="monospaced">
-  HEAD /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt; HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
-                    </literallayout>
-          </example>
-          <para>The HTTP return code will be 204 (No Content) if the container exists, and 404 (Not
-            Found) if it does not. The object count and utilization are returned in the
-              <code>X-Container-Object-Count</code> and <code>X-Container-Bytes-Used</code> headers
-            respectively.</para>
-          <example>
-            <title>Container Metadata Response</title>
-            <literallayout class="monospaced">
-  HTTP/1.1 204 No Content
-  Date: Wed, 16 Mar 2010 19:37:41 GMT
-  Content-type: text/html
-  X-Container-Object-Count: 7
-  X-Container-Bytes-Used: 413
-  X-Container-Meta-InspectedBy: JackWolf
-                    </literallayout>
-          </example>
-        </section>        
-      </section>
-      <section xml:id="Storage_Object_Services-d1e1848">
-        <title>Storage Object Services</title>
-        <para>An object represents the data and any metadata for the files stored in the
-          system. Through the REST interface, metadata for an object can be included by adding
-          custom HTTP headers to the request and the data payload as the request body. Objects
-          cannot exceed 5 GB and must have names that do not exceed 1024 bytes after URL
-          encoding. If you try to upload an object larger than 5 GB, a 413 (Request Entity Too Large)
-          code will be returned.
-         
-          However, objects larger than 5 GB may be segmented and concatenated 
-          together so that you can upload 5 GB segments and download a single concatenated object. 
-          You can work with the segments and manifests directly with HTTP requests.  -->
+
+  
+      -->
     </section>
     <section xml:id="Storage_Object_Services-d1e4300">
       <title>Storage Object Services</title>
@@ -4195,6 +4003,8 @@ X-Remove-Account-Meta-Book: x
         Then, you can download the segments as a single concatenated
         object. You can use HTTP requests to work with the segments
         and manifests directly.</para>
+      <para>If you try to upload an object larger than 5 GB, a 413
+        (Request Entity Too Large) status code is returned.</para>
       <para>You can perform the following operations for storage
         objects:</para>
       <informaltable rules="all">
@@ -6919,15 +6729,14 @@ Transfer-Encoding: chunked
       </section>
       <section xml:id="Bulk_Delete-d1e2338.html">
         <title>Bulk Delete</title>
-        <para>Bulk Delete request deletes multiple objects or
-          containers from an account with a single request. A Bulk
-          Delete request is a <command>DELETE</command> request with
-          the query parameter <code>?bulk-delete set</code>. The
-            <code>Content-Type</code> header of the request, if set,
-          must be set to <code>text/plain</code>. The body of the
-            <command>DELETE</command> request a newline-separated list
-          of URL-encoded objects to delete. You can delete 10,000
-          objects per request. </para>
+        <para>Bulk Delete request deletes multiple objects or containers from an account with a
+        single request. A Bulk Delete request is a <command>DELETE</command> request with the query
+        parameter <code>?bulk-delete set</code>. The <code>Content-Type</code> header of the
+        request, if set, must be set to <code>text/plain</code>. You should direct the request to
+        the service endpoints in <xref linkend="Service-Access-Endpoints-d1e003"/>. The requests
+        should be directed to the root of the service endpoint. The body of the
+          <command>DELETE</command> request a newline-separated list of URL-encoded objects to
+        delete. You can delete 10,000 objects per request. </para>
         <note>
           <para>The bulk operation involves middleware that conducts
             many operations on a single request.</para>

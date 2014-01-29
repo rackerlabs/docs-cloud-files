@@ -4,7 +4,7 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xml:id="cf-releasenotes"
     version="5.0">
-    <title>Cloud Files Release Notes</title>
+    <title>Rackspace Cloud Files™ Release Notes</title>
 
     <info>
 		<author>
@@ -23,6 +23,9 @@
 			<year xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">2013</year>
+			<year xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">2014</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
@@ -34,7 +37,7 @@
 			</annotation>
 		</legalnotice>
 		<abstract>
-			<para>This document is intended for software developers
+			<para>This document is intended for software developers who are
 				interested in developing applications using the
 				Rackspace Cloud Files API. </para>
 		</abstract>
@@ -45,6 +48,9 @@
 					<para>May 20, 2013 Release</para>
 				</revdescription>
 			</revision>
+			<revision>
+				<date/>
+			</revision>
 		</revhistory>
   
 	<raxm:metadata
@@ -54,6 +60,41 @@
 	  <raxm:priority>30</raxm:priority>
 	</raxm:metadata>
     </info>
+	<preface version="5.0" xml:id="preface">
+		<title>Preface</title>
+		<para>This document describes new features and changes for the
+			Cloud Files API. </para>
+		<para>For detailed information about the Cloud Files API, see
+			the following documentation at <link
+				xlink:href="http://docs.rackspace.com/"
+				>http://docs.rackspace.com/</link>:</para>
+		<itemizedlist spacing="compact">
+			<listitem>
+				<para><citetitle>Cloud Files
+					Introduction</citetitle></para>
+			</listitem>
+			<listitem>
+				<para><citetitle>Cloud Files Developer
+						Guide</citetitle></para>
+			</listitem>
+		</itemizedlist>
+		<para>Support for Cloud Files is available 24x7x365 via phone
+			or chat, or you can also <link
+				xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do"
+				xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">file a
+				ticket</link>.</para>
+		<para>You can also provide feedback by using the <link
+				xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback"
+				>Product Feedback forum</link>.</para>
+		<para xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">Join the Cloud
+			Files chat room at Freenode IRC at #cloudfiles.</para>
+		<para>Rackspace welcomes your comments, feedback, and bug
+			reports .</para>
+	</preface>
 	<chapter xml:id="May01">
 		<?dbhtml stop-chunking?>
 		<title>May 20, 2013</title>
@@ -486,40 +527,5 @@
 		</itemizedlist>
 	</chapter>
 <!-- end of updates -->
-	
-	<chapter xml:id="Talk_to_us">
-		<?dbhtml stop-chunking?>
-		<title>Talk to Us</title>		
-		<itemizedlist>
-			<para xmlns:svg="http://www.w3.org/2000/svg"
-				xmlns:m="http://www.w3.org/1998/Math/MathML"
-				xmlns:html="http://www.w3.org/1999/xhtml">Do you have questions about Rackspace
-				Cloud Files? Would you like to give us feedback on how we're doing? </para>
-			<listitem xmlns:svg="http://www.w3.org/2000/svg"
-				xmlns:m="http://www.w3.org/1998/Math/MathML"
-				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Join us in our chat room at: Freenode IRC at #cloudfiles</para>
-				<para>Or click the following link:</para>
-				<para><link
-					xlink:href="http://webchat.freenode.net?channels=cloudfiles&amp;uio=d4"
-					>Webchat</link></para>
-			</listitem>
-			<listitem xmlns:svg="http://www.w3.org/2000/svg"
-				xmlns:m="http://www.w3.org/1998/Math/MathML"
-				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>You can also provide feedback using our feedback form:</para>
-				<para><link
-					xlink:href="http://feedback.rackspacecloud.com/forums/71021-product-feedback/category/6849-cloud-files"
-					>Product Feedback Forum</link></para>
-			</listitem>
-			<listitem xmlns:svg="http://www.w3.org/2000/svg"
-				xmlns:m="http://www.w3.org/1998/Math/MathML"
-				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Get support here:</para>
-				<para>
-					<link xlink:href="https://manage.rackspacecloud.com/Tickets/YourTickets.do">File a ticket here</link></para>
-			</listitem>
-		</itemizedlist>
-	</chapter>
 	
 </book>
