@@ -65,11 +65,11 @@
                             </doc>
                         </param>
                         <method href="#getobjectdata"/>
-<!--                        <method href="#createobject"/>
+                        <method href="#createobject"/>
                         <method href="#deleteobject"/>
                         <method href="#copyobject"/>
                         <method href="#retrieveobjectmeta"/>
-                        <method href="#updateaobjmeta"/>-->
+                        <method href="#updateaobjmeta"/>
                     </resource>
                 </resource>
             </resource>
@@ -140,7 +140,7 @@
   apples
   bananas
             </programlisting></para>
-            <para>Because the operation returned 2 items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
+            <para>Because the operation returned two items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
@@ -149,7 +149,7 @@
   kiwis
   oranges 
             </programlisting></para>
-            <para>Again, 2 items are returned, and you assume that there may be more. So you make another GET request for 2 more.</para>
+            <para>Again, two items are returned, and you assume that there may be more. So you make another GET request for two more.</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -411,7 +411,7 @@
  gala
  grannysmith
             </programlisting></para>
-            <para>Because the request returned 2 items, assume there are more object names to list and make another request with a <code>marker</code> of the last item returned:</para>
+            <para>Because the request returned two items, assume there are more object names to list and make another request with a <code>marker</code> of the last item returned:</para>
             <para><programlisting>
  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
  Host: storage.clouddrive.com
@@ -420,7 +420,7 @@
  honeycrisp
  jonagold
             </programlisting></para>
-            <para>Again, 2 items are returned, and you assume that there may be more. So you make another GET request for 2 more.</para>
+            <para>Again, two items are returned, and you assume that there may be more. So you make another GET request for two more.</para>
             <para><programlisting>
  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
  Host: storage.clouddrive.com
@@ -428,7 +428,7 @@
  
  reddelicious
             </programlisting></para>
-            <para>This one-item response shows less than the limit of 2 object names requested, and indicates that this is the end of the list.</para>      
+            <para>This one-item response shows less than the limit of two object names requested, and indicates that this is the end of the list.</para>      
         </wadl:doc>
         
         <request>
@@ -627,7 +627,7 @@
                 </doc>
             </representation>
         </response>
-        &getContainerMetadataFaults;
+        &only404Fault;
     </method>
 
     <method name="HEAD" id="retrievecontainermeta">
@@ -678,7 +678,7 @@
                 </doc>
             </representation>
         </response>
-        &getContainerMetadataFaults;
+        &only404Fault;
     </method>
     
     <method name="POST" id="deletecontainermeta">
@@ -716,7 +716,7 @@
                 </doc>
             </representation>
         </response>
-        &getContainerMetadataFaults;
+        &only404Fault;
     </method>
        
  <!-- Object Methods-->
@@ -829,7 +829,7 @@
                 </doc>
             </representation>
         </response>
-        &getContainerMetadataFaults; 
+        &only404Fault; 
     </method>
        
     <method name="PUT" id="createobject">
@@ -838,15 +838,74 @@
             <para role="shortdesc">Creates or updates the content and
                 metadata for a specified object.</para>
             <para>Perform <command>PUT</command> operations to write, or overwrite, an object's content and metadata.</para>
-        
+            <para>You can ensure end-to-end data integrity by including an
+                MD5 checksum of your object's data in the <code>ETag</code>
+                header. You are not required to include the
+                <code>ETag</code> header, but we recommend its use to
+                ensure that the storage system successfully stores your
+                object's content.</para>
+            <para>You can cause an object to expire after a certain date
+                and time by using the <code>X-Delete-At</code> or
+                <code>X-Delete-After</code> headers during an object &PUT;
+                operation. The <code>X-Delete-At</code> header requires a
+                Unix Epoch timestamp, in integer form. For example,
+                1348691905 represents Wed, 26 Sep 2012 20:38:25 GMT. By
+                setting the header to a specific Epoch time, you indicate
+                when you want the object to expire, not be served, and be
+                deleted completely from the storage system. When Cloud Files
+                detects one of these headers, the system automatically stops
+                serving that object at the specified date and time, and
+                shortly after the expiration date, it removes the object
+                from the storage system.</para>
+            <para>The HTTP response includes the MD5 checksum of the data
+                written to the storage system. If you do not send the
+                <code>ETag</code> in the request, you should compare the
+                value returned with your content's MD5 locally to perform
+                the end-to-end data validation on the client side. For
+                manifest objects, the <code>ETag</code> is the MD5 checksum of
+                the concatenated string of ETags for each segment in the
+                manifest, which offers change detection but not direct
+                comparison.</para> 
+                <para>For more information, refer to <xref linkend="Create-Large-Objects-d10e"/>.</para>
+            <note>
+                <para>The best checks for a successful upload are to check
+                    the <code>ETag</code> match with a checksum and to see if
+                    you get a 404 (Not Found) status code when you do a
+                    <command>GET</command>, <command>HEAD</command>,
+                    <command>POST</command>, or <command>DELETE</command>.
+                </para>
+            </note>
+            <para>Objects can be assigned custom metadata by including
+                additional HTTP headers in the &PUT; request. To assign
+                custom metadata, use an HTTP header with the
+                <code>X-Object-Meta-</code> prefix. </para>
+            <para>You can also specify <code>Content-Type</code> for your
+                object. For example, you can specify <code>Content-Type:
+                    audio/mpeg3</code> for mp3 files. </para>
+            <para>A status code of 201
+                (Created) indicates a successful write. Any status code in
+                the 400 range denotes failure. The 401 (Unauthorized) status
+                code is returned upon authentication failure. The 411
+                (Length Required) status code denotes a missing
+                <code>Content-Length</code> or <code>Content-Type</code>
+                header in the request. If the MD5 checksum of the data written to the
+                storage system does NOT match the optionally supplied
+                <code>ETag</code> value, a 422 (Unprocessable Entity)
+                status code is returned. </para>
+            <para>No response body is returned.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="ETag" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The MD5
-                        checksum of your object's data. (stored in
-                        header)</p></doc>
+                        checksum of your object's data. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent.
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Disposition" style="header"
@@ -855,14 +914,14 @@
                         browser behavior for the file, so that the
                         downloader can save the file rather than
                         displaying it using default browser settings.
-                        Stored in header.</p></doc>
+                      </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Encoding" style="header"
                 required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                         underlying media type of the compressed file.
-                        Stored in header.</p></doc>
+                        </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Delete-At" style="header" required="false"
@@ -870,7 +929,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                         certain date, in the format of a Unix Epoch
                         timestamp, when the object will be removed.
-                        Stored in header.</p></doc>
+                       </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Delete-After" style="header" required="false"
@@ -878,22 +937,29 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                         certain date, in the format of a Unix Epoch
                         timestamp, after which the object will be
-                        removed. Stored in header.</p></doc>
+                        removed. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                         custom object metadata. name at the end of this header represents the name
-                        of metadata.</p></doc>
+                        of your metadata.</p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="samples/createobj_http.msg"/>
+                <doc title="Create or Update Object Request">
+                    <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
+                </doc>
+            </representation> 
+        </request>
+        <response status="201"> 
+            <representation mediaType="application/http">
+                <doc title="Create or Update Object Response">
+                    <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
                 </doc>
             </representation>
-        </request>
-        <response status="201"> </response>
+        </response>
+        &createObjectFaults;
     </method>
 
 <!--    
@@ -927,100 +993,351 @@
         </request>
         <response status="201"> </response>
     </method>
--->
-<!--    
+-->   
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
-            <para role="shortdesc">Copies an object to another object
-                with a new name in the OpenStack Object Storage
+            <para role="shortdesc">Using the Destination header, copies an existing object to another object
+                with a new name in the Cloud Files storage
                 system.</para>
+            <informaltable rules="all">
+                <col width="10%"/>
+                <col width="40%"/>
+                <col width="50%"/>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>URI</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><command>PUT</command></td>
+                        <td><code>v1/{account}/{container}/{object}</code></td>
+                        <td>Using the X-Copy-From header, copies an existing object to another object with a
+                            new name in the Cloud Files storage system bu us. </td>
+                    </tr>
+                </tbody>
+            </informaltable>
+            <para>Suppose you upload a file with the wrong object name or
+                content type, or you need to move some objects to another
+                container. Without a server-side object copy feature, you
+                would need to repeat uploading the same content and then
+                delete the existing object. With a server-side object copy
+                feature, you can save the step of re-uploading the content
+                and thus also save the associated bandwidth charges, if any
+                were to apply. </para>
+            <para>There are two ways to copy an existing object to another
+                object in Cloud Files. </para>
+         
+            <para>One way is to use a <command>PUT</command> request to the new object (the
+                destination) location, but add the <code>X-Copy-From</code>
+                header to designate the source of the data. The header value
+                should be the container and object name of the source object
+                in the form of <code>/container/object</code>. The HTTP specification of a
+                <command>PUT</command> request with the <code>X-Copy-From</code> header requires a
+                <code>Content-Length</code> header, but the storage system does not use the
+                <code>Content-Length</code> to perform the operation. For
+                this reason, you can simply send a
+                <code>Content-Length</code> of zero (0). </para>
+            <note>
+                <para> You cannot copy an object larger than 5 GB (by
+                    default). For more information about how to handle objects larger than 5 GB, see
+                    <xref linkend="Create-Large-Objects-d10e"/>. </para>
+            </note>
+            <example>
+                <title>Copy Object Method 1 - Using PUT</title>
+                <programlisting>
+  PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
+  Host: <replaceable>storageURL</replaceable>
+  X-Auth-Token: <replaceable>yourAuthToken</replaceable>
+  X-Copy-From: /<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable>
+  Content-Length: 0                    
+</programlisting>
+            </example>
+            <para>The second way to perform an object copy is similar. Use
+                a <command>COPY</command> request to the existing object, and include the
+                <code>Destination</code> header to specify the destination of
+                the copy. The header value is the container and new object
+                name in the form of <code>/container/object</code>. Unlike
+                the first method, this method does not require a
+                <code>Content-Length</code> header. <!-- 02-03-12 dsh Content Length header / note required by JIRA / tick DOC-100 -->
+                <example>
+                    <title>Copy Object Method 2 - Using COPY</title>
+                    <programlisting>
+  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
+  Host: <replaceable>storageURL</replaceable>
+  X-Auth-Token: <replaceable>yourAuthToken</replaceable>
+  Destination: /<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable>
+</programlisting>
+                </example></para>
+            <para>With both of these methods, the destination container
+                must exist before attempting the copy.</para>
+            <para>The status code for a successful object copy is 201
+                (Created). </para>
+            <para><note>
+                <para>If you are copying many objects, you can improve the
+                    total copy time by issuing several concurrent
+                    <command>COPY</command> commands. Because Cloud Files
+                    is a distributed storage system, your concurrent
+                    <command>COPY</command> commands run on separate
+                    machines simultaneously, which is much better than
+                    waiting for one copy to finish before starting the next
+                    <command>COPY</command> command. As a rule of thumb,
+                    you can run up to 100 concurrent <command>COPY</command>
+                    commands per container (running more will have
+                    diminishing improvement). </para>
+                <para>Another option is bulk importing of data. For
+                    information about bulk imports, see <xref
+                        linkend="Bulk_Import-d1e2094"/>.</para>
+            </note>
+                <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->If
+                you want to move the object rather than copy it, send a <command>DELETE</command> request to the source object after
+                copying it. A move is simply a <command>COPY</command> followed by a <command>DELETE</command>. All
+                metadata is preserved during the object copy. Note that you
+                can set metadata on the request to copy the object (with either
+                the <command>PUT</command> or the <command>COPY</command>) and the metadata overwrites any
+                conflicting keys on the destination object. </para>
+            <!-- 02-06-12 dsh: Added ServiceNet / discussion to clarify / costs of copying  -->
+            <para>Your account is not charged when you copy or move your
+                objects within the same data center using the internal
+                network URI, ServiceNet, as the storage URL. You can find your ServiceNet endpoint in the
+                service catalog created when you authenticate your session.
+                For information on how to authenticate your session, see
+                <xref linkend="Authentication-d1e639"/>. As shown in the
+                partial service catalog example below, the ServiceNet URI is listed as
+                <code>internalURL</code>. The name is your Cloud Files
+                storage URL with <code>snet-</code> pre-pended to it. If you
+                do not know which data center you are working in, you can
+                find it in the Cloud Control Panel. (For more information
+                about service access endpoints, see <xref
+                    linkend="Service-Access-Endpoints-d1e003"/>.)</para>
+            <example>
+                <title>Data Center Endpoints</title>
+                <programlisting>
+  "endpoints": [
+    {
+      "region": "DFW",
+      <emphasis role="bold">"internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"</emphasis>,
+      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
+    },
+    {
+      "region": "ORD",
+      <emphasis role="bold">"internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c</emphasis>",
+      "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
+      "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
+    }
+  ]
+</programlisting>
+            </example>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="Destination" style="header" required="true"
+                name="X-Copy_From" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Used with PUT, the
+                    container and object name of the
+                    source object in the form of
+                    <code>/container/object</code>. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header" required="true"
+                type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Used with PUT, the
+                    content length. Zero (0) is always acceptable here for this operation. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Destination" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Used with COPY, the
                         container and object name of the
-                            <b>destination</b> object in the form of
-                        “/container/object”. (stored in
-                    header)</p></doc>
+                            destination object in the form of
+                        <code>/container/object</code>. </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="samples/copyobj_httphead.msg"/>
+                <doc title="Copy Object Request Using PUT">
+                    <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
                 </doc>
             </representation>
+            <representation mediaType="application/http">
+                <doc title="Copy Object Request Using COPY">
+                    <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_request.txt"/>
+                </doc>
+            </representation>    
         </request>
         <response status="201"> </response>
     </method>
+    
     <method name="HEAD" id="retrieveobjectmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Get Object Metadata">
             <para role="shortdesc">Gets object metadata and other
                 standard HTTP headers.</para>
+            <para><command>HEAD</command> operations on an object are used to retrieve
+                object metadata and other standard HTTP headers.</para> 
+            <para>The only required header to be sent in the request is <code>X-Auth-Token</code> for 
+                the authorization token.</para>
+            <para> A status code of 200 (OK) indicates success.
+                Status code 404 (Not Found) is returned when the object does not
+                exist.</para>
+            <para>This operation does not return a response body. Metadata is returned as
+                HTTP headers.</para>
+            <note><para>
+                <remark security="writeronly">JIRA ticket 1-/ 21 metadata /
+                    response clarity -- dsh 2012-03-07</remark> The
+                <command>HEAD</command> return code for an object is different than that of a
+                container. The <command>HEAD</command> request does not return a message body in
+                the response, so a 2xx status code denotes success. When a
+                <command>HEAD</command> request is performed against the container, it
+                queries the container databases, and it does not retrieve
+                the content from them. Thus, this returns the 204 (No
+                Content) status code. However, when a <command>HEAD</command> request is
+                performed against the object, it returns a 200 OK status
+                code because it can view the content. </para> </note> 
         </wadl:doc>
+        <request>
+            <representation mediaType="application/http">
+                <doc title="Get Object Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
+                </doc>
+            </representation>    
+        </request>
         <response status="200">
             <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="samples/getobjmeta_httphead.msg"
-                    />
+                <doc title="Get Object Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
                 </doc>
             </representation>
         </response>
+        &only404Fault; 
     </method>
+  
     <method name="POST" id="updateaobjmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Update Object Metadata">
-            <para role="shortdesc">Updates arbitrary key/value
+            <para role="shortdesc">Sets or updates your object 
                 metadata. Metadata must be in the format
-                X-Object-Meta-*. You can also assign X-Delete-At or
-                X-Delete-After to expiring objects. You cannot use
+                <code>X-Object-Meta-</code><replaceable>name</replaceable>, where <replaceable>name</replaceable> is the name of your metadaa. You can also assign <code>X-Delete-At</code> or
+                <code>X-Delete-After</code> to expiring objects. You cannot use
                 this operation to change other headers, such as
-                Content-Type.</para>
+                <code>Content-Type</code>.</para>
+            <para>You can set or update your custom metadata for existing
+                objects by using a <command>POST</command> request to the object name. </para>
+            <para>Metadata is set by using the header <code>X-Object-Meta-<replaceable>name</replaceable>: Foo</code> where
+                <code><replaceable>name</replaceable></code> is the custom name for your metadata and <code>Foo</code>
+                is the value. You can also set values for
+                <code>X-Delete-At</code> and <code>X-Delete-After</code>
+                to set expirations for objects. </para>
+            <para> To remove previously-set object metadata, perform a
+                <command>POST</command> request to the object name with
+                <code>X-Remove-Object-Meta-name: Foo</code> where
+                <code>name</code> is the name of your metadata.
+                <code>Foo</code> is any term, and it will not be used. You
+                must, however, send some value with the request. Otherwise,
+                the metadata is not removed. </para>
+            <para>For information on working with metadata when copying
+                objects, see <xref linkend="COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
+            <note>
+                <title>Deleting Object Metadata</title>
+                <para>All the object metadata is set at the same time. If
+                    you want to edit or remove one header, simply
+                    <command>POST</command> all other headers leaving out
+                    the header that you want to remove. This means that if you
+                    delete one entry without posting the others, the others
+                    will also be deleted at that time. </para>
+                <para>To remove all metadata on an object, simply perform a
+                    <command>POST</command> request for the object with no
+                    metadata specified. However, to remove container metadata,
+                    you must send the header with an empty value.</para>
+            </note>
+            <para>A status code of 202
+                (Accepted) indicates success. Status code 404 (Not Found) is
+                returned if the requested object does not exist. </para>
+            <para>This operation does not return a response body.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Object-Meta" style="header" required="false"
+                name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        container metadata. * represents the name of
-                        metadata. Stored in header.</p></doc>
+                        container metadata. name represents the name of
+                        your metadata. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Delete-At" style="header" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        certain date, in the format of a Unix Epoch
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The date, in the format of a Unix Epoch
                         timestamp, when the object will be removed.
-                        Stored in header.</p></doc>
+                      </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Delete-After" style="header" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        certain date, in the format of a Unix Epoch
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The date, in the format of a Unix Epoch
                         timestamp, after which the object is removed.
-                        Stored in header.</p></doc>
+                      </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code
-                        href="samples/updateobjmeta_httphead.msg"/>
+                <doc title="Update Object Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_request.txt"/>
                 </doc>
-            </representation>
+            </representation>    
         </request>
-        <response status="202"> </response>
+        <response status="202"> 
+            <representation mediaType="application/http">
+                <doc title="Update Object Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
+                </doc>
+            </representation>           
+        </response>
+        &only404Fault;  
     </method>
+
     <method name="DELETE" id="deleteobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Delete Object">
             <para role="shortdesc">Permanently deletes an object from
-                the OpenStack Object Storage system. In combination
-                with the COPY command, you can use COPY and then
-                DELETE to effectively move an object.</para>
+                the Cloud Files storage system. (You can use <command>COPY</command> and then
+                <command>DELETE</command> to effectively move an object.)</para>
+            <para><command>DELETE</command> operations on an object permanently
+                remove an object from the storage system (data and
+                metadata).</para>           
+            <para>Deleting an object is processed immediately at the time
+                of the request. Any subsequent <command>GET</command>, <command>HEAD</command>, <command>POST</command>, or
+                <command>DELETE</command> operations return a 404 (Not Found) error
+                unless object versioning is on and other versions
+                exist. For more information about object versioning, see <xref
+                    linkend="Object_Versioning-e1e3230"/>.</para>
+            <para>Objects with the <code>X-Delete-At</code> or
+                <code>X-Delete-After</code> header assigned are deleted
+                within one day of the expiration time, and the object is not
+                served immediately after the expiration time. For more details, refer to <xref
+                    linkend="Expiring_Objects-e1e3228"/>.</para> 
+            <para>A status code of 204 (No
+                Content) indicates success. Status code 404 (Not Found) is
+                returned when the object does not exist.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+            <para>For information about bulk deletions, see <xref
+                linkend="Bulk_Delete-d1e2338.html"/>.</para>
         </wadl:doc>
-        <response status="204"> </response>
+        <request>
+            <representation mediaType="application/http">
+                <doc title="Delete Object Request">
+                    <xsdxt:code href="../wadl/samples/cf-deleteObject_request.txt"/>
+                </doc>
+            </representation>    
+        </request>
+        <response status="204"> 
+            <representation mediaType="application/http">
+                <doc title="Delete Object Response">
+                    <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>
+                </doc>
+            </representation>    
+        </response>
+        &only404Fault;     
     </method>
--->    
+
 </application>

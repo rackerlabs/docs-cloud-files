@@ -8,10 +8,10 @@
 <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 <!ENTITY PATCH '<command xmlns="http://docbook.org/ns/docbook">PATCH</command>'>
 
-     <!--
+<!--
          A collection of common faults, these are pretty much expected
          in every request.
-     -->
+-->
      <!ENTITY commonFaults
            '
         <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
@@ -33,7 +33,7 @@
 
            '>
 
- <!--
+<!--
           Fault on Get Account MetaData
  -->
      <!ENTITY headAcctMetaFaults
@@ -48,7 +48,7 @@
 <!--
           Fault on Get Container Metadata
  -->
-     <!ENTITY getContainerMetadataFaults
+     <!ENTITY only404Fault
            '
         <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" element="files:itemNotFound"/>
@@ -73,7 +73,28 @@
 
            '>
            
-        <!-- Not used by all of Cloud Queues API operations
+<!--
+          Fault on Create Object
+ -->
+     <!ENTITY createObjectFaults
+           '
+        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:unauthorized"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="411" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:lengthRequired"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="422" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:unprocessableEntity"/>
+            <representation mediaType="application/json"/>
+        </response>    
+
+           '>          
+           
+           
+<!-- Not used by all of Cloud Queues API operations
         <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" element="dbaas:forbidden"/>
             <representation mediaType="application/json"/>

@@ -76,7 +76,7 @@
                 />.</para>
             </listitem>
             <listitem>
-              <para>Added <xref linkend="tableAPIOperations"/>, which
+              <para>Added a table of all API operations, which
                 lists and briefly describes all API operations. Also
                 added tables showing the API operations at the
                 beginning of each section that describes the
@@ -958,20 +958,26 @@
     </section>
     <section xml:id="Operations-d1e509">
       <title>Operations</title>
-      <para linkend="Operations-d1e509">Operations are the actions you
-        perform within your account, such as creating or deleting
-        containers or uploading or downloading objects. The full list
-        of operations is documented in <xref
-          linkend="tableAPIOperations"/>. The operations are then
-        described in the REST API sections, <xref
-          linkend="API_Operations_for_Storage_Services-d1e942"/> and
-          <xref linkend="API_Operations_for_CDN_Services-d1e2386"/>.
-        Operations may be performed through the REST web service API
-        or a language-specific AP. (See <link
-          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+      <para linkend="Operations-d1e509">Operations are the actions you perform within your account,
+        such as creating or deleting containers or uploading or downloading objects. The full list
+        of operations is given in <xref linkend="API_Operations_d1e000"/>. The operations are then
+        described in the following REST API sections;</para>
+      <itemizedlist>
+        <listitem>
+          <para><xref linkend="Accounts-d1e421"/></para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="Containers-d1e458"/></para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="Objects-d1e479"/></para>
+        </listitem>
+      </itemizedlist>
+      <para linkend="Operations-d1e509">Operations may be performed through the REST web service API
+        or a language-specific AP. (For information about the Rackspace language-specific APIs, see
+          <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
             ><citetitle>Rackspace Cloud SDKs Software Development Kit
-            Guide</citetitle></link> for information about the
-        Rackspace language-specific APIs.)</para>
+        Guide</citetitle></link>.)</para>
       <important>
         <para> All operations must include a valid authorization
           token. </para>
@@ -1110,9 +1116,8 @@
         <raxm:priority>3</raxm:priority>
       </raxm:metadata>
     </info>
-    <para>The information in this chapter is relevant to all Cloud
-      Files API operations. See later chapters for information about a
-      specific API operation.</para>
+    <para>The information in this chapter is relevant to all Cloud Files API operations. For
+      information about a specific API operation, see later chapters.</para>
     <section xml:id="Authentication-d1e639">
       <title>Authentication</title>
       <para xmlns:m="http://www.w3.org/1998/Math/MathML"> Every REST
@@ -1481,17 +1486,13 @@
           receiving a 401 (Unauthorized) response from a service
           endpoint. </para>
         <important>
-          <para>If you are programmatically parsing an authentication
-            response, please be aware that service names are stable
-            for the life of the particular service and can be used as
-            keys. You should also be aware that a user's service
-            catalog can include multiple uniquely-named services which
-            perform similar functions. For example,
-            cloudServersOpenStack is the OpenStack version of compute
-            whereas cloudServers is the legacy version of compute. The
-            same user can have access to both services. In Auth 2.0,
-            the service type attribute can be used as a key by which
-            to recognize similar services. See the tip below.</para>
+          <para>If you are programmatically parsing an authentication response, please be aware that
+            service names are stable for the life of the particular service and can be used as keys.
+            You should also be aware that a user's service catalog can include multiple
+            uniquely-named services which perform similar functions. For example,
+            cloudServersOpenStack is the OpenStack version of compute whereas cloudServers is the
+            legacy version of compute. The same user can have access to both services. In Auth 2.0,
+            the service type attribute can be used as a key by which to recognize similar services. </para>
         </important>
         <tip>
           <para>Beginning with Auth 2.0, the service catalog includes
@@ -1693,7 +1694,7 @@
       </simplesect>
       -->
     </section>
-    <?hard-pagebreak?>
+   
     <section xml:id="RBAC"
       xmlns:wadl="http://wadl.dev.java.net/2009/02"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -1978,11 +1979,10 @@
       <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
         <para>In order to avoid external bandwidth charges, your
           containers and servers must be in the same data center. </para>
-        <para> You might find it useful to locate your objects in more
-          than one data center to keep track of your data and backups.
-          Specifically, if you serve an audience in a particular
-          region, you might find it helpful to locate your Cloud Files
-          objects as close to that region as possible. </para>
+        <para>You might find it useful to locate your objects in more than one data center to keep
+          track of your data and backups. Specifically, if you serve an audience in a particular
+          region, you might find it helpful to locate your Cloud Files objects as close to that
+          region as possible. </para>
       </note>
       <para>The endpoints to use for the CDN management service
         component of your Cloud Files API calls are summarized in the
@@ -2269,11 +2269,11 @@
   </chapter>
   <chapter xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API Operations</title>
-    <para>The Cloud Files API is implemented as a set of RESTful web
-      services. All authentication and container/object operations can
-      be performed with standard HTTP calls. See <link
-        xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer"
-        >Representation State Transfer</link> for more information about REST.</para>
+    <para>The Cloud Files API is implemented as a set of RESTful web services. All authentication
+      and container/object operations can be performed with standard HTTP calls. For more
+      information about REST, see <link
+        xlink:href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Representation
+        State Transfer</link>.</para>
     <para>The following constraints apply to REST API HTTP
       requests:</para>
     <itemizedlist>
@@ -2348,6 +2348,7 @@
         Files are performed using SSL over HTTP (HTTPS) on TCP port
         443.</para>
     </note>
+    <!--
     <?hard-pagebreak?> 
     <para>The following table summarizes the operations that are
       available in the Cloud Files API:</para>
@@ -2494,7 +2495,8 @@
         </tr>
       </tbody>
     </table>
-    <?hard-pagebreak?>  
+    <?hard-pagebreak?> 
+-->    
     <para>The following diagram illustrates the various system
       interfaces and the ease with which content can be distributed
       over the CDN. The process is simple: authenticate, create a
@@ -2518,14 +2520,62 @@
   <chapter xml:id="API_Operations_d1e000" 
            xmlns="http://docbook.org/ns/docbook"
            role="api-reference">
-    <title>API Operations</title>
-    <para>This chapter describes each of the API operations provided
-      by the Cloud Files service.</para>
-    
+    <title>API Operations for Storage Services</title>
+ <!--   <para>This chapter describes each of the API operations provided by the Cloud Files
+      service.</para>  -->
+    <para>This chapter describes each of the the REST API operations for interacting with the Cloud
+      Files storage services component. All requests are directed to the host and endpoints
+      described in the <code>cloudFiles</code> section of the service catalog obtained during
+      successful authentication. (For more information, see <xref linkend="Authentication-d1e639"/>
+      and <xref linkend="Service-Access-Endpoints-d1e003"/>.)</para>
+    <para>Following are some requirements for the storage services component:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Object and container names must be URL-encoded and UTF-8 encoded.</para>
+      </listitem>
+      <listitem>
+        <para>Container names may not exceed 256 bytes and cannot contain a '/' character.</para>
+      </listitem>
+      <listitem>
+        <para>Object names may not exceed 1024 bytes, but they have no character
+          restrictions.</para>
+      </listitem>
+    </itemizedlist>
+    <para>The following sections describe the operations that you can perform within the storage
+      system: </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="Storage_Account_Services-d1e1555"/> describes operations that you can
+          perform at the account level of the storage system.</para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="Storage_Container_Services-d1e1444"/> describes operations that you can
+          perform on containers.</para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="Storage_Object_Services-d1e4300"/> describes operations that you can
+          perform on objects.</para>
+      </listitem>
+    </itemizedlist>
     <section xml:id="accountServicesOperations_d1e000">
       <title>Account Services</title>
-      <para>You can perform the following operations at the account
-        level of your Cloud Files account.</para>
+      <para>You can perform the operations in the following table at the account level of your Cloud
+        Files account.</para>
+      <para>The examples in this section use the following sample information for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account: MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+        </listitem>
+        <listitem>
+          <para>X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must use your own account information and authentication
+        token. You can check how to generate an authentication token in <xref
+          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
+        are in the service catalog that is produced.</para>
+      
+       
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#versions">
         </wadl:resource> 
@@ -2533,7 +2583,7 @@
         </wadl:resource>  
       </wadl:resources>
     </section> 
-    
+  
     <section xml:id="containerServicesOperations_d1e000">
       <title>Container Services</title>
       <para>You can perform the following operations on containers in
@@ -2559,12 +2609,10 @@
     <title>Pseudo Hierarchical Folders and Directories</title>
     <remark>02-16-12 dsh reworked this section / as path and its
       elements / are not supported</remark>
-    <para>Although you cannot nest directories in Cloud Files, you can
-      simulate a hierarchical structure within a single container by
-      adding forward slash characters (<code>/</code>) in the object
-      name. To navigate the pseudo directory structure, you can use
-      the <code>delimiter</code> query parameter. See the below
-      examples for an illustration.</para>
+    <para>Although you cannot nest directories in Cloud Files, you can simulate a hierarchical
+      structure within a single container by adding forward slash characters (<code>/</code>) in the
+      object name. To navigate the pseudo directory structure, you can use the
+        <code>delimiter</code> query parameter. For an illustration, see the examples below. </para>
     <note>
       <para>In the example below, the objects reside in a container
         called <code>backups</code>. Within that container, the
@@ -2899,8 +2947,7 @@
       </variablelist>
       <para>At this time, a <code>prefix</code> query parameter is not
         supported at the account level.</para>
-      <para> The examples in this section use a sample information
-        for:</para>
+      <para> The examples in this section use sample information for:</para>
       <itemizedlist>
         <listitem>
           <para>account (for example,
@@ -2937,12 +2984,10 @@
             </tr>
           </tbody>
         </informaltable>
-        <para>The list is limited to 10,000 containers at a time. See
-          the section, <xref linkend="Controlling_a_Large_List_of_Containers-d1e107"
-            xrefstyle="select:label quotedtitle nopage"/>, for
-          information on limiting and navigating the list. A 200 (OK)
-          code returns if there are containers and a 204 (No Content)
-          code returns if there are no containers. </para>
+        <para>The list is limited to 10,000 containers at a time. For information on limiting and
+          navigating the list, see <xref linkend="Controlling_a_Large_List_of_Containers-d1e107"
+            xrefstyle="select:label quotedtitle nopage"/>. A 200 (OK) code returns if there are
+          containers and a 204 (No Content) code returns if there are no containers. </para>
         <para> Container names are sorted based on a <link
             xlink:href="http://www.sqlite.org/datatype3.html#collation"
             >binary comparison</link>, a built-in collating function
@@ -3512,14 +3557,11 @@ X-Remove-Account-Meta-Book: x
         <para>Containers are storage compartments for your data. The
           URL-encoded name must be less than 256 bytes and cannot
           contain a forward slash '/' character.</para>
-        <para>Containers can be assigned custom metadata by including
-          additional HTTP headers on the &PUT; request. The custom
-          metadata is assigned to a container through HTTP headers
-          identified with the <code>X-Container-Meta-</code> prefix.
-          See <xref
-            linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
-            xrefstyle="select:label quotedtitle nopage"/> for details
-          on setting custom metadata. </para>
+        <para>Containers can be assigned custom metadata by including additional HTTP headers on the
+          &PUT; request. The custom metadata is assigned to a container through HTTP headers
+          identified with the <code>X-Container-Meta-</code> prefix. For details on setting custom
+          metadata, see <xref linkend="Update_CDN-Enabled_Container_Metadata-d1e2787"
+            xrefstyle="select:label quotedtitle nopage"/>. </para>
         <example>
           <title>Container Create Request </title>
           <programlisting>
@@ -4232,15 +4274,12 @@ X-Remove-Account-Meta-Book: x
           serving that object at the specified date and time, and
           shortly after the expiration date, it removes the object
           from the storage system.</para>
-        <para>The HTTP response includes the MD5 checksum of the data
-          written to the storage system. If you do not send the
-            <code>ETag</code> in the request, you should compare the
-          value returned with your content's MD5 locally to perform
-          the end-to-end data validation on the client side. For
-          segmented objects, the <code>ETag</code> is the MD5 sum of
-          the concatenated string of ETags for each segment in the
-          manifest, which offers change detection but not direct
-          comparison. </para>
+        <para>The HTTP response includes the MD5 checksum of the data written to the storage system.
+          If you do not send the <code>ETag</code> in the request, you should compare the value
+          returned with your content's MD5 locally to perform the end-to-end data validation on the
+          client side. For manifest objects, the <code>ETag</code> is the MD5 checksum of the
+          concatenated string of ETags for each segment in the manifest, which offers change
+          detection but not direct comparison. </para>
         <note>
           <para>The best checks for a successful upload are to check
             the <code>ETag</code> match with a checksum and to see if
@@ -4270,17 +4309,14 @@ X-Remove-Account-Meta-Book: x
 </programlisting>
         </example>
         <!-- 02-12-12 dsh: changed the status code / below to 411 / (wikipedia) -->
-        <para>No response body is returned. A status code of 201
-          (Created) indicates a successful write. Any status code in
-          the 400 range denotes failure. The 401 (Unauthorized) status
-          code is returned upon authentication failure. The 411
-          (Length Required) status code denotes a missing
-            <code>Content-Length</code> or <code>Content-Type</code>
-          header in the request. If the MD5 checksum calculated by the
-          storage system does NOT match the optionally supplied
-            <code>ETag</code> value, a 422 (Unprocessable Entity)
-          status code is returned. </para>
-        <!-- Other status codes listed in Disqus comment from dsh 2 years ago - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html lists these and more.
+        <para>No response body is returned. A status code of 201 (Created) indicates a successful
+          write. Any status code in the 400 range denotes failure. The 401 (Unauthorized) status
+          code is returned upon authentication failure. The 411 (Length Required) status code
+          denotes a missing <code>Content-Length</code> or <code>Content-Type</code> header in the
+          request. If the MD5 checksum of the data written to the storage system does NOT match the
+          optionally supplied <code>ETag</code> value, a 422 (Unprocessable Entity) status code is
+          returned. </para>
+        <!--Other status codes listed in Disqus comment from dsh 2 years ago - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html lists these and more. These are standard status codes and their responses from wikipedia.
           
 In addition to those listed in Anne's great response, a failed upload might return the following error codes, depending upon conditions:
 
@@ -5300,12 +5336,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
           &DELETE; operations will return a 404 (Not Found) error
           unless object versioning is on and other versions
           exist.</para>
-        <para>Objects with the <code>X-Delete-At</code> or
-            <code>X-Delete-After</code> header assigned are deleted
-          within one day of the expiration time and the object is not
-          served immediately after the expiration time. Refer to <link
-            linkend="Expiring_Objects-e1e3228">Expiring Objects</link>
-          for more details.</para>
+        <para>Objects with the <code>X-Delete-At</code> or <code>X-Delete-After</code> header
+          assigned are deleted within one day of the expiration time and the object is not served
+          immediately after the expiration time. For more details, refer to <link
+            linkend="Expiring_Objects-e1e3228">Expiring Objects</link>.</para>
         <example>
           <title>Object Delete Request</title>
           <programlisting>
@@ -5394,7 +5428,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
       </section>
       <section xml:id="Update_Object_Metadata-d1e2338">
         <title>Update Object Metadata</title>
-        <para> You can set or update your custom metadata for existing
+        <para>You can set or update your custom metadata for existing
           objects by using a &POST; request to the object name. </para>
         <informaltable rules="all">
           <thead>
@@ -5433,13 +5467,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <para>For information on working with metadata when copying
           objects, see <xref linkend="Copy_Object-d1e2241"/>.</para>
         <note>
-          <title>Deleting Object Metadata</title>
-          <para> All the object metadata is set at the same time. If
-            you want to edit or remove one header, simply
-              <command>POST</command> all other headers leaving out
-            the header that you want to remove. This means that if you
-            delete one entry without posting the others, the others
-            will also be deleted at that time. </para>
+          <para>All the object metadata is set at the same time. If you want to edit or remove one
+            header, simply <command>POST</command> all other headers leaving out the header that you
+            want to remove. This means that if you delete one entry without posting the others, the
+            others will also be deleted at that time. </para>
           <para>To remove all metadata on an object, simply perform a
               <command>POST</command> request for the object with no
             metadata specified. However, to remove container metadata,
@@ -5448,10 +5479,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
         <example>
           <title>Update Object Metadata Request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-  X-Object-Meta-Fruit: Apple
-  X-Object-Meta-Veggie: Carrot
+Host: storage.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+X-Object-Meta-Fruit: Apple
+X-Object-Meta-Veggie: Carrot
                      </programlisting>
         </example>
         <para>No response body is returned. A status code of 202
@@ -5670,16 +5701,13 @@ In addition to those listed in Anne's great response, a failed upload might retu
           r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
       <note>
         <title>Note on CDN Charges</title>
-        <para> Keep an eye on your CDN charges. When you CDN-enable a
-          container, not only can anyone view it, but anyone can link
-          to it. We recommend that you monitor your bandwidth usage
-          and charges in the Cloud Control Panel. This way, you know
-          if someone is hot linking your content. See the Knowledge
-          Center article <link
+        <para> Keep an eye on your CDN charges. When you CDN-enable a container, not only can anyone
+          view it, but anyone can link to it. We recommend that you monitor your bandwidth usage and
+          charges in the Cloud Control Panel. This way, you know if someone is hot linking your
+          content. For helpful instructions for keeping yourself informed about your usage charges,
+          see the Knowledge Center article <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0"
-            > "Protect your Cloud Files CDN Bill from Unexpected
-            Usage"</link> for helpful instructions for keeping
-          yourself informed about your usage charges. </para>
+            > "Protect your Cloud Files CDN Bill from Unexpected Usage"</link>. </para>
       </note>
       <section xml:id="CDN-Enable_a_Container-d1e2665">
         <title>CDN-Enable and CDN-Disable a Container</title>
@@ -6073,14 +6101,12 @@ stream.cf0.rackcdn.com
             ability, you must check the client's User Agent with
             JavaScript. An example of the User Agent check and how to
             use it is given below. </para>
-          <para>First, CDN-enable your container. See <xref
-              linkend="CDN-Enable_a_Container-d1e2665"
-              xrefstyle="select:label quotedtitle nopage"/> for
-            instructions. Two streaming URIs are created: the
-            container's streaming URI
-              (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming
-            URI (<code>X-Cdn-Ios-Uri</code>). Perform a &HEAD; request
-            against the CDN-enabled container to view these URIs. </para>
+          <para>First, CDN-enable your container. For instructions, see <xref
+              linkend="CDN-Enable_a_Container-d1e2665" xrefstyle="select:label quotedtitle nopage"
+            />. Two streaming URIs are created: the container's streaming URI
+              (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming URI
+              (<code>X-Cdn-Ios-Uri</code>). Perform a &HEAD; request against the CDN-enabled
+            container to view these URIs. </para>
           <para>Second, link to your content in a HTML page using a
               <code>&lt;video></code> element. Set the SRC attribute
             of the VIDEO element to the full streaming URI for your
