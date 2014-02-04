@@ -46,9 +46,20 @@
                     </param>
                     <method href="#enableDisableCDNcontainer"/>
                     <method href="#retrieveCDNcontainermeta"/>
-                    <method href="#updateCDNcontainermeta"/>
-       
-                    
+                    <method href="#updateCDNcontainermeta"/>                    
+                </resource>
+                
+                <resource id="object" path="{object}">
+                    <param name="object" style="template"
+                        type="xsd:string">
+                        <doc>
+                            <p
+                                xmlns="http://www.w3.org/1999/xhtml"
+                                >The unique identifier of the
+                                object.</p>
+                        </doc>
+                    </param>
+                    <method href="#deleteCDNobject"/>
                 </resource>
                 
             </resource>
@@ -80,8 +91,8 @@
                 response body, one container name per line.</para>            
             <para>A list of containers is returned in the response body, one container per line. </para>
             <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>            
-            <para>To view the CDN container details, see xref
-                linkend=FIXME List_CDN-Enabled_Container_Metadata-d1e2711/.</para>
+            <para>To view the CDN container details, see <xref
+                linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"/>.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -256,9 +267,6 @@
                 </itemizedlist></para>
             <para>A status code of 204 (No Content) indicates success. Status code 404 (Not Found) is returned if the requested container is not found.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
-        
-            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see xref linkend="FIXME"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
-           
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -410,8 +418,84 @@
                 </doc>
             </representation> 
         </response>
-
     </method>   
- 
- 
+
+<!--       CDN Objece Services    -->
+    
+    <method name="DELETE" id="deleteCDNobject">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
+            title="Delete CDN Object">
+            <para role="shortdesc">Deletes CDN-enabled objects.</para>           
+            <para>When you find it necessary to remove a CDN-enabled
+                object from public access before the TTL expires, you can
+                perform a <command>DELETE</command> operation against the object, or you can
+                create a support ticket to purge the entire container. </para>
+            <note><para>You should limit object purges to situations where there
+                could be serious personal, business, or security
+                consequences if it remained publicly accessible on the CDN (for example, 
+                when someone publishs your company's quarterly
+                earnings too early). </para></note>
+            <para> Following are the ways you can purge objects from the
+                CDN: <itemizedlist>
+                    <listitem>
+                        <para>By using <command>DELETE</command> in the API </para>
+                        <para>You can manually purge CDN-enabled objects without
+                            having to wait for the TTL to expire, and you can
+                            optionally be notified by email that the object has
+                            been purged. However, you can only <command>DELETE</command> up to 25
+                            objects per day using the API. </para>
+                        <para>An attempt to delete more objects results in a 400
+                            (Bad Request) status code with
+                            <code>X-Purge-Failed-Reason: You have the maximum
+                                number of daily object purges</code>.</para>
+                        <para>If there is already a purge request in progress
+                            for an object, a 400 (Bad Request) status code is
+                            returned with <code>X-Purge-Failed-Reason: That object
+                                is already in the queue to be purged</code>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>By creating a support ticket to purge an entire
+                            container</para>
+                        <para>The 25-object limit does not apply when purging an
+                            entire container through Support.</para>
+                    </listitem>
+                </itemizedlist></para>
+            <note>
+                <para>To prevent the container from going back to the CDN,
+                    first change the <code>X-CDN-Enabled</code> flag to
+                    <code>False</code> as shown in <xref
+                    linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"/></para>
+            </note>
+            <para>The system purges the object from the CDN and sends an
+                email to the indicated address or addresses. If you want to
+                notify more than one person about the deletion, you can
+                enter a comma-separated list of addresses. The email address
+                is optional. </para>
+            <para>A status code of 204 (No Content) indicates success.
+                Status code 404 (Not Found) indicates that requested
+                CDN-enabled object was not found. Status code 403
+                (Forbidden) indicates that an authorization problem
+                occurred. </para>
+            <para>The CDN URI is returned in the HTTP header
+                <code>X-Cdn-Uri</code>. </para>
+            <para>Purging objects may take a long time because there are
+                so many edge servers around the globe. Please be patient
+                while waiting for a response. </para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/http">
+                <doc title="Delete CDN-enabled Object Request">
+                    <xsdxt:code href="../wadl/samples/cf-deleteCDNObject_request.txt"/>
+                </doc>
+            </representation>    
+        </request>
+        <response status="204"> 
+            <representation mediaType="application/http">
+                <doc title="Delete CDN-Enabled Object Response">
+                    <xsdxt:code href="../wadl/samples/cf-deleteCDNObject_response.txt"/>
+                </doc>
+            </representation>    
+        </response>
+        &deleteCDNObjectFaults;     
+    </method>
 </application>

@@ -53,8 +53,8 @@
       <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>API v1</releaseinfo>
-    <productname>Cloud Files™</productname>
-    <pubdate>2013-12-31</pubdate>
+    <productname>Rackspace Cloud Files™</productname>
+    <pubdate>2014-02-13</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,15 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-02-13</date>
+        <revdescription>
+          <para>Reformatted <xref linkend="API_Operations_d1e000"/>
+            and <xref
+              linkend="API_Operations_for_CDN_Services-d1e2386"
+            />.</para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2013-12-31</date>
         <revdescription>
@@ -288,10 +297,8 @@
                 authentication.</para>
             </listitem>
             <listitem>
-              <para>In <xref
-                  linkend="Purge_CDN-Enabled_Objects-d1e3858"/> and
-                  <xref
-                  linkend="Purge_CDN-Enabled_Containers_or_Objects-d1e2747"
+              <para>In <xref linkend="CDN_Object_Services"/> and <xref
+                linkend="DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services"
                 />, added a note about removing a CDN-enabled
                 container by setting <code>X-Cdn-Enabled</code> to
                   <code>False</code> in
@@ -1996,7 +2003,7 @@
             locations around the globe, rather than being served from
             a single origin server. You can learn more about
             CDN-enabling your containers in <xref
-              linkend="CDN-Enable_a_Container-d1e2665"/>. </para>
+            linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"/>. </para>
         </note>
         <table rules="all">
           <caption>Regionalized Service Endpoints for CDN Management
@@ -2817,6 +2824,8 @@ photos/animals/dogs/terrier.jpg</programlisting>
   </chapter>
   <chapter xml:id="additionalObjectServices-d1e001">
     <title>Additional Object Services Information</title>
+    <para>The following sections provide additional information about
+      using objects in Cloud Files.</para>
     <section xml:id="Chunked_Transfer_Encoding-d1e2092">
       <title>Chunked Transfer Encoding</title>
       <para>You can upload data without needing to know in advance
@@ -5872,8 +5881,8 @@ X-Object-Meta-Veggie: Carrot
     </section>
   </chapter>
  -->
-  <chapter xml:id="Test-API_Operations_for_CDN_Services-d1e2386">
-    <title>Test API Operations for CDN Services</title>
+  <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
+    <title>API Operations for CDN Services</title>
     <para>This chapter provides further description for several of the API operations described in
         <xref linkend="API_Operations_d1e000"/>. These API operations have a specific purpose for
       the Content Delivery Network (CDN) service that is available in Cloud Files.</para>
@@ -5889,21 +5898,22 @@ X-Object-Meta-Veggie: Carrot
       system: </para>
     <itemizedlist>
       <listitem>
-        <para><xref linkend="Test-CDN_Account_Operations-d1e2397"/> describes operations that you
-          can perform at the account level for Cloud Files CDN services.</para>
+        <para><xref linkend="API_Operations_for_CDN_Services-d1e2386"
+          /> describes operations that you can perform at the account
+          level for Cloud Files CDN services.</para>
       </listitem>
       <listitem>
-        <para><xref linkend="Test-CDN_Container_Services-d1e2632"/> describes operations that you
+        <para><xref linkend="CDN_Container_Services-d1e2632"/> describes operations that you
           can perform on containers.</para>
       </listitem>
- <!--     <listitem>
-        <para><xref linkend="Test-CDN_Object_Services"/> describes operations that you can perform
+      <listitem>
+        <para><xref linkend="CDN_Object_Services"/> describes operations that you can perform
           on objects.</para>
-      </listitem> -->
+      </listitem>
     </itemizedlist>
 
     <section xml:id="Test-CDN_Account_Operations-d1e2397">
-      <title>Test CDN Account Services</title>
+      <title>CDN Account Services</title>
       <para>You can perform the operation in the following table at the account level of your Cloud
         Files CDN account.</para>
       <para>The examples in this section use sample information for:</para>
@@ -5925,8 +5935,8 @@ X-Object-Meta-Veggie: Carrot
       </wadl:resources>
     </section>
     
-    <section xml:id="Test-CDN_Container_Services-d1e2632">
-      <title>Test CDN Container Services</title>
+    <section xml:id="CDN_Container_Services-d1e2632">
+      <title>CDN Container Services</title>
       <para>You can perform the operations in the following table on CDN-enbled containers in your Cloud Files
         account.</para>
       <para>
@@ -5985,13 +5995,13 @@ X-Object-Meta-Veggie: Carrot
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#container"/>
       </wadl:resources>
-<!--
+
     </section>
     
-    <section xml:id="Test-CDN_Object_Services">
-      <title>Test CDN Object Services</title>
-      <para>You can perform the operations in the following table on objects in your Cloud Files
-        containers.</para>
+    <section xml:id="CDN_Object_Services">
+      <title>CDN Object Services</title>
+      <para>You can perform the operation in the following table on
+        objects in your Cloud Files containers.</para>
      
       <para>The examples in this section use sample information for:</para>
       <itemizedlist>
@@ -6013,11 +6023,13 @@ X-Object-Meta-Veggie: Carrot
           <xref linkend="Retrieving_Auth_Token"/>. Your authentication token and your account
         information are in the service catalog that is produced.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#object"/>
+        <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#object"/>
       </wadl:resources>
--->      
     </section>
   </chapter> 
+  
+  
+<!-- <remark>Pre-WADL chapter 2-03-2014</remark>  
   <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
     <title>API Operations for CDN Services</title>
     <info>
@@ -6049,7 +6061,7 @@ X-Object-Meta-Veggie: Carrot
       <title>CDN Account Services</title>
       <para>
         <remark security="writeronly">Added opening line and rephrased
-          second -- dsh - 2012-03-09</remark>You can perform the
+          second dsh - 2012-03-09</remark>You can perform the
         operation in this section at the account level of the CDN
         account. </para>
         
@@ -6109,8 +6121,10 @@ X-Object-Meta-Veggie: Carrot
                 </inlineequation>, returns object names greater than
                 the specified marker. Only strings using UTF-8
                 encoding for the value for <code>marker</code> are
-                valid.
-                <!--02-03-12 dsh:  Note re: UTF / 8 for transparency JI/RA DOC-98  --></para>
+                valid.</para>
+-->                
+<!-- 02-03-12 dsh:  Note re: UTF / 8 for transparency JI/RA DOC-98 -->
+<!--  
               <para>Using <code>marker</code> provides a mechanism to
                 iterate through the entire list of containers. </para>
             </listitem>
@@ -6234,7 +6248,7 @@ X-Object-Meta-Veggie: Carrot
         <title>CDN-Enable and CDN-Disable a Container</title>
         <para>
           <remark security="writeronly">Reworked this section to
-            highlight TTL -- dsh - 2012-03-12</remark>Before a
+            highlight TTL  dsh - 2012-03-12</remark>Before a
           container can be CDN-enabled, it must exist in the storage
           system. To CDN-enable the container, perform &PUT; request
           against it using the <code>publicURL</code> noted in the
@@ -6903,37 +6917,215 @@ i))) != null;
         </example>
       </section>
     </section>
-    <section xml:id="StaticWeb">
-      <title>Static Website</title>
+    </chapter>
+    
+--> 
+  <chapter xml:id="AdditionalCDNServicesInformation" >
+    <title>Additional CDN Services Information</title>
+    <para>The following sections provide additional information about
+      working with the Cloud Files CDN Services.</para>
+    <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
+      <title>Purge CDN-Enabled Containers</title>
+      <para>For a container to be purged from the CDN, you can either
+        wait for the TTL to expire, or you can request  that Rackspace
+        remove, or purge, a CDN-enabled container from the network.
+        After you have made the request to Rackspace through a support
+        ticket, the system purges the object from the CDN, and sends
+        an email to the address (or multiple addresses) that you
+        indicate through the ticket. The email address notification is
+        optional.</para>
+      <note>
+        <para>To prevent the container from going back to the CDN,
+          first change the <code>X-CDN-Enabled</code> flag to
+            <code>False</code> as shown in <xref
+            linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
+          />. </para>
+      </note>
+    </section>
+  <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
+    <title>CDN-Enabled Containers Served through SSL</title>
+    <para>A &HEAD; operation for a CDN-enabled container returns
+      an SSL URI, <code>X-Cdn-Ssl-Uri</code>, in addition to the
+      other headers associated with CDN. This feature enables
+      you to use https protocol in URIs used for requesting
+      objects stored in CDN-enabled containers. </para>
+      <para>A status code of 204 (No Content) indicates success.
+        Status code 404 (Not Found) is returned if the requested
+        container was not found.  No content is returned.</para>
+    <example>
+      <title>CDN-Enabled Container Metadata Request with
+        SSL</title>
+      <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: cdn.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
+    </example>
+    <example>
+      <title>CDN-Enabled Container Metadata Response with
+        SSL</title>
+      <programlisting>HTTP/1.1 204 No Content
+X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+X-Ttl: 259200
+X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
+X-Cdn-Enabled: True
+X-Log-Retention: False
+X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+Content-Length: 0</programlisting>
+    </example>
+  </section>
+  <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
+    <title>Streaming CDN-Enabled Containers </title>
+    <para>In addition to the other headers associated with CDN,
+      a &HEAD; operation against a CDN-enabled container returns
+      the following streaming URIs to enable the streaming
+      feature: </para>
+    <itemizedlist>
+      <listitem>
+        <para><code>X-Cdn-Streaming-Uri</code>: specifies a URI
+          for video streaming that uses Adobe’s HTTP Dynamic
+          Streaming</para>
+      </listitem>
+      <listitem>
+        <para><code>X-Cdn-Ios-Uri</code>: specifies the URI for
+          video streaming that uses Apple’s HTTP Live Streaming
+          (see <xref linkend="iOS-Streaming-d1f3725"/>)</para>
+      </listitem>
+    </itemizedlist>
+    <para>Streaming is a method of relaying data, such as video
+      and audio material, over the network as a steady
+      continuous stream, allowing playback to proceed while
+      subsequent data is being received.</para>
+      <para>A status code of 204 (No Content) indicates success.
+        Status code 404 (Not Found) is returned if the requested
+        container was not found. No content is returned. </para>
+    <para>For information about streaming to iOS devices, see
+      <xref linkend="iOS-Streaming-d1f3725"/>.</para>
+    <example>
+      <title>CDN-Enabled Container Metadata Request with
+        Streaming Enabled</title>
+      <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: cdn.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
+    </example>
+    <example>
+      <title>CDN-Enabled Container Metadata Response with
+        Streaming Enabled</title>
+      <programlisting>HTTP/1.1 204 No Content
+X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+X-Ttl: 259200
+X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com
+X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+X-Cdn-Enabled: True
+X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl.cf1.rackcdn.com
+X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
+X-Log-Retention: False
+X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+Content-Length: 0
+                   </programlisting>
+    </example>
+  </section>
+  <section xml:id="iOS-Streaming-d1f3725">
+    <title>iOS Streaming</title>
+    <para>The Cloud Files CDN allows you to stream video to iOS
+      devices without needing to convert your video. Once you
+      CDN-enable your container, you have the tools necessary
+      for streaming media to multiple devices. To leverage this
+      ability, you must check the client's User Agent with
+      JavaScript. An example of the User Agent check and how to
+      use it is given below. </para>
+    <para>First, CDN-enable your container. For instructions, see
+          <xref
+          linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
+          xrefstyle="select:label quotedtitle nopage"/>. Two streaming
+        URIs are created - the container's streaming URI
+          (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming URI
+          (<code>X-Cdn-Ios-Uri</code>). Perform a &HEAD; request
+        against the CDN-enabled container to view these URIs. </para>
+    <para>Second, link to your content in a HTML page using a
+      <code>&lt;video></code> element. Set the SRC attribute
+      of the VIDEO element to the full streaming URI for your
+      container plus the name of your content. In the below
+      example, the streaming video is MobyDick.mp4. </para>
+    <example>
+      <title>HTML 5 Video Element</title>
+      <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
+  &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+  r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
+&lt;/video&gt;
+                      </programlisting>
+    </example>
+    <para> Third, add JavaScript to the <code>&lt;head></code>
+      element of your HTML page to check if the User Agent is an
+      iOS device. If it is, the JavaScript should use the
+      container's iOS streaming URI (<code>x-Cdn-Ios-Uri</code>)
+      instead of the regular streaming URI. The Cloud Files CDN
+      delivers the properly formatted content for iOS devices
+      only when the iOS streaming URI is used. Here, the
+      JavaScript sets the SRC attribute of the
+      <code>&lt;video></code> element <code>videotag</code> to
+      the iOS Streaming URI. Remember to add your content's name
+      to the end of the iOS streaming URI. </para>
+    <example>
+      <title>JavaScript for User Agent Check</title>
+      <programlisting>&lt;script type=”text/javascript”&gt;
+
+    function isIOS(){
+        return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
+i))) != null;
+    }
+
+    function init(){
+        if (isIOS()){
+           document.getElementById(“videotag”).src = “http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
+           iosr.cf0.rackcdn.com/MobyDick.mp4”;
+        }
+    }
+
+&lt;/script&gt;</programlisting>
+    </example>
+    <para>Finally, add <code>init()</code> to the
+          <code>&lt;body></code> element of your HTML page to call the
+        User Agent check when the page loads. </para>
+    <example>
+      <title>Load JavaScript in HTML page</title>
+      <programlisting>&lt;body onload=”init()”&gt;</programlisting>
+    </example>
+    <para> With these pieces of code in place, the proper
+      content streams will be set for iOS devices. </para>
+
+  </section>
+  </chapter>
+  
+    <chapter xml:id="StaticWeb">
+      <title>Static Websites Using CDN-Enabled Containers</title>
       <para>
         <remark security="writeronly">2012-05-14 dsh: Added for
-          2012-05-14 release</remark> This section describes how to
+          2012-05-14 release</remark> This chapter describes how to
         use your CDN-enabled containers to create static websites in
         Cloud Files. </para>
       <section xml:id="Create_Static_Website-dle4000">
         <title>Create Static Website</title>
-        <para> You can use your Cloud Files account to create a static
-          website. First, you must CDN-enable a storage container. Any
-          HTML or static web pages in the container become available
-          through a static website once you set the
-            <code>X-Container-Meta-Web-Index</code> header to
-            <code>index.html</code> or another index page of your
-          choice. You can also create subdirectories in your website
-          by creating pseudo directories, as outlined in <xref
-            linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"
-          />. Each pseudo directory becomes a subdirectory in the
-          website. </para>
-        <para> The page you set for
-            <code>X-Container-Meta-Web-Index</code> becomes the index
-          page for every subdirectory in your website. Each of your
-          pseudo directories should contain a file with that name. So,
-          if you set <code>X-Container-Meta-Web-Index</code> to
-            <code>index.html</code>, you should have an index.html
-          page in each pseudo directory. For example, suppose that you
-          have a <code>subdir</code> pseudo directory. If you do not
-          have an index.html page in <code>subdir</code>, visits to
-            <code>myhost/subdir/</code> return a status code 404 (Not
-          Found). </para>
+        <para>You can use your Cloud Files account to create a static
+        website. First, you must CDN-enable a storage container. Any
+        HTML or static web pages in the container become available
+        through a static website once you set the
+          <code>X-Container-Meta-Web-Index</code> header to
+          <code>index.html</code> or another index page of your
+        choice. You can also create subdirectories in your website by
+        creating pseudo directories, as outlined in <xref
+          linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.
+        Each pseudo directory becomes a subdirectory in the website. </para>
+        <para>The page you set for
+          <code>X-Container-Meta-Web-Index</code> becomes the index
+        page for every subdirectory in your website. Each of your
+        pseudo directories should contain a file with that name. So,
+        if you set <code>X-Container-Meta-Web-Index</code> to
+          <code>index.html</code>, you should have an index.html page
+        in each pseudo directory. For example, suppose that you have a
+          <code>subdir</code> pseudo directory. If you do not have an
+        index.html page in <code>subdir</code>, visits to
+          <code>myhost/subdir/</code> return a status code 404 (Not
+        Found). </para>
         <remark security="writeronly">2013-08-23 cyr: Added based on
           email from Rick Hawkins: "Specifically these are the headers
           relating to Static Web which I did not find in our
@@ -7000,17 +7192,17 @@ i))) != null;
           </listitem>
           <listitem>
             <para>CDN-enable your container as shown in <xref
-                linkend="CDN-Enable_a_Container-d1e2665"
+              linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
             <para>Go to your domain host and set up a CNAME using your
-              CDN URI (<code>X-Cdn-Uri</code>). The CNAME is the
-              domain or branded URI you use instead of the CDN URI. If
-              you need to find your CDN URI, perform a &GET; to
-                <code>cdn.clouddrive.com</code> as shown in <xref
-                  linkend="List_CDN-Enabled_Container_Metadata-d1e2711"
-                xrefstyle="select:label quotedtitle nopage"/>. </para>
+            CDN URI (<code>X-Cdn-Uri</code>). The CNAME is the domain
+            or branded URI you use instead of the CDN URI. If you need
+            to find your CDN URI, perform a <command>HEAD</command> to
+              <code>cdn.clouddrive.com</code> as shown in <xref
+              linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"
+              xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
             <para> To view your website online, visit your CDN URI or
@@ -7019,21 +7211,17 @@ i))) != null;
         </orderedlist>
         <example>
           <title>Set up Static Web</title>
-          <programlisting language="bash">
-curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/"        
-  </programlisting>
+          <programlisting language="bash">cURL -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/"</programlisting>
         </example>
         <para>After your container has an index page set and your
           domain host has your CNAME recorded, your static website is
           ready. </para>
         <example>
           <title>Container Setup for Static Website</title>
-          <programlisting>
-  container/index.html
-  container/page2.html
-  container/subdir/index.html
-  container/subdir/pageX.html
-            </programlisting>
+          <programlisting>container/index.html
+container/page2.html
+container/subdir/index.html
+container/subdir/pageX.html</programlisting>
         </example>
         <para>In the results below, the CNAME is myhost, and the
             <code>X-Container-Meta-Web-Index</code> is set to
@@ -7041,13 +7229,11 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           pages that display in the Web browser. </para>
         <example>
           <title>Static Website Enabled Container Results</title>
-          <programlisting>
-  http://myhost                     Displays container/index.html
-  http://myhost/page2.html          Displays container/page2.html
-  http://myhost/subdir              Displays container/subdir/index.html
-  http://myhost/subdir/             Displays container/subdir/index.html
-  http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html
-             </programlisting>
+          <programlisting>http://myhost                     Displays container/index.html
+http://myhost/page2.html          Displays container/page2.html
+http://myhost/subdir              Displays container/subdir/index.html
+http://myhost/subdir/             Displays container/subdir/index.html
+http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programlisting>
         </example>
       </section>
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
@@ -7072,17 +7258,15 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           once for your entire static website. </para>
         <example>
           <title>Set Error Pages for Static Website Request</title>
-          <programlisting>
-  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-  X-Container-Meta-Web-Error: error.html            
-        </programlisting>
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+X-Container-Meta-Web-Error: error.html            </programlisting>
         </example>
         <para> Any class 200 status codes indicate success. </para>
       </section>
-    </section>
-  </chapter>
+    </chapter>
+  
   <chapter xml:id="Bulk_Operations-d1e2338">
       <title>Bulk Operations </title>
       <para>This chapter describes bulk operations that are available
@@ -7202,8 +7386,7 @@ curl -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c
           JSON, from a successful request. </para>
         <example>
           <title>Extract Archive Response</title>
-          <programlisting>
-HTTP/1.1 100 Continue
+          <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -7216,15 +7399,13 @@ Transfer-Encoding: chunked
   "Response Status": "201 Created",
   "Errors": [],
   "Response Body": ""
-}
-</programlisting>
+}</programlisting>
         </example>
         <para>The example that follows shows the response with
           errors.</para>
         <example>
           <title>Extract Archive Response with Errors</title>
-          <programlisting>
-HTTP/1.1 100 Continue
+          <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -7242,8 +7423,7 @@ Transfer-Encoding: chunked
     ]
   ],
   "Response Body": ""
-} 
-</programlisting>
+}</programlisting>
         </example>
         <para>The list of errors is a list of tuples in the form
           <code>[objectPath, errorResponse]</code>. The
@@ -7290,7 +7470,7 @@ Transfer-Encoding: chunked
         </note>
         <para>The objects specified in the <command>DELETE</command>
           request body must be URL-encoded and in the form: </para>
-        <para><code> /containerName/objectName</code>
+        <para><code>/containerName/objectName</code>
       </para>
         <para>or for containers (which must be empty at time of
           delete)</para>
@@ -7304,8 +7484,7 @@ Transfer-Encoding: chunked
           successful request. </para>
         <example>
           <title>Bulk Delete Response</title>
-          <programlisting>
-HTTP/1.1 100 Continue
+          <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
@@ -7319,15 +7498,13 @@ Transfer-Encoding: chunked
   "Errors": [],
   "Number Deleted": 10,
   "Response Body": ""
-}
-</programlisting>
+}</programlisting>
         </example>
         <para>The example that follows shows the response with
           errors.</para>
         <example>
           <title>Bulk Delete Response with Errors</title>
-          <programlisting>
-HTTP/1.1 100 Continue
+          <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
@@ -7346,8 +7523,7 @@ Transfer-Encoding: chunked
   ],
   "Number Deleted": 0,
   "Response Body": ""
-}
-</programlisting>
+}</programlisting>
         </example>
         <para>If all items were successfully deleted (or did not
           exist), the status code is 200 OK. If any failed to delete,
@@ -7398,7 +7574,7 @@ Transfer-Encoding: chunked
       information in order to have access to your account. </para>
     <section xml:id="TempURL-d1a4450">
       <title>TempURL </title>
-      <para> The Temporary URL feature (TempURL) allows you to create
+      <para>The Temporary URL feature (TempURL) allows you to create
         limited-time Internet addresses that allow you to grant
         limited access to your Cloud Files account. Using TempURL, you
         can allow others to retrieve or place objects in your Cloud
@@ -7414,11 +7590,11 @@ Transfer-Encoding: chunked
         Files account, you can give them a TempURL. After the
         specified time expires, no one will be able to upload to the
         address.</para>
-      <para> Additionally, you need not worry about time running out
+      <para>Additionally, you need not worry about time running out
         when someone downloads a large object. If the time expires
         while a file is being retrieved, the download will continue
         until it is finished. Only the link will expire. </para>
-      <para> When you create a TempURL, Cloud Files validates a
+      <para>When you create a TempURL, Cloud Files validates a
         GET-accessible or PUT-accessible URL, which is time-limited. </para>
       <note>
         <para>The TempURL is the same thing as TempURL Secret, and is
@@ -7427,36 +7603,34 @@ Transfer-Encoding: chunked
       </note>
       <section xml:id="Set_Account_Metadata-d1a4460">
         <title>Set Account TempURL Metadata Key</title>
-        <para> To create a TempURL, you must first set the metadata
+        <para>To create a TempURL, you must first set the metadata
           header <code>X-Account-Meta-Temp-Url-Key</code> on your
           Cloud Files account to a key that only you know. This key
           can be any arbitrary sequence as it is for encoding your
           account. </para>
-        <para> Once the key is set, you should not change it while you
+        <para>Once the key is set, you should not change it while you
           still want others to be able to access your TempURL. If you
           change it, the TempURL becomes invalid (within 60 seconds,
           which is the cache time for a key) and others will not be
           allowed to access it. </para>
         <example>
           <title>Set Account Metadata Key for Public Access</title>
-          <programlisting>
-  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-  X-Account-Meta-Temp-Url-Key: yourKey
-</programlisting>
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </example>
         <para>Any class 200 status code indicates success.</para>
       </section>
       <section xml:id="Create_TempURL-d1a444">
         <title>Create the TempURL</title>
-        <para> After the metadata is set, you must create an HMAC-SHA1
+        <para>After the metadata is set, you must create an HMAC-SHA1
           (RFC 2104) signature. When you generate the TempURL, you
           determine which method of access you will grant users, &GET;
           or &PUT;. You also determine the path to the object to which
           you are granting access. Lastly, you set the time for your
           TempURL to expire in UNIX epoch notation. </para>
-        <para> In the following examples, a TempURL is generated for
+        <para>In the following examples, a TempURL is generated for
           the object my_cat.jpg that will be available for 60 seconds.
           The <code>key</code> in the example below is the
             <code>X-Account-Meta-Temp-Url-Key</code>. </para>
@@ -7601,12 +7775,12 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           the actions from a FormPost become invalid (within 60
           seconds, which is the cache time for a key). </para>
         <example>
-          <title>Set Account Metadata Key for Public Access</title>
-          <programlisting>
-  POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
-  Host: storage.clouddrive.com
-  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-  X-Account-Meta-Temp-Url-Key: yourKey
+          <title>Set Account Metadata Key for Public Access
+            Request</title>
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+X-Account-Meta-Temp-Url-Key: yourKey
            </programlisting>
         </example>
         <para>Any class 200 status code indicates success.</para>
@@ -7708,9 +7882,9 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           <para>The <code>key</code> value is the value of the
               <code>X-Account-Meta-Temp-Url-Key</code> header set for
             the account. </para>
-          <para> The <code>max_file_count</code> value used to
-            generate the <code>signature</code> must be the same as
-            that in the web form. </para>
+          <para>The <code>max_file_count</code> value used to generate
+            the <code>signature</code> must be the same as that in the
+            web form. </para>
         </example>
         <para>
           <emphasis>Required:</emphasis> The <code>type="file"</code>
@@ -8091,7 +8265,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
       <para>In order to use the REST API, you will first need to
         obtain an authorization token, which will need to be passed in
         for each request using the <code>X-Auth-Token</code> header. </para>
-      <para> The following examples demonstrate how to use cURL to
+      <para>The following examples demonstrate how to use cURL to
         obtain the authorization token and the URL of the storage
         system. Note that your account may be based in either the US
         or the UK. This is not determined by your physical location,
@@ -8480,12 +8654,11 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         CDN system, not the authorization system.</para>
       <note>
         <title>Note</title>
-        <para> On August 13, 2012, the maximum TTL was set to 31536000
+        <para>On August 13, 2012, the maximum TTL was set to 31536000
           (one year). If you set new TTL values to a greater time
           frame, your object will still expire at the one-year mark.
           However, if you already had a greater TTL value set on an
-          object, it will expire at the time you had originally set.
-        </para>
+          object, it will expire at the time you had originally set. </para>
       </note>
       <example>
         <title>cURL CDN-Enable Container</title>

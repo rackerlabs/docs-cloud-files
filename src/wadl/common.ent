@@ -56,6 +56,19 @@
         </response>
   
            '>
+           
+     <!ENTITY deleteCDNObjectFaults
+           '
+        <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:itemNotFound"/>
+            <representation mediaType="application/json"/>
+        </response>
+        
+  <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="files:forbidden"/>
+            <representation mediaType="application/json"/>
+        </response>
+           '>
 
 <!--
           Fault on Delete Container
@@ -94,7 +107,7 @@
            '>          
            
            
-<!-- Not used by all of Cloud Queues API operations
+<!-- Not used by all of Cloud API operations
         <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" element="dbaas:forbidden"/>
             <representation mediaType="application/json"/>
