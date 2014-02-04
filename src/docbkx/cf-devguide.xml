@@ -28,6 +28,10 @@
   xmlns:html="http://www.w3.org/1999/xhtml" xml:id="cf-devguide"
   version="5.0">
   <?rax pdf.url="../../../cf-devguide-latest.pdf"?>
+  <?rax title.font.size="35px"
+      pdf.url="../../cf-devguide.pdf" 
+      status.bar.text.font.size="40px"
+      canonical.url.base="http://docs.rackspace.com/files/api/v1/cf-devguide/content"?>
   <title>Rackspace Cloud Files™ Developer Guide</title>
   <info>
     <author>
@@ -2519,11 +2523,7 @@
            role="api-reference">
     <title>API Operations for Storage Services</title>
    <para>This chapter describes each of the API operations provided by the Cloud Files
-      service.</para> 
- <!--   
-    <para>This chapter describes each of the the REST API operations for interacting with the Cloud
-      Files storage services component. 
--->      
+      service.</para>      
       <para>All requests are directed to the endpoints
       described in the <code>cloudFiles</code> section of the service catalog obtained during
       successful authentication. (For more information, see <xref linkend="Authentication-d1e639"/>
@@ -5871,7 +5871,153 @@ X-Object-Meta-Veggie: Carrot
       </section>
     </section>
   </chapter>
- --> 
+ -->
+  <chapter xml:id="Test-API_Operations_for_CDN_Services-d1e2386">
+    <title>Test API Operations for CDN Services</title>
+    <para>This chapter provides further description for several of the API operations described in
+        <xref linkend="API_Operations_d1e000"/>. These API operations have a specific purpose for
+      the Content Delivery Network (CDN) service that is available in Cloud Files.</para>
+    <para>You direct the REST API methods described to the endpoints described in the
+        <code>cloudFilesCDN</code> section of the service catalog that you obtain during successful
+      authentication. (For more information, see <xref linkend="Authentication-d1e639"/> and <xref
+        linkend="Service-Access-Endpoints-d1e003"/>.)</para>
+    <para>A CDN-enabled container is a public container that is served by Akamai's Content Distribution Network. The 
+      files in a CDN-enabled container are publicly accessible and do not require an authentication token for read access. 
+      However, uploading content into a CDN-enabled container is a secure operation and does require a valid authentication token. 
+      (Private containers are not CDN-enabled and the files in a private container are not publicly accessible.)</para>
+    <para>The following sections describe the operations that you can perform within the storage
+      system: </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="Test-CDN_Account_Operations-d1e2397"/> describes operations that you
+          can perform at the account level for Cloud Files CDN services.</para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="Test-CDN_Container_Services-d1e2632"/> describes operations that you
+          can perform on containers.</para>
+      </listitem>
+ <!--     <listitem>
+        <para><xref linkend="Test-CDN_Object_Services"/> describes operations that you can perform
+          on objects.</para>
+      </listitem> -->
+    </itemizedlist>
+
+    <section xml:id="Test-CDN_Account_Operations-d1e2397">
+      <title>Test CDN Account Services</title>
+      <para>You can perform the operation in the following table at the account level of your Cloud
+        Files CDN account.</para>
+      <para>The examples in this section use sample information for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+        </listitem>
+        <listitem>
+          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must use your own account information and authentication
+        token. You can check how to generate an authentication token in <xref
+          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
+        are in the service catalog that is produced.</para>
+      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#versions"/>
+        <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#account"/>
+      </wadl:resources>
+    </section>
+    
+    <section xml:id="Test-CDN_Container_Services-d1e2632">
+      <title>Test CDN Container Services</title>
+      <para>You can perform the operations in the following table on CDN-enbled containers in your Cloud Files
+        account.</para>
+      <para>
+        <remark security="writeronly">2012-03-09 dsh: Reworked these
+          two paragraphs to clarify connection between CDN and Storage
+          URLs</remark> When you CDN-enable a container, all the
+        objects within it become available on the CDN. Similarly, once
+        a container is CDN-enabled, any objects added to it through
+        the storage service become CDN-enabled. After you CDN-enable a
+        container, its publicly-available URI can be found with the
+        header <code>X-Cdn-Uri</code>, and its objects may be accessed
+        at
+        <code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>.
+        By knowing this pattern, you can pre-generate the URI for an
+        object before it is added to the container. </para>
+      <para> When you enable a container in the CDN service, you
+        automatically generate URIs for SSL and streaming usage. They
+        are listed under the <code>X-Cdn-Ssl-Uri</code> and
+        <code>X-Cdn-Streaming-Uri</code> headers, respectively. </para>
+      <para> On August 13, 2012, the format of new CDN URIs changed in
+        order to enhance the security of the Content Delivery Network.
+        Any URIs set in the older format
+        (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
+        continue to work. However, any newly generated CDN URIs have
+        the new format:
+        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
+          r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
+      <note>
+        <title>Note on CDN Charges</title>
+        <para> Keep an eye on your CDN charges. When you CDN-enable a container, not only can anyone
+          view it, but anyone can link to it. We recommend that you monitor your bandwidth usage and
+          charges in the Cloud Control Panel. This way, you know if someone is hot linking your
+          content. For helpful instructions for keeping yourself informed about your usage charges,
+          see the Knowledge Center article <link
+            xlink:href="http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0"
+            > "Protect your Cloud Files CDN Bill from Unexpected Usage"</link>. </para>
+      </note>
+     
+      <para>The examples in this section use sample information for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+        </listitem>
+        <listitem>
+          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+        </listitem>
+        <listitem>
+          <para>container, such as MyContainer</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must use your own account information, authentication token,
+        and container name. You can check how to generate an authentication token in <xref
+          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
+        are in the service catalog that is produced.</para>
+      
+      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#container"/>
+      </wadl:resources>
+<!--
+    </section>
+    
+    <section xml:id="Test-CDN_Object_Services">
+      <title>Test CDN Object Services</title>
+      <para>You can perform the operations in the following table on objects in your Cloud Files
+        containers.</para>
+     
+      <para>The examples in this section use sample information for:</para>
+      <itemizedlist>
+        <listitem>
+          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+        </listitem>
+        <listitem>
+          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+        </listitem>
+        <listitem>
+          <para>container, such as MyContainer</para>
+        </listitem>
+        <listitem>
+          <para>object, such as MyObject</para>
+        </listitem>
+      </itemizedlist>
+      <para>For your own requests, you must use your own account information, authentication token,
+        container name, and object name. You can check how to generate an authentication token in
+          <xref linkend="Retrieving_Auth_Token"/>. Your authentication token and your account
+        information are in the service catalog that is produced.</para>
+      <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#object"/>
+      </wadl:resources>
+-->      
+    </section>
+  </chapter> 
   <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
     <title>API Operations for CDN Services</title>
     <info>
@@ -5906,7 +6052,7 @@ X-Object-Meta-Veggie: Carrot
           second -- dsh - 2012-03-09</remark>You can perform the
         operation in this section at the account level of the CDN
         account. </para>
-<!--        
+        
         <para>The operation conforms to the following
         format:</para>
          <example>
@@ -5915,7 +6061,7 @@ X-Object-Meta-Veggie: Carrot
   <replaceable>HTTP_METHOD_NAME</replaceable> /v1/<replaceable>account</replaceable> HTTP/1.1
                 </literallayout>
       </example>
--->      
+      
       <section xml:id="List_CDN-Enabled_Containers-d1e2414">
         <title>List CDN-Enabled Containers</title>
         <para>&GET; operations against the <code>cloudFilesCDN</code>

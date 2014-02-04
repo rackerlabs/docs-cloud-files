@@ -47,23 +47,12 @@
                     <method href="#enableDisableCDNcontainer"/>
                     <method href="#retrieveCDNcontainermeta"/>
                     <method href="#updateCDNcontainermeta"/>
-                    <method href="#purgeCDNcontainer"/>                   
-
-                    <resource id="object" path="{object}">
-                        <param name="object" style="template"
-                            type="xsd:string">
-                            <doc>
-                                <p
-                                   xmlns="http://www.w3.org/1999/xhtml"
-                                   >The unique identifier of the
-                                   object.</p>
-                            </doc>
-                        </param>
-                        <method href="#purgeCDNobjects"/>
-                    </resource>
+       
+                    
                 </resource>
+                
             </resource>
-        </resource>  
+        </resource>    
     </resources>
 
 <!--*******************************************************-->
@@ -73,26 +62,34 @@
 <!-- CDN Account Services Methods -->
     
     <method name="GET" id="listCDNcontainers">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List Account Containers">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="List CDN-Enabled Containers">
             <para role="shortdesc">
-                Lists storage containers sorted by name.
+                Lists CDN-enabled containers sorted by name.
             </para>
-            <para>This operation lists the storage containers in your account and sorts them by name. </para>
-            <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
-            <para>The list is limited to 10,000 containers at a time. See "Controlling a Large List of Containers" below for information on limiting and navigating the list. </para> 
-            <para>Container names are sorted based on a binary comparison (
-                <link
-                xlink:href="http://www.sqlite.org/datatype3.html#collation"
-                >http://www.sqlite.org/datatype3.html#collation</link>), a built-in collating function
-                that compares string data using SQLite's memcmp() function,
-                regardless of text encoding.</para>
+            <para><command>GET</command> operations against the <code>cloudFilesCDN</code>
+                endpoints for an account retrieve a list of CDN-enabled
+                containers. (For the CDN endpoints, see <xref
+                    linkend="Service-Access-Endpoints-d1e003"/>.) </para>
+            <para>Passing the query parameter
+                <code>?enabled_only=true</code> suppresses any
+                private (non-CDN-enabled) containers from appearing in
+                the list. Thus, Cloud Files provides filtering support
+                to return only the list of containers that are
+                CDN-enabled. </para> 
+            <para>The list of CDN-enabled containers is returned in the
+                response body, one container name per line.</para>            
             <para>A list of containers is returned in the response body, one container per line. </para>
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>
-           
- 
-            
+            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>            
+            <para>To view the CDN container details, see xref
+                linkend=FIXME List_CDN-Enabled_Container_Metadata-d1e2711/.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="enabled_only" style="query" required="false"
+                type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to <code>true</code> to return only
+                    CDN-enabled containers.</p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
@@ -101,12 +98,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid. Using <code>marker</code> provides a mechanism to iterate through the entire list of
+                    containers.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names less in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names less in value than the specified end marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
@@ -115,58 +113,17 @@
                         the serialized response format - either json or
                         xml.</p></doc>
             </param>
-            <representation mediaType="application/xml" element="files:Files" >
-                <doc>                     
-                    <xsdxt:code href="../wadl/samples/cf-getAccountContainers_request.xml"/>
+            <representation mediaType="application/text" element="files:Files" >
+                <doc title="CDN-Enabled Containers List Request">                     
+                    <xsdxt:code href="../wadl/samples/cf-getCDNAccountContainers_request.txt"/>
                 </doc>
-            </representation>    
-            <representation mediaType="application/json" element="files:Files" >
-                <doc>
-                    <xsdxt:code href="../wadl/samples/cf-getAccountContainers_request.json"/>
-                </doc>
-            </representation>           
+            </representation>   
         </request>
         <response status="200 204">           
             <representation mediaType="application/xml" xml:lang="EN">
-                <doc>                 
-                    <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
-                </doc>
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="name" style="plain" required="true" type="xsd:string" path="/account/container/name">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
-                    </p></doc>
-                </param>        
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="count" style="plain" required="true" type="xsd:int" path="/account/container/count">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
-                    </p></doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="bytes" style="plain" required="true" type="xsd:int" path="/account/container/bytes">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
-                    </p></doc>
-                </param>    
-            </representation>
-            <representation mediaType="application/json" xml:lang="EN">                
-                <doc>
-                    <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.json"/>
-                </doc>
-<!--                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="name" style="plain" required="true" type="xsd:string" path="$.*.name">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
-                    </p></doc>
-                </param>        
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="count" style="plain" required="true" type="xsd:int" path="$.*.count">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of objects in the container.
-                    </p></doc>
-                </param>
-                <param xmlns="http://wadl.dev.java.net/2009/02"
-                    name="bytes" style="plain" required="true" type="xsd:int" path="$.*.bytes">
-                    <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
-                    </p></doc>
-               </param> 
--->
+                <doc title="CDM-Enabled Containers List Response">                 
+                    <xsdxt:code href="../wadl/samples/cf-getCDNAccountContainers_response.txt"/>
+                </doc>               
             </representation>
         </response>
     </method>
@@ -176,138 +133,167 @@
     
     <method name="PUT" id="enableDisableCDNcontainer">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="List Container Objects">
-            <para role="shortdesc">Lists the objects stored in the
-                container.</para>
-            <para>This operation against a storage container name retrieves a list of objects
-                stored in the container. Additionally, you can use optional query parameters to refine the list results.</para>    
-            <para>A request with no query parameters returns the full list of object names stored in the
-                container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full
-                list and returns a subset of objects.  For information on limiting and controlling the list, see “Controlling a Large List of Objects” below.</para>
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
-                exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>
-            <para>For information on filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
-            <para>This one-item response shows less than the limit of two object names requested, and indicates that this is the end of the list.</para>      
+            title="CDN-Enable and CDN-Disable a Container">
+            <para role="shortdesc">Enables or disables a container for use with the CDN.</para>
+            <para>
+                <remark security="writeronly">Reworked this section to
+                    highlight TTL -- dsh - 2012-03-12</remark>Before a
+                container can be CDN-enabled, it must exist in the storage
+                system. To CDN-enable the container, perform a <command>PUT</command> request
+                against it using the <code>publicURL</code> noted in the
+                service catalog for Cloud Files during Authentication and
+                set the <code>X-CDN-Enabled</code> header to
+                <code>True</code>. </para> 
+            <para><xref linkend="Retrieving_Auth_Token"/> provides an
+                example of the information in the service catalog for
+                <code>cloudfilesCDN</code>. </para>
+            <para>When a container is CDN-enabled, any objects stored in
+                it are publicly accessible over the content delivery network
+                by combining the container's CDN URI with the object name
+                (<code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>). </para>
+            <note>
+                <para>The examples in this guide use
+                    <code>cdn.clouddrive.com</code> for an endpoint for
+                    operations against the CDN management service, but you
+                    should use whatever your authentication request provides.
+                    For more information about your authentication request,
+                    see <xref linkend="Authentication-d1e639"/>. For more
+                    information about service access endpoints, see <xref
+                        linkend="Service-Access-Endpoints-d1e003"/>. </para>
+            </note>
+            <para>Any CDN-accessed objects are cached in the CDN for a
+                specified amount of time called the Time To Live (TTL). Each time the object is accessed after
+                the TTL expires, the CDN refetches and caches the object for
+                the next TTL period. </para>
+            <para>You can specify the TTL for an object by including the
+                HTTP header <code>X-TTL:
+                    <replaceable>integerSeconds</replaceable></code>.
+                Setting the TTL is the same as setting the HTTP
+                <code>Expires</code> and <code>Cache-Control</code>
+                headers for the cached object. The minimum TTL is 15 minutes
+                (900 seconds), and the maximum is 50 years for a range of 900
+                to 1576800000 seconds. However, setting a TTL for a long
+                time does not guarantee that the content stays populated on
+                CDN edge servers for the entire period. The most popular
+                objects stay cached based on the edge location's logic. </para>
+            <note>
+                <title>Note</title>
+                <para> On August 13, 2012, the maximum TTL was set to
+                    31536000 (one year). If you set new TTL values to a
+                    greater time frame, your object still expires at the
+                    one-year mark. However, if you already had a greater TTL
+                    value set on an object, it will expire at the time you
+                    originally set. </para>
+            </note>
+            <para>A status code of 201 (Created)
+                indicates that the container was CDN-enabled as requested. If the container is
+                already CDN-enabled, a 202 (Accepted) status code is
+                returned, and the TTL is adjusted. A status code of 204 (No Content) indicates the container was CDN-enabled as requested, but has no content.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
+          <para>In order to remove the container from the CDN, change the <code>X-Cdn-Enabled</code> header to <code>False</code>, as in the request below. However, note that objects remain on the CDN edge server and are served to the public until their TTL expires.  </para> 
         </wadl:doc>
         
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="limit" style="query" required="false"
+                name="X-Ttl" style="header" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer n, limits the number of results to n values.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies the Time To Live in seconds for an object to be cached in the CDN. The default value is 259200
+                    seconds, or 72 hours. 
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="marker" style="query" required="false"
+                name="X-Cdn-Enabled" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names greater in value than the
-                    specified marker.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Indicates if a container is CDN-enabled. Valid values are True and False.</p></doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="end_marker" style="query" required="false"
-                type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names less in value than the specified
-                    marker.</p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="prefix" style="query" required="false"
-                type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string value x, causes the results to be limited to object names
-                    beginning with the substring x.
-                </p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="format" style="query" required="false"
-                type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies either json or xml
-                  to return the respective serialized response.</p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="delimiter" style="query" required="false"
-                type="xsd:char">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a character c, returns the object names nested in the container
-                    (without the need for the directory marker objects).</p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="path" style="query" required="false"
-                type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string x, returns the object names nested in the pseudo path. Equivalent to setting delimiter to '/' and prefix to the path with a '/' on the end. 
-                    For more information about pseudo paths, see the section on pseudo hierarchical folders and directories.
-                </p></doc>
-            </param>
+           
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="List Container Objects Request">                     
-                    <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.txt"/>
+                <doc title="CDN-Enable Container Request">                     
+                    <xsdxt:code href="../wadl/samples/cf-putCDNEnableContainer_request.txt"/>
                 </doc>
             </representation> 
-            <representation mediaType="application/xml" element="files:Files" >
-                <doc>                     
-                    <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.xml"/>
+            <representation mediaType="text/xml" element="files:Files" >
+                <doc title="CDN-Disable Container Request">                     
+                    <xsdxt:code href="../wadl/samples/cf-putCDNDisableContainer_request.txt"/>
                 </doc>
             </representation>    
-            <representation mediaType="application/json" element="files:Files" >
-                <doc>
-                    <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.json"/>
-                </doc>
-            </representation>           
+                     
         </request>
-        <response status="200 204">
+        <response status="200 202 204">
             
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Uri" style="header" required="false"
+                type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Indicates the URI that you can combine with object names
+                    to serve objects through the CDN. 
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" xml:lang="EN">
-                <doc title="List Container Objects Response">                 
-                    <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.txt"/>
+                <doc title="CDN-Enable Container Response">                 
+                    <xsdxt:code href="../wadl/samples/cf-putCDNEnableContainer_response.txt"/>
                 </doc>
-                
             </representation>
-                <representation mediaType="application/xml" xml:lang="EN">
-                    <doc>                 
-                        <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.xml"/>
-                    </doc>
-                   
-                </representation>
-                <representation mediaType="application/json" xml:lang="EN">
-                    
-                    <doc>
-                        <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.json"/>
-                    </doc>
-                    
-                </representation>
         </response>
-        &deleteContainerFaults;
+ 
     </method>  
  
     <method name="POST" id="updateCDNcontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Container Metadata">
-            <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container level URI. These headers
-                must have the format, X-Container-Meta-name.</para>
-            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where name is the name of your custom metadata. Subsequent <command>POST</command>POST to the header using the same metadata name overwrite the previous value. </para>
-            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
-            <para>A status code of 204 (No Content) indicates success. Status
-                code 404 (Not Found) is returned when the requested container does not exist.</para>
+            title="Update CDN-Enabled Container Metadata">
+            <para role="shortdesc">Updates the CDN-enabled container metadata.</para>
+            <para>A <command>POST</command> operation against a CDN-enabled
+                container adjusts the following metadata: </para>
+            <para> <itemizedlist spacing="compact">
+                    <listitem>
+                        <para><code>X-Log-Retention</code></para>
+                    </listitem>
+                    <listitem>
+                        <para><code>X-Cdn-Enabled</code></para>
+                    </listitem>
+                    <listitem>
+                        <para><code>X-Ttl</code></para>
+                    </listitem>
+                </itemizedlist></para>
+            <para>A status code of 204 (No Content) indicates success. Status code 404 (Not Found) is returned if the requested container is not found.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
-            <note><para>For information about adding metadata for the following purposes, see <xref linkend="containerMetadataOptions_d1e001"/>: </para>
-                    <itemizedlist spacing="compact">
-                        <listitem><para>Container quotas</para></listitem>
-                        <listitem><para>Access log delivery</para></listitem>
-                </itemizedlist></note>
+        
+            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see xref linkend="FIXME"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
+           
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Meta-name" style="header"
-                required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace the name at the end of the header with the name of your metadata. </p></doc>
+                name="X-Log-Retention" style="header"
+                required="false" type="xsd:Boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml"><code>True</code> or <code>False</code> to indicate
+                    whether the CDN access logs should be collected and
+                    stored in the Cloud Files storage system. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Enabled" style="header"
+                required="false" type="xsd:Boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml"><code>True</code> or <code>False</code> to
+                    enable or disable public sharing over the CDN. Keep in
+                    mind that if you have content currently cached in the
+                    CDN, setting your container back to private will NOT
+                    purge the CDN cache. You have to wait for the TTL to
+                    expire or purge the objects. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Ttl" style="header"
+                required="false" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The TTL value in
+                    seconds. </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Create or Update Container Metadata Request">
-                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>
+                <doc title="Update CDN-Enabled Container Metadata Request">
+                    <xsdxt:code href="../wadl/samples/cf-createCDNContainerMetadata_request.txt"/>
                 </doc>
             </representation>     
         </request>
         <response status="204"> 
             <representation mediaType="application/http">
-                <doc title="Create or Update Container Metadata Response">
-                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
+                <doc title="Update CDN-Enabled Container Metadata Response">
+                    <xsdxt:code href="../wadl/samples/cf-createCDNContainerMetadata_response.txt"/>
                 </doc>
             </representation>
         </response>
@@ -316,128 +302,116 @@
 
     <method name="HEAD" id="retrieveCDNcontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Container Metadata">
-            <para role="shortdesc">Gets container metadata, including
-                the number of objects in the container and the total bytes for all
-                objects stored in the container.</para>
-            <para>Use a <command>HEAD</command> operation against the container to return the following metadata: </para>
-            <itemizedlist spacing="compact">
-                <listitem><para>How many objects are in the container (<code>X-Container-Object-Count</code>)</para></listitem>
-                <listitem><para>The total bytes for all objects stored in the container (<code>X-Container-Bytes-Used</code>)</para></listitem>
-                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
-            </itemizedlist>
-            <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>If the container exists, a status code of 2xx (between 200 and 299, inclusive) is returned. If the container does not exist,
-                a status code of 404 (Not Found) is returned.</para>
-            <para>This operation does not require a request body and does not return a response body.</para>
+            title="List a CDN-Enabled Container's Metadata">
+            <para role="shortdesc">Gets a CDN-enabled container's metadata.</para>
+            <para>You can view CDN-enabled container details by performing
+                a <command>HEAD</command> operation on a container where the
+                <code>Host</code> header value is one of the
+                <code>cdnCloudFiles</code> service access endpoints. (For
+                a list of the endpoints, see <xref
+                    linkend="Service-Access-Endpoints-d1e003"/>). </para>
+            <para>If the container is (or ever has been) CDN-enabled, the metadata is 
+                returned in headers in the response for plain text, or in the response body 
+                for XML or JSON, if you request either as your output format. </para>
+            <note>
+                <para>Remember that your <command>HEAD</command> operation
+                    must be on the CDN host (i.e.,
+                    <code>cdn.clouddrive.com</code>). Otherwise, you will
+                    see the metadata for your private container as described
+                    in <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>. </para>
+            </note>
+            <para>A 204 (No Content) HTTP status code is returned if the
+                account has no containers. Otherwise, status code of 200
+                (OK) is returned.</para>          
+            
         </wadl:doc>       
         <request>
-            <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Get Container Metadata Request">
-                    <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_request.txt"/>
-                </doc>
-            </representation>     
-        </request>
-        <response status="204">
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Object-Count" style="header"
+                name="format" style="query"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The optional
+                    format the returned information. Either XML or JSON.
+                </p></doc>
+            </param>
+            <representation mediaType="text/xml" element="files:Files" >
+
+                <doc title="Get CDN-Enabled Container Metadata Request">
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_request.txt"/>
+                </doc>
+            </representation> 
+            <representation mediaType="application/json" element="files:Files" >
+                
+                <doc >
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_request.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml" element="files:Files" >
+                
+                <doc>
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_request.xml"/>
+                </doc>
+            </representation>    
+        </request>
+        <response status="200 204">
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Uri" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The URI for
+                    downloading the object over HTTP. This URI can be
+                    combined with any object name within the container to
+                    form the publicly accessible URI for that object for
+                    distribution over a CDN system.
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Ttl" style="header"
                 required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                     number of objects in the container. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Bytes-Used" style="header"
-                required="true" type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number
-                    of bytes used for all objects in the container.</p></doc>
+                name="X-Cdn-Enabled" style="header"
+                required="true" type="xsd:boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml"> True or False to indicate whether the container is currently marked to allow public serving of objects through CDN</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Container-Meta-name" style="header"
+                name="X-Log-Retention" style="header"
+                required="true" type="xsd:boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">True or False to indicate whether the CDN access logs should be collected and stored in the Cloud Files storage system. </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Ssl-Uri" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The name at the end of the header is the name of your metadata. </p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The URI for downloading the object over HTTPS, using SSL. (The user cannot have custom SSL certificates because our CDN partner does not provide that feature. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Streaming-Uri" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The URI for video streaming that uses Adobe’s HTTP Dynamic Streaming. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Ios-Uri" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The URI for video streaming that uses Apple’s HTTP Live Streaming. </p></doc>
             </param> 
             <representation mediaType="application/http">
-                <doc title="Get Container Metadata Response">
-                    <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
+                <doc title="Get CDN-Enabled Container Metadata Request">
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_response.txt"/>
                 </doc>
             </representation>
+            <representation mediaType="application/json">
+                <doc>
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_response.json"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/xml">
+                <doc>
+                    <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_response.xml"/>
+                </doc>
+            </representation> 
         </response>
-        &only404Fault;
+
     </method>   
-    
-    <method name="PUT" id="purgeCDNcontainer">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Container">
-            <para role="shortdesc">Deletes an empty container.</para>
-            <para>A <command>DELETE</command> operation against a storage container permanently removes it. The container must be empty before it can be deleted.</para>
-            <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects it contains. (See <xref linkend="GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000"/>.)</para>
-            <para>A status code of 204 (No Content) indicates
-                success. A status code of 404 (Not Found) is returned if the requested container is not found. A status code of 409
-                (Conflict) is returned if the container is not empty.</para>
-            <para>This operation does not require a request body and does not return a response body.</para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Delete Container Request">
-                    <xsdxt:code href="../wadl/samples/cf-deleteContainer_request.txt"/>
-                </doc>
-            </representation>     
-        </request>
-        <response status="204"> 
-            <representation mediaType="text/xml" element="files:Files" > 
-                <doc title="Delete Container Response">
-                    <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
-                </doc>
-            </representation>     
-        </response>
-        &deleteContainerFaults;        
-    </method>
-    
- <!-- Object Methods-->
-    
-
-    <method name="DELETE" id="purgeCDNobjects">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Object">
-            <para role="shortdesc">Permanently deletes an object from
-                the Cloud Files storage system. (You can use <command>COPY</command> and then
-                <command>DELETE</command> to effectively move an object.)</para>
-            <para><command>DELETE</command> operations on an object permanently
-                remove an object from the storage system (data and
-                metadata).</para>           
-            <para>Deleting an object is processed immediately at the time
-                of the request. Any subsequent <command>GET</command>, <command>HEAD</command>, <command>POST</command>, or
-                <command>DELETE</command> operations return a 404 (Not Found) error
-                unless object versioning is on and other versions
-                exist. For more information about object versioning, see <xref
-                    linkend="Object_Versioning-e1e3230"/>.</para>
-            <para>Objects with the <code>X-Delete-At</code> or
-                <code>X-Delete-After</code> header assigned are deleted
-                within one day of the expiration time, and the object is not
-                served immediately after the expiration time. For more details, refer to <xref
-                    linkend="Expiring_Objects-e1e3228"/>.</para> 
-            <para>A status code of 204 (No
-                Content) indicates success. Status code 404 (Not Found) is
-                returned when the object does not exist.</para>
-            <para>This operation does not require a request body and does not return a response body.</para>
-            <para>For information about bulk deletions, see <xref
-                linkend="Bulk_Delete-d1e2338.html"/>.</para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/http">
-                <doc title="Delete Object Request">
-                    <xsdxt:code href="../wadl/samples/cf-deleteObject_request.txt"/>
-                </doc>
-            </representation>    
-        </request>
-        <response status="204"> 
-            <representation mediaType="application/http">
-                <doc title="Delete Object Response">
-                    <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>
-                </doc>
-            </representation>    
-        </response>
-        &only404Fault;     
-    </method>
-
+ 
+ 
 </application>
