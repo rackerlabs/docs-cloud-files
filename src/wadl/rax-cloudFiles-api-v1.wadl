@@ -904,7 +904,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Type" style="header"
                 required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent. If not specified, the <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -946,6 +946,13 @@
                         custom object metadata. name at the end of this header represents the name
                         of your metadata.</p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Detect-Content-Type" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                </p></doc>
+            </param>
+            
             <representation mediaType="application/http">
                 <doc title="Create or Update Object Request">
                     <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
@@ -1157,6 +1164,18 @@
                             destination object in the form of
                         <code>/container/object</code>. </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent. If not specified, the <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Detect-Content-Type" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Copy Object Request Using PUT">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
@@ -1279,6 +1298,18 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The date, in the format of a Unix Epoch
                         timestamp, after which the object is removed.
                       </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent. If not specified, the <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Detect-Content-Type" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                </p></doc>
             </param>
             <representation mediaType="application/http">
                 <doc title="Update Object Metadata Request">
