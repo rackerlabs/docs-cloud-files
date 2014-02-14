@@ -22,7 +22,7 @@
 <!--             All Resources                             -->
 <!--*******************************************************-->
 
-    <resources base="https://storage101.ord1.clouddrive.com/" xml:id="storageCDN-v1">
+    <resources base="https://storage101.ord1.clouddrive.com/">
         <resource id="versions" path="v1">
      
             <resource id="account" path="{account}">
