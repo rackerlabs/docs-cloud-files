@@ -202,6 +202,8 @@
                 returned, and the TTL is adjusted. A status code of 204 (No Content) indicates the container was CDN-enabled as requested, but has no content.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
           <para>In order to remove the container from the CDN, change the <code>X-Cdn-Enabled</code> header to <code>False</code>, as in the request below. However, note that objects remain on the CDN edge server and are served to the public until their TTL expires.  </para> 
+            <note><para>The CDN URI is unique per container. After the container is CDN-enabled, you can make a <command>HEAD</command> request to the Cloud Files CDN endpoint with the container name to return the CDN URI in the <code>X-Cdn-Uri</code> header. You can use a cURL request similar to the following example:</para>
+                <programlisting>curl -I -H 'x-auth-token: yourAuthToken' cloudFilesCDN:yourPublicURL/yourContainerName</programlisting></note>
         </wadl:doc>
         
         <request>
@@ -290,7 +292,7 @@
                 name="X-Ttl" style="header"
                 required="false" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The TTL value in
-                    seconds. </p></doc>
+                    seconds. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 50 years (1577836800 seconds).</p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Update CDN-Enabled Container Metadata Request">

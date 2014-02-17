@@ -9,31 +9,6 @@
 <!ENTITY PATCH '<command xmlns="http://docbook.org/ns/docbook">PATCH</command>'>
 
 <!--
-         A collection of common faults, these are pretty much expected
-         in every request.
--->
-     <!ENTITY commonFaults
-           '
-        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:badRequest"/>
-            <representation mediaType="application/json"/>
-        </response>
-        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:unauthorized"/>
-            <representation mediaType="application/json"/>
-        </response>
-        <response status="406" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:unauthorized"/>
-            <representation mediaType="application/json"/>
-        </response>
-        <response status="429" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:tooManyRequests"/>
-            <representation mediaType="application/json"/>
-        </response>
-
-           '>
-
-<!--
           Fault on Get Account MetaData
  -->
      <!ENTITY headAcctMetaFaults
@@ -46,7 +21,7 @@
            '>
            
 <!--
-          Fault on Get Container Metadata
+          Only 404 Fault
  -->
      <!ENTITY only404Fault
            '
@@ -57,6 +32,9 @@
   
            '>
            
+<!--      
+          Fault on Delete CDN-Enabled Object
+-->                     
      <!ENTITY deleteCDNObjectFaults
            '
         <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
@@ -106,8 +84,34 @@
 
            '>          
            
-           
+<!--
+         NOTE: NONE OF THE ERROR BELOW HERE ARE USED BY CLOUD FILES WADLS
+         A collection of common faults, these are pretty much expected
+         in every request. 
+         
+-->
+     <!ENTITY commonFaults
+           '
+        <response status="400" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="queues:badRequest"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="401" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="queues:unauthorized"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="406" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="queues:unauthorized"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="429" xmlns="http://wadl.dev.java.net/2009/02">
+            <representation mediaType="application/xml" element="queues:tooManyRequests"/>
+            <representation mediaType="application/json"/>
+        </response>
+
+           '>           
 <!-- Not used by all of Cloud API operations
+     NOT USED BY CLOUD FILES WADL
         <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
             <representation mediaType="application/xml" element="dbaas:forbidden"/>
             <representation mediaType="application/json"/>
@@ -137,55 +141,6 @@
             <representation mediaType="application/json"/>
         </response>
 
-          Faults on LIST MESSAGES
-      -->
+         
+ -->
       
-     <!ENTITY getListFaults
-           '
-        <response status=" 204" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:noContent"/>
-            <representation mediaType="application/json"/>
-        </response>
-           '>      
-      <!--
-          Faults on GET
-      -->
-     <!ENTITY getFaults
-           '
-        <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:itemNotFound"/>
-            <representation mediaType="application/json"/>
-        </response>
-           '>
-      <!--
-          Faults on POST/PATCH
-      -->
-     <!ENTITY postPatchFaults
-           '
-        <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:itemNotFound"/>
-            <representation mediaType="application/json"/>
-        </response>
-           '>      
-           
-      <!--
-          Faults on DELETE
-      -->
-     <!ENTITY deleteFaults
-           '
-        <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:forbidden"/>
-            <representation mediaType="application/json"/>
-        </response>
-           '>
-           
-               <!--
-          Faults on POST
-      -->
-     <!ENTITY postFaults
-           '
-        <response status="503" xmlns="http://wadl.dev.java.net/2009/02">
-            <representation mediaType="application/xml" element="queues:serviceUnavailable"/>
-            <representation mediaType="application/json"/>
-        </response>
-           '> 

@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-02-13</pubdate>
+    <pubdate>2014-02-21</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -69,12 +69,11 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2014-02-13</date>
+        <date>2014-02-21</date>
         <revdescription>
-          <para>Reformatted <xref linkend="API_Operations_d1e000"/>
-            and <xref
-              linkend="API_Operations_for_CDN_Services-d1e2386"
-            />.</para>
+          <para>Reformatted <xref linkend="API_Operations_d1e000"/> and <xref
+              linkend="API_Operations_for_CDN_Services-d1e2386"/> using Web Application Description
+            Language (WADL) files.</para>
         </revdescription>
       </revision>
       <revision>
@@ -1065,8 +1064,8 @@
             Guide</citetitle></link>. If you have changes that you
         would like to see in the Cloud File language-specific APIs,
         email them to <link
-          xlink:href="mailto:cloudfiles@rackspacecloud.com"
-          >cloudfiles@rackspacecloud.com</link>. Make sure to indicate
+          xlink:href="mailto:sdk-support@rackspace.com"
+          >sdk-support@rackspace.com</link>. Make sure to indicate
         which language and version you modified and send a unified
         diff. </para>
       <para> Each language-specific API has its own documentation (in
@@ -3075,6 +3074,13 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
         </example>
         <para>A <command>GET</command> request to the manifest object returns the concatenation of
           the objects from the manifest.</para>
+        <note>
+          <para>The ETag in the response for a GET or HEAD on the manifest file is the MD5 sum of
+            the concatenated string of ETags for each of the segments in the manifest. Usually, the
+            ETag is the MD5 sum of the contents of the object, and that holds true for each segment
+            independently. But it is not meaningful to generate such an ETag for the manifest
+            itself, so this method was chosen to at least offer change detection.</para>
+        </note>
         <para>The response's <code>Content-Type</code> for a &GET; or &HEAD; request on the manifest
           will be the same as the <code>Content-Type</code> set during the &PUT; request that
           created the manifest. You can easily change the <code>Content-Type</code> by reissuing the
@@ -6025,6 +6031,7 @@ X-Object-Meta-Veggie: Carrot
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#object"/>
       </wadl:resources>
+      
     </section>
   </chapter> 
   

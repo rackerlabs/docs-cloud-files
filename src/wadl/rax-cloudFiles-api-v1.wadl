@@ -111,6 +111,8 @@
                 that compares string data using SQLite's memcmp() function,
                 regardless of text encoding.</para>
             <para>A list of containers is returned in the response body, one container per line. </para>
+            <para>The character sequence used to create the newline that separates the container names is a single \n. If you want to parse these listings,
+                you should send an <code>Accept: application/json</code> or <code>Accept: application/xml</code> header with the request to get the results in JSON or XML.</para>
             <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>
            
             <para><emphasis role="bold">Format Container List</emphasis> </para>
@@ -380,7 +382,8 @@
                 stored in the container. Additionally, you can use optional query parameters to refine the list results.</para>    
             <para>A request with no query parameters returns the full list of object names stored in the
                 container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full
-                list and returns a subset of objects.  For information on limiting and controlling the list, see “Controlling a Large List of Objects” below.</para>
+                list and returns a subset of objects.  For information on limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
+            
             <para>The HTTP response status code is a value from 200 to 299, inclusive. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
                 exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>
             <para>For information on filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
@@ -493,7 +496,12 @@
             </representation>           
         </request>
         <response status="200 204">
-            
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Last-Modified" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. Last-Modified has resolution up to one second. For Last-Modified, the time zone is UTC.
+                </p></doc>
+            </param>    
             <representation mediaType="text/xml" xml:lang="EN">
                 <doc title="List Container Objects Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.txt"/>
@@ -671,6 +679,12 @@
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The name at the end of the header is the name of your metadata. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Timestamp" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. The format is the same as a Unix timestamp. The storage system uses this header to determine the latest version. For example, during replication, the storage system makes sure all three object replicas are up to date, and it uses the X-Timestamp header to determine which replica is the latest. 
+                    You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
             </param> 
             <representation mediaType="application/http">
                 <doc title="Get Container Metadata Response">
@@ -1225,6 +1239,18 @@
             </representation>    
         </request>
         <response status="200">
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Timestamp" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. The format is the same as a Unix timestamp. The storage system uses this header to determine the latest version. For example, during replication, the storage system makes sure all three object replicas are up to date, and it uses the X-Timestamp header to determine which replica is the latest. 
+                    You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Last-Modified" style="header"
+                required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. For Last-Modified, the time zone is UTC. You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.
+                </p></doc>
+            </param> 
             <representation mediaType="application/http">
                 <doc title="Get Object Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
