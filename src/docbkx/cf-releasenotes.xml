@@ -29,8 +29,8 @@
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
-		<productname>Cloud Files™</productname>
-		<pubdate>2013-05-20</pubdate>
+		<productname>Rackspace Cloud Files™</productname>
+		<pubdate>2014-02-21</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -41,15 +41,595 @@
 				interested in developing applications using the
 				Rackspace Cloud Files API. </para>
 		</abstract>
-		<revhistory>
+		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
 			<revision>
-				<date>2013-05-20</date>
+				<date>2014-02-21</date>
 				<revdescription>
-					<para>May 20, 2013 Release</para>
+					<itemizedlist>
+						<listitem>
+							<para>Updated the table in the "Absolute Limits" section of the
+									<citetitle>Cloud Files Developer Guide</citetitle> to include
+								the rate limit for write operations, which is 100 operations per
+								second per container.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the following object methods to include the
+									<code>X-Detect-Content-Type</code> header in the request:</para>
+							<itemizedlist>
+								<listitem>
+									<para><command>PUT</command> (Create or Update Object)</para>
+								</listitem>
+								<listitem>
+									<para><command>POST</command> (Update Object Metadata)</para>
+								</listitem>
+								<listitem>
+									<para><command>COPY</command> (Copy Object)</para>
+								</listitem>
+							</itemizedlist>
+							<para>If you set this header to <code>True</code>, the
+									<code>Content-Type</code> that is sent in the request (if any)
+								is ignored, and <code>Content-Type</code> is guessed by using the
+								Python mimetypes library based on the object path. </para>
+						</listitem>
+						<listitem>
+							<para>Reworked the "API Operations for Storage Services" chapter and the "API Operations for
+								CDN Services" chapter by using Web Application Description Language
+								(WADL) files for the resource and method descriptions.</para>
+						</listitem>
+					</itemizedlist>
 				</revdescription>
 			</revision>
 			<revision>
-				<date/>
+				<date>2013-12-31</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated the instructions for locating the API Key in the Cloud
+								Control Panel in "Retrieving the Authentication Token"
+								section.</para>
+						</listitem>
+						<listitem>
+							<para>Added a table of all API operations, which lists and briefly
+								describes all API operations. Also added tables showing the API
+								operations at the beginning of each section that describes the
+								operations.</para>
+						</listitem>
+						<listitem>
+							<para>Added service access endpoints for the CDN management service component (
+									<code>cloudfilesCDN</code>) to the "Service Access Endpoints"
+								section.</para>
+						</listitem>
+						<listitem>
+							<para>Updated account information in the "Service Access Endpoints"
+								section to show
+									MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
+								rather than <replaceable>1234</replaceable>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Cloud Files Service Contract Version" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Absolute Limits" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Request and Response Types" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Update Account Metadata" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Delete Account Metadata" section.</para>
+						</listitem>
+						<listitem>
+							<para>In all examples, updated the <code>X-Auth-Token</code> to use the
+								current format returned by an authentication request (no dashes).
+								Also updated examples to use real values for
+									<replaceable>account</replaceable>,
+									<replaceable>container</replaceable>, and
+									<replaceable>object</replaceable>. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-11-26</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the "Create Large Objects" section with more information
+								about Dynamic Large Objects and Static Large Objects.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the "Extract Archive" section to include a note about
+								using a blank <code>Content-Type</code> to have Cloud Files
+								determine the file type for the archive.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-11-01</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Replaced references to <code>X-Storage-Url</code> and
+									<code>X-Cdn-Management–Url</code> throughout this document with
+								references to the <code>cloudFiles</code> and
+									<code>cloudFilesCDN</code> endpoints in the service catalog
+								based on use of Identity v2.0 rather than Identity v1.0.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the "Authentication" section to include new references to
+								additional information about the service access endpoints and the
+								service catalog. </para>
+						</listitem>
+						<listitem>
+							<para>Updated the "Authentication" to show a cURL example for Identity
+								v2.0 only.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-10-25</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the "Service Access Endpoint" section, which includes all endpoints for Cloud
+								Files including the newest one in Hong Kong.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the "Authentication" section to show information for
+								Rackspace Identity v2.0.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the "Create the Form" section to indicate that the value
+								of <code>redirect</code> can be empty to indicate that no redirect
+								is included on the form. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-09-26</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the "RBAC" section for the addition of Role Based Access
+								Control to Cloud Files.</para>
+						</listitem>
+						<listitem>
+							<para>Updated the "CORS" section.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-09-19</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Updated responses to show <code>application/json</code> in the
+								"Bulk Delete" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added <code>X-Container-Meta-Web-Listings</code>,
+									<code>X-Container-Meta-Web-Listings-Css</code>, and
+									<code>X-Container-Meta-Web-Directory-Type</code> to the "Create
+								a Static Website"section.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-07-18</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Clarified information about
+									<code>redirect</code> and <code>expires</code> in the "Create
+								the Form" section. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-06-27</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>In the "Authentication" section, changed references for
+								authentication to point to v2.0.</para>
+						</listitem>
+						<listitem>
+							<para>In the "Authentication" section, updated the example to show v2.0
+								for authentication.</para>
+						</listitem>
+						<listitem>
+							<para>In the "CDN Object Services" section and the "Delete CDN Objects" section, added a note
+								about removing a CDN-enabled container by setting
+									<code>X-Cdn-Enabled</code> to <code>False</code> in
+									<command>HEAD</command>.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-05-20</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added a link in the "Overview" SECTION to the Knowledge Center
+								article, "Best Practices for Using Cloud Files," at <link
+									xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
+									>http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Container Quotas" section.</para>
+						</listitem>
+						<listitem>
+							<para>Created a new section "Object Services". This section includes new
+								and previously existing information specifically related to storage
+								objects.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Static Large Object Creation" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Bulk Operations" section.</para>
+						</listitem>
+						<listitem>
+							<para>Added the "Override TempURL File Names" section.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2013-02-01</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Changed location of SDKs. Added note on object metadata behavior.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-12-05</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added iOS Streaming. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-11-30</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed internal linking. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-11-16</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added end_marker list parameter and CORS container headers.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-10-31</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Updated language binding language and links.</para>
+						</listitem>
+						<listitem>
+							<para>Updated view CDN-enabled header. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-10-01</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added Access Log Delivery. Updated auth point. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-09-25</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added multi-region, legal, and CDN charge note. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-08-13</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Changed TTL limits and CDN URLs. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-07-23</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added CDN object purge limits. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-06-12</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added Bulk Import information. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-06-01</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added Object Versioning and Static Web information. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-04-25</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added TempURL and FormPost. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-03-19</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed doc tickets. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-02-06</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Revisions to clarify issues brought up in doc tickets. Formatted
+								HEAD like other commands. Standardized on URL. Added Expiring
+								Objects and ServiceNet information.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2012-01-12</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Revisions for the addition of expiring object functionality plus
+								doc bug fixes including adding more cross-references for finding
+								language bindings.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-11-15</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Revised information about how to perform a CDN purge, indicating
+								you must contact support to request a container purge
+								operation.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-10-21</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added more detail about reasons to perform a CDN purge, clarifying
+								that it is not required for deleting objects.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-09-13</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about streaming containers to support this new
+								streaming feature, including changing examples to match the
+								streaming headers and URLs returned.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-06-29</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>In the 6.1.1 Authorization example, changed
+									<code>X-Auth-Token</code> to <code>X-Auth-Key</code>.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-06-15</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added best practices for authentication tokens.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-05-24</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about new headers including CORS headers.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-04-20</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>HEAD returns 200 instead of 204 on an object metadata
+								request.</para>
+						</listitem>
+						<listitem>
+							<para>TTL maximum value is now 50 years instead of 3 days, the minimum
+								TTL is now 15 minutes (900 seconds), and the default is now 72 hours
+								instead of 24 hours.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-03-25</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about large object support.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-03-17</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about container metadata.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-03-10</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added a section about retrieving an SSL URL for CDN-enabled
+								containers that are using https protocol.</para>
+						</listitem>
+						<listitem>
+							<para>Updated examples to contain SSL as appropriate.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-02-25</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Added information about the edge purge capability for CDN-enabled
+								containers and objects.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-02-18</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Fixed error in the header range example that stated first instead
+								of last when fetching a portion of the data. </para>
+						</listitem>
+						<listitem>
+							<para>Updated CDN URLs to match new format.</para>
+						</listitem>
+						<listitem>
+							<para>Fixed error referring to <code>X-Auth-User</code> instead of
+									<code>X-Auth-Key</code>. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-01-12</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para> Removed references to ACL (Access Control List). </para>
+						</listitem>
+						<listitem>
+							<para> Fixed error in examples referring to <code>X-Auth-Key</code>
+								where it should be <code>X-Auth-Token</code>. </para>
+						</listitem>
+						<listitem>
+							<para> Added section numbers. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2011-01-04</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para> Expanded authentication information for UK release. </para>
+						</listitem>
+						<listitem>
+							<para> Added <parameter>delimiter</parameter> as a Query Parameter and
+								server-side object copy example. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
+				<date>2008-05-05</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Initial release.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
 			</revision>
 		</revhistory>
   
@@ -92,10 +672,249 @@
 			xmlns:m="http://www.w3.org/1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">Join the Cloud
 			Files chat room at Freenode IRC at #cloudfiles.</para>
-		<para>Rackspace welcomes your comments, feedback, and bug
-			reports .</para>
+		<para>Rackspace welcomes your comments, feedback, and bug reports.</para>
 	</preface>
-	<chapter xml:id="May01">
+	<chapter xml:id="doc_change_history">
+		<title>Document Change History</title>
+		<para>This version of the release notes replaces and obsoletes all earlier versions. The
+			most recent changes are described in the following table:</para>
+		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Feb21" >
+		<?dbhtml stop-chunking?>
+		<title>February 21, 2014</title>
+		<para>This release contains the following new features and documentation changes for Cloud
+			Files:</para>
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<listitem>
+				<para>Updated the table in the Absolute Limits section  to include the rate limit
+					for write operations, which is 100 operations per second per container.</para>
+			</listitem>
+			<listitem>
+				<para>Updated the following object methods to include the
+						<code>X-Detect-Content-Type</code> header in the request:</para>
+				<itemizedlist>
+					<listitem>
+						<para><command>PUT</command> (Create or Update Object)</para>
+					</listitem>
+					<listitem>
+						<para><command>POST</command> (Update Object Metadata)</para>
+					</listitem>
+					<listitem>
+						<para><command>COPY</command> (Copy Object)</para>
+					</listitem>
+				</itemizedlist>
+				<para>If you set this header to <code>True</code>, the <code>Content-Type</code>
+					that is sent in the request (if any) is ignored, and <code>Content-Type</code>
+					is guessed by using the Python mimetypes library based on the object path.
+				</para>
+			</listitem>
+			<listitem>
+				<para>Reworked the "API Operations for Storage Services" chapter and the "API
+					Operations for CDN Services" chapter by using Web Application Description
+					Language (WADL) files for the resource and method descriptions.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Dec31">
+		<?dbhtml stop-chunking?>
+		<title>December 31, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Updated the instructions for locating the API Key in the Cloud Control Panel
+					in "Retrieving the Authentication Token" section.</para>
+			</listitem>
+			<listitem>
+				<para>Added a table of all API operations, which lists and briefly describes all API
+					operations. Also added tables showing the API operations at the beginning of
+					each section that describes the operations.</para>
+			</listitem>
+			<listitem>
+				<para>Added service access endpoints for the CDN management service component
+						(<code>cloudfilesCDN</code>) to the "Service Access Endpoints"
+					section.</para>
+			</listitem>
+			<listitem>
+				<para>Updated account information in the "Service Access Endpoints" section to show
+						MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
+					rather than <replaceable>1234</replaceable>.</para>
+			</listitem>
+			<listitem>
+				<para>Added the "Cloud Files Service Contract Version" section.</para>
+			</listitem>
+			<listitem>
+				<para>Added the "Absolute Limits" section.</para>
+			</listitem>
+			<listitem>
+				<para>Added the "Request and Response Types" section.</para>
+			</listitem>
+			<listitem>
+				<para>Added the "Update Account Metadata" section.</para>
+			</listitem>
+			<listitem>
+				<para>Added the "Delete Account Metadata" section.</para>
+			</listitem>
+			<listitem>
+				<para>In all examples, updated the <code>X-Auth-Token</code> to use the current
+					format returned by an authentication request (no dashes). Also updated examples
+					to use real values for <replaceable>account</replaceable>,
+						<replaceable>container</replaceable>, and <replaceable>object</replaceable>.
+				</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Nov26">
+		<?dbhtml stop-chunking?>
+		<title>November 26, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Added the "Create Large Objects" section with more information about Dynamic
+					Large Objects and Static Large Objects.</para>
+			</listitem>
+			<listitem>
+				<para>Updated the "Extract Archive" section to include a note about using a blank
+						<code>Content-Type</code> to have Cloud Files determine the file type for
+					the archive.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Nov01">
+		<?dbhtml stop-chunking?>
+		<title>November 1, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Replaced references to <code>X-Storage-Url</code> and
+						<code>X-Cdn-Management–Url</code> throughout this document with references
+					to the <code>cloudFiles</code> and <code>cloudFilesCDN</code> endpoints in the
+					service catalog based on use of Identity v2.0 rather than Identity v1.0.</para>
+			</listitem>
+			<listitem>
+				<para>Updated the "Authentication" section to include new references to additional
+					information about the service access endpoints and the service catalog. </para>
+			</listitem>
+			<listitem>
+				<para>Updated the "Authentication" to show a cURL example for Identity v2.0
+					only.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Oct25">
+		<?dbhtml stop-chunking?>
+		<title>October 25, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Added the "Service Access Endpoint" section, which includes the endpoints for Cloud Files
+					Object Storage Management including the newest one in Hong Kong.</para>
+			</listitem>
+			<listitem>
+				<para>Updated the "Create the Form" section to indicate that the value of
+						<code>redirect</code> can be empty to indicate that no redirect is included
+					on the form. </para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Sep26">
+		<?dbhtml stop-chunking?>
+		<title>September 26, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Added the "RBAC" section for the addition of Role Based Access Control to
+					Cloud Files.</para>
+			</listitem>
+			<listitem>
+				<para>Updated the "CORS" section.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Sep19">
+		<?dbhtml stop-chunking?>
+		<title>September 19, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Updated responses to show <code>application/json</code> in the "Bulk Delete"
+					section.</para>
+			</listitem>
+			<listitem>
+				<para>Added <code>X-Container-Meta-Web-Listings</code>,
+						<code>X-Container-Meta-Web-Listings-Css</code>, and
+						<code>X-Container-Meta-Web-Directory-Type</code> to the "Create a Static
+					Website"section.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Jul18">
+		<?dbhtml stop-chunking?>
+		<title>July 18, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Clarified information about <code>redirect</code> and <code>expires</code> in
+					the "Create the Form" section. </para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="Jun27">
+		<?dbhtml stop-chunking?>
+		<title>June 27, 2013</title>
+		<para>This release contains documentation changes for Cloud Files.</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>In the "Authentication" section, changed references for authentication to
+					point to v2.0.</para>
+			</listitem>
+			<listitem>
+				<para>In the "Authentication" section, updated the example to show v2.0 for
+					authentication.</para>
+			</listitem>
+			<listitem>
+				<para>In the "CDN Object Services" section and the "Delete CDN Objects" section,
+					added a note about removing a CDN-enabled container by setting
+						<code>X-Cdn-Enabled</code> to <code>False</code> in
+					<command>HEAD</command>.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="May20">
 		<?dbhtml stop-chunking?>
 		<title>May 20, 2013</title>
 		<para>This release contains new features and documentation changes

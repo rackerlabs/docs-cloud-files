@@ -71,9 +71,36 @@
       <revision>
         <date>2014-02-21</date>
         <revdescription>
-          <para>Reformatted <xref linkend="API_Operations_d1e000"/> and <xref
-              linkend="API_Operations_for_CDN_Services-d1e2386"/> using Web Application Description
-            Language (WADL) files.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Updated the table in <xref linkend="Absolute_Limits-d1e942"/> to include the
+                rate limit for write operations, which is 100 operations per second per
+                container.</para>
+            </listitem>
+            <listitem>
+              <para>Updated the following object methods to include the
+                  <code>X-Detect-Content-Type</code> header in the request:</para>
+              <itemizedlist>
+                <listitem>
+                  <para><command>PUT</command> (Create or Update Object)</para>
+                </listitem>
+                <listitem>
+                  <para><command>POST</command> (Update Object Metadata)</para>
+                </listitem>
+                <listitem>
+                  <para><command>COPY</command> (Copy Object)</para>
+                </listitem>
+              </itemizedlist>
+              <para>If you set this header to <code>True</code>, the <code>Content-Type</code> that
+                is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed
+                by using the Python mimetypes library based on the object path. </para>
+            </listitem>
+            <listitem>
+              <para>Reworked <xref linkend="API_Operations_d1e000"/> and <xref
+                  linkend="API_Operations_for_CDN_Services-d1e2386"/> by using Web Application
+                Description Language (WADL) files for the resource and method descriptions.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
@@ -817,7 +844,7 @@
           docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
       <para>For more details about the Cloud Files service, please
         refer to <link
-          xlink:href="http://http://www.rackspace.com/cloud/files/"
+          xlink:href="http://www.rackspace.com/cloud/files/"
           >http://www.rackspace.com/cloud/files/</link>. Related
         documents are available at the same site, as are links to
         official Rackspace support channels, including Knowledge
@@ -2169,9 +2196,9 @@
         limits.</para>
         <table rules="all">
           <caption>Absolute Limits</caption>
-          <col width="30%"/>
-          <col width="45%"/>
-          <col width="25%"/>
+        <col width="30%"/>
+        <col width="45%"/>
+        <col width="25%"/>
           <thead>
             <tr>
               <th>Name</th>
@@ -2183,7 +2210,7 @@
             <tr>
               <td>Containers per account</td>
               <td>Maximum number of containers per account</td>
-              <td>500,000</td>
+              <td>500,000 containers</td>
             </tr>
             <tr>
               <td>Container listing</td>
@@ -2207,9 +2234,9 @@
                 each.</td>
             </tr>
             <tr>
-              <td>Number of object segments per SLO</td>
+              <td>Number of object segments per Static Large Object (SLO)</td>
               <td>Maximum number of object segments per SLO</td>
-              <td>1,000</td>
+              <td>1,000 object segments</td>
             </tr>
             <tr>
               <td>TTL for a CDN-enabled container</td>
@@ -2227,9 +2254,10 @@
               <td>1024 bytes</td>
             </tr>
             <tr>
-              <td>File size for upload</td>
-              <td>Maximum size for upload</td>
-              <td>5 GB (Segment files > 5 GB into smaller files)</td>
+              <td>Upload limit for a request</td>
+              <td>Maximum object size for an upload in a single request</td>
+              <td>5 GB (For larger files, see <xref linkend="Static_Large_Object-d1e2226"/>) or
+                <xref linkend="Large_Object_Creation-d1e2019"/>.)</td>
             </tr>
             <tr>
               <td>CDN file size limit</td>
@@ -2237,6 +2265,14 @@
                 CDN</td>
               <td>10 GB</td>
             </tr>
+          <tr>
+            <td>Rate limit for write operations</td>
+            <td>Maximum number of write operations per second per container, where a write operation
+              is a <command>COPY</command>, <command>DELETE</command>, <command>POST</command>, or
+                <command>PUT</command>. If you reach this rate limit, Cloud Files  slows the
+              processing of write requests for the container to 100 operations per second.</td>
+            <td>100 operations per second</td>
+          </tr>
           </tbody>
         </table>
       </section>
@@ -7302,7 +7338,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
           <para>Bulk import is available for U.S. data centers only.
           However, if you have a need for bulk importing in a data
           center outside of the U.S., contact <link
-            xlink:href="http://http://www.rackspace.com/cloud/files/support/"
+            xlink:href="http://www.rackspace.com/cloud/files/support/"
             >Rackspace support</link> to see what other options you
           might have. They will be interested in specifics like the
           amount of data you need to work with.</para>

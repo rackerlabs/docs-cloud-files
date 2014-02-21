@@ -963,7 +963,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Detect-Content-Type" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
             
@@ -1187,7 +1187,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Detect-Content-Type" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
             <representation mediaType="application/http">
@@ -1334,7 +1334,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Detect-Content-Type" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path. 
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
             <representation mediaType="application/http">
