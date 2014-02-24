@@ -132,7 +132,7 @@
         </request>
         <response status="200 204">           
             <representation mediaType="application/xml" xml:lang="EN">
-                <doc title="CDM-Enabled Containers List Response">                 
+                <doc title="CDN-Enabled Containers List Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getCDNAccountContainers_response.txt"/>
                 </doc>               
             </representation>
@@ -345,7 +345,7 @@
             </param>
             <representation mediaType="text/xml" element="files:Files" >
 
-                <doc title="Get CDN-Enabled Container Metadata Request">
+                <doc title="List a CDN-Enabled Container's Metadata Request">
                     <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_request.txt"/>
                 </doc>
             </representation> 
