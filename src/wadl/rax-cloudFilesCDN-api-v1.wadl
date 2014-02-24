@@ -376,8 +376,8 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Ttl" style="header"
                 required="true" type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                    number of objects in the container. </p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The TTL value in
+                    seconds. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 50 years (1577836800 seconds).</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Enabled" style="header"
