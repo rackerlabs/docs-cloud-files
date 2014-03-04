@@ -79,28 +79,28 @@
             </para>
             <para><command>GET</command> operations against the <code>cloudFilesCDN</code>
                 endpoints for an account retrieve a list of CDN-enabled
-                containers. (For the CDN endpoints, see <xref
+                containers. No private containers appear in the list. (For the CDN endpoints, see <xref
                     linkend="Service-Access-Endpoints-d1e003"/>.) </para>
-            <para>Passing the query parameter
+<!--            <para>Passing the query parameter
                 <code>?enabled_only=true</code> suppresses any
                 private (non-CDN-enabled) containers from appearing in
                 the list. Thus, Cloud Files provides filtering support
                 to return only the list of containers that are
                 CDN-enabled. </para> 
+-->               
             <para>The list of CDN-enabled containers is returned in the
                 response body, one container name per line.</para>            
-            <para>A list of containers is returned in the response body, one container per line. </para>
             <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>            
             <para>To view the CDN container details, see <xref
                 linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"/>.</para>
         </wadl:doc>
         <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
+ <!--           <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="enabled_only" style="query" required="false"
                 type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to <code>true</code> to return only
                     CDN-enabled containers.</p></doc>
-            </param>
+            </param> -->
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
@@ -130,15 +130,16 @@
                 </doc>
             </representation>   
         </request>
-        <response status="200 204">           
+        <response status="200 204">
+            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" xml:lang="EN">
                 <doc title="CDN-Enabled Containers List Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getCDNAccountContainers_response.txt"/>
                 </doc>               
             </representation>
         </response>
+        &only404Fault;
     </method>
-
   
  <!--  CDN Container Services Methods  -->
     
@@ -233,7 +234,7 @@
                      
         </request>
         <response status="200 202 204">
-            
+            <doc title="OK, Accepted, or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 202 Accepted, the request has been accepted for processing. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>           
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Uri" style="header" required="false"
                 type="xsd:int">
@@ -247,7 +248,7 @@
                 </doc>
             </representation>
         </response>
- 
+        &only404Fault; 
     </method>  
  
     <method name="POST" id="updateCDNcontainermeta">
@@ -300,7 +301,8 @@
                 </doc>
             </representation>     
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/http">
                 <doc title="Update CDN-Enabled Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-createCDNContainerMetadata_response.txt"/>
@@ -363,6 +365,7 @@
             </representation>    
         </request>
         <response status="200 204">
+            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Uri" style="header"
                 required="true" type="xsd:string">
@@ -420,9 +423,10 @@
                 </doc>
             </representation> 
         </response>
+        &only404Fault;
     </method>   
 
-<!--       CDN Objece Services    -->
+<!--       CDN Object Services    -->
     
     <method name="DELETE" id="deleteCDNobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
@@ -435,7 +439,7 @@
             <note><para>You should limit object purges to situations where there
                 could be serious personal, business, or security
                 consequences if it remained publicly accessible on the CDN (for example, 
-                when someone publishs your company's quarterly
+                when someone publishes your company's quarterly
                 earnings too early). </para></note>
             <para> Following are the ways you can purge objects from the
                 CDN: <itemizedlist>
@@ -491,7 +495,8 @@
                 </doc>
             </representation>    
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/http">
                 <doc title="Delete CDN-Enabled Object Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteCDNObject_response.txt"/>

@@ -206,7 +206,8 @@
                 </doc>
             </representation>           
         </request>
-        <response status="200 204">           
+        <response status="200 204">
+            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/xml" xml:lang="EN">
                 <doc>                 
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
@@ -249,6 +250,7 @@
 -->
             </representation>
         </response>
+        &only404Fault;
     </method>
 
     <method name="HEAD" id="retrieveaccountmeta">
@@ -278,6 +280,7 @@
             </representation>             
         </request>
         <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Account-Object-Count" style="header" required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number of objects that are stored in Cloud Files for the account.
@@ -329,13 +332,15 @@
                 </doc>
             </representation>   
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="text/xml" element="files:Files">
                 <doc title="Create or Update Account Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-updateAccountMetadata_response.txt"/>
                 </doc>
             </representation>       
         </response>
+        &postPutFaults;
     </method>
     
     <method name="POST" id="deleteaccountmeta">
@@ -362,13 +367,15 @@
                 </doc>
             </representation>   
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="text/xml" element="files:Files">
                 <doc title="Delete Account Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteAccountMetadata_response.txt"/>
                 </doc>
             </representation> 
         </response>
+        &postPutFaults;
     </method>
   
  <!--  Storage Container Services Methods  -->
@@ -496,6 +503,7 @@
             </representation>           
         </request>
         <response status="200 204">
+            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Last-Modified" style="header"
                 required="true" type="xsd:string">
@@ -542,7 +550,18 @@
                 required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. Replace the name at the end of the header with the name for your metadata.</p></doc>
             </param>
-           
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Read" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Write" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                </p></doc>
+            </param>
             <representation mediaType="application/http" element="files:Files" >
                 <doc title="Create Container Request">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_request.txt"/>
@@ -556,7 +575,7 @@
             </representation>     
         </request>
         <response status="201 202"> 
-            
+            <doc title="Created or Accepted">The request has been fulfilled. For 201 Created, the new container has been created. For 202 Accepted, the request has been accepted for processing.</doc>          
             <representation mediaType="application/http" element="files:Files" >
                 <doc title="Create Container Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
@@ -570,6 +589,7 @@
                 </doc>
             </representation>     
         </response>
+        &postPutFaults;
     </method>
    
     <method name="DELETE" id="deletecontainer">
@@ -590,7 +610,8 @@
                 </doc>
             </representation>     
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="text/xml" element="files:Files" > 
                 <doc title="Delete Container Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
@@ -622,13 +643,26 @@
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace the name at the end of the header with the name of your metadata. </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Read" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Write" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Create or Update Container Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>
                 </doc>
             </representation>     
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/http">
                 <doc title="Create or Update Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
@@ -655,7 +689,7 @@
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
-        <request>
+        <request>          
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Get Container Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_request.txt"/>
@@ -663,6 +697,7 @@
             </representation>     
         </request>
         <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Object-Count" style="header"
                 required="true" type="xsd:int">
@@ -678,7 +713,9 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The name at the end of the header is the name of your metadata. </p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The name at the end of the header is the name of your metadata. 
+                    One X-Container-Meta-name response header appears for each metadata item (for each name).
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Timestamp" style="header"
@@ -686,6 +723,19 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. The format is the same as a Unix timestamp. The storage system uses this header to determine the latest version. For example, during replication, the storage system makes sure all three object replicas are up to date, and it uses the X-Timestamp header to determine which replica is the latest. 
                     You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
             </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Read" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation.
+                    by this operation.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Write" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation.
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Get Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
@@ -716,6 +766,18 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                     metadata to be deleted. Replace the name at the end of the header with the name for your metadata.</p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Read" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Write" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files" >               
                 <doc title="Delete Container Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_request.txt"/>
@@ -723,7 +785,7 @@
             </representation>     
         </request>
         <response status="204">
-
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/http">
                 <doc title="Delete Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_response.txt"/>
@@ -827,6 +889,7 @@
             </representation>
         </request>
         <response status="200">
+            <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <representation mediaType="application/http">
                 <doc title="Get Object Data Response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_response.txt"/>
@@ -973,7 +1036,8 @@
                 </doc>
             </representation> 
         </request>
-        <response status="201"> 
+        <response status="201">
+            <doc title="Created">The request has been fulfilled.</doc>
             <representation mediaType="application/http">
                 <doc title="Create or Update Object Response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
@@ -1201,7 +1265,10 @@
                 </doc>
             </representation>    
         </request>
-        <response status="201"> </response>
+        <response status="201">
+            <doc title="Created">The request has been fulfilled.</doc>
+        </response>
+        &only404Fault;
     </method>
     
     <method name="HEAD" id="retrieveobjectmeta">
@@ -1239,6 +1306,7 @@
             </representation>    
         </request>
         <response status="200">
+            <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Timestamp" style="header"
                 required="true" type="xsd:string">
@@ -1265,7 +1333,7 @@
             title="Update Object Metadata">
             <para role="shortdesc">Sets or updates your object 
                 metadata. Metadata must be in the format
-                <code>X-Object-Meta-</code><replaceable>name</replaceable>, where <replaceable>name</replaceable> is the name of your metadaa. You can also assign <code>X-Delete-At</code> or
+                <code>X-Object-Meta-</code><replaceable>name</replaceable>, where <replaceable>name</replaceable> is the name of your metadata. You can also assign <code>X-Delete-At</code> or
                 <code>X-Delete-After</code> to expiring objects. You cannot use
                 this operation to change other headers, such as
                 <code>Content-Type</code>.</para>
@@ -1344,6 +1412,7 @@
             </representation>    
         </request>
         <response status="202"> 
+            <doc title="Accepted">The request was accepted for processing.</doc>
             <representation mediaType="application/http">
                 <doc title="Update Object Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
@@ -1387,7 +1456,8 @@
                 </doc>
             </representation>    
         </request>
-        <response status="204"> 
+        <response status="204">
+            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
             <representation mediaType="application/http">
                 <doc title="Delete Object Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>

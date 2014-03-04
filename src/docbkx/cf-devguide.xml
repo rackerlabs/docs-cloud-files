@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-02-21</pubdate>
+    <pubdate>2014-03-06</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,27 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-03-06</date>
+        <revdescription>
+          <para>Added <xref linkend="Container_ACLs-d1e2222"/> and added
+              <code>X-Container-Read</code> and <code>X-Container-Write</code> header descriptions
+            to the following operation descriptions:<itemizedlist>
+              <listitem>
+                <para><xref linkend="PUT_createcontainer_v1__account___container__containerServicesOperations_d1e000"/></para>
+              </listitem>
+              <listitem>
+                <para><xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/></para>
+              </listitem>
+              <listitem>
+                <para><xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/></para>
+              </listitem>
+              <listitem>
+                <para><xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/></para>
+              </listitem>
+            </itemizedlist></para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-02-21</date>
         <revdescription>
@@ -957,6 +978,9 @@
         bandwidth charges. Note that this is true when computations
         are performed on objects but is not true for static content
         served to end users directly.</para>
+      <para> In addition to containing objects, you can also use the container to control access to
+        objects by using an access control list (ACL). You cannot store an ACL with individual
+        objects.</para>
     </section>
     <section xml:id="Objects-d1e479">
       <title>Objects</title>
@@ -2748,6 +2772,50 @@ photos/animals/dogs/terrier.jpg</programlisting>
     <title>Additional Container Services Information</title>
     <para>The following section describes additional metadata options
       for containers in Cloud Files.</para>
+    <section xml:id="Container_ACLs-d1e2222">
+      <title>Container Access Control Lists</title>
+      <para> The <code>X-Container-Read</code> metadata header defines the access control list (ACL)
+        permissions for who can read objects in a container. Before you set this header, only users
+        with a valid authentication token for the account can read objects in that container. List
+        containers to show the absence of the <code>X-Container-Read</code> header: </para>
+      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/jerry</programlisting>
+      <programlisting>HTTP/1.1 204 No Content
+X-Container-Object-Count: 0 
+X-Container-Bytes-Used: 0 
+Accept-Ranges: bytes 
+X-Trans-Id: tx3aa52e951fc64b63bc1fda27902b9bd3 
+Content-Length: 0 
+Date: Tue, 15 Nov 2011 03:29:22 GMT </programlisting>
+      <para> Set the <code>X-Container-Read </code>header to enable read and list access to
+        everyone:</para>
+      <programlisting> curl –X  PUT  -i \ -H "X-Auth-Token: $token" \ -H "X-Container-Read: .r:*,.rlistings" \ $publicURL/jerry </programlisting>
+      <programlisting>HTTP/1.1 202 Accepted
+Content-Length: 58
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: txf2befb56b1854a50995f710f2db48089
+Date: Tue, 15 Nov 2011 03:33:16 GMT
+
+202 Accepted
+
+The request is accepted for processing.</programlisting>
+      <para>For a list of valid <code>X-Container-Read</code> header values, see the information
+        about ACLs at <link
+          xlink:href="http://docs.openstack.org/developer/swift/misc.html#acls/">http://docs.openstack.org/developer/swift/misc.html#acls</link>.</para>
+      <para>To see the metadata change:</para>
+      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/jerry </programlisting>
+      <programlisting>HTTP/1.1 204 No Content
+X-Container-Object-Count: 0
+X-Container-Read: .r:*,.rlistings
+X-Container-Bytes-Used: 0
+Accept-Ranges: bytes
+X-Trans-Id: txb40eb86d949345f7bc66b01e8b63c3a5
+Content-Length: 0
+Date: Tue, 15 Nov 2011 03:33:36 GMT </programlisting>
+      <para>After you give everyone read access, anyone can access any object in the container from
+        a browser. To do so, a user appends the object name to the <code>X-Storage-URL</code> header
+        value used in the session. For example: </para>
+      <programlisting>$publicURL/jerry/cereal.jpg </programlisting>
+    </section>
     <section xml:id="Container_Quotas-d1e2222">
       <title>Container Quotas</title>
       <para>The container_quotas middleware implements simple quotas
@@ -5953,6 +6021,52 @@ X-Object-Meta-Veggie: Carrot
           on objects.</para>
       </listitem>
     </itemizedlist>
+    <informaltable rules="all">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>URI</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><command>GET</command></td>
+          <td>
+            <programlisting>v1/{account}{?enabled_only,limit, marker,end_marker,format}</programlisting>
+          </td>
+          <td>Lists CDN-enabled containers sorted by name. </td>
+        </tr>
+        <tr>
+          <td><command>PUT</command></td>
+          <td>
+            <programlisting>v1/{account}/{container}</programlisting>
+          </td>
+          <td>Enables or disables a container for use with the CDN. </td>
+        </tr>
+        <tr>
+          <td><command>HEAD</command></td>
+          <td>
+            <programlisting>v1/{account}/{container}{?format}</programlisting>
+          </td>
+          <td>Gets a CDN-enabled container's metadata. </td>
+        </tr>
+        <tr>
+          <td><command>POST</command></td>
+          <td>
+            <programlisting>v1/{account}/{container}</programlisting>
+          </td>
+          <td>Updates the CDN-enabled container metadata. </td>
+        </tr>
+        <tr>
+          <td><command>DELETE</command></td>
+          <td>
+            <programlisting>v1/{account}/{object}</programlisting>
+          </td>
+          <td>Deletes CDN-enabled objects. </td>
+        </tr>
+      </tbody>
+    </informaltable>
 
     <section xml:id="Test-CDN_Account_Operations-d1e2397">
       <title>CDN Account Services</title>
