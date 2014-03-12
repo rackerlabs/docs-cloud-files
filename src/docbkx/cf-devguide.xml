@@ -8472,8 +8472,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
                     {
                         "publicURL": "https://cdn1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
                         "region": "DFW",
-…
-                    },
+                        ...
+                    }
                     ...
                 ],
                 "name": "cloudFilesCDN",
@@ -8485,14 +8485,13 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
                         "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
                         "publicURL": "https://storage101.dfw1.clouddrive.com/v1/<replaceable>yourAccountId</replaceable>",
                         "region": "DFW",
-…
-                    },
-
+                        ...
+                    }
                     ...
                 ],
                 "name": "cloudFiles",
                 "type": "object-store"
-            },
+            }
             ...
         ],
         "token": {
@@ -8501,16 +8500,12 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
             ],
             "expires": "2013-10-29T05:36:28.683-05:00",
             "id": "&lt;auth_token>",
-        },
+        }
         ...
     }
-}
-
-
-
-</computeroutput></screen>
+}</computeroutput></screen>
       </example>
-      <!-- <remark> 10282013 cyr this example use userid and password instead of userid and apikye </remark>       
+      <!-- <remark> 10282013 cyr this example uses userid and password instead of userid and apikey </remark>       
         
       <example>
         <title>cURL Authenticate Request with Username and Password
