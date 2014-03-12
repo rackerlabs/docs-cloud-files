@@ -2774,11 +2774,11 @@ photos/animals/dogs/terrier.jpg</programlisting>
       for containers in Cloud Files.</para>
     <section xml:id="Container_ACLs-d1e2222">
       <title>Container Access Control Lists</title>
-      <para> The <code>X-Container-Read</code> metadata header defines the access control list (ACL)
+      <para>The <code>X-Container-Read</code> metadata header defines the access control list (ACL)
         permissions for who can read objects in a container. Before you set this header, only users
-        with a valid authentication token for the account can read objects in that container. List
-        containers to show the absence of the <code>X-Container-Read</code> header: </para>
-      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/jerry</programlisting>
+        with a valid authentication token for the account can read objects in that container. </para>
+      <para>List containers to show the absence of the <code>X-Container-Read</code> header: </para>
+      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/joeUser</programlisting>
       <programlisting>HTTP/1.1 204 No Content
 X-Container-Object-Count: 0 
 X-Container-Bytes-Used: 0 
@@ -2786,9 +2786,9 @@ Accept-Ranges: bytes
 X-Trans-Id: tx3aa52e951fc64b63bc1fda27902b9bd3 
 Content-Length: 0 
 Date: Tue, 15 Nov 2011 03:29:22 GMT </programlisting>
-      <para> Set the <code>X-Container-Read </code>header to enable read and list access to
+      <para>Set the <code>X-Container-Read </code>header to enable read and list access to
         everyone:</para>
-      <programlisting> curl –X  PUT  -i \ -H "X-Auth-Token: $token" \ -H "X-Container-Read: .r:*,.rlistings" \ $publicURL/jerry </programlisting>
+      <programlisting> curl –X  PUT  -i \ -H "X-Auth-Token: $token" \ -H "X-Container-Read: .rlistings" \ $publicURL/joeUser </programlisting>
       <programlisting>HTTP/1.1 202 Accepted
 Content-Length: 58
 Content-Type: text/html; charset=UTF-8
@@ -2802,7 +2802,7 @@ The request is accepted for processing.</programlisting>
         about ACLs at <link
           xlink:href="http://docs.openstack.org/developer/swift/misc.html#acls/">http://docs.openstack.org/developer/swift/misc.html#acls</link>.</para>
       <para>To see the metadata change:</para>
-      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/jerry </programlisting>
+      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/joeUser </programlisting>
       <programlisting>HTTP/1.1 204 No Content
 X-Container-Object-Count: 0
 X-Container-Read: .r:*,.rlistings
@@ -2814,7 +2814,7 @@ Date: Tue, 15 Nov 2011 03:33:36 GMT </programlisting>
       <para>After you give everyone read access, anyone can access any object in the container from
         a browser. To do so, a user appends the object name to the <code>X-Storage-URL</code> header
         value used in the session. For example: </para>
-      <programlisting>$publicURL/jerry/cereal.jpg </programlisting>
+      <programlisting>$publicURL/joeUser/cereal.jpg </programlisting>
     </section>
     <section xml:id="Container_Quotas-d1e2222">
       <title>Container Quotas</title>
@@ -3399,6 +3399,14 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
       <para>The object must be compressed before it is uploaded. Cloud Files does not do any
         automatic compression. The <code>Content-Encoding</code> header enables the client to set
         the metadata appropriately.</para>
+      <note>
+        <para>The Rackspace CDN provider, Akamai, encodes HTML, JavaScript, and CSS files in gzip
+          format. However, in your Cloud Files account, your files are not encoded. For more
+          information, see the blog post <link
+            xlink:href="http://www.rackspace.com/blog/cloud-files-cdn-compresses-at-the-edge/">Cloud
+            Files CDN Compresses at the Edge</link>. Compressing these objects helps lower costs and
+          increases download speeds. </para>
+      </note>
       <para>In the following example, the <code>Content-Encoding</code> header indicates the type
         of encoding used on the data.</para>
       <example>

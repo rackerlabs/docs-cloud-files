@@ -727,7 +727,6 @@
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation.
-                    by this operation.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
