@@ -103,7 +103,7 @@
             </para>
             <para>This operation lists the storage containers in your account and sorts them by name. </para>
             <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
-            <para>The list is limited to 10,000 containers at a time. See "Controlling a Large List of Containers" below for information on limiting and navigating the list. </para> 
+            <para>The list is limited to 10,000 containers at a time. For information on limiting and navigating the list, see the following section, "Controlling a Large List of Containers". </para> 
             <para>Container names are sorted based on a binary comparison (
                 <link
                 xlink:href="http://www.sqlite.org/datatype3.html#collation"
@@ -112,15 +112,15 @@
                 regardless of text encoding.</para>
             <para>A list of containers is returned in the response body, one container per line. </para>
             <para>The character sequence used to create the newline that separates the container names is a single \n. If you want to parse these listings,
-                you should send an <code>Accept: application/json</code> or <code>Accept: application/xml</code> header with the request to get the results in JSON or XML.</para>
+                you send an <code>Accept: application/json</code> or <code>Accept: application/xml</code> header with the request to get the results in JSON or XML.</para>
             <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>
            
             <para><emphasis role="bold">Format Container List</emphasis> </para>
             <para>If you append the <code>?format=xml</code> or <code>?format=json</code> query parameter to the storage account URL, the service returns container information serialized in the specified format. To format your results, you must place this query parameter before any other parameters. </para>
-            <para>The example responses below are formatted for readability. </para>            
+            <para>The following example responses are formatted for readability. </para>            
             <para><emphasis role="bold">Controlling a Large List of Containers</emphasis></para>
             <para>A <code>GET</code> operation on the storage account URL returns a list of up to 10,000 container names. You can control and limit this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters. These parameters provide a mechanism to iterate through the entire list of containers. </para>
-            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers and <code>end_marker</code> specifies where to end the list. You can use them independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values should be URL-encoded prior to sending the HTTP request.</para>
+            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers and <code>end_marker</code> specifies where to end the list. You can use them independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded prior to sending the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects. </para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <note><para>At this time, a <code>prefix</code> query parameter is not supported at the account level.</para></note>
@@ -151,7 +151,7 @@
   kiwis
   oranges 
             </programlisting></para>
-            <para>Again, two items are returned, and you assume that there may be more. So you make another GET request for two more.</para>
+            <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more.</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -269,7 +269,7 @@
                     <para>How many containers you have in your account (<code>X-Account-Container-Count</code>)</para>
                 </listitem>
             </itemizedlist>        
-            <para>The HTTP return code is 2xx (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. </para>
+            <para>The HTTP return code is 2nn (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
@@ -312,9 +312,9 @@
             <para role="shortdesc">
                 Creates or updates account metadata.
             </para>
-            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace name with name of your metadata. (In the example request below, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
+            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace name with name of your metadata. (In the following example request, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
             <para>Subsequent <code>POST</code> operations for the same key/value pair overwrite the previous value.</para> 
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. </para>
+            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
             <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <code>HEAD</code> operation.</para> 
         </wadl:doc>
@@ -349,8 +349,8 @@
                 Deletes account metadata.</para>
             <para>To delete a metadata header, use the <code>POST</code> operation to send
                 an empty value for that particular header.</para>
-            <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the example request below, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates
+            <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the following example request, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
+            <para>A status code of 2nn (between 200 and 299, inclusive) indicates
                 success.</para> 
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
@@ -396,11 +396,11 @@
             <para>For information on filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
             
             <para><emphasis role="bold">Format Object List</emphasis></para>
-            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same when using <code>format=xml</code> or <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The example responses below are formatted for readability.</para>
+            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same when using <code>format=xml</code> or <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The following example responses are formatted for readability.</para>
             
             <para><emphasis role="bold">Controlling a Large List of Objects</emphasis></para>
             <para>A <command>GET</command> request against the container account URL returns a list of up to 10,000 objects. You can limit and control this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters.</para>
-            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of objects, and <code>end_marker</code> tells where to end the list. You can use them either independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 objects. Note that the <code>marker</code> and <code>end_marker</code> values should be URL-encoded prior to sending the HTTP request.</para>
+            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of objects, and <code>end_marker</code> tells where to end the list. You can use them either independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 objects. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded prior to sending the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects.</para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <para>As an example, use a listing of 5 object names, as follows:</para>
@@ -430,7 +430,7 @@
  honeycrisp
  jonagold
             </programlisting></para>
-            <para>Again, two items are returned, and you assume that there may be more. So you make another GET request for two more.</para>
+            <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more.</para>
             <para><programlisting>
  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
  Host: storage.clouddrive.com
@@ -539,7 +539,7 @@
                 Creates a container.
             </para>
             <para>This operation creates a Cloud Files container. Containers are storage compartments for your data. The URL-encoded name must be less than 256 bytes and cannot contain a forward slash character (/). You can create up to 500,000 containers in your Cloud Files account.</para>
-            <para>You can assign custom metadata for containers by including additional HTTP headers with an <code>X-Container-Meta-</code> prefix on the <command>POST</command> request. See <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/> for details on setting custom metadata. </para>
+            <para>You can assign custom metadata for containers by including additional HTTP headers with an <code>X-Container-Meta-</code> prefix on the <command>POST</command> request. For details on setting custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>. </para>
             <para>Using custom container metadata, you can create information in the header to effectively tag a container with metadata. The container metadata restrictions are the same as object metadata. You can have 4096 bytes maximum of overall metadata, with a maximum of 90 distinct metadata items. Each can have a name length of up to 128 characters with a maximum of 256 bytes in the value. Any valid UTF-8 encoded string value is allowed for metadata. In addition for custom metadata, we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal ISO-Latin code for the character.</para>
             <para>A status code of 201 (Created) indicates that the container was created as requested. Container <command>PUT</command> requests are idempotent, and a code of 202 (Accepted) is returned if the container existed prior to the request. If you request a <command>PUT</command> to a container with an <code>X-Container-Meta-</code> prefix in the header, your <command>GET</command> or <command>HEAD</command> request responses carry the metadata prefix from the container in subsequent requests.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -685,7 +685,7 @@
                 <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
             </itemizedlist>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>If the container exists, a status code of 2xx (between 200 and 299, inclusive) is returned. If the container does not exist,
+            <para>If the container exists, a status code of 2nn (between 200 and 299, inclusive) is returned. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
@@ -721,7 +721,7 @@
                 name="X-Timestamp" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. The format is the same as a Unix timestamp. The storage system uses this header to determine the latest version. For example, during replication, the storage system makes sure all three object replicas are up to date, and it uses the X-Timestamp header to determine which replica is the latest. 
-                    You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
+                    You might notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
             </param> 
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -754,7 +754,7 @@
                 empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-name: arbitrary value</code>, where <code>name</code> is the name of your
                 custom header. <code>arbitrary value</code> can be any value, and it will not be used.  </para>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. If the container does not exist,
+            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
@@ -867,7 +867,7 @@
                 </tbody>
             </table></para>            
             <para>Object data is returned in the response body. Object metadata is returned as HTTP headers. </para>
-            <para>A status code of 2xx (between 200 and 299, inclusive) indicates success. Status code 404 (Not Found) is returned if the object does not exist.</para>
+            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. Status code 404 (Not Found) is returned if the object does not exist.</para>
             <note><para>In the examples that follow that use ranges, the object contains the 10 bytes of data 0123456789.</para></note>
         </wadl:doc>
         <request>
@@ -942,7 +942,7 @@
                 the concatenated string of ETags for each segment in the
                 manifest, which offers change detection but not direct
                 comparison.</para> 
-                <para>For more information, refer to <xref linkend="Create-Large-Objects-d10e"/>.</para>
+                <para>For more information, see <xref linkend="Create-Large-Objects-d10e"/>.</para>
             <note>
                 <para>The best checks for a successful upload are to check
                     the <code>ETag</code> match with a checksum and to see if
@@ -1118,7 +1118,7 @@
             <para>One way is to use a <command>PUT</command> request to the new object (the
                 destination) location, but add the <code>X-Copy-From</code>
                 header to designate the source of the data. The header value
-                should be the container and object name of the source object
+                must be the container and object name of the source object
                 in the form of <code>/container/object</code>. The HTTP specification of a
                 <command>PUT</command> request with the <code>X-Copy-From</code> header requires a
                 <code>Content-Length</code> header, but the storage system does not use the
@@ -1189,8 +1189,7 @@
                 network URI, ServiceNet, as the storage URL. You can find your ServiceNet endpoint in the
                 service catalog created when you authenticate your session.
                 For information on how to authenticate your session, see
-                <xref linkend="Authentication-d1e639"/>. As shown in the
-                partial service catalog example below, the ServiceNet URI is listed as
+                <xref linkend="Authentication-d1e639"/>. As shown in the following partial service catalog example, the ServiceNet URI is listed as
                 <code>internalURL</code>. The name is your Cloud Files
                 storage URL with <code>snet-</code> pre-pended to it. If you
                 do not know which data center you are working in, you can
@@ -1289,7 +1288,7 @@
                     response clarity -- dsh 2012-03-07</remark> The
                 <command>HEAD</command> return code for an object is different than that of a
                 container. The <command>HEAD</command> request does not return a message body in
-                the response, so a 2xx status code denotes success. When a
+                the response, so a 2nn status code denotes success. When a
                 <command>HEAD</command> request is performed against the container, it
                 queries the container databases, and it does not retrieve
                 the content from them. Thus, this returns the 204 (No
@@ -1310,12 +1309,12 @@
                 name="X-Timestamp" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. The format is the same as a Unix timestamp. The storage system uses this header to determine the latest version. For example, during replication, the storage system makes sure all three object replicas are up to date, and it uses the X-Timestamp header to determine which replica is the latest. 
-                    You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
+                    You might notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Last-Modified" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. For Last-Modified, the time zone is UTC. You may notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. For Last-Modified, the time zone is UTC. You might notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.
                 </p></doc>
             </param> 
             <representation mediaType="application/http">
@@ -1439,7 +1438,7 @@
             <para>Objects with the <code>X-Delete-At</code> or
                 <code>X-Delete-After</code> header assigned are deleted
                 within one day of the expiration time, and the object is not
-                served immediately after the expiration time. For more details, refer to <xref
+                served immediately after the expiration time. For more details, see <xref
                     linkend="Expiring_Objects-e1e3228"/>.</para> 
             <para>A status code of 204 (No
                 Content) indicates success. Status code 404 (Not Found) is
