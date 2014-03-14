@@ -101,26 +101,24 @@
             <para role="shortdesc">
                 Lists storage containers sorted by name.
             </para>
-            <para>This operation lists the storage containers in your account and sorts them by name. </para>
-            <para>The container is the basic storage unit in Cloud Files. To view a list of the containers in your account, perform a <code>GET</code> operation against your storage account URL.</para>
+            <para>This operation lists the storage containers in your account and sorts them by name. You perform the operation against your storage account URL.</para>
             <para>The list is limited to 10,000 containers at a time. For information on limiting and navigating the list, see the following section, "Controlling a Large List of Containers". </para> 
-            <para>Container names are sorted based on a binary comparison (
-                <link
-                xlink:href="http://www.sqlite.org/datatype3.html#collation"
-                >http://www.sqlite.org/datatype3.html#collation</link>), a built-in collating function
-                that compares string data using SQLite's memcmp() function,
-                regardless of text encoding.</para>
+            <para>Container names are sorted based on a binary comparison, a built-in collating function
+                that compares string data by using SQLite's memcmp() function,
+                regardless of text encoding. For more information, see <link
+                    xlink:href="http://www.sqlite.org/datatype3.html#collation"
+                    >http://www.sqlite.org/datatype3.html#collation</link>.</para>
             <para>A list of containers is returned in the response body, one container per line. </para>
             <para>The character sequence used to create the newline that separates the container names is a single \n. If you want to parse these listings,
                 you send an <code>Accept: application/json</code> or <code>Accept: application/xml</code> header with the request to get the results in JSON or XML.</para>
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>
+            <para>An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers, and a 204 (No Content) code is returned if there are no containers.</para>
            
             <para><emphasis role="bold">Format Container List</emphasis> </para>
             <para>If you append the <code>?format=xml</code> or <code>?format=json</code> query parameter to the storage account URL, the service returns container information serialized in the specified format. To format your results, you must place this query parameter before any other parameters. </para>
-            <para>The following example responses are formatted for readability. </para>            
+            <para>The example responses in this section are formatted for readability. </para>            
             <para><emphasis role="bold">Controlling a Large List of Containers</emphasis></para>
-            <para>A <code>GET</code> operation on the storage account URL returns a list of up to 10,000 container names. You can control and limit this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters. These parameters provide a mechanism to iterate through the entire list of containers. </para>
-            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers and <code>end_marker</code> specifies where to end the list. You can use them independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded prior to sending the HTTP request.</para>
+            <para>A <command>GET</command> operation on the storage account URL returns a list of up to 10,000 container names. You can control and limit this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters. These parameters provide a mechanism for iterating through the entire list of containers. </para>
+            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of containers, and the <code>end_marker</code> parameter specifies where to end the list. You can use them independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 containers. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded before you send the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects. </para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <note><para>At this time, a <code>prefix</code> query parameter is not supported at the account level.</para></note>
@@ -151,7 +149,7 @@
   kiwis
   oranges 
             </programlisting></para>
-            <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more.</para>
+            <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more:</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
@@ -159,8 +157,8 @@
                     
   pears
             </programlisting></para>
-            <para>This one-item response shows less than the limit of 2 container names requested, and indicates that this is the end of the list.</para>
-            <para>By using <code>end_marker</code>, you can limit the result set to container names less than the given value.</para>
+            <para>This one-item response shows fewer than the limit of 2 container names requested, and indicates that this is the end of the list.</para>
+            <para>By using the <code>end_marker</code> parameter, you can limit the result set to container names less than the given value.</para>
             <para><programlisting>
   GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
   Host: storage.clouddrive.com
@@ -176,24 +174,24 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer value n, limits the number of results to n values.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer value <emphasis>n</emphasis>, limits the number of results to <emphasis>n</emphasis> values.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names less in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns container names lesser in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Value of
-                        the serialized response format - either json or
-                        xml.</p></doc>
+                        the serialized response format, either JSON or
+                        XML.</p></doc>
             </param>
             <representation mediaType="application/xml" element="files:Files" >
                 <doc>                     
@@ -257,7 +255,7 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Account Metadata">
             <para role="shortdesc">
                 Gets account metadata.</para>
-            <para>Perform a <code>HEAD</code> operation on your storage account URL to get the following information: </para>
+            <para>Perform a <command>HEAD</command> operation on your storage account URL to get the following information: </para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>How many objects are in your account (<code>X-Account-Object-Count</code>)</para>
@@ -269,7 +267,7 @@
                     <para>How many containers you have in your account (<code>X-Account-Container-Count</code>)</para>
                 </listitem>
             </itemizedlist>        
-            <para>The HTTP return code is 2nn (between 200 and 299, inclusive) if the request succeeds. In the example, a 204 (No Content) code is returned. A 401 (Unauthorized) is returned for an invalid account or authentication token. </para>
+            <para>An HTTP status code of 200 through 299 indicates success. In the example, a 204 (No Content) status code is returned. A 401 (Unauthorized) status code is returned for an invalid account or authentication token. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
@@ -312,18 +310,18 @@
             <para role="shortdesc">
                 Creates or updates account metadata.
             </para>
-            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a POST operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace name with name of your metadata. (In the following example request, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
-            <para>Subsequent <code>POST</code> operations for the same key/value pair overwrite the previous value.</para> 
-            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. </para>
+            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a <command>POST</command> operation. These headers must have the format <code>X-Account-Meta-<replacable>name</replacable></code>. Replace <code><replacable>name</replacable></code> with name of your metadata. (In the following example request, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
+            <para>Subsequent <command>POST</command> operations for the same key/value pair overwrite the previous value.</para> 
+            <para>A status code of 200 through 299 indicates success. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
-            <para>To confirm your metadata changes, you can perform a <code>HEAD</code> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <code>HEAD</code> operation.</para> 
+            <para>To confirm your metadata changes, you can perform a <command>HEAD</command> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <command>HEAD</command> operation.</para> 
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Account-Meta-name" style="header" required="true"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Header for the
-                        account metadata that you want to create or update. Replace the name at the end of the header with the name for your metadata.
+                    account metadata that you want to create or update. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
@@ -347,10 +345,10 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Account Metadata">
             <para role="shortdesc">
                 Deletes account metadata.</para>
-            <para>To delete a metadata header, use the <code>POST</code> operation to send
+            <para>To delete a metadata header, use the <command>POST</command> operation to send
                 an empty value for that particular header.</para>
-            <para>If the tool you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the following example request, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
-            <para>A status code of 2nn (between 200 and 299, inclusive) indicates
+            <para>If the tool that you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the following example request, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
+            <para>A status code of 200 through 299 indicates
                 success.</para> 
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
@@ -359,7 +357,7 @@
                 name="X-Remove-Account-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Header to send to delete account metadata. Replace the name at the end of the header with the name for your metadata.</para></wadl:doc>
+                    xml:lang="EN"><para>Header to send to delete account metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</para></wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Delete Account Metadata Request">
@@ -385,22 +383,22 @@
             title="List Container Objects">
             <para role="shortdesc">Lists the objects stored in the
                 container.</para>
-            <para>This operation against a storage container name retrieves a list of objects
-                stored in the container. Additionally, you can use optional query parameters to refine the list results.</para>    
+            <para>This operation against a storage container name retrieves a list of the objects
+                stored in the container. You can use optional query parameters to refine the list results.</para>    
             <para>A request with no query parameters returns the full list of object names stored in the
                 container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full
-                list and returns a subset of objects.  For information on limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
+                list and returns a subset of objects.  For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
             
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
+            <para>An HTTP response status code of 200 through 299 indicates success. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
                 exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>
-            <para>For information on filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
+            <para>For information about filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
             
             <para><emphasis role="bold">Format Object List</emphasis></para>
-            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same when using <code>format=xml</code> or <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The following example responses are formatted for readability.</para>
+            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same for <code>format=xml</code> and <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The example responses in this section are formatted for readability.</para>
             
             <para><emphasis role="bold">Controlling a Large List of Objects</emphasis></para>
             <para>A <command>GET</command> request against the container account URL returns a list of up to 10,000 objects. You can limit and control this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters.</para>
-            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of objects, and <code>end_marker</code> tells where to end the list. You can use them either independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 objects. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded prior to sending the HTTP request.</para>
+            <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of objects, and the <code>end_marker</code> parameter tells where to end the list. You can use them either independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 objects. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded before you send the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects.</para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <para>As an example, use a listing of 5 object names, as follows:</para>
@@ -430,7 +428,7 @@
  honeycrisp
  jonagold
             </programlisting></para>
-            <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more.</para>
+            <para>Again, two items are returned, and you assume that there might be more. So you make another <command>GET</command> request for two more:</para>
             <para><programlisting>
  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
  Host: storage.clouddrive.com
@@ -438,51 +436,51 @@
  
  reddelicious
             </programlisting></para>
-            <para>This one-item response shows less than the limit of two object names requested, and indicates that this is the end of the list.</para>      
+            <para>This one-item response shows fewer than the limit of two object names requested, and indicates that this is the end of the list.</para>      
         </wadl:doc>
         
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer n, limits the number of results to n values.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer <emphasis>n</emphasis>, limits the number of results to <emphasis>n</emphasis> values.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names greater in value than the
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns object names greater in value than the
                     specified marker.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names less in value than the specified
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns object names lesser in value than the specified
                     marker.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="prefix" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string value x, causes the results to be limited to object names
-                    beginning with the substring x.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string value <emphasis>x</emphasis>, causes the results to be limited to object names
+                    beginning with the substring <emphasis>x</emphasis>.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies either json or xml
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies either JSON or XML
                   to return the respective serialized response.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="delimiter" style="query" required="false"
                 type="xsd:char">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a character c, returns the object names nested in the container
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a character <emphasis>c</emphasis>, returns the object names nested in the container
                     (without the need for the directory marker objects).</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="path" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string x, returns the object names nested in the pseudo path. Equivalent to setting delimiter to '/' and prefix to the path with a '/' on the end. 
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string <emphasis>x</emphasis>, returns the object names nested in the pseudo path. This parameter is equivalent to setting the delimiter parameter to / and the prefix to the path with a / on the end. 
                     For more information about pseudo paths, see the section on pseudo hierarchical folders and directories.
                 </p></doc>
             </param>
@@ -513,21 +511,17 @@
             <representation mediaType="text/xml" xml:lang="EN">
                 <doc title="List Container Objects Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.txt"/>
-                </doc>
-                
+                </doc>                
             </representation>
                 <representation mediaType="application/xml" xml:lang="EN">
                     <doc>                 
                         <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.xml"/>
-                    </doc>
-                   
+                    </doc>                   
                 </representation>
-                <representation mediaType="application/json" xml:lang="EN">
-                    
+                <representation mediaType="application/json" xml:lang="EN">                   
                     <doc>
                         <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.json"/>
-                    </doc>
-                    
+                    </doc>                    
                 </representation>
         </response>
         &deleteContainerFaults;
@@ -540,15 +534,15 @@
             </para>
             <para>This operation creates a Cloud Files container. Containers are storage compartments for your data. The URL-encoded name must be less than 256 bytes and cannot contain a forward slash character (/). You can create up to 500,000 containers in your Cloud Files account.</para>
             <para>You can assign custom metadata for containers by including additional HTTP headers with an <code>X-Container-Meta-</code> prefix on the <command>POST</command> request. For details on setting custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>. </para>
-            <para>Using custom container metadata, you can create information in the header to effectively tag a container with metadata. The container metadata restrictions are the same as object metadata. You can have 4096 bytes maximum of overall metadata, with a maximum of 90 distinct metadata items. Each can have a name length of up to 128 characters with a maximum of 256 bytes in the value. Any valid UTF-8 encoded string value is allowed for metadata. In addition for custom metadata, we recommend that you URL-encode any non-ASCII values using a "%" symbol, followed by the two-digit hexadecimal ISO-Latin code for the character.</para>
-            <para>A status code of 201 (Created) indicates that the container was created as requested. Container <command>PUT</command> requests are idempotent, and a code of 202 (Accepted) is returned if the container existed prior to the request. If you request a <command>PUT</command> to a container with an <code>X-Container-Meta-</code> prefix in the header, your <command>GET</command> or <command>HEAD</command> request responses carry the metadata prefix from the container in subsequent requests.</para>
+            <para>Using custom container metadata, you can create information in the header to effectively tag a container. The container metadata restrictions are the same as the restrictions for object metadata. You can have a maximum of 4096 bytes of metadata for the container, with a maximum of 90 distinct metadata items. Each distinct metadata item can have a name length of up to 128 characters with a maximum of 256 bytes in the value. Any valid UTF-8 encoded string value is allowed for metadata. In addition for custom metadata, we recommend that you URL-encode any non-ASCII values by using a % symbol followed by the two-digit hexadecimal ISO-Latin code for the character.</para>
+            <para>A status code of 201 (Created) indicates that the container was created as requested. Container <command>PUT</command> requests are idempotent, and a code of 202 (Accepted) is returned if the container existed prior to the request. If you make a <command>PUT</command> request to a container with an <code>X-Container-Meta-</code> prefix in the header, your <command>GET</command> or <command>HEAD</command> request responses carry the metadata prefix from the container in subsequent requests.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. Replace the name at the end of the header with the name for your metadata.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -580,12 +574,10 @@
                 <doc title="Create Container Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
                 </doc>
-            </representation>  
-            
+            </representation>             
             <representation mediaType="text/xml" element="files:Files" > 
                 <doc title="Create Container with Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_response.txt"/>
-
                 </doc>
             </representation>     
         </response>
@@ -597,7 +589,7 @@
             title="Delete Container">
             <para role="shortdesc">Deletes an empty container.</para>
             <para>A <command>DELETE</command> operation against a storage container permanently removes it. The container must be empty before it can be deleted.</para>
-            <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects it contains. (See <xref linkend="GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000"/>.)</para>
+            <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects that it contains. (See <xref linkend="GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000"/>.)</para>
             <para>A status code of 204 (No Content) indicates
                 success. A status code of 404 (Not Found) is returned if the requested container is not found. A status code of 409
                 (Conflict) is returned if the container is not empty.</para>
@@ -624,9 +616,9 @@
     <method name="POST" id="updateacontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Create or Update Container Metadata">
-            <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container level URI. These headers
-                must have the format, X-Container-Meta-name.</para>
-            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where name is the name of your custom metadata. Subsequent <command>POST</command>POST to the header using the same metadata name overwrite the previous value. </para>
+            <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container-level URI. These headers
+                must have the format <code>X-Container-Meta-<replacable>name</replacable></code>.</para>
+            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-<replacable>name</replacable></code>, where <code><replacable>name</replacable></code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
             <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
             <para>A status code of 204 (No Content) indicates success. Status
                 code 404 (Not Found) is returned when the requested container does not exist.</para>
@@ -641,7 +633,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace the name at the end of the header with the name of your metadata. </p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name of your metadata. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -682,10 +674,10 @@
             <itemizedlist spacing="compact">
                 <listitem><para>How many objects are in the container (<code>X-Container-Object-Count</code>)</para></listitem>
                 <listitem><para>The total bytes for all objects stored in the container (<code>X-Container-Bytes-Used</code>)</para></listitem>
-                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
+                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-<replacable>name</replacable></code>)</para></listitem>
             </itemizedlist>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>If the container exists, a status code of 2nn (between 200 and 299, inclusive) is returned. If the container does not exist,
+            <para>If the container exists, a status code of 200 through 299 is returned. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
@@ -713,8 +705,8 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The name at the end of the header is the name of your metadata. 
-                    One X-Container-Meta-name response header appears for each metadata item (for each name).
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The <code><replacable>name</replacable></code> at the end of the header is the name of your metadata. 
+                    One <code>X-Container-Meta-<replacable>name</replacable></code> response header appears for each metadata item (for each <replacable>name</replacable>).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -748,13 +740,13 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Delete Container Metadata">
             <para role="shortdesc">Deletes container metadata.</para>
-            <para>To delete a metadata header, use <command>POST</command> to send an empty value for that particular header, such as
+            <para>To delete a metadata header, use a <command>POST</command> operation to send an empty value for that particular header, such as
                 <code>X-Container-Meta-Subject:</code>.</para>
-            <para>If the tool you are using to communicate with Cloud Files does not support sending
-                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-name: arbitrary value</code>, where <code>name</code> is the name of your
-                custom header. <code>arbitrary value</code> can be any value, and it will not be used.  </para>
+            <para>If the tool that you are using to communicate with Cloud Files does not support sending
+                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-<replacable>name</replacable>: <replacable>arbitrary value</replacable></code>, where <code><replacable>name</replacable></code> is the name of your
+                custom header. <code><replacable>arbitrary value</replacable></code> can be any value, and it will not be used.  </para>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. If the container does not exist,
+            <para>A status code of 200 through 299 indicates success. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
@@ -763,7 +755,7 @@
                 name="X-Remove-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                    metadata to be deleted. Replace the name at the end of the header with the name for your metadata.</p></doc>
+                    metadata to be deleted. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -801,7 +793,7 @@
             title="Get Object Data">
             <para role="shortdesc">Gets data for the specified
                 object.</para>
-            <para>Perform <command>GET</command> operations against an object to retrieve the object's data </para>
+            <para>Perform <command>GET</command> operations against an object to retrieve the object's data. </para>
             <para>You can perform conditional <command>GET</command> requests by using the following HTTP headers in the request:</para>
             <itemizedlist spacing="compact">
                 <listitem><para><code>If-Match</code></para></listitem>
@@ -816,11 +808,11 @@
                 <note><para>Currently, Cloud Files does not support the full specification for <code>Range</code>, but does provide basic support. 
                 Cloud Files allows only a single range and can include OFFSET or LENGTH where either OFFSET or LENGTH is optional (not both at the same time). </para></note>
 -->            
-            <para>The types of range specifications are:</para>
+            <para>The types of range specifications are as follows:</para>
             <itemizedlist>
-                <listitem><para>Byte range specification: Use <code>FIRST_BYTE_OFFSET</code> to specify the start of the data range,
-                    and <code>LAST_BYTE_OFFSET</code> to specify the end. You can omit the <code>LAST_BYTE_OFFSET</code> and if
-                    you do, the value defaults to the offset of the last byte of data.</para></listitem>
+                <listitem><para>Byte range specification: Use a <code>FIRST_BYTE_OFFSET</code> value to specify the start of the data range,
+                    and use a <code>LAST_BYTE_OFFSET</code> value to specify the end of the range. If you omit the
+                    LAST_BYTE_OFFSET value, the offset of the last byte of data is used</para></listitem>
                 <listitem><para>Suffix byte range specification: Use <code>LENGTH</code> bytes to specify the length of the data
                     range.</para></listitem>              
             </itemizedlist>
@@ -846,11 +838,11 @@
                     </tr>
                     <tr>
                         <td>Range: bytes=10-15,-5</td>
-                        <td>A multi-part response that contains the last five bytes and the six bytes of data after a 10-byte offset. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
+                        <td>A multipart response that contains the last five bytes and the six bytes of data after a 10-byte offset. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
                     </tr>
                     <tr>
                         <td>Range: bytes=4-6</td>
-                        <td>Bytes 4 to 6 inclusive.</td>
+                        <td>Bytes 4 through 6.</td>
                     </tr>
                     <tr>
                         <td>Range: bytes=2-2</td>
@@ -862,13 +854,13 @@
                     </tr>
                     <tr>
                         <td>Range: bytes=1-3,2-5</td>
-                        <td>A multi-part response that contains bytes 1 to 3 inclusive, and bytes 2 to 5 inclusive. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
+                        <td>A multipart response that contains bytes 1 through 3, and bytes 2 through 5. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
                     </tr> 
                 </tbody>
             </table></para>            
             <para>Object data is returned in the response body. Object metadata is returned as HTTP headers. </para>
-            <para>A status code of 2nn (between 200 and 299, inclusive) indicates success. Status code 404 (Not Found) is returned if the object does not exist.</para>
-            <note><para>In the examples that follow that use ranges, the object contains the 10 bytes of data 0123456789.</para></note>
+            <para>A status code of 200 through 299 indicates success. Status code 404 (Not Found) is returned if the object does not exist.</para>
+            <note><para>In the following examples that use ranges, the object contains the 10 bytes of data 0123456789.</para></note>
         </wadl:doc>
         <request>
             <representation mediaType="application/http">
@@ -877,7 +869,7 @@
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Request Using Range">
+                <doc title="Get Object Data Request Using a Range">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataWithRange_request.txt"/>
                 </doc>
             </representation>
@@ -1019,7 +1011,7 @@
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        custom object metadata. name at the end of this header represents the name
+                        custom object metadata. The <code><replacable>name</replacable></code> at the end of this header represents the name
                         of your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -1288,7 +1280,7 @@
                     response clarity -- dsh 2012-03-07</remark> The
                 <command>HEAD</command> return code for an object is different than that of a
                 container. The <command>HEAD</command> request does not return a message body in
-                the response, so a 2nn status code denotes success. When a
+                the response, so a status code of 200 through 299 indicates success. When a
                 <command>HEAD</command> request is performed against the container, it
                 queries the container databases, and it does not retrieve
                 the content from them. Thus, this returns the 204 (No
@@ -1331,7 +1323,7 @@
             title="Update Object Metadata">
             <para role="shortdesc">Sets or updates your object 
                 metadata. Metadata must be in the format
-                <code>X-Object-Meta-</code><replaceable>name</replaceable>, where <replaceable>name</replaceable> is the name of your metadata. You can also assign <code>X-Delete-At</code> or
+                <code>X-Object-Meta-</code><replaceable>name</replaceable>, where <code><replaceable>name</replaceable></code> is the name of your metadata. You can also assign <code>X-Delete-At</code> or
                 <code>X-Delete-After</code> to expiring objects. You cannot use
                 this operation to change other headers, such as
                 <code>Content-Type</code>.</para>
@@ -1344,9 +1336,9 @@
                 to set expirations for objects. </para>
             <para> To remove previously-set object metadata, perform a
                 <command>POST</command> request to the object name with
-                <code>X-Remove-Object-Meta-name: Foo</code> where
-                <code>name</code> is the name of your metadata.
-                <code>Foo</code> is any term, and it will not be used. You
+                <code>X-Remove-Object-Meta-<replacable>name</replacable>: <replacable>Foo</replacable></code> where
+                <code><replacable>name</replacable></code> is the name of your metadata.
+                <code><replacable>Foo</replacable></code> is any term, and it will not be used. You
                 must, however, send some value with the request. Otherwise,
                 the metadata is not removed. </para>
             <para>For information on working with metadata when copying
@@ -1374,7 +1366,7 @@
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        container metadata. name represents the name of
+                        container metadata. The <code><replacable>name</replacable></code> represents the name of
                         your metadata. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"

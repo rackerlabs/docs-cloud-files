@@ -129,18 +129,14 @@
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>Updated the instructions for locating the API Key
-                in the Cloud Control Panel in <xref
-                  linkend="Retrieving_Auth_Token"
-                  xmlns:m="http://www.w3.org/1998/Math/MathML"
+              <para>Updated the instructions for locating the API key in the Cloud Control Panel in
+                  <xref linkend="Retrieving_Auth_Token" xmlns:m="http://www.w3.org/1998/Math/MathML"
                 />.</para>
             </listitem>
             <listitem>
-              <para>Added a table of all API operations, which
-                lists and briefly describes all API operations. Also
-                added tables showing the API operations at the
-                beginning of each section that describes the
-                operations.</para>
+              <para>Added a table that lists and briefly describes all API operations. Also added
+                tables showing the API operations at the beginning of each section that describes
+                the operations.</para>
             </listitem>
             <listitem>
               <para>Added service access endpoints for the CDN
@@ -174,13 +170,10 @@
               <para>Added <xref linkend="POST_deleteaccountmeta_v1__account__accountServicesOperations_d1e000"/>.</para>
             </listitem>
             <listitem>
-              <para>In all examples, updated the
-                  <code>X-Auth-Token</code> to use the current format
-                returned by an authentication request (no dashes).
-                Also updated examples to use real values for
-                  <replaceable>account</replaceable>,
-                  <replaceable>container</replaceable>, and
-                  <replaceable>object</replaceable>. </para>
+              <para>In all examples, updated the <code>X-Auth-Token</code> header to use the current
+                format returned by an authentication request (no dashes). Also updated examples to
+                use real values for <replaceable>account</replaceable>,
+                  <replaceable>container</replaceable>, and <replaceable>object</replaceable>. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -194,10 +187,9 @@
                 dynamic large objects and static large objects.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Extract_Archive-d1e2338"/> to
-                include a note about using a blank
-                  <code>Content-Type</code> to have Cloud Files
-                determine the file type for the archive.</para>
+              <para>Updated <xref linkend="Extract_Archive-d1e2338"/> to include a note about using
+                a blank <code>Content-Type</code> header to have Cloud Files determine the file type
+                for the archive.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -262,10 +254,9 @@
                 show information for Rackspace Identity v2.0.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Create_the_Form-d1a777"/>
-                to indicate that the value of <code>redirect</code>
-                (see Example 7.9) can be empty to indicate that no
-                redirect is included on the form. </para>
+              <para>Updated <xref linkend="Create_the_Form-d1a777"/> to indicate that the value of
+                the <code>redirect</code> parameter can be empty to indicate that no redirect is
+                included on the form. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -294,11 +285,10 @@
                   linkend="Bulk_Delete-d1e2338.html"/>.</para>
             </listitem>
             <listitem>
-              <para>Added <code>X-Container-Meta-Web-Listings</code>,
+              <para>Added the <code>X-Container-Meta-Web-Listings</code>,
                   <code>X-Container-Meta-Web-Listings-Css</code>, and
-                  <code>X-Container-Meta-Web-Directory-Type</code> to
-                  <xref linkend="Create_Static_Website-dle4000"
-                />.</para>
+                  <code>X-Container-Meta-Web-Directory-Type</code> headers to <xref
+                  linkend="Create_Static_Website-dle4000"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -308,9 +298,8 @@
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para linkend="Create_the_Form-d1a777">Clarified
-                information about <code>redirect</code> and
-                  <code>expires</code> in <xref
+              <para linkend="Create_the_Form-d1a777">Clarified information about the
+                  <code>redirect</code> and <code>expires</code> parameters in <xref
                   linkend="Create_the_Form-d1a777"/>. </para>
             </listitem>
           </itemizedlist>
@@ -321,9 +310,8 @@
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>Corrected Example 7.1 (back to using Identity
-                v1.0) in <xref linkend="Authentication-d1e2929"/> and
-                added an example for Identity v2.0. </para>
+              <para>Corrected examples (back to using Identity v1.0) in <xref
+                  linkend="Authentication-d1e2929"/> and added an example for Identity v2.0. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -344,11 +332,10 @@
             </listitem>
             <listitem>
               <para>In <xref linkend="CDN_Object_Services"/> and <xref
-                linkend="DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services"
-                />, added a note about removing a CDN-enabled
-                container by setting <code>X-Cdn-Enabled</code> to
-                  <code>False</code> in
-                <command>HEAD</command>.</para>
+                  linkend="DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services"/>,
+                added a note about removing a CDN-enabled container by setting
+                  <code>X-Cdn-Enabled</code> to <code>False</code> in the <command>HEAD</command>
+                operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -376,8 +363,7 @@
                   >http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>.</para>
             </listitem>
             <listitem>
-              <para>Added <xref linkend="Container_Quotas-d1e2222"
-                /></para>
+              <para>Added <xref linkend="Container_Quotas-d1e2222"/>.</para>
             </listitem>
             <listitem>
               <para>Created a new section <xref linkend="objectServicesOperations_d1e000"/>. This
@@ -405,8 +391,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Changed location of SDKs. Added note on object
-                metadata behavior. </para>
+              <para>Changed the location of SDKs. Added a note about object metadata behavior. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -416,7 +401,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added iOS Streaming. </para>
+              <para>Added <xref linkend="iOS-Streaming-d1f3725"/>. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -436,8 +421,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added end_marker list parameter and CORS container
-                headers. </para>
+              <para>Added the <code>end_marker</code> list parameter and CORS container headers. </para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -445,15 +429,7 @@
       <revision>
         <date>2012-10-31</date>
         <revdescription>
-          <itemizedlist spacing="compact">
-            <listitem>
-              <para>Updated language binding language and
-                links.</para>
-            </listitem>
-            <listitem>
-              <para>Updated view CDN-enabled header. </para>
-            </listitem>
-          </itemizedlist>
+          <para>Updated language binding language and links.</para>
         </revdescription>
       </revision>
       <revision>
@@ -461,8 +437,10 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added Access Log Delivery. Updated auth point.
-              </para>
+              <para>Added <xref linkend="Acess_Log_Delivery-d1e2200"/>. </para>
+            </listitem>
+            <listitem>
+              <para>Updated the authentication point.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -503,7 +481,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added Bulk Import information. </para>
+              <para>Added <xref linkend="Bulk_Import-d1e2094"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -513,8 +491,10 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added Object Versioning and Static Web
-                information. </para>
+              <para>Added <xref linkend="Object_Versioning-e1e3230"/>. </para>
+            </listitem>
+            <listitem>
+              <para>Added <xref linkend="StaticWeb"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -524,17 +504,10 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added TempURL and FormPost. </para>
+              <para>Added <xref linkend="TempURL-d1a4450"/>. </para>
             </listitem>
-          </itemizedlist>
-        </revdescription>
-      </revision>
-      <revision>
-        <date>2012-03-19</date>
-        <revdescription>
-          <itemizedlist spacing="compact">
             <listitem>
-              <para>Fixed doc tickets. </para>
+              <para>Added <xref linkend="FormPost-d1a555"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -544,10 +517,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Revisions to clarify issues brought up in doc
-                tickets. Formatted HEAD like other commands.
-                Standardized on URL. Added Expiring Objects and
-                ServiceNet information.</para>
+              <para>Revised content to clarify issues brought up in doc tickets. Formatted HEAD like
+                other commands. Standardized on URL. Added Expiring Objects and ServiceNet
+                information.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -557,9 +529,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Revisions for the addition of expiring object
-                functionality plus doc bug fixes including adding more
-                cross-references for finding language bindings.</para>
+              <para>Revised content to add information about expiring object functionality and to
+                clarify issues brought up in doc tickets, including adding more cross-references for
+                finding language bindings.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -569,9 +541,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Revised information about how to perform a CDN
-                purge, indicating you must contact support to request
-                a container purge operation.</para>
+              <para>Revised information about how to perform a CDN purge, indicating that you must
+                contact support to request a container purge operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -593,9 +564,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added information about streaming containers to
-                support this new streaming feature, including changing
-                examples to match the streaming headers and URLs
+              <para>Added information about streaming containers to support the new streaming
+                feature, including changing examples to match the streaming headers and URLs
                 returned.</para>
             </listitem>
           </itemizedlist>
@@ -606,9 +576,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>In the 6.1.1 Authorization example, changed
-                  <code>X-Auth-Token</code> to
-                <code>X-Auth-Key</code>.</para>
+              <para>In <xref linkend="Authentication-d1e2929"/>, changed <code>X-Auth-Token</code>
+                to <code>X-Auth-Key</code> in examples.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -640,14 +609,12 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>HEAD returns 200 instead of 204 on an object
-                metadata request.</para>
+              <para>Updated the <command>HEAD</command> operation to return a 200 response code
+                instead of a 204 response code on an object metadata request.</para>
             </listitem>
             <listitem>
-              <para>TTL maximum value is now 50 years instead of 3
-                days, the minimum TTL is now 15 minutes (900 seconds),
-                and the default is now 72 hours instead of 24
-                hours.</para>
+              <para>Updated the TTL maximum value to 50 years instead of 3 days, the minimum TTL to
+                15 minutes (900 seconds), and the default to 72 hours instead of 24 hours.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -678,9 +645,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added a section about retrieving an SSL URL for
-                CDN-enabled containers that are using https
-                protocol.</para>
+              <para>Added a section about retrieving an SSL URL for CDN-enabled containers that are
+                using the HTTPS protocol.</para>
             </listitem>
             <listitem>
               <para>Updated examples to contain SSL as
@@ -787,16 +753,13 @@
       as 5 gigabytes. You can store as much as you want and pay only
       for storage space that you actually use.</para>
     <para>Additionally, Cloud Files provides a simple yet powerful way to publish and distribute
-      content behind a Content Delivery Network. As a Cloud Files user, you get access to this
-      network automatically without having to worry about contracts, additional costs, or technical
-      hurdles.</para>
-    <para>Cloud Files allows you to store and retrieve files and
-      CDN-enabled content through a simple Web Services interface
-      (REST: Representational State Transfer). There are also
-      language-specific APIs that utilize the RESTful API but make it
-      much easier for developers to integrate into their
-      applications.</para>
-    <para>For more details on the Cloud Files service, see <link
+      content behind a content delivery network (CDN). As a Cloud Files user, you get access to this
+      network automatically.</para>
+    <para>Cloud Files enables you to store and retrieve files and CDN-enabled content through a
+      simple RESTful web services interface. There are also language-specific application
+      programming interfaces (APIs) that use the RESTful API and make it much easier for developers
+      to integrate into their applications.</para>
+    <para>For more details about the Cloud Files service, see <link
         xlink:href="http://www.rackspace.com/cloud/files/"
         >http://www.rackspace.com/cloud/files/</link> and the Knowledge Center article <link
         xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
@@ -811,7 +774,7 @@
         interface (API) that allows developers to interact with the storage and CDN components of
         the Cloud Files system. To use the information provided here, you must first have a general
         understanding of the Rackspace Cloud Files service and have access to an active Rackspace
-        Cloud Files account. You should also be familiar with: </para>
+        Cloud Files account. You should also be familiar with the following items: </para>
       <itemizedlist spacing="compact">
         <listitem>
           <para>RESTful web services</para>
@@ -820,24 +783,20 @@
           <para>HTTP/1.1</para>
         </listitem>
       </itemizedlist>
-      <para>System administrators and others interested in the storage
-        and CDN benefits of Cloud Files should consider using the File
-        Manager interface within the Rackspace Cloud Control Panel,
-          <link xlink:href="http://www.jungledisk.com/">Jungle
-          Disk</link>, or third party tools such as <link
-          xlink:href="http://www.fireuploader.com/"
-          >Fileuploader</link> or <link
-          xlink:href="http://www.cyberduck.ch/">Cyberduck</link>. The
-        Rackspace Cloud Control Panel provides an easy to use
-        web-based interface for uploading and downloading content to
-        and from Cloud Files.</para>
+      <para>System administrators and others interested in the storage and CDN benefits of Cloud
+        Files should consider using the File Manager interface within the Rackspace Cloud Control
+        Panel, <link xlink:href="http://www.jungledisk.com/">Jungle Disk</link>, or third-party
+        tools such as <link xlink:href="http://www.fireuploader.com/">Fileuploader</link> or <link
+          xlink:href="http://www.cyberduck.ch/">Cyberduck</link>. The Rackspace Cloud Control Panel
+        provides an easy to use web-based interface for uploading content to and downloading content
+        from Cloud Files.</para>
       <para>Rackspace also provides language-specific APIs in several popular programming languages.
-        For customers who are interested in accessing Cloud Files using one of the language-specific
-        APIs, see the <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
-            ><citetitle>Rackspace Cloud SDKs Software Development Kit Guide</citetitle></link>. For
-        information about language-specific APIs, see <link
-          linkend="Language-Specific_API_Bindings-d1e574">Language-Specific API
-        Bindings</link>.</para>
+        Customers who are interested in accessing Cloud Files by using one of the language-specific
+        APIs should see the <link
+          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"><citetitle>Rackspace
+            Cloud SDKs Software Development Kit Guide</citetitle></link>. For information about
+        language-specific APIs, see <link linkend="Language-Specific_API_Bindings-d1e574"
+          >Language-Specific API Bindings</link>.</para>
     </section>
     <?hard-pagebreak?>
     <section xml:id="Document_Change_History-d1e141">
@@ -868,17 +827,13 @@
     </section>
     <section xml:id="Pricing_Service-d1e1402">
       <title>Pricing and Service Level</title>
-      <para>Cloud Files is part of the Rackspace Cloud and your use
-        through the API will be billed according to the pricing
-        schedule at <link
-          xlink:href="http://www.rackspace.com/cloud/public/files/pricing/"
-          > www.rackspace.com/cloud/public/files/pricing</link>. </para>
-      <para>The Service Level Agreement (SLA) for Cloud Files is
-        available at <link
-          xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files"
-          >
-          http://www.rackspace.com/information/legal/cloud/sla#files</link>.
-      </para>
+      <para>Cloud Files is part of the Rackspace Cloud and your use of it through the API is billed
+        according to the pricing schedule at <link
+          xlink:href="http://www.rackspace.com/cloud/public/files/pricing/">
+          www.rackspace.com/cloud/public/files/pricing</link>. </para>
+      <para>The service level agreement (SLA) for Cloud Files is available at <link
+          xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files">
+          http://www.rackspace.com/information/legal/cloud/sla#files</link>. </para>
     </section>
   </chapter>
   <chapter xml:id="Concepts-d1e413">
@@ -891,27 +846,26 @@
         <raxm:priority>2</raxm:priority>
       </raxm:metadata>
     </info>
-    <para>Cloud Files is not a file system in the traditional sense. You will not be able to map or
-      mount virtual disk drives like you can with other forms of storage such as a SAN or NAS.
-      Because Cloud Files is a different way of thinking when it comes to storage, you should take a
-      few moments to review the following key concepts. </para>
+    <para>Cloud Files is not a file system in the traditional sense. You cannot map or mount virtual
+      disk drives like you can with other forms of storage such as a SAN or NAS. Because Cloud Files
+      is a different kind of storage system, you should take a few moments to review the following
+      key concepts in this section. </para>
     <section xml:id="Accounts-d1e421">
       <title>Accounts</title>
       <para>The Cloud Files system is designed to be used by many different customers. Your user
         account is your portion of the Cloud Files system. You must identify yourself with your
-        Rackspace Cloud user name and API access key. After you have authenticated, you have full
-        read/write access to the files stored under your account. Please visit <link
+        Rackspace Cloud user name and API access key. After you are authenticated, you have full
+        read/write access to the files stored under your account. To obtain a Cloud Files account
+        and enable your API access key, go to <link
           xlink:href="https://cart.rackspace.com/cloud/?cp_id=cloud_files"
-          >http://www.rackspacecloud.com/signup</link> to obtain a Cloud Files account and enable
-        your API access key. </para>
+          >http://www.rackspacecloud.com/signup</link>. </para>
     </section>
     <section xml:id="Authentication-d1e433">
       <title>Authentication</title>
-      <para><xref linkend="Authentication-d1e639"/> describes how to
-        authenticate against the Rackspace Cloud Identity service to
-        receive Cloud Files connection parameters and an
-        authentication token. The token must be passed in for Cloud
-        Files operations during the time it is valid. </para>
+      <para><xref linkend="Authentication-d1e639"/> describes how to authenticate against the
+        Rackspace Cloud Identity service to receive Cloud Files connection parameters and an
+        authentication token. The token must be passed to Cloud Files operations during the time
+        that it is valid. </para>
       <para>For more information about authentication, see the
           <citetitle>Cloud Identity Client Developer Guide,
           v2.0</citetitle> at <link
@@ -924,31 +878,27 @@
     </section>
     <section xml:id="Permissions-d1e448">
       <title>Permissions </title>
-      <para>In Cloud Files, you have your own storage account and has full access to that account.
-        You must authenticate with your credentials as described in <xref
+      <para>In Cloud Files, you have your own storage account and full access to that account. You
+        must authenticate with your credentials as described in <xref
           linkend="Authentication-d1e639"/>. After you are authenticated, you can perform all Cloud
         Files operations within that account. </para>
     </section>
     <section xml:id="Containers-d1e458">
       <title>Containers</title>
-      <para>A container is a storage compartment that provides a way
-        for you to organize your data. You can think of a container as
-        a folder in Windows® or a directory in UNIX®. The primary
-        difference between a container and these other file system
-        concepts is that containers cannot be nested. You can have up
-        to 500,000 containers in your account. Data must be stored in
-        a container so you must have at least one container defined in
-        your account prior to uploading data. </para>
+      <para>A container is a storage compartment that provides a way for you to organize your data.
+        You can think of a container like a folder in Windows® or a directory in UNIX®. The primary
+        difference between a container and these other file system concepts is that containers
+        cannot be nested. You can have up to 500,000 containers in your account. Data must be stored
+        in a container, so you must have at least one container defined in your account before you
+        upload data. </para>
       <para>If you expect to write more than 100 objects per second to
         a single container, we recommend organizing those objects
         across multiple containers to improve performance.</para>
-      <para>The only restrictions on container names is that they
-        cannot contain a forward slash (<code>/</code>) and must be
-        less than 256 bytes in length. Note that the length
-        restriction applies to the name after it has been URL-encoded.
-        For example, a container name of <code>Course Docs</code>
-        would be URL-encoded as <code>Course%20Docs</code> and is 13
-        bytes in length rather than the expected 11.</para>
+      <para>The only restrictions on container names is that they cannot contain a forward slash
+          (<code>/</code>) and must be less than 256 bytes in length. Note that the length
+        restriction applies to the name after it has been URL-encoded. For example, a container name
+        of <code>Course Docs</code> would be URL-encoded as <code>Course%20Docs</code> and is
+        therefore 13 bytes in length rather than the expected 11.</para>
       <para>You can create a container in any Rackspace data center.
         (See <xref linkend="Service-Access-Endpoints-d1e003"/> for a
         list.) However, in order to lower your costs, you should
@@ -964,47 +914,45 @@
     <section xml:id="Objects-d1e479">
       <title>Objects</title>
       <para>Objects are the basic storage entities in Cloud Files. They represent the files and
-        their optional metadata you upload to the system. When you upload objects to Cloud Files,
-        the data is stored as-is (without compression or encryption) and consists of a location
-        (container), the object's name, and any metadata you assign consisting of key/value pairs.
-        For example, you can choose to store a backup of your digital photos and organize them into
-        albums. In this case, each object could be tagged with metadata such as <code>Album :
-          Caribbean Cruise</code> or <code>Album : Aspen Ski Trip</code>. </para>
+        their optional metadata that you upload to the system. When you upload objects to Cloud
+        Files, the data is stored as-is (without compression or encryption) and consists of a
+        location (container), the object's name, and any metadata that you assign, consisting of
+        key/value pairs. For example, you can choose to store a backup of your digital photos and
+        organize them into albums. In this case, each object could be tagged with metadata such as
+          <code>Album : Caribbean Cruise</code> or <code>Album : Aspen Ski Trip</code>. </para>
       <para>The only restriction on object names is that they must be less than 1024 bytes in length
-        after URL-encoding. For example, an object name of <code>C++final(v2).txt</code> must be
-        URL-encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore be 24 bytes in length
+        after URL-encoding. For example, an object name of <code>C++final(v2).txt</code> would be
+        URL-encoded as <code>C%2B%2Bfinal%28v2%29.txt</code> and therefore is 24 bytes in length
         rather than the expected 16.</para>
-      <para>Cloud Files has a limit on the size of a single uploaded
-        object. By default this limit is 5 GB. However, the download
-        size of a single object is virtually unlimited with the
-        concept of segmentation. Segments of the larger object are
-        uploaded and a special manifest file is created that, when
-        downloaded, sends all the segments concatenated as a single
-        object. This also offers much greater upload speed with the
-        possibility of parallel uploads of the segments.</para>
-      <para>For metadata, you must not exceed 90 individual key/value pairs for any one object and
-        the total byte length of all key/value pairs must not exceed 4KB (4096 bytes).</para>
+      <para>Cloud Files limits the size of a single uploaded object. By default this limit is 5 GB.
+        However, the download size of a single object is virtually unlimited with the use of
+        segmentation. Segments of the larger object are uploaded and a special manifest file is
+        created that, when downloaded, sends all the segments concatenated as a single object.
+        Segmentation also offers much greater upload speed with the possibility of parallel uploads
+        of the segments.</para>
+      <para>For metadata, do not exceed 90 individual key/value pairs for any one object and do not
+        exceed 4 KB (4096 bytes) for the total byte length of all key/value pairs.</para>
     </section>
     <section xml:id="Operations-d1e509">
       <title>Operations</title>
       <para linkend="Operations-d1e509">Operations are the actions you perform within your account,
         such as creating or deleting containers or uploading or downloading objects. The full list
         of operations is given in <xref linkend="API_Operations_d1e000"/>. The operations are then
-        described in the following REST API sections;</para>
+        described in the following REST API sections:</para>
       <itemizedlist>
         <listitem>
-          <para><xref linkend="Accounts-d1e421"/></para>
+          <para><xref linkend="accountServicesOperations_d1e000"/></para>
         </listitem>
         <listitem>
-          <para><xref linkend="Containers-d1e458"/></para>
+          <para><xref linkend="containerServicesOperations_d1e000"/></para>
         </listitem>
         <listitem>
-          <para><xref linkend="Objects-d1e479"/></para>
+          <para><xref linkend="objectServicesOperations_d1e000"/></para>
         </listitem>
       </itemizedlist>
-      <para linkend="Operations-d1e509">Operations can be performed through the REST web service API
+      <para linkend="Operations-d1e509">You can performa operations through the REST web service API
         or a language-specific API. (For information about the Rackspace language-specific APIs, see
-          <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
+        the <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
             ><citetitle>Rackspace Cloud SDKs Software Development Kit
         Guide</citetitle></link>.)</para>
       <important>
@@ -1018,9 +966,8 @@
         CDN-enabled containers are publicly accessible for read access, so they do not require an
         authorization token for read access. However, uploading content into a CDN-enabled container
         is a secure operation and requires a valid authentication token.</para>
-      <para>Each CDN-enabled container has a unique URL that can be
-        combined with its object names and openly distributed in web
-        pages, emails, or other applications.</para>
+      <para>Each CDN-enabled container has a unique URI that can be combined with its object names
+        and openly distributed in web pages, emails, or other applications.</para>
       <para>For example, a CDN-enabled container named
           <code>photos</code> might be referenced as
           <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
@@ -1029,18 +976,14 @@
         served by a CDN with the full URL of
           <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.
           rackcdn.com/wow1.jpg</code>. </para>
-      <para>This URL can be embedded in items like HTML pages, email
-        messages, or blog posts. The first time that URL is accessed,
-        a copy of that image is fetched from the Cloud Files storage
-        system. The copy is cached in a CDN and served from there for
-        all subsequent requests for a configurable cache time to live
-        (TTL) value. Setting the TTL of a CDN-enabled container
-        translates to setting the <code>Expires</code> and
-          <code>Cache-Control</code> HTTP headers. Note that extremely
-        long TTL values do not guarantee that an object is served from
-        a CDN edge location. When the TTL expires, the CDN checks
-        Cloud Files to ensure that it has the most up-to-date content.
-        A purge request forces the CDN to check with Cloud Files for
+      <para>This URI can be embedded in items like HTML pages, email messages, or blog posts. The
+        first time that the URI is accessed, a copy of that image is fetched from the Cloud Files
+        storage system. The copy is cached in a CDN and served from there for all subsequent
+        requests for a configurable cache time to live (TTL) value. Setting the TTL of a CDN-enabled
+        container translates to setting the <code>Expires</code> and <code>Cache-Control</code> HTTP
+        headers. Note that extremely long TTL values do not guarantee that an object is served from
+        a CDN edge location. When the TTL expires, the CDN checks Cloud Files to ensure that it has
+        the most up-to-date content. A purge request forces the CDN to check with Cloud Files for
         the most up-to-date version of the file. </para>
       <para>Cloud Files continues to serve content through the CDN
         until it receives a delete request. </para>
@@ -1049,48 +992,35 @@
           minimum, and maximum values, see <xref
             linkend="CDN_Object_Services"/>.</para>
       </note>
-      <para>Containers tracked in the CDN management service are
-        completely separate and distinct from the containers defined
-        in the storage service. It is possible for a container to be
-        CDN-enabled even if it does not exist in the storage system.
-        You might want the ability to pre-generate CDN URLs before
-        actually uploading content and this separation gives you that
+      <para>Containers tracked in the CDN management service are completely separate and distinct
+        from the containers defined in the storage service. It is possible for a container to be
+        CDN-enabled even if it does not exist in the storage system. You might want the ability to
+        pre-generate CDN URLs before actually uploading content, and this separation gives you that
         ability.</para>
-      <para>However, for the content to be served from the CDN, the
-        container names <emphasis role="strong">MUST</emphasis> match
-        in both the CDN management service and the storage service.
-        For example, you could CDN-enable a container called
-          <code>images</code> and be assigned the CDN URL, but you
-        also need to create a container called <code>images</code> in
+      <para>However, for the content to be served from the CDN, the container names <emphasis
+          role="strong">must</emphasis> match in both the CDN management service and the storage
+        service. For example, you could CDN-enable a container called <code>images</code> and be
+        assigned the CDN URI, but you also need to create a container called <code>images</code> in
         the storage service.</para>
+      <para>For more information about CDN-enabled containers, see <xref
+          linkend="CDN_Container_Services-d1e2632"/></para>
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
       <title>Language-Specific APIs </title>
-      <para>Language-specific APIs in several popular languages are
-        available to help put Cloud Files in the hands of developers.
-        These language-specific APIs provide a layer of abstraction on
-        top of the base REST API, allowing programmers to work with a
-        container and object model instead of working directly with
-        HTTP requests and responses. The language-specific APIs are
-        free to download, use, and modify. They are licensed under the
-        MIT license as described in the COPYING file packaged with
-        each API. If you make any improvements to an API, you are
-        encouraged (but not required) to submit those changes back to
-        Rackspace.</para>
-      <para>Detailed information about the language-specific APIs is
-        in the <link
-          xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
-            ><citetitle>Rackspace Cloud SDKs Software Development Kit
-            Guide</citetitle></link>. If you have changes that you
-        would like to see in the Cloud File language-specific APIs,
-        email them to <link
-          xlink:href="mailto:sdk-support@rackspace.com"
-          >sdk-support@rackspace.com</link>. Make sure to indicate
-        which language and version you modified and send a unified
-        diff. </para>
-      <para> Each language-specific API has its own documentation (in
-        HTML, PDF, or CHM format) including code snippets and examples
-        to help you get started. </para>
+      <para>APIs in several popular languages are available to help put Cloud Files in the hands of
+        developers. These language-specific APIs provide a layer of abstraction on top of the base
+        REST API, enabling developers to work with a container and object model instead of working
+        directly with HTTP requests and responses. The language-specific APIs are available at no
+        cost to download, use, and modify. They are licensed under the MIT license as described in
+        the COPYING file packaged with each API. </para>
+      <para>If you make any improvements to a Cloud File language-specific API, you are encouraged
+        (but not required) to submit those changes back to Rackspace. If you want to suggest changes
+        to an API, send an email to <link xlink:href="mailto:sdk-support@rackspace.com"
+          >sdk-support@rackspace.com</link>. Be sure to indicate which language and version you
+        modified and send a unified <code>diff</code>. </para>
+      <para>Detailed information about the language-specific APIs is in the Rackspace Cloud SDKs
+        Software Development Kit Guide. Each API has its own documentation (in HTML, PDF, or CHM
+        format) including code snippets and examples to help you get started.</para>
       <!-- CYR: 11-07-2013 Removing list of specific language bindings because this is out of date. Providing the preceding link to the SDKs intro will get customers to the latest information.      
       <itemizedlist>
         <listitem>
@@ -1149,48 +1079,42 @@
       <title>Authentication</title>
       <para xmlns:m="http://www.w3.org/1998/Math/MathML"> Every REST request against the Cloud Files
         service requires the inclusion of a specific authorization token, supplied by the
-          <code>X-Auth-Token</code> HTTP header. Customers obtain this token by first using the
-        Rackspace Cloud Identity service and supplying a valid user name and API access key. </para>
+          <code>X-Auth-Token</code> HTTP header. You obtain this token by using the Rackspace Cloud
+        Identity service and supplying a valid user name and API access key. </para>
       <section xml:id="Geographic_Endpoints"
         xmlns:m="http://www.w3.org/1998/Math/MathML">
         <title>Geographic Endpoints</title>
         <para> The Rackspace Cloud Identity service serves as the entry point to all Rackspace Cloud
           APIs and is itself a RESTful web service. </para>
-        <para> You can use either of the following endpoints to access
-          the Authentication Service, regardless of US or UK
-          identities:</para>
+        <para> You can use either of the following endpoints to access the Rackspace Cloud Identity
+          service (for authentication), regardless of US or UK identities:</para>
         <itemizedlist spacing="compact">
           <listitem>
             <para>
-              <link xlink:href="&ENDPOINT-US-20;"
-                >&ENDPOINT-US-20;</link>. </para>
+              <link xlink:href="&ENDPOINT-US-20;">&ENDPOINT-US-20;</link>
+            </para>
           </listitem>
           <listitem>
             <para>
-              <link xlink:href="&ENDPOINT-UK-20;"
-                >&ENDPOINT-UK-20;</link>. </para>
+              <link xlink:href="&ENDPOINT-UK-20;">&ENDPOINT-UK-20;</link>
+            </para>
           </listitem>
         </itemizedlist>
-        <para> Your account can be based in either the US or the UK. This is not determined by your
+        <para>Your account can be based in either the US or the UK. This is not determined by your
           physical location but by the location of the Rackspace retail site that was used to create
           your account. </para>
         <itemizedlist spacing="compact">
           <listitem>
-            <para> If your account was created via <link
-                xlink:href="http://www.rackspacecloud.com"
-                >http://www.rackspacecloud.com</link>, it is a
-              US-based account. </para>
+            <para>If your account was created via <link xlink:href="http://www.rackspacecloud.com"
+                >http://www.rackspacecloud.com</link>, it is a US-based account. </para>
           </listitem>
           <listitem>
-            <para> If your account was created via <link
-                xlink:href="http://www.rackspace.co.uk"
-                >http://www.rackspace.co.uk</link>, it is a UK-based
-              account. </para>
+            <para>If your account was created via <link xlink:href="http://www.rackspace.co.uk"
+                >http://www.rackspace.co.uk</link>, it is a UK-based account. </para>
           </listitem>
         </itemizedlist>
-        <para> If you are unsure how your account was created, use the
-          Rackspace contact information at either site to ask for
-          help. </para>
+        <para>If you are unsure how your account was created, use the Rackspace contact information
+          at either site to ask for help. </para>
       </section>
       <section xml:id="Retrieving_Auth_Token"
         xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -1215,18 +1139,19 @@
             (<errorcode>400</errorcode>), authFault
             (<errorcode>500</errorcode>), serviceUnavailable
             (<errorcode>503</errorcode>) </simpara>
-        <para> The authenticate operation provides clients with an
-          authentication token and a list of regional cloud endpoints.
-          The sample requests and responses in this section illustrate
-          a general case. In your authentication request, use your own
-          credentials rather than the sample values shown here for
-            <code>username</code> and <code>apiKey</code>. When you
-          authenticate successfully, the response to your
-          authentication request will include a catalog of the
-          services to which you have subscribed rather than the sample
-          values shown here.</para>
+        <para> The authenticate operation provides clients with an authentication token and a list
+          of regional cloud endpoints. </para>
+        <note>
+          <para>To see how to use cURL to retrieve the authentication token, see <xref
+              linkend="Using_cURL-d1e2863"/>.</para>
+        </note>
+        <para>The sample requests and responses in this section illustrate a general case. In your
+          authentication request, use your own credentials rather than the sample values shown here
+          for <code>username</code> and <code>apiKey</code>. When you authenticate successfully, the
+          response to your authentication request will include a catalog of the services to which
+          you have subscribed rather than the sample values shown here.</para>
         <example>
-          <title>Auth Request: XML</title>
+          <title>Authentication Request: XML</title>
           <programlistingco>
             <areaspec>
               <area xml:id="credentials.xml.user" units="linecolumn"
@@ -1240,7 +1165,7 @@
           </programlistingco>
         </example>
         <example>
-          <title>Auth Request: JSON</title>
+          <title>Authentication Request: JSON</title>
           <programlistingco>
             <areaspec>
               <area xml:id="credentials.json.user" units="linecolumn"
@@ -1255,13 +1180,11 @@
         </example>
         <calloutlist>
           <callout arearefs="credentials.xml.user">
-            <para>The username supplied here is your common Rackspace
-              Cloud username. </para>
+            <para>The username is your common Rackspace Cloud username. </para>
           </callout>
           <callout arearefs="credentials.xml.key">
             <para>The key is your API access key. </para>
-            <para><emphasis role="bold">To find your API
-                Key:</emphasis>
+            <para><emphasis role="bold">To find your API key:</emphasis>
             </para>
             <orderedlist>
               <listitem>
@@ -1305,16 +1228,16 @@
               navigation pane in the Cloud Control Panel. The tenant
               ID or account number is in parentheses just to the right
               of your username.<note>
-                <para><emphasis role="bold">For Cloud Files</emphasis>, the information used in
-                  place of the account number with the API operations is the
+                <para>For Cloud Files, the information used in place of the account number with the
+                  API operations is the
                       <parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>
-                  information found in service catalog of your authentication response, rather than
-                  the account number found in the Cloud Control Panel.</para>
+                  information found in the service catalog of your authentication response, rather
+                  than the account number found in the Cloud Control Panel.</para>
               </note></para>
           </callout>
         </calloutlist>
         <example>
-          <title>Auth Response: XML</title>
+          <title>Authentication Response: XML</title>
           <programlistingco>
             <areaspec>
               <area xml:id="response.xml.namespaces"
@@ -1342,7 +1265,7 @@
           </programlistingco>
         </example>
         <example xml:id="auth-response-example-json">
-          <title>Auth Response: JSON</title>
+          <title>Authentication Response: JSON</title>
           <programlistingco>
             <areaspec>
               <area xml:id="response.json.namespaces"
@@ -1371,9 +1294,8 @@
           </programlistingco>
         </example>
         <note>
-          <para>The information shown in the Auth Response examples is
-            for US-based accounts. If you authenticate against the
-            UK-endpoint for auth, you will see the service catalog
+          <para>The information shown in the authentication response examples is for US-based
+            accounts. If you authenticate against the UK endpoint, you see the service catalog
             information for UK-based accounts.</para>
         </note>
         <calloutlist>
@@ -1384,136 +1306,113 @@
             <para> </para>
           </callout>
           <callout arearefs="response.xml.token">
-            <para> This token can be presented to a service as
-              evidence of authentication. Tokens are valid for a
-              finite duration. A token's default lifespan is
-              twenty-four hours. </para>
+            <para> This token can be presented to a service as evidence of authentication. Tokens
+              are valid for a finite duration. An authentication token's default lifespan is 24
+              hours. Applications should be designed to re-authenticate after receiving a 401
+              (Unauthorized) response from a service endpoint. </para>
             <para> The token's <code>expires</code> attribute denotes the time after which the token
-              will automatically become invalid. A token can be manually revoked before the time
-              identified by the <code>expires</code> attribute. The <code>expires</code> attribute
-              predicts a token's maximum possible lifespan but does not guarantee that it will reach
-              that lifespan. Clients are encouraged to cache a token until it expires. </para>
+              automatically becomes invalid. A token can be manually revoked before the time
+              identified by the <code>expires</code> attribute. The attribute predicts a token's
+              maximum possible lifespan but does not guarantee that it will reach that lifespan.
+              Clients are encouraged to cache a token until it expires. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.dfltregion">
-            <para>Users can be assigned a default region so that, when
-              there is a choice between multiple endpoints associated
-              with a service in the user's catalog, the endpoint for
-              the user's default region will be selected if it is
-              available. In this example, the user's default region is
-              DFW and several of the services in the catalog offer
-              endpoints in that region and the ORD region. The user's
-              work will be directed to the DFW region whenever
-              possible. </para>
+            <para>Users can be assigned a default region. If multiple endpoints are associated with
+              a service in the user's catalog, the endpoint for the user's default region is
+              selected if it is available. In this example, the user's default region is DFW, and
+              several of the services in the catalog are associated with endpoints in that region
+              and in the ORD region. Whenever possible, the user's work is directed to the DFW
+              region. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.role">
-            <para>Users can be assigned multiple roles, with each role
-              providing specific privileges. In this example,
-                <code>jsmith</code> is the administrative user for the
-              account, holding the fully-privileged
-                <code>identity:admin</code> role. Other users might
-              hold other roles with different privileges. Roles need
-              not be associated with actual job functions such as
-              Administrator, Operator, Developer, Tester, or Trainer. </para>
+            <para>Users can be assigned multiple roles, with each role providing specific
+              privileges. In this example, <code>yourUserName</code> is the administrative user for
+              the account and holds the fully-privileged <code>identity:admin</code> role. Other
+              users might hold other roles with different privileges. Roles do not have to be
+              associated with actual job functions such as Administrator, Operator, Developer,
+              Tester, or Trainer. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.catalog">
-            <para> The service catalog lists the services you can access. In this example, the user
-              can access one database service, one loadbalancing service, two compute services
+            <para> The service catalog lists the services that you can access. In this example, the
+              user can access one database service, one load-balancing service, two compute services
               (Cloud Servers OpenStack and Cloud Servers), two object storage services (Cloud Files
-              Content Delivery Network (CDN), and Cloud Files), and one DNS service. The catalog
-              listing for each service provides at least one endpoint URL for that service. Other
-              information, such as regions, versions, and tenants, is provided if it's relevant to
-              this user's access to this service. </para>
+              CDN and Cloud Files), and one DNS service. The catalog entry for each service provides
+              at least one endpoint URI for that service. Other information, such as regions,
+              versions, and tenants, is provided if it is relevant to a user's access to a service. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.servicetype">
-            <para> The service type attribute identifies services that
-              perform similar functions, whatever those services might
-              be named. In this example, the services named
-              cloudServers and cloudServersOpenstack are both
-              identified as <code>type="compute"</code>, identifying
-              them as compute services even though the word "compute"
-              does not appear in their names. </para>
+            <para> The service <code>type</code> attribute identifies services that perform similar
+              functions, regardless of service names. In this example, the service named cloudFiles
+              is identified as <code>type="object-store"</code>, identifying it as a storage service
+              even though the word "store" does not appear in its name. </para>
             <important>
-              <para>Use service type as the primary value for locating
-                a service. If multiple endpoints of the same service
-                type exist in the same region, use service name as the
-                tiebreaker.</para>
+              <para>Use the service <code>type</code> attribute as the primary value for locating a
+                service. If multiple endpoints of the same service type exist in the same region,
+                use the service <code>name</code> attribute to locate the appropriate
+                service.</para>
             </important>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.servicename">
-            <para> The service name attribute identifies each unique service in the catalog. After a
-              service is created, its name does not change. However, new services of the same
-              service type can be added to the catalog with new names. </para>
+            <para> The service <code>name</code> attribute identifies each unique service in the
+              catalog. After a service is created, its name does not change. However, new services
+              of the same service <code>type</code> can be added to the catalog with new names. </para>
             <important>
               <para> If you are programmatically parsing an authentication response, use service
-                type rather than service name as the basis for determining whether a user has access
-                to a particular kind of service. Service type is stable across all releases. New
-                service types can be developed, but existing service types are not renamed. In this
-                example, <code>type="compute"</code> identifies all the available compute services,
-                one of which is named cloudServers and one of which is named cloudServersOpenStack.
-                New compute service names might be added in future releases. Whatever the compute
-                services are named, you can always recognize them by parsing for
-                  <code>type="compute"</code> in the authentication response's service catalog. </para>
+                  <code>type</code> rather than service <code>name</code> to determine whether a
+                user has access to a particular kind of service. Service type is stable across all
+                releases. New service types might be developed, but existing service types are not
+                renamed. In this example, <code>type="compute"</code> identifies all the available
+                compute services. If new compute services are added in future releases, you can
+                recognize them by parsing for t<code>ype="compute"</code> in the authentication
+                response's service catalog.</para>
             </important>
+            <tip>
+              <para>Beginning with Auth 2.0, the service catalog includes a service
+                  <code>type</code> attribute to identify services that perform similar functions
+                but have different names. For example, <code>type="compute"</code> identifies
+                compute services such as cloudServers and cloudServersOpenStack. Some developers
+                have found the service <code>type</code> attribute to be useful in parsing the
+                service catalog. For additional information on Auth 2.0 (also known as the Cloud
+                Identity service), see the <citetitle>Cloud Identity Client Developer
+                  Guide</citetitle> at <link xlink:href="http://docs.rackspace.com"
+                  >http://docs.rackspace.com/</link>.</para>
+            </tip>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.region">
-            <para> A service can expose endpoints in different regions. Regional endpoints allow
-              clients to provision resources in a manner that provides high availability. </para>
+            <para> A service might expose endpoints in different regions. Regional endpoints enable
+              users to provision resources in a manner that provides high availability. </para>
             <para> Some services are not region-specific. These
               services supply a single non-regional endpoint and do
               not provide access to internal URLs. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.tenant">
-            <para> Some services recognize specification of a tenant.
-              If a service does recognize tenants, the format of the
-              tenant specification is defined only by the service. For
-              details about whether and how to specify a tenant, check
-              the documentation for the service you are using.</para>
+            <para> Some services recognize specification of a tenant. If a service recognizes
+              tenants, the format of the tenant specification is defined only by the service. For
+              details about whether and how to specify a tenant, check the documentation for the
+              service that you are using.</para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.url">
-            <para> An endpoint can be assigned public and internal
-              URLs. A public URL is accessible from anywhere. Access
-              to a public URL usually incurs traffic charges. Internal
-              URLs are only accessible to services within the same
-              region. Access to an internal URL is free of charge. </para>
+            <para> An endpoint can be assigned public and internal URIs. A public URI is accessible
+              from anywhere. Access to a public URI usually incurs traffic charges. Internal URIs
+              are accessible only to services within the same region. Access to an internal URI is
+              free of charge. </para>
             <para> </para>
           </callout>
         </calloutlist>
-        <para>Authentication tokens are typically valid for 24 hours.
-          Applications should be designed to re-authenticate after
-          receiving a 401 (Unauthorized) response from a service
-          endpoint. </para>
-        <important>
-          <para>If you are programmatically parsing an authentication response, please be aware that
-            service names are stable for the life of the particular service and can be used as keys.
-            You should also be aware that a user's service catalog can include multiple
-            uniquely-named services that perform similar functions. For example,
-            cloudServersOpenStack is the OpenStack version of compute whereas cloudServers is the
-            legacy version of compute. The same user can have access to both services. In Auth 2.0,
-            the service type attribute can be used as a key by which to recognize similar services. </para>
-        </important>
-        <tip>
-          <para>Beginning with Auth 2.0, the service catalog includes a service type attribute to
-            identify services that perform similar functions but have different names. For example,
-              <code>type="compute"</code> identifies compute services such as cloudServers and
-            cloudServersOpenStack. Some developers have found the service type attribute to be
-            useful in parsing the service catalog. For additional information on Auth 2.0 (also
-            known as the Cloud Identity Service), see the <citetitle>Cloud Identity Client Developer
-              Guide</citetitle> at <link xlink:href="http://docs.rackspace.com"
-              >http://docs.rackspace.com/</link>.</para>
-        </tip>
-        <para>Cloud Files service endpoints are published in the service catalog in the Auth
-          response with the account information, which is a required element of the service
-          endpoints. The examples shown here are for authentication for US customers. Customers with
-          UK-based accounts will see different values in the service catalog. For more information
-          about service endpoints, see <xref linkend="Service-Access-Endpoints-d1e003"/>. </para>
+        <para>Cloud Files service endpoints are published in the service catalog in the
+          authentication response with the account information, which is a required element of the
+          service endpoints. The examples shown in this document are for authentication for US
+          customers. Customers with UK-based accounts see different values in the service catalog.
+          For more information about service endpoints, see <xref
+            linkend="Service-Access-Endpoints-d1e003"/>. </para>
       </section>
       <!-- <remark> The following information was replaced with the Identity v2.0 information. </remark>
       <para>The Cloud Files API is implemented using a RESTful web
@@ -1695,17 +1594,13 @@
       xmlns:wadl="http://wadl.dev.java.net/2009/02"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
       <title>Role Based Access Control</title>
-      <para>Role Based Access Control (RBAC) restricts access to the
-        capabilities of Rackspace Cloud services, including the Cloud
-        Files API, to authorized users only. RBAC enables Rackspace
-        Cloud customers to specify which account users of their Cloud
-        account have access to which Cloud Files API service
-        capabilities, based on roles defined by Rackspace (see <xref
-          linkend="RBAC_product_roles_table"/>). The permissions to
-        perform certain operations in the Cloud Files API – create,
-        read, update, delete – are assigned to specific roles, and
-        these roles can be assigned by the Cloud account admin user to
-        account users of the account. </para>
+      <para>Role Based Access Control (RBAC) restricts access to the capabilities of Rackspace Cloud
+        services, including the Cloud Files API, to authorized users only. RBAC enables Rackspace
+        Cloud customers to specify which account users of their Cloud account have access to which
+        Cloud Files API service capabilities, based on roles defined by Rackspace (see <xref
+          linkend="RBAC_product_roles_table"/>). The permissions to perform certain operations in
+        the Cloud Files API – create, read, update, delete – are assigned to specific roles, and the
+        Cloud account admin user assigns these roles to account users. </para>
       <section xml:id="assigningRoles">
         <title>Assigning Roles to Account Users</title>
         <para>The account owner (identity:user-admin) can create
@@ -1801,8 +1696,8 @@
         </table>
       </section>
       <section version="5.0" xml:id="RBAC_Role_Conflict_3">
-        <title>Resolving Conflicts Between RBAC Multiproduct vs.
-          Custom (Product-specific) Roles</title>
+        <title>Resolving Conflicts between RBAC Multiproduct and Custom (Product-Specific)
+          Roles</title>
         <para>The account owner can set roles for both multiproduct
           and Cloud Files scope, and it is important to understand how
           any potential conflicts among these roles are resolved. When
@@ -1851,12 +1746,12 @@
         </para>
       </section>
       <section version="5.0" xml:id="RBAC_API_XREF_3">
-        <title>RBAC Permissions Cross-reference to Cloud Files API
-          Operations</title>
+        <title>RBAC Permissions Cross-Reference to Cloud Files API Operations</title>
         <para>API operations for Cloud Files may or may not be available to all roles. To see which
-          operations are permitted to invoke which calls, please review <link
-            xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac"
-            >the Knowledge Center article</link>.</para>
+          operations are permitted to invoke which calls, see the <link
+            xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-cloud-files"
+            >Permissions Matrix for Cloud Files</link> article in the Rackspace Knowledge
+          Center.</para>
       </section>
     </section>
     <section xml:id="Service-Access-Endpoints-d1e003"
@@ -1937,8 +1832,8 @@
         </table>
       </para>
       <para>Replace the sample MossoCloudFS information in the preceding table with the actual
-        MossoCloudFS information returned as part of the authentication service response. You will
-        find this after the final '/' in the <code>publicURL</code> field and the
+        MossoCloudFS information returned as part of the authentication service response. This
+        information is located after the final '/' in the <code>publicURL</code> field and the
           <code>internalURL</code> field in the <code>cloudFiles</code> section of the service
         catalog returned by the authentication response. For more information about the account
         number, see the sample authentication request and response in <xref
@@ -1967,8 +1862,8 @@
         data centers, use a public endpoint because it is accessible
         from all the servers in the different environments.</para>
       <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-        <para>In order to avoid external bandwidth charges, your
-          containers and servers must be in the same data center. </para>
+        <para>To avoid external bandwidth charges, your containers and servers must be in the same
+          data center. </para>
         <para>You might find it useful to locate your objects in more than one data center to keep
           track of your data and backups. Specifically, if you serve an audience in a particular
           region, you might find it helpful to locate your Cloud Files objects as close to that
@@ -1978,13 +1873,12 @@
         calls are summarized in the following table.</para>
       <para>
         <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-          <para>If your audience is world wide, you might consider
-            using the Akamai Content Delivery Network (CDN). The CDN
-            speeds your content delivery because it is cached at edge
-            locations around the globe, rather than being served from
-            a single origin server. You can learn more about
-            CDN-enabling your containers in <xref
-            linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"/>. </para>
+          <para>If your audience is worldwide, consider using the Akamai content delivery network
+            (CDN). The CDN speeds your content delivery because it is cached at edge locations
+            around the globe, rather than being served from a single origin server. You can learn
+            more about CDN-enabling your containers in <xref
+              linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
+            />. </para>
         </note>
         <table rules="all">
           <caption>Regionalized Service Endpoints for CDN Management
@@ -2029,12 +1923,10 @@
           </tbody>
         </table>
       </para>
-      <para>As with the storage component service, replace the sample
-        MossoCloudFS information with the actual MossoCloudFS
-        information returned as part of the authentication service
-        response. For the CDN management service, you will find this
-        information after the final '/' in the <code>publicURL</code>
-        field in the <code>cloudFilesCDN</code> section of the service
+      <para>As with the storage component service, replace the sample MossoCloudFS information with
+        the actual MossoCloudFS information returned as part of the authentication service response.
+        For the CDN management service, this information is located after the final '/' in the
+          <code>publicURL</code> field in the <code>cloudFilesCDN</code> section of the service
         catalog returned by the authentication response. </para>
     </section>
     <section xml:id="Service_contract_versions"
@@ -2143,10 +2035,9 @@
 -->      
       <section xml:id="Absolute_Limits-d1e942">
         <title>Absolute Limits</title>
-        <para>Absolute limits are fixed. Absolute limits control the
-          total number of specific objects that the user can have or
-          process in Cloud Files. </para>
-        <para>See the following table for the absolute limits.</para>
+      <para>Absolute limits control the total number of specific objects that a user can have or
+        process in Cloud Files. Absolute limits are fixed.</para>
+        <para>The following table lists the absolute limits in Cloud Files.</para>
         <table rules="all">
           <caption>Absolute Limits</caption>
         <col width="30%"/>
@@ -2173,16 +2064,16 @@
             </tr>
             <tr>
               <td>Pseudo hierarchical folders and directories</td>
-              <td>Simulated hierarchical structure within a single
-                container by adding forward slash characters
-                  (<code>/</code>) in the object name</td>
+              <td>Simulated hierarchical structure within a single container, created  by adding a
+              forward slash (<code>/</code>) in the object name</td>
               <td>No limit</td>
             </tr>
             <tr>
               <td>Container and object metadata limits </td>
               <td>Maximum metadata limits</td>
               <td>4096 bytes maximum overall metadata, with 90 distinct metadata items at the most.
-              Each can have a 128 character name length with a 256 max value length each.</td>
+              Each piece of metadata can have a 128-character name length with a 256 maximum value
+              length.</td>
             </tr>
             <tr>
               <td>Number of object segments per static large object (SLO)</td>
@@ -2192,7 +2083,7 @@
             <tr>
               <td>TTL for a CDN-enabled container</td>
               <td>Maximum TTL for a CDN-enabled container</td>
-              <td>1 year -31536000 seconds</td>
+              <td>1 year (31,536,000 seconds)</td>
             </tr>
             <tr>
               <td>Container name length</td>
@@ -2230,23 +2121,17 @@
     <section xml:id="Request_Response_Types-d1e903"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
       <title>Request and Response Types</title>
-      <para>You specify the request format using the
-          <code>Content-Type</code> header. The Cloud Files API
-        supports both the JSON (<code
-          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+      <para>You specify the request format by using the <code>Content-Type</code> header. The Cloud
+        Files API supports both the JSON (<code xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
           >application/json</code>) and XML (<code
-          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
-          >application/xml</code>) data serialization formats, as well
-        as other formats such as <code
-          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
-          >text/plain</code>, <code
-          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
-          >text/xml</code>, and <code>text/html</code> along with
-          <code>video</code>, <code>audio</code>, and
-          <code>image</code> types.  For pseudo hierarchical folders
-        and directories, <code
-          xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
-          >application/directory</code> might be used.</para>
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML">application/xml</code>) data
+        serialization formats, as well as other formats such as <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML">text/plain</code>, <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML">text/xml</code>, and
+          <code>text/html</code>, along with <code>video</code>, <code>audio</code>, and
+          <code>image</code> types. For pseudo hierarchical folders and directories, <code
+          xmlns:m="http://www.w3.org/the key 1998/Math/MathML">application/directory</code> might be
+        used.</para>
       <para>You specify the response format in requests by using the
           <code>Accept</code> header. The Cloud Files API supports
         both the JSON (<code
@@ -2290,205 +2175,45 @@
         <para>Maximum length of object name: 1024 bytes</para>
       </listitem>
     </itemizedlist>
-    <para>Container and object names must be UTF-8 encoded and then must be properly URL-encoded
-      prior to interacting with the REST interface. You might be using an API binding that performs
-      the URL-encoding on your behalf. If so, do not URL-encode before calling the API binding, or
-      you will double-encode container and object names. The length restrictions must be checked
-      against the URL-encoded string.</para>
+    <para>Container and object names must be UTF-8 encoded and then URL-encoded before interacting
+      with the REST interface. You might be using an API binding that performs the URL-encoding on
+      your behalf. If so, do not URL-encode before calling the API binding, or you will
+      double-encode container and object names. Check the  length restrictions against the
+      URL-encoded string.</para>
     <note>
       <para>The language-specific APIs handle URL-encoding and
         decoding.</para>
     </note>
-    <para>Each REST request against Cloud Files requires the inclusion
-      of an authorization token in the HTTP header
-        <code>X-Auth-Token</code>. Clients obtain this token, along
-      with the Cloud Files URIs, by first using the Rackspace
-      authentication service and supplying a valid user name and API
-      access key. For more information, see <xref
-        linkend="Authentication-d1e639"/>.</para>
-    <para>The two sets of REST services that make up the full Cloud
-      Files product are:<itemizedlist>
+    <para>Each REST request against Cloud Files requires the inclusion of an authorization token in
+      the <code>X-Auth-Token</code> header. You obtain this token, along with the Cloud Files URIs,
+      by first using the Rackspace authentication service and supplying a valid user name and API
+      access key. For more information, see <xref linkend="Authentication-d1e639"/>.</para>
+    <para>The following services make up the full Cloud Files product :<itemizedlist>
         <listitem>
-          <para><emphasis role="bold">Storage Service</emphasis>: The
-            REST service identified with <code>cloudFiles</code> in
-            the service catalog (see <xref
-              linkend="Retrieving_Auth_Token"/>) manages the data
-            storage in the system. Example operations are creating
-            containers and uploading objects. </para>
+          <para><emphasis role="bold">Storage Service</emphasis>: The service identified with
+              <code>cloudFiles</code> in the service catalog (see <xref
+              linkend="Retrieving_Auth_Token"/>) manages the data storage in the system. Example
+            operations are creating containers and uploading objects. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">CDN Service</emphasis>: The REST
-            service identified with <code>cloudFilesCDN</code> in the
-            service catalog (see <xref linkend="Retrieving_Auth_Token"
-            />) manages the CDN feature of Cloud Files. </para>
+          <para><emphasis role="bold">CDN Service</emphasis>: The service identified with
+              <code>cloudFilesCDN</code> in the service catalog (see <xref
+              linkend="Retrieving_Auth_Token"/>) manages the CDN feature of Cloud Files. </para>
         </listitem>
       </itemizedlist></para>
     <?hard-pagebreak?> 
-    <para>In the following sections, the purpose of each HTTP method
-      depends upon which service the call is made against. For
-      example, a &PUT; request against one of the
-        <code>cloudFiles</code> endpoints can be used to create a
-      container or upload an object, while a &PUT; request against the
-      one of the <code>cloufFilesCDN</code> endpoints is used to
-      CDN-enable a container.</para>
-    <para>The language-specific APIs mask this system separation from
-      the programmer. They simply create a container and mark it
-        <emphasis>public</emphasis> and handle calling the appropriate
-      back-end services by using the appropriate REST APIs.</para>
+    <para>In the following sections, the purpose of each HTTP method depends on which service the
+      call is made against. For example, a &PUT; request against one of the <code>cloudFiles</code>
+      endpoints can be used to create a container or upload an object, while a &PUT; request against
+      the one of the <code>cloudFilesCDN</code> endpoints is used to CDN-enable a container.</para>
+    <para>The language-specific APIs mask this system separation. They simply create a container and
+      mark it <emphasis>public</emphasis> and handle calling the appropriate back-end services by
+      using the appropriate REST APIs.</para>
     <note>
       <para>All requests to authenticate and operate against Cloud
         Files are performed using SSL over HTTP (HTTPS) on TCP port
         443.</para>
-    </note>
-    <!--
-    <?hard-pagebreak?> 
-    <para>The following table summarizes the operations that are
-      available in the Cloud Files API:</para>
-    <table xml:id="tableAPIOperations" rules="all">
-      <caption>Cloud Files API Operations</caption>
-      <col width="20%"/>
-      <col width="10%"/>
-      <col width="40%"/>
-      <col width="30%"/>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Method</th>
-          <th>URI</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="4"><emphasis role="bold">Account
-              Services</emphasis></td>
-        </tr>
-        <tr>
-          <td>List Account Containers </td>
-          <td><command>GET</command></td>
-          <td><code>v1/{account}</code></td>
-          <td>Lists containers in an account.</td>
-        </tr>
-        <tr>
-          <td>Get Account Details</td>
-          <td><command>HEAD</command></td>
-          <td><code>v1/{account}</code></td>
-          <td>Gets account metadata.</td>
-        </tr>
-        <tr>
-          <td>Create or Update Account Metadata</td>
-          <td><command>POST</command></td>
-          <td><code>v1/{account}</code></td>
-          <td>Creates or updates account metadata.</td>
-        </tr>
-        <tr>
-          <td>Delete Account Metadata</td>
-          <td><command>POST</command></td>
-          <td><code>v1/{account}</code></td>
-          <td>Deletes account metadata.</td>
-        </tr>
-        <tr>
-          <td colspan="4"/>
-        </tr>
-        <tr>
-          <td colspan="4"><emphasis role="bold">Container
-              Services</emphasis></td>
-        </tr>
-        <tr>
-          <td>List Objects in a Container</td>
-          <td><command>GET</command></td>
-          <td><code>v1/{account}/{container}</code></td>
-          <td>Lists the objects in a container.</td>
-        </tr>
-        <tr>
-          <td>Create Container</td>
-          <td><command>PUT</command></td>
-          <td><code>v1/{account}/{container}</code></td>
-          <td>Creates a container, or storage compartment, for your
-            data.</td>
-        </tr>
-        <tr>
-          <td>Delete Container</td>
-          <td><command>DELETE</command></td>
-          <td><code>v1/{account}/{container}</code></td>
-          <td>Deletes an empty container.</td>
-        </tr>
-        <tr>
-          <td>Get Container Details </td>
-          <td><command>HEAD</command></td>
-          <td><code>v1/{account}/{container}</code></td>
-          <td>Gets container metadata, including the number of objects
-            and the total bytes of all objects stored in the
-            container. </td>
-        </tr>
-        <tr>
-          <td>Set or Edit Container Metadata</td>
-          <td><command>POST</command></td>
-          <td><code>v1/{account}/{container}</code></td>
-          <td>Creates or updates the container metadata by associating
-            custom metadata headers with the container level URI.
-            These headers must have the format
-              <code>X-Container-Meta-*</code>.</td>
-        </tr>
-        <tr>
-          <td colspan="4"/>
-        </tr>
-        <tr>
-          <td colspan="4"><emphasis role="bold">Object
-              Services</emphasis></td>
-        </tr>
-        <tr>
-          <td>Retrieve Object</td>
-          <td><command>GET</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Gets data for the specified object.</td>
-        </tr>
-        <tr>
-          <td>Create or Update Object</td>
-          <td><command>PUT</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Creates or updates the content and metadata for the
-            specified object.</td>
-        </tr>
-        <tr>
-          <td>Copy Object</td>
-          <td><command>PUT</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Copies an existing object to another object with a new
-            name in Cloud Files. (The destination container must exist
-            before attempting the copy.)</td>
-        </tr>
-        <tr>
-          <td>Delete Object</td>
-          <td><command>DELETE</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Permanently deletes an object from the storage system
-            (data and metadata). ( In combination with the COPY
-            command, you can use COPY and then DELETE to effectively
-            move an object.)</td>
-        </tr>
-        <tr>
-          <td>Retrieve Object Metadata</td>
-          <td><command>HEAD</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Gets object metadata and other standard HTTP
-            headers.</td>
-        </tr>
-        <tr>
-          <td>Update Object Metadata</td>
-          <td><command>POST</command></td>
-          <td><code>v1/{account}/{container}/{object}</code></td>
-          <td>Sets your own object metadata. Metadata must be in the
-            format <code>X-Object-Meta-*</code>. You can also assign
-              <code>X-Delete-At</code> or <code>X-Delete-After</code>
-            to expiring objects. You cannot use this operation to
-            change other headers, such as <code>Content-Type</code>.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <?hard-pagebreak?> 
--->    
+    </note>    
     <para>The following diagram illustrates the various system
       interfaces and the ease with which content can be distributed
       over the CDN. The process is simple: authenticate, create a
@@ -2525,7 +2250,7 @@
         <para>Object and container names must be URL-encoded and UTF-8 encoded.</para>
       </listitem>
       <listitem>
-        <para>Container names cannot exceed 256 bytes and cannot contain a '/' character.</para>
+        <para>Container names cannot exceed 256 bytes and cannot contain a forward slash (/).</para>
       </listitem>
       <listitem>
         <para>Object names cannot exceed 1024 bytes, but they have no character restrictions.</para>
@@ -2551,19 +2276,17 @@
       <title>Account Services</title>
       <para>You can perform the operations in the following table at the account level of your Cloud
         Files account.</para>
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example, f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information and authentication
-        token. You can check how to generate an authentication token in <xref
-          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
-        are in the service catalog that is produced.</para>
+        token. For more information, see <xref linkend="Retrieving_Auth_Token"/>. </para>
       
        
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -2578,22 +2301,21 @@
       <title>Container Services</title>
       <para>You can perform the operations in the following table on containers in your Cloud Files
         account.</para>
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example, f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
         <listitem>
-          <para>container, such as MyContainer</para>
+          <para>container &#x2014; for example, MyContainer</para>
         </listitem>
       </itemizedlist>
-      <para>For your own requests, you must use your own account information,  authentication token,
-        and container name. You can check how to generate an authentication token in <xref
-          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
-        are in the service catalog that is produced.</para>
+      <para>For your own requests, you must use your own account information, authentication token,
+        and container names. For more information, see  <xref linkend="Retrieving_Auth_Token"
+        />.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#container">    
         </wadl:resource>  
@@ -2604,25 +2326,24 @@
       <title>Object Services</title>
       <para>You can perform the operations in the following table on objects in your Cloud Files
         containers.</para>
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example, f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
         <listitem>
-          <para>container, such as MyContainer</para>
+          <para>container &#x2014; for example, MyContainer</para>
         </listitem>
         <listitem>
-          <para>object, such as MyObject</para>
+          <para>object &#x2014; for example, MyObject</para>
         </listitem>
       </itemizedlist>
-      <para>For your own requests, you must use your own account information,  authentication token,
-        container name, and object name. You can check how to generate an authentication token in
-          <xref linkend="Retrieving_Auth_Token"/>. Your authentication token and your account
-        information are in the service catalog that is produced.</para>
+      <para>For your own requests, you must use your own account information, authentication token,
+        container names, and object names. For more information, see <xref
+          linkend="Retrieving_Auth_Token"/>. </para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">  
          <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#object">    
          </wadl:resource>  
@@ -3893,8 +3614,7 @@ X-Delete-After: 864000</programlisting>
               </tr>
             </tbody>
           </informaltable></para>
-        <para>The HTTP return code is 2nn (between 200 and 299,
-          inclusive) if the request succeeds. In this example, a 204
+        <para>An HTTP return code of 200 though 299 indicates success. In this example, a 204
           (No Content) code returns and there is no information in the
           response body. A 401 (Unauthorized) is returned for an
           invalid account or authentication token.</para>
@@ -3953,8 +3673,7 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Account-Meta-Book: MobyDick
 X-Account-Meta-Subject: Whaling</programlisting>
         </example>
-        <para>No response body is returned. A status code of 2nn
-          (between 200 and 299, inclusive) indicates success.</para>
+        <para>No response body is returned. A status code of 200 through 299 indicates success.</para>
         <example>
           <title>Create or Update Account Metadata Response</title>
           <programlisting>HTTP/1.1 204 No Content
@@ -4023,7 +3742,7 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Remove-Account-Meta-Book: x
 </programlisting>
           </example></para>
-        <para>No response body is returned. A status code from 200 to
+        <para>No response body is returned. A status code of 200 through
           299 indicates success.</para>
       </section>
     </section>
@@ -4544,8 +4263,7 @@ X-Remove-Account-Meta-Book: x
 </programlisting>
         </example>
         <para>A list of objects is returned in the response body, one
-          object name per line. The response will have a 2nn HTTP
-          status code (between 200 and 299 inclusive). If the
+          object name per line. The response of 200 through 200 indicates. If the
           container does not exist, or if an incorrect account is
           specified, then a response with a 404 (Not Found) status
           code will be returned.</para>

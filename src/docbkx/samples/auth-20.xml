@@ -12,8 +12,8 @@ Date: Thu, 12 Apr 2012 18:50:20 GMT
   xmlns:ksgrp="http://docs.rackspace.com/identity/api/ext/RAX-KSGRP/v1.0"
   xmlns:rax-kscatalog="http://docs.openstack.org/identity/api/ext/OS-KSCATALOG/v1.0"
   xmlns:atom="http://www.w3.org/2005/Atom">
-  <token id="vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz" expires="2011-12-08T22:51:02.000-06:00"/>
-  <user id="123456" name="jsmith" rax-auth:defaultRegion="DFW">
+  <token id="vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz" expires="2012-04-13T18:50:20.000-06:00"/>
+  <user id="123456" name="yourUserName" rax-auth:defaultRegion="DFW">
     <roles>
       <role id="identity:admin" name="identity:admin" description="Admin Role."/>
       <role id="identity:default" name="identity:default" description="Default Role."/>

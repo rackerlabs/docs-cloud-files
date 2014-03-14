@@ -7,12 +7,12 @@ Date: Thu, 12 Apr 2012 18:45:13 GMT
     "access": {
      
         "token": {
-            "expires": "2011-12-08T22:51:02.000-06:00", 
+            "expires": "2012-04-13T18:45:13.000-06:00",
             "id": "vvvvvvvv-wwww-xxxx-yyyy-zzzzzzzzzzzz"
         }, 
         "user": {
             "id": "123456", 
-            "name": "jsmith",
+            "name": "userUserName",
             "RAX-AUTH:defaultRegion": "DFW",
             "roles": [
                 {
