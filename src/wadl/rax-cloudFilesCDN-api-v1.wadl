@@ -90,7 +90,7 @@
 -->               
             <para>The list of CDN-enabled containers is returned in the
                 response body, one container name per line.</para>            
-            <para>The HTTP response status code is a value from 200 to 299, inclusive. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>            
+            <para>An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code returns if there are containers, and a 204 (No Content) code returns if there are no containers.</para>            
             <para>To view the CDN container details, see <xref
                 linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"/>.</para>
         </wadl:doc>

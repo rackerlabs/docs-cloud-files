@@ -174,17 +174,17 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer value <emphasis>n</emphasis>, limits the number of results to <emphasis>n</emphasis> values.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer value n, limits the number of results to n values.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names greater in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns container names lesser in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns container names lesser in value than the specified marker. Only strings using UTF-8 encoding are valid.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
@@ -310,7 +310,7 @@
             <para role="shortdesc">
                 Creates or updates account metadata.
             </para>
-            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a <command>POST</command> operation. These headers must have the format <code>X-Account-Meta-<replacable>name</replacable></code>. Replace <code><replacable>name</replacable></code> with name of your metadata. (In the following example request, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
+            <para>You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a <command>POST</command> operation. These headers must have the format <code>X-Account-Meta-name</code>. Replace <code>name</code> with name of your metadata. (In the following example request, the metadata headers are <code>X-Account-Meta-Book</code> and <code>X-Account_Meta-Subject</code>.) </para>
             <para>Subsequent <command>POST</command> operations for the same key/value pair overwrite the previous value.</para> 
             <para>A status code of 200 through 299 indicates success. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
@@ -321,7 +321,7 @@
                 name="X-Account-Meta-name" style="header" required="true"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Header for the
-                    account metadata that you want to create or update. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.
+                    account metadata that you want to create or update. Replace <code>name</code> at the end of the header with the name for your metadata.
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
@@ -347,7 +347,7 @@
                 Deletes account metadata.</para>
             <para>To delete a metadata header, use the <command>POST</command> operation to send
                 an empty value for that particular header.</para>
-            <para>If the tool that you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-<replaceable>name</replaceable>: <replaceable>arbitrary value</replaceable></code> header. The <code><replaceable>arbitrary value</replaceable></code> is ignored. In the following example request, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
+            <para>If the tool that you use to communicate with Cloud Files does not support empty headers, such as an older version of cURL, send the <code>X-Remove-Account-Meta-name: arbitrary value</code> header. The <code>arbitrary value</code> is ignored. In the following example request, <code>X-Remove-Account-Meta-Book: x</code> is used.</para>
             <para>A status code of 200 through 299 indicates
                 success.</para> 
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -357,7 +357,7 @@
                 name="X-Remove-Account-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Header to send to delete account metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</para></wadl:doc>
+                    xml:lang="EN"><para>Header to send to delete account metadata. Replace <code>name</code> at the end of the header with the name for your metadata.</para></wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Delete Account Metadata Request">
@@ -443,26 +443,26 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer <emphasis>n</emphasis>, limits the number of results to <emphasis>n</emphasis> values.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For an integer n, limits the number of results to n values.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns object names greater in value than the
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names greater in value than the
                     specified marker.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="end_marker" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value <emphasis>x</emphasis>, returns object names lesser in value than the specified
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Given a string value x, returns object names lesser in value than the specified
                     marker.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="prefix" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string value <emphasis>x</emphasis>, causes the results to be limited to object names
-                    beginning with the substring <emphasis>x</emphasis>.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string value x, causes the results to be limited to object names
+                    beginning with the substring x.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -474,13 +474,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="delimiter" style="query" required="false"
                 type="xsd:char">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a character <emphasis>c</emphasis>, returns the object names nested in the container
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a character c, returns the object names nested in the container
                     (without the need for the directory marker objects).</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="path" style="query" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string <emphasis>x</emphasis>, returns the object names nested in the pseudo path. This parameter is equivalent to setting the delimiter parameter to / and the prefix to the path with a / on the end. 
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a string x, returns the object names nested in the pseudo path. This parameter is equivalent to setting the delimiter parameter to / and the prefix to the path with a / on the end. 
                     For more information about pseudo paths, see the section on pseudo hierarchical folders and directories.
                 </p></doc>
             </param>
@@ -542,7 +542,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Custom container metadata. Replace <code>name</code> at the end of the header with the name for your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -617,8 +617,8 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Create or Update Container Metadata">
             <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container-level URI. These headers
-                must have the format <code>X-Container-Meta-<replacable>name</replacable></code>.</para>
-            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-<replacable>name</replacable></code>, where <code><replacable>name</replacable></code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
+                must have the format <code>X-Container-Meta-name</code>.</para>
+            <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where <code>name</code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
             <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
             <para>A status code of 204 (No Content) indicates success. Status
                 code 404 (Not Found) is returned when the requested container does not exist.</para>
@@ -633,7 +633,7 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace <code><replacable>name</replacable></code> at the end of the header with the name of your metadata. </p></doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata. Replace <code>name</code> at the end of the header with the name of your metadata. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -674,7 +674,7 @@
             <itemizedlist spacing="compact">
                 <listitem><para>How many objects are in the container (<code>X-Container-Object-Count</code>)</para></listitem>
                 <listitem><para>The total bytes for all objects stored in the container (<code>X-Container-Bytes-Used</code>)</para></listitem>
-                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-<replacable>name</replacable></code>)</para></listitem>
+                <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
             </itemizedlist>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
             <para>If the container exists, a status code of 200 through 299 is returned. If the container does not exist,
@@ -705,8 +705,8 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The <code><replacable>name</replacable></code> at the end of the header is the name of your metadata. 
-                    One <code>X-Container-Meta-<replacable>name</replacable></code> response header appears for each metadata item (for each <replacable>name</replacable>).
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Any metadata set on the container. The <code>name</code> at the end of the header is the name of your metadata. 
+                    One <code>X-Container-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -743,8 +743,8 @@
             <para>To delete a metadata header, use a <command>POST</command> operation to send an empty value for that particular header, such as
                 <code>X-Container-Meta-Subject:</code>.</para>
             <para>If the tool that you are using to communicate with Cloud Files does not support sending
-                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-<replacable>name</replacable>: <replacable>arbitrary value</replacable></code>, where <code><replacable>name</replacable></code> is the name of your
-                custom header. <code><replacable>arbitrary value</replacable></code> can be any value, and it will not be used.  </para>
+                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-name: arbitrary value</code>, where <code>name</code> is the name of your
+                custom header. <code>arbitrary value</code> can be any value, and it will not be used.  </para>
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
             <para>A status code of 200 through 299 indicates success. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
@@ -755,7 +755,7 @@
                 name="X-Remove-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                    metadata to be deleted. Replace <code><replacable>name</replacable></code> at the end of the header with the name for your metadata.</p></doc>
+                    metadata to be deleted. Replace <code>name</code> at the end of the header with the name for your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
@@ -1011,7 +1011,7 @@
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        custom object metadata. The <code><replacable>name</replacable></code> at the end of this header represents the name
+                        custom object metadata. The <code>name</code> at the end of this header represents the name
                         of your metadata.</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -1336,9 +1336,9 @@
                 to set expirations for objects. </para>
             <para> To remove previously-set object metadata, perform a
                 <command>POST</command> request to the object name with
-                <code>X-Remove-Object-Meta-<replacable>name</replacable>: <replacable>Foo</replacable></code> where
-                <code><replacable>name</replacable></code> is the name of your metadata.
-                <code><replacable>Foo</replacable></code> is any term, and it will not be used. You
+                <code>X-Remove-Object-Meta-name: Foo</code> where
+                <code>name</code> is the name of your metadata.
+                <code>Foo</code> is any term, and it will not be used. You
                 must, however, send some value with the request. Otherwise,
                 the metadata is not removed. </para>
             <para>For information on working with metadata when copying
@@ -1366,7 +1366,7 @@
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        container metadata. The <code><replacable>name</replacable></code> represents the name of
+                        container metadata. The <code>name</code> represents the name of
                         your metadata. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
