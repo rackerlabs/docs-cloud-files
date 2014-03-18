@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-03-17</pubdate>
+    <pubdate>2014-02-21</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,8 +68,8 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
-      <revision>
-        <date>2014-03-17</date>
+<!--      <revision>
+      <date>2014-03-17</date>
         <revdescription>
           <para>Added <code>X-Container-Read</code> and <code>X-Container-Write</code> header
             descriptions to the following operation descriptions:<itemizedlist>
@@ -95,7 +95,7 @@
               </listitem>
             </itemizedlist></para>
         </revdescription>
-      </revision>
+      </revision> -->
       <revision>
         <date>2014-02-21</date>
         <revdescription>
@@ -5638,8 +5638,8 @@ X-Object-Meta-Veggie: Carrot
     <title>API Operations for CDN Services</title>
     <para>This chapter provides further description for several of the API operations described in
         <xref linkend="API_Operations_d1e000"/>. These API operations have a specific purpose for
-      the Content Delivery Network (CDN) service that is available in Cloud Files.</para>
-    <para>You direct the REST API methods described to the endpoints described in the
+      the content delivery network (CDN) service that is available in Cloud Files.</para>
+    <para>You direct the REST API methods described in this chapter to the endpoints listed in the
         <code>cloudFilesCDN</code> section of the service catalog that you obtain during successful
       authentication. (For more information, see <xref linkend="Authentication-d1e639"/> and <xref
         linkend="Service-Access-Endpoints-d1e003"/>.)</para>
@@ -5653,9 +5653,8 @@ X-Object-Meta-Veggie: Carrot
       system: </para>
     <itemizedlist>
       <listitem>
-        <para><xref linkend="API_Operations_for_CDN_Services-d1e2386"
-          /> describes operations that you can perform at the account
-          level for Cloud Files CDN services.</para>
+        <para><xref linkend="CDN_Account_Operations-d1e2397"/> describes operations that you can
+          perform at the account level for Cloud Files CDN services.</para>
       </listitem>
       <listitem>
         <para><xref linkend="CDN_Container_Services-d1e2632"/> describes operations that you
@@ -5666,8 +5665,11 @@ X-Object-Meta-Veggie: Carrot
           on objects.</para>
       </listitem>
     </itemizedlist>
-    <informaltable rules="all">
-      <thead>
+    <informaltable rules="all" width="1117">
+      <col width="112pt"/>
+      <col width="853pt"/>
+      <col width="144pt"/>
+      <thead align="center">
         <tr>
           <th>Method</th>
           <th>URI</th>
@@ -5681,6 +5683,9 @@ X-Object-Meta-Veggie: Carrot
             <programlisting>v1/{account}{?enabled_only,limit, marker,end_marker,format}</programlisting>
           </td>
           <td>Lists CDN-enabled containers sorted by name. </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center">Container Services</td>
         </tr>
         <tr>
           <td><command>PUT</command></td>
@@ -5704,6 +5709,9 @@ X-Object-Meta-Veggie: Carrot
           <td>Updates the CDN-enabled container metadata. </td>
         </tr>
         <tr>
+          <td colspan="3" align="center">Object Services</td>
+        </tr>
+        <tr>
           <td><command>DELETE</command></td>
           <td>
             <programlisting>v1/{account}/{object}</programlisting>
@@ -5713,7 +5721,7 @@ X-Object-Meta-Veggie: Carrot
       </tbody>
     </informaltable>
 
-    <section xml:id="Test-CDN_Account_Operations-d1e2397">
+    <section xml:id="CDN_Account_Operations-d1e2397">
       <title>CDN Account Services</title>
       <para>You can perform the operation in the following table at the account level of your Cloud
         Files CDN account.</para>
