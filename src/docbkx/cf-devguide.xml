@@ -957,7 +957,7 @@
           <para><xref linkend="objectServicesOperations_d1e000"/></para>
         </listitem>
       </itemizedlist>
-      <para linkend="Operations-d1e509">You can performa operations through the REST web service API
+      <para linkend="Operations-d1e509">You can perform operations through the REST web service API
         or a language-specific API. (For information about the Rackspace language-specific APIs, see
         the <link xlink:href="http://docs.rackspace.com/sdks/guide/content/intro.html"
             ><citetitle>Rackspace Cloud SDKs Software Development Kit
@@ -1375,7 +1375,7 @@
                 releases. New service types might be developed, but existing service types are not
                 renamed. In this example, <code>type="compute"</code> identifies all the available
                 compute services. If new compute services are added in future releases, you can
-                recognize them by parsing for t<code>ype="compute"</code> in the authentication
+                recognize them by parsing for <code>type="compute"</code> in the authentication
                 response's service catalog.</para>
             </important>
             <tip>
@@ -2293,7 +2293,9 @@
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information and authentication
-        token. For more information, see <xref linkend="Retrieving_Auth_Token"/>. </para>
+        token. For more information, see <xref linkend="Retrieving_Auth_Token"/>. Your
+        authentication token and your account information are in the service catalog that is
+        produced.</para>
       
        
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -2321,8 +2323,9 @@
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information, authentication token,
-        and container names. For more information, see  <xref linkend="Retrieving_Auth_Token"
-        />.</para>
+        and container names. For more information, see <xref linkend="Retrieving_Auth_Token"/>. Your
+        authentication token and your account information are in the service catalog that is
+        produced.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#container">    
         </wadl:resource>  
@@ -2350,7 +2353,8 @@
       </itemizedlist>
       <para>For your own requests, you must use your own account information, authentication token,
         container names, and object names. For more information, see <xref
-          linkend="Retrieving_Auth_Token"/>. </para>
+          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
+        are in the service catalog that is produced.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">  
          <wadl:resource href="../../src/wadl/rax-cloudFiles-api-v1.wadl#object">    
          </wadl:resource>  
@@ -3084,7 +3088,7 @@ Content-Disposition: attachment; filename=platmap.tif</programlisting>
       <para>Objects that are assigned the <code>X-Delete-At</code> or <code>X-Delete-After</code>
         header are deleted within one day of the expiration time, and the object stops being served
         immediately after the expiration time.</para>
-      <para>The <code>X-Delete-At</code> header requires a Unix epoch timestamp, in integer form.
+      <para>The <code>X-Delete-At</code> header requires a UNIX epoch timestamp, in integer form.
         For example, 1348691905 represents Wed, 26 Sep 2012 20:38:25 GMT.
         <!--  02-06-12 dsh: Exchanged POSIX in / favor of Epoch for the / sake of clarity dsh. -->By
         setting the header to a specific epoch time, you indicate when you want the object to
@@ -3096,7 +3100,7 @@ Content-Disposition: attachment; filename=platmap.tif</programlisting>
         seconds.</para>
       <para>To assign expiration headers to existing objects, use the <command>POST</command>
         operation.</para>
-      <para>In the following example, the <code>X-Delete-At</code> header is assigned with a Unix
+      <para>In the following example, the <code>X-Delete-At</code> header is assigned with a UNIX
         epoch timestamp in integer form for Mon, 11 Jun 2012 15:38:25 GMT. For example timestamps
         and a batch converter, go to <link xlink:href="http://www.epochconverter.com/"
           >http://www.epochconverter.com/</link>.</para>
@@ -4678,7 +4682,7 @@ X-Remove-Account-Meta-Book: x
           and time by using the <code>X-Delete-At</code> or
             <code>X-Delete-After</code> headers during an object &PUT;
           operation. The <code>X-Delete-At</code> header requires a
-          Unix epoch timestamp, in integer form. For example,
+          UNIX epoch timestamp, in integer form. For example,
           1348691905 represents Wed, 26 Sep 2012 20:38:25 GMT. By
           setting the header to a specific epoch time, you indicate
           when you want the object to expire, not be served, and be
@@ -5725,19 +5729,19 @@ X-Object-Meta-Veggie: Carrot
       <title>CDN Account Services</title>
       <para>You can perform the operation in the following table at the account level of your Cloud
         Files CDN account.</para>
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example,  f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information and authentication
-        token. You can check how to generate an authentication token in <xref
-          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
-        are in the service catalog that is produced.</para>
+        token. For more information, see <xref linkend="Retrieving_Auth_Token"/>. Your
+        authentication token and your account information are in the service catalog that is
+        produced.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#versions"/>
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#account"/>
@@ -5754,48 +5758,45 @@ X-Object-Meta-Veggie: Carrot
         objects within it become available on the CDN. Similarly, after a container is CDN-enabled,
         any objects added to it through the storage service become CDN-enabled. After you CDN-enable
         a container, its publicly-available URI can be found with the header <code>X-Cdn-Uri</code>,
-        and its objects can be accessed at
+        and its objects can be accessed with
           <code>X-Cdn-Uri/<replaceable>objectName</replaceable></code>. By knowing this pattern, you
         can pre-generate the URI for an object before it is added to the container. </para>
-      <para> When you enable a container in the CDN service, you
-        automatically generate URIs for SSL and streaming usage. They
-        are listed under the <code>X-Cdn-Ssl-Uri</code> and
-        <code>X-Cdn-Streaming-Uri</code> headers, respectively. </para>
-      <para> On August 13, 2012, the format of new CDN URIs changed in
-        order to enhance the security of the Content Delivery Network.
-        Any URIs set in the older format
-        (<code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>)
-        continue to work. However, any newly generated CDN URIs have
-        the new format:
-        <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
+      <para> When you enable a container in the CDN service, you automatically generate URIs for SSL
+        and streaming usage. They are listed under the <code>X-Cdn-Ssl-Uri</code> and
+          <code>X-Cdn-Streaming-Uri</code> headers. </para>
+      <para> On August 13, 2012, the format of new CDN URIs changed in order to enhance the security
+        of the CDN. Any URIs set in the older format (for example,
+          <code>http://c25810.r10.cf1.rackcdn.com/mydog.jpg</code>) continue to work. However, any
+        newly generated CDN URIs have the new format, as shown in the following example:
+          <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
           r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
       <note>
         <title>Note on CDN Charges</title>
-        <para> Keep an eye on your CDN charges. When you CDN-enable a container, not only can anyone
-          view it, but anyone can link to it. We recommend that you monitor your bandwidth usage and
-          charges in the Cloud Control Panel. This way, you know if someone is hot linking your
-          content. For helpful instructions for keeping yourself informed about your usage charges,
-          see the Knowledge Center article <link
+        <para> Monitor your CDN charges. When you CDN-enable a container, not only can anyone view
+          it, but anyone can link to it. We recommend that you monitor your bandwidth usage and
+          charges in the Cloud Control Panel so that you know if someone is hot-linking your
+          content. For instructions about viewing your usage charges, see the Knowledge Center
+          article <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0"
             > "Protect your Cloud Files CDN Bill from Unexpected Usage"</link>. </para>
       </note>
      
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example, f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
         <listitem>
-          <para>container, such as MyContainer</para>
+          <para>container &#x2014; for example, MyContainer</para>
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information, authentication token,
-        and container name. You can check how to generate an authentication token in <xref
-          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
-        are in the service catalog that is produced.</para>
+        and container names. For more information, see <xref linkend="Retrieving_Auth_Token"/>. Your
+        authentication token and your account information are in the service catalog that is
+        produced.</para>
       
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#container"/>
@@ -5805,28 +5806,28 @@ X-Object-Meta-Veggie: Carrot
     
     <section xml:id="CDN_Object_Services">
       <title>CDN Object Services</title>
-      <para>You can perform the operation in the following table on
-        objects in your Cloud Files containers.</para>
+      <para>You can perform the operation in the following table on objects in your Cloud Files
+        CDN-enabled containers.</para>
      
-      <para>The examples in this section use sample information for:</para>
+      <para>The examples in this section use sample values for the following:</para>
       <itemizedlist>
         <listitem>
-          <para>account, such as MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
+          <para>account &#x2014; for example, MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 </para>
         </listitem>
         <listitem>
-          <para>X-Auth-Token, such as f064c46a782c444cb4ba4b6434288f7c</para>
+          <para>X-Auth-Token &#x2014; for example, f064c46a782c444cb4ba4b6434288f7c</para>
         </listitem>
         <listitem>
-          <para>container, such as MyContainer</para>
+          <para>container &#x2014; for example, MyContainer</para>
         </listitem>
         <listitem>
-          <para>object, such as MyObject</para>
+          <para>object &#x2014; for example, MyObject</para>
         </listitem>
       </itemizedlist>
       <para>For your own requests, you must use your own account information, authentication token,
-        container name, and object name. You can check how to generate an authentication token in
-          <xref linkend="Retrieving_Auth_Token"/>. Your authentication token and your account
-        information are in the service catalog that is produced.</para>
+        container names, and object names. For more information, see  <xref
+          linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
+        are in the service catalog that is produced.</para>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#object"/>
       </wadl:resources>
@@ -6728,18 +6729,15 @@ i))) != null;
 --> 
   <chapter xml:id="AdditionalCDNServicesInformation" >
     <title>Additional CDN Services Information</title>
-    <para>The following sections provide additional information about
-      working with the Cloud Files CDN Services.</para>
+    <para>The chapter provides additional information about working with the Cloud Files CDN
+      services.</para>
     <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
       <title>Purge CDN-Enabled Containers</title>
-      <para>For a container to be purged from the CDN, you can either
-        wait for the TTL to expire, or you can request  that Rackspace
-        remove, or purge, a CDN-enabled container from the network.
-        After you have made the request to Rackspace through a support
-        ticket, the system purges the object from the CDN, and sends
-        an email to the address (or multiple addresses) that you
-        indicate through the ticket. The email address notification is
-        optional.</para>
+      <para>For a container to be purged from the CDN, you can either wait for the TTL to expire, or
+        you can request that Rackspace remove, or purge, a CDN-enabled container from the network.
+        After you have made the request to Rackspace through a support ticket, the system purges the
+        container from the CDN, and sends an email to the address (or multiple addresses) that you
+        indicate through the ticket. The email address notification is optional.</para>
       <note>
         <para>To prevent the container from going back to the CDN,
           first change the <code>X-CDN-Enabled</code> flag to
@@ -6750,26 +6748,20 @@ i))) != null;
     </section>
   <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
     <title>CDN-Enabled Containers Served through SSL</title>
-    <para>A &HEAD; operation for a CDN-enabled container returns
-      an SSL URI, <code>X-Cdn-Ssl-Uri</code>, in addition to the
-      other headers associated with CDN. This feature enables
-      you to use https protocol in URIs used for requesting
-      objects stored in CDN-enabled containers. </para>
-      <para>A status code of 204 (No Content) indicates success.
-        Status code 404 (Not Found) is returned if the requested
-        container was not found.  No content is returned.</para>
+    <para>A &HEAD; operation for a CDN-enabled container returns an SSL URI,
+          <code>X-Cdn-Ssl-Uri</code>, in addition to the other headers associated with CDN. This
+        feature enables you to use HTTPS protocol in URIs that are used for requesting objects
+        stored in CDN-enabled containers. </para>
     <example>
-      <title>CDN-Enabled Container Metadata Request with
-        SSL</title>
+      <title>CDN-Enabled Container Metadata Request</title>
       <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
-      <title>CDN-Enabled Container Metadata Response with
-        SSL</title>
+      <title>CDN-Enabled Container Metadata Response with SSL URI</title>
       <programlisting>HTTP/1.1 204 No Content
-X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
+<emphasis role="bold">X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com</emphasis>
 X-Ttl: 259200
 X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
 X-Cdn-Enabled: True
@@ -6787,40 +6779,33 @@ Content-Length: 0</programlisting>
       feature: </para>
     <itemizedlist>
       <listitem>
-        <para><code>X-Cdn-Streaming-Uri</code>: specifies a URI
-          for video streaming that uses Adobe’s HTTP Dynamic
-          Streaming</para>
+        <para><code>X-Cdn-Streaming-Uri</code>, which specifies a URI for video streaming that uses
+            HTTP Dynamic Streaming from Adobe</para>
       </listitem>
       <listitem>
-        <para><code>X-Cdn-Ios-Uri</code>: specifies the URI for
-          video streaming that uses Apple’s HTTP Live Streaming
-          (see <xref linkend="iOS-Streaming-d1f3725"/>)</para>
+        <para><code>X-Cdn-Ios-Uri</code>, which specifies the URI for video streaming that uses HTTP
+            Live Streaming from Apple</para>
       </listitem>
     </itemizedlist>
     <para>Streaming is a method of relaying data, such as video
       and audio material, over the network as a steady
       continuous stream, allowing playback to proceed while
       subsequent data is being received.</para>
-      <para>A status code of 204 (No Content) indicates success.
-        Status code 404 (Not Found) is returned if the requested
-        container was not found. No content is returned. </para>
     <para>For information about streaming to iOS devices, see
       <xref linkend="iOS-Streaming-d1f3725"/>.</para>
     <example>
-      <title>CDN-Enabled Container Metadata Request with
-        Streaming Enabled</title>
+      <title>CDN-Enabled Container Metadata Request </title>
       <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
-      <title>CDN-Enabled Container Metadata Response with
-        Streaming Enabled</title>
+      <title>CDN-Enabled Container Metadata Response with Streaming URIs</title>
       <programlisting>HTTP/1.1 204 No Content
 X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
 X-Ttl: 259200
-X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com
-X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
+<emphasis role="bold">X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com</emphasis>
+<emphasis role="bold">X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com</emphasis>
 X-Cdn-Enabled: True
 X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl.cf1.rackcdn.com
 X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
@@ -6835,38 +6820,49 @@ Content-Length: 0
     <para>The Cloud Files CDN allows you to stream video to iOS devices without needing to convert
         your video. After you CDN-enable your container, you have the tools necessary for streaming
         media to multiple devices. To leverage this ability, you must check the client's User Agent
-        with JavaScript. An example of the User Agent check and how to use it is given below. </para>
-    <para>First, CDN-enable your container. For instructions, see
-          <xref
-          linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
-          xrefstyle="select:label quotedtitle nopage"/>. Two streaming
-        URIs are created - the container's streaming URI
-          (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming URI
-          (<code>X-Cdn-Ios-Uri</code>). Perform a &HEAD; request
-        against the CDN-enabled container to view these URIs. </para>
-    <para>Second, link to your content in a HTML page using a
-      <code>&lt;video></code> element. Set the SRC attribute
-      of the VIDEO element to the full streaming URI for your
-      container plus the name of your content. In the below
-      example, the streaming video is MobyDick.mp4. </para>
-    <example>
-      <title>HTML 5 Video Element</title>
-      <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
+        with JavaScript. An example of the User Agent check and how to use it follows. </para>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>CDN-enable your container. For instructions, see <xref
+                linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
+                xrefstyle="select:label quotedtitle nopage"/>. Two streaming URIs are created: the
+              container's streaming URI (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming URI
+                (<code>X-Cdn-Ios-Uri</code>).</para>
+          </listitem>
+          <listitem>
+            <para>Perform a <command>HEAD</command> request against the CDN-enabled container to
+              view these URIs.</para>
+          </listitem>
+          <listitem>
+            <para>Link to your content in a HTML page by using a <code>&lt;video></code>
+              element.</para>
+          </listitem>
+          <listitem>
+            <para>Set the SRC attribute of the <code>&lt;video></code> element to the full streaming
+              URI for your container plus the name of your content. In the following example, the
+              streaming video is MobyDick.mp4.</para>
+            <example>
+              <title>HTML 5 Video Element</title>
+              <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
   &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
   r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
 &lt;/video&gt;
                       </programlisting>
-    </example>
-    <para> Third, add JavaScript to the <code>&lt;head></code> element of your HTML page to check if
-        the User Agent is an iOS device. If it is, the JavaScript must use the container's iOS
-        streaming URI (<code>x-Cdn-Ios-Uri</code>) instead of the regular streaming URI. The Cloud
-        Files CDN delivers the properly formatted content for iOS devices only when the iOS
-        streaming URI is used. Here, the JavaScript sets the SRC attribute of the
-          <code>&lt;video></code> element <code>videotag</code> to the iOS Streaming URI. Remember
-        to add your content's name to the end of the iOS streaming URI. </para>
-    <example>
-      <title>JavaScript for User Agent Check</title>
-      <programlisting>&lt;script type=”text/javascript”&gt;
+            </example>
+          </listitem>
+          <listitem>
+            <para>Add JavaScript to the <code>&lt;head></code> element of your HTML page to check if
+              the User Agent is an iOS device. If it is, the JavaScript should use the container's
+              iOS streaming URI (<code>X-Cdn-Ios-Uri</code>) instead of the regular streaming URI.
+              The Cloud Files CDN delivers the properly formatted content for iOS devices only when
+              the iOS streaming URI is used. In the following example, the JavaScript sets the
+                <code>&lt;src></code> attribute of the <code>&lt;video></code> element
+                <code>videotag</code> to the iOS Streaming URI. Remember to add your content's name
+              to the end of the iOS streaming URI.</para>
+            <example>
+              <title>JavaScript for User Agent Check</title>
+              <programlisting>&lt;script type=”text/javascript”&gt;
 
     function isIOS(){
         return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
@@ -6881,16 +6877,19 @@ i))) != null;
     }
 
 &lt;/script&gt;</programlisting>
-    </example>
-    <para>Finally, add <code>init()</code> to the
-          <code>&lt;body></code> element of your HTML page to call the
-        User Agent check when the page loads. </para>
-    <example>
-      <title>Load JavaScript in HTML page</title>
-      <programlisting>&lt;body onload=”init()”&gt;</programlisting>
-    </example>
-    <para> With these pieces of code in place, the proper
-      content streams will be set for iOS devices. </para>
+            </example>
+          </listitem>
+          <listitem>
+            <para>Add <code>init()</code> to the <code>&lt;body></code> element of your HTML page to
+              call the User Agent check when the page loads, as shown in the following example. </para>
+            <example>
+              <title>Load JavaScript in HTML page</title>
+              <programlisting>&lt;body onload=”init()”&gt;</programlisting>
+            </example>
+          </listitem>
+        </orderedlist>
+      </para>
+    <para> With these pieces of code in place, the proper content streams are set for iOS devices. </para>
 
   </section>
   </chapter>
@@ -6914,29 +6913,23 @@ i))) != null;
         <para>The page you set for <code>X-Container-Meta-Web-Index</code> becomes the index page
         for every subdirectory in your website. Each of your pseudo directories must contain a file
         with that name. So, if you set <code>X-Container-Meta-Web-Index</code> to
-          <code>index.html</code>, you must have an index.html page in each pseudo directory. For
-        example, suppose that you have a <code>subdir</code> pseudo directory. If you do not have an
-        index.html page in <code>subdir</code>, visits to <code>myhost/subdir/</code> return a
-        status code 404 (Not Found). </para>
+          <code>index.html</code>, you must have an <code>index.html</code> page in each pseudo
+        directory. For example, suppose that you have a <code>subdir</code> pseudo directory. If you
+        do not have an <code>index.html</code> page in <code>subdir</code>, visits to
+          <code>myhost/subdir/</code> return a status code 404 (Not Found). </para>
         <remark security="writeronly">2013-08-23 cyr: Added based on
           email from Rick Hawkins: "Specifically these are the headers
           relating to Static Web which I did not find in our
           documentation: X-Container-Meta-Web-Listings: true
           X-Container-Meta-Web-Listings-CSS: listing.css
           X-Container-Meta-Web-Directory-Type" </remark>
-        <para>You also have the option of displaying a list of HTML
-          files in your pseudo directory, instead of a web page. You
-          do this by setting the
-            <code>X-Container-Meta-Web-Listings</code> header to
-            <code>True</code>. If listings are enabled, you can add
-          styles to your file list by setting
-            <code>X-Container-Meta-Web-Listings-CSS</code> to a style
-          sheet. For example, setting
-            <code>X-Container-Meta-Web-Listings-CSS:
-            listing.css</code> makes listings link to the listing.css
-          style sheet. To view the HTML elements to which you can add
-          styles, use your browser to view the HTML source on the
-          listing page.</para>
+        <para>You also have the option of displaying a list of HTML files in your pseudo directory,
+        instead of a web page. You do this by setting the <code>X-Container-Meta-Web-Listings</code>
+        header to <code>True</code>. If listings are enabled, you can add styles to your file list
+        by setting <code>X-Container-Meta-Web-Listings-CSS</code> to a style sheet. For example,
+        setting <code>X-Container-Meta-Web-Listings-CSS: listing.css</code> makes listings link to
+        the <code>listing.css</code> style sheet. To view the HTML elements to which you can add
+        styles, use your browser to view the HTML source on the listing page.</para>
         <para>You can modify the <code>Content-Type</code> of
           directory marker objects by setting the
             <code>X-Container-Meta-Web-Directory-Type</code> header.
@@ -6947,36 +6940,31 @@ i))) != null;
           structure.</para>
         <para>
         <remark security="writeronly">2012-08-13 dsh: Added to clarify CNAME based on Disqus
-          comments </remark>The instructions below describe using a CNAME with your DNS Server (or
-        name server). This is the domain name of your site (such as www.rackspace.com). Your CNAME
-        is set up with your individual DNS Server. For more information about using CNAMES, see the
-          <citetitle>Cloud DNS Developer Guide</citetitle> at <link
+          comments </remark>The following instructions describe using a CNAME with your DNS Server
+        (or name server). The CNAME is the domain name of your site (such as www.rackspace.com).
+        Your CNAME is set up with your individual DNS Server. For more information about using
+        CNAMEs, see the <citetitle>Cloud DNS Developer Guide</citetitle> at <link
           xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html"
-          >docs.rackspace.com</link>. After you have your CNAME established, set the CNAME to your
-        Cloud Files CDN URI to get your site up and running on the Web. </para>
+          >docs.rackspace.com</link>. After your CNAME is established, set the CNAME to your Cloud
+        Files CDN URI to get your site up and running on the web. </para>
         <orderedlist>
-          <title>Set up a Static Website </title>
-          <para> The following list gives the step-by-step
-            instructions for setting up a Static Website. </para>
+          <title>Set Up a Static Website </title>
+          <para> Following are the step-by-step instructions for setting up a static website. </para>
           <listitem>
             <para>Create a container. </para>
           </listitem>
           <listitem>
-            <para>Upload your pages to a container. </para>
+            <para>Upload your pages to the container. </para>
           </listitem>
           <listitem>
-            <para>Set the index (or primary page) for your website by
-              performing a &POST; to the header
-                <code>X-Container-Meta-Web-Index</code> on your
-              website's container. See the example below. (Remember to
-              change the <code>X-Auth-Token</code> to your
-              authentication token.) You must use your storage URL and
-              the container name to properly point to the container
-                  (<code><replaceable>storageURL</replaceable>/<replaceable>containerName</replaceable></code>). </para>
-            <para>(You get your Auth token when you authenticate your
-              session as shown in <xref
-                linkend="Authentication-d1e639"
-                xrefstyle="select:label quotedtitle nopage"/>.) </para>
+            <para>Set the index (or primary page) for your website by performing a &POST; request to
+            the header <code>X-Container-Meta-Web-Index</code> on your website's container. See
+              <xref linkend="setUpStaticWebEx"/>. (Remember to change the <code>X-Auth-Token</code>
+            to your authentication token.) You must use your storage URL and the container name to
+            properly point to the container
+                (<code><replaceable>storageURL</replaceable>/<replaceable>containerName</replaceable></code>). </para>
+            <para>(You get your authentication token when you authenticate your session as shown in
+              <xref linkend="Authentication-d1e639" xrefstyle="select:label quotedtitle nopage"/>.) </para>
           </listitem>
           <listitem>
             <para>CDN-enable your container as shown in <xref
@@ -6984,11 +6972,10 @@ i))) != null;
                 xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
-            <para>Go to your domain host and set up a CNAME using your
-            CDN URI (<code>X-Cdn-Uri</code>). The CNAME is the domain
-            or branded URI you use instead of the CDN URI. If you need
-            to find your CDN URI, perform a <command>HEAD</command> to
-              <code>cdn.clouddrive.com</code> as shown in <xref
+            <para>Go to your domain host and set up a CNAME using your CDN URI
+              (<code>X-Cdn-Uri</code>). The CNAME is the domain or branded URI that you use instead
+            of the CDN URI. If you need to find your CDN URI, perform a <command>HEAD</command>
+            request to <code>cdn.clouddrive.com</code> as shown in <xref
               linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"
               xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
@@ -6997,8 +6984,8 @@ i))) != null;
               your CNAME domain. </para>
           </listitem>
         </orderedlist>
-        <example>
-          <title>Set up Static Web</title>
+        <example xml:id='setUpStaticWebEx'>
+          <title>Set Up Static Web</title>
           <programlisting language="bash">cURL -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/"</programlisting>
         </example>
         <para>After your container has an index page set and your
@@ -7011,10 +6998,9 @@ container/page2.html
 container/subdir/index.html
 container/subdir/pageX.html</programlisting>
         </example>
-        <para>In the results below, the CNAME is myhost, and the
-            <code>X-Container-Meta-Web-Index</code> is set to
-          index.html. The results on the right of the example are the
-          pages that display in the Web browser. </para>
+        <para>In the following results, the CNAME is <code>myhost</code>, and the
+          <code>X-Container-Meta-Web-Index</code> is set to <code>index.html</code>. The results on
+        the right of the example are the pages that display in the web browser. </para>
         <example>
           <title>Static Website Enabled Container Results</title>
           <programlisting>http://myhost                     Displays container/index.html
@@ -7025,16 +7011,14 @@ http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programl
         </example>
       </section>
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
-        <title>Set Error Pages for Static Website</title>
+        <title>Set Error Pages for a Static Website</title>
         <para>
-          <remark security="writeronly">2012-05-14 dsh: Added for
-            2012-05-14 release </remark> You can create and set custom
-          error pages for visitors to your website. To do this, set
-          the metadata header <code>X-Container-Meta-Web-Error</code>.
-          Currently, only 401 (Unauthorized) and 404 (Not Found)
-          status codes are supported. </para>
+        <remark security="writeronly">2012-05-14 dsh: Added for 2012-05-14 release </remark> You can
+        create and set custom error pages for visitors to your website. To do this, set the
+          <code>X-Container-Meta-Web-Error</code> metadata header. Currently, only 401
+        (Unauthorized) and 404 (Not Found) status codes are supported. </para>
         <para>Error pages are served with the status code prepended to the name of the error page
-        you set. For example, if you set <code>X-Container-Meta-Web-Error</code> to
+        that you set. For example, if you set <code>X-Container-Meta-Web-Error</code> to
           <code>error.html</code>, 401 errors display the page <code>401error.html</code>.
         Similarly, 404 errors display <code>404error.html</code>. You must have both of these pages
         created in your container when you set the <code>X-Container-Meta-Web-Error</code> metadata,
@@ -7048,7 +7032,7 @@ Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Container-Meta-Web-Error: error.html            </programlisting>
         </example>
-        <para> Any class 200 status codes indicate success. </para>
+        <para> Any class 200 status code indicates success. </para>
       </section>
     </chapter>
   
@@ -7067,15 +7051,12 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
       <section xml:id="Bulk_Import-d1e2094">
         <title>Bulk Importing of Data</title>
         <remark security="writeronly">06-11-2012 dsh: added </remark>
-        <para>If you have a very large amount of data to import into
-          Cloud Files, bulk importing of data is available. With bulk
-          importing, you send a physical device containing your data
-          to Rackspace and Rackspace loads it directly into Cloud
-          Files. By doing this, you avoid the time and cost of
-          uploading large amounts of data over the Internet. After the
-          transfer is complete, Rackspace either ships your device
-          back to you, or destroys it after degaussing, whichever you
-          prefer. </para>
+        <para>If you have a large amount of data to import into Cloud Files, bulk importing of data
+        is available. With bulk importing, you send a physical device that contains your data to
+        Rackspace, and Rackspace loads it directly into Cloud Files. By doing this, you avoid the
+        time and cost of uploading large amounts of data over the Internet. After the transfer is
+        complete, Rackspace either ships your device back to you, or destroys it after degaussing,
+        whichever you prefer. </para>
         <note>
           <para>Bulk import is available for U.S. data centers only.
           However, if you have a need for bulk importing in a data
@@ -7087,54 +7068,48 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         </note>
         <para>Rackspace accepts USB, SATA, and eSATA devices. Your file system can be NTFS, ext2,
         ext3, ext4, or FAT32. Because Cloud Files does not use hierarchical directory structures,
-        nested sub-directories in your data are converted to object names. Your top-level folders
+        nested subdirectories in your data are converted to object names. Your top-level folders
         become containers, and nested directory names become part of the object names. For example,
           <code>Chapter28/Ahab/ivoryleg</code> results in a container named <code>Chapter28</code>
-        with an object named <code>Ahab/ivoryleg</code> inside of it. For more information on
+        with an object named <code>Ahab/ivoryleg</code> inside of it. For more information about
         simulating directory structures in Cloud Files, see <xref
           linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>. </para>
-        <para>To begin the bulk import process, contact Rackspace
-          support technicians. You will be assigned a migration
-          specialist who can answer any questions you might have along
-          the way. You are notified when Rackspace receives your
-          device, begins the data import, completes data import, and
-          ships back or destroys the device. </para>
+        <para>To begin the bulk import process, contact Rackspace support technicians. You will be
+        assigned a migration specialist who can answer any questions you might have during the
+        process. You are notified when Rackspace receives your device, begins the data import,
+        completes the data import, and ships back or destroys the device. </para>
       </section>
     <section xml:id="Extract_Archive-d1e2338">
-        <title>Extract Archive</title>
-        <para>An extract archive request expands tar files into a
-          Cloud Files account. The request is a <command>PUT</command>
-          with the query parameter
-            <code>?extract-archive=format</code> specifying the format
-          of archive file. Accepted formats are <code>tar</code>,
-            <code>tar.gz</code>, and <code>tar.bz2</code>. </para>
+        <title>Extracting Archive Files</title>
+        <para>An extract archive request expands tar files into a Cloud Files account. The request
+        is a <command>PUT</command> operation with the <code>?extract-archive=format</code> query
+        parameter specifying the format of the archive file. </para>
+      <para>Valid values for the <code>format</code> variable are <code>tar</code>,
+          <code>tar.gz</code>, and <code>tar.bz2</code>. </para>
         <note>
-          <para>The bulk operation involves middleware that conducts
-            many operations on a single request.</para>
+          <para>This bulk operation involves middleware that conducts many operations on a single
+          request.</para>
         </note>
-        <para>For the <command>PUT</command> request, use the
-          following URL:</para>
+        <para>For the <command>PUT</command> request, use the following URI:</para>
         <para>
             /<code>v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz
           </code></para>
-        <para><code>UPLOAD_PATH</code> is the location where the files
-          are expanded and can specify any of the following: <itemizedlist>
-            <listitem>
-              <para>a container</para>
-            </listitem>
-            <listitem>
-              <para>a pseudo directory within a container</para>
-            </listitem>
-            <listitem>
-              <para>an empty string</para>
-              <para>If the <code>UPLOAD_PATH</code> is an empty
-                string, Cloud Files automatically creates containers
-                in which to place the files. Files in the base
-                directory of the tar file (that is, files that are not
-                in a folder of the unzipped tar file) are ignored.
-              </para>
-            </listitem>
-          </itemizedlist></para>
+        <para><code>UPLOAD_PATH</code> is the location where the files are expanded and can specify
+        any of the following values: <itemizedlist>
+          <listitem>
+            <para>A container</para>
+          </listitem>
+          <listitem>
+            <para>A pseudo directory within a container</para>
+          </listitem>
+          <listitem>
+            <para>An empty string</para>
+            <para>If the <code>UPLOAD_PATH</code> is an empty string, Cloud Files automatically
+              creates containers in which to place the files. Files in the base directory of the tar
+              file (that is, files that are not in a folder of the unzipped tar file) are ignored.
+            </para>
+          </listitem>
+        </itemizedlist></para>
         <para>The destination of a file in the archive is built as
           follows: </para>
         <para>
@@ -7148,7 +7123,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
           uploaded.</para>
         <para>The responses from bulk operations are not like other Cloud Files responses because a
         short request body sent from the client could result in many operations on the proxy server
-        and precautions need to be made to prevent the request from timing out due to a lack of
+        and precautions need to be taken to prevent the request from timing out because of a lack of
         activity. To this end, the client always receives a 200 OK response, regardless of the
         actual success of the call. The body of the response, which can be delivered over a greater
         amount of time, must be parsed to determine the actual success of the operation. In
@@ -7162,7 +7137,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
           The following example shows the response body, formatted in
           JSON, from a successful request. </para>
         <example>
-          <title>Extract Archive Response</title>
+          <title>Successful Extract Archive Response</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -7178,8 +7153,7 @@ Transfer-Encoding: chunked
   "Response Body": ""
 }</programlisting>
         </example>
-        <para>The example that follows shows the response with
-          errors.</para>
+        <para>The following example shows a response with errors.</para>
         <example>
           <title>Extract Archive Response with Errors</title>
           <programlisting>HTTP/1.1 100 Continue
@@ -7202,65 +7176,53 @@ Transfer-Encoding: chunked
   "Response Body": ""
 }</programlisting>
         </example>
-        <para>The list of errors is a list of tuples in the form
-          <code>[objectPath, errorResponse]</code>. The
-          <code>objectPath</code> given is the full path of where the
-        object was to be put. The <code>errorResponse</code> is the
-        failing HTTP status of the response for that individual
-          <command>PUT</command>. After 1,000 errors, processing of
-        the request ends, and the completed response is returned. </para>
-        <para>If all valid files were uploaded successfully, the
-            <code>Response Status</code> in the response body is 201
-          Created. If any files failed to be created, the
-            <code>Response Status</code> corresponds to the
-          subrequest's error. Possible codes are 400, 401, and 502. In
-          both cases, the response body specifies the number of files
-          successfully uploaded and a list of the files that failed.
-          (The actual HTTP status code is always 200 OK, so the
-          response code in the response body is the one you should
-          monitor.)</para>
+        <para>Errors are presented as a list of tuples in the form <code>[objectPath,
+          errorResponse]</code>. The <code>objectPath</code> given is the full path where the object
+        was to be put. The <code>errorResponse</code> is the HTTP status of the response for that
+        individual <command>PUT</command> operation. After 1,000 errors, processing of the request
+        ends, and the completed response is returned. </para>
+        <para>If all valid files were uploaded successfully, the <code>Response Status</code> in the
+        response body is 201 Created. If any files failed to be created, the <code>Response
+          Status</code> corresponds to the subrequest's error. Possible codes are 400, 401, and 502.
+        In both cases, the <code>Response Body</code> specifies the number of files successfully
+        uploaded and a list of the files that failed. (The actual HTTP status code is always 200 OK,
+        so the <code>Response Status</code> in the response body is the one you should
+        monitor.)</para>
         <note>
-          <para>If you send a <code>Content-Type</code> on the
-              <command>PUT</command> request, the specified
-              <code>Content-Type</code> applies to every object in the
-            archive. If you set <code>Content-Type</code> to a blank
-            string, Cloud Files determines the
-              <code>Content-Type</code> based on the individual file
-            type. For example, if you have MIME type files, use a
-            blank string for <code>Content-Type</code> to set the MIME
-            type for files within the archive.</para>
+          <para>If you send a <code>Content-Type</code> header on the <command>PUT</command>
+          request, the specified <code>Content-Type</code> applies to every object in the archive.
+          If you set <code>Content-Type</code> to a blank string, Cloud Files determines the
+            <code>Content-Type</code> based on the individual file type. For example, if you have
+          Multipurpose Internet Mail Extensions (MIME) type files, use a blank string for
+            <code>Content-Type</code> to set the MIME type for files within the archive.</para>
         </note>
       </section>
       <section xml:id="Bulk_Delete-d1e2338.html">
         <title>Bulk Delete</title>
-        <para>Bulk Delete request deletes multiple objects or containers from an account with a
-        single request. A Bulk Delete request is a <command>DELETE</command> request with the query
-        parameter <code>?bulk-delete set</code>. The <code>Content-Type</code> header of the
-        request, if set, must be set to <code>text/plain</code>. You must direct the request to the
-        service endpoints in <xref linkend="Service-Access-Endpoints-d1e003"/>. The requests must be
-        directed to the root of the service endpoint. The body of the <command>DELETE</command>
-        request a newline-separated list of URL-encoded objects to delete. You can delete 10,000
-        objects per request. </para>
+      <para>You can delete multiple objects or containers from an account by using a single bulk
+        delete request, which is a <command>DELETE</command> request with the <code>?bulkdelete
+          set</code> query parameter. The <code>Content-Type</code> header of the request, if set,
+        must be set to <code>text/plain</code>. You direct the request to the root of the service
+        endpoints (see <xref linkend="Service-Access-Endpoints-d1e003"/>). The body of the
+          <command>DELETE</command> request is a newline-separated list of URL-encoded objects to
+        delete. You can delete 10,000 objects per request. </para>
         <note>
-          <para>The bulk operation involves middleware that conducts
-            many operations on a single request.</para>
+          <para>This bulk operation involves middleware that conducts many operations on a single
+          request.</para>
         </note>
-        <para>The objects specified in the <command>DELETE</command>
-          request body must be URL-encoded and in the form: </para>
+        <para>The objects specified in the <command>DELETE</command> request body must be
+        URL-encoded and in the following form: </para>
         <para><code>/containerName/objectName</code>
       </para>
-        <para>or for containers (which must be empty at time of
-          delete)</para>
+        <para>Containers (which must be empty at time of delete) have the following form:</para>
         <para>
         <code>/containerName</code>
       </para>
-        <para>The response is similar to the extract archive responses
-          in that every response will be 200 OK and the response body
-          must be parsed for actual results. The following example
-          shows the response body, formatted in JSON, from a
-          successful request. </para>
+        <para>The response is similar to the extract archive responses in that every response is 200
+        OK and the response body must be parsed for actual results. The following example shows the
+        response body, formatted in JSON, from a successful request. </para>
         <example>
-          <title>Bulk Delete Response</title>
+          <title>Successful Bulk Delete Response</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -7277,8 +7239,7 @@ Transfer-Encoding: chunked
   "Response Body": ""
 }</programlisting>
         </example>
-        <para>The example that follows shows the response with
-          errors.</para>
+        <para>The following example shows a response with errors.</para>
         <example>
           <title>Bulk Delete Response with Errors</title>
           <programlisting>HTTP/1.1 100 Continue
@@ -7302,37 +7263,32 @@ Transfer-Encoding: chunked
   "Response Body": ""
 }</programlisting>
         </example>
-        <para>If all items were successfully deleted (or did not
-          exist), the status code is 200 OK. If any failed to delete,
-          the status code corresponds to the subrequest's error.
-          Possible codes are 400, 401, and 502. In all cases, the
-            <code>Response Body</code> specifies the number of items
-          successfully deleted or not found as well as a list of those
-          that failed. The return body is formatted in the way
-          specified in the request's <code>Accept</code> header.
-          Acceptable formats are <code>text/plain</code>,
-            <code>application/json</code>,
-            <code>application/xml</code>, and <code>text/xml</code>. </para>
-        <!-- <remark>cyr addition in response to Disqus comment - information from David Goetz </remark>          
-          <note>
-            <para>Although you can set the format in the request using
-              either the query parameter <code>?format</code> or the
+      <para>The list of errors is a list of tuples in the form <code>[objectPath,
+          errorResponse]</code>. The <code>objectPath</code> is the full path of where the object
+        (or container) was to be deleted. The <code>errorResponse</code> is the HTTP status of the
+        response for that individual <command>DELETE</command> request. </para>
+        <para>If all items were successfully deleted (or did not exist), the <code>Response
+          Status</code> is 200 OK. If any items failed to delete, the <code>Response Status</code>
+        code corresponds to the subrequest's error. Possible codes are 400, 401, and 502. In all
+        cases, the <code>Response Body</code> specifies the number of items successfully deleted or
+        not found as well as a list of those that failed. The return body is formatted in the way
+        specified in the request's <code>Accept</code> header. Acceptable formats are
+          <code>text/plain</code>, <code>application/json</code>, <code>application/xml</code>, and
+          <code>text/xml</code>. </para>
+        <!-- <remark>09/2013 cyr:  Response to Disqus comment on this section - information from David Goetz         
+        
+            Although you can set the format in the request using
+              either the query parameter ?format or the
               Accept header, the Accept header is the method that
-              works in all cases. The query parameter, for example
-                <code>?format=json</code> was added and kept for
+              works in all cases. The query parameter
+                ?format=json was added and kept for
               backwards compatibility. However, the
-                <code>?format</code> query parameter is not added to
+                ?format query parameter is not added to
               the bulk delete feature because it would be a
-              continuation of the "2 ways to do one thing problem"
-              that the query parameter caused.  </para>
-          </note>
+              continuation of the "2 ways to do 1 thing problem"
+              that the query parameter caused.  </remark>
+ 
 -->
-        <para>The list of errors is a list of tuples in the form
-          <code>[objectPath, errorResponse]</code>. The
-          <code>objectRath</code> is the full path of where the object
-        (or container) was to be deleted. The
-          <code>errorResponse</code> is the failing HTTP status of the
-        response for that individual <command>DELETE</command>. </para>
       </section>
   </chapter>
   <chapter xml:id="Public_Access_to_Account-d1a4440">
@@ -7345,51 +7301,37 @@ Transfer-Encoding: chunked
         <raxm:priority>4</raxm:priority>
       </raxm:metadata>
     </info>
-    <para> This section describes ways that you can allow others to
-      put or retrieve objects from your Cloud Files account. With the
-      methods described here, users do not need your password or login
-      information in order to have access to your account. </para>
+    <para> This section describes ways that you can allow others to place objects into or retrieve
+      objects from your Cloud Files account. With the methods described here, users do not need your
+      password or login information to have access to your account. </para>
     <section xml:id="TempURL-d1a4450">
       <title>TempURL </title>
-      <para>The Temporary URL feature (TempURL) allows you to create
-        limited-time Internet addresses that allow you to grant
-        limited access to your Cloud Files account. Using TempURL, you
-        can allow others to retrieve or place objects in your Cloud
-        Files account for a specified amount of time. Access to the
-        TempURL is independent of whether or not your account is
-        CDN-enabled. And even if you do not CDN-enable a directory,
-        you can still grant temporary public access through a TempURL. </para>
-      <para>This feature is useful if you want to allow a limited
-        audience to download a file from your Cloud Files account or
-        website. You provide a TempURL and after a specified time, no
-        one will be able to access that object using the TempURL. Or,
-        if you want to allow others to upload objects into your Cloud
-        Files account, you can give them a TempURL. After the
-        specified time expires, no one will be able to upload to the
-        address.</para>
-      <para>Additionally, you need not worry about time running out
-        when someone downloads a large object. If the time expires
-        while a file is being retrieved, the download will continue
-        until it is finished. Only the link will expire. </para>
-      <para>When you create a TempURL, Cloud Files validates a
-        GET-accessible or PUT-accessible URL, which is time-limited. </para>
+      <para>You can use the Temporary URL feature (TempURL) to create limited-time Internet
+        addresses that allow limited access to your Cloud Files account. Using TempURL, you can
+        allow others to retrieve objects from or place objects in your Cloud Files account for a
+        specified amount of time. After the specified amount of time expires, access to the account
+        with the TempURL is denied. </para>
       <note>
-        <para>The TempURL is the same thing as TempURL Secret, and is
-          set using the TempURL metadata key described in the next
-          section. The TempURL is the actual URL.</para>
+        <para>If the access time expires while a large file is being retrieved, the download
+          continues until it is finished. Only the link expires.</para>
+      </note>
+      <para>Access to your Cloud Files account or website with a TempURL is independent of whether
+        your account is CDN-enabled. Even if you do not CDN-enable a directory, you can still grant
+        temporary public access through a TempURL. When you create a TempURL, Cloud Files validates
+        a <command>GET</command>-accessible or <command>PUT</command>-accessible URL, which is
+        time-limited.</para>
+      <note>
+        <para>The TempURL is the same thing as the TempURL Secret, and is set using the TempURL
+          metadata key described in the next section. The TempURL is the actual URL.</para>
       </note>
       <section xml:id="Set_Account_Metadata-d1a4460">
         <title>Set Account TempURL Metadata Key</title>
-        <para>To create a TempURL, you must first set the metadata
-          header <code>X-Account-Meta-Temp-Url-Key</code> on your
-          Cloud Files account to a key that only you know. This key
-          can be any arbitrary sequence as it is for encoding your
-          account. </para>
-        <para>Once the key is set, you should not change it while you
-          still want others to be able to access your TempURL. If you
-          change it, the TempURL becomes invalid (within 60 seconds,
-          which is the cache time for a key) and others will not be
-          allowed to access it. </para>
+        <para>To create a TempURL, you must first set the<code>X-Account-Meta-Temp-Url-Key</code>
+          metadata header on your Cloud Files account to a key that only you know. This key can be
+          any arbitrary sequence. </para>
+        <para>After you set the key, do not change it while you still want others to be able to
+          access your TempURL. If you change it, the TempURL becomes invalid (within 60 seconds,
+          which is the cache time for a key) and others will not be allowed to access it. </para>
         <example>
           <title>Set Account Metadata Key for Public Access</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
@@ -7407,12 +7349,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           or &PUT;. You also determine the path to the object to which
           you are granting access. Lastly, you set the time for your
           TempURL to expire in UNIX epoch notation. </para>
-        <para>In the following examples, a TempURL is generated for
-          the object my_cat.jpg that will be available for 60 seconds.
-          The <code>key</code> in the example below is the
+        <para>In the following examples, a TempURL that will be available for 60 seconds is
+          generated for the my_cat.jpg object. The <code>key</code> in the examples is the value of
             <code>X-Account-Meta-Temp-Url-Key</code>. </para>
         <example>
-          <title>Create TempURL (in python)</title>
+          <title>Create TempURL (in Python)</title>
           <programlisting>
   import hmac
   from hashlib import sha1
@@ -7437,21 +7378,18 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         (base_url, object_path, sig, expires)
             </programlisting>
         </example>
-        <para> Be certain to use the full URL to the object, just as
-          you would with a normal request. </para>
-        <para> In this example, the signature might be
-          da39a3ee5e6b4b0d3255bfef95601890afd80709 and the expire time
-          might translate to 1323479485 because the signature and
-          expires completely depend on the time when the code runs. On
-          your website, you would provide a link to the URL below: </para>
+        <para>Be certain to use the full URL to the object, just as you would with a normal request. </para>
+        <para>In this example, the signature might be da39a3ee5e6b4b0d3255bfef95601890afd80709 and
+          the expire time might translate to 1323479485 because the signature and expire time
+          completely depend on the time when the code runs. On your website, you would provide a
+          link to the following URL: </para>
         <programlisting>
   https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
   temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
   temp_url_expires=1323479485
            </programlisting>
-        <para> If you do not provide users with the exact TempURL,
-          they get a 401 (Unauthorized) status code. &HEAD; queries
-          are allowed if &GET; or &PUT; are allowed. </para>
+        <para> If you do not provide users with the exact TempURL, they get a 401 (Unauthorized)
+          status code. &HEAD; queries are allowed if &GET; or &PUT; operations are allowed. </para>
         <example>
           <title>Create TempURL (in PHP)</title>
           <programlisting>
@@ -7506,11 +7444,10 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
       </section>
       <section xml:id="TempURL_File_Name_Overrides-d1e213">
         <title>Override TempURL File Names</title>
-        <para>TempURLs support the filename query parameter to
-          override the Content-Disposition header and indicate to the
-          browser a file name in which to save the file. In the
-          following example, you see the usual TempURL without the
-          file name override.</para>
+        <para>TempURLs support the <code>filename</code> query parameter, which you can use to
+          override the <code>Content-Disposition</code> header and indicate to the browser a file
+          name in which to save the file. In the following example, you see the usual TempURL
+          without the file name override.</para>
         <example>
           <title>TempURL without File Name Override</title>
           <programlisting>
@@ -7531,26 +7468,22 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
     </section>
     <section xml:id="FormPost-d1a555">
       <title>FormPost</title>
-      <para> FormPost lets you offer your website audience a way to
-        upload objects to your Cloud Files account through a web form.
-        FormPost works by translating a browser form request into a
-        object PUT in Cloud Files. Once you enable FormPost on your
-        account, you need only create the form in your website using
-        the guidelines below. </para>
+      <para>You can use the FormPost feature to give your website audience a way to upload objects
+        to your Cloud Files account through a web form. FormPost works by translating a browser form
+        request into a object <command>PUT</command> operation in Cloud Files. After you enable
+        FormPost on your account, you need only to create the form in your website by using the
+        guidelines in this section. </para>
       <para>As with all objects in Cloud Files, the object file size
         limit is 5 GB. If your users try to upload an object larger
         than 5 GB, they will get a file size error. </para>
       <section xml:id="Set_Account_Metadata-d1a666">
         <title>Set Account Metadata Key</title>
-        <para> To allow FormPost actions on your Cloud Files account,
-          you must first set the metadata header
-            <code>X-Account-Meta-Temp-Url-Key</code> on your Cloud
-          Files account to a key that only you know. This key can be
-          any arbitrary sequence as it is for encoding your account. </para>
-        <para> Once the key is set, you cannot change it while you
-          still want others to access your account. If you change it,
-          the actions from a FormPost become invalid (within 60
-          seconds, which is the cache time for a key). </para>
+        <para>To allow FormPost actions on your Cloud Files account, you must first set the
+            <code>X-Account-Meta-Temp-Url-Key</code> metadata header on your Cloud Files account to
+          a key that only you know. This key can be any arbitrary sequence. </para>
+        <para>After you set the key,  do not change it while you still want others to access your
+          account. If you change it, the actions from a FormPost become invalid (within 60 seconds,
+          which is the cache time for a key). </para>
         <example>
           <title>Set Account Metadata Key for Public Access
             Request</title>
@@ -7581,58 +7514,69 @@ X-Account-Meta-Temp-Url-Key: yourKey
   &lt;/form&gt;
            </programlisting>
         </example>
-        <para>
-          <emphasis>Required:</emphasis>
-          <code>Form action</code> is the Cloud Files URL (<code>CF-url</code>) to the destination
-          where files will be uploaded. For example,
-            <code>https://storage.clouddrive.com/v1/CF_xer7_34/container</code>. The name of each
-          uploaded object will have the <code>&lt;CF-url&gt;</code> appended to the front of it. </para>
-        <note>
-          <para>You can also include a prefix to separate uploads,
-            such as assigning each user a certain prefix:
-              <code>https://storage.clouddrive.com/v1/CF_xer7_34/container/user_prefix</code>.
-          </para>
-        </note>
-        <para>
-          <emphasis>Required:</emphasis> The form <code>method</code>
-          must be <code>POST</code> and the <code>enctype</code> must
-          be set as <code>multipart/form-data</code>. </para>
-        <para>
-          <emphasis>Optional:</emphasis> The <code>redirect</code> attribute is the URL of the page
-          that displays on your website after the form processes. The URL will have status and
-          message query parameters added to it, indicating the HTTP status code for the upload
-            (2<emphasis role="italic">nn</emphasis> indicates success) and a possible message for
-          further information if there is an error, such as “max_file_size exceeded”. </para>
-        <note>
-          <para>Although <code>redirect</code> is optional for the
-            form, it must be present in the HMAC body. </para>
-        </note>
-        <para>
-          <emphasis>Required:</emphasis> The
-            <code>max_file_size</code> attribute must be included and
-          specifies the maximum size in bytes of a single file.
-          However, the storage system maximum file size is 5 GB, so
-            <code>max_file_size</code> cannot exceed 5 GB.</para>
-        <para>
-          <emphasis>Required:</emphasis> The
-            <code>max_file_count</code> attribute indicates the
-          maximum number of files that can be uploaded with the form. </para>
-        <para>
-          <emphasis>Required:</emphasis> The <code>expires</code>
-          attribute is the Unix timestamp when the form is
-          invalidated. This gives your website users a limited time to
-          have the form open. Time must be in Unix epoch format. </para>
-        <note>
-          <para><code>expires</code> in the web form and
-              <code>expires</code> in the HMAC must be the
-            same.</para>
-        </note>
-        <para>
-          <emphasis>Required:</emphasis> The <code>signature</code>
-          attribute is the HMAC-SHA1 signature of the form. Here is
-          sample code for computing the signature in Python: </para>
+        <para>The parameters and attributes in the form are defined as follows:</para>
+        <itemizedlist>
+          <listitem>
+            <para><emphasis>(Required)</emphasis>
+              <code>Form action</code> is the Cloud Files URL (<code>CF-url</code>) to the
+              destination where files will be uploaded. For example,
+                <code>https://storage.clouddrive.com/v1/CF_xer7_34/container</code>. The name of
+              each uploaded object will have the <code>&lt;CF-url&gt;</code> appended to the front
+              of it. </para>
+            <note>
+              <para>You can also include a prefix to separate uploads, such as assigning each user a
+                certain prefix:
+                  <code>https://storage.clouddrive.com/v1/CF_xer7_34/container/user_prefix</code>.
+              </para>
+            </note>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The form <code>method</code> must be
+                <code>POST</code> and the <code>enctype</code> must be set as
+                <code>multipart/form-data</code>. </para>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Optional)</emphasis> The <code>redirect</code> attribute is the URL of
+              the page that is displayed on your website after the form processes. The URL will have
+              status and message query parameters added to it, indicating the HTTP status code for
+              the upload (2<emphasis role="italic">nn</emphasis> indicates success) and a possible
+              message for more information if there is an error, such as <code>max_file_size
+                exceeded</code>. </para>
+            <note>
+              <para>Although <code>redirect</code> is optional for the form, it must be present in
+                the HMAC body (shown in the following example).  Although <code>redirect</code> must
+                be present, its value can be an empty string to indicate that no
+                  <code>redirect</code> is included on the form.</para>
+            </note>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>max_file_size</code> attribute specifies
+              the maximum size in bytes of a single file. Because the storage system maximum file
+              size is 5 GB, <code>max_file_size</code> cannot exceed 5 GB.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>max_file_count</code> attribute
+              indicates the maximum number of files that can be uploaded with the form. The
+                <code>max_file_count</code> value used to generate the <code>signature</code> must
+              be the same as that in the web form. </para>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>expires</code> attribute is the UNIX
+              timestamp when the form is invalidated. This gives your website users a limited time
+              to have the form open. Time must be in UNIX epoch format. </para>
+            <note>
+              <para><code>expires</code> in the web form and <code>expires</code> in the HMAC must
+                be the same.</para>
+            </note>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>signature</code> attribute is the
+              HMAC-SHA1 signature of the form. Following is sample code for computing the signature
+              in Python: </para>
+          </listitem>
+        </itemizedlist>
         <example>
-          <title>Generate Signature for Form Post</title>
+          <title>Generate Signature for FormPost</title>
           <programlisting>
   import hmac
   from hashlib import sha1
@@ -7647,64 +7591,57 @@ X-Account-Meta-Temp-Url-Key: yourKey
       max_file_size, max_file_count, expires)
   signature = hmac.new(key, hmac_body, sha1).hexdigest()
           </programlisting>
-          <para>Be certain to use the full path in your Cloud Files
-            account, from the /v1/ onward. </para>
-          <para>The <code>redirect</code> value can be an empty string
-            to indicate that no redirect is included on the
-            form.</para>
-          <para>The <code>key</code> value is the value of the
-              <code>X-Account-Meta-Temp-Url-Key</code> header set for
-            the account. </para>
-          <para>The <code>max_file_count</code> value used to generate
-            the <code>signature</code> must be the same as that in the
-            web form. </para>
+          <para>Be sure to use the full path in your Cloud Files account, from the <code>/v1/</code>
+            onward. </para>
         </example>
-        <para>
-          <emphasis>Required:</emphasis> The <code>type="file"</code> field defines the form file
-          field. At least one entry is required to allow your users to select and upload a file, but
-          additional fields can be added for multiple files. The number of entries must not,
-          however, exceed the <code>max_file_count</code>. Each <code>type="file"</code> field must
-          have a different name. </para>
-        <note>
-          <para>The <code>type="file"</code> field(s) must be at the
-            end of the form code in order for Cloud Files to process
-            the uploads properly. </para>
-        </note>
+        <itemizedlist>
+          <listitem>
+            <para>The <code>key</code> value is the value of the
+                <code>X-Account-Meta-Temp-Url-Key</code> header set for the account. </para>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>type="file"</code> field defines the
+              form file field. At least one entry is required to allow your users to select and
+              upload a file, but you can add more fields for multiple files. The number of entries
+              must not, however, exceed the value of <code>max_file_count</code>. Each
+                <code>type="file"</code> field must have a different name. </para>
+            <note>
+              <para>The <code>type="file"</code> field or fields must be at the end of the form code
+                for Cloud Files to process the uploads correctly. </para>
+            </note>
+          </listitem>
+        </itemizedlist>
       </section>
     </section>
     <section xml:id="CORS_Container_Header-d1e1300">
       <title>CORS </title>
-      <para>Cross-Origin Resource Sharing (CORS) is a mechanism to
-        allow code running in a browser to make requests to a domain
-        other than the one from which it originated. CORS container
-        headers allow your users to upload files from one website, or
-        origin, to your Cloud Files account. When you set the CORS
-        headers on your container, you provide Cloud Files with the
-        following information:<itemizedlist>
+      <para>Cross-Origin Resource Sharing (CORS) is a mechanism that allows code running in a
+        browser to make requests to a domain other than the one from which it originated. CORS
+        container headers enable your users to upload files from one website, or origin, to your
+        Cloud Files account. When you set the CORS headers on your container, you provide Cloud
+        Files with the following information:<itemizedlist>
           <listitem>
             <para>Which sites can post to your account</para>
           </listitem>
           <listitem>
-            <para>How often your container checks its allowed sites
-              list</para>
+            <para>How often your container checks its allowed sites list</para>
           </listitem>
           <listitem>
-            <para>What headers to expose to the browser in the request
-              response</para>
+            <para>What headers to expose to the browser in the request response</para>
           </listitem>
         </itemizedlist>
       </para>
       <note>
-        <para>You use CORS with:<itemizedlist>
+        <para>You use CORS with the following features:<itemizedlist>
             <listitem>
               <para>FormPost (<xref linkend="FormPost-d1a555"
-                  xrefstyle="select:label quotedtitle nopage"/>) to
-                enable your users to post to your site</para>
+                  xrefstyle="select:label quotedtitle nopage"/>), to enable your users to post to
+                your site</para>
             </listitem>
             <listitem>
               <para>TempURL (<xref linkend="TempURL-d1a4450"
-                  xrefstyle="select:label quotedtitle nopage"/>) to
-                limit how long users can use a given URL</para>
+                  xrefstyle="select:label quotedtitle nopage"/>), to limit how long users can use a
+                given URL</para>
             </listitem>
           </itemizedlist>
         </para>
@@ -7720,36 +7657,33 @@ X-Account-Meta-Temp-Url-Key: yourKey
           <tbody>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Allow-Origin</code></td>
-              <td>Origins allowed to make Cross Origin requests,
-                separated by a space when there are multiples. </td>
+              <td>Origins that are allowed to make cross-origin requests, separated by a space when
+                there are multiple values. </td>
             </tr>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Max-Age</code></td>
-              <td>Maximum age for the Origin to hold the preflight
-                results, in seconds (for example, 5, 10, or 1000).
-              </td>
+              <td>Maximum age for the origin to hold the preflight results, in seconds (for example,
+                5, 10, or 1000). </td>
             </tr>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Expose-Headers</code></td>
-              <td>Headers exposed to the browser in the actual request
-                response, separated by a space when there are
-                multiples. </td>
+              <td>Headers exposed to the browser in the actual request response, separated by a
+                space when there are multiple values. </td>
             </tr>
           </tbody>
         </table>
       </para>
-      <para>Before a browser issues an actual request, it might issue
-        a preflight request. The preflight request is an HTTP
-          <command>OPTIONS</command> call to verify that the origin is
-        allowed to make the request. The sequence of events is:</para>
+      <para>Before a browser issues an actual request, it might issue a preflight request. The
+        preflight request is an HTTP <command>OPTIONS</command> call to verify that the origin is
+        allowed to make the request. Following is the sequence of actions:</para>
       <orderedlist>
         <listitem>
           <para>The browser makes an <command>OPTIONS</command>
             request to Cloud Files.</para>
         </listitem>
         <listitem>
-          <para>Cloud Files returns 200 or 401 to the browser based on
-            the allowed origins.</para>
+          <para>Cloud Files returns either a 200 or 401 status code to the browser based on the
+            allowed origins.</para>
         </listitem>
         <listitem>
           <para>If Cloud Files returns 200, the browser makes the
@@ -7759,47 +7693,40 @@ X-Account-Meta-Temp-Url-Key: yourKey
             Cloud Files. </para>
         </listitem>
       </orderedlist>
-      <para>When a browser receives a response to an actual request,
-        it only exposes those headers listed in the
-          <code>X-Container-Meta-Access-Control-Expose-Headers</code>
-        header. By default, Cloud Files returns the following values
-        for this header:</para>
+      <para>When a browser receives a response to an actual request, it exposes only those headers
+        listed in the <code>X-Container-Meta-Access-Control-Expose-Headers</code> header. By
+        default, Cloud Files returns the following values for this header:</para>
       <itemizedlist>
         <listitem>
-          <para>the simple response headers as listed at <link
+          <para>The simple response headers as listed at <link
               xlink:href="http://www.w3.org/TR/cors/#simple-response-header/"
               >www.w3.org/TR/cors/#simple-response-header/</link></para>
         </listitem>
         <listitem>
-          <para>the headers <code>ETag</code>,
-              <code>X-Timestamp</code>, <code>X-Trans-Id</code></para>
+          <para>The <code>ETag</code>, <code>X-Timestamp</code>, and <code>X-Trans-Id</code>
+            headers</para>
         </listitem>
         <listitem>
-          <para>all metadata headers (<code>X-Container-Meta-*</code>
-            for containers and <code>X-Object-Meta-*</code> for
-            objects)</para>
+          <para>All metadata headers (<code>X-Container-Meta-name</code> for containers and
+              <code>X-Object-Meta-name</code> for objects)</para>
         </listitem>
         <listitem>
-          <para>headers listed in
-              <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
+          <para>Headers listed in <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
         </listitem>
       </itemizedlist>
-      <para>To see some CORS Javascript in action, follow these
-        steps:</para>
+      <para>To see some CORS JavaScript in action, follow these steps:</para>
       <orderedlist>
         <listitem>
           <para>Download the <xref linkend="Test-CORS-Page-d1003"/>.
           </para>
         </listitem>
         <listitem>
-          <para>Host the page on a web server and take note of the
-            protocol and hostname (origin) you will be using to
-            request the page, for example
-              <code>http://localhost</code>.</para>
+          <para>Host the page on a web server and note the protocol and hostname (origin) you will
+            be using to request the page, for example <code>http://localhost</code>.</para>
         </listitem>
         <listitem>
-          <para>Locate a container you would like to query. (Of course, the Cloud Files cluster
-            hosting this container must have CORS support.)</para>
+          <para>Locate a container that you want to query. (The Cloud Files cluster hosting this
+            container must have CORS support.)</para>
         </listitem>
         <listitem>
           <para>Append the origin of the test page to the container’s
@@ -7821,11 +7748,11 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         page in your browser and following these steps:</para>
       <orderedlist>
         <listitem>
-          <para>Populate the Token field.</para>
+          <para>Populate the <code>Token</code> field.</para>
         </listitem>
         <listitem>
-          <para>Populate the URL filed with the URL of either a
-            container or object.</para>
+          <para>Populate the <code>URL</code> field with the URL of either a container or
+            object.</para>
         </listitem>
         <listitem>
           <para>Select the request method.</para>
@@ -7834,9 +7761,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
           <para>Hit Submit.</para>
         </listitem>
       </orderedlist>
-      <para>If the request succeeds, you should see the response
-        header and body. If the request did not succeed, the response
-        status will be 0.</para>
+      <para>If the request succeeds, the response header and body are displayed. If the request did
+        not succeed, the response status is 0.</para>
       <example xml:id="Test-CORS-Page-d1003">
         <title>Test CORS Page</title>
         <programlisting>
@@ -7975,7 +7901,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     </section>
   </chapter>
   <chapter xml:id="Troubleshooting-d1e2855">
-    <title>Examples and Troubleshooting</title>
+    <title>Examples Using cURL</title>
     <info>
       <raxm:metadata
         xmlns:raxm="http://docs.rackspace.com/api/metadata">
@@ -7987,15 +7913,22 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     <para>This section introduces the cURL command-line utility and
       demonstrates interacting with the REST interfaces through that
       utility.</para>
-    <para>Remember that object and container names must be URL-encoded and UTF-8 encoded. Object
-      names must be less than 1024 bytes in length after URL-encoding. For example, an object name
-      of C++final(v2).txt must be URL-encoded as C%2B%2Bfinal%28v2%29.txt and therefore be 24 bytes
-      in length rather than the expected 16.</para>
-    <para>Also, tokens expire after 24 hours. Be sure you request a
-      new token programmatically only when the one you have is
-      expired. </para>
+    <para>When you use cURL, remember the following Cloud Files requirements:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Object and container names must be URL-encoded and UTF-8 encoded. Object names must be
+          less than 1024 bytes in length after URL-encoding. For example, an object name of
+            <code>C++final(v2).txt</code> would be URL-encoded as
+            <code>C%2B%2Bfinal%28v2%29.txt</code> and would therefore be 24 bytes in length rather
+          than the expected 16.</para>
+      </listitem>
+      <listitem>
+        <para>Tokens expire after 24 hours. Be sure you request a new token programmatically only
+          when the one you have is expired. </para>
+      </listitem>
+    </itemizedlist>
     <section xml:id="Using_cURL-d1e2863">
-      <title>Using cURL</title>
+      <title>cURL Options</title>
       <para>cURL is a command-line tool that you can use to interact
         with REST interfaces. cURL lets you to transmit and receive
         HTTP requests and responses from the command line or a shell
@@ -8005,21 +7938,20 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         For more information about cURL, see <link
           xlink:href="http://curl.haxx.se/"
         >http://curl.haxx.se</link>. </para>
-      <para>The following cURL command-line options will be
-        used</para>
+      <para>The following cURL command-line options are used in the chapter:</para>
       <variablelist>
         <title>cURL Command-Line Options</title>
         <varlistentry>
           <term><option>-X METHOD</option></term>
           <listitem>
-            <para>Specify the HTTP method to request (&GET;, &HEAD; ,
-              &DELETE;, &POST;, &PUT;)</para>
+            <para>Specify the HTTP method to request (&GET;, &HEAD; , &DELETE;, &POST;,
+              &PUT;).</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><option>-D</option></term>
           <listitem>
-            <para>Dump HTTP response headers to stdout.</para>
+            <para>Dump HTTP response headers to terminal output (stdout).</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -8032,9 +7964,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     </section>
     <section xml:id="Authentication-d1e2929">
       <title>Authentication with cURL</title>
-      <para>In order to use the REST API, you will first need to
-        obtain an authorization token, which will need to be passed in
-        for each request using the <code>X-Auth-Token</code> header. </para>
+      <para>To use the REST API, you first need to obtain an authorization token, which you need to
+        pass in for each request using the <code>X-Auth-Token</code> header. </para>
       <para>The following examples demonstrate how to use cURL to obtain the authorization token and
         the URL of the storage system. Note that your account can be based in either the US or the
         UK. This is not determined by your physical location, but by the location of the Rackspace
@@ -8065,16 +7996,18 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         
 -->
       <para>This example uses the US-based URL
-        https://identity.api.rackspacecloud.com/v2.0.</para>
+          <code>https://identity.api.rackspacecloud.com/v2.0</code>.</para>
       <example>
-        <title>cURL Authenticate Request with Username and API Key
-          Credentials and Response:JSON</title>
+        <title>cURL Authenticate Request with Username and API Key Credentials: JSON</title>
         <screen language="bash">
 <command>curl -k -X POST https://identity.api.rackspacecloud.com/v2.0/tokens -d 
-'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"<replaceable>yourUserName</replaceable>", "apiKey":"<replaceable>yourApiKey</replaceable>" } } }' -H 
+'{ "auth":{ "RAX-KSKEY:apiKeyCredentials":{ "username":"yourUserName", "apiKey":"yourApiKey" } } }' -H 
 "Content-type: application/json" </command>
  </screen>
-        <screen language="bash">
+      </example>
+        <example>
+          <title>Authentication Response: JSON</title>
+          <screen language="bash">
    <computeroutput>{
     "access": {
         "serviceCatalog": [
@@ -8115,7 +8048,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         ...
     }
 }</computeroutput></screen>
-      </example>
+        </example>
       <!-- <remark> 10282013 cyr this example uses userid and password instead of userid and apikey </remark>       
         
       <example>
@@ -8278,56 +8211,45 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         token are returned in the response. After authentication, you
         can use cURL to perform &GET;, &HEAD;, &DELETE;, &POST; and
         &PUT; requests on the storage and CDN services.</para>
-      <para>While an authentication token lasts, you can continue to
-        perform requests. <phrase>However, once a token expires, it
-          will return an HTTP status code 401 (Unauthorized). Given
-          that a token is good for 24 hours, even long-running jobs do
-          not need to re-authenticate on every request. You will not
-          need to request another <code>X-Auth-Token</code> again
-          until the existing one expires.</phrase> At that point, you
-        must obtain another authorization token. As a best practice
-        example, here is some pseudo code for re-authenticating. The
-        best scalable process flow would be:<orderedlist>
+      <para>While an authentication token lasts, you can continue to perform requests.
+          <phrase>However, after a token expires, using it returns a 401 (Unauthorized) HTTP status
+          code. Given that a token is good for 24 hours, even long-running jobs do not need to
+          re-authenticate on every request. You do not need to request another authentication token
+          again until the existing one expires.</phrase> At that point, you must obtain another
+        token. The best scalable process flow is as follows:<orderedlist>
           <listitem>
-            <para>Begin requests by going to
-              identity.api.rackspace.com for an authentication token.
+            <para>Begin requests by going to identity.api.rackspace.com for an authentication token.
             </para>
           </listitem>
           <listitem>
-            <para>Send requests to the Cloud Files service access
-              endpoints and set the <code>X-Auth-Token</code> header
-              with the authentication token obtained in Step 1.</para>
+            <para>Send requests to the Cloud Files service access endpoints and set the
+                <code>X-Auth-Token</code> header with the authentication token obtained in step
+              1.</para>
           </listitem>
           <listitem>
-            <para>Repeat step 2 using the same authentication token
-              retrieved in Step 1 until either the job finishes or you
-              get a result code of 401 (Unauthorized). </para>
+            <para>Repeat step 2 using the same authentication token until either the job finishes or
+              you get a result code of 401 (Unauthorized). </para>
           </listitem>
         </orderedlist><itemizedlist>
           <listitem>
-            <para>If the job finishes, you can allow the token to
-              expire with no further action.</para>
+            <para>If the job finishes, you can allow the token to expire with no further
+              action.</para>
           </listitem>
           <listitem>
-            <para>If result code is 401, send a request to
-              identity.api.rackspacecloud.com to get a new
-              authentication token to use in the Cloud Files
-                <code>X-Auth-Token</code> header in your
-              request.</para>
+            <para>If you get a 401 response code, send a request to identity.api.rackspacecloud.com
+              to get a new authentication token to use in the Cloud Files <code>X-Auth-Token</code>
+              header in your request.</para>
           </listitem>
-        </itemizedlist>A Python-based example of how to check for
-        errors and re-authenticate upon receiving an error can be
-        found in the OpenStack Swift project in client.py, which is
-        freely available. </para>
+        </itemizedlist>A Python-based example of how to check for errors and re-authenticate upon
+        receiving an error is located in the OpenStack Swift project in client.py, which is freely
+        available. </para>
     </section>
     <section xml:id="Determining_Storage_Usage-d1e2976">
       <title>Determining Storage Usage with cURL</title>
-      <para>A &HEAD; request can be sent to the storage service to
-        determine how much data you have stored in the system and the
-        number of containers you are using. Use the <code>-X</code>
-        switch to specify the correct HTTP method and the
-          <code>-D</code> to dump the HTTP response headers to
-        terminal output (stdout).</para>
+      <para>You can send a &HEAD; request to the storage service to determine how much data you have
+        stored in the system and the number of containers you are using. Use the <code>-X</code>
+        switch to specify the correct HTTP method and the <code>-D</code> switch to dump the HTTP
+        response headers to terminal output (stdout).</para>
       <example>
         <title>cURL Get Storage Space</title>
         <screen language="bash">
@@ -8353,9 +8275,8 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     </section>
     <section xml:id="Creating_a_Storage_Container-d1e3026">
       <title>Creating a Storage Container with cURL</title>
-      <para> Before uploading any data to Cloud Files, you must create
-        a storage container. You do this with a &PUT; request. cURL
-        can be used for that, too.</para>
+      <para> Before uploading any data to Cloud Files, you must create a storage container. You do
+        this with a &PUT; request. </para>
       <example>
         <title>cURL Create Storage Container</title>
         <screen language="bash">
@@ -8372,20 +8293,17 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
 
    </computeroutput></screen>
       </example>
-      <para>Returning an HTTP status code of 201 (Created) indicates
-        that the container was successfully created.</para>
+      <para>An HTTP status code of 201 (Created) indicates that the container was successfully
+        created.</para>
     </section>
     <section xml:id="Uploading_a_Storage_Object-d1e3067">
       <title>Uploading a Storage Object with cURL</title>
-      <para>After creating a container, you can upload a local file.
-        For this example, upload a screenshot image. The
-          <code>-T</code> switch specifies the full path to the local
-        file to upload. Please note that if you intend to distribute
-        this object through the CDN you MUST make sure that the
-        object's <code>Content-Type</code> is set correctly. This is
-        the mechanism by which a user's web browser knows how to
-        display the file or launch a helper application to view the
-        file.</para>
+      <para>After creating a container, you can upload a local file to it. For this example, upload
+        a screenshot image. The <code>-T</code> switch specifies the full path to the local file to
+        upload. Note that if you intend to distribute this object through the CDN you must ensure
+        that the object's <code>Content-Type</code> is set correctly. This is the mechanism by which
+        a user's web browser knows how to display the file or launch a helper application to view
+        the file.</para>
       <example>
         <title>cURL Upload Storage Object</title>
         <screen>
@@ -8407,21 +8325,18 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     </section>
     <section xml:id="CDN-Enabling_the_Container-d1e3123">
       <title>CDN-Enabling the Container with cURL</title>
-      <para>After creating a container and storing a file in it, you
-        can choose to share the file. Since the data in Cloud Files is
-        all private, you can share your screenshot through the CDN. To
-        CDN-enable a container, issue a &PUT; request against the CDN
-        management service. The default TTL is 72 hours and supports a
-        minimum of 15 minutes (900 seconds) and a maximum of 50 years
-        (1577836800 seconds). Note that the target URL specifies the
-        CDN system, not the authorization system.</para>
+      <para>After creating a container and storing a file in it, you can choose to share the file.
+        Because the data in Cloud Files is private, you can share your files through the CDN. To
+        CDN-enable a container, issue a &PUT; request against the CDN management service. The
+        default TTL is 72 hours  (259200 seconds), with a minimum of 15 minutes (900 seconds) and a
+        maximum of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system,
+        not the authorization system.</para>
       <note>
         <title>Note</title>
-        <para>On August 13, 2012, the maximum TTL was set to 31536000
-          (one year). If you set new TTL values to a greater time
-          frame, your object will still expire at the one-year mark.
-          However, if you already had a greater TTL value set on an
-          object, it will expire at the time you had originally set. </para>
+        <para>On August 13, 2012, the maximum TTL was revised to 31536000 (one year). If you set new
+          TTL values to a greater time frame, your object will still expire at the one-year mark.
+          However, if you already had a longer TTL value set on an object, it will expire at the
+          time you had originally set. </para>
       </note>
       <example>
         <title>cURL CDN-Enable Container</title>
@@ -8445,28 +8360,22 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
   Content-Length: 0
         </computeroutput></screen>
       </example>
-      <para>When the container is CDN-enabled, the service returns its
-        public URL in the <code>X-CDN-URI</code> header of the
-        response, plus the SSL URL in the <code>X-Cdn-Ssl-Uri</code>
-        header of the response. Now you can combine this URL with the
-        object name to access the file through the CDN, or use the
-        https:// URL in combination with the object name to access the
-        file over a secure SSL connection through the CDN.</para>
-      <para>You can verify the CDN's cache settings that you specified
-        with your TTL value by sending a &GET; request to the object's
-        CDN URL and viewing the response headers. The TTL value you
-        specify translates to the <code>Expires</code> and
-          <code>Cache-Control</code> headers of the CDN's cached
-        Object.</para>
-      <para>The cURL command below issues a &GET; request which
-        downloads the entire file but writes it to
-          <code>/dev/null</code>, a data sink that will not actually
-        save the content to your local drive (this convention is only
-        valid on UNIX-like systems).</para>
+      <para>When the container is CDN-enabled, the service returns its public URL in the
+          <code>X-Cdn-Uri</code> header of the response, and returns the SSL URL in the
+          <code>X-Cdn-Ssl-Uri</code> header of the response. You can combine the public URL with the
+        object name to access the file through the CDN, or you can use the SSL URL with the object
+        name to access the file over a secure SSL connection through the CDN.</para>
+      <para>You can verify the CDN's cache settings that you specified with your TTL value by
+        sending a &GET; request to the object's CDN URL and viewing the response headers. The TTL
+        value that you specify translates to the <code>Expires</code> and <code>Cache-Control</code>
+        headers of the CDN's cached object.</para>
+      <para>The following cURL command issues a &GET; request that downloads the entire file but
+        writes it to <code>/dev/null</code>, a data sink that does not actually save the content to
+        your local drive (this convention is only valid on systems based on UNIX).</para>
       <example>
         <title>cURL Download a File</title>
         <screen language="bash">
-   <command>curl</command> <option>-s</option> <option>-D</option> - \
+   <command>curl</command> <option>-s</option> <option>-D</option> <option>GET</option> \
      <uri>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/wow1.jpg</uri> \
      <option>-O /dev/null</option>
                       </screen>
@@ -8490,10 +8399,10 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         send &POST; and &DELETE; requests even though no specific
         examples are provided.</para>
       <para>Note that generally each time <code>curl</code> is invoked to perform an operation, a
-        separate TCP/IP and SSL connection is created and thrown away. The language APIs, however,
-        are designed to re-use these connections between operations and therefore provide much
+        separate TCP/IP and SSL connection is created and thrown away. The language APIs, in
+        contrast, are designed to re-use connections between operations and therefore provide much
         better performance. We recommend that you use one of the language APIs in your production
-        applications and limit <code>curl</code> to quick-and-easy testing/troubleshooting.</para>
+        applications and limit cURL to quick-and-easy testing and troubleshooting.</para>
     </section>
   </chapter>
   <glossary>
@@ -8501,48 +8410,42 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Account</glossterm>
       <glossdef>
-        <para>The Cloud Files system is designed to be used by many
-          different customers. Your user account is your slice of the
-          Cloud Files system. You must identify yourself with a valid
-          user name and your API access key. Once authenticated, your
-          have full read/write access to the objects (files) stored
-          under your account.</para>
+        <para>The portion of the Cloud Files system designated for your use. The Cloud Files system
+          is designed to be used by many different customers, and your user account is your portion
+          of it. Your user account is your slice of the Cloud Files system. You must identify
+          yourself with a valid user name and your API access key. After you are authenticated, your
+          have full read/write access to the objects (files) stored under your account.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Application program interface (API)</glossterm>
       <glossdef>
-        <para>A set of routines, protocols, and tools for building
-          software applications. A good API makes it easier to develop
-          a program by providing all the building blocks. A programmer
-          then puts the blocks together. </para>
+        <para>A set of routines, protocols, and tools for building software applications. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Authentication</glossterm>
       <glossdef>
-        <para>Authentication requires getting an authentication token
-          by using the Rackspace Cloud Identity service. While the
-          authentication token is valid (which in most cases is 24
-          hours), you must pass it to Cloud Files to perform all Cloud
-          Files operations.</para>
+        <para>The process if identifying yourself to the Rackspace Cloud Identity service to receive
+          Cloud Files connection parameters and an authentication token. While the authentication
+          token is valid (which in most cases is 24 hours), you must pass it to Cloud Files to
+          perform all Cloud Files operations.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>CDN-enabled containers</glossterm>
       <glossdef>
-        <para>To publish your data so that it can be served by the Akamai content delivery network
-          (CDN), you need to CDN-enabled the container that houses that data. When a container is
-          CDN-enabled, any files in the container are publicly accessible and do not require an
-          authentication token for read access. However, uploading content into a CDN-enabled
-          container is a secure operation and requires a valid authentication token. Each published
-          container has a unique URL that can be combined with its object name and openly
-          distributed in web pages, emails, or other applications. For example, a CDN-enabled
+        <para>Containers that serve content through the Akamai content delivery network (CDN). When
+          a container is CDN-enabled, any files in the container are publicly accessible and do not
+          require an authentication token for read access. However, uploading content into a
+          CDN-enabled container is a secure operation and requires a valid authentication token.
+          Each published container has a unique URL that can be combined with its object name and
+          openly distributed in web pages, emails, or other applications. For example, a CDN-enabled
           container named <code>photos</code> can be referenced as
-            <code>http://c0344252.cdn.cloudfiles.rackspacecloud.com</code>. If that container houses
-          an image called <code>cute_kids.jpg</code>, that image can be served by the Akamai CDN
-          with the full URL of
-            <code>http://c0344252.cdn.cloudfiles.rackspacecloud.com/cute_kids.jpg</code>. </para>
+            <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com</code>.
+          If that container houses an image called <code>mydog.jpg</code>, that image can be served
+          by the Akamai CDN with the full URL of
+            <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/mydog.jpg.</code>. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -8558,64 +8461,60 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Content delivery network (CDN)</glossterm>
       <glossdef>
-        <para>A content delivery network (CDN) is a system of
-          distributed servers (network) that deliver webpages and
-          other Web content to a user based on the geographic
-          locations of the user, the origin of the webpage, and a
-          content delivery server. </para>
+        <para>A system of distributed servers (network) that delivers web pages and other web
+          content to a user based on the geographic locations of the user, the origin of the web
+          page, and a content delivery server. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Language-specific API</glossterm>
       <glossdef>
-        <para>Language-specific APIs in several popular languages are
-          available to help put Cloud Files in the hands of
-          developers. These APIs provide a layer of abstraction on top
-          of the base REST API, allowing programmers to work with a
-          container and object model instead of working directly with
-          HTTP requests and responses. </para>
+        <para>APIs that provide a layer of abstraction on top of the base REST API, enabling
+          programmers to work with a container and object model instead of working directly with
+          HTTP requests and responses. Language-specific APIs in several popular languages are
+          available for Cloud Files.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Metadata</glossterm>
+      <glossdef>
+        <para> Optional information that you can assign to Cloud Files accounts, containers, and
+          objects through the use of a metadata header.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Middleware</glossterm>
       <glossdef>
-        <para> Software that connects two otherwise separate
-          applications. For example, there are a number of middleware
-          products that link a database system to a Web server.</para>
+        <para> Software that connects two otherwise separate applications. For example, there are a
+          number of middleware products that link a database system to a web server.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Operations</glossterm>
       <glossdef>
-        <para>Operations are the actions you perform against your
-          account in Cloud Files, such as creating or deleting
-          containers, uploading or downloading objects, etc.
-          Operations are performed via the REST web service API or a
+        <para>The actions you perform against your account in Cloud Files, such as creating or
+          deleting containers. Operations are performed via the REST web service API or a
           language-specific API.</para>
-      </glossdef>
-    </glossentry>
-    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <glossterm>Permissions</glossterm>
-      <glossdef>
-        <para>There are no permissions or access-controls for
-          containers or objects other than being split into separate
-          accounts. You must authenticate with a valid API access key,
-          but once authenticated you can create and delete containers
-          and objects only within that account. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Private container</glossterm>
       <glossdef>
-        <para>A private container is a container that is only
-          accessible by the account holder. </para>
+        <para>A container that is only accessible by the account holder. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Pseudo directories</glossterm>
+      <glossdef>
+        <para>A hierarchical structure within a single Cloud Files container created adding forward
+          slash characters (<code xmlns:m="http://www.w3.org/the key 1998/Math/MathML">/</code>) in
+          the object name.</para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
       <glossterm>Public container</glossterm>
       <glossdef>
-        <para>A public container is a CDN-enabled container that is
-          publicly accessible. </para>
+        <para>A CDN-enabled container that is publicly accessible. </para>
       </glossdef>
     </glossentry>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
@@ -8623,6 +8522,24 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
       <glossdef>
         <para>REST, short for Representational State Transfer, is an
           architectural style for large-scale software design. </para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>Segmentation</glossterm>
+      <glossdef>
+        <para>The process of segmenting a large file into a number of smaller files for uploading to
+          Cloud Files. Cloud Files limits the size of a single uploaded object. By default this
+          limit is 5 GB. However, the download size of a single object is virtually unlimited with
+          the use of segmentation. Segments of the larger object are uploaded and a special manifest
+          file is created that, when downloaded, sends all the segments concatenated as a single
+          object. Segmentation also offers much greater upload speed with the possibility of
+          parallel uploads of the segments.</para>
+      </glossdef>
+    </glossentry>
+    <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <glossterm>TTL</glossterm>
+      <glossdef>
+        <para>Time-to-live value.</para>
       </glossdef>
     </glossentry>
   </glossary>

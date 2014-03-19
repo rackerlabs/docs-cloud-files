@@ -1,9 +1,10 @@
 docs-cloud-files
 ================
+Cloud Files Documentation
 
-This repo contains the source files for the Rackspace API documentation for Cloud Files. 
+This github repository contains the source files for the Rackspace Cloud Files API documentation. 
 
-Contributions are welcome! Feel free to create your own branch and provide pull requests or create issues.
+Contributions are welcome! To suggest changes to the documentation, please submit an Issue (https://github.com/rackerlabs/docs-cloud-files/issues) or Pull Request (https://github.com/rackerlabs/docs-cloud-files/pulls).
 
 Source files are for the following documents:
 
