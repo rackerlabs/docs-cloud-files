@@ -173,9 +173,7 @@
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
                 style="header" required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. If you omit this header, your
-                        request fails unless the account owner has granted you
-                        access through an access control list (ACL).
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="Accept"
@@ -620,18 +618,16 @@
     
     <method name="GET" id="listcontainerobjects">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="List Container Objects">
-            <para role="shortdesc">Lists the objects stored in the
-                container.</para>
+            title="Show Container Details and List Objects">
+            <para role="shortdesc">Shows details for a specified container and lists objects, sorted by name, in the container.</para>
             <para>This operation against a storage container name retrieves a list of the objects
                 stored in the container. You can use optional query parameters to refine the list results.</para>    
             <para>A request with no query parameters returns the full list of object names stored in the
                 container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full
-                list and returns a subset of objects.  For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
+                list and returns a subset of objects. For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
             
             <para>An HTTP response status code of 200 through 299 indicates success. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
                 exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>
-            <para>For information about filtering the results of a container list, see <xref linkend="Pseudo-Hierarchical_Folders_Directories-d1e1580"/>.</para>
             
             <para><emphasis role="bold">Format Object List</emphasis></para>
             <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same for <code>format=xml</code> and <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The example responses in this section are formatted for readability.</para>
@@ -680,6 +676,22 @@
         </wadl:doc>
         
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Accept"
+                style="header" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN">
+                    <para>Instead of using the <code>format</code> query
+                        parameter, set this header to
+                        <code>application/json</code>,
+                        <code>application/xml</code>, or
+                        <code>text/xml</code>.</para>
+                </wadl:doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="limit" style="query" required="false"
                 type="xsd:int">
@@ -724,11 +736,13 @@
                     For more information about pseudo paths, see the section on pseudo hierarchical folders and directories.
                 </p></doc>
             </param>
-            <representation mediaType="text/xml" element="files:Files" >
+<!--            
+                <representation mediaType="text/xml" element="files:Files" >
                 <doc title="List Container Objects Request">                     
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.txt"/>
                 </doc>
             </representation> 
+--> 
             <representation mediaType="application/xml" element="files:Files" >
                 <doc>                     
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.xml"/>
@@ -742,21 +756,92 @@
         </request>
         <response status="200 204">
             <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="Last-Modified" style="header"
-                required="true" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. Last-Modified has resolution up to one second. For Last-Modified, the time zone is UTC.
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
                 </p></doc>
-            </param>    
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Object-Count" style="header" required="true"
+                type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The number of objects.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Accept-Ranges" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The type of ranges that the object accepts.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Bytes-Used" style="header" required="true"
+                type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The count of bytes used in total.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Meta-name" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The custom container metadata item, where
+                    <code>name</code> is the name of the metadata
+                    item. One <code>X-Container-Meta-name</code> response header
+                    appears for each metadata item (for each
+                    <code>name</code>).
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param>           
+<!--
             <representation mediaType="text/xml" xml:lang="EN">
-                <doc title="List Container Objects Response">                 
+                <doc title="Show Container Deteails and List Objects Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.txt"/>
                 </doc>                
             </representation>
+-->            
                 <representation mediaType="application/xml" xml:lang="EN">
                     <doc>                 
                         <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.xml"/>
-                    </doc>                   
+                    </doc>
+                    <param xmlns="http://wadl.dev.java.net/2009/02"
+                        name="name" style="plain" required="true" type="xsd:string">
+                        <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
+                        </p></doc>
+                    </param>        
+                    <param xmlns="http://wadl.dev.java.net/2009/02"
+                        name="bytes" style="plain" required="true" type="xsd:int">
+                        <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
+                        </p></doc>
+                    </param>              
+                    <param xmlns="http://wadl.dev.java.net/2009/02"
+                        name="content-type" style="plain"
+                        required="true" type="xsd:string" path="/account/container/content-type">
+                        <doc><p xmlns="http://www.w3.org/1999/xhtml">The content type of the container.
+                        </p></doc>    
+                    </param>    
+                    <param xmlns="http://wadl.dev.java.net/2009/02"
+                        name="last-modified" style="plain"
+                        required="true" type="xsd:string" path="/account/container/last-modified">
+                        <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. <code>last-modified</code> has resolution up to one second. For <code>last-modified</code>, the time zone is UTC.
+                        </p></doc>
+                    </param>    
                 </representation>
                 <representation mediaType="application/json" xml:lang="EN">                   
                     <doc>
@@ -779,6 +864,11 @@
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="false" type="xsd:string">
@@ -796,12 +886,26 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-To"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
+                </p></doc>
+            </param>
             <representation mediaType="application/http" element="files:Files" >
                 <doc title="Create Container Request">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_request.txt"/>
                 </doc>
-            </representation>  
-           
+            </representation>             
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Create Container with Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_request.txt"/>
@@ -810,7 +914,32 @@
         </request>
         <response status="201 202"> 
             <doc title="Created or Accepted">The request has been fulfilled. For 201 Created, the new container has been created. For 202 Accepted, the request has been accepted for processing.</doc>          
-            <representation mediaType="application/http" element="files:Files" >
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
+            <representation mediaType="application/xml" element="files:Files" >
                 <doc title="Create Container Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
                 </doc>
@@ -818,7 +947,7 @@
             <representation mediaType="text/xml" element="files:Files" > 
                 <doc title="Create Container with Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_response.txt"/>
-                </doc>
+                </doc>   
             </representation>     
         </response>
         &postPutFaults;
@@ -836,6 +965,11 @@
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Delete Container Request">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_request.txt"/>
@@ -844,6 +978,31 @@
         </request>
         <response status="204">
             <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
             <representation mediaType="text/xml" element="files:Files" > 
                 <doc title="Delete Container Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
@@ -870,6 +1029,11 @@
                 </itemizedlist></note>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
@@ -887,14 +1051,82 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Remove-Container-name" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Removes the metadata item named metadata. For example, X-Remove-Container-Read removes the X-Container-Read metadata item.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Sync-To" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Container-Sync-Key" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Versions-Location" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Remove-Versions-Location" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to any value to disable versioning.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Changes the MIME type for the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Detect-Content-Type" style="header" required="false"
+                type="xsd:boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set to <code>True</code>, Cloud Files guesses the content type based on the file extension and ignores the value sent in the <code>Content-Type</code> header, if present.
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Create or Update Container Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>
+                    
                 </doc>
             </representation>     
         </request>
         <response status="204">
             <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
             <representation mediaType="application/http">
                 <doc title="Create or Update Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
@@ -906,8 +1138,8 @@
 
     <method name="HEAD" id="retrievecontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Container Metadata">
-            <para role="shortdesc">Gets container metadata, including
+            title="Show Container Metadata">
+            <para role="shortdesc">Shows container metadata, including
                 the number of objects in the container and the total bytes for all
                 objects stored in the container.</para>
             <para>Use a <command>HEAD</command> operation against the container to return the following metadata: </para>
@@ -921,7 +1153,12 @@
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
-        <request>          
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Get Container Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_request.txt"/>
@@ -967,6 +1204,52 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation.
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Accept-Ranges" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The type of ranges accepted.   
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-To"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Get Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
@@ -991,22 +1274,27 @@
             <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>       
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Remove-Container-Meta-name" style="header"
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                     metadata to be deleted. Replace <code>name</code> at the end of the header with the name for your metadata.</p></doc>
-            </param>
+            </param>            
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Write" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation.
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >               
@@ -1017,6 +1305,31 @@
         </request>
         <response status="204">
             <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
             <representation mediaType="application/http">
                 <doc title="Delete Container Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_response.txt"/>
@@ -1069,31 +1382,31 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Range: bytes=-5</td>
+                        <td><code>Range: bytes=-5</code></td>
                         <td>The last five bytes.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=10-15</td>
+                        <td><code>Range: bytes=10-15</code></td>
                         <td>The six bytes of data after a 10-byte offset.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=10-15,-5</td>
+                        <td><code>Range: bytes=10-15,-5</code></td>
                         <td>A multipart response that contains the last five bytes and the six bytes of data after a 10-byte offset. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=4-6</td>
+                        <td><code>Range: bytes=4-6</code></td>
                         <td>Bytes 4 through 6.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=2-2</td>
+                        <td><code>Range: bytes=2-2</code></td>
                         <td>Byte 2, the third byte of the data.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=6-</td>
+                        <td><code>Range: bytes=6-</code></td>
                         <td>Byte 6 and after.</td>
                     </tr>
                     <tr>
-                        <td>Range: bytes=1-3,2-5</td>
+                        <td><code>Range: bytes=1-3,2-5</code></td>
                         <td>A multipart response that contains bytes 1 through 3, and bytes 2 through 5. The <code>Content-Type</code> of the response is then <code>multipart/byteranges</code>.</td>
                     </tr> 
                 </tbody>
@@ -1103,6 +1416,11 @@
             <note><para>In the following examples that use ranges, the object contains the 10 bytes of data 0123456789.</para></note>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Get Object Data Request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_request.txt"/>
@@ -1121,6 +1439,77 @@
         </request>
         <response status="200">
             <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Content-Length"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the object content in the response body, in bytes.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Accept-Ranges"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The type of ranges that the object accepts.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Last-Modified"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The date and time that the object was created or the last time that the metadata was changed.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="ETag"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For objects smaller than 5 GB, this value is the MD5 checksum of the object content. The value is not quoted.
+                    
+                    For manifest objects, this value is the MD5 checksum of the concatenated string of MD5 checksums and ETags for each of the segments in the manifest, and not the MD5 checksum of the content that was downloaded. Also the value is enclosed in double-quote characters.
+                    
+                    You are strongly recommended to compute the MD5 checksum of the response body as it is received and compare this value with the one in the ETag header. If they differ, the content was corrupted, so retry the operation.
+                </p></doc>
+            </param>  
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Content-Type"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Content-Encoding"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the value of the <code>Content-Encoding</code> metadata. If not set, this header is not returned by this operation.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Content-Disposition"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, specifies the override behavior for the browser. For example, this header might specify that the browser use a download program to save this file rather than show the file, which is the default. If not set, this header is not returned by this operation.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Delete-At"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the time when the object will be deleted by the system in the format of a UNIX epoch timestamp. 
+                    If not set, this header is not returned by this operation.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Object-Meta-name"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The custom object metadata item, where <code>name</code> is the name of the metadata item. 
+                    One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Object-Manifest"
+                style="header" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, to this is a dynamic large object manifest object. The value is the container and object name prefix of the segment objects in the form container/prefix.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Static-Large-Object"
+                style="header" required="false" type="xsd:boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to <code>True</code> if this object is a static large object manifest object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="xsd:Uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="Date"
+                style="header" required="true" type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>    
+            </param>          
             <representation mediaType="application/http">
                 <doc title="Get Object Data Response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_response.txt"/>
@@ -1146,6 +1535,9 @@
             <para role="shortdesc">Creates or updates the content and
                 metadata for a specified object.</para>
             <para>Perform <command>PUT</command> operations to write, or overwrite, an object's content and metadata.</para>
+            <note><para>The <command>PUT</command> operation actually always creates a new object. 
+                If you use this operation on an existing object, you actually replace the existing object and metadata rather than modifying the object. 
+                This is why this operation returns a 201 Created status code.</para></note>
             <para>You can ensure end-to-end data integrity by including an
                 MD5 checksum of your object's data in the <code>ETag</code>
                 header. You are not required to include the
@@ -1203,6 +1595,11 @@
             <para>No response body is returned.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="ETag" style="header" required="false"
                 type="xsd:string">
@@ -1213,6 +1610,12 @@
                 name="Content-Type" style="header"
                 required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The media type of the entity-body sent. If not specified, the <code>Content-Type</code> is guessed, by using the Python mimetypes library, based on the object path.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header"
+                required="false" type="xsd:int">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to the length of the object content. Do not set if chunked transfer encoding is being used.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -1230,6 +1633,12 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
                         underlying media type of the compressed file.
                         </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Transfer-Encoding" style="header"
+                required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to <code>chunked</code> to enable chunked transfer encoding. If used, do not set the <code>Content-Length</code> header to a non-zero value.
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Delete-At" style="header" required="false"
@@ -1256,11 +1665,24 @@
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Detect-Content-Type" style="header" required="false"
-                type="xsd:string">
+                type="xsd:boolean">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
-            
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Object-Manifest" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to specify that this is a dynamic large object manifest object. The value is the container and object name prefix of the segment objects in the form container/prefix. You must UTF-8-encode and then URL-encode the names of the container and prefix before you include them in this header. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Copy-From" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, this is the name of an object used to create the new object by copying the <code>X-Copy-From</code> object. The value is in form <code>container/object</code>. 
+                    You must UTF-8-encode and then URL-encode the names of the container and object before you include them in the header. 
+                    Using the PUT operation with <code>X-Copy-From</code> has the same effect as using the COPY operation to copy an object. 
+                </p></doc>
+            </param>                        
             <representation mediaType="application/http">
                 <doc title="Create or Update Object Request">
                     <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
@@ -1269,6 +1691,42 @@
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0). If the operation fails, this value is the length of the error text in the response body. 
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Etag" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For objects smaller than 5 GB, this value is the MD5 checksum of the uploaded object content. The value is not quoted.
+                    
+                    If you supplied an ETag request header and the operation was successful, the values are the same.
+                    
+                    If you did not supply an ETag request header, check the ETag response header value against the object content you have just uploaded.
+                    
+                    For static large objects, this value is the MD5 checksum of the concatenated string of MD5 checksums and ETags for each of the segments in the manifest, and not the MD5 checksum of the content that was uploaded. Also the value is enclosed in double-quotes. For dynamic large objects, the value is the MD5 checksum of the empty string. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Trans-Id" style="header" required="true"
+                type="xsd:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Create or Update Object Response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
@@ -1316,26 +1774,12 @@
             <para role="shortdesc">Using the <code>Destination</code> header, copies an existing object to another object
                 with a new name in the Cloud Files storage
                 system.</para>
-            <informaltable rules="all">
-                <col width="10%"/>
-                <col width="40%"/>
-                <col width="50%"/>
-                <thead align="center">
-                    <tr>
-                        <th>Method</th>
-                        <th>URI</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><command>PUT</command></td>
-                        <td><code>v1/{account}/{container}/{object}</code></td>
-                        <td>Using the <code>X-Copy-From</code> header, copies an existing object to another object with a
-                            new name in the Cloud Files storage system. </td>
-                    </tr>
-                </tbody>
-            </informaltable>
+            <para>The new object can be in the same container, but have a different name from the original object. Or, the new object can have the same or a different name and be located in a different container than the original object.
+            </para>
+            <note><para>You can use a <command>PUT</command> operation with the <code>X-Copy-From</code> header to accomplish the same operation as the <command>COPY</command> operation. 
+                The <command>PUT</command> operation always creates a new object. If you use this operation on an existing object, you replace the existing object and metadata rather than 
+                modifying the object. </para></note>
+           
             <para>Suppose you upload a file with the wrong object name or
                 content type, or you need to move some objects to another
                 container. Without a server-side object copy feature, you
@@ -1344,9 +1788,7 @@
                 feature, you can save the step of re-uploading the content
                 and thus also save the associated bandwidth charges, if any
                 were to apply. </para>
-            <para>There are two approaches to copying an existing object to another
-                object in Cloud Files. </para>
-            <para>One approach is to send a <command>COPY</command> request to the existing object and include the
+            <para>You can send a <command>COPY</command> request to the existing object and include the
                 <code>Destination</code> header to specify the destination of
                 the copy. The header value is the container and new object
                 name in the form of <code>/container/object</code>. Unlike using the <command>PUT</command> request, this approach does not require a
@@ -1360,8 +1802,8 @@
   Destination: /<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable>
 </programlisting>
                 </example></para>        
-            <para>The other approach is to send a <command>PUT</command> request to the location of the new object (the
-                destination), but add the <code>X-Copy-From</code>
+            <para>Alternatively, you can send a <command>PUT</command> request to the location of the new object (the
+                destination), and add the <code>X-Copy-From</code>
                 header to designate the source of the data. The header value
                 must be the container and object name of the source object
                 in the form of <code>/container/object</code>. The HTTP specification of a
@@ -1387,8 +1829,7 @@
 
             <para>With both of these approaches, the destination container
                 must exist before you copy the object.</para>
-            <para>The status code for a successful object copy is 201
-                (Created). </para>
+
             <note>
                 <para>If you are copying many objects, you can improve the
                     total copy time by issuing several concurrent
@@ -1447,6 +1888,11 @@
             
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Copy_From" style="header" required="false"
                 type="xsd:string">
@@ -1482,35 +1928,113 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
-                <doc title="Copy Object Request Using PUT">
-                    <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
-                </doc>
-            </representation>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Encoding" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the value of the <code>Content-Encoding</code> metadata. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Disposition" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, specifies the override behavior for the browser. For example, this header might specify that the browser use a download program to save this file rather than show the file, which is the default. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Object-Meta-name" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The container metadata, where <code>name</code> is the name of the metadata item. 
+                    You must specify a <code>X-Object-Meta-name</code> header for each metadata item (for each <code>name</code>) that you want to add or update. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Copy Object Request Using COPY">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_request.txt"/>
                 </doc>
-            </representation>    
+            </representation>
+            <representation mediaType="application/http">
+                <doc title="Copy Object Request Using PUT">
+                    <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
+                </doc>
+            </representation>   
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0). If the operation fails, this value is the length of the error text in the response body. 
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Etag" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MD5 checksum of the uploaded object content. The value is not quoted. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Trans-Id" style="header" required="true"
+                type="xsd:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Copied-From-Last-Modified" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a copied object, shows the last modified date and time for the container and object name from which the new object was copied. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Copied-From" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">For a copied object, shows the container and object name from which the new object was copied. The value is in form <code>container/object</code>. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Last-Modified" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The date and time that the object was created or the last time that the metadata was changed. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Object-Meta-name" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The custom object metadata item, where <code>name</code> is the name of the metadata item. 
+                    One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
+                </p></doc>
+            </param>
+            <representation mediaType="application/http">
+                <doc title="Copy Object Response Using COPY">
+                    <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_response.txt"/>
+                </doc>
+            </representation>
+            <representation mediaType="application/http">
+                <doc title="Copy Object Response Using PUT">
+                    <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_response.txt"/>
+                </doc>
+            </representation>   
         </response>
         &only404Fault;
     </method>
     
     <method name="HEAD" id="retrieveobjectmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Object Metadata">
-            <para role="shortdesc">Gets object metadata and other
-                standard HTTP headers.</para>
+            title="Show Object Metadata">
+            <para role="shortdesc">Shows object metadata.</para>
             <para>Perform a HEAD operation on an object to retrieve
                 object metadata and other standard HTTP headers.</para> 
-            <para>The only required header to send in the request is <code>X-Auth-Token</code> for 
-                the authorization token.</para>
-            <para> A status code of 200 (OK) indicates success.
-                Status code 404 (Not Found) is returned when the object does not
-                exist.</para>
             <para>This operation does not return a response body. Metadata is returned as
                 HTTP headers.</para>
             <note><para>
@@ -1528,6 +2052,11 @@
                 code because it can view the content. </para> </note> 
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Get Object Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
@@ -1547,7 +2076,78 @@
                 required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">An internal variable that indicates the last time an entity (account, container, or object) was modified. For Last-Modified, the time zone is UTC. You might notice that objects have both a Last-Modified and X-Timestamp header. The difference between these two headers is the resolution. Last-Modified has resolution up to one second, while X-Timestamp has resolution up to five decimal places of one second.
                 </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the object content in the response body, in bytes. 
+                </p></doc>
             </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Etag" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MD5 checksum of the uploaded object content. The value is not quoted. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Trans-Id" style="header" required="true"
+                type="xsd:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Encoding" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the value of the <code>Content-Encoding</code> metadata. 
+                    If not set, this header is not returned by this operation. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Disposition" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, specifies the override behavior for the browser. For example, this header might specify that the browser use a 
+                    download program to save this file rather than show the file, which is the default. If not set, this header is not returned by this operation.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Delete-At" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the time when the object will be deleted by the system in the format of a UNIX epoch timestamp. 
+                    If not set, this header is not returned by this operation. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Object-Manifest" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, to this is a dynamic large object manifest object. 
+                    The value is the container and object name prefix of the segment objects in the form <code>container/prefix</code>. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Static-Large-Object" style="header" required="false"
+                type="xsd:boolean">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Set to <code>True</code> if this object is a static large object manifest object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Object-Meta-name" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The custom object metadata item, where <code>name</code> is the name of the metadata item. 
+                    One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Get Object Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
@@ -1599,6 +2199,11 @@
             <para>This operation does not return a response body.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Object-Meta-name" style="header" required="false"
                 type="xsd:string">
@@ -1632,6 +2237,18 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If you set this header to <code>True</code>, the <code>Content-Type</code> that is sent in the request (if any) is ignored, and <code>Content-Type</code> is guessed by using the Python mimetypes library based on the object path. 
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Disposition" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, specifies the override behavior for the browser. For example, this header might specify that the browser use a download program to save this file rather than show the file, which is the default.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Encoding" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the value of the <code>Content-Encoding</code> metadata.
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Update Object Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_request.txt"/>
@@ -1640,6 +2257,30 @@
         </request>
         <response status="202"> 
             <doc title="Accepted">The request was accepted for processing.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Length" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the object content in the response body, in bytes. 
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the object.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Trans-Id" style="header" required="true"
+                type="xsd:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Update Object Metadata Response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
@@ -1676,6 +2317,11 @@
                 linkend="Bulk_Delete-d1e2338.html"/>.</para>
         </wadl:doc>
         <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
             <representation mediaType="application/http">
                 <doc title="Delete Object Request">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_request.txt"/>
@@ -1684,6 +2330,31 @@
         </request>
         <response status="204">
             <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
+                    list of names. If the operation fails, this value is the
+                    length of the error text in the response
+                    body.
+                </p></doc>
+            </param>               
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Content-Type" style="header" required="true"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
             <representation mediaType="application/http">
                 <doc title="Delete Object Response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>

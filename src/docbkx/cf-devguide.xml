@@ -7326,7 +7326,7 @@ Transfer-Encoding: chunked
       </note>
       <section xml:id="Set_Account_Metadata-d1a4460">
         <title>Set Account TempURL Metadata Key</title>
-        <para>To create a TempURL, you must first set the<code>X-Account-Meta-Temp-Url-Key</code>
+        <para>To create a TempURL, you must first set the <code>X-Account-Meta-Temp-Url-Key</code>
           metadata header on your Cloud Files account to a key that only you know. This key can be
           any arbitrary sequence. </para>
         <para>After you set the key, do not change it while you still want others to be able to
