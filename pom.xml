@@ -29,9 +29,8 @@
                 <groupId>com.rackspace.cloud.api</groupId>
                 <artifactId>clouddocs-maven-plugin</artifactId>
                 <version>1.13.0</version>
-                <executions>
-                    <execution>
-                        <id>g1</id>
+                  <executions>
+<!--                <execution>
                         <goals>
                             <goal>generate-webhelp</goal>
                         </goals>
@@ -41,19 +40,31 @@
                             <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
                         </configuration>			
                     </execution>
-                   <execution>
-		      <id>g2</id>
+-->                    
+                  <execution>
+		                <id>g1</id>
                         <goals>
                             <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
-			<configuration>
-			  <includes>cf-devguide.xml</includes>
-			    <security>external</security>
-			  <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
-			</configuration>
+			            <configuration>
+			                <includes>cf-devguide.xml</includes>
+			                <security>external</security>
+			                <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
+			            </configuration>
                     </execution>
-
+                    <execution>
+                        <id>g2</id>
+                        <goals>
+                            <goal>generate-webhelp</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <includes>cf-getting-started.xml</includes>
+                            <security>external</security>
+                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-getting-started/content</canonicalUrlBase>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>g3</id>
                         <goals>
@@ -63,10 +74,9 @@
                         <configuration>
                             <includes>cf-releasenotes.xml</includes>
                             <chapterAutolabel>0</chapterAutolabel>
-			    <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
+			                <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
                          </configuration>
                     </execution>
-
                 </executions>
                 <configuration>
                     <branding>rackspace</branding>

@@ -361,13 +361,17 @@
                 </listitem>                
                 <listitem>
                     <para>The total bytes that are stored for your account (<code>X-Account-Bytes-Used</code>)</para>
-                </listitem>
-               
+                </listitem>              
             </itemizedlist>        
             <para>An HTTP status code of 200 through 299 indicates success. In the example, a 204 (No Content) status code is returned. A 401 (Unauthorized) status code is returned for an invalid account or authentication token. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
-        <request>            
+        <request>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
+                style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param> 
             <representation mediaType="text/xml" element="files:Files">                
                 <doc title="Get Account Metadata Request" >
                     <xsdxt:code href="../wadl/samples/cf-getAccountMetadata_request.txt"/>
@@ -624,21 +628,17 @@
                 stored in the container. You can use optional query parameters to refine the list results.</para>    
             <para>A request with no query parameters returns the full list of object names stored in the
                 container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full
-                list and returns a subset of objects. For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>
-            
+                list and returns a subset of objects. For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.</para>            
             <para>An HTTP response status code of 200 through 299 indicates success. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not
-                exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>
-            
+                exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.</para>            
             <para><emphasis role="bold">Format Object List</emphasis></para>
-            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same for <code>format=xml</code> and <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The example responses in this section are formatted for readability.</para>
-            
+            <para>If you append the <code>format=xml</code> or the <code>format=json</code> query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same for <code>format=xml</code> and <code>format=json</code>. However, <code>Content-Type</code> matches the specified format. The example responses in this section are formatted for readability.</para>            
             <para><emphasis role="bold">Controlling a Large List of Objects</emphasis></para>
             <para>A <command>GET</command> request against the container account URL returns a list of up to 10,000 objects. You can limit and control this list of results by using the <code>marker</code>, <code>end_marker</code>, and <code>limit</code> parameters.</para>
             <para>The <code>marker</code> parameter tells Cloud Files where to begin your list of objects, and the <code>end_marker</code> parameter tells where to end the list. You can use them either independently or together, separated by an ampersand (<code>&amp;</code>). If you do not specify them, your list displays up to 10,000 objects. Note that the <code>marker</code> and <code>end_marker</code> values must be URL-encoded before you send the HTTP request.</para>
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects.</para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
-            <para>As an example, use a listing of 5 object names, as follows:</para>
-            
+            <para>As an example, use a listing of 5 object names, as follows:</para>            
             <para><programlisting>
  gala
  grannysmith
@@ -673,8 +673,7 @@
  reddelicious
             </programlisting></para>
             <para>This one-item response shows fewer than the limit of two object names requested, and indicates that this is the end of the list.</para>      
-        </wadl:doc>
-        
+        </wadl:doc>        
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
                 style="header" required="true" type="xsd:string">
@@ -877,13 +876,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access. This header can contain a comma-delimited list of users that can read the container (allows the GET method for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Write" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
@@ -1042,13 +1041,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an access control list (ACL) that grants read access. This header can contain a comma-delimited list of users that can read the container (allows the GET method for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Write" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -1095,8 +1094,7 @@
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Create or Update Container Metadata Request">
-                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>
-                    
+                    <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>                    
                 </doc>
             </representation>     
         </request>
@@ -1195,13 +1193,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation. This header can contain a comma-delimited list of users that can read the container (allows the GET method for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Write" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
@@ -1288,13 +1286,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Read" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The access control list (ACL) that grants read access. If not set, this header is not returned by this operation. This header can contain a comma-delimited list of users that can read the container (allows the GET method for all objects in the container).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Write" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The ACL that grants write access. If not set, this header is not returned by this operation. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >               
@@ -1343,9 +1341,8 @@
    
     <method name="GET" id="getobjectdata">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Object Data">
-            <para role="shortdesc">Gets data for the specified
-                object.</para>
+            title="Get Object Content and Metadata">
+            <para role="shortdesc">Gets the content and metadata for the object.</para>
             <para>Perform <command>GET</command> operations against an object to retrieve the object's data. </para>
             <para>You can perform conditional <command>GET</command> requests by using the following HTTP headers in the request:</para>
             <itemizedlist spacing="compact">
@@ -1356,11 +1353,7 @@
             </itemizedlist>
             <para>These headers are documented in <link xlink:href="http://www.ietf.org/rfc/rfc2616.txt"
                 >http://www.ietf.org/rfc/rfc2616.txt</link>.</para>
-            <para>You can fetch a portion of the data by using the HTTP <code>Range</code> header. To specify multiple ranges, separate the range specifications with a comma.</para> 
-<!--
-                <note><para>Currently, Cloud Files does not support the full specification for <code>Range</code>, but does provide basic support. 
-                Cloud Files allows only a single range and can include OFFSET or LENGTH where either OFFSET or LENGTH is optional (not both at the same time). </para></note>
--->            
+            <para>You can fetch a portion of the data by using the HTTP <code>Range</code> header. To specify multiple ranges, separate the range specifications with a comma.</para>             
             <para>The types of range specifications are as follows:</para>
             <itemizedlist>
                 <listitem><para>Byte range specification: Use a <code>FIRST_BYTE_OFFSET</code> value to specify the start of the data range,
@@ -1419,6 +1412,36 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
                 style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="signature"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to sign the request. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>.</para></wadl:doc>
+            </param>          
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="expires"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to specify the expiry time of the signature. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
+            </param>       
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="multipart-manifest"
+                style="query" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you include the
+                    <code>multipart-manifest=get</code>
+                    query parameter
+                    and the object is a large object, the object contents are not returned.
+                    Instead, the manifest is returned in the
+                    <code>X-Object-Manifest</code>
+                    response header for dynamic large objects or in the response body for
+                    static large objects.
                 </p></doc>
             </param>
             <representation mediaType="application/http">
@@ -1599,6 +1622,36 @@
                 style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
                 </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="signature"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to sign the request. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>.</para></wadl:doc>
+            </param>          
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="expires"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to specify the expiry time of the signature. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
+            </param>       
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="multipart-manifest"
+                style="query" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you include the
+                    <code>multipart-manifest=get</code>
+                    query parameter
+                    and the object is a large object, the object contents are not returned.
+                    Instead, the manifest is returned in the
+                    <code>X-Object-Manifest</code>
+                    response header for dynamic large objects or in the response body for
+                    static large objects.
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="ETag" style="header" required="false"
@@ -1735,39 +1788,7 @@
         </response>
         &createObjectFaults;
     </method>
-
-<!-- In OpenStack Object Reference but not in Rackspace:   
-    <method name="PUT" id="putcopiedobject">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Copy Object">
-            <para role="shortdesc">Copies an object to another object
-                in the OpenStack Object Storage system.</para>
-        </wadl:doc>
-        <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Copy-From" style="header" required="true"
-                type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        container and object name of the <b>source</b>
-                        object in the form of “/container/object”.
-                        Stored in header.</p></doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="Content-Length" style="header" required="true"
-                type="xsd:int">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">The
-                        content length, which is zero under this
-                        situation. Stored in header.</p></doc>
-            </param>
-            <representation mediaType="application/http">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="samples/copyobj_httphead.msg"/>
-                </doc>
-            </representation>
-        </request>
-        <response status="201"> </response>
-    </method>
--->   
+  
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Copy Object">
@@ -1846,8 +1867,7 @@
                 <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->
                <para>If
                 you want to move the object rather than copy it, send a <command>DELETE</command> request to the source object after
-                   copying it. A move is simply a <command>COPY</command> operation followed by a <command>DELETE</command> operation.</para>
-                
+                   copying it. A move is simply a <command>COPY</command> operation followed by a <command>DELETE</command> operation.</para>                
             <para> All
                 metadata is preserved during the object copy. Note that you
                 can set metadata on the request to copy the object (with either 
@@ -2057,6 +2077,24 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
                 </p></doc>
             </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="signature"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to sign the request. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>.</para></wadl:doc>
+            </param>          
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="expires"
+                style="query" required="false" type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xmlns:wadl="http://wadl.dev.java.net/2009/02" xml:lang="EN"
+                    ><para>Used with temporary URLs to specify the expiry time of the signature. For
+                        more information about temporary URLs, see <link
+                            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
+                            ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
+            </param>       
             <representation mediaType="application/http">
                 <doc title="Get Object Metadata Request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
@@ -2320,6 +2358,18 @@
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
                 style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Authentication token. 
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="multipart-manifest"
+                style="query" required="false" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If you include the
+                    <code>multipart-manifest=get</code>
+                    query parameter
+                    and the object is a large object, the object contents are not returned.
+                    Instead, the manifest is returned in the
+                    <code>X-Object-Manifest</code>
+                    response header for dynamic large objects or in the response body for
+                    static large objects.
                 </p></doc>
             </param>
             <representation mediaType="application/http">
