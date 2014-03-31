@@ -714,9 +714,8 @@
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Added the Sydney data center as a location that provides bulk imports in the
-					"Bulk Imports" section in the<citetitle>Cloud Files Developer Guide</citetitle>.
-				</para>
+				<para>Added the Sydney data center as a location that provides bulk imports in the "Bulk
+					Imports" section in the <citetitle>Cloud Files Developer Guide</citetitle>. </para>
 			</listitem>
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
