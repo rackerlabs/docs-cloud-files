@@ -30,7 +30,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2014-02-21</pubdate>
+		<pubdate>2014-04-01</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -44,6 +44,22 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision>
+				<date>2014-04-01</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the Sydney data center as a location that provides bulk
+								imports.  </para>
+						</listitem>
+						<listitem>
+							<para>Added header descriptions to the "API Operations for Storage
+								Services" chapter in the <citetitle>Cloud Files Developer
+									Guide</citetitle>.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-02-21</date>
 				<revdescription>
@@ -680,6 +696,36 @@
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
 	</chapter>
+	<chapter xml:id="Apr01">
+		<?dbhtml stop-chunking?>
+		<title>April 1, 2014</title>
+		<para>This release contains the following enhancements and documentation changes for Cloud
+			Files:</para>
+		<!-- Enhancements -->
+		<itemizedlist>
+			<title>Enhancements</title>
+			<listitem>
+				<para>Added the Sydney data center as a location that provides bulk imports. </para>
+			</listitem>
+		</itemizedlist>
+		<!-- Documentation Changes -->
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Added the Sydney data center as a location that provides bulk imports in the
+					"Bulk Imports" section in the<citetitle>Cloud Files Developer Guide</citetitle>.
+				</para>
+			</listitem>
+			<listitem xmlns:svg="http://www.w3.org/2000/svg"
+				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+				xmlns:html="http://www.w3.org/1999/xhtml">
+				<para>Added header descriptions to the "API Operations for Storage Services" chapter
+					in the <citetitle>Cloud Files Developer Guide</citetitle>.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
 	<chapter xml:id="Feb21" >
 		<?dbhtml stop-chunking?>
 		<title>February 21, 2014</title>
@@ -689,8 +735,8 @@
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<listitem>
-				<para>Updated the table in the Absolute Limits section  to include the rate limit
-					for write operations, which is 100 operations per second per container.</para>
+				<para>Updated the table in the "Absolute Limits" section to include the rate limit for write
+					operations, which is 100 operations per second per container.</para>
 			</listitem>
 			<listitem>
 				<para>Updated the following object methods to include the
