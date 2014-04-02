@@ -408,8 +408,8 @@
         For more details on developing Cloud Files applications,
         please refer to the Rackspace Cloud Files API Developer Guide
         at <link
-          xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf"
-          >http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
+          xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html"
+          >http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html</link>. </para>
       </section>
       <section xml:id="Language-Specific_API_Bindings-d1e381">
         <title>Language-Specific API Bindings</title>
