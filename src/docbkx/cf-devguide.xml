@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-04-01</pubdate>
+    <pubdate>2014-04-07</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,16 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-04-07</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added <xref linkend="Container_ACLs-d1e2222"/>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
 
       <revision>
         <date>2014-04-01</date>
@@ -804,9 +814,9 @@
       <title>Additional Resources</title>
       <para>You can download the most current version of this document
         from the Rackspace Cloud website at <link
-          xlink:href="http://docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf"
+          xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html"
           >
-          docs.rackspacecloud.com/files/api/cf-devguide-latest.pdf</link>. </para>
+          docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html</link>. </para>
       <para>For more details about the Cloud Files service, see <link
           xlink:href="http://www.rackspace.com/cloud/files/"
           >http://www.rackspace.com/cloud/files/</link>. Related documents are available at the same
@@ -865,7 +875,7 @@
           <citetitle>Cloud Identity Client Developer Guide,
           v2.0</citetitle> at <link
           xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html"
-          > docs.rackspace.com</link>.</para>
+            > http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html</link>.</para>
       <note>
         <para>The language-specific APIs handle authentication, token
           passing, and HTTPS request/response communication.</para>
@@ -877,6 +887,8 @@
         must authenticate with your credentials as described in <xref
           linkend="Authentication-d1e639"/>. After you are authenticated, you can perform all Cloud
         Files operations within that account. </para>
+      <para>You can use Role Based Access Control (RBAC) with Cloud Files. For more information, see
+          <xref linkend="RBAC"/>.</para>
     </section>
     <section xml:id="Containers-d1e458">
       <title>Containers</title>
@@ -903,7 +915,8 @@
         are performed on objects but is not true for static content
         served to end users directly.</para>
       <para> In addition to containing objects, you can also use the container to control access to
-        objects by using an access control list (ACL). You cannot store an ACL with individual
+        objects by using an access control list (ACL). For more information, see <xref
+          linkend="Container_ACLs-d1e2222"/>. You cannot store an ACL with individual
         objects.</para>
     </section>
     <section xml:id="Objects-d1e479">
@@ -2150,54 +2163,89 @@ photos/animals/dogs/terrier.jpg</programlisting>
   </chapter>
   <chapter xml:id="containerMetadataOptions_d1e001">
     <title>Additional Container Services Information</title>
-    <para>This section provides additional metadata options for containers in Cloud Files.</para>
-    
-<!--    <section xml:id="Container_ACLs-d1e2222">
+    <para>This section provides additional metadata options for containers in Cloud Files.</para>    
+   <section xml:id="Container_ACLs-d1e2222">
       <title>Container Access Control Lists</title>
-      <para>The <code>X-Container-Read</code> metadata header defines the access control list (ACL)
-        permissions for who can read objects in a container. Before you set this header, only users
-        with a valid authentication token for the account can read objects in that container. </para>
-      <para>List containers to show the absence of the <code>X-Container-Read</code> header: </para>
-      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/joeUser</programlisting>
-      <programlisting>HTTP/1.1 204 No Content
-X-Container-Object-Count: 0 
-X-Container-Bytes-Used: 0 
+      <para>The Cloud Files Access Control List (ACL) feature allows account owners to specify read
+        or write access to a particular container for a particular user. </para>
+      <para>Cloud Files ACLs provide the following metadata headers that you use to define
+        container-level access policies:<itemizedlist>
+          <listitem>
+            <para><code>X-Container-Read</code> – This header specifies a comma-delimited list of
+              users that can read the container (allows the GET method for all objects in the
+              container).</para>
+          </listitem>
+          <listitem>
+            <para><code>X-Container-Write</code> – This header specifies a comma-delimited list of
+              users that can write to the container (allows PUT, POST, COPY, and DELETE methods for
+              all objects in the container).</para>
+          </listitem>
+        </itemizedlist></para>
+      <para>Space before or after a comma in the comma-delimited list of users is acceptable. Valid
+        values for these headers are zero to many users.</para>
+      <para>You can set these headers only on containers, and they apply to all objects within the
+        container. </para>
+      <note>
+        <para>The account owner does not need to be included as a user in the headers because the
+          account owner always has read and write access to everything in their Cloud Files account. </para>
+        <para>However, the users specified in the headers need to have a valid authentication token
+          for the account to be able to read objects in the container or write to the container.
+        </para>
+      </note>
+      <para>You can use the operation to show container metadata to show the absence of the
+          <code>X-Container-Read</code> or <code>X-Container-Write</code> header for an existing
+        container, such as <code>MyContainer</code> in the following example. </para>
+      <example>
+        <title>Show container metadata request before adding ACL headers</title>
+        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
+HTTP/1.1Host: storage.clouddrive.com
+X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
+      </example>
+      <example>
+        <title>Show container metadata response before adding ACL headers</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Container-Object-Count: 2 
+X-Container-Bytes-Used: 76 
 Accept-Ranges: bytes 
 X-Trans-Id: tx3aa52e951fc64b63bc1fda27902b9bd3 
-Content-Length: 0 
-Date: Tue, 15 Nov 2011 03:29:22 GMT </programlisting>
-      <para>Set the <code>X-Container-Read </code>header to enable read and list access to
-        everyone:</para>
-      <programlisting> curl –X  PUT  -i \ -H "X-Auth-Token: $token" \ -H "X-Container-Read: .rlistings" \ $publicURL/joeUser </programlisting>
-      <programlisting>HTTP/1.1 202 Accepted
-Content-Length: 58
-Content-Type: text/html; charset=UTF-8
-X-Trans-Id: txf2befb56b1854a50995f710f2db48089
-Date: Tue, 15 Nov 2011 03:33:16 GMT
-
-202 Accepted
-
-The request is accepted for processing.</programlisting>
-      <para>For a list of valid <code>X-Container-Read</code> header values, see the information
-        about ACLs at <link
-          xlink:href="http://docs.openstack.org/developer/swift/misc.html#acls/">http://docs.openstack.org/developer/swift/misc.html#acls</link>.</para>
-      <para>To see the metadata change:</para>
-      <programlisting>curl –X GET -i -H "X-Auth-Token: $token" $publicURL/joeUser </programlisting>
-      <programlisting>HTTP/1.1 204 No Content
-X-Container-Object-Count: 0
-X-Container-Read: .r:*,.rlistings
-X-Container-Bytes-Used: 0
+Content-Length: 80 
+Date: Mon, 07 Apr 2014 01:29:22 GMT </programlisting>
+      </example>
+      <para>Update the existing container to set the <code>X-Container-Read</code> and
+          <code>X-Container-Write</code> metadata headers to enable read and write access for
+          <code>user1</code>, <code>user2</code>, and <code>user3</code>.<example>
+          <title>Update container request to add ACL headers</title>
+          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+<emphasis role="bold">X-Container-Read: user1, user2, user3
+X-Container-Write: user1, user2, user3</emphasis></programlisting>
+        </example>
+      </para>
+      <para>Repeat the operation to show container metadata and confirm the metadata change.</para>
+      <example>
+        <title>Show container metadata request after adding ACL headers</title>
+        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
+HTTP/1.1Host: storage.clouddrive.com
+X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
+      </example>
+      <example>
+        <title>Show container metadata response after adding ACL headers</title>
+        <programlisting>HTTP/1.1 204 No Content
+X-Container-Object-Count: 2
+<emphasis role="bold">X-Container-Read: user1, user2, user3
+X-Container-Write: user1, user2, user3</emphasis>
+X-Container-Bytes-Used: 76
 Accept-Ranges: bytes
 X-Trans-Id: txb40eb86d949345f7bc66b01e8b63c3a5
-Content-Length: 0
-Date: Tue, 15 Nov 2011 03:33:36 GMT </programlisting>
-      <para>After you give everyone read access, anyone can access any object in the container from
-        a browser. To do so, a user appends the object name to the <code>X-Storage-URL</code> header
-        value used in the session. For example: </para>
-      <programlisting>$publicURL/joeUser/cereal.jpg </programlisting>
+Content-Length: 80
+Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
+      </example>
+     <para>For more information about ACLS and using them with RBAC (<xref linkend="RBAC"/>), see
+        the blog post, <link
+          xlink:href="http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/"
+          >"Create Cloud Files Container-Level Access Control Policies".</link></para>
     </section>
--->    
-    
     <section xml:id="Container_Quotas-d1e2222">
       <title>Container Quotas</title>
       <para>Users (most likely account administrators) who have the ability to set container
@@ -2262,6 +2310,12 @@ Date: Tue, 15 Nov 2011 03:33:36 GMT </programlisting>
         (October 1, 2012), and 16 is the hour that the log file was created. There might be multiple
         files for a given hour because the storage system splits log files based on both time and
         log file size. All times in the access logs are UTC time. </para>
+      <note>
+        <para>In the CDN log files,  the date is stored differently than it is for standard
+          containers. Standard containers store the month as a 2-digit number, as shown in the
+          pattern above, while CDN containers store the month as 3 letters because this is the way
+          it is delivered in the Acamai CDN log files.</para>
+      </note>
       <para> Within the gzip logs, the format of the entries is similar to National Center for
         Supercomputing Applications (NCSA) combined log format, but without cookies. The pattern
         follows. The dashes (<parameter>-</parameter>) denote fields that the NCSA combined log
