@@ -2197,8 +2197,8 @@ photos/animals/dogs/terrier.jpg</programlisting>
         container, such as <code>MyContainer</code> in the following example. </para>
       <example>
         <title>Show container metadata request before adding ACL headers</title>
-        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
-HTTP/1.1Host: storage.clouddrive.com
+        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
@@ -2694,7 +2694,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             object names do not have to conform to a specific pattern.</para>
           <example>
             <title>Static Large Object Manifest List</title>
-            <programlisting> json:[
+            <programlisting>[
         {
           "path": "/mycontainer/objseg1",
           "etag": "0228c7926b8b642dfb29554cd1f00963",
