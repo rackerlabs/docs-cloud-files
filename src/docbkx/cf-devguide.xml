@@ -2225,8 +2225,8 @@ X-Container-Write: user1, user2, user3</emphasis></programlisting>
       <para>Repeat the operation to show container metadata and confirm the metadata change.</para>
       <example>
         <title>Show container metadata request after adding ACL headers</title>
-        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
-HTTP/1.1Host: storage.clouddrive.com
+        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
