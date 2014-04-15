@@ -232,8 +232,8 @@
                 </doc>
             </representation>           
         </request>
-        <response status="200 204">
-            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
+        <response status="200">
+            <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -344,6 +344,10 @@
 -->
             </representation>
         </response>
+        <response status="204">
+            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/json"/>              
+        </response>
         &only404Fault;
     </method>
 
@@ -384,7 +388,7 @@
             </representation>             
         </request>
         <response status="204">           
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Account-Object-Count" style="header" required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The total number of objects that are stored in Cloud Files for the account.
@@ -508,7 +512,7 @@
             </representation>   
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0).
@@ -584,7 +588,7 @@
             </representation>   
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0).
@@ -753,8 +757,8 @@
                 </doc>
             </representation>           
         </request>
-        <response status="200 204">
-            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
+        <response status="200">
+            <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -846,7 +850,11 @@
                     <doc>
                         <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.json"/>
                     </doc>                    
-                </representation>
+                </representation>         
+        </response>
+        <response status="204">
+            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/json"/>              
         </response>
         &deleteContainerFaults;
     </method>
@@ -976,7 +984,7 @@
             </representation>     
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -1099,7 +1107,7 @@
             </representation>     
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -1164,7 +1172,7 @@
             </representation>     
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Object-Count" style="header"
                 required="true" type="xsd:int">
@@ -1302,7 +1310,7 @@
             </representation>     
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -2379,7 +2387,7 @@
             </representation>    
         </request>
         <response status="204">
-            <doc title="No Content">The server fulfilled the request but does not need to return a body.</doc>
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the

@@ -131,13 +131,17 @@
                 </doc>
             </representation>   
         </request>
-        <response status="200 204">
-            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
+        <response status="200">
+            <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request. </doc>
             <representation mediaType="application/xml" xml:lang="EN">
                 <doc title="List CDN-Enabled Containers Response">                 
                     <xsdxt:code href="../wadl/samples/cf-getCDNAccountContainers_response.txt"/>
                 </doc>               
             </representation>
+        </response>
+        <response status="204">
+            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/json"/>              
         </response>
         &only404Fault;
     </method>
@@ -229,8 +233,8 @@
             </representation>    
                      
         </request>
-        <response status="200 202 204">
-            <doc title="OK, Accepted, or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 202 Accepted, the request has been accepted for processing. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>           
+        <response status="200">
+            <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>           
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Uri" style="header" required="false"
                 type="xsd:int">
@@ -269,6 +273,14 @@
                     <xsdxt:code href="../wadl/samples/cf-putCDNEnableContainer_response.txt"/>
                 </doc>
             </representation>
+        </response>
+        <response status="202">
+            <doc title="Accepted" xml:lang="EN">The request has been accepted for processing.</doc>
+            <representation mediaType="application/json"/>              
+        </response>
+        <response status="204">
+            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/json"/>              
         </response>
         &only404Fault; 
     </method>  
@@ -386,8 +398,8 @@
                 </doc>
             </representation>    
         </request>
-        <response status="200 204">
-            <doc title="OK or No Content">The request has succeeded. For 200 OK, the information returned with the response is dependent on the method used in the request. For 204 No Content, the server fulfilled the request but does not need to return a body.</doc>
+        <response status="200">
+            <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Uri" style="header"
                 required="true" type="xsd:string">
@@ -444,6 +456,10 @@
                     <xsdxt:code language="bash" href="../wadl/samples/cf-getCDNContainerMetadata_response.xml"/>
                 </doc>
             </representation> 
+        </response>
+        <response status="204">
+            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+            <representation mediaType="application/json"/>              
         </response>
         &only404Fault;
     </method>   
