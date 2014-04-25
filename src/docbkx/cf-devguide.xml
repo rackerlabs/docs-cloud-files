@@ -68,6 +68,28 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+ <!--     <revision>
+        <date>2014-04-30</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated the TTL maximum value to 1 year (31536000 seconds) instead of 50 years
+                (1577836800 seconds) throughout <xref
+                  linkend="API_Operations_for_CDN_Services-d1e2386"/>.</para>
+            </listitem>
+            <listitem>
+              <para>Added additional information to the description of the
+                  <code>X-Container-Sync-Key</code> and <code>X-Container-Sync-To</code> headers in
+                  <xref linkend="Containers-d1e458"/>.</para>
+            </listitem>
+            <listitem>
+              <para>Removed Chapter 14, "Examples Using cURL". This information is now included with
+                other cURL examples in the new <citetitle>Cloud Files Getting Started
+                  Guide</citetitle>. </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision> -->
       <revision>
         <date>2014-04-07</date>
         <revdescription>
@@ -238,8 +260,7 @@
               </para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Authentication-d1e2929"/>
-                to show a cURL example for Identity v2.0 only.</para>
+              <para>Updated authentication requests to use Identity v2.0.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -311,29 +332,11 @@
         </revdescription>
       </revision>
       <revision>
-        <date>2013-07-02</date>
-        <revdescription>
-          <itemizedlist>
-            <listitem>
-              <para>Corrected examples (back to using Identity v1.0) in <xref
-                  linkend="Authentication-d1e2929"/> and added an example for Identity v2.0. </para>
-            </listitem>
-          </itemizedlist>
-        </revdescription>
-      </revision>
-      <revision>
         <date>2013-06-27</date>
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>In <xref linkend="Authentication-d1e639"/>,
-                changed references for authentication to point to
-                v2.0.</para>
-            </listitem>
-            <listitem>
-              <para>In <xref linkend="Authentication-d1e2929"/>,
-                updated the example to show v2.0 for
-                authentication.</para>
+              <para>Changed references for authentication to point to Cloud Identity v2.0.</para>
             </listitem>
             <listitem>
               <para>In <xref linkend="CDN_Object_Services"/> and <xref
@@ -581,8 +584,8 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>In <xref linkend="Authentication-d1e2929"/>, changed <code>X-Auth-Token</code>
-                to <code>X-Auth-Key</code> in examples.</para>
+              <para>In cURL authentication requests, changed <code>X-Auth-Token</code> to
+                  <code>X-Auth-Key</code> in examples.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -1150,8 +1153,8 @@
         <para> The authenticate operation provides clients with an authentication token and a list
           of regional cloud endpoints. </para>
         <note>
-          <para>To see how to use cURL to retrieve the authentication token, see <xref
-              linkend="Using_cURL-d1e2863"/>.</para>
+          <para>To see how to use cURL to retrieve the authentication token, see the
+              <citetitle>Cloud Files Getting Started Guide</citetitle>.</para>
         </note>
         <para>The sample requests and responses in this section illustrate a general case. In your
           authentication request, use your own credentials rather than the sample values shown here
@@ -3085,7 +3088,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <td colspan="3" align="center">Container Services</td>
         </tr>
         <tr>
-          <td><command>PUT</command></td>
+          <td><command>PUT or POST</command></td>
           <td>
             <programlisting>v1/{account}/{container}</programlisting>
           </td>
@@ -3695,7 +3698,7 @@ Transfer-Encoding: chunked
       <section xml:id="Bulk_Delete-d1e2338.html">
         <title>Bulk Delete</title>
       <para>You can delete multiple objects or containers from an account by using a single bulk
-        delete request, which is a <command>DELETE</command> request with the <code>?bulkdelete
+        delete request, which is a <command>DELETE</command> request with the <code>?bulk-delete
           set</code> query parameter. The <code>Content-Type</code> header of the request, if set,
         must be set to <code>text/plain</code>. You direct the request to the root of the service
         endpoints (see <xref linkend="Service-Access-Endpoints-d1e003"/>). The body of the
@@ -4640,16 +4643,17 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
       <para>After creating a container and storing a file in it, you can choose to share the file.
         Because the data in Cloud Files is private, you can share your files through the CDN. To
         CDN-enable a container, issue a &PUT; request against the CDN management service. The
-        default TTL is 72 hours  (259200 seconds), with a minimum of 15 minutes (900 seconds) and a
-        maximum of 50 years (1577836800 seconds). Note that the target URL specifies the CDN system,
-        not the authorization system.</para>
-      <note>
+        default TTL is 72 hours (259200 seconds), with a minimum of 15 minutes (900 seconds) and a
+        maximum of 1 year (31536000 seconds). Note that the target URL specifies the CDN system, not
+        the authorization system.</para>
+    <remark> 4/24/2014 cyr: David Goetz requested when he reviewed the GSG setting the maximum value for TTL to 1 year throughout the doc, which I did today.</remark>
+        <note>
         <title>Note</title>
         <para>On August 13, 2012, the maximum TTL was revised to 31536000 (one year). If you set new
           TTL values to a greater time frame, your object will still expire at the one-year mark.
           However, if you already had a longer TTL value set on an object, it will expire at the
           time you had originally set. </para>
-      </note>
+      </note>  
       <example>
         <title>cURL CDN-Enable Container</title>
         <screen language="bash">
@@ -4717,6 +4721,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         applications and limit cURL to quick-and-easy testing and troubleshooting.</para>
     </section>
   </chapter>
+ 
   <glossary>
     <title>Glossary</title>
     <glossentry xmlns:m="http://www.w3.org/1998/Math/MathML">

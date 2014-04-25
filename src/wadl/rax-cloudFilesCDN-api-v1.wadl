@@ -184,19 +184,20 @@
                 Setting the TTL is the same as setting the
                 <code>Expires</code> and <code>Cache-Control</code>
                 headers for the cached object. The minimum TTL is 15 minutes
-                (900 seconds), the maximum TTL is 50 years (1576800000 seconds), and the default TTL is 72 hours (259200 seconds). . However, setting a TTL for a long
+                (900 seconds), the maximum TTL is 1 year (31536000 seconds), and the default TTL is 72 hours (259200 seconds). However, setting a TTL for a long
                 time does not guarantee that the content stays populated on
                 CDN edge servers for the entire period. The most popular
                 objects stay cached based on the edge location's logic. </para>
-            <note>
-                <title>Note</title>
+            <!-- <remark> 4/24/2014 cyr: When David Goetz revied the new GSG, he requested use of 1 year maximum through API docs, which I did.</remark> 
+               <note>
+               <title>Note</title>
                 <para> On August 13, 2012, the maximum TTL was revised to
                     31536000 (one year). If you set new TTL values to a
                     longer time frame, your object still expires at the
                     one-year mark. However, if you already had a greater TTL
                     value set on an object, it will expire at the time you
                     originally set. </para>
-            </note>
+            </note> -->
             <para>A status code of 201 (Created)
                 indicates that the container was CDN-enabled as requested. If the container is
                 already CDN-enabled, a 202 (Accepted) status code is
@@ -212,7 +213,7 @@
                 name="X-Ttl" style="header" required="false"
                 type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies the Time To Live (TTL) in seconds for an object to be cached in the CDN. The default value is 259200
-                    seconds, or 72 hours. 
+                    seconds, or 72 hours. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 1 year (31536000 seconds).
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -246,7 +247,8 @@
                 name="X-Ttl" style="header"
                 required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies the TTL value in
-                    seconds. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 50 years (1577836800 seconds).</p></doc>
+                    seconds. The default value is 259200
+                    seconds, or 72 hours. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 1 year (31536000 seconds).</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Enabled" style="header"
@@ -326,7 +328,8 @@
                 name="X-Ttl" style="header"
                 required="false" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The TTL value in
-                    seconds. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 50 years (1577836800 seconds).</p></doc>
+                    seconds. The default value is 259200
+                    seconds, or 72 hours. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 1 year (31536000 seconds).</p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Update CDN-Enabled Container Metadata Request">
@@ -414,7 +417,8 @@
                 name="X-Ttl" style="header"
                 required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The TTL value in
-                    seconds. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 50 years (1577836800 seconds).</p></doc>
+                    seconds. The default value is 259200
+                    seconds, or 72 hours. The minimum TTL is 15 minutes (or 900 seconds), and the maximum is 1 year (31536000 seconds).</p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Enabled" style="header"

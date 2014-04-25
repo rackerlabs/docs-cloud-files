@@ -12,7 +12,7 @@ Date: Thu, 12 Apr 2012 18:45:13 GMT
         }, 
         "user": {
             "id": "123456", 
-            "name": "userUserName",
+            "name": "yourUserName",
             "RAX-AUTH:defaultRegion": "DFW",
             "roles": [
                 {
@@ -28,73 +28,6 @@ Date: Thu, 12 Apr 2012 18:45:13 GMT
             ]
         },
         "serviceCatalog": [
-            {
-                "endpoints": [
-                    {
-                        "publicURL": "https://dfw.databases.api.rackspacecloud.com/v1.0/1100111", 
-                        "region": "DFW", 
-                        "tenantId": "1100111"
-                    }, 
-                    {
-                        "publicURL": "https://ord.databases.api.rackspacecloud.com/v1.0/1100111", 
-                        "region": "ORD", 
-                        "tenantId": "1100111"
-                    }
-                ], 
-                "name": "cloudDatabases", 
-                "type": "rax:database"
-            },
-            {
-                "endpoints": [
-                    {
-                        "publicURL": "https://dfw.loadbalancers.api.rackspacecloud.com/v1.0/1100111", 
-                        "region": "DFW", 
-                        "tenantId": "1100111"
-                    }, 
-                    {
-                        "publicURL": "https://ord.loadbalancers.api.rackspacecloud.com/v1.0/1100111", 
-                        "region": "ORD", 
-                        "tenantId": "1100111"
-                    }
-                ], 
-                "name": "cloudLoadBalancers", 
-                "type": "rax:load-balancer"
-            }, 
-            {
-                "endpoints": [
-                    {
-                        "tenantId": "1100111",
-                        "region": "DFW",
-                        "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/1100111", 
-                        "versionId": "2", 
-                        "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2/", 
-                        "versionList": "https://dfw.servers.api.rackspacecloud.com/"
-                    },
-                    {
-                        "tenantId": "1100111",
-                        "region": "ORD",
-                        "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/1100111", 
-                        "versionId": "2", 
-                        "versionInfo": "https://ord.servers.api.rackspacecloud.com/v2/", 
-                        "versionList": "https://ord.servers.api.rackspacecloud.com/"
-                    }
-                ],
-                "name": "cloudServersOpenStack", 
-                "type": "compute"
-            },
-            {
-                "endpoints": [
-                    {
-                        "tenantId": "1100111", 
-                        "publicURL": "https://servers.api.rackspacecloud.com/v1.0/1100111", 
-                        "versionId": "1.0", 
-                        "versionInfo": "https://servers.api.rackspacecloud.com/v1.0/", 
-                        "versionList": "https://servers.api.rackspacecloud.com/"
-                    }
-                ],
-                "name": "cloudServers", 
-                "type": "compute"
-            },
             {
                 "endpoints": [
                     {
@@ -161,16 +94,6 @@ Date: Thu, 12 Apr 2012 18:45:13 GMT
                 ],
                 "name": "cloudFiles",
                 "type": "object-store"
-            },
-            {
-                "endpoints": [
-                    {
-                        "tenantId": "1100111",
-                        "publicURL": "https://dns.api.rackspacecloud.com/v1.0/1100111"
-                    }
-                ],
-                "name": "cloudDNS", 
-                "type": "rax:dns"
             }
         ]
     }

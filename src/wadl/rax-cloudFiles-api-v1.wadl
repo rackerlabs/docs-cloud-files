@@ -895,12 +895,12 @@
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-To"
                 style="header" required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName. 
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
@@ -1067,13 +1067,13 @@
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Sync-To" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Sync-Key" style="header" required="false"
                 type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -1243,12 +1243,12 @@
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-To"
                 style="header" required="false" type="xsd:string">
-                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization.
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"

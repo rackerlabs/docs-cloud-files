@@ -49,10 +49,10 @@
          xmlns:html="http://www.w3.org/1999/xhtml"
          xml:id="cf-getting-started">
     
-    <?rax title.font.size="35px" subtitle.font.size="20px"?>
+    <?rax title.font.size="40px" subtitle.font.size="30px"?>
     <title>Rackspace Cloud Files™ Getting Started Guide</title>
     <?rax status.bar.text.font.size="40px"
-          status.bar.text="First Draft"?>   
+          status.bar.text="Third Draft"?>   
     <titleabbrev>Rackspace Cloud Files Getting Started Guide</titleabbrev>
      
     <info>
@@ -63,7 +63,7 @@
         </copyright>
         <releaseinfo>API v1</releaseinfo>
         <productname>Rackspace Cloud Files™</productname>
-        <pubdate>2014-04-15</pubdate>
+        <pubdate>2014-04-30</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the doc build process.</remark>
@@ -76,7 +76,7 @@
         </abstract>
         <revhistory>
             <revision>
-                <date>2014-04-15</date>
+                <date>2014-04-30</date>
                 <revdescription>
                     <itemizedlist spacing="compact">
                         <listitem>
@@ -143,8 +143,10 @@
         <para>This guide provides step-by-step instructions to enter the necessary URLs or commands
             to use the Cloud Files API. You can find additional details about Cloud Files in the
                 <emphasis role="italic">Cloud Files Developer Guide</emphasis> at <link
-                xlink:href="http://docs.rackspace.com/">http://docs.rackspace.com/</link>. This
-            guide provides the following ways to use the Cloud Files API:</para>
+                xlink:href="http://docs.rackspace.com/">http://docs.rackspace.com/</link>. </para>
+          <para>This guide uses the API directly with cURL (<xref linkend="Using_the_API_Directly"
+          />). </para>
+<!--        <para> provides the following ways to use the Cloud Files API:</para>
          
         <itemizedlist>
             <listitem>
@@ -155,8 +157,8 @@
                 <para>Using a command line or SDK???? (to be chosen by Nicholas) (<xref
                         linkend="Using_Client_or_SDK-d1e101"/>)</para>
             </listitem>
-        </itemizedlist>
- 
+        </itemizedlist> -->
+<!-- <remark>Removing per Nicholas Wagner's request and Jerry Scharz's approval </remark> 
         <section xml:id="Benefits-Use-Cases">
             <title>Benefits and Use Cases</title>
             <para xmlns:wadl="http://wadl.dev.java.net/2009/02">&PRODNAME; provides the following
@@ -217,25 +219,7 @@
                     xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
                     http://www.rackspace.com/information/legal/cloud/sla#files</link>.</para>
                
-        </section> 
-        <section xml:id="Prerequisites_Examples">
-            <title>Prerequisites for Running Examples</title>
-            <para>To run the examples in this guide, you must have the
-                following prerequisites: <itemizedlist
-                    spacing="compact">
-                    <listitem>
-                        <para>Rackspace Cloud account</para>
-                        <para>To sign up for a Rackspace Cloud account, go to the <link
-                            xlink:href="https://cart.rackspace.com/cloud/"
-                            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">signup
-                            page</link>.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Rackspace Cloud user name and password,
-                            as specified during registration</para>
-                    </listitem>
-                </itemizedlist></para>
-        </section>
+        </section> -->
     </chapter>
     <chapter xml:id="Send-Requests-To-API-d1e101">
         <title>Sending Requests to the API</title>
@@ -260,6 +244,61 @@
                         >http://code.google.com/p/rest-client/</link>. </para>
             </listitem>
         </itemizedlist>
+        <section xml:id="Prerequisites_Examples">
+            <title>Prerequisites for Running Examples</title>
+            <para>To run the examples in this guide, you must have the following prerequisites:
+                    <itemizedlist spacing="compact">
+                    <listitem>
+                        <para>Rackspace Cloud account</para>
+                        <para>To sign up for a Rackspace Cloud account, go to the <link
+                                xlink:href="https://cart.rackspace.com/cloud/"
+                                xmlns:m="http://www.w3.org/the key 1998/Math/MathML">signup
+                                page</link>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Rackspace Cloud user name and password, as specified during
+                            registration</para>
+                    </listitem>
+                </itemizedlist></para>
+            <para>You also need to know your API key. To find your API key, use the following
+                steps:</para>
+            <para>
+                <itemizedlist spacing="compact">
+                    <listitem>
+                        <para><emphasis role="bold">To find your API key:</emphasis>
+                        </para>
+                        <orderedlist>
+                            <listitem>
+                                <para>Log in to the Cloud Control Panel (<link
+                                        xlink:href="https://mycloud.rackspace.com"
+                                        >https://mycloud.rackspace.com</link>).</para>
+                            </listitem>
+                            <listitem>
+                                <para>On the upper-right side of the top navigation pane, click your
+                                    username.</para>
+                            </listitem>
+                            <listitem>
+                                <para>From the menu, select <guilabel>Account
+                                    Settings</guilabel>.</para>
+                            </listitem>
+                            <listitem>
+                                <para>In the Login Details section of the Account Settings page,
+                                    locate the <guilabel>API Key</guilabel> field and click
+                                        <guibutton>Show</guibutton>.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Copy the value of the API Key and paste it into a text editor
+                                    of your choice.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Click <guibutton>Hide</guibutton> to hide the value of the API
+                                    Key.</para>
+                            </listitem>
+                        </orderedlist>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
         <section xml:id="Using-Curl-d1e101">
             <title>Sending API Requests by Using cURL</title>
             <para>cURL is a command-line tool that you can use to interact with REST interfaces.
@@ -293,7 +332,8 @@
                     </tr>
                     <tr>
                         <td><code>-H HEADER</code></td>
-                        <td>Specifies an HTTP header in the request.</td>
+                        <td>Specifies an HTTP header in the request. You can specify any number of
+                            extra headers. Precede each header with the -H option. </td>
                     </tr>
                     <tr>
                         <td><code>-s</code></td>
@@ -402,6 +442,8 @@
             </tip>
         </section>
     </chapter>
+    <!-- <remark>Request from David Goetz and Nicholoas Wagner to shorten Authentication info for GSG. Have removed this chapter and moved authentication to be first example, 
+        and referred users to Dev Guide for all these details since this is a duplicate of the information there.</remark>
     <chapter xml:id="Gen-Auth-Token">
         <title>Generating an Authentication Token</title>
             <para>You need to generate a token whether you use cURL or a REST client.</para>
@@ -409,192 +451,8 @@
                 which needs to be passed in each request using the <code>X-Auth-Token</code> header. </para>
             <para>The following example demonstrates how to use cURL to obtain the authentication
                 token and the account number. You will need to supply the authentication token and
-                account number when making subsequent Cloud Files API calls.</para>
-            <para>Remember to replace the placeholders in the following authentication request
-                examples with your information:<itemizedlist spacing="compact">
-                    <listitem>
-                        <para><emphasis role="bold">yourUserName</emphasis> &mdash;Your common
-                            Rackspace Cloud user name, as supplied during registration.</para>
-                    </listitem>
-                    <listitem>
-                        <para><emphasis role="bold">yourApiKey</emphasis> &mdash; Your API key. </para>
-                        <para><emphasis role="bold">To find your API key:</emphasis>
-                        </para>
-                        <orderedlist>
-                            <listitem>
-                                <para>Log in to the Cloud Control Panel (<link
-                                        xlink:href="https://mycloud.rackspace.com"
-                                        >https://mycloud.rackspace.com</link>).</para>
-                            </listitem>
-                            <listitem>
-                                <para>On the upper-right side of the top navigation pane, click your
-                                    username.</para>
-                            </listitem>
-                            <listitem>
-                                <para>From the menu, select <guilabel>Account
-                                    Settings</guilabel>.</para>
-                            </listitem>
-                            <listitem>
-                                <para>In the Login Details section of the Account Settings page,
-                                    locate the <guilabel>API Key</guilabel> field and click
-                                        <guibutton>Show</guibutton>.</para>
-                            </listitem>
-                            <listitem>
-                                <para>Copy the value of the API Key and paste it into a text editor
-                                    of your choice.</para>
-                            </listitem>
-                            <listitem>
-                                <para>Click <guibutton>Hide</guibutton> to hide the value of the API
-                                    Key.</para>
-                            </listitem>
-                        </orderedlist>
-                    </listitem>
-                </itemizedlist></para>
-            <para>You also need your cloud account number. In the documentation, the account number
-                is often referred to as your tenant name or tenant ID (technically, the ID is
-                different from the name, but at Rackspace, they are the same thing). Together, three
-                components—your username, your API Key, and your tenant ID or cloud account
-                number—form the authentication credentials that are required to connect to the
-                Rackspace cloud.</para>
-            <para>To find your tenant ID or cloud account number, locate your username on the
-                upper-right side of the top navigation pane in the Cloud Control Panel. The tenant
-                ID or account number is in parentheses just to the right of your username.<note>
-                    <para>For Cloud Files, the information used in place of the tenant ID or account
-                        number with the API operations is the
-                                <parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>
-                        information found in the service catalog of your authentication response,
-                        rather than the tenant ID or account number found in the Cloud Control
-                        Panel.</para>
-                </note></para>
-            <para>You can use either of the following endpoints to access the Rackspace Cloud
-                Identity service: </para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para><link xlink:href="&ENDPOINT-US-20;">&ENDPOINT-US-20;</link>
-                    </para>
-                </listitem>
-                <listitem>
-                    <para><link xlink:href="&ENDPOINT-UK-20;">&ENDPOINT-UK-20;</link></para>
-                </listitem>
-            </itemizedlist>
-            <para>Your account can be based in either the US or the UK. The location of your account
-                is not determined by your physical location but by the location of the Rackspace
-                retail site that was used to create your account: </para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para>If your account was created via <link
-                            xlink:href="http://www.rackspacecloud.com"
-                            >http://www.rackspacecloud.com</link>, it is a US-based account. </para>
-                </listitem>
-                <listitem>
-                    <para>If your account was created via <link
-                            xlink:href="http://www.rackspace.co.uk"
-                            >http://www.rackspace.co.uk</link>, it is a UK-based account. </para>
-                </listitem>
-            </itemizedlist>
-            <para> If you are unsure how your account was created, use the Rackspace contact
-                information at either site to ask for help. </para>
-            <para>Notice that you authenticate by using a special URL for the Cloud Identity
-                services. For example, for US-based accounts, you use
-                    <code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>, as shown in
-                the following authentication request examples. Note that the <code>v2.0</code>
-                component in the URL indicates that you are using version 2.0 of the Cloud Identity
-                API.</para>
-            <note>
-                <para>For UK-based accounts, you can use
-                        <code>'https://lon.identity.api.rackspacecloud.com/v2.0/tokens'</code>
-                    instead.</para>
-            </note>
-            <example>
-                <title>cURL Authentication Request: JSON</title>
-                <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
-'{
-    "auth":
-    {
-       "RAX-KSKEY:apiKeyCredentials":
-       {
-          "username": "<emphasis role="bold">yourUserName</emphasis>",
-          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
-    }
-}' \
-<option>-H 'Content-Type: application/json'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri> | python  -m  json.tool </screen>
-            </example>
-            <example>
-                <title>cURL Authentication Request: XML</title>
-                <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
-'&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;auth>
-   &lt;apiKeyCredentials
-      xmlns="http://docs.rackspace.com/identity/api/ext/RAX-KSKEY/v1.0"
-         username="<emphasis role="bold">yourUserName</emphasis>"
-         apiKey="<emphasis role="bold">yourApiKey</emphasis>"/>
-&lt;/auth>' \
-<option>-H 'Content-Type: application/xml'</option> \
-<option>-H 'Accept: application/xml'</option> \
-<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri></screen>
-            </example>
-            <para>In the authentication response (examples follow), the authentication token
-                    <code>id</code> is returned with an <code>expires</code> attribute that
-                specifies when the token expires. Remember to supply your authentication token
-                wherever you see the placeholder <emphasis role="bold">yourAuthToken</emphasis> in
-                the examples in this guide.</para>
-            <note>
-                <title>Notes</title>
-                <itemizedlist spacing="compact">
-                    <listitem>
-                        <para>The values that you receive in your responses vary from the examples
-                            shown in this document because they are specific to your account.</para>
-                    </listitem>
-                    <listitem>
-                        <para>The information shown in the authentication response examples is for
-                            US-based accounts. If you authenticate against the UK-endpoint for the
-                            Cloud Identity service, you see the service catalog information for
-                            UK-based accounts.</para>
-                    </listitem>
-                    <listitem>
-                        <para>The <code>id</code> attribute in the authentication response specifies
-                            the authentication token. Tokens are valid for a finite duration,
-                            typically for 24 hours.</para>
-                    </listitem>
-                    <listitem>
-                        <para> The <code>expires</code> attribute denotes the time after which the
-                            token will automatically become invalid. A token might be manually
-                            revoked before the time identified by the <code>expires</code>
-                            attribute. The attribute predicts a token's maximum possible lifespan
-                            but does not guarantee that it will reach that lifespan. Clients are
-                            encouraged to cache a token until it expires.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Applications should be designed to re-authenticate after receiving a
-                            401 (Unauthorized) response from a service endpoint.</para>
-                    </listitem>
-                </itemizedlist>
-            </note>
-            <para>The <code>publicURL</code> endpoints for &PRODNAME; (for example
-                    <code>https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"</code>)
-                are also returned in the authentication response. </para>
-            <para>Your actual account number is after the final slash (/) in the
-                    <code>publicURL</code> field, for example
-                    <code>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code> in the preceding
-                endpoint. You must specify <emphasis role="italic">your</emphasis> account number in
-                the &PRODNAME; API operations, wherever you see the placeholder <emphasis
-                    role="bold">yourAccountID</emphasis> specified in the examples in this
-                guide.</para>
-            <para>After authentication, you can use cURL to perform <command>GET</command>,
-                    <command>DELETE</command>, and <command>POST</command> operations for the
-                &PRODNAME; API.</para>
-            <example>
-                <title>Authenticate Response: JSON</title>
-                <programlisting language="json"><xi:include href="../../src/docbkx/samples/auth-20.json" parse="text"/></programlisting>
-            </example>
-            <example>
-                <title>Authenticate Response: XML</title>
-                <programlisting language="xml"><xi:include href="../../src/docbkx/samples/auth-20.xml" parse="text"/></programlisting>
-            </example>
-    </chapter>
+                account number when making subsequent Cloud Files API calls.</para>       
+    </chapter> -->
     <chapter xml:id="Service_Access_Endpoints-d1e753">
         <title>Service Access Endpoints</title>
         <para xmlns:wadl="http://wadl.dev.java.net/2009/02">Cloud Files is a regionalized service.
@@ -606,7 +464,7 @@
             service component of your Cloud Files API calls are summarized in the following
             table.</para>
         <table xml:id="Endpoints-Table-d1e001" rules="all">
-            <caption>Regionalized Service Endpoints for Storage Services </caption>
+            <caption>Regionalized Service Endpoints for the Storage Service</caption>
             <thead>
                 <tr align="center">
                     <td colspan="2">Region</td>
@@ -720,8 +578,7 @@
                         linkend="CDN-Enabling_the_Container-d1e3123"/>. </para>
             </note>
             <table rules="all">
-                <caption>Regionalized Service Endpoints for CDN Management
-                    Services</caption>
+                <caption>Regionalized Service Endpoints for the CDN Management Service</caption>
                 <thead>
                     <tr align="center">
                         <td colspan="2">Region</td>
@@ -762,137 +619,315 @@
                 </tbody>
             </table>
         </para>
-        <para>As with the storage component service, replace the sample MossoCloudFS information with
-            the actual MossoCloudFS information returned as part of the authentication service response.
-            For the CDN management service, this information is located after the final '/' in the
-            <code>publicURL</code> field in the <code>cloudFilesCDN</code> section of the service
-            catalog returned by the authentication response. </para>
+        <para>As with the storage component service, replace the sample MossoCloudFS information
+            with the actual MossoCloudFS information returned as part of the authentication service
+            response. For the CDN management service, this information is located after the final
+            '/' in the <code>publicURL</code> field in the <code>cloudFilesCDN</code> section of the
+            service catalog returned by the authentication response. </para>
     </chapter>
     <chapter xml:id="Using_the_API_Directly">
         <title>Using the API Directly by Using cURL</title>
-        <para>This chapter contains simple examples with some basic Cloud Files requests that you
-            will commonly use. Example requests are provided in cURL, followed by the response. </para>
+        <para>This chapter contains simple examples for authentication and some basic Cloud Files
+            requests that you will commonly use. Example requests are provided in cURL, followed by
+            the response. </para>
         <para>For more information about all Cloud Files operations, see the <emphasis role="italic"
                 >Cloud Files Developer Guide</emphasis>.</para>
+        <section xml:id="Gen-Auth-Token" >
+            <title>Generating an Authentication Token</title>
+            <para>Your first step must always be to generate an authentication token. You must then
+                include the authentication token in each request in the <code>X-Auth-Token</code>
+                header. </para>
+            <para>For more details about authentication, see the <citetitle>Cloud Files Developer
+                    Guide</citetitle>.</para>
+            <para>Remember to replace the placeholders in the following authentication request
+                example with your information:<itemizedlist spacing="compact">
+                    <listitem>
+                        <para><emphasis role="bold">yourUserName</emphasis> &mdash;Your common
+                            Rackspace Cloud user name, as supplied during registration.</para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="bold">yourApiKey</emphasis> &mdash; Your API key. </para>
+                        <!-- <remark>Move up to pre-requisites section per Nicholas Wagner</remark> 
+                        <para><emphasis role="bold">To find your API key:</emphasis>
+                        </para>
+                        <orderedlist>
+                            <listitem>
+                                <para>Log in to the Cloud Control Panel (<link
+                                    xlink:href="https://mycloud.rackspace.com"
+                                    >https://mycloud.rackspace.com</link>).</para>
+                            </listitem>
+                            <listitem>
+                                <para>On the upper-right side of the top navigation pane, click your
+                                    username.</para>
+                            </listitem>
+                            <listitem>
+                                <para>From the menu, select <guilabel>Account
+                                    Settings</guilabel>.</para>
+                            </listitem>
+                            <listitem>
+                                <para>In the Login Details section of the Account Settings page,
+                                    locate the <guilabel>API Key</guilabel> field and click
+                                    <guibutton>Show</guibutton>.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Copy the value of the API Key and paste it into a text editor
+                                    of your choice.</para>
+                            </listitem>
+                            <listitem>
+                                <para>Click <guibutton>Hide</guibutton> to hide the value of the API
+                                    Key.</para>
+                            </listitem>
+                        </orderedlist> -->
+                    </listitem>
+                </itemizedlist></para>
+            <para>Notice that you authenticate by using the URL for the Cloud Identity service,
+                    <code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>, as shown in
+                the following authentication request example. </para>
+            <note>
+                <para>For UK-based accounts, you might use
+                        <code>'https://lon.identity.api.rackspacecloud.com/v2.0/tokens'</code>
+                    instead.</para>
+            </note>
+            <para>The cURL request uses the -d switch to send the specified data in a
+                    <command>POST</command> request to the HTTP server and the -i switch to send the
+                HTTP response to terminal output.</para>
+            <example>
+                <title>cURL Authentication Request: JSON</title>
+                <?dbfo keep-together="always"?>
+                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+'{
+    "auth":
+    {
+       "RAX-KSKEY:apiKeyCredentials":
+       {
+          "username": "<emphasis role="bold">yourUserName</emphasis>",
+          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
+    }
+}' \
+-H 'Content-Type: application/json' \
+<uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri> | python  -m  json.tool </screen>
+            </example>
+            <para>An HTTP status code of 200 (OK) in the response indicates that the authentication
+                request completed successfully.</para>
+            <para>In the authentication response, the authentication token <code>id</code> is
+                returned with an <code>expires</code> attribute that specifies when the token
+                expires. Tokens are valid for a finite duration, typically for 24 hours. Remember to
+                supply your authentication token wherever you see the placeholder <emphasis
+                    role="bold">yourAuthToken</emphasis> in the examples in this guide.</para>
+            <para>The <code>publicURL</code> endpoints for &PRODNAME; (for example
+                    <code>https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"</code>)
+                are also returned in the authentication response. </para>
+            <para>Your actual account number is after the final slash (/) in the
+                    <code>publicURL</code> field, for example
+                    <code>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code> in the preceding
+                endpoint. You must specify <emphasis role="italic">your</emphasis> account number in
+                the &PRODNAME; API request, wherever you see the placeholder <emphasis role="bold"
+                    >yourAccountID</emphasis> specified in the examples in this guide.</para>
+            <example>
+                <title>Authenticate Response with Partial Service Catalog Showing cloudFiles and
+                    cloudFilesCDN: JSON</title>
+                <programlisting language="json"><xi:include href="../../src/docbkx/samples/auth-20-gettingStartedGuide.json" parse="text"/></programlisting>
+            </example>
+            <para>After authentication, you can use cURL to perform <command>GET</command>,
+                    <command>HEAD</command>, <command>DELETE</command>, <command>PUT</command>, and
+                    <command>POST</command> request for the &PRODNAME; API.</para> 
+        </section>
         <section xml:id="Creating_a_Storage_Container-d1e3026"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
             <title>Creating a Storage Container</title>
             <para> Before uploading any data to Cloud Files, you must create a storage container.
                 You do this with a &PUT; request. </para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The cURL request uses the
+                    <code>-X</code> switch to specify the correct HTTP method and the
+                    <code>-i</code> switch to send the HTTP response to terminal output.</para>
+            <para>An HTTP status code of 201 (Created) in the response indicates that the container
+                was successfully created.</para>
             <example>
                 <title>cURL Create Storage Container</title>
                 <programlisting>
-curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/yourContainerName \
--H "Content-Length: 0" \
+curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
 </programlisting>
                 <programlisting>
 HTTP/1.1 201 Created
-Content-Length: 18
+Content-Length: 0
 Content-Type: text/html; charset=UTF-8
-X-Trans-Id: txs56dc5b74f91419480ba485348057bfd
-Date: Wed, 07 Sep 2011 18:52:30 GMT
+X-Trans-Id: txfaf60e1d2a844e5ca9998-0053569d54dfw1
+Date: Tue, 22 Apr 2014 16:48:21 GMT
 </programlisting>
             </example>
-            <para>An HTTP status code of 201 (Created) indicates that the container was successfully
-                created.</para>
         </section>
         <section xml:id="Uploading_a_Storage_Object-d1e3067"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
             <title>Uploading an Object </title>
-            <para>After creating a container, you can upload a local file to it.  Note that if you
-                intend to distribute this object through the CDN you must ensure that the object's
-                    <code>Content-Type</code> is set correctly. This is the mechanism by which a
-                user's web browser knows how to display the file or launch a helper application to
-                view the file.</para>
+            <para>After creating a container, you can upload a file to it. You do this with a &PUT;
+                request. You must ensure that the object's <code>Content-Type</code> is set
+                correctly so that the receiving server knows what kind of file it is. This is the
+                mechanism by which a user's web browser knows how to display the file or launch a
+                helper application to view the file.</para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The cURL request uses the
+                    <code>-X</code> switch to specify the correct HTTP method and the
+                    <code>-i</code> switch to send the HTTP response to terminal output.</para>
+            <para>An HTTP status code of 201 (Created) in the response indicates that the object was
+                successfully uploaded.</para>
             <example>
                 <title>cURL Upload  an Object</title>
                 <programlisting>
-curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/yourContainerName/yourObjectName /
+curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "Content-Type: image/jpeg" \
--H "ETag: 805120ec285a7ed28f74024422fe3594"
+-H "Content-Length: 0"
 </programlisting>
                 <programlisting>
 HTTP/1.1 201 Created
-Date: Thu, 09 Aug 2012 17:03:36 GMT
+Last-Modified: Tue, 22 Apr 2014 17:02:35 GMT
 Content-Length: 0
-ETag: 805120ec285a7ed28f74024422fe3594 
-Content-Type: image/jpeg
+Etag: d41d8cd98f00b204e9800998ecf8427e
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx4f2953d5969d4c40ada04-005356a0aadfw1
+Date: Tue, 22 Apr 2014 17:02:34 GMT
 </programlisting>
             </example>
         </section>
-        <section xml:id="CDN-Enabling_the_Container-d1e3123"
-            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-            <title>CDN-Enabling the Container</title>
-            <para>After creating a container and storing a file in it, you can choose to share the
-                file. Because the data in Cloud Files is private, you can share your files through
-                the CDN. To CDN-enable a container, issue a &PUT; request against the CDN management
-                service. The default TTL is 72 hours (259200 seconds), with a minimum of 15 minutes
-                (900 seconds) and a maximum of 50 years (1577836800 seconds). Note that the target
-                URL specifies the CDN system, not the authorization system.</para>
+        <section xml:id="updateObjectMetadata-d1e">
+            <title>Updating Object Metadata</title>
+            <para>You can send a <command>POST</command> request to set or update custom metadata
+                for existing objects. Metadata is set by using the header <code>X-Object-Meta-name:
+                    value</code>, where <emphasis role="italic">name</emphasis> is the custom name
+                for your metadata and <emphasis role="italic">value</emphasis> is the data value. </para>
+            <para>The HTTP request must include a header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 202
+                (Accepted) in the response indicates that the metadata for the object was
+                successfully updated.</para>
             <example>
-                <title>cURL CDN-Enable Container</title>
-                <programlisting>
-curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/yourContainerName /
+                <title>cURL Get Storage Space</title>
+                <programlisting language="bash">
+curl -i -X POST https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
--H "X-CDN-Enabled: True" \
--H "X-TTL: 259200"
+-H "X-Object-Meta-ImageType: png" \
+-H "X-Object-Meta-ImageSize: 400 MB"
 </programlisting>
                 <programlisting>
-HTTP/1.1 204 No Content
-X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
-X-Ttl: 259200
-X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
-X-Cdn-Enabled: True
-X-Log-Retention: False
-X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com
-X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
-Content-Length: 0
+HTTP/1.1 202 Accepted
+Content-Length: 76
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: txffc66e0337ae4cd19e79c-005356a1abdfw1
+Date: Tue, 22 Apr 2014 17:06:51 GMT
 </programlisting>
             </example>
-            <para>When the container is CDN-enabled, the service returns its public URI in the
-                    <code>X-Cdn-Uri</code> header of the response, and returns the SSL URI in the
-                    <code>X-Cdn-Ssl-Uri</code> header of the response. You can combine the public
-                URI with the object name to access the file through the CDN, or you can use the SSL
-                URI with the object name to access the file over a secure SSL connection through the
-                CDN.</para>
-            <para>You can verify the CDN's cache settings that you specified with your TTL value by
-                sending a &GET; request to the object's CDN URI and viewing the response headers.
-                The TTL value that you specify translates to the <code>Expires</code> and
-                    <code>Cache-Control</code> headers of the CDN's cached object.</para>
-            <para>The following cURL command issues a &GET; request that downloads the entire file
-                but writes it to <code>/dev/null</code>, a data sink that does not actually save the
-                content to your local drive (this convention is only valid on systems based on
-                UNIX).</para>
+        </section>
+        <section xml:id="retrieveObject-d1e">
+            <title>Retrieving an Object</title>
+            <para>You can send a <command>GET</command> request to get the object content and
+                metadata. </para>
+            <para>The HTTP request must include a header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 200
+                (OK) in the response indicates that the object was successfully retrieved.</para>
             <example>
-                <title>cURL Download a File</title>
-                <programlisting>
-curl -s GET  \
-http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/wow1.jpg \
--O /dev/null
+                <title>cURL Get Storage Space</title>
+                <programlisting language="bash">
+curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
 </programlisting>
                 <programlisting>
 HTTP/1.1 200 OK
-Date: Tue, 06 Aug 2013 01:40:12 GMT
-Expires: Wed, 07 Aug 2013 01:40:12 GMT
-Last-Modified: Tue, 09 Jul 2013 17:14:46 GMT
-Cache-Control: max-age=86400, public
-ETag: b20237bff6828976d2eb348e1ca8adae
-Content-Length: 1255764
+Content-Length: 0
+Accept-Ranges: bytes
+X-Object-Meta-Imagetype: png
+Last-Modified: Tue, 22 Apr 2014 17:06:52 GMT
+X-Object-Meta-Imagesize: 400 MB
+Etag: d41d8cd98f00b204e9800998ecf8427e
+X-Timestamp: 1398186411.61064
 Content-Type: image/jpeg
-Connection: keep-alive
+X-Trans-Id: txad3571ebcee24cabb387a-005356a229dfw1
+Date: Tue, 22 Apr 2014 17:08:57 GMT 
+
+[ ...object content...]
 </programlisting>
-                <screen>
-   </screen>
+            </example>
+        </section>
+        <section xml:id="deleteObject-d1e">
+            <title>Deleting a Object</title>
+            <para>You can send a <command>DELETE</command> request to the storage service to delete
+                an object in a container. </para>
+            <para>The HTTP request must include a header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 204
+                (No Content) in the response indicates that the object was successfully
+                deleted.</para>
+            <para>The object is removed from the storage system, both the data and metadata. Object
+                deletion is processed immediately at the time of the request. Any subsequent GET,
+                HEAD, POST, PUT, or DELETE operations return a 404 (Not Found) error (unless object
+                versioning is on and other versions exist. For more details about object versioning,
+                see the <citetitle>Cloud Files Developer Guide</citetitle>.). </para>
+            <example>
+                <title>cURL Get Storage Space</title>
+                <programlisting language="bash">
+curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
+</programlisting>
+                <programlisting>
+HTTP/1.1 204 No Content
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx32fae72bccc94cb68d605-005356a2badfw1
+Date: Tue, 22 Apr 2014 17:11:22 GMT
+</programlisting>
+            </example>
+        </section>
+        <section xml:id="deleteContainer-d1e">
+            <title>Deleting a Container</title>
+            <para>You can send a <command>DELETE</command> request to the storage service to delete
+                a container. The container must be empty before you can delete it. </para>
+            <para>The HTTP request must include a header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 204
+                (No Content) in the response indicates that the container was successfully
+                deleted.</para>
+            <example>
+                <title>cURL Get Storage Space</title>
+                <programlisting language="bash">
+curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>"  
+</programlisting>
+                <programlisting>
+HTTP/1.1 204 No Content
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx4b8836bcc20a457d9bbe4-005356a30fdfw1
+Date: Tue, 22 Apr 2014 17:12:47 GMT     
+</programlisting>
             </example>
         </section>
         <section xml:id="Show-Account-Details-d1e101">
             <title>Showing Account Details</title>
             <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">You can send a
-                    <command>GET</command> request to show account details and lists containers. Use
-                the <code>-X</code> switch to specify the correct HTTP method and the
-                    <code>-i</code> switch to send the HTTP response to terminal output.</para>
+                    <command>GET</command> request to show account details and lists containers.
+                Using the <code>format</code> query parameter on the request causes the list to
+                include details (<code>count</code>, <code>bytes</code>, and <code>name</code>)
+                about each container. Without it, you would receive just a list of the container
+                names.</para>
+            <para>The HTTP request must include a header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 200
+                (OK) in the response indicates that the account and container details were
+                successfully retrieved.</para>
             <example>
                 <title>cURL Show Account Details</title>
                 <programlisting>
@@ -901,15 +936,19 @@ curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold" x
 </programlisting>
                 <programlisting>
 HTTP/1.1 200 OK
-Content-Length: 96
-X-Account-Object-Count: 1
-X-Timestamp: 1389453423.35964
-X-Account-Bytes-Used: 14
+Content-Length: 111
+X-Account-Object-Count: 573
+X-Timestamp: 1369081921.78518
+X-Account-Meta-Temp-Url-Key: ed6a04a9f70458575112811a9af5284e
+X-Account-Meta-Subject: Whaling
+X-Account-Bytes-Used: 14268918
 X-Account-Container-Count: 2
 Content-Type: application/json; charset=utf-8
 Accept-Ranges: bytes
-X-Trans-Id: tx274a77a8975c4a66aeb24-0052d95365
-Date: Fri, 17 Jan 2014 15:59:33 GMT  
+X-Trans-Id: tx6c802728f41b4804812ee-005356a3c8dfw1
+Date: Tue, 22 Apr 2014 17:15:52 GMT
+
+[{"count": 0, "bytes": 0, "name": "newcontainer"}, {"count": 573, "bytes": 14268918, "name": "wordpressfiles"}]
 </programlisting>
             </example>
         </section>
@@ -918,8 +957,16 @@ Date: Fri, 17 Jan 2014 15:59:33 GMT
             <title>Determining Storage Usage</title>
             <para>You can send a <command>HEAD</command> request to the storage service to determine
                 how much data you have stored in the system and the number of containers you are
-                using. Use the <code>-X</code> switch to specify the correct HTTP method and the
-                    <code>-i</code> switch to send the HTTP response to terminal output.</para>
+                using. </para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para>An HTTP status code of 204 (No Content) in the response indicates that the storage
+                data were successfully retrieved. The HTTP headers in the response indicate the
+                number of containers in this storage account and the total bytes stored for the
+                entire account.</para>
             <example>
                 <title>cURL Get Storage Space</title>
                 <programlisting language="bash">
@@ -929,26 +976,173 @@ curl -i -X HEAD https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">
                 <programlisting>
 HTTP/1.1 204 No Content
 Content-Length: 0
-X-Account-Object-Count: 1
-X-Timestamp: 1389453423.35964
-X-Account-Bytes-Used: 14
+X-Account-Object-Count: 573
+X-Timestamp: 1369081921.78518
+X-Account-Meta-Temp-Url-Key: ed6a04a9f70458575112811a9af5284e
+X-Account-Meta-Subject: Whaling
+X-Account-Bytes-Used: 14268918
 X-Account-Container-Count: 2
 Content-Type: text/plain; charset=utf-8
 Accept-Ranges: bytes
-X-Trans-Id: txafb3504870144b8ca40f7-0052d955d4
-Date: Fri, 17 Jan 2014 16:09:56 GMT 
+X-Trans-Id: tx0618e82d44394a6b8c5fb-005356a46fdfw1
+Date: Tue, 22 Apr 2014 17:18:39 GMT
 </programlisting>
             </example>
-            <para>The HTTP request must include a header to specify the authentication token. The
-                HTTP headers in the response indicate the number of containers in this storage
-                account and the total bytes stored for the entire account.</para>
+        </section>
+        <section xml:id="CDN-Enabling_the_Container-d1e3123"
+            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
+            <title>CDN-Enabling the Container and Setting a TTL</title>
+            <para>After creating a container and storing a file in it, you can choose to share the
+                file. Because the data in Cloud Files is private, you share your files through the
+                content delivery network (CDN). To CDN-enable a container, issue a &PUT; request
+                with <code>X-CDN-Enabled: True</code> against the CDN management service. (Note that
+                the service access endpoint URL specifies the CDN system.) The default time to live
+                (TTL) value is 72 hours (259200 seconds), with a minimum of 15 minutes (900 seconds)
+                and a maximum of 1 year (31536000 seconds). The following request sets the TTL to 1
+                week (604800 seconds) with <code>X-TTL: 604800</code>.</para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para>An HTTP status code of 201 (Created) in the response indicates that the container
+                was successfully CDN-enabled. </para>
+            <para>When the container is CDN-enabled, the service returns its public URI in the
+                    <code>X-Cdn-Uri</code> header of the response, and returns the SSL URI in the
+                    <code>X-Cdn-Ssl-Uri</code> header of the response. You can combine the public
+                URI with the object name to access the file through the CDN, or you can use the SSL
+                URI with the object name to access the file over a secure SSL connection through the
+                CDN.</para>
+            <example>
+                <title>cURL CDN-Enable Container and Set TTL</title>
+                <programlisting>
+curl -i -X PUT https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
+-H "<emphasis role="bold">X-CDN-Enabled: True</emphasis>" \
+-H "<emphasis role="bold">X-TTL: 604800</emphasis>"
+</programlisting>
+                <programlisting>
+HTTP/1.1 201 Created
+Content-Length: 0
+<emphasis role="bold">X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com</emphasis>
+X-Cdn-Ios-Uri: http://7a701469fe9980c577e9-24695493c49b279502b280c6ecd262b5.iosr.cf6.rackcdn.com
+<emphasis role="bold">X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.rackcdn.com</emphasis>
+Content-Type: text/html; charset=UTF-8
+X-Cdn-Streaming-Uri: http://ce3a54aaf724a75455d6-24695493c49b279502b280c6ecd262b5.r17.stream.cf6.rackcdn.com
+X-Trans-Id: txc2b9b4ef77fd45f28c2d2-005356adfchkg1
+Date: Tue, 22 Apr 2014 17:59:24 GMT
+</programlisting>
+            </example>
+        </section>
+        <section xml:id='viewCDNContainerDetails-d1e'>
+            <title>Viewing CDN-Enabled Container Details</title>
+            <para>To view details about a container in the CDN, issue a <command>HEAD</command>
+                request against the CDN management service.</para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para>An HTTP status code of 204 (No Content) in the response indicates that the
+                container details were successfully retrieved. You can confirm the TTL set in <xref
+                    linkend="CDN-Enabling_the_Container-d1e3123"/>.</para>
+            <example>
+                <title>cURL View CDN-Enabled Container Details</title>
+                <programlisting>
+curl -i -X HEAD https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
+</programlisting>
+                <programlisting>
+TTP/1.1 204 No Content
+Content-Length: 0
+X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com
+X-Ttl: 604800
+X-Cdn-Enabled: True
+X-Log-Retention: False
+X-Cdn-Ios-Uri: http://7a701469fe9980c577e9-24695493c49b279502b280c6ecd262b5.iosr.cf6.rackcdn.com
+X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.rackcdn.com
+Content-Type: text/html; charset=UTF-8
+X-Cdn-Streaming-Uri: http://ce3a54aaf724a75455d6-24695493c49b279502b280c6ecd262b5.r17.stream.cf6.rackcdn.com
+X-Trans-Id: txe291eebdfd96468995a80-005356b167hkg1
+Date: Tue, 22 Apr 2014 18:13:59 GMT
+</programlisting>
+            </example>
+        </section>
+        <section xml:id="purgeCDNData-d1e">
+            <title>Purging an Object from a CDN-Enabled Container </title>
+            <para>When you find it necessary to remove a CDN-enabled object from public access
+                before the TTL expires, you can issue a <command>DELETE</command> request against
+                the object in the CDN management service (or you can create a support ticket to
+                purge the entire container). Currently, only 25 purges can be performed per account
+                per day. </para>
+            <note>
+                <para>Remember that the objects must be uploaded to the container using one of the
+                    storage service access endpoints. The CDN management service references the
+                    objects there.</para>
+            </note>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. Optionally, you can included a header
+                with an email address to be notified that the object has been purged.</para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para>An HTTP status code of 204 (No Content) in the response indicates that the object
+                was successfully queued to be purged. </para>
+            <para>Because there are so many edge servers around the world, purging an object might
+                take a long time. Be patient while waiting for the emailed response. </para>
+            <example>
+                <title>cURL Purge an Object from a CDN-Enable Container</title>
+                <programlisting>
+curl -i -X DELETE https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" /
+-H "X-Purge-Email: yourEmail@yourDomain.com"      
+</programlisting>
+                <programlisting>
+HTTP/1.1 204 No Content
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx45187f74dc814ddeb43af-005356c6e1hkg1
+Date: Tue, 22 Apr 2014 19:45:39 GMT   
+</programlisting>
+            </example>
+        </section>
+        <section xml:id="disableCDN-d1e">
+            <title>Disabling CDN for a Container</title>
+            <para>To disable use of the CDN for a container, issue a <command>POST</command> request
+                with <code>X-CDN-Enabled: False</code> against the CDN management service. (Note
+                that the service access endpoint URL specifies the CDN system.) </para>
+            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+                header to specify the authentication token. </para>
+            <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
+                method and the <code>-i</code> switch to send the HTTP response to terminal
+                output.</para>
+            <para>An HTTP status code of 201 (Created) in the response indicates that CDN use of the
+                container was successfully disabled. </para>
+            <example>
+                <title>cURL Disable CDN for a Container</title>
+                <programlisting>
+curl -i -X POST https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
+-H "<emphasis role="bold">X-CDN-Enabled: False"</emphasis>
+</programlisting>
+                <programlisting>
+HTTP/1.1 201 Created
+Content-Length: 0
+X-Cdn-Ssl-Uri: https://d0bba87ecb20cfe87c32-58d9a15a50acf66d588aab08348cf859.ssl.cf6.rackcdn.com
+X-Cdn-Ios-Uri: http://d03710c19b61b2c12609-58d9a15a50acf66d588aab08348cf859.iosr.cf6.rackcdn.com
+X-Cdn-Uri: http://afab448ae0b809160b64-58d9a15a50acf66d588aab08348cf859.r57.cf6.rackcdn.com
+Content-Type: text/html; charset=UTF-8
+X-Cdn-Streaming-Uri: http://499c627df9227c250afb-58d9a15a50acf66d588aab08348cf859.r57.stream.cf6.rackcdn.com
+X-Trans-Id: txbc7d7a812e6d4bbc96373-005356c75fhkg1
+Date: Tue, 22 Apr 2014 19:47:43 GMT
+</programlisting>
+            </example>
         </section>
         <section xml:id="Other_cURL_Commands-d1e3222"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
             <title>Other cURL Commands</title>
             <para>You can issue any of the REST methods defined for Cloud Files with the cURL
-                utility. For example, you can use cURL to send &POST; and &DELETE; requests even
-                though no specific examples are provided.</para>
+                utility. </para>
             <para>Note that generally each time <code>curl</code> is invoked to perform an
                 operation, a separate TCP/IP and SSL connection is created and thrown away. The
                 language APIs, in contrast, are designed to re-use connections between operations
@@ -956,7 +1150,8 @@ Date: Fri, 17 Jan 2014 16:09:56 GMT
                 language APIs in your production applications and limit cURL to quick-and-easy
                 testing and troubleshooting.</para>
         </section>
-
+    </chapter>
+<!--
     </chapter>
     <chapter xml:id="Using_Client_or_SDK-d1e101">
         <title>Using the ???? Client or ???? SDK</title>
@@ -988,7 +1183,7 @@ Date: Fri, 17 Jan 2014 16:09:56 GMT
             <title>Determining Storage Usage</title>
             <para/>
         </section>
-    </chapter>
+    </chapter> -->
     <chapter xml:id="Tools_and_Applications_for_Cloud_Files-d1e286">
         <title>Other Tools and Applications for Cloud Files</title>
         <para> In addition to the REST API and its language-specific bindings, there are several
