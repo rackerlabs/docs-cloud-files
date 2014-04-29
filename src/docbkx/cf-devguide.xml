@@ -4398,7 +4398,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
       -->
     </section>
   </chapter>
-<!-- <remarck 4/30/2014 cyr: removing due to publishing the CF Getting Started Guide, which has this and more.</remark>  
+<!-- <remark 4/30/2014 cyr: removing due to publishing the CF Getting Started Guide, which has this and more.</remark>  
   <chapter xml:id="Troubleshooting-d1e2855">
     <title>Examples Using cURL</title>
     <info>

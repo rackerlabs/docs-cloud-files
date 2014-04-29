@@ -39,24 +39,16 @@
                 </imageobject>
               </inlinemediaobject>'>
 ]>
-
-<book version="5.0"
-         xmlns="http://docbook.org/ns/docbook"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:svg="http://www.w3.org/2000/svg"
-         xmlns:m="http://www.w3.org/1998/Math/MathML"
-         xmlns:html="http://www.w3.org/1999/xhtml"
-         xml:id="cf-getting-started">
-    
+<book version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    xml:id="cf-getting-started">
     <?rax title.font.size="40px" subtitle.font.size="30px"?>
     <title>Rackspace Cloud Files™ Getting Started Guide</title>
     <?rax status.bar.text.font.size="40px"
-          status.bar.text="Third Draft"?>   
+          status.bar.text="Third Draft"?>
     <titleabbrev>Rackspace Cloud Files Getting Started Guide</titleabbrev>
-     
     <info>
-        
         <copyright>
             <year>2014</year>
             <holder>Rackspace US, Inc.</holder>
@@ -86,20 +78,19 @@
                 </revdescription>
             </revision>
         </revhistory>
-    <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-      <raxm:displayname>Getting Started Guide</raxm:displayname>
-      <raxm:product version="v1.0">files</raxm:product>
-      <raxm:priority>10</raxm:priority>
-    </raxm:metadata>
+        <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
+            <raxm:displayname>Getting Started Guide</raxm:displayname>
+            <raxm:product version="v1.0">files</raxm:product>
+            <raxm:priority>10</raxm:priority>
+        </raxm:metadata>
     </info>
     <chapter xml:id="Doc_Change_History">
-        <title>Document Change History</title>            
-        <para>This version of the guide replaces and obsoletes all
-            earlier versions. The most recent changes are described in
-            the following table:</para>
+        <title>Document Change History</title>
+        <para>This version of the guide replaces and obsoletes all earlier versions. The most recent
+            changes are described in the following table:</para>
         <?rax revhistory?>
     </chapter>
-      <chapter xml:id="Overview">
+    <chapter xml:id="Overview-d1e01">
         <title>Overview</title>
         <para> Rackspace Cloud Files™ is an affordable, redundant, scalable, and dynamic storage
             service offering. The core storage system is designed to provide a secure,
@@ -113,40 +104,35 @@
             simple RESTful (Representational State Transfer) web services interface. There are also
             language-specific application programming interfaces (APIs) that use the RESTful API and
             make it much easier for developers to integrate into their applications.</para>
-          <para>The following diagram illustrates the various system
-              interfaces and the ease with which content can be distributed
-              over the CDN. The process is simple: authenticate, create a
-              container, upload objects, mark the container as public, and
-              begin serving that content from a powerful CDN.</para>
-          <note>
-              <para>Marking the container as public simply means enabling the
-                  container to be distributed over the CDN. A CDN-enabled
-                  container is publicly accessible. </para>
-          </note>
-          <figure xml:id="CFinterfaces">
-              <title>Cloud Files System Interfaces</title>
-              <mediaobject>
-                  <imageobject>
-                      <imagedata scale="60" fileref="figures/CFinterfaces_New.svg"
-                      />
-                  </imageobject>
-              </mediaobject>
-          </figure>
+        <para>The following diagram illustrates the various system interfaces and the ease with
+            which content can be distributed over the CDN. The process is simple: authenticate,
+            create a container, upload objects, mark the container as public, and begin serving that
+            content from a powerful CDN.</para>
+        <note>
+            <para>Marking the container as public simply means enabling the container to be
+                distributed over the CDN. A CDN-enabled container is publicly accessible. </para>
+        </note>
+        <figure xml:id="CFinterfaces">
+            <title>Cloud Files System Interfaces</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata scale="60" fileref="figures/CFinterfaces_New.svg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
         <para>For more details about the Cloud Files service, see <link
                 xlink:href="http://www.rackspace.com/cloud/files/"
-            >http://www.rackspace.com/cloud/files/</link> and the Knowledge Center article <link
+                >http://www.rackspace.com/cloud/files/</link> and the Knowledge Center article <link
                 xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
                 >Best Practices for Using Cloud Files</link>. </para>
-          <para>Rackspace welcomes feedback, comments, and bug reports at
-              <link xlink:href="mailto:support@rackspacecloud.com"
-                  >support@rackspacecloud.com</link>.. </para>
+        <para>Rackspace welcomes feedback, comments, and bug reports at <link
+                xlink:href="mailto:support@rackspacecloud.com">support@rackspacecloud.com</link>.. </para>
         <para>This guide provides step-by-step instructions to enter the necessary URLs or commands
             to use the Cloud Files API. You can find additional details about Cloud Files in the
                 <emphasis role="italic">Cloud Files Developer Guide</emphasis> at <link
                 xlink:href="http://docs.rackspace.com/">http://docs.rackspace.com/</link>. </para>
-          <para>This guide uses the API directly with cURL (<xref linkend="Using_the_API_Directly"
-          />). </para>
-<!--        <para> provides the following ways to use the Cloud Files API:</para>
+        <para>This guide uses the API directly with cURL (<xref linkend="Using_the_API_Directly"/>). </para>
+        <!--        <para> provides the following ways to use the Cloud Files API:</para>
          
         <itemizedlist>
             <listitem>
@@ -158,7 +144,7 @@
                         linkend="Using_Client_or_SDK-d1e101"/>)</para>
             </listitem>
         </itemizedlist> -->
-<!-- <remark>Removing per Nicholas Wagner's request and Jerry Scharz's approval </remark> 
+        <!-- <remark>Removing per Nicholas Wagner's request and Jerry Scharz's approval </remark> 
         <section xml:id="Benefits-Use-Cases">
             <title>Benefits and Use Cases</title>
             <para xmlns:wadl="http://wadl.dev.java.net/2009/02">&PRODNAME; provides the following
@@ -475,60 +461,59 @@
                 <tr align="left">
                     <td colspan="2" rowspan="2">Chicago (ORD)</td>
                     <td colspan="5"
-                        ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="2" rowspan="2">Dallas/Ft. Worth (DFW)</td>
                     <td colspan="5"
-                        ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="2" rowspan="2">Hong Kong (HKG)</td>
                     <td colspan="5"
-                        ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr align="left">
                     <td colspan="2" rowspan="2">London (LON)</td>
                     <td colspan="5"
-                        ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="2" rowspan="2">Northern Virginia (IAD)</td>
                     <td colspan="5"
-                        ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="2" rowspan="2">Sydney (SYD)</td>
                     <td colspan="5"
-                        ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
                 <tr>
                     <td colspan="5"
-                        ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                    ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                 </tr>
             </tbody>
         </table>
-
         <para>Replace the sample MossoCloudFS information in the preceding table with the actual
             MossoCloudFS information returned as part of the authentication service response. This
             information is located after the final '/' in the <code>publicURL</code> field and the
@@ -538,34 +523,29 @@
                 linkend="Gen-Auth-Token"/> as well as the Rackspace <citetitle>Cloud Identity Client
                 Developer Guide</citetitle>. </para>
         <tip>
-            <para>If you do not know which data center you are working in
-                or your account ID, you can find them in your Cloud Control
-                Panel at <link xlink:href="https://mycloud.rackspace.com/"
-                    >mycloud.rackspace.com</link>. </para>
+            <para>If you do not know which data center you are working in or your account ID, you
+                can find them in your Cloud Control Panel at <link
+                    xlink:href="https://mycloud.rackspace.com/">mycloud.rackspace.com</link>.
+            </para>
         </tip>
-        <para>If you are working with cloud servers that are in one of
-            the Rackspace data centers, using the ServiceNet endpoint in
-            the same data center has no network costs and provides a
-            faster connection. ServiceNet endpoints are prefixed with
-            <code>snet-</code> in <xref linkend="Endpoints-Table-d1e001"
-            />. ServiceNet is the data center internet network. In your
-            authentication response, it is listed as
-            <code>internalURL</code>. </para>
-        <para> If you are working with servers that are not in one of
-            the Rackspace data centers, you must use a public endpoint to
-            connect. In your authentication response, public endpoints are
-            listed as <code>publicURL</code>. If you are working with
-            servers in multiple data centers or have a mixed environment
-            where you have servers in your data centers and in Rackspace
-            data centers, use a public endpoint because it is accessible
+        <para>If you are working with cloud servers that are in one of the Rackspace data centers,
+            using the ServiceNet endpoint in the same data center has no network costs and provides
+            a faster connection. ServiceNet endpoints are prefixed with <code>snet-</code> in <xref
+                linkend="Endpoints-Table-d1e001"/>. ServiceNet is the data center internet network.
+            In your authentication response, it is listed as <code>internalURL</code>. </para>
+        <para> If you are working with servers that are not in one of the Rackspace data centers,
+            you must use a public endpoint to connect. In your authentication response, public
+            endpoints are listed as <code>publicURL</code>. If you are working with servers in
+            multiple data centers or have a mixed environment where you have servers in your data
+            centers and in Rackspace data centers, use a public endpoint because it is accessible
             from all the servers in the different environments.</para>
         <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-            <para>To avoid external bandwidth charges, your containers and servers must be in the same
-                data center. </para>
-            <para>You might find it useful to locate your objects in more than one data center to keep
-                track of your data and backups. Specifically, if you serve an audience in a particular
-                region, you might find it helpful to locate your Cloud Files objects as close to that
-                region as possible. </para>
+            <para>To avoid external bandwidth charges, your containers and servers must be in the
+                same data center. </para>
+            <para>You might find it useful to locate your objects in more than one data center to
+                keep track of your data and backups. Specifically, if you serve an audience in a
+                particular region, you might find it helpful to locate your Cloud Files objects as
+                close to that region as possible. </para>
         </note>
         <para>The endpoints to use for the CDN management service component of your Cloud Files API
             calls are summarized in the following table.</para>
@@ -589,32 +569,32 @@
                     <tr align="left">
                         <td colspan="2">Chicago (ORD)</td>
                         <td colspan="5"
-                            ><code>https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                     <tr>
                         <td colspan="2">Dallas/Ft. Worth (DFW)</td>
                         <td colspan="5"
-                            ><code>https://cdn1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                     <tr>
                         <td colspan="2">Hong Kong (HKG)</td>
                         <td colspan="5"
-                            ><code>https://cdn6.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn6.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                     <tr align="left">
                         <td colspan="2">London (LON)</td>
                         <td colspan="5"
-                            ><code>https://cdn3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                     <tr>
                         <td colspan="2">Northern Virginia (IAD)</td>
                         <td colspan="5"
-                            ><code>https://cdn5.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn5.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                     <tr>
                         <td colspan="2">Sydney (SYD)</td>
                         <td colspan="5"
-                            ><code>https://cdn4.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                                        ><code>https://cdn4.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -632,7 +612,7 @@
             the response. </para>
         <para>For more information about all Cloud Files operations, see the <emphasis role="italic"
                 >Cloud Files Developer Guide</emphasis>.</para>
-        <section xml:id="Gen-Auth-Token" >
+        <section xml:id="Gen-Auth-Token">
             <title>Generating an Authentication Token</title>
             <para>Your first step must always be to generate an authentication token. You must then
                 include the authentication token in each request in the <code>X-Auth-Token</code>
@@ -730,7 +710,7 @@
             </example>
             <para>After authentication, you can use cURL to perform <command>GET</command>,
                     <command>HEAD</command>, <command>DELETE</command>, <command>PUT</command>, and
-                    <command>POST</command> request for the &PRODNAME; API.</para> 
+                    <command>POST</command> request for the &PRODNAME; API.</para>
         </section>
         <section xml:id="Creating_a_Storage_Container-d1e3026"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
@@ -775,7 +755,7 @@ Date: Tue, 22 Apr 2014 16:48:21 GMT
             <para>An HTTP status code of 201 (Created) in the response indicates that the object was
                 successfully uploaded.</para>
             <example>
-                <title>cURL Upload  an Object</title>
+                <title>cURL Upload an Object</title>
                 <programlisting>
 curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
@@ -1035,7 +1015,7 @@ Date: Tue, 22 Apr 2014 17:59:24 GMT
 </programlisting>
             </example>
         </section>
-        <section xml:id='viewCDNContainerDetails-d1e'>
+        <section xml:id="viewCDNContainerDetails-d1e">
             <title>Viewing CDN-Enabled Container Details</title>
             <para>To view details about a container in the CDN, issue a <command>HEAD</command>
                 request against the CDN management service.</para>
@@ -1152,7 +1132,7 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
                 testing and troubleshooting.</para>
         </section>
     </chapter>
-<!--
+    <!--
     </chapter>
     <chapter xml:id="Using_Client_or_SDK-d1e101">
         <title>Using the ???? Client or ???? SDK</title>
@@ -1293,12 +1273,14 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
         <para>For information about all Cloud Files API operations, see the <citetitle>Cloud Files
                 Developer Guide</citetitle> at <link xlink:href="http://docs.rackspace.com/"
                 >http://docs.rackspace.com/</link>. All you need to get started with the Cloud Files
-            API is in this getting started guide and the developer guide.  For additional
-            information about Cloud Files, see <link
-                xlink:href="http://www.rackspace.com/knowledge_center/product-page/cloud-files">the Knowledge Center</link>.</para>
+            API is in this getting started guide and the developer guide. For additional information
+            about Cloud Files, see <link
+                xlink:href="http://www.rackspace.com/knowledge_center/product-page/cloud-files">the
+                Knowledge Center</link>.</para>
         <para>The official support channels (phone, chat, email, forums, and knowledge base
             articles) for Cloud Files are available through the Rackspace Cloud web site at <link
-                xlink:href="http://www.rackspace.com/cloud/files/">http://www.rackspace.com/cloud/files/</link>. </para>
+                xlink:href="http://www.rackspace.com/cloud/files/"
+                >http://www.rackspace.com/cloud/files/</link>. </para>
         <para> The system status page at <link
                 xlink:href="http://status.rackspacecloud.com/cloudfiles/"
                 >http://status.rackspacecloud.com/cloudfiles/</link> can be reviewed if you believe
