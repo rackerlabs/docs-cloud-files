@@ -46,7 +46,7 @@
     <?rax title.font.size="40px" subtitle.font.size="30px"?>
     <title>Rackspace Cloud Files™ Getting Started Guide</title>
     <?rax status.bar.text.font.size="40px"
-          status.bar.text="Third Draft"?>
+          status.bar.text=""?>
     <titleabbrev>Rackspace Cloud Files Getting Started Guide</titleabbrev>
     <info>
         <copyright>
@@ -209,7 +209,7 @@
     </chapter>
     <chapter xml:id="Send-Requests-To-API-d1e101">
         <title>Sending Requests to the API</title>
-        <para>You have several options for sending requests through an API: </para>
+        <para>You have several options for sending requests through an API including the following: </para>
         <itemizedlist>
             <listitem>
                 <para>Developers and testers might prefer to use cURL, the command-line tool from
