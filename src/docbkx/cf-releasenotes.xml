@@ -30,7 +30,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2014-04-07</pubdate>
+		<pubdate>2014-04-30</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -44,6 +44,34 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision>
+				<date>2014-04-30</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Published <citetitle>Cloud Files Getting Started
+								Guide</citetitle>.</para>
+						</listitem>
+						<listitem>
+							<para>Changed the TTL maximum value to 1 year (31536000 seconds) instead of 50 years
+								(1577836800 seconds) throughout the <citetitle>Cloud Files Developer
+									Guide</citetitle>.</para>
+						</listitem>
+						<listitem>
+							<para>Added additional information to the description of the
+									<code>X-Container-Sync-Key</code> and
+									<code>X-Container-Sync-To</code> headers in the <citetitle>Cloud
+									Files Developer Guide</citetitle>.</para>
+						</listitem>
+						<listitem>
+							<para>Removed Chapter 14, "Examples Using cURL" from the <citetitle>Cloud Files Developer
+									Guide</citetitle>. This information is now included with other
+								cURL examples in the new <citetitle>Cloud Files Getting Started
+									Guide</citetitle>. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-04-07</date>
 				<revdescription>
@@ -579,8 +607,8 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added a section about retrieving an SSL URL for CDN-enabled
-								containers that are using https protocol.</para>
+							<para>Added a section about retrieving an SSL URL for CDN-enabled containers that are using
+								HTTPS protocol.</para>
 						</listitem>
 						<listitem>
 							<para>Updated examples to contain SSL as appropriate.</para>
@@ -677,8 +705,7 @@
 				>http://docs.rackspace.com/</link>:</para>
 		<itemizedlist spacing="compact">
 			<listitem>
-				<para><citetitle>Cloud Files
-					Introduction</citetitle></para>
+				<para><citetitle>Cloud Files Getting Started Guide</citetitle></para>
 			</listitem>
 			<listitem>
 				<para><citetitle>Cloud Files Developer
@@ -706,6 +733,36 @@
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Apr30">
+		<?dbhtml stop-chunking?>
+		<title>April 30, 2014</title>
+		<para>This release contains the following documentation changes for Cloud Files:</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<title>Documentation</title>
+			<listitem>
+				<para>Published the <citetitle>Cloud Files Getting Started Guide</citetitle>.</para>
+			</listitem>
+			<listitem>
+				<para>Changed  the TTL maximum value to 1 year (31536000 seconds) instead of 50
+					years (1577836800 seconds) throughout the <citetitle>Cloud Files Developer
+						Guide</citetitle>.</para>
+			</listitem>
+			<listitem>
+				<para>Added additional information to the description of the
+						<code>X-Container-Sync-Key</code> and <code>X-Container-Sync-To</code>
+					headers in the <citetitle>Cloud Files Developer Guide</citetitle>.</para>
+			</listitem>
+			<listitem>
+				<para>Removed Chapter 14, "Examples Using cURL" from the <citetitle>Cloud Files
+						Developer Guide</citetitle>. This information is now included with other
+					cURL examples in the new <citetitle>Cloud Files Getting Started
+						Guide</citetitle>. </para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="apr07">
 		<?dbhtml stop-chunking?>
@@ -1026,7 +1083,8 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Update API Dev Guide with new features information. </para>
+				<para>Updated the <citetitle>Cloud Files Developer Guide</citetitle> with new features
+					information. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1331,20 +1389,16 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Added PHP and Ruby examples to TempURLs; clarified language for TempURLs
-					based on user feedback -- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
-				</para>
+				<para>Added PHP and Ruby examples to TempURLs; clarified language for TempURLs based on user
+					feedback -- <emphasis role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Added paragraph on CNAMEs in Static Web based on user feedback
-					-- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
-				</para>
+				<para>Added paragraph on CNAMEs in Static Web based on user feedback in the <emphasis
+						role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>
-					Clarified CDN-purge limits to ease usability of that feature
-					-- <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>.
-				</para>
+				<para> Clarified CDN-purge limits to ease usability of that feature in the <emphasis
+						role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1399,17 +1453,15 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Fixed a typo in <emphasis role="italic">Cloud Files API Developer's Guide</emphasis>
-				</para>
+				<para>Fixed a typo in <emphasis role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Clarified language in  <emphasis role="italic">Cloud Files Introduction</emphasis>
-				</para>
+				<para>Clarified language in <emphasis role="italic">Cloud Files Introduction</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Added text and examples for Static Web, Static Web Custom Error Page, and
-					Object Versioning in the <emphasis role="italic">Cloud Files API Developer Guide</emphasis>
-				</para>
+				<para>Added text and examples for Static Web, Static Web Custom Error Page, and Object
+					Versioning in the <emphasis role="italic">Cloud Files Developer
+					Guide</emphasis>. </para>
 				<para><link
 					xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html"
 					>http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html</link>.

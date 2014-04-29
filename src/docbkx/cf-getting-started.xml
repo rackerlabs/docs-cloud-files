@@ -992,14 +992,15 @@ Date: Tue, 22 Apr 2014 17:18:39 GMT
         <section xml:id="CDN-Enabling_the_Container-d1e3123"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
             <title>CDN-Enabling the Container and Setting a TTL</title>
-            <para>After creating a container and storing a file in it, you can choose to share the
-                file. Because the data in Cloud Files is private, you share your files through the
-                content delivery network (CDN). To CDN-enable a container, issue a &PUT; request
-                with <code>X-CDN-Enabled: True</code> against the CDN management service. (Note that
-                the service access endpoint URL specifies the CDN system.) The default time to live
-                (TTL) value is 72 hours (259200 seconds), with a minimum of 15 minutes (900 seconds)
-                and a maximum of 1 year (31536000 seconds). The following request sets the TTL to 1
-                week (604800 seconds) with <code>X-TTL: 604800</code>.</para>
+            <para>After creating a container and storing a file in it, you can choose to make the
+                file publicly readable. Because the data in Cloud Files is private, you share your
+                files through the content delivery network (CDN). To CDN-enable a container, issue a
+                &PUT; request with <code>X-CDN-Enabled: True</code> against the CDN management
+                service. (Note that the service access endpoint URL specifies the CDN system.) The
+                default time to live (TTL) value is 72 hours (259200 seconds), with a minimum of 15
+                minutes (900 seconds) and a maximum of 1 year (31536000 seconds). The following
+                request sets the TTL to 1 week (604800 seconds) with <code>X-TTL:
+                604800</code>.</para>
             <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
                 header to specify the authentication token. </para>
             <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
@@ -1116,8 +1117,8 @@ Date: Tue, 22 Apr 2014 19:45:39 GMT
             <para>The cURL request uses the <code>-X</code> switch to specify the correct HTTP
                 method and the <code>-i</code> switch to send the HTTP response to terminal
                 output.</para>
-            <para>An HTTP status code of 201 (Created) in the response indicates that CDN use of the
-                container was successfully disabled. </para>
+            <para>An HTTP status code of 202 (Accepted) in the response indicates that the request
+                is accept for processing.  </para>
             <example>
                 <title>cURL Disable CDN for a Container</title>
                 <programlisting>
@@ -1126,15 +1127,15 @@ curl -i -X POST https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/
 -H "<emphasis role="bold">X-CDN-Enabled: False"</emphasis>
 </programlisting>
                 <programlisting>
-HTTP/1.1 201 Created
-Content-Length: 0
+HTTP/1.1 202 Accepted
+Content-Length: 76
 X-Cdn-Ssl-Uri: https://d0bba87ecb20cfe87c32-58d9a15a50acf66d588aab08348cf859.ssl.cf6.rackcdn.com
 X-Cdn-Ios-Uri: http://d03710c19b61b2c12609-58d9a15a50acf66d588aab08348cf859.iosr.cf6.rackcdn.com
 X-Cdn-Uri: http://afab448ae0b809160b64-58d9a15a50acf66d588aab08348cf859.r57.cf6.rackcdn.com
 Content-Type: text/html; charset=UTF-8
 X-Cdn-Streaming-Uri: http://499c627df9227c250afb-58d9a15a50acf66d588aab08348cf859.r57.stream.cf6.rackcdn.com
-X-Trans-Id: txbc7d7a812e6d4bbc96373-005356c75fhkg1
-Date: Tue, 22 Apr 2014 19:47:43 GMT
+X-Trans-Id: tx9f451de144d04250a96ed-00535a969bhkg1
+Date: Fri, 25 Apr 2014 17:08:43 GMT
 </programlisting>
             </example>
         </section>
