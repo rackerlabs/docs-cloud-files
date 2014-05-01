@@ -63,6 +63,7 @@
                             <includes>cf-getting-started.xml</includes>
                             <security>external</security>
                             <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-getting-started/content</canonicalUrlBase>
+                            <webhelpDefaultTopic>Overview-d1e01.html</webhelpDefaultTopic>
                         </configuration>
                     </execution>
                     <execution>
