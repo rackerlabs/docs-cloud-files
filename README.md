@@ -8,15 +8,16 @@ Contributions are welcome! To suggest changes to the documentation, please submi
 
 Source files are for the following documents:
 
+    o Cloud Files Getting Started Guide
     o Cloud Files Developer Guide
     o Cloud Files Release Notes
-    o Cloud Files Introduction (which will be replaced with a Cloud Files Getting Started Guide in the near future)
     
 You should create your own branch to make changes to the files and then send a pull request to have your changes
 reviewed and merged into the master branch as appropriate.
 
 You can use any editor to work with the files. The files that are most likely to be of interest are:
 
+    o src/docbkx/cf-getting-started.xml 
     o src/docbkx/cf-devguide.xml
     o src/wadl/rax-cloudFiles-api-v1.wadl
     o src/wadl/rax-cloudFilesCDN-api-v1.wadl
