@@ -2280,7 +2280,7 @@ X-Object-Meta-Cost: 30</programlisting>
             <para>A status code of 202
                 (Accepted) indicates success. Status code 404 (Not Found) is
                 returned if the requested object does not exist. </para>
-            <para>This operation does not return a response body.</para>
+            <para>This operation does not require a request body and does return a response body.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"

@@ -89,7 +89,7 @@
                 to return only the list of containers that are
                 CDN-enabled. </para> 
 -->               
-            <para>A list of CDN-enabled containers is returned in the
+            <para>This operation does not require a request body. A list of CDN-enabled containers is returned in the
                 response body, one container name per line.</para>            
             <para>An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers, and a 204 (No Content) code is returned if there are no containers.</para>            
             <para>To view the CDN container details, see <xref
@@ -525,7 +525,7 @@
             <para>The CDN URI is returned in the header
                 <code>X-Cdn-Uri</code> header. </para>
             <para>Because there are so many edge servers around the world, purging objects might take a long time. Be patient while waiting for a response.</para>
-            <para>This operation has no request or response body.</para>
+            <para>This operation does not require a request body and does not return a response body.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/http">
