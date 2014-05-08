@@ -1026,6 +1026,26 @@
                 must have the format <code>X-Container-Meta-name</code>.</para>
             <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where <code>name</code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
             <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
+     <!--   <remark>5/6/2014 cyr: Adding "Deleting Container Metadata" below with information/example from David Goetz.</remark>-->                
+            <important>
+                <title>Updating Container Metadata</title>
+                <para>For containers, the <command>POST</command> request to set metadata does not delete existing metadata that is not explicitly set in the request.</para> 
+                <para>For example, you use a <command>HEAD</command> request to list container metadata and get the following results:</para>
+                <programlisting>X-Container-Meta-Price: 50                    
+X-Container-Meta-Extra: Data</programlisting>
+                <para>Then you perform a <command>POST</command> request similar to the following example to set metadata on the same container that you listed above:</para>
+                <programlisting>POST /v1/account/containName HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: yourAuthToken
+X-Container-Meta-Price: 45
+X-Container-Meta-Cost: 30</programlisting>
+                <para>Listing the container metadata again after the <command>POST</command> then shows the following results. The <code>X-Container-Meta-Extra</code> metadata still exists.</para>
+                <programlisting>X-Container-Meta-Price: 45                    
+X-Container-Meta-Cost: 30
+X-Container-Meta-Extra: Data</programlisting>
+                <para>For information about deleting container metadata, see <xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
+                <para>Note that updating and deleting object metadata works differently. For an example, see <xref linkend="POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
+            </important>
             <para>A status code of 204 (No Content) indicates success. Status
                 code 404 (Not Found) is returned when the requested container does not exist.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -1269,12 +1289,9 @@
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
             title="Delete Container Metadata">
             <para role="shortdesc">Deletes container metadata.</para>
-            <para>To delete a metadata header, use a <command>POST</command> operation to send an empty value for that particular header, such as
-                <code>X-Container-Meta-Subject:</code>.</para>
-            <para>If the tool that you are using to communicate with Cloud Files does not support sending
-                empty headers (such as older versions of cURL), send the header <code>X-Remove-Container-Meta-name: arbitrary value</code>, where <code>name</code> is the name of your
-                custom header. <code>arbitrary value</code> can be any value, and it will not be used.  </para>
+            <para>To delete a metadata header, use a <command>POST</command> operation. You  send  the <command>POST</command> operation to the container with the header <code>X-Remove-Container-Meta-name: value</code>, where <code>name</code> is the name of the metadata you want to delete and <code>value</code> is any value and is not used. </para>                                
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
+            <para>Note that updating and deleting object metadata works differently. For an example, see <xref linkend="POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
             <para>A status code of 200 through 299 indicates success. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -2213,12 +2230,18 @@
                 this operation to change other headers, such as
                 <code>Content-Type</code>.</para>
             <para>You can set or update your custom metadata for existing
-                objects by sending a <command>POST</command> request to the object name. </para>
+                objects by sending a <command>POST</command> request to the object name.  </para>
             <para>Metadata is set by using the header <code>X-Object-Meta-name: value</code>, where
                 <code>name</code> is the custom name for your metadata and <code>value</code>
-                is the value. You can also set values for
+                is the value.</para>
+            <para>You can also set values for
                 <code>X-Delete-At</code> and <code>X-Delete-After</code>
                 to set expirations for objects. </para>
+<!--            <remark>5/6/2014 cyr: Removing this X-Remove-Object-Meta based on an issue opened by Sam Harwell: 
+                "The POST command to set metadata clears all metadata which is not explicitly set in the request. 
+                Headers with the prefix X-Remove-Object-Meta- do not change this behavior, whether or not a value is assigned for the header."
+                Updating "Deleting Object Metadata" below with information/example from David Goetz.
+            </remark>
             <para> To remove previously-set object metadata, send a
                 <command>POST</command> request to the object name with
                 <code>X-Remove-Object-Meta-name: value</code>, where
@@ -2226,18 +2249,33 @@
                 <code>value</code> is any term, and it will not be used. You
                 must, however, send some value with the request. Otherwise,
                 the metadata is not removed. </para>
+-->                
             <para>For information about working with metadata when copying
                 objects, see <xref linkend="COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
             <important>
                 <title>Deleting Object Metadata</title>
-                <para>All the object metadata is set at the same time. If
-                    you want to edit or remove one header, include all other headers in the <command>POST</command> request and leave out the header that you want to remove. This means that if you
+                <para>For objects, the <command>POST</command> request to set metadata deletes all metadata that is not explicitly set in the request. 
+                    In other words, ALL the object metadata is set at the time of the <command>POST</command> request. If
+                    you want to edit or remove one header, include all other headers in the <command>POST</command> request and 
+                    leave out the header that you want to remove. This means that if you
                     delete one entry without posting the others, the others
-                    will also be deleted at that time. </para>
-                <para>To remove all metadata on an object, simply perform a
+                    will also be deleted at that time.</para> 
+                 <para>For example, you use a <command>HEAD</command> request to list object metadata and get the following results:</para>
+                <programlisting>X-Object-Meta-Price: 50                    
+X-Object-Meta-Extra: Data</programlisting>
+                <para>Then you perform a <command>POST</command> request similar to the following example to set metadata on the same object that you listed above:</para>
+                <programlisting>POST /v1/account/containName/objectName HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: yourAuthToken
+X-Object-Meta-Price: 45
+X-Object-Meta-Cost: 30</programlisting>
+                <para>Listing the object metadata again after the <command>POST</command> then shows the following results and <code>X-Object-Meta-Extra</code> no longer exists:</para>
+                <programlisting>X-Object-Meta-Price: 45                    
+X-Object-Meta-Cost: 30</programlisting>
+                <para>To remove all metadata for an object, simply perform a
                     <command>POST</command> request for the object with no
-                    metadata specified. However, to remove container metadata,
-                    you must send the header with an empty value.</para>
+                    metadata specified. </para>
+                <para>Note that removing container metadata works differently. For more information, see <xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
             </important>
             <para>A status code of 202
                 (Accepted) indicates success. Status code 404 (Not Found) is
