@@ -1009,9 +1009,9 @@ curl -i -X PUT https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<
                 <programlisting language="json">
 HTTP/1.1 201 Created
 Content-Length: 0
-<emphasis role="bold">X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com</emphasis>
+X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com
 X-Cdn-Ios-Uri: http://7a701469fe9980c577e9-24695493c49b279502b280c6ecd262b5.iosr.cf6.rackcdn.com
-<emphasis role="bold">X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.rackcdn.com</emphasis>
+X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.rackcdn.com
 Content-Type: text/html; charset=UTF-8
 X-Cdn-Streaming-Uri: http://ce3a54aaf724a75455d6-24695493c49b279502b280c6ecd262b5.r17.stream.cf6.rackcdn.com
 X-Trans-Id: txc2b9b4ef77fd45f28c2d2-005356adfchkg1
