@@ -379,8 +379,8 @@
     {
        "RAX-KSKEY:apiKeyCredentials":
        {
-          "username": "yourUserName",
-          "apiKey": "yourApiKey"}
+          "username": "<emphasis role="bold">yourUserName</emphasis>",
+          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
     }
 }' \
 <option>-H 'Content-Type: application/json'</option> \
@@ -408,8 +408,8 @@
     { 
        "RAX-KSKEY:apiKeyCredentials": 
        {   
-          "username": "yourUserName",   
-          "apiKey": "yourApiKey"} 
+          "username": "<emphasis role="bold">yourUserName</emphasis>",   
+          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"} 
     }  
 }' \ 
 </screen>
@@ -683,8 +683,8 @@
     {
        "RAX-KSKEY:apiKeyCredentials":
        {
-          "username": "yourUserName",
-          "apiKey": "yourApiKey"}
+          "username": "<emphasis role="bold">yourUserName</emphasis>",
+          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
     }
 }' \
 -H 'Content-Type: application/json' \
@@ -1080,7 +1080,7 @@ Date: Tue, 22 Apr 2014 18:13:59 GMT
                 <programlisting language="bash">
 curl -i -X DELETE https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" /
--H "X-Purge-Email: yourEmail@yourDomain.com"      
+-H "X-Purge-Email: <emphasis role="bold">yourEmail@yourDomain.com</emphasis>"      
 </programlisting>
                 <programlisting language="json">
 HTTP/1.1 204 No Content
