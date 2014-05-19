@@ -370,7 +370,7 @@
             </orderedlist>
             <para>Consider the following cURL authentication request: JSON example, which is
                 described in detail in <xref linkend="Gen-Auth-Token"/>.</para>
-            <example>
+            <example>                
                 <title>cURL Authentication Request: JSON</title>
                 <?dbfo keep-together="always"?>
                 <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
@@ -379,8 +379,8 @@
     {
        "RAX-KSKEY:apiKeyCredentials":
        {
-          "username": "<emphasis role="bold">yourUserName</emphasis>",
-          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
+          "username": "yourUserName",
+          "apiKey": "yourApiKey"}
     }
 }' \
 <option>-H 'Content-Type: application/json'</option> \
@@ -408,8 +408,8 @@
     { 
        "RAX-KSKEY:apiKeyCredentials": 
        {   
-          "username": "<emphasis role="bold">yourUserName</emphasis>",   
-          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"} 
+          "username": "yourUserName",   
+          "apiKey": "yourApiKey"} 
     }  
 }' \ 
 </screen>
@@ -683,8 +683,8 @@
     {
        "RAX-KSKEY:apiKeyCredentials":
        {
-          "username": "<emphasis role="bold">yourUserName</emphasis>",
-          "apiKey": "<emphasis role="bold">yourApiKey</emphasis>"}
+          "username": "yourUserName",
+          "apiKey": "yourApiKey"}
     }
 }' \
 -H 'Content-Type: application/json' \
@@ -716,18 +716,17 @@
                     <command>HEAD</command>, <command>DELETE</command>, <command>PUT</command>, and
                     <command>POST</command> requests for the &PRODNAME; API.</para>
         </section>
-        <section xml:id="Creating_a_Storage_Container-d1e3026"
-            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
+        <section xml:id="Creating_a_Storage_Container-d1e3026">
             <title>Creating a Storage Container</title>
             <para> Before uploading any data to Cloud Files, you must create a storage container.
                 You do this with a &PUT; request. </para>
-            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+            <para>The HTTP request must include a
                 header to specify the authentication token. </para>
-            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The cURL request uses the
+            <para>The cURL request uses the
                     <code>-X</code> option to specify the correct HTTP method and the
                     <code>-i</code> option to send the HTTP response to terminal output.</para>
             <para>An HTTP status code of 201 (Created) in the response indicates that the container
-                was successfully created.</para>
+                was successfully created.</para>                                   
             <example>
                 <title>cURL Create Storage Container</title>
                 <programlisting language="bash">
@@ -743,17 +742,16 @@ Date: Tue, 22 Apr 2014 16:48:21 GMT
 </programlisting>
             </example>
         </section>
-        <section xml:id="Uploading_a_Storage_Object-d1e3067"
-            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
+        <section xml:id="Uploading_a_Storage_Object-d1e3067">
             <title>Uploading an Object </title>
             <para>After creating a container, you can upload a file to it. You do this with a &PUT;
                 request. You must ensure that the object's <code>Content-Type</code> is set
                 correctly so that the receiving server knows what kind of file it is. This is the
                 mechanism by which a user's web browser knows how to display the file or whether to
                 launch a helper application to display the file.</para>
-            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
+            <para>The HTTP request must include a
                 header to specify the authentication token. </para>
-            <para xmlns:m="http://www.w3.org/1998/Math/MathML">The cURL request uses the
+            <para>The cURL request uses the
                     <code>-X</code> option to specify the correct HTTP method and the
                     <code>-i</code> option to send the HTTP response to terminal output.</para>
             <para>An HTTP status code of 201 (Created) in the response indicates that the object was
@@ -787,7 +785,7 @@ Date: Tue, 22 Apr 2014 17:02:34 GMT
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 202
+            <para>An HTTP status code of 202
                 (Accepted) in the response indicates that the metadata for the object was
                 successfully updated.</para>
             <example>
@@ -815,7 +813,7 @@ Date: Tue, 22 Apr 2014 17:06:51 GMT
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 200
+            <para>An HTTP status code of 200
                 (OK) in the response indicates that the object was successfully retrieved.</para>
             <example>
                 <title>cURL Retrieve an Object</title>
@@ -848,7 +846,7 @@ Date: Tue, 22 Apr 2014 17:08:57 GMT
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 204
+            <para>An HTTP status code of 204
                 (No Content) in the response indicates that the object was successfully
                 deleted.</para>
             <para>Both the object data and metadata are removed from the storage system. Object
@@ -881,7 +879,7 @@ Date: Tue, 22 Apr 2014 17:11:22 GMT
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 204
+            <para>An HTTP status code of 204
                 (No Content) in the response indicates that the container was successfully
                 deleted.</para>
             <example>
@@ -901,7 +899,7 @@ Date: Tue, 22 Apr 2014 17:12:47 GMT
         </section>
         <section xml:id="Show-Account-Details-d1e101">
             <title>Showing Account Details</title>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">You can send a
+            <para>You can send a
                     <command>GET</command> request to show account details and lists containers.
                 Using the <code>format</code> query parameter on the request causes the list to
                 include details (<code>count</code>, <code>bytes</code>, and <code>name</code>)
@@ -911,7 +909,7 @@ Date: Tue, 22 Apr 2014 17:12:47 GMT
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
-            <para xmlns:m="http://www.w3.org/the key 1998/Math/MathML">An HTTP status code of 200
+            <para>An HTTP status code of 200
                 (OK) in the response indicates that the account and container details were
                 successfully retrieved.</para>
             <example>
