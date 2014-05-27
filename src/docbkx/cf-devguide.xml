@@ -2118,7 +2118,7 @@
         that container, the objects are organized in a pseudo directory called <code>photos</code>.
         Remember that the container name is not displayed in the example, but that it is a part of
         the object URIs. For example, the URI of the file <code>me.jpg</code> is
-          <uri>https://storage.clouddrive.com/v1/CF_xer7_343/backups/photos/me.jpg</uri>. </para>
+          <uri>https://storage.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups/photos/me.jpg</uri>. </para>
     </note>
     <para> To display a list of all the objects in the storage container, use a &GET; operation
       without a <code>delimiter</code> or <code>prefix</code> parameter. </para>
@@ -3442,7 +3442,7 @@ i))) != null;
         (or name server). The CNAME is the domain name of your site (such as www.rackspace.com).
         Your CNAME is set up with your individual DNS Server. For more information about using
         CNAMEs, see the <citetitle>Cloud DNS Developer Guide</citetitle> at <link
-          xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Overview-d1e65.html"
+          xlink:href="http://docs.rackspace.com/cdns/api/v1.0/cdns-devguide/content/supported_record_types.html"
           >docs.rackspace.com</link>. After your CNAME is established, set the CNAME to your Cloud
         Files CDN URI to get your site up and running on the web. </para>
         <orderedlist>
