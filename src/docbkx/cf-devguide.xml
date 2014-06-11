@@ -3071,14 +3071,17 @@ In addition to those listed in Anne's great response, a failed upload might retu
       </thead>
       <tbody>
         <tr>
+          <td colspan="3" align="center">Account services</td>
+        </tr>
+        <tr>
           <td><command>GET</command></td>
           <td>
             <programlisting>v1/{account}{?enabled_only,limit, marker,end_marker,format}</programlisting>
           </td>
-          <td>Lists CDN-enabled containers sorted by name. </td>
+          <td>Lists CDN-enabled containers sorted by name.</td>
         </tr>
         <tr>
-          <td colspan="3" align="center">Container Services</td>
+          <td colspan="3" align="center">Container services</td>
         </tr>
         <tr>
           <td><command>PUT or POST</command></td>
@@ -3102,7 +3105,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <td>Updates the CDN-enabled container metadata. </td>
         </tr>
         <tr>
-          <td colspan="3" align="center">Object Services</td>
+          <td colspan="3" align="center">Object services</td>
         </tr>
         <tr>
           <td><command>DELETE</command></td>
