@@ -85,7 +85,7 @@
         </raxm:metadata>
     </info>
     <chapter xml:id="Doc_Change_History">
-        <title>Document Change History</title>
+        <title>Document change history</title>
         <para>This version of the guide replaces and obsoletes all earlier versions. The most recent
             changes are described in the following table:</para>
         <?rax revhistory?>
@@ -116,7 +116,7 @@
                 over the CDN. A CDN-enabled container is publicly accessible. </para>
         </note>
         <figure xml:id="CFinterfaces">
-            <title>Cloud Files System Interfaces</title>
+            <title>Cloud Files system interfaces</title>
             <mediaobject>
                 <imageobject>
                     <imagedata scale="60" fileref="figures/CFinterfaces_New.png"/>
@@ -211,7 +211,7 @@
         </section> -->
     </chapter>
     <chapter xml:id="Send-Requests-To-API-d1e101">
-        <title>Sending Requests to the API</title>
+        <title>Sending requests to the API</title>
         <para>You have several options for sending requests through an API including the following: </para>
         <itemizedlist>
             <listitem>
@@ -234,7 +234,7 @@
             </listitem>
         </itemizedlist>
         <section xml:id="Prerequisites_Examples">
-            <title>Prerequisites for Running Examples</title>
+            <title>Prerequisites for running examples</title>
             <para>To run the examples in this guide, you must have the following prerequisites:
                     <itemizedlist spacing="compact">
                     <listitem>
@@ -280,7 +280,7 @@
             </orderedlist>
         </section>
         <section xml:id="Using-Curl-d1e101">
-            <title>Sending API Requests by Using cURL</title>
+            <title>Sending API requests by using cURL</title>
             <para>cURL is a command-line tool that you can use to interact with REST interfaces.
                 cURL lets you to transmit and receive HTTP requests and responses from the command
                 line or a shell script, which enables you to work with the API directly (without
@@ -291,7 +291,7 @@
             <para>The following cURL command-line options are used in this guide to run the
                 examples:</para>
             <table rules="all">
-                <caption>cURL Command-Line Options</caption>
+                <caption>cURL command-line options</caption>
                 <col width="25%"/>
                 <col width="75%"/>
                 <thead>
@@ -337,7 +337,7 @@
             </note>
         </section>
         <section xml:id="Copy-Past-Curl-d1e101">
-            <title>Copying and Pasting cURL Request Examples into a Terminal Window</title>
+            <title>Copying and pasting cURL request examples into a terminal window</title>
             <para>To run the cURL request examples shown in this guide, perform the following
                 actions:</para>
             <orderedlist>
@@ -371,7 +371,7 @@
             <para>Consider the following cURL authentication request: JSON example, which is
                 described in detail in <xref linkend="Gen-Auth-Token"/>.</para>
             <example>                
-                <title>cURL Authentication Request: JSON</title>
+                <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
                 <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '{
@@ -434,7 +434,7 @@
                 account number when making subsequent Cloud Files API calls.</para>       
     </chapter> -->
     <chapter xml:id="Service_Access_Endpoints-d1e753">
-        <title>Service Access Endpoints</title>
+        <title>Service access endpoints</title>
         <para xmlns:wadl="http://wadl.dev.java.net/2009/02">Cloud Files is a regionalized service.
             You can create your Cloud Files containers in any Rackspace data center. The user of the
             service is responsible for appropriate replication, caching, and overall maintenance of
@@ -443,7 +443,7 @@
             service component of your Cloud Files API calls are summarized in the following
             table.</para>
         <table xml:id="Endpoints-Table-d1e001" rules="all">
-            <caption>Regionalized Service Endpoints for the Storage Service</caption>
+            <caption>Regionalized service endpoints for the storage service</caption>
             <thead>
                 <tr align="center">
                     <td colspan="2">Region</td>
@@ -551,7 +551,7 @@
                         linkend="CDN-Enabling_the_Container-d1e3123"/>. </para>
             </note>
             <table rules="all">
-                <caption>Regionalized Service Endpoints for the CDN Management Service</caption>
+                <caption>Regionalized service endpoints for the CDN management service</caption>
                 <thead>
                     <tr align="center">
                         <td colspan="2">Region</td>
@@ -599,7 +599,7 @@
             service catalog returned by the authentication response. </para>
     </chapter>
     <chapter xml:id="Using_the_API_Directly">
-        <title>Using the API Directly by Using cURL</title>
+        <title>Using the API directly by using cURL</title>
         <para>This chapter contains simple examples for authentication and some basic Cloud Files
             requests that you will commonly use. Example requests are provided in cURL, followed by
             the response. </para>
@@ -614,7 +614,7 @@
         <para>For more information about all Cloud Files operations, see the <emphasis role="italic"
                 >Cloud Files Developer Guide</emphasis>.</para>
         <section xml:id="Gen-Auth-Token">
-            <title>Generating an Authentication Token</title>
+            <title>Generating an authentication token</title>
             <para>Your first step must always be to generate an authentication token. You must then
                 include the authentication token in each request in the <code>X-Auth-Token</code>
                 header. </para>
@@ -675,7 +675,7 @@
                     <command>POST</command> request to the HTTP server and the <code>-i</code>
                 option to send the HTTP response to terminal output.</para>
             <example>
-                <title>cURL Authentication Request: JSON</title>
+                <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
                 <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
 '{
@@ -708,7 +708,7 @@
                         >yourAccountID</emphasis> specified in the
                 examples in this guide.</para>
             <example>
-                <title>Authenticate Response with Partial Service Catalog Showing cloudFiles and
+                <title>Authenticate response with partial service catalog showing cloudFiles and
                     cloudFilesCDN: JSON</title>
                 <programlisting language="json"><xi:include href="../../src/docbkx/samples/auth-20-gettingStartedGuide.json" parse="text"/></programlisting>
             </example>
@@ -717,7 +717,7 @@
                     <command>POST</command> requests for the &PRODNAME; API.</para>
         </section>
         <section xml:id="Creating_a_Storage_Container-d1e3026">
-            <title>Creating a Storage Container</title>
+            <title>Creating a storage container</title>
             <para> Before uploading any data to Cloud Files, you must create a storage container.
                 You do this with a &PUT; request. </para>
             <para>The HTTP request must include a
@@ -728,22 +728,18 @@
             <para>An HTTP status code of 201 (Created) in the response indicates that the container
                 was successfully created.</para>                                   
             <example>
-                <title>cURL Create Storage Container</title>
-                <programlisting language="bash">
-curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 201 Created
+                <title>cURL create storage container</title>
+                <programlisting language="bash">curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
+                <programlisting language="json">HTTP/1.1 201 Created
 Content-Length: 0
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: txfaf60e1d2a844e5ca9998-0053569d54dfw1
-Date: Tue, 22 Apr 2014 16:48:21 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 16:48:21 GMT</programlisting>
             </example>
         </section>
         <section xml:id="Uploading_a_Storage_Object-d1e3067">
-            <title>Uploading an Object </title>
+            <title>Uploading an object </title>
             <para>After creating a container, you can upload a file to it. You do this with a &PUT;
                 request. You must ensure that the object's <code>Content-Type</code> is set
                 correctly so that the receiving server knows what kind of file it is. This is the
@@ -757,26 +753,22 @@ Date: Tue, 22 Apr 2014 16:48:21 GMT
             <para>An HTTP status code of 201 (Created) in the response indicates that the object was
                 successfully uploaded.</para>
             <example>
-                <title>cURL Upload an Object</title>
-                <programlisting language="bash">
-curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
+                <title>cURL upload an object</title>
+                <programlisting language="bash">curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "Content-Type: image/jpeg" \
--H "Content-Length: 0"
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 201 Created
+-H "Content-Length: 0"</programlisting>
+                <programlisting language="json">HTTP/1.1 201 Created
 Last-Modified: Tue, 22 Apr 2014 17:02:35 GMT
 Content-Length: 0
 Etag: d41d8cd98f00b204e9800998ecf8427e
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: tx4f2953d5969d4c40ada04-005356a0aadfw1
-Date: Tue, 22 Apr 2014 17:02:34 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 17:02:34 GMT</programlisting>
             </example>
         </section>
         <section xml:id="updateObjectMetadata-d1e">
-            <title>Updating Object Metadata</title>
+            <title>Updating object metadata</title>
             <para>You can send a <command>POST</command> request to set or update custom metadata
                 for existing objects. Metadata is set by using the header <code>X-Object-Meta-name:
                     value</code>, where <emphasis role="italic">name</emphasis> is the custom name
@@ -789,24 +781,20 @@ Date: Tue, 22 Apr 2014 17:02:34 GMT
                 (Accepted) in the response indicates that the metadata for the object was
                 successfully updated.</para>
             <example>
-                <title>cURL Update Object Metadata</title>
-                <programlisting language="bash">
-curl -i -X POST https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+                <title>cURL update object metadata</title>
+                <programlisting language="bash">curl -i -X POST https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "X-Object-Meta-ImageType: png" \
--H "X-Object-Meta-ImageSize: 400 MB"
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 202 Accepted
+-H "X-Object-Meta-ImageSize: 400 MB"</programlisting>
+                <programlisting language="json">HTTP/1.1 202 Accepted
 Content-Length: 76
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: txffc66e0337ae4cd19e79c-005356a1abdfw1
-Date: Tue, 22 Apr 2014 17:06:51 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 17:06:51 GMT</programlisting>
             </example>
         </section>
         <section xml:id="retrieveObject-d1e">
-            <title>Retrieving an Object</title>
+            <title>Retrieving an object</title>
             <para>You can send a <command>GET</command> request to get the object content and
                 metadata. </para>
             <para>The HTTP request must include a header to specify the authentication token. </para>
@@ -816,13 +804,10 @@ Date: Tue, 22 Apr 2014 17:06:51 GMT
             <para>An HTTP status code of 200
                 (OK) in the response indicates that the object was successfully retrieved.</para>
             <example>
-                <title>cURL Retrieve an Object</title>
-                <programlisting language="bash">
-curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 200 OK
+                <title>cURL retrieve an object</title>
+                <programlisting language="bash">curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
+                <programlisting language="json">HTTP/1.1 200 OK
 Content-Length: 0
 Accept-Ranges: bytes
 X-Object-Meta-Imagetype: png
@@ -834,12 +819,11 @@ Content-Type: image/jpeg
 X-Trans-Id: txad3571ebcee24cabb387a-005356a229dfw1
 Date: Tue, 22 Apr 2014 17:08:57 GMT 
 
-[ ...object content...]
-</programlisting>
+[ ...object content...]</programlisting>
             </example>
         </section>
         <section xml:id="deleteObject-d1e">
-            <title>Deleting an Object</title>
+            <title>Deleting an object</title>
             <para>You can send a <command>DELETE</command> request to the storage service to delete
                 an object in a container. </para>
             <para>The HTTP request must include a header to specify the authentication token. </para>
@@ -857,22 +841,18 @@ Date: Tue, 22 Apr 2014 17:08:57 GMT
                 more information about object versioning, see the <citetitle>Cloud Files Developer
                     Guide</citetitle>. </para>
             <example>
-                <title>cURL Delete an Object</title>
-                <programlisting language="bash">
-curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 204 No Content
+                <title>cURL delete an object</title>
+                <programlisting language="bash">curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
+                <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: tx32fae72bccc94cb68d605-005356a2badfw1
-Date: Tue, 22 Apr 2014 17:11:22 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 17:11:22 GMT</programlisting>
             </example>
         </section>
         <section xml:id="deleteContainer-d1e">
-            <title>Deleting a Container</title>
+            <title>Deleting a container</title>
             <para>You can send a <command>DELETE</command> request to the storage service to delete
                 a container. The container must be empty before you can delete it. </para>
             <para>The HTTP request must include a header to specify the authentication token. </para>
@@ -883,22 +863,18 @@ Date: Tue, 22 Apr 2014 17:11:22 GMT
                 (No Content) in the response indicates that the container was successfully
                 deleted.</para>
             <example>
-                <title>cURL Delete a Container</title>
-                <programlisting language="bash">
-curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>"  
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 204 No Content
+                <title>cURL delete a Container</title>
+                <programlisting language="bash">curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>"  </programlisting>
+                <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: tx4b8836bcc20a457d9bbe4-005356a30fdfw1
-Date: Tue, 22 Apr 2014 17:12:47 GMT     
-</programlisting>
+Date: Tue, 22 Apr 2014 17:12:47 GMT     </programlisting>
             </example>
         </section>
         <section xml:id="Show-Account-Details-d1e101">
-            <title>Showing Account Details</title>
+            <title>Showing account details</title>
             <para>You can send a
                     <command>GET</command> request to show account details and lists containers.
                 Using the <code>format</code> query parameter on the request causes the list to
@@ -913,13 +889,10 @@ Date: Tue, 22 Apr 2014 17:12:47 GMT
                 (OK) in the response indicates that the account and container details were
                 successfully retrieved.</para>
             <example>
-                <title>cURL Show Account Details</title>
-                <programlisting language="bash">
-curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAccountID</emphasis>?format=json \
--H "X-Auth-Token: <emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAuthToken</emphasis>"  
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 200 OK
+                <title>cURL show account details</title>
+                <programlisting language="bash">curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAccountID</emphasis>?format=json \
+-H "X-Auth-Token: <emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAuthToken</emphasis>"  </programlisting>
+                <programlisting language="json">HTTP/1.1 200 OK
 Content-Length: 111
 X-Account-Object-Count: 573
 X-Timestamp: 1369081921.78518
@@ -932,13 +905,23 @@ Accept-Ranges: bytes
 X-Trans-Id: tx6c802728f41b4804812ee-005356a3c8dfw1
 Date: Tue, 22 Apr 2014 17:15:52 GMT
 
-[{"count": 0, "bytes": 0, "name": "newcontainer"}, {"count": 573, "bytes": 14268918, "name": "wordpressfiles"}]
-</programlisting>
+ [
+  {
+    "count": 0,
+    "bytes": 0,
+    "name": "newcontainer"
+  },
+  {
+    "count": 573,
+    "bytes": 14268918,
+    "name": "wordpressfiles"
+  }
+] </programlisting>
             </example>
         </section>
         <section xml:id="Determining_Storage_Usage-d1e2976"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-            <title>Determining Storage Usage</title>
+            <title>Determining storage usage</title>
             <para>You can send a <command>HEAD</command> request to the storage service to determine
                 how much data you have stored in the system and the number of containers you are
                 using. </para>
@@ -952,13 +935,10 @@ Date: Tue, 22 Apr 2014 17:15:52 GMT
                 number of containers in this storage account and the total bytes stored for the
                 entire account.</para>
             <example>
-                <title>cURL Determine Storage Usage</title>
-                <programlisting language="bash">
-curl -i -X HEAD https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis> \
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 204 No Content
+                <title>cURL determine storage usage</title>
+                <programlisting language="bash">curl -i -X HEAD https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis> \
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
+                <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
 X-Account-Object-Count: 573
 X-Timestamp: 1369081921.78518
@@ -969,13 +949,12 @@ X-Account-Container-Count: 2
 Content-Type: text/plain; charset=utf-8
 Accept-Ranges: bytes
 X-Trans-Id: tx0618e82d44394a6b8c5fb-005356a46fdfw1
-Date: Tue, 22 Apr 2014 17:18:39 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 17:18:39 GMT</programlisting>
             </example>
         </section>
         <section xml:id="CDN-Enabling_the_Container-d1e3123"
             xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-            <title>CDN-Enabling the Container and Setting a TTL</title>
+            <title>CDN-enabling the container and setting a TTL</title>
             <para>After creating a container and storing a file in it, you can choose to make the
                 file publicly readable. Because the data in Cloud Files is private, you share your
                 files through the content delivery network (CDN). To CDN-enable a container, issue a
@@ -999,15 +978,12 @@ Date: Tue, 22 Apr 2014 17:18:39 GMT
                 URI with the object name to access the file over a secure SSL connection through the
                 CDN.</para>
             <example>
-                <title>cURL CDN-Enable Container and Set TTL</title>
-                <programlisting language="bash">
-curl -i -X PUT https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+                <title>cURL CDN-enable container and set TTL</title>
+                <programlisting language="bash">curl -i -X PUT https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "<emphasis role="bold">X-CDN-Enabled: True</emphasis>" \
--H "<emphasis role="bold">X-TTL: 604800</emphasis>"
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 201 Created
+-H "<emphasis role="bold">X-TTL: 604800</emphasis>"</programlisting>
+                <programlisting language="json">HTTP/1.1 201 Created
 Content-Length: 0
 X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com
 X-Cdn-Ios-Uri: http://7a701469fe9980c577e9-24695493c49b279502b280c6ecd262b5.iosr.cf6.rackcdn.com
@@ -1015,12 +991,11 @@ X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.
 Content-Type: text/html; charset=UTF-8
 X-Cdn-Streaming-Uri: http://ce3a54aaf724a75455d6-24695493c49b279502b280c6ecd262b5.r17.stream.cf6.rackcdn.com
 X-Trans-Id: txc2b9b4ef77fd45f28c2d2-005356adfchkg1
-Date: Tue, 22 Apr 2014 17:59:24 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 17:59:24 GMT</programlisting>
             </example>
         </section>
         <section xml:id="viewCDNContainerDetails-d1e">
-            <title>Viewing CDN-Enabled Container Details</title>
+            <title>Viewing CDN-enabled container details</title>
             <para>To view details about a container in the CDN, issue a <command>HEAD</command>
                 request against the CDN management service.</para>
             <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
@@ -1032,13 +1007,10 @@ Date: Tue, 22 Apr 2014 17:59:24 GMT
                 container details were successfully retrieved. You can confirm the TTL that you set
                 in <xref linkend="CDN-Enabling_the_Container-d1e3123"/>.</para>
             <example>
-                <title>cURL View CDN-Enabled Container Details</title>
-                <programlisting language="bash">
-curl -i -X HEAD https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
--H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" 
-</programlisting>
-                <programlisting language="json">
-TTP/1.1 204 No Content
+                <title>cURL view CDN-enabled container details</title>
+                <programlisting language="bash">curl -i -X HEAD https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+-H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
+                <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
 X-Cdn-Ssl-Uri: https://c93f9b29cd3c6bd865ee-24695493c49b279502b280c6ecd262b5.ssl.cf6.rackcdn.com
 X-Ttl: 604800
@@ -1049,12 +1021,11 @@ X-Cdn-Uri: http://98199d7b2503ac330f05-24695493c49b279502b280c6ecd262b5.r17.cf6.
 Content-Type: text/html; charset=UTF-8
 X-Cdn-Streaming-Uri: http://ce3a54aaf724a75455d6-24695493c49b279502b280c6ecd262b5.r17.stream.cf6.rackcdn.com
 X-Trans-Id: txe291eebdfd96468995a80-005356b167hkg1
-Date: Tue, 22 Apr 2014 18:13:59 GMT
-</programlisting>
+Date: Tue, 22 Apr 2014 18:13:59 GMT</programlisting>
             </example>
         </section>
         <section xml:id="purgeCDNData-d1e">
-            <title>Purging an Object from a CDN-Enabled Container </title>
+            <title>Purging an object from a CDN-enabled container </title>
             <para>When you find it necessary to remove a CDN-enabled object from public access
                 before the TTL expires, you can issue a <command>DELETE</command> request against
                 the object in the CDN management service (or you can create a support ticket to
@@ -1076,23 +1047,19 @@ Date: Tue, 22 Apr 2014 18:13:59 GMT
             <para>Because there are so many edge servers around the world, purging an object might
                 take a long time. Be patient while waiting for the emailed response. </para>
             <example>
-                <title>cURL Purge an Object from a CDN-Enabled Container</title>
-                <programlisting language="bash">
-curl -i -X DELETE https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
+                <title>cURL purge an object from a CDN-enabled container</title>
+                <programlisting language="bash">curl -i -X DELETE https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" /
--H "X-Purge-Email: <emphasis role="bold">yourEmail@yourDomain.com</emphasis>"      
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 204 No Content
+-H "X-Purge-Email: <emphasis role="bold">yourEmail@yourDomain.com</emphasis>"      </programlisting>
+                <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
 Content-Type: text/html; charset=UTF-8
 X-Trans-Id: tx45187f74dc814ddeb43af-005356c6e1hkg1
-Date: Tue, 22 Apr 2014 19:45:39 GMT   
-</programlisting>
+Date: Tue, 22 Apr 2014 19:45:39 GMT   </programlisting>
             </example>
         </section>
         <section xml:id="disableCDN-d1e">
-            <title>Disabling CDN for a Container</title>
+            <title>Disabling CDN for a container</title>
             <para>To disable use of the CDN for a container, issue a <command>POST</command> request
                 with <code>X-CDN-Enabled: False</code> against the CDN management service. (Note
                 that the service access endpoint URL specifies the CDN system.) </para>
@@ -1104,14 +1071,11 @@ Date: Tue, 22 Apr 2014 19:45:39 GMT
             <para>An HTTP status code of 202 (Accepted) in the response indicates that the request
                 is accept for processing.  </para>
             <example>
-                <title>cURL Disable CDN for a Container</title>
-                <programlisting language="bash">
-curl -i -X POST https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
+                <title>cURL disable CDN for a container</title>
+                <programlisting language="bash">curl -i -X POST https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
--H "<emphasis role="bold">X-CDN-Enabled: False"</emphasis>
-</programlisting>
-                <programlisting language="json">
-HTTP/1.1 202 Accepted
+-H "<emphasis role="bold">X-CDN-Enabled: False"</emphasis></programlisting>
+                <programlisting language="json">HTTP/1.1 202 Accepted
 Content-Length: 76
 X-Cdn-Ssl-Uri: https://d0bba87ecb20cfe87c32-58d9a15a50acf66d588aab08348cf859.ssl.cf6.rackcdn.com
 X-Cdn-Ios-Uri: http://d03710c19b61b2c12609-58d9a15a50acf66d588aab08348cf859.iosr.cf6.rackcdn.com
@@ -1119,17 +1083,8 @@ X-Cdn-Uri: http://afab448ae0b809160b64-58d9a15a50acf66d588aab08348cf859.r57.cf6.
 Content-Type: text/html; charset=UTF-8
 X-Cdn-Streaming-Uri: http://499c627df9227c250afb-58d9a15a50acf66d588aab08348cf859.r57.stream.cf6.rackcdn.com
 X-Trans-Id: tx9f451de144d04250a96ed-00535a969bhkg1
-Date: Fri, 25 Apr 2014 17:08:43 GMT
-</programlisting>
+Date: Fri, 25 Apr 2014 17:08:43 GMT</programlisting>
             </example>
-        </section>
-        <section xml:id="Other_cURL_Commands-d1e3222"
-            xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-            <title>Other cURL Commands</title>
-            <para>You can issue any of the REST methods defined for Cloud Files with the cURL
-                utility. For example, you can use cURL to send <command>POST</command> and
-                    <command>DELETE</command> requests even though no specific examples are
-                provided.</para>
         </section>
     </chapter>
     <!--
@@ -1166,7 +1121,7 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
         </section>
     </chapter> -->
     <chapter xml:id="Tools_and_Applications_for_Cloud_Files-d1e286">
-        <title>Other Tools and Applications for Cloud Files</title>
+        <title>Other tools and applications for Cloud Files</title>
         <para> In addition to the REST API and its language-specific bindings, there are several
             other ways that you can to interact with Cloud Files. </para>
         <section xml:id="Control_Panel-d1e294">
@@ -1201,7 +1156,7 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
                 when prompted for a password, enter your API key. For more information, see the
                 FireUploader web site at <link xlink:href="http://www.fireuploader.com"
                     >http://www.fireuploader.com</link>. <figure>
-                    <title>FireUploader Interface to Cloud Files</title>
+                    <title>FireUploader interface to Cloud Files</title>
                     <mediaobject>
                         <imageobject>
                             <imagedata format="svg" align="center" scale="50"
@@ -1221,7 +1176,7 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
                 content quickly. It provides a way to upload and configure Cloud Files to distribute
                 content over the CDN. For more information, see the Cyberduck web site at <link
                     xlink:href="http://cyberduck.ch/">http://cyberduck.ch/</link>. <figure>
-                    <title>Cyberduck Interface to Cloud Files</title>
+                    <title>Cyberduck interface to Cloud Files</title>
                     <mediaobject>
                         <imageobject>
                             <imagedata format="svg" align="center" scale="80"
@@ -1268,14 +1223,13 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT
         </section>
     </chapter>
     <chapter xml:id="Additional_Resources-d1e436">
-        <title>Additional Resources</title>
+        <title>Additional resources</title>
         <para>For information about all Cloud Files API operations, see the <citetitle>Cloud Files
                 Developer Guide</citetitle> at <link xlink:href="http://docs.rackspace.com/"
                 >http://docs.rackspace.com/</link>. All you need to get started with the Cloud Files
             API is in this getting started guide and the developer guide. For additional information
-            about Cloud Files, see <link
-                xlink:href="http://www.rackspace.com/knowledge_center/product-page/cloud-files">the
-                Knowledge Center</link>.</para>
+            about Cloud Files, see the <link
+                xlink:href="http://www.rackspace.com/knowledge_center/product-page/cloud-files">Knowledge Center</link>.</para>
         <para>The official support channels (phone, chat, email, forums, and knowledge base
             articles) for Cloud Files are available through the Rackspace Cloud web site at <link
                 xlink:href="http://www.rackspace.com/cloud/files/"

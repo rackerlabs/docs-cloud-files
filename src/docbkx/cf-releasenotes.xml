@@ -64,7 +64,7 @@
 									Files Developer Guide</citetitle>.</para>
 						</listitem>
 						<listitem>
-							<para>Removed Chapter 14, "Examples Using cURL" from the <citetitle>Cloud Files Developer
+							<para>Removed Chapter 14, "Examples using cURL" from the <citetitle>Cloud Files Developer
 									Guide</citetitle>. This information is now included with other
 								cURL examples in the new <citetitle>Cloud Files Getting Started
 									Guide</citetitle>. </para>
@@ -92,9 +92,8 @@
 								imports.  </para>
 						</listitem>
 						<listitem>
-							<para>Added header descriptions to the "API Operations for Storage
-								Services" chapter in the <citetitle>Cloud Files Developer
-									Guide</citetitle>.</para>
+							<para>Added header descriptions to the "API operations for storage services" chapter in the
+									<citetitle>Cloud Files Developer Guide</citetitle>.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -104,23 +103,22 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Updated the table in the "Absolute Limits" section of the
-									<citetitle>Cloud Files Developer Guide</citetitle> to include
-								the rate limit for write operations, which is 100 operations per
-								second per container.</para>
+							<para>Updated the table in the "Absolute limits" section of the <citetitle>Cloud Files
+									Developer Guide</citetitle> to include the rate limit for write
+								operations, which is 100 operations per second per container.</para>
 						</listitem>
 						<listitem>
 							<para>Updated the following object methods to include the
 									<code>X-Detect-Content-Type</code> header in the request:</para>
 							<itemizedlist>
 								<listitem>
-									<para><command>PUT</command> (Create or Update Object)</para>
+									<para><command>PUT</command> (Create or update object)</para>
 								</listitem>
 								<listitem>
-									<para><command>POST</command> (Update Object Metadata)</para>
+									<para><command>POST</command> (Update object metadata)</para>
 								</listitem>
 								<listitem>
-									<para><command>COPY</command> (Copy Object)</para>
+									<para><command>COPY</command> (Copy object)</para>
 								</listitem>
 							</itemizedlist>
 							<para>If you set this header to <code>True</code>, the
@@ -129,8 +127,8 @@
 								Python mimetypes library based on the object path. </para>
 						</listitem>
 						<listitem>
-							<para>Reworked the "API Operations for Storage Services" chapter and the "API Operations for
-								CDN Services" chapter by using Web Application Description Language
+							<para>Reworked the "API operations for storage services" chapter and the "API operations for
+								CDN services" chapter by using Web Application Description Language
 								(WADL) files for the resource and method descriptions.</para>
 						</listitem>
 					</itemizedlist>
@@ -141,9 +139,8 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Updated the instructions for locating the API Key in the Cloud
-								Control Panel in "Retrieving the Authentication Token"
-								section.</para>
+							<para>Updated the instructions for locating the API Key in the Cloud Control Panel in
+								"Retrieving the authentication token" section.</para>
 						</listitem>
 						<listitem>
 							<para>Added a table of all API operations, which lists and briefly
@@ -153,29 +150,28 @@
 						</listitem>
 						<listitem>
 							<para>Added service access endpoints for the CDN management service component (
-									<code>cloudfilesCDN</code>) to the "Service Access Endpoints"
+									<code>cloudfilesCDN</code>) to the "Service access endpoints"
 								section.</para>
 						</listitem>
 						<listitem>
-							<para>Updated account information in the "Service Access Endpoints"
-								section to show
+							<para>Updated account information in the "Service access endpoints" section to show
 									MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
 								rather than <replaceable>1234</replaceable>.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Cloud Files Service Contract Version" section.</para>
+							<para>Added the "Cloud Files service contract version" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Absolute Limits" section.</para>
+							<para>Added the "Absolute limits" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Request and Response Types" section.</para>
+							<para>Added the "Request and response types" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Update Account Metadata" section.</para>
+							<para>Added the "Update account metadata" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Delete Account Metadata" section.</para>
+							<para>Added the "Delete account metadata" section.</para>
 						</listitem>
 						<listitem>
 							<para>In all examples, updated the <code>X-Auth-Token</code> to use the
@@ -193,13 +189,13 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Added the "Create Large Objects" section with more information
-								about Dynamic Large Objects and Static Large Objects.</para>
+							<para>Added the "Create large objects" section with more information about dynamic large
+								objects and static large objects.</para>
 						</listitem>
 						<listitem>
-							<para>Updated the "Extract Archive" section to include a note about
-								using a blank <code>Content-Type</code> to have Cloud Files
-								determine the file type for the archive.</para>
+							<para>Updated the "Extract archive" section to include a note about using a blank
+									<code>Content-Type</code> to have Cloud Files determine the file
+								type for the archive.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -232,7 +228,7 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Added the "Service Access Endpoint" section, which includes all endpoints for Cloud
+							<para>Added the "Service access endpoint" section, which includes all endpoints for Cloud
 								Files including the newest one in Hong Kong.</para>
 						</listitem>
 						<listitem>
@@ -240,8 +236,8 @@
 								Rackspace Identity v2.0.</para>
 						</listitem>
 						<listitem>
-							<para>Updated the "Create the Form" section to indicate that the value
-								of <code>redirect</code> can be empty to indicate that no redirect
+							<para>Updated the "Create the form" section to indicate that the value of
+									<code>redirect</code> can be empty to indicate that no redirect
 								is included on the form. </para>
 						</listitem>
 					</itemizedlist>
@@ -266,14 +262,14 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Updated responses to show <code>application/json</code> in the
-								"Bulk Delete" section.</para>
+							<para>Updated responses to show <code>application/json</code> in the "Bulk delete"
+								section.</para>
 						</listitem>
 						<listitem>
 							<para>Added <code>X-Container-Meta-Web-Listings</code>,
 									<code>X-Container-Meta-Web-Listings-Css</code>, and
 									<code>X-Container-Meta-Web-Directory-Type</code> to the "Create
-								a Static Website"section.</para>
+								a static website"section.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -283,9 +279,8 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Clarified information about
-									<code>redirect</code> and <code>expires</code> in the "Create
-								the Form" section. </para>
+							<para>Clarified information about <code>redirect</code> and <code>expires</code> in the
+								"Create the form" section. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -303,7 +298,7 @@
 								for authentication.</para>
 						</listitem>
 						<listitem>
-							<para>In the "CDN Object Services" section and the "Delete CDN Objects" section, added a note
+							<para>In the "CDN object services" section and the "Delete CDN objects" section, added a note
 								about removing a CDN-enabled container by setting
 									<code>X-Cdn-Enabled</code> to <code>False</code> in
 									<command>HEAD</command>.</para>
@@ -316,27 +311,26 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added a link in the "Overview" SECTION to the Knowledge Center
-								article, "Best Practices for Using Cloud Files," at <link
+							<para>Added a link in the "Overview" section to the Knowledge Center article, "Best Practices
+								for Using Cloud Files," at <link
 									xlink:href="http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files"
 									>http://www.rackspace.com/knowledge_center/article/best-practices-for-using-cloud-files</link>.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Container Quotas" section.</para>
+							<para>Added the "Container quotas" section.</para>
 						</listitem>
 						<listitem>
-							<para>Created a new section "Object Services". This section includes new
-								and previously existing information specifically related to storage
-								objects.</para>
+							<para>Created a new section "Object services". This section includes new and previously
+								existing information specifically related to storage objects.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Static Large Object Creation" section.</para>
+							<para>Added the "Static large object creation" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Bulk Operations" section.</para>
+							<para>Added the "Bulk operations" section.</para>
 						</listitem>
 						<listitem>
-							<para>Added the "Override TempURL File Names" section.</para>
+							<para>Added the "Override TempURL file names" section.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -441,7 +435,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added Bulk Import information. </para>
+							<para>Added Bulk import information. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -451,7 +445,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>Added Object Versioning and Static Web information. </para>
+							<para>Added object versioning and static web information. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -482,8 +476,8 @@
 					<itemizedlist spacing="compact">
 						<listitem>
 							<para>Revisions to clarify issues brought up in doc tickets. Formatted
-								HEAD like other commands. Standardized on URL. Added Expiring
-								Objects and ServiceNet information.</para>
+									<command>HEAD</command> like other commands. Standardized on
+								URL. Added expiring objects and service net information.</para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -571,7 +565,7 @@
 				<revdescription>
 					<itemizedlist spacing="compact">
 						<listitem>
-							<para>HEAD returns 200 instead of 204 on an object metadata
+							<para><command>HEAD</command> returns 200 instead of 204 on an object metadata
 								request.</para>
 						</listitem>
 						<listitem>
@@ -670,8 +664,8 @@
 							<para> Expanded authentication information for UK release. </para>
 						</listitem>
 						<listitem>
-							<para> Added <parameter>delimiter</parameter> as a Query Parameter and
-								server-side object copy example. </para>
+							<para> Added <parameter>delimiter</parameter> as a query parameter and server-side object
+								copy example. </para>
 						</listitem>
 					</itemizedlist>
 				</revdescription>
@@ -729,7 +723,7 @@
 		<para>Rackspace welcomes your comments, feedback, and bug reports.</para>
 	</preface>
 	<chapter xml:id="doc_change_history">
-		<title>Document Change History</title>
+		<title>Document change history</title>
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
@@ -757,10 +751,9 @@
 					headers in the <citetitle>Cloud Files Developer Guide</citetitle>.</para>
 			</listitem>
 			<listitem>
-				<para>Removed Chapter 14, "Examples Using cURL" from the <citetitle>Cloud Files
-						Developer Guide</citetitle>. This information is now included with other
-					cURL examples in the new <citetitle>Cloud Files Getting Started
-						Guide</citetitle>. </para>
+				<para>Removed Chapter 14, "Examples using cURL" from the <citetitle>Cloud Files Developer
+						Guide</citetitle>. This information is now included with other cURL examples
+					in the new <citetitle>Cloud Files Getting Started Guide</citetitle>. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -798,14 +791,14 @@
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Added the Sydney data center as a location that provides bulk imports in the "Bulk
-					Imports" section in the <citetitle>Cloud Files Developer Guide</citetitle>. </para>
+				<para>Added the Sydney data center as a location that provides bulk imports in the "Bulk import"
+					section in the <citetitle>Cloud Files Developer Guide</citetitle>. </para>
 			</listitem>
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Added header descriptions to the "API Operations for Storage Services" chapter
-					in the <citetitle>Cloud Files Developer Guide</citetitle>.</para>
+				<para>Added header descriptions to the "API operations for storage services" chapter in the
+						<citetitle>Cloud Files Developer Guide</citetitle>.</para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -818,7 +811,7 @@
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<listitem>
-				<para>Updated the table in the "Absolute Limits" section to include the rate limit for write
+				<para>Updated the table in the "Absolute limits" section to include the rate limit for write
 					operations, which is 100 operations per second per container.</para>
 			</listitem>
 			<listitem>
@@ -841,9 +834,9 @@
 				</para>
 			</listitem>
 			<listitem>
-				<para>Reworked the "API Operations for Storage Services" chapter and the "API
-					Operations for CDN Services" chapter by using Web Application Description
-					Language (WADL) files for the resource and method descriptions.</para>
+				<para>Reworked the "API operations for storage services" chapter and the "API operations for CDN
+					services" chapter by using Web Application Description Language (WADL) files for
+					the resource and method descriptions.</para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -857,8 +850,8 @@
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<title>Documentation</title>
 			<listitem>
-				<para>Updated the instructions for locating the API Key in the Cloud Control Panel
-					in "Retrieving the Authentication Token" section.</para>
+				<para>Updated the instructions for locating the API Key in the Cloud Control Panel in
+					"Retrieving the authentication token" section.</para>
 			</listitem>
 			<listitem>
 				<para>Added a table of all API operations, which lists and briefly describes all API
@@ -871,24 +864,24 @@
 					section.</para>
 			</listitem>
 			<listitem>
-				<para>Updated account information in the "Service Access Endpoints" section to show
+				<para>Updated account information in the "Service access endpoints" section to show
 						MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable>
 					rather than <replaceable>1234</replaceable>.</para>
 			</listitem>
 			<listitem>
-				<para>Added the "Cloud Files Service Contract Version" section.</para>
+				<para>Added the "Cloud Files service contract version" section.</para>
 			</listitem>
 			<listitem>
-				<para>Added the "Absolute Limits" section.</para>
+				<para>Added the "Absolute limits" section.</para>
 			</listitem>
 			<listitem>
-				<para>Added the "Request and Response Types" section.</para>
+				<para>Added the "Request and response types" section.</para>
 			</listitem>
 			<listitem>
-				<para>Added the "Update Account Metadata" section.</para>
+				<para>Added the "Update account metadata" section.</para>
 			</listitem>
 			<listitem>
-				<para>Added the "Delete Account Metadata" section.</para>
+				<para>Added the "Delete account metadata" section.</para>
 			</listitem>
 			<listitem>
 				<para>In all examples, updated the <code>X-Auth-Token</code> to use the current
@@ -909,11 +902,11 @@
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<title>Documentation</title>
 			<listitem>
-				<para>Added the "Create Large Objects" section with more information about Dynamic
-					Large Objects and Static Large Objects.</para>
+				<para>Added the "Create large objects" section with more information about dynamic large objects
+					and static large objects.</para>
 			</listitem>
 			<listitem>
-				<para>Updated the "Extract Archive" section to include a note about using a blank
+				<para>Updated the "Extract archive" section to include a note about using a blank
 						<code>Content-Type</code> to have Cloud Files determine the file type for
 					the archive.</para>
 			</listitem>
@@ -954,13 +947,12 @@
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<title>Documentation</title>
 			<listitem>
-				<para>Added the "Service Access Endpoint" section, which includes the endpoints for Cloud Files
-					Object Storage Management including the newest one in Hong Kong.</para>
+				<para>Added the "Service access endpoint" section, which includes the endpoints for Cloud Files
+					object storage management including the newest one in Hong Kong.</para>
 			</listitem>
 			<listitem>
-				<para>Updated the "Create the Form" section to indicate that the value of
-						<code>redirect</code> can be empty to indicate that no redirect is included
-					on the form. </para>
+				<para>Updated the "Create the form" section to indicate that the value of <code>redirect</code>
+					can be empty to indicate that no redirect is included on the form. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -992,14 +984,14 @@
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<title>Documentation</title>
 			<listitem>
-				<para>Updated responses to show <code>application/json</code> in the "Bulk Delete"
+				<para>Updated responses to show <code>application/json</code> in the "Bulk delete"
 					section.</para>
 			</listitem>
 			<listitem>
 				<para>Added <code>X-Container-Meta-Web-Listings</code>,
 						<code>X-Container-Meta-Web-Listings-Css</code>, and
-						<code>X-Container-Meta-Web-Directory-Type</code> to the "Create a Static
-					Website"section.</para>
+						<code>X-Container-Meta-Web-Directory-Type</code> to the "Create a static
+					website"section.</para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1013,8 +1005,8 @@
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<title>Documentation</title>
 			<listitem>
-				<para>Clarified information about <code>redirect</code> and <code>expires</code> in
-					the "Create the Form" section. </para>
+				<para>Clarified information about <code>redirect</code> and <code>expires</code> in the "Create
+					the form" section. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1036,10 +1028,9 @@
 					authentication.</para>
 			</listitem>
 			<listitem>
-				<para>In the "CDN Object Services" section and the "Delete CDN Objects" section,
-					added a note about removing a CDN-enabled container by setting
-						<code>X-Cdn-Enabled</code> to <code>False</code> in
-					<command>HEAD</command>.</para>
+				<para>In the "CDN object services" section and the "Delete CDN objects" section, added a note
+					about removing a CDN-enabled container by setting <code>X-Cdn-Enabled</code> to
+						<code>False</code> in <command>HEAD</command>.</para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1048,21 +1039,20 @@
 		<title>May 20, 2013</title>
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
-				<para>Container Quotas. </para>
+				<para>Container quotas. </para>
 			</listitem>
 			<listitem>
-				<para>Static Large Object Support (SLO). </para>
+				<para>Static large object support (SLO). </para>
 			</listitem>
 			<listitem>
-				<para>Bulk Operations (Delete and Archive Auto
-					Extraction).</para>
+				<para>Bulk operations (delete and archive auto extraction).</para>
 			</listitem>
 			<listitem>
-				<para>TempURL File Name Overrides. </para>
+				<para>TempURL file name overrides. </para>
 			</listitem>
 		</itemizedlist>
 		<!-- Enchancements -->
@@ -1072,9 +1062,9 @@
 				<para> None. </para>
 			</listitem>
 		</itemizedlist>
-		<!-- Resolved Issues -->
+		<!-- Resolved issues -->
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>None.</para>
 			</listitem>
@@ -1095,9 +1085,9 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
 				<para>Lowered pricing on bandwidth.
 				</para>
@@ -1115,9 +1105,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>None.</para>
 			</listitem>
@@ -1127,8 +1117,7 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Changed pricing in Getting Started Guide.
-				</para>
+				<para>Changed pricing in the Introduction document. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1142,12 +1131,11 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
-				<para>Added iOS Streaming.
-				</para>
+				<para>Added iOS streaming. </para>
 			</listitem>
 		</itemizedlist>
 		
@@ -1162,9 +1150,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>None.</para>
 			</listitem>
@@ -1174,8 +1162,7 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Added iOS Streaming.
-				</para>
+				<para>Added iOS streaming. </para>
 			</listitem>
 			<listitem>
 				<para>Fixed internal linking.
@@ -1190,12 +1177,11 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
-				<para>Added CORS Container Headers.
-				</para>
+				<para>Added CORS container headers. </para>
 			</listitem>
 		</itemizedlist>
 		
@@ -1210,9 +1196,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>None.</para>
 			</listitem>
@@ -1222,12 +1208,10 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Added end_marker to object list sorting.
-				</para>
+				<para>Added <code>end_marker</code> to object list sorting. </para>
 			</listitem>
 			<listitem>
-				<para>Simplified Account and Container searching.
-				</para>
+				<para>Simplified account and container searching. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1240,9 +1224,9 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
 				<para>Added Access Log Delivery.
 				</para>
@@ -1260,9 +1244,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>None.</para>
 			</listitem>
@@ -1288,9 +1272,9 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
 				<para>Added multi-region functionality.
 				</para>
@@ -1308,9 +1292,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>
 					There were no outstanding issues addressed in this release.
@@ -1322,15 +1306,11 @@
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>
-					Reworked Static Web and Authorization text.
-				</para>
+				<para> Reworked static web and authorization text. </para>
 			</listitem>
 			<listitem>
-				<para>
-					Added note on CDN charges, including link to KC offering helpful hints on
-					how to avoid being over-charged.
-				</para>
+				<para> Added note on CDN charges, including link to the Knowledge Center offering helpful hints
+					on how to avoid being over-charged. </para>
 			</listitem>
 			<listitem>
 				<para>
@@ -1346,12 +1326,11 @@
 		<para>This release contains enhancements, resolved issues, and
 			documentation changes for Cloud Files.</para>
 		
-		<!-- New Features -->
+		<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
-				<para>There were no New Features added in this release.
-				</para>
+				<para>There were no new features added in this release. </para>
 			</listitem>
 		</itemizedlist>
 		
@@ -1360,14 +1339,14 @@
 		<itemizedlist>
 			<title>Enhancements</title>
 			<listitem>
-				<para><emphasis role="bold">CDN URLs Changed</emphasis></para>
+				<para><emphasis role="bold">CDN URLs change</emphasis></para>
 				<para>
 					Changed CDN URLs to enhance scale and security of the CDN. Previous
 					existing URLs continue to work as new URLs are rolled out.
 				</para>
 			</listitem>
 			<listitem>
-				<para><emphasis role="bold">TTL Limits Change</emphasis></para>
+				<para><emphasis role="bold">TTL limits change</emphasis></para>
 				<para>
 					Time to Live (TTL) maximum refreshed to one year. Previously
 					set TTLs for existing objects in the CDN continue to work as 
@@ -1376,12 +1355,12 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Resolved Issues --> 
+		<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
-				<para>Fixed Static Web error handling. Create a custom error page for your
-					users so that they don't get generic, unbranded error pages like 404 pages.</para>
+				<para>Fixed static web error handling. Create a custom error page for your users so that they
+					don't get generic, unbranded error pages like 404 pages.</para>
 			</listitem>
 		</itemizedlist>
 		
@@ -1393,7 +1372,7 @@
 					feedback -- <emphasis role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Added paragraph on CNAMEs in Static Web based on user feedback in the <emphasis
+				<para>Added paragraph on CNAMEs in static web based on user feedback in the <emphasis
 						role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
@@ -1411,18 +1390,18 @@
 		<para>This release contains new features and documentation changes
 			for Cloud Files.</para>
 
-<!-- New Features -->
+<!-- New features -->
 		<itemizedlist>
-			<title>New Features</title>
+			<title>New features</title>
 			<listitem>
-				<para><emphasis role="bold">Static Web &amp; Custom Error Page for Static Web</emphasis></para>
-				<para>
-					Use Cloud Files to create a Web site that uses your containers and objects
-					to deliver content on the World Wide Web. <phrase security="writeronly">Create a custom error page for your
-						users so that they don't get generic, unbranded error pages like 404 pages.</phrase></para>
+				<para><emphasis role="bold">Static web and custom error page for static web</emphasis></para>
+				<para> Use Cloud Files to create a web site that uses your containers and objects to deliver
+					content on the World Wide Web. <phrase security="writeronly">Create a custom
+						error page for your users so that they don't get generic, unbranded error
+						pages like 404 pages.</phrase></para>
 			</listitem>
 			<listitem>
-				<para><emphasis role="bold">Object Versioning</emphasis></para>
+				<para><emphasis role="bold">Object versioning</emphasis></para>
 				<para>
 					Keep track of previous versions of objects from a container.
 					Assign a container to hold the non-current versions so that
@@ -1441,9 +1420,9 @@
 			</listitem>
 		</itemizedlist>
 
-<!-- Resolved Issues --> 
+<!-- Resolved issues --> 
 		<itemizedlist>
-			<title>Resolved Issues</title>
+			<title>Resolved issues</title>
 			<listitem>
 				<para>There were no outstanding issues for this release.</para>
 			</listitem>
@@ -1459,8 +1438,8 @@
 				<para>Clarified language in <emphasis role="italic">Cloud Files Introduction</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Added text and examples for Static Web, Static Web Custom Error Page, and Object
-					Versioning in the <emphasis role="italic">Cloud Files Developer
+				<para>Added text and examples for static web, static web custom error page, and object
+					versioning in the <emphasis role="italic">Cloud Files Developer
 					Guide</emphasis>. </para>
 				<para><link
 					xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html"

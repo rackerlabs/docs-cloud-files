@@ -83,7 +83,7 @@
                   <xref linkend="Containers-d1e458"/>.</para>
             </listitem>
             <listitem>
-              <para>Removed Chapter 14, "Examples Using cURL". This information is now included with
+              <para>Removed Chapter 14, "Examples using cURL". This information is now included with
                 other cURL examples in the new <citetitle>Cloud Files Getting Started
                   Guide</citetitle>. </para>
             </listitem>
@@ -130,13 +130,13 @@
                   <code>X-Detect-Content-Type</code> header in the request:</para>
               <itemizedlist>
                 <listitem>
-                  <para><command>PUT</command> (Create or Update Object)</para>
+                  <para><command>PUT</command> (Create or update object)</para>
                 </listitem>
                 <listitem>
-                  <para><command>POST</command> (Update Object Metadata)</para>
+                  <para><command>POST</command> (Update object metadata)</para>
                 </listitem>
                 <listitem>
-                  <para><command>COPY</command> (Copy Object)</para>
+                  <para><command>COPY</command> (Copy object)</para>
                 </listitem>
               </itemizedlist>
               <para>If you set this header to <code>True</code>, the <code>Content-Type</code> that
@@ -525,9 +525,9 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Revised content to clarify issues brought up in doc tickets. Formatted HEAD like
-                other commands. Standardized on URL. Added Expiring Objects and ServiceNet
-                information.</para>
+              <para>Revised content to clarify issues brought up in doc tickets. Formatted
+                  <command>HEAD</command> like other commands. Standardized on URL. Added expiring
+                objects and service net information.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -698,8 +698,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para> Removed references to ACL (Access Control List).
-              </para>
+              <para> Removed references to Access Control List (ACL). </para>
             </listitem>
             <listitem>
               <para> Fixed error in examples referring to
@@ -774,7 +773,7 @@
         <link xlink:href="mailto:support@rackspacecloud.com"
         >support@rackspacecloud.com</link>. </para>
     <section xml:id="Intended_Audience-d1e97">
-      <title>Intended Audience</title>
+      <title>Intended audience</title>
       <para>This guide is intended to assist software developers who want to develop applications
         using the Rackspace Cloud Files API. It fully documents the REST application programming
         interface (API) that allows developers to interact with the storage and CDN components of
@@ -806,13 +805,13 @@
     </section>
     <?hard-pagebreak?>
     <section xml:id="Document_Change_History-d1e141">
-      <title>Document Change History</title>
+      <title>Document change history</title>
       <para>This version of the Developer Guide replaces and obsoletes all earlier versions. The
         most recent changes are described in the following table:</para>
       <?rax revhistory?>
     </section>
     <section xml:id="Additional_Resources-d1e388">
-      <title>Additional Resources</title>
+      <title>Additional resources</title>
       <para>You can download the most current version of this document
         from the Rackspace Cloud website at <link
           xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html"
@@ -832,7 +831,7 @@
           >Language-Specific API Bindings</link>.</para>
     </section>
     <section xml:id="Pricing_Service-d1e1402">
-      <title>Pricing and Service Level</title>
+      <title>Pricing and service level</title>
       <para>Cloud Files is part of the Rackspace Cloud and your use of it through the API is billed
         according to the pricing schedule at <link
           xlink:href="http://www.rackspace.com/cloud/public/files/pricing/">
@@ -970,7 +969,7 @@
       </important>
     </section>
     <section xml:id="CDN-Enabled_Containers-d1e524">
-      <title>CDN-enabled Containers</title>
+      <title>CDN-enabled containers</title>
       <para>CDN-enabled containers serve content through the Akamai content delivery network (CDN).
         CDN-enabled containers are publicly accessible for read access, so they do not require an
         authorization token for read access. However, uploading content into a CDN-enabled container
@@ -1015,7 +1014,7 @@
           linkend="CDN_Container_Services-d1e2632"/></para>
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
-      <title>Language-Specific APIs </title>
+      <title>Language-specific APIs </title>
       <para>APIs in several popular languages are available to help put Cloud Files in the hands of
         developers. These language-specific APIs provide a layer of abstraction on top of the base
         REST API, enabling developers to work with a container and object model instead of working
@@ -1073,7 +1072,7 @@
     </section>
   </chapter>
   <chapter xml:id="General_API_Information-d1e634">
-    <title>General API Information</title>
+    <title>General API information</title>
     <info>
       <raxm:metadata
         xmlns:raxm="http://docs.rackspace.com/api/metadata">
@@ -1092,7 +1091,7 @@
         Identity service and supplying a valid user name and API access key. </para>
       <section xml:id="Geographic_Endpoints"
         xmlns:m="http://www.w3.org/1998/Math/MathML">
-        <title>Geographic Endpoints</title>
+        <title>Geographic endpoints</title>
         <para> The Rackspace Cloud Identity service serves as the entry point to all Rackspace Cloud
           APIs and is itself a RESTful web service. </para>
         <para> You can use either of the following endpoints to access the Rackspace Cloud Identity
@@ -1127,7 +1126,7 @@
       </section>
       <section xml:id="Retrieving_Auth_Token"
         xmlns:m="http://www.w3.org/1998/Math/MathML">
-        <title>Retrieving the Authentication Token</title>
+        <title>Retrieving the authentication token</title>
         <informaltable rules="all">
           <tbody>
             <tr>
@@ -1160,7 +1159,7 @@
           response to your authentication request will include a catalog of the services to which
           you have subscribed rather than the sample values shown here.</para>
         <example>
-          <title>Authentication Request: XML</title>
+          <title>Authentication request: XML</title>
           <programlistingco>
             <areaspec>
               <area xml:id="credentials.xml.user" units="linecolumn"
@@ -1174,7 +1173,7 @@
           </programlistingco>
         </example>
         <example>
-          <title>Authentication Request: JSON</title>
+          <title>Authentication request: JSON</title>
           <programlistingco>
             <areaspec>
               <area xml:id="credentials.json.user" units="linecolumn"
@@ -1246,7 +1245,7 @@
           </callout>
         </calloutlist>
         <example>
-          <title>Authentication Response: XML</title>
+          <title>Authentication response: XML</title>
           <programlistingco>
             <areaspec>
               <area xml:id="response.xml.namespaces"
@@ -1274,7 +1273,7 @@
           </programlistingco>
         </example>
         <example xml:id="auth-response-example-json">
-          <title>Authentication Response: JSON</title>
+          <title>Authentication response: JSON</title>
           <programlistingco>
             <areaspec>
               <area xml:id="response.json.namespaces"
@@ -1437,7 +1436,7 @@
         the Cloud Files API – create, read, update, delete – are assigned to specific roles, and the
         Cloud account admin user assigns these roles to account users. </para>
       <section xml:id="assigningRoles">
-        <title>Assigning Roles to Account Users</title>
+        <title>Assigning roles to account users</title>
         <para>The account owner (identity:user-admin) can create
           account users on the account and then assign roles to those
           users. The roles grant the account users specific
@@ -1472,18 +1471,18 @@
         </note>
       </section>
       <section xml:id="rolesAvailable">
-        <title>Roles Available for Cloud Files </title>
+        <title>Roles available for Cloud Files </title>
         <para>Two roles (admin and observer) can be used to access the
           Cloud Files API specifically. The following table describes
           these roles and their permissions. </para>
         <table rules="all" xml:id="RBAC_product_roles_table">
-          <caption>Cloud Files Product Roles and Permissions</caption>
+          <caption>Cloud Files product roles and permissions</caption>
           <col width="50%"/>
           <col width="50%"/>
           <thead>
             <tr>
-              <th>Role Name</th>
-              <th>Role Permissions</th>
+              <th>Role name</th>
+              <th>Role permissions</th>
             </tr>
           </thead>
           <tbody>
@@ -1507,12 +1506,11 @@
           permissions.</para>
         <table rules="all" width="100%"
           xml:id="RBAC_global_roles_table_3">
-          <caption> Multiproduct (Global) Roles and
-            Permissions</caption>
+          <caption> Multiproduct (global) roles and permissions</caption>
           <thead>
             <tr>
-              <td colspan="1">Role Name</td>
-              <td colspan="2">Role Permissions</td>
+              <td colspan="1">Role name</td>
+              <td colspan="2">Role permissions</td>
             </tr>
           </thead>
           <tbody>
@@ -1531,8 +1529,8 @@
         </table>
       </section>
       <section version="5.0" xml:id="RBAC_Role_Conflict_3">
-        <title>Resolving Conflicts between RBAC Multiproduct and Custom (Product-Specific)
-          Roles</title>
+        <title>Resolving conflicts between RBAC multiproduct and custom (product-specific)
+          roles</title>
         <para>The account owner can set roles for both multiproduct
           and Cloud Files scope, and it is important to understand how
           any potential conflicts among these roles are resolved. When
@@ -1547,10 +1545,9 @@
           <informaltable rules="all">
             <thead>
               <tr align="center">
-                <td>Permission Configuration</td>
-                <td>View of Permission in the Control Panel </td>
-                <td>Can the User Perform Product Admin Functions in
-                  the Control Panel?</td>
+                <td>Permission configuration</td>
+                <td>View of permission in the Control Panel </td>
+                <td>Can the user perform product admin functions in the Control Panel?</td>
               </tr>
             </thead>
             <tbody>
@@ -1581,7 +1578,7 @@
         </para>
       </section>
       <section version="5.0" xml:id="RBAC_API_XREF_3">
-        <title>RBAC Permissions Cross-Reference to Cloud Files API Operations</title>
+        <title>RBAC permissions cross-reference to Cloud Files API operations</title>
         <para>API operations for Cloud Files may or may not be available to all roles. To see which
           operations are permitted to invoke which calls, see the <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-cloud-files"
@@ -1591,7 +1588,7 @@
     </section>
     <section xml:id="Service-Access-Endpoints-d1e003"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Service Access Endpoints</title>
+      <title>Service access endpoints</title>
       <para>Cloud Files is a regionalized service. You can create your
         Cloud Files containers in any Rackspace data center. The user
         of the service is therefore responsible for appropriate
@@ -1601,7 +1598,7 @@
         summarized in the following table.</para>
       <para>
         <table xml:id="Endpoints-Table-d1e001" rules="all">
-          <caption>Regionalized Service Endpoints for Storage Services </caption>
+          <caption>Regionalized service endpoints for storage services </caption>
           <thead>
             <tr align="center">
               <td colspan="2">Region</td>
@@ -1716,8 +1713,7 @@
             />. </para>
         </note>
         <table rules="all">
-          <caption>Regionalized Service Endpoints for CDN Management
-            Services</caption>
+          <caption>Regionalized service endpoints for CDN management services</caption>
           <thead>
             <tr align="center">
               <td colspan="2">Region</td>
@@ -1766,7 +1762,7 @@
     </section>
     <section xml:id="Service_contract_versions"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Cloud Files Service Contract Version</title>
+      <title>Cloud Files service contract version</title>
       <para> The Cloud Files version defines the contract and build
         information for the API. </para>
       <para> The contract version denotes the data model and behavior that the API supports. The
@@ -1774,8 +1770,8 @@
         the API might be available at any given time and are not guaranteed to be compatible with
         one another. </para>
       <example>
-        <title>Example Request URL (contract version in <emphasis
-            role="strong">bold</emphasis>)</title>
+        <title>Example request URL (contract version in <emphasis role="strong"
+          >bold</emphasis>)</title>
         <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
       </example>
       <note>
@@ -1783,12 +1779,12 @@
       </note>
     </section>      
       <section xml:id="Absolute_Limits-d1e942">
-        <title>Absolute Limits</title>
+        <title>Absolute limits</title>
       <para>Absolute limits control the total number of specific objects that a user can have or
         process in Cloud Files. Absolute limits are fixed.</para>
         <para>The following table lists the absolute limits in Cloud Files.</para>
         <table rules="all">
-          <caption>Absolute Limits</caption>
+          <caption>Absolute limits</caption>
         <col width="30%"/>
         <col width="45%"/>
         <col width="25%"/>
@@ -1869,7 +1865,7 @@
       </section>
     <section xml:id="Request_Response_Types-d1e903"
       xmlns:m="http://www.w3.org/1998/Math/MathML">
-      <title>Request and Response Types</title>
+      <title>Request and response types</title>
       <para>You specify the request format by using the <code>Content-Type</code> header. The Cloud
         Files API supports both the JSON (<code xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
           >application/json</code>) and XML (<code
@@ -1896,7 +1892,7 @@
     </section>
   </chapter>
   <chapter xml:id="Overview_of_API_Operations-d1e823">
-    <title>Overview of API Operations</title>
+    <title>Overview of API operations</title>
     <para>The Cloud Files API is implemented as a set of RESTful web services. All authentication
       and container/object operations can be performed with standard HTTP calls. For more
       information about REST, see <link
@@ -1939,13 +1935,13 @@
       access key. For more information, see <xref linkend="Authentication-d1e639"/>.</para>
     <para>The following services make up the full Cloud Files product :<itemizedlist>
         <listitem>
-          <para><emphasis role="bold">Storage Service</emphasis>: The service identified with
+          <para><emphasis role="bold">Storage service</emphasis>: The service identified with
               <code>cloudFiles</code> in the service catalog (see <xref
               linkend="Retrieving_Auth_Token"/>) manages the data storage in the system. Example
             operations are creating containers and uploading objects. </para>
         </listitem>
         <listitem>
-          <para><emphasis role="bold">CDN Service</emphasis>: The service identified with
+          <para><emphasis role="bold">CDN management service</emphasis>: The service identified with
               <code>cloudFilesCDN</code> in the service catalog (see <xref
               linkend="Retrieving_Auth_Token"/>) manages the CDN feature of Cloud Files. </para>
         </listitem>
@@ -1974,7 +1970,7 @@
         container is publicly accessible. </para>
     </note>
     <figure xml:id="CFinterfaces">
-      <title>Cloud Files System Interfaces</title>
+      <title>Cloud Files system interfaces</title>
       <mediaobject>
         <imageobject>
           <imagedata scale="60" fileref="figures/CFinterfaces_New.png"
@@ -1986,7 +1982,7 @@
   <chapter xml:id="API_Operations_d1e000" 
            xmlns="http://docbook.org/ns/docbook"
            role="api-reference">
-    <title>API Operations for Storage Services</title>
+    <title>API operations for storage services</title>
    <para>This chapter describes each of the API operations provided by the Cloud Files
       service.</para>      
       <para>All requests are directed to the endpoints
@@ -2022,7 +2018,7 @@
       </listitem>
     </itemizedlist>
     <section xml:id="accountServicesOperations_d1e000">
-      <title>Account Services</title>
+      <title>Account services</title>
       <para>You can perform the operations in the following table at the account level of your Cloud
         Files account.</para>
       <para>The examples in this section use sample values for the following:</para>
@@ -2049,7 +2045,7 @@
     </section> 
   
     <section xml:id="containerServicesOperations_d1e000">
-      <title>Container Services</title>
+      <title>Container services</title>
       <para>You can perform the operations in the following table on containers in your Cloud Files
         account.</para>
       <para>The examples in this section use sample values for the following:</para>
@@ -2075,7 +2071,7 @@
     </section> 
     
     <section xml:id="objectServicesOperations_d1e000">
-      <title>Object Services</title>
+      <title>Object services</title>
       <para>You can perform the operations in the following table on objects in your Cloud Files
         containers.</para>
       <para>The examples in this section use sample values for the following:</para>
@@ -2105,7 +2101,7 @@
 
   </chapter>
   <chapter xml:id="Pseudo-Hierarchical_Folders_Directories-d1e1580" >
-    <title>Pseudo Hierarchical Folders and Directories</title>
+    <title>Pseudo hierarchical folders and directories</title>
     <remark>02-16-12 dsh reworked this section / as path and its
       elements / are not supported</remark>
     <para>Although you cannot nest directories in Cloud Files, you can simulate a hierarchical
@@ -2163,7 +2159,7 @@ photos/animals/dogs/poodle.jpg
 photos/animals/dogs/terrier.jpg</programlisting>
   </chapter>
   <chapter xml:id="containerMetadataOptions_d1e001">
-    <title>Additional Container Services Information</title>
+    <title>Additional container services information</title>
     <para>This section provides additional metadata options for containers in Cloud Files.</para>    
    <section xml:id="Container_ACLs-d1e2222">
       <title>Container Access Control Lists</title>
@@ -2197,13 +2193,13 @@ photos/animals/dogs/terrier.jpg</programlisting>
           <code>X-Container-Read</code> or <code>X-Container-Write</code> header for an existing
         container, such as <code>MyContainer</code> in the following example. </para>
       <example>
-        <title>Show container metadata request before adding ACL headers</title>
+        <title>Show container metadata before adding ACL headers: HTTP request</title>
         <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
-        <title>Show container metadata response before adding ACL headers</title>
+        <title>Show container metadata before adding ACL headers: HTTP response</title>
         <programlisting>HTTP/1.1 204 No Content
 X-Container-Object-Count: 2 
 X-Container-Bytes-Used: 76 
@@ -2215,7 +2211,7 @@ Date: Mon, 07 Apr 2014 01:29:22 GMT </programlisting>
       <para>Update the existing container to set the <code>X-Container-Read</code> and
           <code>X-Container-Write</code> metadata headers to enable read and write access for
           <code>user1</code>, <code>user2</code>, and <code>user3</code>.<example>
-          <title>Update container request to add ACL headers</title>
+          <title>Update container to add ACL headers: HTTP request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2225,13 +2221,13 @@ X-Container-Write: user1, user2, user3</emphasis></programlisting>
       </para>
       <para>Repeat the operation to show container metadata and confirm the metadata change.</para>
       <example>
-        <title>Show container metadata request after adding ACL headers</title>
+        <title>Show container metadata after adding ACL headers: HTTP request</title>
         <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
-        <title>Show container metadata response after adding ACL headers</title>
+        <title>Show container metadata after adding ACL headers: HTTP response</title>
         <programlisting>HTTP/1.1 204 No Content
 X-Container-Object-Count: 2
 <emphasis role="bold">X-Container-Read: user1, user2, user3
@@ -2248,7 +2244,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
           >"Create Cloud Files Container-Level Access Control Policies".</link></para>
     </section>
     <section xml:id="Container_Quotas-d1e2222">
-      <title>Container Quotas</title>
+      <title>Container quotas</title>
       <para>Users (most likely account administrators) who have the ability to set container
         metadata can implement simple quotas on Cloud Files containers. Setting container quotas can
         be useful for limiting containers for non-admin users, FormPost uploads, or just as a sanity
@@ -2268,13 +2264,12 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
         described in the following table.</para>
       <para>
         <table rules="all">
-          <caption>Metadata Values for Setting Container
-            Quotas</caption>
+          <caption>Metadata values for setting container quotas</caption>
           <col width="50%"/>
           <col width="50%"/>
           <thead>
             <tr>
-              <th>Metadata Header</th>
+              <th>Metadata header</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -2325,7 +2320,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
           HTTP_version” return_code bytes_sent “referrer” “user_agent”</code></para>
       <para>The following example shows log entries. </para>
       <example>
-        <title>Example Access Log Entries</title>
+        <title>Example Access Log entries</title>
         <programlisting>
    50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
         MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
@@ -2348,10 +2343,10 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
     </section>
   </chapter>
   <chapter xml:id="additionalObjectServices-d1e001">
-    <title>Additional Object Services Information</title>
+    <title>Additional object services information</title>
     <para>This sections provides additional information about using objects in Cloud Files.</para>
     <section xml:id="Chunked_Transfer_Encoding-d1e2092">
-      <title>Chunked Transfer Encoding</title>
+      <title>Chunked transfer encoding</title>
       <para>You can upload data without knowing in advance the amount of data to be uploaded. You
         can do this by specifying the HTTP header <code>Transfer-Encoding: chunked</code> and not
         using a <code>Content-Length</code> header. A good use of this feature would be performing a
@@ -2365,7 +2360,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
         manifest file to allow downloading of a concatenated object that contains all the segmented
         objects. For more information, see <xref linkend="Large_Object_Creation-d1e2019"/>.</para>
       <example>
-        <title>Upload Unspecified Quantity of Data Request</title>
+        <title>Upload unspecified quantity of data: HTTP request</title>
         <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2373,7 +2368,7 @@ Transfer-Encoding: chunked
 X-Object-Meta-PIN: 1234</programlisting>
       </example>
       <example>
-        <title>Upload Unspecified Quantity of Data Response</title>
+        <title>Upload unspecified quantity of data response</title>
         <programlisting>19
 A bunch of data broken up
 D
@@ -2382,7 +2377,7 @@ into chunks.
       </example>
     </section>
     <section xml:id="Create-Large-Objects-d10e">
-      <title>Creating Large Objects</title>
+      <title>Creating large objects</title>
       <para>The content of an object cannot be larger than 5 GB, by default. However, you can store
         a larger amount of content by using the following types of objects:</para>
       <itemizedlist>
@@ -2429,15 +2424,15 @@ into chunks.
         explained in the following table.</para>
       <?hard-pagebreak?>
       <table rules="all">
-        <caption>Comparison of Static and Dynamic Large Objects</caption>
+        <caption>Comparison of static and dynamic large objects</caption>
         <col width="33%"/>
         <col width="34%"/>
         <col width="33%"/>
         <thead>
           <tr>
             <th>Feature</th>
-            <th>Static Large Object</th>
-            <th>Dynamic Large Object</th>
+            <th>Static large object</th>
+            <th>Dynamic large object</th>
           </tr>
         </thead>
         <tbody>
@@ -2506,7 +2501,7 @@ into chunks.
         </tbody>
       </table>
       <section xml:id="Large_Object_Creation-d1e2019">
-        <title>Creating a Dynamic Large Object</title>
+        <title>Creating a dynamic large object</title>
         <para>Objects that are larger than 5 GB must be segmented into smaller segment objects
           before you upload them. You then upload the segment objects as you would any other object.
           You create a manifest object that tells Cloud Files how to find the segments that make up
@@ -2544,7 +2539,7 @@ into chunks.
         <para>The following examples show how to upload a segment of a large object, the next segment
           of a large object, and the manifest. </para>
         <example>
-          <title>Upload a Segment of a Large Object Request</title>
+          <title>Upload a segment of a large object: HTTP request</title>
           <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2552,7 +2547,7 @@ ETag: 8a964ee2a5e88be344f36c22562a6486
 Content-Length: 1</programlisting>
         </example>
         <example>
-          <title>Upload a Segment of a Large Object Response</title>
+          <title>Upload a segment of a large object response</title>
           <programlisting>s</programlisting>
         </example>
         <para>No response body is returned. A status code of 201 (Created) indicates a successful
@@ -2563,7 +2558,7 @@ Content-Length: 1</programlisting>
         <para>You can continue uploading segments as this example shows, prior to uploading the
           manifest.</para>
         <example>
-          <title>Upload the Next Segment of the Large Object Request</title>
+          <title>Upload the next segment of the large object : HTTP request</title>
           <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2571,7 +2566,7 @@ ETag: 8a964ee2a5e88be344f36c22562a6486
 Content-Length: 1</programlisting>
         </example>
         <example>
-          <title>Upload the Next Segment of the Large Object Response</title>
+          <title>Upload the next segment of the large object response</title>
           <programlisting>w</programlisting>
         </example>
         <para>Next, upload the manifest that you created that indicates the container in which the
@@ -2579,7 +2574,7 @@ Content-Length: 1</programlisting>
           created causes the concatenated object to be that much larger, but you do not need to
           re-create the manifest file for subsequent additional segments.</para>
         <example>
-          <title>Upload Manifest Request</title>
+          <title>Upload manifest: HTTP request</title>
           <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2587,7 +2582,7 @@ Content-Length: 0
 X-Object-Manifest: container/prefix/object/segments</programlisting>
         </example>
         <example>
-          <title>Upload Manifest Response</title>
+          <title>Upload manifest response</title>
           <programlisting>[...]</programlisting>
         </example>
         <para>A <command>GET</command> request to the manifest object returns the concatenation of
@@ -2607,7 +2602,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
         </note>
       </section>
       <section xml:id="Static_Large_Object-d1e2226">
-        <title>Creating a Static Large Object</title>
+        <title>Creating a static large object</title>
         <para>Static large object (SLO) support is similar to dynamic large object (DLO) support
           because it enables you to upload many objects concurrently and later download them as a
           single object. However, unlike dynamic large object support, static large object support
@@ -2644,7 +2639,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           </listitem>
         </orderedlist>
         <section xml:id="Uploading_the_Segments-d1e2228" >
-          <title>Uploading the Segments</title>
+          <title>Uploading the segments</title>
           <para>Upload your segment objects. All the segments, except the last one, need to be
             larger than 1 MB (1048576 bytes). It might help organizationally to keep them in the
             same container, but it is not required. You need the following information about each
@@ -2667,7 +2662,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           </itemizedlist>
         </section>
         <section  xml:id="Uploading_the_Manifest-d1e2227">
-          <title>Uploading the Manifest</title>
+          <title>Uploading the manifest</title>
           <para>After you have uploaded the objects to be concatenated, you upload a manifest
             object. The request must use the <command>PUT</command> operation, with the following
             query parameter at the end of the manifest object name:</para>
@@ -2694,7 +2689,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             that in contrast to dynamic large objects, you can use a number of containers and the
             object names do not have to conform to a specific pattern.</para>
           <example>
-            <title>Static Large Object Manifest List</title>
+            <title>Static large object manifest list</title>
             <programlisting>[
         {
           "path": "/mycontainer/objseg1",
@@ -2745,7 +2740,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             referenced by multiple manifests.</para>
         </section>
         <section xml:id="Retrieving_a_Large_Object-d1e2227">
-          <title>Retrieving a Large Object</title>
+          <title>Retrieving a large object</title>
           <para>A <command>GET</command> request to the manifest object returns the concatenated
             content of the segment objects listed in the manifest. If any of the segments from the
             manifest are not found or their <code>ETag</code> or <code>Content-Length</code> values
@@ -2777,7 +2772,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             is for debugging.</para>
         </section>
         <section xml:id="Deleting_a_Large_Object-d1e2228">
-          <title>Deleting a Large Object </title>
+          <title>Deleting a large object </title>
           <para>A <command>DELETE</command> operation on a manifest object deletes the manifest
             object itself. The segment objects are not affected. </para>
           <para>A <command>DELETE</command> operation with the following query parameter deletes all
@@ -2787,7 +2782,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           <programlisting>?multipart-manifest=delete</programlisting>
         </section>
         <section xml:id="Modifying_a_Large_Object-d1e2229">
-          <title>Modifying a Large Object </title>
+          <title>Modifying a large object </title>
           <para><command>PUT</command> and <command>POST</command> operations work as follows: </para>
           <itemizedlist>
             <listitem>
@@ -2801,7 +2796,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           </itemizedlist>
         </section>
         <section  xml:id="Listings_of_Containers-d1e2230">
-          <title>Listing Containers with Static Large Objects </title>
+          <title>Listing containers with static large objects </title>
           <para>In a list of containers, the size listed for a static large object manifest object
             is the total size of the concatenated segments in the manifest, not the size of the
             manifest file itself. The overall <code>X-Container-Bytes-Used</code> for the container
@@ -2814,7 +2809,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
     </section>
     <section
       xml:id="Enabling_File_Compression_with_the_Content-Encoding_Header-d1e2198">
-      <title>Enabling File Compression</title>
+      <title>Enabling file compression</title>
       <para>The <code>Content-Encoding</code> header allows a file
         to be compressed while still preserving the identity of the
         underlying media type of the file, for example, a
@@ -2833,7 +2828,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
       <para>In the following example, the <code>Content-Encoding</code> header indicates the type
         of encoding used on the data.</para>
       <example>
-        <title>Request with Content-Encoding</title>
+        <title>Content-Encoding: HTTP request</title>
         <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2843,14 +2838,14 @@ Content-Encoding: gzip</programlisting>
     </section>
     <section
       xml:id="Enabling_Browser_Bypass_with_the_Content-Disposition_Header-d1e2219">
-      <title>Enabling Bypass of Browser Behavior</title>
+      <title>Enabling bypass of browser behavior</title>
       <para>When an object is assigned the <code>Content-Disposition</code> header, you can override
         a browser's default behavior for a file so that the browser prompts to save the file rather
         than displaying it by using default browser settings.</para>
       <para>In the following example, the <code>Content-Disposition</code> header is assigned with
         an attachment type that indicates how the file should be downloaded.</para>
       <example>
-        <title>Request with Content-Disposition</title>
+        <title>Content-Disposition: HTTP request</title>
         <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2859,7 +2854,7 @@ Content-Disposition: attachment; filename=platmap.tif</programlisting>
       </example>
     </section>
     <section xml:id="Expiring_Objects-e1e3228">
-      <title>Expiring Objects</title>
+      <title>Expiring objects</title>
       <para>When you perform a <command>PUT</command> or <command>POST</command> operation on an
         object and assign it either an <code>X-Delete-After</code> or <code>X-Delete-At</code>
         header, the object is scheduled for deletion. This feature is helpful for objects that you
@@ -2884,7 +2879,7 @@ Content-Disposition: attachment; filename=platmap.tif</programlisting>
         and a batch converter, go to <link xlink:href="http://www.epochconverter.com/"
           >http://www.epochconverter.com/</link>.</para>
       <example>
-        <title>X-Delete-At Request </title>
+        <title>X-Delete-At: HTTP request </title>
         <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2894,7 +2889,7 @@ X-Delete-At: 1339429105</programlisting>
       <para>In the following example, the <code>X-Delete-After</code> header is assigned a value
         in seconds, equivalent to 10 days. After this time, the object expires. </para>
       <example>
-        <title>X-Delete-After Request </title>
+        <title>X-Delete-After: HTTP request </title>
         <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -2903,7 +2898,7 @@ X-Delete-After: 864000</programlisting>
       </example>
     </section>
     <section xml:id="Object_Versioning-e1e3230">
-      <title>Object Versioning</title>
+      <title>Object versioning</title>
       <para>Object versioning enables you to store multiple versions of your content so that you can
         recover from unintended overwrites and deletions. It provides an easy way to implement
         version control that can be used on any type of content. </para>
@@ -2968,7 +2963,7 @@ X-Delete-After: 864000</programlisting>
       <para>To turn off object versioning on your current version container, remove its
           <code>X-Versions-Location</code> metadata by sending a key value that is an empty string. </para>
       <example>
-        <title>Object Versioning with cURL</title>
+        <title>Object versioning with cURL</title>
         <orderedlist>
           <listitem>
             <para>Create a version-storing container named <code>versions</code>.</para>
@@ -3033,7 +3028,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
 417 Expectation Failed - The server cannot meet the requirements of the Expect request-header field
 -->
   <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
-    <title>API Operations for CDN Services</title>
+    <title>API operations for CDN services</title>
     <para>This chapter provides further description for several of the API operations described in
         <xref linkend="API_Operations_d1e000"/>. These API operations have a specific purpose for
       the content delivery network (CDN) service that is available in Cloud Files.</para>
@@ -3063,10 +3058,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
           on objects.</para>
       </listitem>
     </itemizedlist>
-    <informaltable rules="all" width="1117">
-      <col width="112pt"/>
-      <col width="853pt"/>
-      <col width="144pt"/>
+    <informaltable rules="all">
+      <col width="20%"/>
+      <col width="40%"/>
+      <col width="40%"/>
       <thead align="center">
         <tr>
           <th>Method</th>
@@ -3120,7 +3115,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
     </informaltable>
 
     <section xml:id="CDN_Account_Operations-d1e2397">
-      <title>CDN Account Services</title>
+      <title>CDN account services</title>
       <para>You can perform the operation in the following table at the account level of your Cloud
         Files CDN account.</para>
       <para>The examples in this section use sample values for the following:</para>
@@ -3143,7 +3138,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
     </section>
     
     <section xml:id="CDN_Container_Services-d1e2632">
-      <title>CDN Container Services</title>
+      <title>CDN container services</title>
       <para>You can perform the operations in the following table on CDN-enabled containers in your
         Cloud Files account.</para>
       <para>When you CDN-enable a container, all the objects within it become available on the CDN.
@@ -3162,7 +3157,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
           <code>http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.
           r10.cf1.rackcdn.com/mydog.jpg</code>. </para>
       <note>
-        <title>Note on CDN Charges</title>
+        <title>Note on CDN charges</title>
         <para>Monitor your CDN charges. When you CDN-enable a container, not only can anyone view
           it, but anyone can link to it. We recommend that you monitor your bandwidth usage and
           charges in the Cloud Control Panel so that you know if someone is hot-linking your
@@ -3196,7 +3191,7 @@ In addition to those listed in Anne's great response, a failed upload might retu
     </section>
     
     <section xml:id="CDN_Object_Services">
-      <title>CDN Object Services</title>
+      <title>CDN object services</title>
       <para>You can perform the operation in the following table on objects in your Cloud Files
         CDN-enabled containers.</para>
      
@@ -3226,11 +3221,11 @@ In addition to those listed in Anne's great response, a failed upload might retu
     </section>
   </chapter> 
   <chapter xml:id="AdditionalCDNServicesInformation" >
-    <title>Additional CDN Services Information</title>
+    <title>Additional CDN services information</title>
     <para>The chapter provides additional information about working with the Cloud Files CDN
       services.</para>
     <section xml:id="Purge_CDN-Enabled_Containers_or_Objects-d1e2747">
-      <title>Purge CDN-Enabled Containers</title>
+      <title>Purge CDN-enabled containers</title>
       <para>For a container to be purged from the CDN, you can either wait for the TTL to expire, or
         you can request that Rackspace remove, or purge, a CDN-enabled container from the network.
         After you have made the request to Rackspace through a support ticket, the system purges the
@@ -3245,19 +3240,19 @@ In addition to those listed in Anne's great response, a failed upload might retu
       </note>
     </section>
   <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
-    <title>CDN-Enabled Containers Served through SSL</title>
+    <title>CDN-enabled containers served through SSL</title>
     <para>A &HEAD; operation for a CDN-enabled container returns an SSL URI,
           <code>X-Cdn-Ssl-Uri</code>, in addition to the other headers associated with CDN. This
         feature enables you to use HTTPS protocol in URIs that are used for requesting objects
         stored in CDN-enabled containers. </para>
     <example>
-      <title>CDN-Enabled Container Metadata Request</title>
+      <title>CDN-enabled container metadata: HTTP request</title>
       <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
-      <title>CDN-Enabled Container Metadata Response with SSL URI</title>
+      <title>CDN-enabled container metadata with SSL URI: HTTP response</title>
       <programlisting>HTTP/1.1 204 No Content
 <emphasis role="bold">X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com</emphasis>
 X-Ttl: 259200
@@ -3270,7 +3265,7 @@ Content-Length: 0</programlisting>
     </example>
   </section>
   <section xml:id="Streaming-CDN-Enabled_Containers-d1f3721">
-    <title>Streaming CDN-Enabled Containers </title>
+    <title>Streaming CDN-enabled containers </title>
     <para>In addition to the other headers associated with CDN,
       a &HEAD; operation against a CDN-enabled container returns
       the following streaming URIs to enable the streaming
@@ -3292,13 +3287,13 @@ Content-Length: 0</programlisting>
     <para>For information about streaming to iOS devices, see
       <xref linkend="iOS-Streaming-d1f3725"/>.</para>
     <example>
-      <title>CDN-Enabled Container Metadata Request </title>
+      <title>CDN-enabled container metadata: HTTP request </title>
       <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
-      <title>CDN-Enabled Container Metadata Response with Streaming URIs</title>
+      <title>CDN-enabled container metadata with streaming URIs: HTTP response</title>
       <programlisting>HTTP/1.1 204 No Content
 X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
 X-Ttl: 259200
@@ -3314,7 +3309,7 @@ Content-Length: 0
     </example>
   </section>
   <section xml:id="iOS-Streaming-d1f3725">
-    <title>iOS Streaming</title>
+    <title>iOS streaming</title>
     <para>The Cloud Files CDN allows you to stream video to iOS devices without needing to convert
         your video. After you CDN-enable your container, you have the tools necessary for streaming
         media to multiple devices. To leverage this ability, you must check the client's User Agent
@@ -3341,7 +3336,7 @@ Content-Length: 0
               URI for your container plus the name of your content. In the following example, the
               streaming video is MobyDick.mp4.</para>
             <example>
-              <title>HTML 5 Video Element</title>
+              <title>HTML 5 video element</title>
               <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
   &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
   r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
@@ -3359,7 +3354,7 @@ Content-Length: 0
                 <code>videotag</code> to the iOS Streaming URI. Remember to add your content's name
               to the end of the iOS streaming URI.</para>
             <example>
-              <title>JavaScript for User Agent Check</title>
+              <title>JavaScript for User Agent check</title>
               <programlisting>&lt;script type=”text/javascript”&gt;
 
     function isIOS(){
@@ -3393,14 +3388,14 @@ i))) != null;
   </chapter>
   
     <chapter xml:id="StaticWeb">
-      <title>Static Websites Using CDN-Enabled Containers</title>
+      <title>Static websites using CDN-enabled containers</title>
       <para>
         <remark security="writeronly">2012-05-14 dsh: Added for
           2012-05-14 release</remark> This chapter describes how to
         use your CDN-enabled containers to create static websites in
         Cloud Files. </para>
       <section xml:id="Create_Static_Website-dle4000">
-        <title>Create Static Website</title>
+        <title>Create static website</title>
         <para>You can use your Cloud Files account to create a static website. First, you must
         CDN-enable a storage container. Any HTML or static web pages in the container become
         available through a static website after you set the <code>X-Container-Meta-Web-Index</code>
@@ -3446,7 +3441,7 @@ i))) != null;
           >docs.rackspace.com</link>. After your CNAME is established, set the CNAME to your Cloud
         Files CDN URI to get your site up and running on the web. </para>
         <orderedlist>
-          <title>Set Up a Static Website </title>
+          <title>Set up a static website </title>
           <para> Following are the step-by-step instructions for setting up a static website. </para>
           <listitem>
             <para>Create a container. </para>
@@ -3483,14 +3478,14 @@ i))) != null;
           </listitem>
         </orderedlist>
         <example xml:id='setUpStaticWebEx'>
-          <title>Set Up Static Web</title>
+          <title>Set up static web</title>
           <programlisting language="bash">cURL -X POST -H "X-Container-Meta-Web-Index: index.html" -H "X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c" "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/"</programlisting>
         </example>
         <para>After your container has an index page set and your
           domain host has your CNAME recorded, your static website is
           ready. </para>
         <example>
-          <title>Container Setup for Static Website</title>
+          <title>Container setup for static website</title>
           <programlisting>container/index.html
 container/page2.html
 container/subdir/index.html
@@ -3500,7 +3495,7 @@ container/subdir/pageX.html</programlisting>
           <code>X-Container-Meta-Web-Index</code> is set to <code>index.html</code>. The results on
         the right of the example are the pages that display in the web browser. </para>
         <example>
-          <title>Static Website Enabled Container Results</title>
+          <title>Static website enabled container results</title>
           <programlisting>http://myhost                     Displays container/index.html
 http://myhost/page2.html          Displays container/page2.html
 http://myhost/subdir              Displays container/subdir/index.html
@@ -3509,7 +3504,7 @@ http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programl
         </example>
       </section>
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
-        <title>Set Error Pages for a Static Website</title>
+        <title>Set error pages for a static website</title>
         <para>
         <remark security="writeronly">2012-05-14 dsh: Added for 2012-05-14 release </remark> You can
         create and set custom error pages for visitors to your website. To do this, set the
@@ -3524,7 +3519,7 @@ http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programl
         <para>Set the <code>X-Container-Meta-Web-Error</code> metadata
           once for your entire static website. </para>
         <example>
-          <title>Set Error Pages for Static Website Request</title>
+          <title>Set error pages for static website: HTTP request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -3535,7 +3530,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
     </chapter>
   
   <chapter xml:id="Bulk_Operations-d1e2338">
-      <title>Bulk Operations </title>
+      <title>Bulk operations </title>
       <para>This chapter describes bulk operations that are available
         with Cloud Files.</para>
       <!--          
@@ -3547,7 +3542,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         </note>
 -->
       <section xml:id="Bulk_Import-d1e2094">
-        <title>Bulk Importing of Data</title>
+        <title>Bulk importing of data</title>
         <remark security="writeronly">06-11-2012 dsh: added </remark>
         <para>If you have a large amount of data to import into Cloud Files, bulk importing of data
         is available. With bulk importing, you send a physical device that contains your data to
@@ -3576,7 +3571,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         completes the data import, and ships back or destroys the device. </para>
       </section>
     <section xml:id="Extract_Archive-d1e2338">
-        <title>Extracting Archive Files</title>
+        <title>Extracting archive files</title>
         <para>An extract archive request expands tar files into a Cloud Files account. The request
         is a <command>PUT</command> operation with the <code>?extract-archive=format</code> query
         parameter specifying the format of the archive file. </para>
@@ -3633,7 +3628,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
           The following example shows the response body, formatted in
           JSON, from a successful request. </para>
         <example>
-          <title>Successful Extract Archive Response</title>
+          <title>Successful extract archive response</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3651,7 +3646,7 @@ Transfer-Encoding: chunked
         </example>
         <para>The following example shows a response with errors.</para>
         <example>
-          <title>Extract Archive Response with Errors</title>
+          <title>Extract archive response with errors</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3694,7 +3689,7 @@ Transfer-Encoding: chunked
         </note>
       </section>
       <section xml:id="Bulk_Delete-d1e2338.html">
-        <title>Bulk Delete</title>
+        <title>Bulk delete</title>
       <para>You can delete multiple objects or containers from an account by using a single bulk
         delete request, which is a <command>DELETE</command> request with the <code>?bulk-delete
           set</code> query parameter. The <code>Content-Type</code> header of the request, if set,
@@ -3718,7 +3713,7 @@ Transfer-Encoding: chunked
         OK and the response body must be parsed for actual results. The following example shows the
         response body, formatted in JSON, from a successful request. </para>
         <example>
-          <title>Successful Bulk Delete Response</title>
+          <title>Successful bulk delete response</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3737,7 +3732,7 @@ Transfer-Encoding: chunked
         </example>
         <para>The following example shows a response with errors.</para>
         <example>
-          <title>Bulk Delete Response with Errors</title>
+          <title>Bulk delete response with errors</title>
           <programlisting>HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
@@ -3788,7 +3783,7 @@ Transfer-Encoding: chunked
       </section>
   </chapter>
   <chapter xml:id="Public_Access_to_Account-d1a4440">
-    <title>Public Access to Your Cloud Files Account</title>
+    <title>Public access to your Cloud Files account</title>
     <info>
       <raxm:metadata
         xmlns:raxm="http://docs.rackspace.com/api/metadata">
@@ -3821,7 +3816,7 @@ Transfer-Encoding: chunked
           metadata key described in the next section. The TempURL is the actual URL.</para>
       </note>
       <section xml:id="Set_Account_Metadata-d1a4460">
-        <title>Set Account TempURL Metadata Key</title>
+        <title>Set account TempURL metadata key</title>
         <para>To create a TempURL, you must first set the <code>X-Account-Meta-Temp-Url-Key</code>
           metadata header on your Cloud Files account to a key that only you know. This key can be
           any arbitrary sequence. </para>
@@ -3829,7 +3824,7 @@ Transfer-Encoding: chunked
           access your TempURL. If you change it, the TempURL becomes invalid (within 60 seconds,
           which is the cache time for a key) and others will not be allowed to access it. </para>
         <example>
-          <title>Set Account Metadata Key for Public Access</title>
+          <title>Set account metadata key for public access: HTTP request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -3939,13 +3934,13 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </example>
       </section>
       <section xml:id="TempURL_File_Name_Overrides-d1e213">
-        <title>Override TempURL File Names</title>
+        <title>Override TempURL file names</title>
         <para>TempURLs support the <code>filename</code> query parameter, which you can use to
           override the <code>Content-Disposition</code> header and indicate to the browser a file
           name in which to save the file. In the following example, you see the usual TempURL
           without the file name override.</para>
         <example>
-          <title>TempURL without File Name Override</title>
+          <title>TempURL without file name override</title>
           <programlisting>
 https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485
           </programlisting>
@@ -3955,7 +3950,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           to indicate to the browser to save the file as
             <code>bob.txt</code>:</para>
         <example>
-          <title>TempURL with File Name Override</title>
+          <title>TempURL with file name override</title>
           <programlisting>
 https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt
             </programlisting>
@@ -3973,7 +3968,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
         limit is 5 GB. If your users try to upload an object larger
         than 5 GB, they will get a file size error. </para>
       <section xml:id="Set_Account_Metadata-d1a666">
-        <title>Set Account Metadata Key</title>
+        <title>Set account metadata key</title>
         <para>To allow FormPost actions on your Cloud Files account, you must first set the
             <code>X-Account-Meta-Temp-Url-Key</code> metadata header on your Cloud Files account to
           a key that only you know. This key can be any arbitrary sequence. </para>
@@ -3981,8 +3976,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           account. If you change it, the actions from a FormPost become invalid (within 60 seconds,
           which is the cache time for a key). </para>
         <example>
-          <title>Set Account Metadata Key for Public Access
-            Request</title>
+          <title>Set account metadata key for public access: HTTP request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -3992,12 +3986,12 @@ X-Account-Meta-Temp-Url-Key: yourKey
         <para>Any class 200 status code indicates success.</para>
       </section>
       <section xml:id="Create_the_Form-d1a777">
-        <title>Create the Form</title>
+        <title>Create the form</title>
         <para> To communicate between your website and your Cloud
           Files account, create a form using the following format in
           your website: </para>
         <example>
-          <title>Layout of Web Form</title>
+          <title>Layout of web form</title>
           <programlisting>
   &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
     &lt;input type="hidden" name="redirect" value="&lt;redirect-url&gt;" /&gt;
@@ -4072,7 +4066,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
           </listitem>
         </itemizedlist>
         <example>
-          <title>Generate Signature for FormPost</title>
+          <title>Generate signature for FormPost</title>
           <programlisting>
   import hmac
   from hashlib import sha1
@@ -4149,7 +4143,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
       <para>The following table lists the supported container headers. </para>
       <para>
         <table rules="all" width="500">
-          <caption>Supported CORS Container Headers</caption>
+          <caption>Supported CORS container headers</caption>
           <tbody>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Allow-Origin</code></td>
@@ -4232,7 +4226,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
         </listitem>
       </orderedlist>
       <example>
-        <title>CORS POST Request</title>
+        <title>CORS POST cURL request</title>
         <programlisting>
 curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
   -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
@@ -4260,7 +4254,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
       <para>If the request succeeds, the response header and body are displayed. If the request did
         not succeed, the response status is 0.</para>
       <example xml:id="Test-CORS-Page-d1003">
-        <title>Test CORS Page</title>
+        <title>Test CORS page</title>
         <programlisting>
 &lt;!DOCTYPE html>
 &lt;html>

@@ -97,7 +97,7 @@
 <!-- Storage Account Services Methods -->
     
     <method name="GET" id="listcontainers">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Show Account Details and List Containers">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Show account details and list containers">
             <para role="shortdesc">
                 Shows details for a specified account and lists containers, sorted by name, in the account.
             </para>
@@ -352,7 +352,7 @@
     </method>
 
     <method name="HEAD" id="retrieveaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get Account Metadata">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Get account metadata">
             <para role="shortdesc">
                 Gets account metadata.</para>
             <para>Perform a <command>HEAD</command> operation on your storage account URL to get the following information: </para>
@@ -377,7 +377,7 @@
                 </p></doc>
             </param> 
             <representation mediaType="text/xml" element="files:Files">                
-                <doc title="Get Account Metadata Request" >
+                <doc title="Get account metadata: HTTP request" >
                     <xsdxt:code href="../wadl/samples/cf-getAccountMetadata_request.txt"/>
                 </doc>
                 <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
@@ -461,7 +461,7 @@
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files">                
-                <doc title="Get Account Metadata Response" > 
+                <doc title="Get account metadata: HTTP response" > 
                     <xsdxt:code href="../wadl/samples/cf-getAccountMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -470,7 +470,7 @@
     </method>
     
     <method name="POST" id="updateaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create or Update Account Metadata">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create or update account metadata">
             <para role="shortdesc">
                 Creates or updates account metadata.
             </para>
@@ -506,7 +506,7 @@
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Create or Update Account Metadata Request">
+                <doc title="Create or update account metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-updateAccountMetadata_request.txt"/>
                 </doc>
             </representation>   
@@ -538,7 +538,7 @@
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files">
-                <doc title="Create or Update Account Metadata Response">
+                <doc title="Create or update account metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-updateAccountMetadata_response.txt"/>
                 </doc>
             </representation>       
@@ -547,7 +547,7 @@
     </method>
     
     <method name="POST" id="deleteaccountmeta">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete Account Metadata">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Delete account metadata">
             <para role="shortdesc">
                 Deletes account metadata.</para>
             <para>To delete a metadata header, use the <command>POST</command> operation to send
@@ -582,7 +582,7 @@
                     xml:lang="EN"><para>Header to send to delete account metadata. Replace <code>name</code> at the end of the header with the name for your metadata.</para></wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Delete Account Metadata Request">
+                <doc title="Delete account metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-deleteAccountMetadata_request.txt"/>
                 </doc>
             </representation>   
@@ -614,7 +614,7 @@
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files">
-                <doc title="Delete Account Metadata Response">
+                <doc title="Delete account metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteAccountMetadata_response.txt"/>
                 </doc>
             </representation> 
@@ -626,7 +626,7 @@
     
     <method name="GET" id="listcontainerobjects">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Show Container Details and List Objects">
+            title="Show container details and list objects">
             <para role="shortdesc">Shows details for a specified container and lists objects, sorted by name, in the container.</para>
             <para>This operation against a storage container name retrieves a list of the objects
                 stored in the container. You can use optional query parameters to refine the list results.</para>    
@@ -741,7 +741,7 @@
             </param>
 <!--            
                 <representation mediaType="text/xml" element="files:Files" >
-                <doc title="List Container Objects Request">                     
+                <doc title="List container objects request">                     
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_request.txt"/>
                 </doc>
             </representation> 
@@ -814,7 +814,7 @@
             </param>           
 <!--
             <representation mediaType="text/xml" xml:lang="EN">
-                <doc title="Show Container Deteails and List Objects Response">                 
+                <doc title="Show container details and list objects response">                 
                     <xsdxt:code href="../wadl/samples/cf-getContainerObjects_response.txt"/>
                 </doc>                
             </representation>
@@ -860,7 +860,7 @@
     </method>
 
     <method name="PUT" id="createcontainer">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create Container">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Create container">
             <para role="shortdesc">
                 Creates a container.
             </para>
@@ -909,12 +909,12 @@
                 </p></doc>
             </param>
             <representation mediaType="application/http" element="files:Files" >
-                <doc title="Create Container Request">
+                <doc title="Create container: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_request.txt"/>
                 </doc>
             </representation>             
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Create Container with Metadata Request">
+                <doc title="Create container with metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_request.txt"/>
                 </doc>
             </representation>     
@@ -947,12 +947,12 @@
                 </p></doc>
             </param> 
             <representation mediaType="application/xml" element="files:Files" >
-                <doc title="Create Container Response">
+                <doc title="Create container: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
                 </doc>
             </representation>             
             <representation mediaType="text/xml" element="files:Files" > 
-                <doc title="Create Container with Metadata Response">
+                <doc title="Create container with metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerWithMetadata_response.txt"/>
                 </doc>   
             </representation>     
@@ -962,7 +962,7 @@
    
     <method name="DELETE" id="deletecontainer">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Container">
+            title="Delete container">
             <para role="shortdesc">Deletes an empty container.</para>
             <para>A <command>DELETE</command> operation against a storage container permanently removes it. The container must be empty before it can be deleted.</para>
             <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects that it contains. (See <xref linkend="GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000"/>.)</para>
@@ -978,7 +978,7 @@
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Delete Container Request">
+                <doc title="Delete container: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_request.txt"/>
                 </doc>
             </representation>     
@@ -1011,7 +1011,7 @@
                 </p></doc>
             </param> 
             <representation mediaType="text/xml" element="files:Files" > 
-                <doc title="Delete Container Response">
+                <doc title="Delete container: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
                 </doc>
             </representation>     
@@ -1021,14 +1021,14 @@
  
     <method name="POST" id="updateacontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Container Metadata">
+            title="Create or update container metadata">
             <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container-level URI. These headers
                 must have the format <code>X-Container-Meta-name</code>.</para>
             <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where <code>name</code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
             <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
      <!--   <remark>5/6/2014 cyr: Adding "Deleting Container Metadata" below with information/example from David Goetz.</remark>-->                
             <important>
-                <title>Updating Container Metadata</title>
+                <title>Updating container metadata</title>
                 <para>For containers, the <command>POST</command> request to set metadata does not delete existing metadata that is not explicitly set in the request.</para> 
                 <para>For example, you use a <command>HEAD</command> request to list container metadata and get the following results:</para>
                 <programlisting>X-Container-Meta-Price: 50                    
@@ -1121,7 +1121,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Create or Update Container Metadata Request">
+                <doc title="Create or update container metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_request.txt"/>                    
                 </doc>
             </representation>     
@@ -1154,7 +1154,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param> 
             <representation mediaType="application/http">
-                <doc title="Create or Update Container Metadata Response">
+                <doc title="Create or update container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -1164,7 +1164,7 @@ X-Container-Meta-Extra: Data</programlisting>
 
     <method name="HEAD" id="retrievecontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Show Container Metadata">
+            title="Show container metadata">
             <para role="shortdesc">Shows container metadata, including
                 the number of objects in the container and the total bytes for all
                 objects stored in the container.</para>
@@ -1186,7 +1186,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >
-                <doc title="Get Container Metadata Request">
+                <doc title="Get container metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_request.txt"/>
                 </doc>
             </representation>     
@@ -1277,7 +1277,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Get Container Metadata Response">
+                <doc title="Get container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -1287,7 +1287,7 @@ X-Container-Meta-Extra: Data</programlisting>
     
     <method name="POST" id="deletecontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Container Metadata">
+            title="Delete container metadata">
             <para role="shortdesc">Deletes container metadata.</para>
             <para>To delete a metadata header, use a <command>POST</command> operation. You  send  the <command>POST</command> operation to the container with the header <code>X-Remove-Container-Meta-name: value</code>, where <code>name</code> is the name of the metadata you want to delete and <code>value</code> is any value and is not used. </para>                                
             <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
@@ -1321,7 +1321,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="text/xml" element="files:Files" >               
-                <doc title="Delete Container Metadata Request">
+                <doc title="Delete container metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_request.txt"/>
                 </doc>
             </representation>     
@@ -1354,7 +1354,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param> 
             <representation mediaType="application/http">
-                <doc title="Delete Container Metadata Response">
+                <doc title="Delete container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -1366,7 +1366,7 @@ X-Container-Meta-Extra: Data</programlisting>
    
     <method name="GET" id="getobjectdata">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Get Object Content and Metadata">
+            title="Get object content and metadata">
             <para role="shortdesc">Gets the content and metadata for the object.</para>
             <para>Perform <command>GET</command> operations against an object to retrieve the object's data. </para>
             <para>You can perform conditional <command>GET</command> requests by using the following HTTP headers in the request:</para>
@@ -1389,7 +1389,7 @@ X-Container-Meta-Extra: Data</programlisting>
             </itemizedlist>
             <para>The following table shows forms of the header and the ranges of data specified.</para>
             <para><table rules="all">
-                <caption>Cloud Files Supported Range Formats</caption>
+                <caption>Cloud Files supported range formats</caption>
                 <col width="50%"/>
                 <col width="50%"/>
                 <thead>
@@ -1470,17 +1470,17 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Request">
+                <doc title="Get object data: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_request.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Request Using a Range">
+                <doc title="Get object data using a range: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataWithRange_request.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Request Using Multiple Ranges">
+                <doc title="Get object data using multiple ranges: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataMultipleRange_request.txt"/>
                 </doc>
             </representation>
@@ -1559,17 +1559,17 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>    
             </param>          
             <representation mediaType="application/http">
-                <doc title="Get Object Data Response">
+                <doc title="Get object data response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_response.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Response Using Range">
+                <doc title="Get object data using range response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataWithRange_response.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Get Object Data Response Using Multiple Ranges">
+                <doc title="Get object data using multiple ranges response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataMultipleRange_response.txt"/>
                 </doc>
             </representation>
@@ -1579,7 +1579,7 @@ X-Container-Meta-Extra: Data</programlisting>
        
     <method name="PUT" id="createobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Object">
+            title="Create or update object">
             <para role="shortdesc">Creates or updates the content and
                 metadata for a specified object.</para>
             <para>Perform <command>PUT</command> operations to write, or overwrite, an object's content and metadata.</para>
@@ -1762,7 +1762,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>                        
             <representation mediaType="application/http">
-                <doc title="Create or Update Object Request">
+                <doc title="Create or update object request">
                     <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
                 </doc>
             </representation> 
@@ -1806,7 +1806,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Create or Update Object Response">
+                <doc title="Create or update object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
                 </doc>
             </representation>
@@ -1816,7 +1816,7 @@ X-Container-Meta-Extra: Data</programlisting>
   
     <method name="COPY" id="copyobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Copy Object">
+            title="Copy object">
             <para role="shortdesc">Using the <code>Destination</code> header, copies an existing object to another object
                 with a new name in the Cloud Files storage
                 system.</para>
@@ -1840,7 +1840,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 name in the form of <code>/container/object</code>. Unlike using the <command>PUT</command> request, this approach does not require a
                 <code>Content-Length</code> header. <!-- 02-03-12 dsh Content Length header / note required by JIRA / tick DOC-100 -->
                 <example>
-                    <title>Copy Object Approach 1 - Using COPY</title>
+                    <title>Copy object approach 1 - using COPY</title>
                     <programlisting>
   COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
@@ -1863,7 +1863,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     <xref linkend="Create-Large-Objects-d10e"/>. </para>
             </note>
             <example>
-                <title>Copy Object Approach 2 - Using PUT</title>
+                <title>Copy object approach 2 - using PUT</title>
                 <programlisting>
   PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
@@ -1912,7 +1912,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 about service access endpoints, see <xref
                     linkend="Service-Access-Endpoints-d1e003"/>.)</para>
             <example>
-                <title>Data Center Endpoints</title>
+                <title>Data center endpoints</title>
                 <programlisting>
   "endpoints": [
     {
@@ -1993,12 +1993,12 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Copy Object Request Using COPY">
+                <doc title="Copy object using COPY: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_request.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Copy Object Request Using PUT">
+                <doc title="Copy object using PUT: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
                 </doc>
             </representation>   
@@ -2061,12 +2061,12 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Copy Object Response Using COPY">
+                <doc title="Copy object using COPY: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_response.txt"/>
                 </doc>
             </representation>
             <representation mediaType="application/http">
-                <doc title="Copy Object Response Using PUT">
+                <doc title="Copy object using PUT: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_response.txt"/>
                 </doc>
             </representation>   
@@ -2076,7 +2076,7 @@ X-Container-Meta-Extra: Data</programlisting>
     
     <method name="HEAD" id="retrieveobjectmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Show Object Metadata">
+            title="Show object metadata">
             <para role="shortdesc">Shows object metadata.</para>
             <para>Perform a HEAD operation on an object to retrieve
                 object metadata and other standard HTTP headers.</para> 
@@ -2121,7 +2121,7 @@ X-Container-Meta-Extra: Data</programlisting>
                             ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
             </param>       
             <representation mediaType="application/http">
-                <doc title="Get Object Metadata Request">
+                <doc title="Get object metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
                 </doc>
             </representation>    
@@ -2212,7 +2212,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Get Object Metadata Response">
+                <doc title="Get object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
                 </doc>
             </representation>
@@ -2222,7 +2222,7 @@ X-Container-Meta-Extra: Data</programlisting>
   
     <method name="POST" id="updateaobjmeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Create or Update Object Metadata">
+            title="Create or update object metadata">
             <para role="shortdesc">Sets or updates your object 
                 metadata. Metadata must be in the format
                 <code>X-Object-Meta-name</code> where <code>name</code> is the name of your metadata. You can also assign <code>X-Delete-At</code> or
@@ -2253,7 +2253,7 @@ X-Container-Meta-Extra: Data</programlisting>
             <para>For information about working with metadata when copying
                 objects, see <xref linkend="COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
             <important>
-                <title>Deleting Object Metadata</title>
+                <title>Deleting object metadata</title>
                 <para>For objects, the <command>POST</command> request to set metadata deletes all metadata that is not explicitly set in the request. 
                     In other words, ALL the object metadata is set at the time of the <command>POST</command> request. If
                     you want to edit or remove one header, include all other headers in the <command>POST</command> request and 
@@ -2334,7 +2334,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Update Object Metadata Request">
+                <doc title="Update object metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_request.txt"/>
                 </doc>
             </representation>    
@@ -2366,7 +2366,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Update Object Metadata Response">
+                <doc title="Update object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
                 </doc>
             </representation>           
@@ -2376,7 +2376,7 @@ X-Object-Meta-Cost: 30</programlisting>
 
     <method name="DELETE" id="deleteobject">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-            title="Delete Object">
+            title="Delete object">
             <para role="shortdesc">Permanently deletes an object from
                 the Cloud Files storage system. (You can use <command>COPY</command> and then
                 <command>DELETE</command> to effectively move an object.)</para>
@@ -2419,7 +2419,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 </p></doc>
             </param>
             <representation mediaType="application/http">
-                <doc title="Delete Object Request">
+                <doc title="Delete object: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_request.txt"/>
                 </doc>
             </representation>    
@@ -2452,7 +2452,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 </p></doc>
             </param> 
             <representation mediaType="application/http">
-                <doc title="Delete Object Response">
+                <doc title="Delete object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>
                 </doc>
             </representation>    
