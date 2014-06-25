@@ -189,12 +189,12 @@
                   linkend="Request_Response_Types-d1e903"/>.</para>
             </listitem>
             <listitem>
-              <para>Added <xref
-                linkend="POST_updateaccountmeta_v1__account__accountServicesOperations_d1e000"
-                />.</para>
+              <para>Added the section for the operation to create or update account metadata in
+                  <xref linkend="API_Operations_d1e000"/>.</para>
             </listitem>
             <listitem>
-              <para>Added <xref linkend="POST_deleteaccountmeta_v1__account__accountServicesOperations_d1e000"/>.</para>
+              <para>Added the section for the operation to delete account metadata in   <xref
+                  linkend="API_Operations_d1e000"/>.</para>
             </listitem>
             <listitem>
               <para>In all examples, updated the <code>X-Auth-Token</code> header to use the current
@@ -339,22 +339,21 @@
               <para>Changed references for authentication to point to Cloud Identity v2.0.</para>
             </listitem>
             <listitem>
-              <para>In <xref linkend="CDN_Object_Services"/> and <xref
-                  linkend="DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services"/>,
-                added a note about removing a CDN-enabled container by setting
-                  <code>X-Cdn-Enabled</code> to <code>False</code> in the <command>HEAD</command>
-                operation.</para>
+              <para>In <xref linkend="CDN_Object_Services"/> in the section for the operation to
+                delete a CDN-enabled object, added a note about removing a CDN-enabled container by
+                setting <code>X-Cdn-Enabled</code> to <code>False</code> in the
+                  <command>HEAD</command> operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
       </revision>
       <revision>
-        <date>2013-06-14 </date>
+        <date>2013-06-14</date>
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>Added information about authentication, v1 and v2,
-                in <xref linkend="Authentication-d1e639"/>.</para>
+              <para>Added information about authentication, v1 and v2, in <xref
+                  linkend="Authentication-d1e639"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -1708,9 +1707,8 @@
           <para>If your audience is worldwide, consider using the Akamai content delivery network
             (CDN). The CDN speeds your content delivery because it is cached at edge locations
             around the globe, rather than being served from a single origin server. You can learn
-            more about CDN-enabling your containers in <xref
-              linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
-            />. </para>
+            more about CDN-enabling your containers in  <xref
+              linkend="API_Operations_for_CDN_Services-d1e2386"/>. </para>
         </note>
         <table rules="all">
           <caption>Regionalized service endpoints for CDN management services</caption>
@@ -3235,11 +3233,10 @@ In addition to those listed in Anne's great response, a failed upload might retu
         container from the CDN, and sends an email to the address (or multiple addresses) that you
         indicate through the ticket. The email address notification is optional.</para>
       <note>
-        <para>To prevent the container from going back to the CDN,
-          first change the <code>X-CDN-Enabled</code> flag to
-            <code>False</code> as shown in <xref
-            linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
-          />. </para>
+        <para>To prevent the container from going back to the CDN, first change the
+            <code>X-CDN-Enabled</code> flag to <code>False</code> as shown in the section about
+          CDN-enabling and disabling a container  in  <xref
+            linkend="API_Operations_for_CDN_Services-d1e2386"/>. </para>
       </note>
     </section>
   <section xml:id="CDN-Enabled_Containers_Served_via_SSL-d1e2821">
@@ -3320,8 +3317,8 @@ Content-Length: 0
       <para>
         <orderedlist>
           <listitem>
-            <para>CDN-enable your container. For instructions, see <xref
-                linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
+            <para>CDN-enable your container. For instructions, see the section about CDN-enabling a
+              container in <xref linkend="API_Operations_for_CDN_Services-d1e2386"
                 xrefstyle="select:label quotedtitle nopage"/>. Two streaming URIs are created: the
               container's streaming URI (<code>X-Cdn-Streaming-Uri</code>) and its iOS streaming URI
                 (<code>X-Cdn-Ios-Uri</code>).</para>
@@ -3464,15 +3461,16 @@ i))) != null;
           </listitem>
           <listitem>
             <para>CDN-enable your container as shown in <xref
-              linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
-                xrefstyle="select:label quotedtitle nopage"/>. </para>
+              linkend="API_Operations_for_CDN_Services-d1e2386"
+              xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
             <para>Go to your domain host and set up a CNAME using your CDN URI
               (<code>X-Cdn-Uri</code>). The CNAME is the domain or branded URI that you use instead
             of the CDN URI. If you need to find your CDN URI, perform a <command>HEAD</command>
-            request to <code>cdn.clouddrive.com</code> as shown in <xref
-              linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"
+            request to <code>cdn.clouddrive.com</code> as shown in the description of the operation
+            to list metadata for a CDN-enabled container in <xref
+              linkend="API_Operations_for_CDN_Services-d1e2386"
               xrefstyle="select:label quotedtitle nopage"/>. </para>
           </listitem>
           <listitem>
