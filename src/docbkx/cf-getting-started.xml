@@ -135,18 +135,6 @@
                 <emphasis role="italic">Cloud Files Developer Guide</emphasis> at <link
                 xlink:href="http://docs.rackspace.com/">http://docs.rackspace.com/</link>. </para>
         <para>This guide uses the API directly with cURL (<xref linkend="Using_the_API_Directly"/>). </para>
-        <!--        <para> provides the following ways to use the Cloud Files API:</para>
-         
-        <itemizedlist>
-            <listitem>
-                <para>Using the API directly with cURL (<xref linkend="Using_the_API_Directly"
-                    />)</para>
-            </listitem>
-            <listitem>
-                <para>Using a command line or SDK???? (to be chosen by Nicholas) (<xref
-                        linkend="Using_Client_or_SDK-d1e101"/>)</para>
-            </listitem>
-        </itemizedlist> -->
         <!-- <remark>Removing per Nicholas Wagner's request and Jerry Scharz's approval </remark> 
         <section xml:id="Benefits-Use-Cases">
             <title>Benefits and Use Cases</title>
@@ -373,7 +361,7 @@
             <example>                
                 <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+                <screen language="bash"><command>curl</command> <option>-d</option> \
 '{
     "auth":
     {
@@ -389,7 +377,7 @@
             <para>You can see that the lines that are part of the cURL command syntax have all been
                 escaped with a backslash (\) to indicate that the command continues on the next
                 line:</para>
-            <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-d</option> \
   
    
 (... lines within the JSON portion of the message are not shown in this example)
@@ -672,12 +660,11 @@
                     instead.</para>
             </note>
             <para>The cURL request uses the <code>-d</code> option to send the specified data in a
-                    <command>POST</command> request to the HTTP server and the <code>-i</code>
-                option to send the HTTP response to terminal output.</para>
+                    <command>POST</command> request to the HTTP server.</para>
             <example>
                 <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-i</option> <option>-d</option> \
+                <screen language="bash"><command>curl</command> <option>-d</option> \
 '{
     "auth":
     {
@@ -729,7 +716,7 @@
                 was successfully created.</para>                                   
             <example>
                 <title>cURL create storage container</title>
-                <programlisting language="bash">curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
+                <programlisting language="bash">curl -i -X PUT https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
                 <programlisting language="json">HTTP/1.1 201 Created
 Content-Length: 0
@@ -754,7 +741,7 @@ Date: Tue, 22 Apr 2014 16:48:21 GMT</programlisting>
                 successfully uploaded.</para>
             <example>
                 <title>cURL upload an object</title>
-                <programlisting language="bash">curl -i -X PUT https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
+                <programlisting language="bash">curl -i -X PUT https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> /
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "Content-Type: image/jpeg" \
 -H "Content-Length: 0"</programlisting>
@@ -782,7 +769,7 @@ Date: Tue, 22 Apr 2014 17:02:34 GMT</programlisting>
                 successfully updated.</para>
             <example>
                 <title>cURL update object metadata</title>
-                <programlisting language="bash">curl -i -X POST https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+                <programlisting language="bash">curl -i -X POST https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" \
 -H "X-Object-Meta-ImageType: png" \
 -H "X-Object-Meta-ImageSize: 400 MB"</programlisting>
@@ -805,7 +792,7 @@ Date: Tue, 22 Apr 2014 17:06:51 GMT</programlisting>
                 (OK) in the response indicates that the object was successfully retrieved.</para>
             <example>
                 <title>cURL retrieve an object</title>
-                <programlisting language="bash">curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+                <programlisting language="bash">curl -i -X GET https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
                 <programlisting language="json">HTTP/1.1 200 OK
 Content-Length: 0
@@ -842,7 +829,7 @@ Date: Tue, 22 Apr 2014 17:08:57 GMT
                     Guide</citetitle>. </para>
             <example>
                 <title>cURL delete an object</title>
-                <programlisting language="bash">curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
+                <programlisting language="bash">curl -i -X DELETE https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis>/<emphasis role="bold">yourObjectName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
                 <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
@@ -864,7 +851,7 @@ Date: Tue, 22 Apr 2014 17:11:22 GMT</programlisting>
                 deleted.</para>
             <example>
                 <title>cURL delete a Container</title>
-                <programlisting language="bash">curl -i -X DELETE https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
+                <programlisting language="bash">curl -i -X DELETE https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>"  </programlisting>
                 <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
@@ -890,7 +877,7 @@ Date: Tue, 22 Apr 2014 17:12:47 GMT     </programlisting>
                 successfully retrieved.</para>
             <example>
                 <title>cURL show account details</title>
-                <programlisting language="bash">curl -i -X GET https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAccountID</emphasis>?format=json \
+                <programlisting language="bash">curl -i -X GET https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAccountID</emphasis>?format=json \
 -H "X-Auth-Token: <emphasis role="bold" xmlns:m="http://www.w3.org/the key 1998/Math/MathML">yourAuthToken</emphasis>"  </programlisting>
                 <programlisting language="json">HTTP/1.1 200 OK
 Content-Length: 111
@@ -936,7 +923,7 @@ Date: Tue, 22 Apr 2014 17:15:52 GMT
                 entire account.</para>
             <example>
                 <title>cURL determine storage usage</title>
-                <programlisting language="bash">curl -i -X HEAD https://storage101.ord1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis> \
+                <programlisting language="bash">curl -i -X HEAD https://storage101.dfw1.clouddrive.com/v1/<emphasis role="bold">yourAccountID</emphasis> \
 -H "X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>" </programlisting>
                 <programlisting language="json">HTTP/1.1 204 No Content
 Content-Length: 0
@@ -1087,39 +1074,6 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT</programlisting>
             </example>
         </section>
     </chapter>
-    <!--
-    </chapter>
-    <chapter xml:id="Using_Client_or_SDK-d1e101">
-        <title>Using the ???? Client or ???? SDK</title>
-        <para> In addition to the REST API, there are language-specific API documents and assets for
-            C#/.NET, Python, PHP, Java and Ruby. These developer resources are documented on the API
-            Documentation web site at <link
-                xlink:href="http://docs.rackspace.com/sdks/guide/content/index.html"
-                >http://docs.rackspace.com/sdks/guide/content/index.html</link>. </para>
-        <para>This chapter explains how to start using the ???? Client or ???? SDK, which is a
-            convenient ???? binding and command-line client that uses the RESTful API.</para>
-        <section xml:id="Create-Container-d1e101">
-            <title>Creating a Storage Container</title>
-            <para>This section describes prerequisites, installation,
-                and setup for the python-lavaclient.</para>
-        </section>
-        <section xml:id="Upload-Object-d1e101">
-            <title>Uploading an Object</title>
-            <para/>
-        </section>
-        <section xml:id="CDN-Enable-Container-d1e101">
-            <title>CDN-Enabling the Container</title>
-            <para/>
-        </section>
-        <section xml:id="Showing-Account-Details-d1e101">
-            <title>Showing Account Details</title>
-            <para/>
-        </section>
-        <section xml:id="Determine-Storage-Usage-d1e101">
-            <title>Determining Storage Usage</title>
-            <para/>
-        </section>
-    </chapter> -->
     <chapter xml:id="Tools_and_Applications_for_Cloud_Files-d1e286">
         <title>Other tools and applications for Cloud Files</title>
         <para> In addition to the REST API and its language-specific bindings, there are several

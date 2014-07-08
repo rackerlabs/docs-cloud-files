@@ -697,7 +697,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para> Removed references to Access Control List (ACL). </para>
+              <para> Removed references to access control list (ACL). </para>
             </listitem>
             <listitem>
               <para> Fixed error in examples referring to
@@ -814,8 +814,7 @@
       <para>You can download the most current version of this document
         from the Rackspace Cloud website at <link
           xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html"
-          >
-          docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html</link>. </para>
+          >docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html</link>. </para>
       <para>For more details about the Cloud Files service, see <link
           xlink:href="http://www.rackspace.com/cloud/files/"
           >http://www.rackspace.com/cloud/files/</link>. Related documents are available at the same
@@ -1166,9 +1165,7 @@
               <area xml:id="credentials.xml.key" units="linecolumn"
                 coords="14 15"/>
             </areaspec>
-            <programlisting language="xml">
-<xi:include href="samples/credentials-20.xml" parse="text"/>
-                    </programlisting>
+            <programlisting language="xml"><xi:include href="samples/credentials-20.xml" parse="text"/></programlisting>
           </programlistingco>
         </example>
         <example>
@@ -1180,9 +1177,7 @@
               <area xml:id="credentials.json.key" units="linecolumn"
                 coords="15 20"/>
             </areaspec>
-            <programlisting language="json">
-<xi:include href="samples/credentials-20.json" parse="text"/>
-                    </programlisting>
+            <programlisting language="json"><xi:include href="samples/credentials-20.json" parse="text"/></programlisting>
           </programlistingco>
         </example>
         <calloutlist>
@@ -1296,8 +1291,7 @@
               <area xml:id="response.json.url" units="linecolumn"
                 coords="102 24"/>
             </areaspec>
-            <programlisting language="json"><xi:include href="samples/auth-20.json" parse="text"/>
-                    </programlisting>
+            <programlisting language="json"><xi:include href="samples/auth-20.json" parse="text"/></programlisting>
           </programlistingco>
         </example>
         <note>
@@ -2160,8 +2154,8 @@ photos/animals/dogs/terrier.jpg</programlisting>
     <title>Additional container services information</title>
     <para>This section provides additional metadata options for containers in Cloud Files.</para>    
    <section xml:id="Container_ACLs-d1e2222">
-      <title>Container Access Control Lists</title>
-      <para>The Cloud Files Access Control List (ACL) feature allows account owners to specify read
+      <title>Container access control lists</title>
+      <para>The Cloud Files access control list (ACL) feature allows account owners to specify read
         or write access to a particular container for a particular user. </para>
       <para>Cloud Files ACLs provide the following metadata headers that you use to define
         container-level access policies:<itemizedlist>
@@ -2285,11 +2279,10 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
       </para>
     </section>
     <section xml:id="Acess_Log_Delivery-d1e2200">
-      <title>Access Log Delivery</title>
-      <para>You can use Access Log Delivery to analyze the number of
-        requests for each object, the client IP address, and
-        time-based usage patterns (such as monthly or seasonal usage). </para>
-      <para> Access Log Delivery is set on the container, and every object in the container is
+      <title>Access log delivery</title>
+      <para>You can use access log delivery to analyze the number of requests for each object, the
+        client IP address, and time-based usage patterns (such as monthly or seasonal usage). </para>
+      <para> Access log delivery is set on the container, and every object in the container is
         tracked. To enable access logs for a container, set the metadata
           <code>X-Container-Meta-Access-Log-Delivery</code> header to <code>True</code>. If you have
         multiple containers that you want to track, you must set the metadata header to
@@ -2318,9 +2311,8 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
           HTTP_version” return_code bytes_sent “referrer” “user_agent”</code></para>
       <para>The following example shows log entries. </para>
       <example>
-        <title>Example Access Log entries</title>
-        <programlisting>
-   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
+        <title>Example access log entries</title>
+        <programlisting>   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
         MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
         HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
         CPython/2.7.3 Linux/3.2.0-29-generic"
@@ -2704,7 +2696,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           "etag": "b9c3da507d2557c1ddc51f27c54bae51",
           "size_bytes": 256
         }
-      ]</programlisting>
+]</programlisting>
           </example>
           <para>The <code>Content-Length</code> request header must contain the length of the JSON
             content, not the length of the segment objects. However, after the
@@ -2993,11 +2985,10 @@ X-Delete-After: 864000</programlisting>
           <listitem>
             <para>Delete the current version of the object and see that the older version is no
               longer in the <code>versions</code> container.</para>
-            <programlisting>
-  curl -i -XDELETE -H "X-Auth-Token: yourAuthToken" \
-      http://yourStorageUrl>/current/myobject
-  curl -i -H "X-Auth-Token: yourAuthToken " \
-      http://yourStorageUrl/versions?prefix=008myobject/
+            <programlisting>curl -i -XDELETE -H "X-Auth-Token: yourAuthToken" \
+    http://yourStorageUrl>/current/myobject
+curl -i -H "X-Auth-Token: yourAuthToken " \
+    http://yourStorageUrl/versions?prefix=008myobject/
 </programlisting>
           </listitem>
         </orderedlist>
@@ -3025,7 +3016,9 @@ In addition to those listed in Anne's great response, a failed upload might retu
 413 Request Entity Too Large - The request is larger than the server is willing or able to process
 417 Expectation Failed - The server cannot meet the requirements of the Expect request-header field
 -->
-  <chapter xml:id="API_Operations_for_CDN_Services-d1e2386">
+  <chapter xml:id="API_Operations_for_CDN_Services-d1e2386" 
+    xmlns="http://docbook.org/ns/docbook"
+    role="api-reference" >
     <title>API operations for CDN services</title>
     <para>This chapter provides further description for several of the API operations described in
         <xref linkend="API_Operations_d1e000"/>. These API operations have a specific purpose for
@@ -3056,64 +3049,6 @@ In addition to those listed in Anne's great response, a failed upload might retu
           on objects.</para>
       </listitem>
     </itemizedlist>
-    <informaltable rules="all">
-      <col width="20%"/>
-      <col width="40%"/>
-      <col width="40%"/>
-      <thead align="center">
-        <tr>
-          <th>Method</th>
-          <th>URI</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="3" align="center">Account services</td>
-        </tr>
-        <tr>
-          <td><command>GET</command></td>
-          <td>
-            <programlisting>v1/{account}{?enabled_only,limit, marker,end_marker,format}</programlisting>
-          </td>
-          <td>Lists CDN-enabled containers sorted by name.</td>
-        </tr>
-        <tr>
-          <td colspan="3" align="center">Container services</td>
-        </tr>
-        <tr>
-          <td><command>PUT or POST</command></td>
-          <td>
-            <programlisting>v1/{account}/{container}</programlisting>
-          </td>
-          <td>Enables or disables a container for use with the CDN. </td>
-        </tr>
-        <tr>
-          <td><command>HEAD</command></td>
-          <td>
-            <programlisting>v1/{account}/{container}{?format}</programlisting>
-          </td>
-          <td>Gets a CDN-enabled container's metadata. </td>
-        </tr>
-        <tr>
-          <td><command>POST</command></td>
-          <td>
-            <programlisting>v1/{account}/{container}</programlisting>
-          </td>
-          <td>Updates the CDN-enabled container metadata. </td>
-        </tr>
-        <tr>
-          <td colspan="3" align="center">Object services</td>
-        </tr>
-        <tr>
-          <td><command>DELETE</command></td>
-          <td>
-            <programlisting>v1/{account}/{object}</programlisting>
-          </td>
-          <td>Deletes CDN-enabled objects. </td>
-        </tr>
-      </tbody>
-    </informaltable>
 
     <section xml:id="CDN_Account_Operations-d1e2397">
       <title>CDN account services</title>
@@ -3304,16 +3239,15 @@ X-Cdn-Ssl-Uri: https://2cb7edde3eac1dd66ea4-64e65126753c56b595824f56d25789bb.ssl
 X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.co
 X-Log-Retention: False
 X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
-Content-Length: 0
-                   </programlisting>
+Content-Length: 0</programlisting>
     </example>
   </section>
   <section xml:id="iOS-Streaming-d1f3725">
     <title>iOS streaming</title>
     <para>The Cloud Files CDN allows you to stream video to iOS devices without needing to convert
         your video. After you CDN-enable your container, you have the tools necessary for streaming
-        media to multiple devices. To leverage this ability, you must check the client's User Agent
-        with JavaScript. An example of the User Agent check and how to use it follows. </para>
+        media to multiple devices. To leverage this ability, you must check the client's user agent
+        with JavaScript. An example of the user agent check and how to use it follows. </para>
       <para>
         <orderedlist>
           <listitem>
@@ -3340,13 +3274,12 @@ Content-Length: 0
               <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
   &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
   r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
-&lt;/video&gt;
-                      </programlisting>
+&lt;/video&gt;</programlisting>
             </example>
           </listitem>
           <listitem>
             <para>Add JavaScript to the <code>&lt;head></code> element of your HTML page to check if
-              the User Agent is an iOS device. If it is, the JavaScript should use the container's
+              the user agent is an iOS device. If it is, the JavaScript should use the container's
               iOS streaming URI (<code>X-Cdn-Ios-Uri</code>) instead of the regular streaming URI.
               The Cloud Files CDN delivers the properly formatted content for iOS devices only when
               the iOS streaming URI is used. In the following example, the JavaScript sets the
@@ -3354,7 +3287,7 @@ Content-Length: 0
                 <code>videotag</code> to the iOS Streaming URI. Remember to add your content's name
               to the end of the iOS streaming URI.</para>
             <example>
-              <title>JavaScript for User Agent check</title>
+              <title>JavaScript for user agent check</title>
               <programlisting>&lt;script type=”text/javascript”&gt;
 
     function isIOS(){
@@ -3374,7 +3307,7 @@ i))) != null;
           </listitem>
           <listitem>
             <para>Add <code>init()</code> to the <code>&lt;body></code> element of your HTML page to
-              call the User Agent check when the page loads, as shown in the following example. </para>
+              call the user agent check when the page loads, as shown in the following example. </para>
             <example>
               <title>Load JavaScript in HTML page</title>
               <programlisting>&lt;body onload=”init()”&gt;</programlisting>
@@ -3846,8 +3779,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             <code>X-Account-Meta-Temp-Url-Key</code>. </para>
         <example>
           <title>Create TempURL (in Python)</title>
-          <programlisting>
-  import hmac
+          <programlisting>  import hmac
   from hashlib import sha1
   from sys import argv
   from time import time
@@ -3867,25 +3799,21 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
     hmac_body = '%s\n%s\n%s' % (method, expires, object_path)
     sig = hmac.new(key, hmac_body, sha1).hexdigest()
     print '%s%s?temp_url_sig=%sAMP;temp_url_expires=%s' % \
-        (base_url, object_path, sig, expires)
-            </programlisting>
+        (base_url, object_path, sig, expires)</programlisting>
         </example>
         <para>Be certain to use the full URL to the object, just as you would with a normal request. </para>
         <para>In this example, the signature might be da39a3ee5e6b4b0d3255bfef95601890afd80709 and
           the expire time might translate to 1323479485 because the signature and expire time
           completely depend on the time when the code runs. On your website, you would provide a
           link to the following URL: </para>
-        <programlisting>
-  https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
+        <programlisting>  https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
   temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
-  temp_url_expires=1323479485
-           </programlisting>
+  temp_url_expires=1323479485</programlisting>
         <para> If you do not provide users with the exact TempURL, they get a 401 (Unauthorized)
           status code. &HEAD; queries are allowed if &GET; or &PUT; operations are allowed. </para>
         <example>
           <title>Create TempURL (in PHP)</title>
-          <programlisting>
-  &lt;?php
+          <programlisting>  &lt;?php
   if ($argc != 5) {
       echo "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;";
       echo "Example: GET https://storage101.dfw1.clouddrive.com/v1/" .
@@ -3906,13 +3834,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
     echo "$base_url$object_path?" .
          "temp_url_sig=$sig&amp;temp_url_expires=$expires";
   }
-  ?&gt;
-           </programlisting>
+  ?&gt;</programlisting>
         </example>
         <example>
           <title>Create TempURL (in Ruby)</title>
-          <programlisting>
-  require "openssl"
+          <programlisting>  require "openssl"
 
   unless ARGV.length == 4
       puts "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;"
@@ -3930,8 +3856,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
       sig = OpenSSL::HMAC.hexdigest("sha1", key, hmac_body)
       puts ("#{base_url}#{object_path}?" +
           "temp_url_sig=#{sig}&amp;temp_url_expires=#{expires}")
-  end
-            </programlisting>
+  end</programlisting>
         </example>
       </section>
       <section xml:id="TempURL_File_Name_Overrides-d1e213">
@@ -3942,9 +3867,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           without the file name override.</para>
         <example>
           <title>TempURL without file name override</title>
-          <programlisting>
-https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485
-          </programlisting>
+          <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485</programlisting>
         </example>
         <para>In the following example, you see
             <code>&amp;filename=bob.txt</code> appended to the TempURL
@@ -3952,9 +3875,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
             <code>bob.txt</code>:</para>
         <example>
           <title>TempURL with file name override</title>
-          <programlisting>
-https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt
-            </programlisting>
+          <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt</programlisting>
         </example>
       </section>
     </section>
@@ -3981,8 +3902,7 @@ https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-X-Account-Meta-Temp-Url-Key: yourKey
-           </programlisting>
+X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </example>
         <para>Any class 200 status code indicates success.</para>
       </section>
@@ -3993,8 +3913,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
           your website: </para>
         <example>
           <title>Layout of web form</title>
-          <programlisting>
-  &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
+          <programlisting>  &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
     &lt;input type="hidden" name="redirect" value="&lt;redirect-url&gt;" /&gt;
     &lt;input type="hidden" name="max_file_size" value="&lt;bytes&gt;" /&gt;
     &lt;input type="hidden" name="max_file_count" value="&lt;count&gt;" /&gt;
@@ -4002,8 +3921,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
     &lt;input type="hidden" name="signature" value="&lt;hmac&gt;" /&gt;
     &lt;input type="file" name="file1" />&lt;br /&gt;
     &lt;input type="submit" /&gt;
-  &lt;/form&gt;
-           </programlisting>
+  &lt;/form&gt;</programlisting>
         </example>
         <para>The parameters and attributes in the form are defined as follows:</para>
         <itemizedlist>
@@ -4068,8 +3986,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
         </itemizedlist>
         <example>
           <title>Generate signature for FormPost</title>
-          <programlisting>
-  import hmac
+          <programlisting>  import hmac
   from hashlib import sha1
   from time import time
   path = '/v1/account/container/object_prefix'
@@ -4080,8 +3997,7 @@ X-Account-Meta-Temp-Url-Key: yourKey
   key = 'mykey'
   hmac_body = '%s\n%s\n%s\n%s\n%s' % (path, redirect,
       max_file_size, max_file_count, expires)
-  signature = hmac.new(key, hmac_body, sha1).hexdigest()
-          </programlisting>
+  signature = hmac.new(key, hmac_body, sha1).hexdigest()</programlisting>
           <para>Be sure to use the full path in your Cloud Files account, from the <code>/v1/</code>
             onward. </para>
         </example>
@@ -4228,11 +4144,9 @@ X-Account-Meta-Temp-Url-Key: yourKey
       </orderedlist>
       <example>
         <title>CORS POST cURL request</title>
-        <programlisting>
-curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
+        <programlisting>curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
   -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
-  http://192.168.56.3:8080/v1/AUTH_test/cont1
-</programlisting>
+  http://192.168.56.3:8080/v1/AUTH_test/cont1</programlisting>
       </example>
       <para>At this point, the container is accessible to CORS clients
         hosted on <code>http://localhost</code>. Open the test CORS
@@ -4256,8 +4170,7 @@ curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
         not succeed, the response status is 0.</para>
       <example xml:id="Test-CORS-Page-d1003">
         <title>Test CORS page</title>
-        <programlisting>
-&lt;!DOCTYPE html>
+        <programlisting>&lt;!DOCTYPE html>
 &lt;html>
   &lt;head>
     &lt;meta charset="utf-8">

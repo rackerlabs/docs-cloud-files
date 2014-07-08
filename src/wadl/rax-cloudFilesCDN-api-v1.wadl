@@ -154,7 +154,7 @@
                 xml:lang="EN" title="OK">The request succeeded. The
                 information returned with the response is dependent on
                 the method used in the request. </wadl:doc>
-            <representation mediaType="application/xml" xml:lang="EN">
+            <representation mediaType="application/text" element="files:Files">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="List CDN-enabled containers: HTTP response">
@@ -220,7 +220,7 @@
                 the content stays populated on CDN edge servers for
                 the entire period. The most popular objects stay
                 cached based on the edge location's logic.</para>
-            <!-- <remark> 4/24/2014 cyr: When David Goetz revied the new GSG, he requested use of 1 year maximum through API docs, which I did.</remark> 
+            <!-- <remark> 4/24/2014 cyr: When David Goetz reviewed the new GSG, he requested use of 1 year maximum through API docs, which I did.</remark> 
                <note>
                <title>Note</title>
                 <para> On August 13, 2012, the maximum TTL was revised to
@@ -351,7 +351,7 @@
                     xml:lang="EN"><para>The URI for video streaming
                         that uses HTTP Dynamic Streaming from Adobe.</para></wadl:doc>
             </param>
-            <representation mediaType="text/xml" xml:lang="EN">
+            <representation mediaType="application/http">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="CDN-enable container: HTTP response">
@@ -432,7 +432,7 @@
                         seconds), and the maximum is 1 year (31536000
                         seconds).</para></wadl:doc>
             </param>
-            <representation mediaType="text/xml" element="files:Files">
+           <representation mediaType="text/xml" element="files:Files">                   
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="Update CDN-enabled container metadata: HTTP request">
@@ -440,8 +440,9 @@
                         href="../wadl/samples/cf-createCDNContainerMetadata_request.txt"
                     />
                 </wadl:doc>
-            </representation>
+           </representation> 
         </request>
+
         <response status="204">
             <wadl:doc xmlns="http://docbook.org/ns/docbook"
                 xml:lang="EN" title="No Content">The server fulfilled

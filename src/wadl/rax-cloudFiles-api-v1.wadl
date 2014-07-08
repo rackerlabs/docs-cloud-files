@@ -124,50 +124,40 @@
             <note><para>At this time, a <code>prefix</code> query parameter is not supported at the account level.</para></note>
             <para>As an example, start with an account that has five container names, as follows:</para>
             
-            <para><programlisting>
-  apples
+            <para><programlisting>  apples
   bananas
   kiwis
   oranges
-  pears
-            </programlisting></para>
+  pears</programlisting></para>
             <para>Use a limit of 2 to show how things work:</para>
-            <para><programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
+            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
   apples
-  bananas
-            </programlisting></para>
+  bananas</programlisting></para>
             <para>Because the operation returned two items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
-            <para><programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
+            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   
   kiwis
-  oranges 
-            </programlisting></para>
+  oranges</programlisting></para>
             <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more:</para>
-            <para><programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
+            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
-  pears
-            </programlisting></para>
+  pears</programlisting></para>
             <para>This one-item response shows fewer than the limit of 2 container names requested, and indicates that this is the end of the list.</para>
             <para>By using the <code>end_marker</code> parameter, you can limit the result set to container names less than the given value.</para>
-            <para><programlisting>
-  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
+            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
   apples
   bananas
-  kiwis
-            </programlisting></para>
+  kiwis</programlisting></para>
             
         </wadl:doc>
         <request>
@@ -643,39 +633,31 @@
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects.</para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <para>As an example, use a listing of 5 object names, as follows:</para>            
-            <para><programlisting>
- gala
+            <para><programlisting> gala
  grannysmith
  honeycrisp
  jonagold
- reddelicious
-            </programlisting></para>
+ reddelicious</programlisting></para>
             <para>Use a <code>limit</code> of 2 to show how things work:</para>
-            <para><programlisting>
- GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2
+            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
  gala
- grannysmith
-            </programlisting></para>
+ grannysmith</programlisting></para>
             <para>Because the request returned two items, assume there are more object names to list and make another request with a <code>marker</code> of the last item returned:</para>
-            <para><programlisting>
- GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
+            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
  honeycrisp
- jonagold
-            </programlisting></para>
+ jonagold</programlisting></para>
             <para>Again, two items are returned, and you assume that there might be more. So you make another <command>GET</command> request for two more:</para>
-            <para><programlisting>
- GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
+            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
- reddelicious
-            </programlisting></para>
+ reddelicious</programlisting></para>
             <para>This one-item response shows fewer than the limit of two object names requested, and indicates that this is the end of the list.</para>      
         </wadl:doc>        
         <request>
@@ -1838,16 +1820,15 @@ X-Container-Meta-Extra: Data</programlisting>
                 <code>Destination</code> header to specify the destination of
                 the copy. The header value is the container and new object
                 name in the form of <code>/container/object</code>. Unlike using the <command>PUT</command> request, this approach does not require a
-                <code>Content-Length</code> header. <!-- 02-03-12 dsh Content Length header / note required by JIRA / tick DOC-100 -->
+                <code>Content-Length</code> header.</para> 
+            <!-- 02-03-12 dsh Content Length header / note required by JIRA / tick DOC-100 -->
                 <example>
                     <title>Copy object approach 1 - using COPY</title>
-                    <programlisting>
-  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
+                    <programlisting>  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
   X-Auth-Token: <replaceable>yourAuthToken</replaceable>
-  Destination: /<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable>
-</programlisting>
-                </example></para>        
+  Destination: /<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> 
+</programlisting></example>       
             <para>Alternatively, you can send a <command>PUT</command> request to the location of the new object (the
                 destination), and add the <code>X-Copy-From</code>
                 header to designate the source of the data. The header value
@@ -1864,13 +1845,11 @@ X-Container-Meta-Extra: Data</programlisting>
             </note>
             <example>
                 <title>Copy object approach 2 - using PUT</title>
-                <programlisting>
-  PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
+                <programlisting>  PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
   X-Auth-Token: <replaceable>yourAuthToken</replaceable>
   X-Copy-From: /<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable>
-  Content-Length: 0                    
-</programlisting>
+  Content-Length: 0</programlisting>
             </example>
 
             <para>With both of these approaches, the destination container
@@ -1913,8 +1892,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     linkend="Service-Access-Endpoints-d1e003"/>.)</para>
             <example>
                 <title>Data center endpoints</title>
-                <programlisting>
-  "endpoints": [
+                <programlisting>  "endpoints": [
     {
       "region": "DFW",
       <emphasis role="bold">"internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"</emphasis>,
@@ -1927,8 +1905,7 @@ X-Container-Meta-Extra: Data</programlisting>
       "tenantId": "MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c",
       "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"
     }
-  ]
-</programlisting>
+  ]</programlisting>
             </example>
             
         </wadl:doc>
