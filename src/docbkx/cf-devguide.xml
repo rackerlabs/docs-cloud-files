@@ -1322,9 +1322,8 @@
             <para>Users can be assigned a default region. If multiple endpoints are associated with
               a service in the user's catalog, the endpoint for the user's default region is
               selected if it is available. In this example, the user's default region is DFW, and
-              several of the services in the catalog are associated with endpoints in that region
-              and in the ORD region. Whenever possible, the user's work is directed to the DFW
-              region. </para>
+              several of the services in the catalog are associated with endpoints in that region.
+              Whenever possible, the user's work is directed to the DFW region. </para>
             <para> </para>
           </callout>
           <callout arearefs="response.xml.role">
@@ -1764,7 +1763,7 @@
       <example>
         <title>Example request URL (contract version in <emphasis role="strong"
           >bold</emphasis>)</title>
-        <programlisting>https://storage101.ord1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
+        <programlisting>https://storage101.dwf1.clouddrive.com/<emphasis role="strong">v1</emphasis>/MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></programlisting>
       </example>
       <note>
         <para>This document pertains to contract version 1.</para>
@@ -2728,6 +2727,13 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             segments are concatenated when downloaded. The manifest can reference objects in
             separate containers, which improves concurrent upload speed. A single object can be
             referenced by multiple manifests.</para>
+          <note>
+            <para linkend="Objects-d1e479">Uploading the manifest is based on the operation to
+              create or update an object. For the response codes associated with uploading the
+              manifest, see <olink targetdoc="cf-devguide"
+                targetptr="PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000"
+                >“Create or update object”</olink>.</para>
+          </note>
         </section>
         <section xml:id="Retrieving_a_Large_Object-d1e2227">
           <title>Retrieving a large object</title>

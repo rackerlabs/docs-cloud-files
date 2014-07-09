@@ -17,10 +17,10 @@
             <version>1.2.6</version>
             <executions>
               <execution>
-		<phase>initialize</phase>
-		<goals>
-		  <goal>olink</goal>
-		</goals>
+		         <phase>initialize</phase>
+		         <goals>
+		            <goal>olink</goal>
+		         </goals>
               </execution>
             </executions>
 	  </plugin>
