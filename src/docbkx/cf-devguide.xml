@@ -2713,11 +2713,14 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           <para>When you upload the manifest object, the middleware reads every segment passed in
             and verifies the size and ETag of each. If any of the objects do not match (for example,
             an object is not found, the size or <code>ETag</code> is mismatched, or the minimum size
-            is not met), Cloud Files issues a 4<emphasis role="italic">nn</emphasis> status code. If
-            everything does match, Cloud Files issues a 2<emphasis role="italic">nn</emphasis>
-            status code and the manifest object is created. The <code>X-Static-Large-Object</code>
-            metadata header is set to <code>True</code>, indicating that this is a static object
-            manifest. </para>
+            is not met), or if everything does match and a manifest object is created, Cloud Files
+            issues a response code. The response codes are the same as those issued for the create
+            or update object operation (see <olink targetdoc="cf-devguide"
+              targetptr="PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000"
+              >“Create or update object”</olink>). </para>
+          <para>When Cloud Files creates the manifest object, Cloud Files sets the
+              <code>X-Static-Large-Object</code> metadata header to <code>True</code>, indicating
+            that this is a static object manifest. </para>
           <para>When the manifest object is uploaded, you can be generally assured that every
             segment in the manifest exists and that it matches the specifications. However, nothing
             prevents a user from breaking the static large object download by deleting or replacing
@@ -2727,13 +2730,13 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             segments are concatenated when downloaded. The manifest can reference objects in
             separate containers, which improves concurrent upload speed. A single object can be
             referenced by multiple manifests.</para>
-          <note>
+     <!--     <note>
             <para linkend="Objects-d1e479">Uploading the manifest is based on the operation to
               create or update an object. For the response codes associated with uploading the
               manifest, see <olink targetdoc="cf-devguide"
                 targetptr="PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000"
                 >“Create or update object”</olink>.</para>
-          </note>
+          </note> -->
         </section>
         <section xml:id="Retrieving_a_Large_Object-d1e2227">
           <title>Retrieving a large object</title>

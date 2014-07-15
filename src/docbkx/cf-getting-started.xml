@@ -183,20 +183,7 @@
                     </listitem>
                 </itemizedlist></para>
         </section>
-      <section xml:id="Pricing_SLA-d1e1362">
-            <title>Pricing and Service Level</title>
-            <para>Cloud Files is part of the Rackspace Cloud and your use of it through the API is
-                billed according to the pricing schedule at <link
-                    xlink:href="http://www.rackspace.com/cloud/public/files/pricing/"
-                    xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-                    www.rackspace.com/cloud/public/files/pricing</link>. </para>
-         
-            <para>The service level agreement (SLA) for Cloud Files is available at <link
-                    xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files"
-                    xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
-                    http://www.rackspace.com/information/legal/cloud/sla#files</link>.</para>
-               
-        </section> -->
+ -->
     </chapter>
     <chapter xml:id="Send-Requests-To-API-d1e101">
         <title>Sending requests to the API</title>
@@ -361,7 +348,7 @@
             <example>                
                 <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-d</option> \
+                <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '{
     "auth":
     {
@@ -377,7 +364,7 @@
             <para>You can see that the lines that are part of the cURL command syntax have all been
                 escaped with a backslash (\) to indicate that the command continues on the next
                 line:</para>
-            <screen language="bash"><command>curl</command> <option>-d</option> \
+            <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
   
    
 (... lines within the JSON portion of the message are not shown in this example)
@@ -659,12 +646,13 @@
                         <code>https://lon.identity.api.rackspacecloud.com/v2.0/tokens</code>
                     instead.</para>
             </note>
-            <para>The cURL request uses the <code>-d</code> option to send the specified data in a
-                    <command>POST</command> request to the HTTP server.</para>
+            <para>The cURL request uses the <code>-s</code> option for silent or quiet mode to
+                suppress progress meters and error messages and the <code>-d</code> option to send
+                the specified data in a <command>POST</command> request to the HTTP server.</para>
             <example>
                 <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
-                <screen language="bash"><command>curl</command> <option>-d</option> \
+                <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
 '{
     "auth":
     {
