@@ -807,7 +807,7 @@
                     </doc>
                     <param xmlns="http://wadl.dev.java.net/2009/02"
                         name="name" style="plain" required="true" type="xsd:string">
-                        <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
+                        <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the object.
                         </p></doc>
                     </param>        
                     <param xmlns="http://wadl.dev.java.net/2009/02"
