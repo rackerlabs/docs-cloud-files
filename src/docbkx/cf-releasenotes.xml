@@ -30,7 +30,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2014-04-30</pubdate>
+		<pubdate>2014-07-18</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -45,12 +45,23 @@
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
 			<revision>
+				<date>2014-07-18</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the section "CDN log delivery" to the <citetitle>Cloud Files Developer
+									Guide</citetitle>.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+			<revision>
 				<date>2014-04-30</date>
 				<revdescription>
 					<itemizedlist>
 						<listitem>
-							<para>Published <citetitle>Cloud Files Getting Started
-								Guide</citetitle>.</para>
+							<para>Published <citetitle>Cloud Files Getting Started Guide</citetitle>. This guide replaces
+								the <citetitle>Cloud Files Introduction</citetitle>.</para>
 						</listitem>
 						<listitem>
 							<para>Changed the TTL maximum value to 1 year (31536000 seconds) instead of 50 years
@@ -728,6 +739,20 @@
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
 	</chapter>
+	<chapter xml:id="Jul182014">
+		<?dbhtml stop-chunking?>
+		<title>July 18, 2014</title>
+		<para>This release contains the following documentation changes for Cloud Files:</para>
+		<!-- Documentation Changes -->
+		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+			<listitem>
+				<para>Added the section "CDN log delivery" to the <citetitle>Cloud Files Developer
+						Guide</citetitle>.</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
 	<chapter xml:id="Apr30">
 		<?dbhtml stop-chunking?>
 		<title>April 30, 2014</title>
@@ -736,9 +761,9 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
-				<para>Published the <citetitle>Cloud Files Getting Started Guide</citetitle>.</para>
+				<para>Published the <citetitle>Cloud Files Getting Started Guide</citetitle>. This guide
+					replaces the <citetitle>Cloud Files Introduction</citetitle>.</para>
 			</listitem>
 			<listitem>
 				<para>Changed  the TTL maximum value to 1 year (31536000 seconds) instead of 50
@@ -764,12 +789,11 @@
 			Files:</para>
 		<!-- Documentation Changes -->
 		<itemizedlist>
-			<title>Documentation</title>
 			<listitem xmlns:svg="http://www.w3.org/2000/svg"
 				xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 				xmlns:html="http://www.w3.org/1999/xhtml">
-				<para>Added the section "Container Access Control Lists" to the <citetitle>Cloud Files Developer
-						Guide</citetitle>. </para>
+				<para>Added the section, "Container access control lists", to the <citetitle>Cloud Files
+						Developer Guide</citetitle>. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -848,7 +872,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Updated the instructions for locating the API Key in the Cloud Control Panel in
 					"Retrieving the authentication token" section.</para>
@@ -900,7 +923,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Added the "Create large objects" section with more information about dynamic large objects
 					and static large objects.</para>
@@ -920,7 +942,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Replaced references to <code>X-Storage-Url</code> and
 						<code>X-Cdn-Management–Url</code> throughout this document with references
@@ -945,7 +966,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Added the "Service access endpoint" section, which includes the endpoints for Cloud Files
 					object storage management including the newest one in Hong Kong.</para>
@@ -964,7 +984,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Added the "RBAC" section for the addition of Role Based Access Control to
 					Cloud Files.</para>
@@ -982,7 +1001,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Updated responses to show <code>application/json</code> in the "Bulk delete"
 					section.</para>
@@ -1003,7 +1021,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>Clarified information about <code>redirect</code> and <code>expires</code> in the "Create
 					the form" section. </para>
@@ -1018,7 +1035,6 @@
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
-			<title>Documentation</title>
 			<listitem>
 				<para>In the "Authentication" section, changed references for authentication to
 					point to v2.0.</para>
@@ -1056,25 +1072,13 @@
 			</listitem>
 		</itemizedlist>
 		<!-- Enchancements -->
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para> None. </para>
-			</listitem>
-		</itemizedlist>
 		<!-- Resolved issues -->
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>None.</para>
-			</listitem>
-		</itemizedlist>
 		<!-- Documentation Changes -->
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para>Updated the <citetitle>Cloud Files Developer Guide</citetitle> with new features
-					information. </para>
+				<para>Updated the <citetitle>Cloud Files Developer Guide</citetitle> with new
+					features information. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
@@ -1094,24 +1098,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Enchancements --> 	
+		<!-- Enchancements -->
 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>
-					None.
-				</para>
-			</listitem>
-		</itemizedlist>
-		
-		<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>None.</para>
-			</listitem>
-		</itemizedlist>
+		<!-- Resolved issues -->
 		
 		<!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1139,24 +1128,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Enchancements --> 	
+		<!-- Enchancements -->
 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>
-					None.
-				</para>
-			</listitem>
-		</itemizedlist>
-		
-		<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>None.</para>
-			</listitem>
-		</itemizedlist>
+		<!-- Resolved issues -->
 		
 		<!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1185,24 +1159,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Enchancements --> 	
+		<!-- Enchancements -->
 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>
-					None.
-				</para>
-			</listitem>
-		</itemizedlist>
-		
-		<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>None.</para>
-			</listitem>
-		</itemizedlist>
+		<!-- Resolved issues -->
 		
 		<!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1233,24 +1192,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Enchancements --> 	
+		<!-- Enchancements -->
 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>
-					None.
-				</para>
-			</listitem>
-		</itemizedlist>
-		
-		<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>None.</para>
-			</listitem>
-		</itemizedlist>
+		<!-- Resolved issues -->
 		
 		<!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1281,26 +1225,9 @@
 			</listitem>
 		</itemizedlist>
 		
-		<!-- Enchancements --> 	
+		<!-- Enchancements -->
 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>
-					There were no product enhancements this release.
-				</para>
-			</listitem>
-		</itemizedlist>
-		
-		<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>
-					There were no outstanding issues addressed in this release.
-				</para>
-			</listitem>
-		</itemizedlist>
+		<!-- Resolved issues -->
 		
 		<!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1327,12 +1254,6 @@
 			documentation changes for Cloud Files.</para>
 		
 		<!-- New features -->
-		<itemizedlist>
-			<title>New features</title>
-			<listitem>
-				<para>There were no new features added in this release. </para>
-			</listitem>
-		</itemizedlist>
 		
 		<!-- Enchancements --> 	
 		
@@ -1372,7 +1293,7 @@
 					feedback -- <emphasis role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
-				<para>Added paragraph on CNAMEs in static web based on user feedback in the <emphasis
+				<para>Based on user feedback, added paragraph on CNAMEs in static web in the <emphasis
 						role="italic">Cloud Files Developer Guide</emphasis>. </para>
 			</listitem>
 			<listitem>
@@ -1394,14 +1315,14 @@
 		<itemizedlist>
 			<title>New features</title>
 			<listitem>
-				<para><emphasis role="bold">Static web and custom error page for static web</emphasis></para>
+				<para>Static web and custom error page for static web</para>
 				<para> Use Cloud Files to create a web site that uses your containers and objects to deliver
 					content on the World Wide Web. <phrase security="writeronly">Create a custom
 						error page for your users so that they don't get generic, unbranded error
 						pages like 404 pages.</phrase></para>
 			</listitem>
 			<listitem>
-				<para><emphasis role="bold">Object versioning</emphasis></para>
+				<para>Object versioning</para>
 				<para>
 					Keep track of previous versions of objects from a container.
 					Assign a container to hold the non-current versions so that
@@ -1411,22 +1332,9 @@
 			</listitem>
 		</itemizedlist>
 		
-<!-- Enchancements --> 		
-		<itemizedlist>
-			<title>Enhancements</title>
-			<listitem>
-				<para>There were no enhancements to existing functionality in this release.
-				</para>
-			</listitem>
-		</itemizedlist>
+<!-- Enchancements -->
 
-<!-- Resolved issues --> 
-		<itemizedlist>
-			<title>Resolved issues</title>
-			<listitem>
-				<para>There were no outstanding issues for this release.</para>
-			</listitem>
-		</itemizedlist>
+<!-- Resolved issues -->
 		
 <!-- Documentation Changes --> 		
 		<itemizedlist>
@@ -1441,10 +1349,6 @@
 				<para>Added text and examples for static web, static web custom error page, and object
 					versioning in the <emphasis role="italic">Cloud Files Developer
 					Guide</emphasis>. </para>
-				<para><link
-					xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html"
-					>http://docs.rackspace.com/files/api/v1/cf-devguide/content/index.html</link>.
-				</para>
 			</listitem>			
 		</itemizedlist>
 	</chapter>

@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-04-30</pubdate>
+    <pubdate>2014-07-18</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,16 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-07-18</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added <xref linkend="cdnAccessLogDelivery-d1e01"/>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-04-30</date>
         <revdescription>
@@ -2281,7 +2291,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
       <title>Access log delivery</title>
       <para>You can use access log delivery to analyze the number of requests for each object, the
         client IP address, and time-based usage patterns (such as monthly or seasonal usage). </para>
-      <para> Access log delivery is set on the container, and every object in the container is
+      <para>Access log delivery is set on the container, and every object in the container is
         tracked. To enable access logs for a container, set the metadata
           <code>X-Container-Meta-Access-Log-Delivery</code> header to <code>True</code>. If you have
         multiple containers that you want to track, you must set the metadata header to
@@ -2291,25 +2301,32 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
           <code>X-Container-Meta-Access-Log-Delivery</code> header to <code>FALSE</code>. </para>
       <para>Log files are named according to the following pattern: container name, log date, log
         hour, and MD5 hash. For example:</para>
-      <para><code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz </code>. </para>
+      <para><code>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz </code></para>
       <para>In this example, <code>Media</code> is the name of the container, 2012/10/01 is the date
         (October 1, 2012), and 16 is the hour that the log file was created. There might be multiple
         files for a given hour because the storage system splits log files based on both time and
         log file size. All times in the access logs are UTC time. </para>
-      <note>
-        <para>In the CDN log files,  the date is stored differently than it is for standard
-          containers. Standard containers store the month as a 2-digit number, as shown in the
-          pattern above, while CDN containers store the month as 3 letters because this is the way
-          it is delivered in the Acamai CDN log files.</para>
-      </note>
-      <para> Within the gzip logs, the format of the entries is similar to National Center for
+<!--  <remark>07/16/2014 Based on a support ticket, I removed the note below but added the para above. But then 
+      the CF team decided neither should be here. And that there needs to be a CDN access log delivery section.
+      I am awaiting examples for that section.
+      </remark>
+      <para>In the log files, the date is stored the same way for both standard containers and CDN
+        log files. The format is DD/MM/YYYY (for example, 16/07/2014), as shown in <xref
+          linkend="exampleAccessLogEntries-d1e01"/>. 
+      </para> 
+      <note><para>In the CDN log files, the date is stored differently than it is for standard containers. 
+      Standard containers store the month as a 2-digit number, as shown in the pattern above, while CDN 
+      containers store the month as 3 letters because this is the way it is delivered in the Acamai CDN 
+      log files.</para></note>
+-->
+      <para>Within the gzip logs, the format of the entries is similar to National Center for
         Supercomputing Applications (NCSA) combined log format, but without cookies. The pattern
         follows. The dashes (<parameter>-</parameter>) denote fields that the NCSA combined log
         format dictates be present but that Cloud Files does not capture. </para>
       <para><code>client_ip - - [day/month/year:hour:minute:second timezone] “method request
           HTTP_version” return_code bytes_sent “referrer” “user_agent”</code></para>
       <para>The following example shows log entries. </para>
-      <example>
+      <example xml:id="exampleAccessLogEntries-d1e01">
         <title>Example access log entries</title>
         <programlisting>   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
         MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
@@ -3327,6 +3344,92 @@ i))) != null;
     <para> With these pieces of code in place, the proper content streams are set for iOS devices. </para>
 
   </section>
+    
+    <section xml:id="cdnAccessLogDelivery-d1e01">
+      <title>CDN log delivery</title>
+      
+        <remark>07/16/2014 New section suggested by David Goetz. Similar to "Access log delivery" 
+but only for CDN. I am waiting examples for this section from Brian Metzler. Catherine,
+
+Actually- there's even a bigger change with the CDN logs- we added the referrer to the logs in the CDN recently. So we should should get some examples of that to show in this new section. Sorry we didn't tell you about this earlier- 
+
+David</remark>
+      <para>If you set the <code>X-Log-Retention</code> header on your CDN-enabled container to
+          <code>True</code>,  you enable CDN log delivery on that container. Then all the request
+        logs generated by the edge nodes of the CDN provider to objects in this container are
+        delivered into a special container created in your account named
+          <code>.CDN_ACCESS_LOGS</code>. The delivered logs are in the same format as access logs
+        (see <xref linkend="Acess_Log_Delivery-d1e2200"/>). These logs, once delivered, are treated
+        like any other object in your account, and you are charged for that storage. </para>
+      <para>You can use the CDN logs to analyze the number of requests for each object, the client
+        IP address, and time-based usage patterns (such as monthly or seasonal usage).</para>
+      <note>
+        <para>Delivery times vary greatly for CDN logs. In most cases, the logs are delivered within
+          several hours, but delivery can sometimes take days. Cloud Files can only deliver the logs
+          to you as fast as the logs are delivered from the CDN provider.</para>
+      </note>
+      <para>When you set the <code>X-Log-Retention</code> header to <code>True</code> on a
+        CDN-enabled container, Cloud Files tracks every object in the container. If you have
+        multiple containers that you want to track, you must set the <code>X-Log-Retention</code>
+        header to <code>TRUE</code> for each container. When your first log is delivered, Cloud
+        Files creates the <code>.CDN_ACCESS_LOGS</code> container. This container holds the CDN logs
+        for every container for which you turn on logging. Log files exist until you delete them. To
+        turn off logging, set the <code>X-Log-Retention</code> header to <code>FALSE</code>. </para>
+      <para>Log files are named according to the following pattern: container name, log date, log
+        hour, and MD5 hash. For example: </para>
+      <para><code>Media/2014/07/01/16/096e6c4473f235db081deb51f42a8d98.log.gz</code>
+      </para>
+      <para>In this example, <code>Media</code> is the name of the container,
+          <code>2014/07/01</code> is the date (July 1, 2014), and <code>16</code> is the hour that
+        the log file was created. There might be multiple files for a given hour because the storage
+        system splits log files based on both time and log file size. All times in the logs are UTC
+        time. All logs contained in the log file are from the day and hour specified in the file
+        name. </para>
+      <para>Within the gzip logs, the format of the entries is similar to National Center for
+        Supercomputing Applications (NCSA) combined log format, but without cookies. The pattern
+        follows. The dashes (<parameter>-</parameter>) denote fields that the NCSA combined log
+        format dictates be present but that Cloud Files does not capture. </para>
+      <para><code>client_ip - - [day/month/year:hour:minute:second timezone] “method request
+          HTTP_version” return_code bytes_sent “referrer” “user_agent”</code>
+      </para>
+      <para>The following example shows log entries. </para>
+      <example>
+        <title>Example CDN log entries</title>
+        <programlisting>173.203.44.122 - - [15/07/2014:20:52:25 +0000] "GET 
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/image1.png HTTP/1.1" 304 277 "-" "Mozilla/4.0 (compatible; 
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0;
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)"
+173.203.44.122 - - [15/07/2014:20:52:25 +0000] "GET 
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ email.png HTTP/1.1" 304 278 "-" "Mozilla/4.0 (compatible; 
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; 
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)"
+173.203.44.122 - - [15/07/2014:20:52:25 +0000] "GET 
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ tiny-email.png HTTP/1.1" 304 277 "-" "Mozilla/4.0 (compatible; 
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; 
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)"
+173.203.44.122 - - [15/07/2014:20:59:44 +0000] "GET 
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ default.css?ver=3.8.3 HTTP/1.1" 200 17511 "http://www.rackspace.
+      com/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, 
+      like Gecko) Chrome/35.0.1916.153 Safari/537.36"
+173.203.44.122 - - [15/07/2014:20:59:44 +0000] "GET 
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ jquery.min.js?ver=3.8.3 HTTP/1.1" 200 8022 "http://www.rackspace.
+      com/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, 
+      like Gecko) Chrome/35.0.1916.153 Safari/537.36"
+</programlisting>
+      </example>
+    </section>
+    
   </chapter>
   
     <chapter xml:id="StaticWeb">
