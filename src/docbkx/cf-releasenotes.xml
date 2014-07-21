@@ -49,6 +49,11 @@
 				<revdescription>
 					<itemizedlist>
 						<listitem>
+							<para>Changed the format for CDN logs from storing the month as 3
+								letters to using the following format:  DD/MM/YYYY (for example,
+								16/07/2014).</para>
+						</listitem>
+						<listitem>
 							<para>Added the section "CDN log delivery" to the <citetitle>Cloud Files Developer
 									Guide</citetitle>.</para>
 						</listitem>
@@ -742,11 +747,15 @@
 	<chapter xml:id="Jul182014">
 		<?dbhtml stop-chunking?>
 		<title>July 18, 2014</title>
-		<para>This release contains the following documentation changes for Cloud Files:</para>
+		<para>This release contains the following changes for Cloud Files:</para>
 		<!-- Documentation Changes -->
 		<itemizedlist xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<listitem>
+				<para>Changed the format for CDN logs from storing the month as 3 letters to using
+					the following format:  DD/MM/YYYY (for example, 16/07/2014).</para>
+			</listitem>
 			<listitem>
 				<para>Added the section "CDN log delivery" to the <citetitle>Cloud Files Developer
 						Guide</citetitle>.</para>
