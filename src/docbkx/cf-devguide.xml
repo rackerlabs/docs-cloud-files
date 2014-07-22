@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-07-18</pubdate>
+    <pubdate>2014-07-22</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,13 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <date>2014-07-22</date>
+        <revdescription>
+          <para>Added a link to guidance on choosing a regionalized endpoint in <xref
+              linkend="Service-Access-Endpoints-d1e003"/>.</para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-07-18</date>
         <revdescription>
@@ -1600,6 +1607,19 @@
         of the service is therefore responsible for appropriate
         replication, caching, and overall maintenance of Cloud Files
         data across regional boundaries to other Cloud Files servers. </para>
+      <tip xmlns:wadl="http://wadl.dev.java.net/2009/02">
+        <para>To help you decide which regionalized endpoint to use, read about special
+          considerations for choosing a data center at <link
+            xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw"
+            >http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>.
+          <!--
+2014-07-21 rose.coste
+David Hendler confirms this is the right KC article:
+at the same location, it has a new page title, "Where are the Rackspace data centers (DFW, LON, HKG, etc.)?"
+<link xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw">http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>.
+-->
+        </para>
+      </tip>
       <para>The endpoints to use for the storage service component of your Cloud Files API calls are
         summarized in the following table.</para>
       <para>
