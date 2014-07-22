@@ -757,17 +757,16 @@
 	</chapter>
 	<chapter xml:id="Jul22">
 		<title>July 22, 2014</title>
-		<para>This release includes the following changes for the Cloud Block Storage API.</para>
+		<para>This release includes the following changes for the Cloud Files API.</para>
 		<itemizedlist>
 			<title>Documentation</title>
 			<listitem>
-				<para xmlns:html="http://www.w3.org/1999/xhtml"
-					xmlns:wadl="http://wadl.dev.java.net/2009/02"
+				<para xmlns:html="http://www.w3.org/1999/xhtml" xmlns:wadl="http://wadl.dev.java.net/2009/02"
 					xmlns:svg="http://www.w3.org/2000/svg"
 					xmlns:m="http://www.w3.org/the key 1998/Math/MathML">In the "Service access
 					endpoints" sections in the <citetitle>Cloud Files Getting Started
-						Guide</citetitle> and in the <citetitle>Cloud Files Guide</citetitle>, a
-					link to <link
+						Guide</citetitle> and in the <citetitle>Cloud Files Developer
+						Guide</citetitle>, a link to <link
 						xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw"
 						>http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>
 					was added to provide guidance on choosing a regionalized endpoint.</para>
