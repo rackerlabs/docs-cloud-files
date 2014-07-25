@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-07-22</pubdate>
+    <pubdate>2014-07-25</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,14 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-07-25</date>
+        <revdescription>
+          <para xmlns:wadl="http://wadl.dev.java.net/2009/02">Corrected an error in the Python
+            example to create a TempURL in <xref linkend="Create_TempURL-d1a444"/>. (Removed AMP
+            from the last <code>print</code> in the example.)</para>
+        </revdescription>
+      </revision>
       <revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <date>2014-07-22</date>
         <revdescription>
@@ -3927,7 +3935,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
     expires = int(time() + seconds)
     hmac_body = '%s\n%s\n%s' % (method, expires, object_path)
     sig = hmac.new(key, hmac_body, sha1).hexdigest()
-    print '%s%s?temp_url_sig=%sAMP;temp_url_expires=%s' % \
+    print '%s%s?temp_url_sig=%s;temp_url_expires=%s' % \
         (base_url, object_path, sig, expires)</programlisting>
         </example>
         <para>Be certain to use the full URL to the object, just as you would with a normal request. </para>
