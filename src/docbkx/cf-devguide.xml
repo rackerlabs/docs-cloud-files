@@ -2985,9 +2985,9 @@ X-Delete-After: 864000</programlisting>
             with no request redirects or metadata lookups required. </para>
         </listitem>
         <listitem>
-          <para>A &POST; request to a versioned object only updates the object's metadata. It does
-            not create a new version of the object. New versions are created when the content of the
-            object changes. </para>
+          <para>A &POST; request to a versioned object updates only the current version of the
+            object's metadata. It does not create a new version of the object. New versions are
+            created when the content of the object changes. </para>
         </listitem>
         <listitem>
           <para>A &DELETE; request to a versioned object removes the current version of the object
