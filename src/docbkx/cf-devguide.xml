@@ -1847,11 +1847,11 @@ at the same location, it has a new page title, "Where are the Rackspace data cen
               <td>No limit</td>
             </tr>
             <tr>
-              <td>Container and object metadata limits </td>
+              <td>Account, container, and object metadata limits </td>
               <td>Maximum metadata limits</td>
-              <td>4096 bytes maximum overall metadata, with 90 distinct metadata items at the most.
-              Each piece of metadata can have a 128-character name length with a 256 maximum value
-              length.</td>
+              <td>90 distinct metadata items at the most. Each piece of metadata can have a
+              128-character name length with a 256 maximum value length. The total length of all
+              names and values cannot exceed 4096 bytes.</td>
             </tr>
             <tr>
               <td>Number of object segments per static large object (SLO)</td>
@@ -4034,6 +4034,13 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         <para>After you set the key,  do not change it while you still want others to access your
           account. If you change it, the actions from a FormPost become invalid (within 60 seconds,
           which is the cache time for a key). </para>
+        <note>
+          <para>The <command>POST</command> URI should not include the final container. Include just
+            the version and your account, like
+              <code>/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123</code> in the example
+            below. If you include the full path to the container, the key is not set
+            properly.</para>
+        </note>
         <example>
           <title>Set account metadata key for public access: HTTP request</title>
           <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
@@ -4142,6 +4149,14 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           <listitem>
             <para>The <code>key</code> value is the value of the
                 <code>X-Account-Meta-Temp-Url-Key</code> header set for the account. </para>
+            <note>
+              <para>If you receive the <code>Invalid Signature</code> error, use the
+                  <command>HEAD</command> operation described in <olink targetdoc="cf-devguide"
+                  targetptr="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"
+                  >HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000</olink> to
+                confirm that your key matches the value in the response from the
+                  <command>HEAD</command> command.</para>
+            </note>
           </listitem>
           <listitem>
             <para><emphasis>(Required)</emphasis> The <code>type="file"</code> field defines the
