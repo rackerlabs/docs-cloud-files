@@ -2385,14 +2385,18 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
     <para>This sections provides additional information about using objects in Cloud Files.</para>
     <section xml:id="Chunked_Transfer_Encoding-d1e2092">
       <title>Chunked transfer encoding</title>
-      <para>You can upload data without knowing in advance the amount of data to be uploaded. You
-        can do this by specifying the HTTP header <code>Transfer-Encoding: chunked</code> and not
-        using a <code>Content-Length</code> header. A good use of this feature would be performing a
-        database dump, piping the output to gzip, and then piping the gzip file directly to Cloud
-        Files without writing the data to disk to compute the file size. If you attempt to upload
-        more than 5 GB, the server closes the connection and remove the previously sent data from
-        the system. You must ensure that the data that you transfer is less than 5 GB or split it
-        into 5 GB chunks, each in its own storage object. </para>
+      <para>You can upload data without knowing in advance the amount
+        of data to be uploaded. You can do this by specifying the HTTP
+        header <code>Transfer-Encoding: chunked</code> and not using a
+          <code>Content-Length</code> header. A good use of this
+        feature would be performing a database dump, piping the output
+        to gzip, and then piping the gzip file directly to Cloud Files
+        without writing the data to disk to compute the file size. If
+        you attempt to upload more than 5 GB, the server closes the
+        connection and removes the previously sent data from the
+        system. You must ensure that the data that you transfer is
+        less than 5 GB or split it into 5 GB chunks, each in its own
+        storage object. </para>
       <para>If you have files that are larger than 5 GB and you want to use Cloud Files, you can
         segment the files before you upload them, upload them to the same container, and then use a
         manifest file to allow downloading of a concatenated object that contains all the segmented
