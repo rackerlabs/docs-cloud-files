@@ -264,12 +264,15 @@
         </section>
         <section xml:id="Using-Curl-d1e101">
             <title>Sending API requests by using cURL</title>
-            <para>cURL is a command-line tool that you can use to interact with REST interfaces.
-                cURL lets you to transmit and receive HTTP requests and responses from the command
-                line or a shell script, which enables you to work with the API directly (without
-                using one of the language-specific APIs). cURL is available for most UNIX
-                system-based environments, Apple Mac OS X®, and Microsoft Windows®. For more
-                information about cURL, see <link xlink:href="http://curl.haxx.se/"
+            <para>cURL is a command-line tool that you can use to
+                interact with REST interfaces. cURL lets you transmit
+                and receive HTTP requests and responses from the
+                command line or a shell script, which enables you to
+                work with the API directly (without using one of the
+                language-specific APIs). cURL is available for most
+                UNIX system-based environments, Apple Mac OS X®, and
+                Microsoft Windows®. For more information about cURL,
+                see <link xlink:href="http://curl.haxx.se/"
                     >http://curl.haxx.se/</link>. </para>
             <para>The following cURL command-line options are used in this guide to run the
                 examples:</para>
