@@ -2396,7 +2396,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
         connection and removes the previously sent data from the
         system. You must ensure that the data that you transfer is
         less than 5 GB or split it into 5 GB chunks, each in its own
-        storage object. </para>
+        storage object.</para>
       <para>If you have files that are larger than 5 GB and you want to use Cloud Files, you can
         segment the files before you upload them, upload them to the same container, and then use a
         manifest file to allow downloading of a concatenated object that contains all the segmented
