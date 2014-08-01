@@ -428,9 +428,10 @@
         <tip xmlns:wadl="http://wadl.dev.java.net/2009/02">
             <para>To help you decide which regionalized endpoint to use, read about special
                 considerations for choosing a data center at <link
-                    xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw"
-                    >http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>.
-                <!--
+                    xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions"
+                    >http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>.
+                <!--2014-08-01 See JIRA DEVDOC-132. The link needed changed after republished to  
+<link xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions">http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>
 2014-07-21 rose.coste
 David Hendler confirms this is the right KC article:
 at the same location, it has a new page title, "Where are the Rackspace data centers (DFW, LON, HKG, etc.)?"

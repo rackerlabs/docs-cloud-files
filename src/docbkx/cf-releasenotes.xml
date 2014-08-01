@@ -49,10 +49,11 @@
 				<revdescription>
 					<para>In the "Service access endpoints" sections in the <citetitle>Cloud Files
 							Getting Started Guide</citetitle> and in the <citetitle>Cloud Files
-							Developer Guide</citetitle>, added a link to <link
-							xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw"
-							>http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>
+								Developer Guide</citetitle>, added a link to <link
+									xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions"
+									>http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>
 						to provide guidance on choosing a regionalized endpoint.</para>
+					<?sbr?>
 				</revdescription>
 			</revision>
 			<revision>
@@ -766,9 +767,9 @@
 					xmlns:m="http://www.w3.org/the key 1998/Math/MathML">In the "Service access
 					endpoints" sections in the <citetitle>Cloud Files Getting Started
 						Guide</citetitle> and in the <citetitle>Cloud Files Developer
-						Guide</citetitle>, a link to <link
-						xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw"
-						>http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>
+							Guide</citetitle>, a link to <link
+								xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions"
+								>http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>
 					was added to provide guidance on choosing a regionalized endpoint.</para>
 			</listitem>
 		</itemizedlist>
