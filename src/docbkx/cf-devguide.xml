@@ -4018,9 +4018,12 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
       <title>FormPost</title>
       <para>You can use the FormPost feature to give your website audience a way to upload objects
         to your Cloud Files account through a web form. FormPost works by translating a browser form
-        request into a object <command>PUT</command> operation in Cloud Files. After you enable
-        FormPost on your account, you need only to create the form in your website by using the
-        guidelines in this section. </para>
+        request into an object <command>PUT</command> operation in Cloud Files (see <olink
+          targetdoc="cf-devguide"
+          targetptr="PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000"
+          >PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000</olink>).
+        After you enable FormPost on your account, you need only to create the form in your website
+        by using the guidelines in this section. </para>
       <para>As with all objects in Cloud Files, the object file size
         limit is 5 GB. If your users try to upload an object larger
         than 5 GB, they will get a file size error. </para>
@@ -4061,6 +4064,8 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
     &lt;input type="hidden" name="max_file_count" value="&lt;count&gt;" /&gt;
     &lt;input type="hidden" name="expires" value="&lt;unix-timestamp&gt;" /&gt;
     &lt;input type="hidden" name="signature" value="&lt;hmac&gt;" /&gt;
+    &lt;input type="hidden" name="x_delete_at" value="&lt;unix-timestamp&gt;" /&gt;
+    &lt;input type="hidden" name="x_delete_after" value="&lt;seconds&gt;" /&gt;
     &lt;input type="file" name="file1" />&lt;br /&gt;
     &lt;input type="submit" /&gt;
   &lt;/form&gt;</programlisting>
@@ -4068,21 +4073,19 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         <para>The parameters and attributes in the form are defined as follows:</para>
         <itemizedlist>
           <listitem>
-            <para><emphasis>(Required)</emphasis>
-              <code>Form action</code> is the Cloud Files URL (<code>CF-url</code>) to the
-              destination where files will be uploaded. For example,
-                <code>https://storage.clouddrive.com/v1/CF_xer7_34/container</code>. The name of
-              each uploaded object will have the <code>&lt;CF-url&gt;</code> appended to the front
-              of it. </para>
+            <para><emphasis>(Required)</emphasis> The <code>form action</code> attribute is the
+              Cloud Files URL (<code>CF-url</code>) to the destination where files will be uploaded.
+              For example, <code>https://storage.clouddrive.com/v1/yourAccountID/container</code>.
+              The name of each uploaded object has the <code>&lt;CF-url&gt;</code> appended to the
+              front of it. </para>
             <note>
-              <para>You can also include a prefix to separate uploads, such as assigning each user a
-                certain prefix:
-                  <code>https://storage.clouddrive.com/v1/CF_xer7_34/container/user_prefix</code>.
-              </para>
+              <para>Optionally, you can also include a prefix to separate uploads, such as assigning
+                each user a certain prefix:
+                  <code>https://storage.clouddrive.com/v1/yourAccountID/container/object_prefix</code>. </para>
             </note>
           </listitem>
           <listitem>
-            <para><emphasis>(Required)</emphasis> The form <code>method</code> must be
+            <para><emphasis>(Required)</emphasis> The <code>method</code> attribute must be
                 <code>POST</code> and the <code>enctype</code> must be set as
                 <code>multipart/form-data</code>. </para>
           </listitem>
@@ -4094,22 +4097,25 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
               message for more information if there is an error, such as <code>max_file_size
                 exceeded</code>. </para>
             <note>
-              <para>Although <code>redirect</code> is optional for the form, it must be present in
-                the HMAC body (shown in the following example).  Although <code>redirect</code> must
-                be present, its value can be an empty string to indicate that no
-                  <code>redirect</code> is included on the form.</para>
+              <para>Although the <code>redirect</code> attribute is optional for the form, it must
+                be present in the HMAC body (shown in the following example). Although
+                  <code>redirect</code> must be present, its value can be an empty string to
+                indicate that no <code>redirect</code> is included on the form.</para>
             </note>
           </listitem>
           <listitem>
             <para><emphasis>(Required)</emphasis> The <code>max_file_size</code> attribute specifies
-              the maximum size in bytes of a single file. Because the storage system maximum file
-              size is 5 GB, <code>max_file_size</code> cannot exceed 5 GB.</para>
+              the maximum size in bytes of the largest single file upload. Because the storage
+              system maximum file size is 5 GB, <code>max_file_size</code> cannot exceed 5
+              GB.</para>
           </listitem>
           <listitem>
             <para><emphasis>(Required)</emphasis> The <code>max_file_count</code> attribute
-              indicates the maximum number of files that can be uploaded with the form. The
-                <code>max_file_count</code> value used to generate the <code>signature</code> must
-              be the same as that in the web form. </para>
+              specifies the maximum number of files that can be uploaded with the form. </para>
+            <note>
+              <para>The <code>max_file_count</code> value used to generate the
+                  <code>signature</code> must be the same as that in the web form.</para>
+            </note>
           </listitem>
           <listitem>
             <para><emphasis>(Required)</emphasis> The <code>expires</code> attribute is the UNIX
@@ -4121,18 +4127,16 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             </note>
           </listitem>
           <listitem>
-            <para><emphasis>(Required)</emphasis> The <code>signature</code> attribute is the
-              HMAC-SHA1 signature of the form. Following is sample code for computing the signature
-              in Python: </para>
-          </listitem>
-        </itemizedlist>
-        <example>
-          <title>Generate signature for FormPost</title>
-          <programlisting>  import hmac
+            <para>
+              <emphasis>(Required)</emphasis> The <code>signature</code> attribute is the HMAC-SHA1
+              signature of the form. Following is sample code for computing the signature in Python: </para>
+            <example>
+              <title>Generate signature for FormPost</title>
+              <programlisting>  import hmac
   from hashlib import sha1
   from time import time
   path = '/v1/account/container/object_prefix'
-  redirect = 'https://myserver.com/some-page'
+  redirect = 'https://myserver.com/some-page'  # set to '' if redirect not in form 
   max_file_size = 104857600
   max_file_count = 10
   expires = int(time() + 600)
@@ -4140,11 +4144,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
   hmac_body = '%s\n%s\n%s\n%s\n%s' % (path, redirect,
       max_file_size, max_file_count, expires)
   signature = hmac.new(key, hmac_body, sha1).hexdigest()</programlisting>
-          <para>Be sure to use the full path in your Cloud Files account, from the <code>/v1/</code>
-            onward. </para>
-        </example>
-        <itemizedlist>
-          <listitem>
+            </example>
+            <para>Be sure to use the full path in your Cloud Files account, from the
+                <code>/v1/</code> onward. </para>
+            <para>Note that <code>x_delete_at</code> and <code>x_delete_after</code> (see below) are
+              not used in signature generation because they are optional attributes.</para>
             <para>The <code>key</code> value is the value of the
                 <code>X-Account-Meta-Temp-Url-Key</code> header set for the account. </para>
             <note>
@@ -4157,14 +4161,19 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             </note>
           </listitem>
           <listitem>
-            <para><emphasis>(Required)</emphasis> The <code>type="file"</code> field defines the
-              form file field. At least one entry is required to allow your users to select and
-              upload a file, but you can add more fields for multiple files. The number of entries
-              must not, however, exceed the value of <code>max_file_count</code>. Each
-                <code>type="file"</code> field must have a different name. </para>
+            <para><emphasis>(Optional)</emphasis>If you want the uploaded files to be temporary, you
+              can set the <code>x-delete-at</code> or <code>x-delete-after</code> attributes by
+              adding one of these as a form input.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis>(Required)</emphasis> The <code>type="file"</code> attribute defines the
+              form file field. You must have at least one entry to allow your users to select and
+              upload a file, but you can add more fields for multiple files. However, the number of
+              entries must not exceed the value of <code>max_file_count</code>. Each
+                <code>type="file"</code> attribute must have a different name. </para>
             <note>
-              <para>The <code>type="file"</code> field or fields must be at the end of the form code
-                for Cloud Files to process the uploads correctly. </para>
+              <para>The <code>type="file"</code> attribute or attributes must be at the end of the
+                form code for Cloud Files to process the uploads correctly. </para>
             </note>
           </listitem>
         </itemizedlist>
