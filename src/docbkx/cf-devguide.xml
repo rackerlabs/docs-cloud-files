@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-07-25</pubdate>
+    <pubdate>2014-08-28</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -67,7 +67,37 @@
         applications using the Rackspace Cloud Files™ Application
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
-    <revhistory>
+    <revhistory>		<revision>
+        <date>2014-08-28</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added an example request to <olink targetdoc="cf-devguide"
+                  targetptr="Extract_Archive-d1e2338">“Extracting archive files”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Updated <olink targetdoc="cf-devguide" targetptr="FormPost-d1a555"
+                  >“FormPost”</olink> by adding the following information: <itemizedlist>
+                  <listitem>
+                    <para>Additional information about the <code>max_file_count</code> parameter
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>A description for the <code>x-delete-at</code> and
+                        <code>x-delete-after</code> parameters </para>
+                    <para>These parameters allow you to set the expiration for an object that is
+                      uploaded using FormPost.</para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+            <listitem>
+              <para>Corrected the link to service access endpoint information in <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/GET_listCDNcontainers_v1__account__CDN_Account_Operations-d1e2397.html"
+                  >"List CDN-enabled containers".</link></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision> 
       <revision>
         <date>2014-07-25</date>
         <revdescription>
@@ -3677,6 +3707,14 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         </para>
         <para><code>FILE_PATH</code> is the file name from the listing
           in the tar file.</para>
+      <para>The following example shows a request to extract an archive.</para>
+      <example>
+        <title>Example extract archive request</title>
+        <programlisting language="bash">$ tar cf archive.tar directory_to_be_archived
+$ curl -i -XPUT -H'x-auth-token: AUTH_TOKEN'
+https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_aaa-aaa-aaa-aaa?extr
+act-archive=tar --data-binary @./archive.tar</programlisting>
+      </example>
         <para>You can create up to 1,000 new containers per extraction
           request. Also note that only regular files are uploaded.
           Objects such as empty directories and symlinks are not
@@ -3698,7 +3736,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
           JSON, from a successful request. </para>
         <example>
           <title>Successful extract archive response</title>
-          <programlisting>HTTP/1.1 100 Continue
+          <programlisting language="bash">HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -3716,7 +3754,7 @@ Transfer-Encoding: chunked
         <para>The following example shows a response with errors.</para>
         <example>
           <title>Extract archive response with errors</title>
-          <programlisting>HTTP/1.1 100 Continue
+          <programlisting language="bash">HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -3783,7 +3821,7 @@ Transfer-Encoding: chunked
         response body, formatted in JSON, from a successful request. </para>
         <example>
           <title>Successful bulk delete response</title>
-          <programlisting>HTTP/1.1 100 Continue
+          <programlisting language="bash">HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
@@ -3802,7 +3840,7 @@ Transfer-Encoding: chunked
         <para>The following example shows a response with errors.</para>
         <example>
           <title>Bulk delete response with errors</title>
-          <programlisting>HTTP/1.1 100 Continue
+          <programlisting language="bash">HTTP/1.1 100 Continue
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
@@ -4038,8 +4076,8 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         <note>
           <para>The <command>POST</command> URI should not include the final container. Include just
             the version and your account, like
-              <code>/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123</code> in the example
-            below. If you include the full path to the container, the key is not set
+              <code>/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123</code> shown in the
+            example below. If you include the full path to the container, the key is not set
             properly.</para>
         </note>
         <example>
@@ -4111,7 +4149,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           </listitem>
           <listitem>
             <para><emphasis>(Required)</emphasis> The <code>max_file_count</code> attribute
-              specifies the maximum number of files that can be uploaded with the form. </para>
+              specifies the maximum number of files that can be uploaded with the form. If you send
+              more files than specified by <code>max_file_count</code>, Cloud Files uploads the
+              files as normal until you hit the limit (the <code>max_file_count</code> value). Then,
+              Cloud Files sends an error when it is trying to create the file over the
+                <code>max_file_count</code> value.</para>
             <note>
               <para>The <code>max_file_count</code> value used to generate the
                   <code>signature</code> must be the same as that in the web form.</para>

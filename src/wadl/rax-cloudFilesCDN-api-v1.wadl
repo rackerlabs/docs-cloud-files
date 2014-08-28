@@ -74,8 +74,7 @@
                     <code>cloudFilesCDN</code> endpoints for an
                 account retrieve a list of CDN-enabled containers. No
                 private containers appear in the list. (For the CDN
-                endpoints, see <xref
-                    linkend="Service-Access-Endpoints-d1e003"/>.)</para>
+                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.</para>
             <!--            <remark>03/2014 cyr removed based on disqus comment </remark>
                 <para>Passing the query parameter
                 <code>?enabled_only=true</code> suppresses any
