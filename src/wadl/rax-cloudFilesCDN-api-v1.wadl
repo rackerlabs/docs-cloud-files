@@ -74,7 +74,7 @@
                     <code>cloudFilesCDN</code> endpoints for an
                 account retrieve a list of CDN-enabled containers. No
                 private containers appear in the list. (For the CDN
-                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.</para>
+                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.)</para>
             <!--            <remark>03/2014 cyr removed based on disqus comment </remark>
                 <para>Passing the query parameter
                 <code>?enabled_only=true</code> suppresses any
@@ -198,9 +198,7 @@
                     endpoint for operations against the CDN management
                     service, but you should use whatever endpoints
                     your authentication request provides. For more
-                    information about service access endpoints, see
-                        <xref
-                        linkend="Service-Access-Endpoints-d1e003"/>.</para>
+                    information about service access endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.</para>
             </note>
             <para>Any CDN-accessed objects are cached in the CDN for a
                 specified amount of time, called the Time To Live
@@ -467,8 +465,8 @@
                 performing a <command>HEAD</command> operation on a
                 container where the <code>Host</code> header value is
                 one of the <code>cdnCloudFiles</code> service access
-                endpoints. (For a list of the endpoints, see <xref
-                    linkend="Service-Access-Endpoints-d1e003"/>).</para>
+                endpoints. (For the CDN
+                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.)</para>
             <para>If the container is (or ever has been) CDN-enabled,
                 the metadata is returned in headers in the response
                 for plain text, or in the response body for XML or
