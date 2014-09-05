@@ -124,34 +124,34 @@
             <note><para>At this time, a <code>prefix</code> query parameter is not supported at the account level.</para></note>
             <para>As an example, start with an account that has five container names, as follows:</para>
             
-            <para><programlisting>  apples
+            <para><programlisting language="bash">  apples
   bananas
   kiwis
   oranges
   pears</programlisting></para>
             <para>Use a limit of 2 to show how things work:</para>
-            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
+            <para><programlisting language="bash">  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
   apples
   bananas</programlisting></para>
             <para>Because the operation returned two items, assume there are more container names to list and make another request with a marker of the last item returned:</para>
-            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
+            <para><programlisting language="bash">  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=bananas
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
   
   kiwis
   oranges</programlisting></para>
             <para>Again, two items are returned, and you assume that there might be more. So you make another GET request for two more:</para>
-            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
+            <para><programlisting language="bash">  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?limit=2&amp;marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
   pears</programlisting></para>
             <para>This one-item response shows fewer than the limit of 2 container names requested, and indicates that this is the end of the list.</para>
             <para>By using the <code>end_marker</code> parameter, you can limit the result set to container names less than the given value.</para>
-            <para><programlisting>  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
+            <para><programlisting language="bash">  GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123?end_marker=oranges
   Host: storage.clouddrive.com
   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
                     
@@ -633,27 +633,27 @@
             <para>You can use the <code>limit</code> parameter to reduce the number of returned objects.</para>
             <para>If the number of returned items equals the <code>limit</code> used (or 10,000 if no <code>limit</code> was specified), you can assume there are more object names.</para>
             <para>As an example, use a listing of 5 object names, as follows:</para>            
-            <para><programlisting> gala
+            <para><programlisting language="bash" > gala
  grannysmith
  honeycrisp
  jonagold
  reddelicious</programlisting></para>
             <para>Use a <code>limit</code> of 2 to show how things work:</para>
-            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2
+            <para><programlisting language="bash"> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
  gala
  grannysmith</programlisting></para>
             <para>Because the request returned two items, assume there are more object names to list and make another request with a <code>marker</code> of the last item returned:</para>
-            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
+            <para><programlisting language="bash"> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=grannysmith
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
  honeycrisp
  jonagold</programlisting></para>
             <para>Again, two items are returned, and you assume that there might be more. So you make another <command>GET</command> request for two more:</para>
-            <para><programlisting> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
+            <para><programlisting language="bash"> GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2&amp;marker=jonagold
  Host: storage.clouddrive.com
  X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
  
@@ -890,7 +890,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
                 </p></doc>
             </param>
-            <representation mediaType="application/http" element="files:Files" >
+            <representation mediaType="text/xml" element="files:Files" >
                 <doc title="Create container: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_request.txt"/>
                 </doc>
@@ -1013,16 +1013,16 @@
                 <title>Updating container metadata</title>
                 <para>For containers, the <command>POST</command> request to set metadata does not delete existing metadata that is not explicitly set in the request.</para> 
                 <para>For example, you use a <command>HEAD</command> request to list container metadata and get the following results:</para>
-                <programlisting>X-Container-Meta-Price: 50                    
+                <programlisting language="bash">X-Container-Meta-Price: 50                    
 X-Container-Meta-Extra: Data</programlisting>
                 <para>Then you perform a <command>POST</command> request similar to the following example to set metadata on the same container that you listed above:</para>
-                <programlisting>POST /v1/account/containName HTTP/1.1
+                <programlisting language="bash">POST /v1/account/containName HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: yourAuthToken
 X-Container-Meta-Price: 45
 X-Container-Meta-Cost: 30</programlisting>
                 <para>Listing the container metadata again after the <command>POST</command> then shows the following results. The <code>X-Container-Meta-Extra</code> metadata still exists.</para>
-                <programlisting>X-Container-Meta-Price: 45                    
+                <programlisting language="bash">X-Container-Meta-Price: 45                    
 X-Container-Meta-Cost: 30
 X-Container-Meta-Extra: Data</programlisting>
                 <para>For information about deleting container metadata, see <xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
@@ -1135,7 +1135,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Create or update container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
                 </doc>
@@ -1258,7 +1258,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
                 </doc>
@@ -1335,7 +1335,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Delete container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainerMetadata_response.txt"/>
                 </doc>
@@ -1451,17 +1451,17 @@ X-Container-Meta-Extra: Data</programlisting>
                     static large objects.
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_request.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data using a range: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataWithRange_request.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data using multiple ranges: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataMultipleRange_request.txt"/>
                 </doc>
@@ -1540,17 +1540,17 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>    
             </param>          
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_response.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data using range response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataWithRange_response.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object data using multiple ranges response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectDataMultipleRange_response.txt"/>
                 </doc>
@@ -1743,7 +1743,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     Using the PUT operation with <code>X-Copy-From</code> has the same effect as using the COPY operation to copy an object. 
                 </p></doc>
             </param>                        
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Create or update object request">
                     <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
                 </doc>
@@ -1787,7 +1787,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Create or update object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
                 </doc>
@@ -1824,7 +1824,7 @@ X-Container-Meta-Extra: Data</programlisting>
             <!-- 02-03-12 dsh Content Length header / note required by JIRA / tick DOC-100 -->
                 <example>
                     <title>Copy object approach 1 - using COPY</title>
-                    <programlisting>  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
+                    <programlisting language="bash">  COPY /v1/<replaceable>account</replaceable>/<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
   X-Auth-Token: <replaceable>yourAuthToken</replaceable>
   Destination: /<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> 
@@ -1845,7 +1845,7 @@ X-Container-Meta-Extra: Data</programlisting>
             </note>
             <example>
                 <title>Copy object approach 2 - using PUT</title>
-                <programlisting>  PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
+                <programlisting language="bash">  PUT /v1/<replaceable>account</replaceable>/<replaceable>destinationContainer</replaceable>/<replaceable>destinationObject</replaceable> HTTP/1.1
   Host: <replaceable>storageURL</replaceable>
   X-Auth-Token: <replaceable>yourAuthToken</replaceable>
   X-Copy-From: /<replaceable>sourceContainer</replaceable>/<replaceable>sourceObject</replaceable>
@@ -1892,7 +1892,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     linkend="Service-Access-Endpoints-d1e003"/>.)</para>
             <example>
                 <title>Data center endpoints</title>
-                <programlisting>  "endpoints": [
+                <programlisting language="bash">  "endpoints": [
     {
       "region": "DFW",
       <emphasis role="bold">"internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_9491081f-7e12-4f56-98d0-cdb3037c8d7c"</emphasis>,
@@ -1969,12 +1969,12 @@ X-Container-Meta-Extra: Data</programlisting>
                     You must specify a <code>X-Object-Meta-name</code> header for each metadata item (for each <code>name</code>) that you want to add or update. 
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Copy object using COPY: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_request.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Copy object using PUT: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_request.txt"/>
                 </doc>
@@ -2037,12 +2037,12 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Copy object using COPY: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_response.txt"/>
                 </doc>
             </representation>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Copy object using PUT: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectPUT_response.txt"/>
                 </doc>
@@ -2097,7 +2097,7 @@ X-Container-Meta-Extra: Data</programlisting>
                             xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
                             ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
             </param>       
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
                 </doc>
@@ -2188,7 +2188,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Get object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
                 </doc>
@@ -2238,16 +2238,16 @@ X-Container-Meta-Extra: Data</programlisting>
                     delete one entry without posting the others, the others
                     will also be deleted at that time.</para> 
                  <para>For example, you use a <command>HEAD</command> request to list object metadata and get the following results:</para>
-                <programlisting>X-Object-Meta-Price: 50                    
+                <programlisting language="bash">X-Object-Meta-Price: 50                    
 X-Object-Meta-Extra: Data</programlisting>
                 <para>Then you perform a <command>POST</command> request similar to the following example to set metadata on the same object that you listed above:</para>
-                <programlisting>POST /v1/account/containName/objectName HTTP/1.1
+                <programlisting language="bash">POST /v1/account/containName/objectName HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: yourAuthToken
 X-Object-Meta-Price: 45
 X-Object-Meta-Cost: 30</programlisting>
                 <para>Listing the object metadata again after the <command>POST</command> then shows the following results and <code>X-Object-Meta-Extra</code> no longer exists:</para>
-                <programlisting>X-Object-Meta-Price: 45                    
+                <programlisting language="bash">X-Object-Meta-Price: 45                    
 X-Object-Meta-Cost: 30</programlisting>
                 <para>To remove all metadata for an object, simply perform a
                     <command>POST</command> request for the object with no
@@ -2310,7 +2310,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If set, the value of the <code>Content-Encoding</code> metadata.
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Update object metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_request.txt"/>
                 </doc>
@@ -2342,7 +2342,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Update object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
                 </doc>
@@ -2395,7 +2395,7 @@ X-Object-Meta-Cost: 30</programlisting>
                     static large objects.
                 </p></doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Delete object: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_request.txt"/>
                 </doc>
@@ -2428,7 +2428,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <doc title="Delete object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>
                 </doc>

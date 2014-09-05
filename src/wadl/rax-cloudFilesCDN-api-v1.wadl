@@ -137,7 +137,7 @@
                         response format, either JSON or
                     XML.</para></wadl:doc>
             </param>
-            <representation mediaType="application/text"
+            <representation mediaType="text/xml"
                 element="files:Files">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
@@ -153,7 +153,7 @@
                 xml:lang="EN" title="OK">The request succeeded. The
                 information returned with the response is dependent on
                 the method used in the request. </wadl:doc>
-            <representation mediaType="application/text" element="files:Files">
+            <representation mediaType="text/xml" element="files:Files">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="List CDN-enabled containers: HTTP response">
@@ -348,7 +348,7 @@
                     xml:lang="EN"><para>The URI for video streaming
                         that uses HTTP Dynamic Streaming from Adobe.</para></wadl:doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="CDN-enable container: HTTP response">
@@ -445,7 +445,7 @@
                 xml:lang="EN" title="No Content">The server fulfilled
                 the request but does not need to return a
                 body.</wadl:doc>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml" element="files:Files" >
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="Update CDN-enabled container metadata: HTTP response">
@@ -593,7 +593,7 @@
                     xml:lang="EN"><para>The URI for video streaming
                         that uses HTTP Live Streaming from Apple.</para></wadl:doc>
             </param>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="Get CDN-enabled container metadata: HTTP request">
@@ -706,7 +706,7 @@
                 does not return a response body.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="Delete CDN-enabled object: HTTP request">
@@ -721,7 +721,7 @@
                 xml:lang="EN" title="No Content">The server fulfilled
                 the request but does not need to return a
                 body.</wadl:doc>
-            <representation mediaType="application/http">
+            <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="Delete CDN-enabled object: HTTP response">

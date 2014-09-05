@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-08-28</pubdate>
+    <pubdate>2014-09-05</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -67,7 +67,29 @@
         applications using the Rackspace Cloud Files™ Application
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
-    <revhistory>		<revision>
+    <revhistory>
+      <revision>
+        <date>2014-09-05</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated <xref linkend="CORS-d1e1300"/>. This section now includes the following
+                subsections to describe the available access control headers:<itemizedlist>
+                  <listitem>
+                    <para><xref linkend="CORS_Container_Headers-d1e1300"/></para>
+                  </listitem>
+                  <listitem>
+                    <para><xref linkend="Assigning_CORS_Headers_to_Requests-d1e2120"/></para>
+                  </listitem>
+                </itemizedlist></para>
+            </listitem>
+            <listitem>
+              <para>To <xref linkend="Create_Static_Website-dle4000"/>, added a note about how to
+                disable a static website that you have created. </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>		<revision>
         <date>2014-08-28</date>
         <revdescription>
           <itemizedlist>
@@ -354,8 +376,7 @@
               <para>Added <xref linkend="RBAC"/>.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref
-                  linkend="CORS_Container_Header-d1e1300"/>.</para>
+              <para>Updated <xref linkend="CORS-d1e1300"/>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -1067,8 +1088,8 @@
         service. For example, you could CDN-enable a container called <code>images</code> and be
         assigned the CDN URI, but you also need to create a container called <code>images</code> in
         the storage service.</para>
-      <para>For more information about CDN-enabled containers, see <xref
-          linkend="CDN_Container_Services-d1e2632"/></para>
+      <para>For more information about CDN-enabled containers and operations for them, see <xref
+          linkend="API_Operations_for_CDN_Services-d1e2386"/></para>
     </section>
     <section xml:id="Language-Specific_API_Bindings-d1e574">
       <title>Language-specific APIs </title>
@@ -2175,9 +2196,9 @@
     </note>
     <para> To display a list of all the objects in the storage container, use a &GET; operation
       without a <code>delimiter</code> or <code>prefix</code> parameter. </para>
-    <programlisting>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups</programlisting>
+    <programlisting language="bash">GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups</programlisting>
     <para> The system returns status code 200 OK and the requested list of objects. </para>
-    <programlisting>photos/animals/cats/persian.jpg
+    <programlisting language="bash">photos/animals/cats/persian.jpg
 photos/animals/cats/siamese.jpg
 photos/animals/dogs/corgi.jpg
 photos/animals/dogs/poodle.jpg
@@ -2187,20 +2208,20 @@ photos/plants/fern.jpg
 photos/plants/rose.jpg</programlisting>
     <para> To limit the displayed results, use the <code>delimiter</code> parameter defined as a
       forward slash (/), as shown in the following example. </para>
-    <programlisting>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/</programlisting>
+    <programlisting language="bash">GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/</programlisting>
     <para> The system returns status code 200 (OK) and the requested matching objects. Because the
       request used the slash, only the pseudo directory <code>photos/</code> is displayed, as shown
       in the following example. Remember that the returned values from a <code>delimiter</code>
       query that uses a slash are not real objects. They have a <code>Content-Type</code> of
         <code>application/directory</code> and are in a <code>subdir</code> section of the JSON and
       XML results. </para>
-    <programlisting>photos/</programlisting>
+    <programlisting language="bash">photos/</programlisting>
     <para>To view the objects inside a pseudo directory, including further nested pseudo
       directories, use the <code>prefix</code> parameter with the <code>delimiter</code> parameter. </para>
-    <programlisting>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/</programlisting>
+    <programlisting language="bash" >GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&#38;delimiter=/</programlisting>
     <para>The system returns status code 200 (OK) and the objects and pseudo directories within the
       top-level pseudo directory, as shown in the following example. </para>
-    <programlisting>photos/animals/ 
+    <programlisting language="bash">photos/animals/ 
 photos/plants/
 photos/me.jpg</programlisting>
     <para>There is no limit to the number of nested pseudo directories you can create. To navigate
@@ -2208,10 +2229,10 @@ photos/me.jpg</programlisting>
         <code>delimiter</code> parameter. In the following example, the pseudo directory
         <code>animals</code> contains a pseudo directory called <code>dogs</code>. To navigate
       directly to the files contained within <code>dogs</code>, enter the command following.</para>
-    <programlisting>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/</programlisting>
+    <programlisting language="bash">GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&#38;delimiter=/</programlisting>
     <para>The system returns status code 200 (OK) and the following objects and pseudo directories
       within the nested pseudo directory. </para>
-    <programlisting>photos/animals/dogs/corgi.jpg
+    <programlisting language="bash">photos/animals/dogs/corgi.jpg
 photos/animals/dogs/poodle.jpg
 photos/animals/dogs/terrier.jpg</programlisting>
   </chapter>
@@ -2251,13 +2272,13 @@ photos/animals/dogs/terrier.jpg</programlisting>
         container, such as <code>MyContainer</code> in the following example. </para>
       <example>
         <title>Show container metadata before adding ACL headers: HTTP request</title>
-        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+        <programlisting language="bash">HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
         <title>Show container metadata before adding ACL headers: HTTP response</title>
-        <programlisting>HTTP/1.1 204 No Content
+        <programlisting language="bash">HTTP/1.1 204 No Content
 X-Container-Object-Count: 2 
 X-Container-Bytes-Used: 76 
 Accept-Ranges: bytes 
@@ -2269,7 +2290,7 @@ Date: Mon, 07 Apr 2014 01:29:22 GMT </programlisting>
           <code>X-Container-Write</code> metadata headers to enable read and write access for
           <code>user1</code>, <code>user2</code>, and <code>user3</code>.<example>
           <title>Update container to add ACL headers: HTTP request</title>
-          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+          <programlisting language="bash">POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 <emphasis role="bold">X-Container-Read: user1, user2, user3
@@ -2279,13 +2300,13 @@ X-Container-Write: user1, user2, user3</emphasis></programlisting>
       <para>Repeat the operation to show container metadata and confirm the metadata change.</para>
       <example>
         <title>Show container metadata after adding ACL headers: HTTP request</title>
-        <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+        <programlisting language="bash">HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
       </example>
       <example>
         <title>Show container metadata after adding ACL headers: HTTP response</title>
-        <programlisting>HTTP/1.1 204 No Content
+        <programlisting language="bash">HTTP/1.1 204 No Content
 X-Container-Object-Count: 2
 <emphasis role="bold">X-Container-Read: user1, user2, user3
 X-Container-Write: user1, user2, user3</emphasis>
@@ -2384,7 +2405,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
       <para>The following example shows log entries. </para>
       <example xml:id="exampleAccessLogEntries-d1e01">
         <title>Example access log entries</title>
-        <programlisting>   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
+        <programlisting language="bash">   50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
         MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
         HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
         CPython/2.7.3 Linux/3.2.0-29-generic"
@@ -2427,7 +2448,7 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT</programlisting>
         objects. For more information, see <xref linkend="Large_Object_Creation-d1e2019"/>.</para>
       <example>
         <title>Upload unspecified quantity of data: HTTP request</title>
-        <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+        <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Transfer-Encoding: chunked
@@ -2435,7 +2456,7 @@ X-Object-Meta-PIN: 1234</programlisting>
       </example>
       <example>
         <title>Upload unspecified quantity of data response</title>
-        <programlisting>19
+        <programlisting language="bash">19
 A bunch of data broken up
 D
 into chunks.
@@ -2606,7 +2627,7 @@ into chunks.
           of a large object, and the manifest. </para>
         <example>
           <title>Upload a segment of a large object: HTTP request</title>
-          <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+          <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -2614,7 +2635,7 @@ Content-Length: 1</programlisting>
         </example>
         <example>
           <title>Upload a segment of a large object response</title>
-          <programlisting>s</programlisting>
+          <programlisting language="bash">s</programlisting>
         </example>
         <para>No response body is returned. A status code of 201 (Created) indicates a successful
           write. Status code 411 (Length Required) indicates that the <code>Content-Length</code>
@@ -2625,7 +2646,7 @@ Content-Length: 1</programlisting>
           manifest.</para>
         <example>
           <title>Upload the next segment of the large object : HTTP request</title>
-          <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+          <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 ETag: 8a964ee2a5e88be344f36c22562a6486
@@ -2633,7 +2654,7 @@ Content-Length: 1</programlisting>
         </example>
         <example>
           <title>Upload the next segment of the large object response</title>
-          <programlisting>w</programlisting>
+          <programlisting language="bash">w</programlisting>
         </example>
         <para>Next, upload the manifest that you created that indicates the container in which the
           object segments reside. Note that uploading additional segments after the manifest is
@@ -2641,7 +2662,7 @@ Content-Length: 1</programlisting>
           re-create the manifest file for subsequent additional segments.</para>
         <example>
           <title>Upload manifest: HTTP request</title>
-          <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+          <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Content-Length: 0
@@ -2649,7 +2670,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
         </example>
         <example>
           <title>Upload manifest response</title>
-          <programlisting>[...]</programlisting>
+          <programlisting language="bash">[...]</programlisting>
         </example>
         <para>A <command>GET</command> request to the manifest object returns the concatenation of
           the objects from the manifest.</para>
@@ -2732,7 +2753,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           <para>After you have uploaded the objects to be concatenated, you upload a manifest
             object. The request must use the <command>PUT</command> operation, with the following
             query parameter at the end of the manifest object name:</para>
-          <programlisting>?multipart-manifest=put</programlisting>
+          <programlisting language="bash">?multipart-manifest=put</programlisting>
           <para>The body of the <command>PUT</command> operation is an ordered list of files in JSON
             data format. The data to be supplied for each segment is as follows:</para>
           <itemizedlist>
@@ -2756,7 +2777,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             object names do not have to conform to a specific pattern.</para>
           <example>
             <title>Static large object manifest list</title>
-            <programlisting>[
+            <programlisting language="bash">[
         {
           "path": "/mycontainer/objseg1",
           "etag": "0228c7926b8b642dfb29554cd1f00963",
@@ -2833,7 +2854,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
           </itemizedlist>
           <para>The GET request with the following query parameter returns the actual manifest file
             contents:</para>
-          <programlisting>?multipart-manifest=get  </programlisting>
+          <programlisting language="bash">?multipart-manifest=get  </programlisting>
           <para>The response body contains generated JSON. The resulting list is not identically
             formatted like the manifest that you originally used in the <command>PUT</command>
             operation (<code>?multipart-manifest=put</code>). </para>
@@ -2848,7 +2869,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
             segment objects in the manifest, and then, if all are successfully deleted, the manifest
             object itself. A failure response is similar to those for the bulk delete operation
               (<xref linkend="Bulk_Delete-d1e2338.html"/>).</para>
-          <programlisting>?multipart-manifest=delete</programlisting>
+          <programlisting language="bash">?multipart-manifest=delete</programlisting>
         </section>
         <section xml:id="Modifying_a_Large_Object-d1e2229">
           <title>Modifying a large object </title>
@@ -2898,7 +2919,7 @@ X-Object-Manifest: container/prefix/object/segments</programlisting>
         of encoding used on the data.</para>
       <example>
         <title>Content-Encoding: HTTP request</title>
-        <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+        <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Content-Type: video/mp4
@@ -2915,7 +2936,7 @@ Content-Encoding: gzip</programlisting>
         an attachment type that indicates how the file should be downloaded.</para>
       <example>
         <title>Content-Disposition: HTTP request</title>
-        <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+        <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Content-Type: image/tiff
@@ -2949,7 +2970,7 @@ Content-Disposition: attachment; filename=platmap.tif</programlisting>
           >http://www.epochconverter.com/</link>.</para>
       <example>
         <title>X-Delete-At: HTTP request </title>
-        <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+        <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Content-Type: image/jpeg
@@ -2959,7 +2980,7 @@ X-Delete-At: 1339429105</programlisting>
         in seconds, equivalent to 10 days. After this time, the object expires. </para>
       <example>
         <title>X-Delete-After: HTTP request </title>
-        <programlisting>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+        <programlisting language="bash">PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 Content-Type: image/jpeg
@@ -3036,35 +3057,35 @@ X-Delete-After: 864000</programlisting>
         <orderedlist>
           <listitem>
             <para>Create a version-storing container named <code>versions</code>.</para>
-            <programlisting>curl -i -XPUT -H "X-Auth-Token: yourAuthToken" http://yourStorageUrl/versions</programlisting>
+            <programlisting language="bash">curl -i -XPUT -H "X-Auth-Token: yourAuthToken" http://yourStorageUrl/versions</programlisting>
           </listitem>
           <listitem>
             <para>Create a container named <code>current</code> with a
                 <code>X-Versions-Location</code> header that references
               <code>versions</code>.</para>
-            <programlisting>curl -i -XPUT -H "X-Auth-Token: yourAuthToken" \
+            <programlisting language="bash">curl -i -XPUT -H "X-Auth-Token: yourAuthToken" \
 -H "X-Versions-Location: versions" http://yourStorageUrl/current</programlisting>
           </listitem>
           <listitem>
             <para>Create an object (the first version).</para>
-            <programlisting>curl -i -XPUT --data-binary 1 -H "X-Auth-Token: yourAuthToken" \
+            <programlisting language="bash">curl -i -XPUT --data-binary 1 -H "X-Auth-Token: yourAuthToken" \
     http://yourStorageUrl/current/myobject</programlisting>
           </listitem>
           <listitem>
             <para>Create a new version of that object.</para>
-            <programlisting>curl -i -XPUT --data-binary 2 -H "X-Auth-Token: yourAuthToken" \
+            <programlisting language="bash">curl -i -XPUT --data-binary 2 -H "X-Auth-Token: yourAuthToken" \
     http://yourStorageUrl}/current/myobject</programlisting>
           </listitem>
           <listitem>
             <para>See a list of the older versions of the object. (The example includes the
               hexadecimal number for the length of the file name.)</para>
-            <programlisting>curl -i -H "X-Auth-Token: yourAuthToken" \
+            <programlisting language="bash">curl -i -H "X-Auth-Token: yourAuthToken" \
     http://yourStorageUrl/versions?prefix=008myobject/</programlisting>
           </listitem>
           <listitem>
             <para>Delete the current version of the object and see that the older version is no
               longer in the <code>versions</code> container.</para>
-            <programlisting>curl -i -XDELETE -H "X-Auth-Token: yourAuthToken" \
+            <programlisting language="bash">curl -i -XDELETE -H "X-Auth-Token: yourAuthToken" \
     http://yourStorageUrl>/current/myobject
 curl -i -H "X-Auth-Token: yourAuthToken " \
     http://yourStorageUrl/versions?prefix=008myobject/
@@ -3261,13 +3282,13 @@ In addition to those listed in Anne's great response, a failed upload might retu
         stored in CDN-enabled containers. </para>
     <example>
       <title>CDN-enabled container metadata: HTTP request</title>
-      <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+      <programlisting language="bash">HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
       <title>CDN-enabled container metadata with SSL URI: HTTP response</title>
-      <programlisting>HTTP/1.1 204 No Content
+      <programlisting language="bash">HTTP/1.1 204 No Content
 <emphasis role="bold">X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com</emphasis>
 X-Ttl: 259200
 X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1. r49.cf0.rackcdn.com
@@ -3302,13 +3323,13 @@ Content-Length: 0</programlisting>
       <xref linkend="iOS-Streaming-d1f3725"/>.</para>
     <example>
       <title>CDN-enabled container metadata: HTTP request </title>
-      <programlisting>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+      <programlisting language="bash">HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c</programlisting>
     </example>
     <example>
       <title>CDN-enabled container metadata with streaming URIs: HTTP response</title>
-      <programlisting>HTTP/1.1 204 No Content
+      <programlisting language="bash">HTTP/1.1 204 No Content
 X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com
 X-Ttl: 259200
 <emphasis role="bold">X-Cdn-Ios-Uri: http://fb1ca9de5ff9525ff6f8-64e65126753c56b595824f56d25789bb.iosr.cf1.rackcdn.com</emphasis>
@@ -3350,7 +3371,7 @@ Content-Length: 0</programlisting>
               streaming video is MobyDick.mp4.</para>
             <example>
               <title>HTML 5 video element</title>
-              <programlisting>&lt;video width=”640” height=”480” id="videotag"&gt;
+              <programlisting language="bash">&lt;video width=”640” height=”480” id="videotag"&gt;
   &lt;source src=”http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.
   r49.stream.cf0.rackcdn.com/MobyDick.mp4” /&gt;
 &lt;/video&gt;</programlisting>
@@ -3367,7 +3388,7 @@ Content-Length: 0</programlisting>
               to the end of the iOS streaming URI.</para>
             <example>
               <title>JavaScript for user agent check</title>
-              <programlisting>&lt;script type=”text/javascript”&gt;
+              <programlisting language="bash">&lt;script type=”text/javascript”&gt;
 
     function isIOS(){
         return ((navigator.userAgent.match(/iPhone/i)) ||(navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/
@@ -3389,7 +3410,7 @@ i))) != null;
               call the user agent check when the page loads, as shown in the following example. </para>
             <example>
               <title>Load JavaScript in HTML page</title>
-              <programlisting>&lt;body onload=”init()”&gt;</programlisting>
+              <programlisting language="bash">&lt;body onload=”init()”&gt;</programlisting>
             </example>
           </listitem>
         </orderedlist>
@@ -3448,7 +3469,7 @@ David</remark>
       <para>The following example shows log entries. </para>
       <example>
         <title>Example CDN log entries</title>
-        <programlisting>173.203.44.122 - - [15/07/2014:20:52:25 +0000] "GET 
+        <programlisting language="bash">173.203.44.122 - - [15/07/2014:20:52:25 +0000] "GET 
       /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
       com/image1.png HTTP/1.1" 304 277 "-" "Mozilla/4.0 (compatible; 
       MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
@@ -3493,7 +3514,7 @@ David</remark>
         use your CDN-enabled containers to create static websites in
         Cloud Files. </para>
       <section xml:id="Create_Static_Website-dle4000">
-        <title>Create static website</title>
+        <title>Create a static website</title>
         <para>You can use your Cloud Files account to create a static website. First, you must
         CDN-enable a storage container. Any HTML or static web pages in the container become
         available through a static website after you set the <code>X-Container-Meta-Web-Index</code>
@@ -3585,7 +3606,7 @@ David</remark>
           ready. </para>
         <example>
           <title>Container setup for static website</title>
-          <programlisting>container/index.html
+          <programlisting language="bash">container/index.html
 container/page2.html
 container/subdir/index.html
 container/subdir/pageX.html</programlisting>
@@ -3595,12 +3616,20 @@ container/subdir/pageX.html</programlisting>
         the right of the example are the pages that display in the web browser. </para>
         <example>
           <title>Static website enabled container results</title>
-          <programlisting>http://myhost                     Displays container/index.html
+          <programlisting language="bash">http://myhost                     Displays container/index.html
 http://myhost/page2.html          Displays container/page2.html
 http://myhost/subdir              Displays container/subdir/index.html
 http://myhost/subdir/             Displays container/subdir/index.html
 http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programlisting>
         </example>
+      <note>
+        <para>To disable a static website that you have created, send a request to remove the
+          metadata header that created the static web site (for example,
+            <code>X-Container-Meta-Web-Index</code> in <xref linkend="setUpStaticWebEx"/>). For more
+          information, see <link
+            xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000.html"
+            >"Delete container metadata"</link>.</para>
+      </note>
       </section>
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
         <title>Set error pages for a static website</title>
@@ -3619,7 +3648,7 @@ http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programl
           once for your entire static website. </para>
         <example>
           <title>Set error pages for static website: HTTP request</title>
-          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+          <programlisting language="bash">POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Container-Meta-Web-Error: error.html            </programlisting>
@@ -3932,7 +3961,7 @@ Transfer-Encoding: chunked
           which is the cache time for a key) and others will not be allowed to access it. </para>
         <example>
           <title>Set account metadata key for public access: HTTP request</title>
-          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
+          <programlisting language="bash" >POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
@@ -3952,7 +3981,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             <code>X-Account-Meta-Temp-Url-Key</code>. </para>
         <example>
           <title>Create TempURL (in Python)</title>
-          <programlisting>  import hmac
+          <programlisting language="bash">  import hmac
   from hashlib import sha1
   from sys import argv
   from time import time
@@ -3979,14 +4008,14 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           the expire time might translate to 1323479485 because the signature and expire time
           completely depend on the time when the code runs. On your website, you would provide a
           link to the following URL: </para>
-        <programlisting>  https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
+        <programlisting language="bash">  https://storage.clouddrive.com/v1/AUTH_account/container/my_cat.jpg?
   temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
   temp_url_expires=1323479485</programlisting>
         <para> If you do not provide users with the exact TempURL, they get a 401 (Unauthorized)
           status code. &HEAD; queries are allowed if &GET; or &PUT; operations are allowed. </para>
         <example>
           <title>Create TempURL (in PHP)</title>
-          <programlisting>  &lt;?php
+          <programlisting language="bash">  &lt;?php
   if ($argc != 5) {
       echo "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;";
       echo "Example: GET https://storage101.dfw1.clouddrive.com/v1/" .
@@ -4011,7 +4040,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </example>
         <example>
           <title>Create TempURL (in Ruby)</title>
-          <programlisting>  require "openssl"
+          <programlisting language="bash">  require "openssl"
 
   unless ARGV.length == 4
       puts "Syntax: &lt;method&gt; &lt;url&gt; &lt;seconds&gt; &lt;key&gt;"
@@ -4040,7 +4069,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           without the file name override.</para>
         <example>
           <title>TempURL without file name override</title>
-          <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485</programlisting>
+          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485</programlisting>
         </example>
         <para>In the following example, you see
             <code>&amp;filename=bob.txt</code> appended to the TempURL
@@ -4048,7 +4077,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             <code>bob.txt</code>:</para>
         <example>
           <title>TempURL with file name override</title>
-          <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt</programlisting>
+          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt</programlisting>
         </example>
       </section>
     </section>
@@ -4082,7 +4111,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </note>
         <example>
           <title>Set account metadata key for public access: HTTP request</title>
-          <programlisting>POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
+          <programlisting language="bash">POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
@@ -4096,7 +4125,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           your website: </para>
         <example>
           <title>Layout of web form</title>
-          <programlisting>  &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
+          <programlisting language="bash">  &lt;form action="&lt;CF-url&gt;" method="POST" enctype="multipart/form-data"&gt;
     &lt;input type="hidden" name="redirect" value="&lt;redirect-url&gt;" /&gt;
     &lt;input type="hidden" name="max_file_size" value="&lt;bytes&gt;" /&gt;
     &lt;input type="hidden" name="max_file_count" value="&lt;count&gt;" /&gt;
@@ -4174,7 +4203,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
               signature of the form. Following is sample code for computing the signature in Python: </para>
             <example>
               <title>Generate signature for FormPost</title>
-              <programlisting>  import hmac
+              <programlisting language="bash">  import hmac
   from hashlib import sha1
   from time import time
   path = '/v1/account/container/object_prefix'
@@ -4221,24 +4250,34 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </itemizedlist>
       </section>
     </section>
-    <section xml:id="CORS_Container_Header-d1e1300">
+<!--    
+    <section xml:id="CORS-d1e1300">
       <title>CORS </title>
+      <remark>This is the section as it was added in September of 2013 when the OpenStack info about
+        access control headers on objects was removed as suggested by David Goetz. </remark>
+      <remark>9/24/2013 - This comes from Ed Leafe but I'm checking to see if it is accurate.
+        Openstack info from David Goetz indicates CORS supports both containers and
+        objects.</remark>
+      <remark>CORS headers only apply at the container level and can only be set on the container. A
+        CORS header then governs how requests for objects in that container are handled. </remark>
+      <remark>David Goetz provided the link for this information:
+        https://github.com/openstack/swift/blob/master/doc/source/cors.rst. </remark>
       <para>Cross-Origin Resource Sharing (CORS) is a mechanism that allows code running in a
         browser to make requests to a domain other than the one from which it originated. CORS
         container headers enable your users to upload files from one website, or origin, to your
         Cloud Files account. When you set the CORS headers on your container, you provide Cloud
-        Files with the following information:<itemizedlist>
-          <listitem>
-            <para>Which sites can post to your account</para>
-          </listitem>
-          <listitem>
-            <para>How often your container checks its allowed sites list</para>
-          </listitem>
-          <listitem>
-            <para>What headers to expose to the browser in the request response</para>
-          </listitem>
-        </itemizedlist>
-      </para>
+        Files with the following information:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Which sites can post to your account</para>
+        </listitem>
+        <listitem>
+          <para>How often your container checks its allowed sites list</para>
+        </listitem>
+        <listitem>
+          <para>What headers to expose to the browser in the request response</para>
+        </listitem>
+      </itemizedlist>
       <note>
         <para>You use CORS with the following features:<itemizedlist>
             <listitem>
@@ -4254,29 +4293,30 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           </itemizedlist>
         </para>
       </note>
-      <para>Cloud Files supports CORS requests to containers and
-        objects. CORS metadata is held on the container only. The
-        values given apply to the container itself and all objects
-        within it.</para>
+      <para>Cloud Files supports CORS requests to containers and objects. CORS metadata is held on
+        the container only. The values given apply to the container itself and all objects within
+        it.</para>
       <para>The following table lists the supported container headers. </para>
       <para>
-        <table rules="all" width="500">
+        <table rules="all">
           <caption>Supported CORS container headers</caption>
+          <col width="48%"/>
+          <col width="52%"/>
           <tbody>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Allow-Origin</code></td>
-              <td>Origins that are allowed to make cross-origin requests, separated by a space when
-                there are multiple values. </td>
+              <td>Specifies the origins that are allowed to make cross-origin requests, separated by
+                a space when there are multiple values. </td>
             </tr>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Max-Age</code></td>
-              <td>Maximum age for the origin to hold the preflight results, in seconds (for example,
-                5, 10, or 1000). </td>
+              <td>Specifies the maximum age for the origin to hold the preflight results, in seconds
+                (for example, 5, 10, or 1000). </td>
             </tr>
             <tr>
               <td><code>X-Container-Meta-Access-Control-Expose-Headers</code></td>
-              <td>Headers exposed to the browser in the actual request response, separated by a
-                space when there are multiple values. </td>
+              <td>Indicates the headers exposed to the browser in the actual request response,
+                separated by a space when there are multiple values. </td>
             </tr>
           </tbody>
         </table>
@@ -4286,19 +4326,16 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         allowed to make the request. Following is the sequence of actions:</para>
       <orderedlist>
         <listitem>
-          <para>The browser makes an <command>OPTIONS</command>
-            request to Cloud Files.</para>
+          <para>The browser makes an <command>OPTIONS</command> request to Cloud Files.</para>
         </listitem>
         <listitem>
           <para>Cloud Files returns either a 200 or 401 status code to the browser based on the
             allowed origins.</para>
         </listitem>
         <listitem>
-          <para>If Cloud Files returns 200, the browser makes the
-            actual request (<command>DELETE</command>,
-              <command>GET</command>, <command>HEAD</command>,
-              <command>POST</command>, <command>PUT</command>) to
-            Cloud Files. </para>
+          <para>If Cloud Files returns 200, the browser makes the actual request
+              (<command>DELETE</command>, <command>GET</command>, <command>HEAD</command>,
+              <command>POST</command>, <command>PUT</command>) to Cloud Files. </para>
         </listitem>
       </orderedlist>
       <para>When a browser receives a response to an actual request, it exposes only those headers
@@ -4325,8 +4362,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
       <para>To see some CORS JavaScript in action, follow these steps:</para>
       <orderedlist>
         <listitem>
-          <para>Download the <xref linkend="Test-CORS-Page-d1003"/>.
-          </para>
+          <para>Download the <xref linkend="Test-CORS-Page-d1003"/>. </para>
         </listitem>
         <listitem>
           <para>Host the page on a web server and note the protocol and hostname (origin) you will
@@ -4338,20 +4374,19 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         </listitem>
         <listitem>
           <para>Append the origin of the test page to the container’s
-              <code>X-Container-Meta-Access-Control-Allow-Origin</code>
-            header, using a request similar to the following
-            example.</para>
+              <code>X-Container-Meta-Access-Control-Allow-Origin</code> header, using a request
+            similar to the following example.</para>
         </listitem>
       </orderedlist>
       <example>
         <title>CORS POST cURL request</title>
-        <programlisting>curl -X POST -H 'X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c' \
+        <programlisting language="bash">curl -X POST -H 'X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>' \
   -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
   http://192.168.56.3:8080/v1/AUTH_test/cont1</programlisting>
       </example>
-      <para>At this point, the container is accessible to CORS clients
-        hosted on <code>http://localhost</code>. Open the test CORS
-        page in your browser and following these steps:</para>
+      <para>At this point, the container is accessible to CORS clients hosted on
+          <code>http://localhost</code>. Open the test CORS page in your browser and following these
+        steps:</para>
       <orderedlist>
         <listitem>
           <para>Populate the <code>Token</code> field.</para>
@@ -4369,9 +4404,9 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
       </orderedlist>
       <para>If the request succeeds, the response header and body are displayed. If the request did
         not succeed, the response status is 0.</para>
-      <example xml:id="Test-CORS-Page-d1003">
+      <example xml:id="Test-CORS-Page-d1003" >
         <title>Test CORS page</title>
-        <programlisting>&lt;!DOCTYPE html>
+        <programlisting language="bash">&lt;!DOCTYPE html>
 &lt;html>
   &lt;head>
     &lt;meta charset="utf-8">
@@ -4430,80 +4465,304 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
 &lt;/html>
 </programlisting>
       </example>
-      <!--<remark>cyr - Assigning CORS Headers to Requests is in the OpenStack doc. Only talks about headers for objects. </remark>
-        <note>
-        <para>For more information about CORS headers, see <xref
-            linkend="Assigning_CORS_Headers_to_Requests-d1e2120"
-          />.</para>
-      </note>
-      <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
-        <title>Assigning CORS Headers to Requests</title>
-        <para>Cross-Origin Resource Sharing (CORS) is a specification
-          that defines how browsers and servers communicate across
-          origins using HTTP headers, such as those assigned by Cloud
-          Files API requests. The Cloud Files API supports the
-          following headers. You can assign these headers to objects
-          only.</para>
-          
-         <remark>9/24/2013 - This comes from Ed Leafe but I'm checking to see if it is accurate. Openstack info from David Goetz indicates CORS supports both containers and objects.</remark> 
-          <remark>CORS headers only apply at the container level and can
-            only be set on the container. A CORS header then governs
-            how requests for objects in that container are handled. </remark>
--
-        <para>
-          <itemizedlist>
+    </section> -->
+    <section xml:id="CORS-d1e1300">
+      <title>CORS </title>
+      <remark>This is the section is a rewrite sent to David Goetz for review on 9/3/2014 after Ken
+        Perkins of the DRG sent email wanting the doc updated to include support for setting the
+        access headers on object as noted in the OpenStack Object Storage referencefor CORS. David
+        Goetz hesitant to include all of this doc but it does reflect how things currently work.
+        David is planning some dev changes so that container-level  headers are  the only way to do
+        this - not object-level. But there is currently no ETA on the dev changes. </remark>
+      <para>Cross-Origin Resource Sharing (CORS) is a mechanism that allows code running in a
+        browser to make requests to a domain other than the one from which it originated by using
+        HTTP headers, such as those assigned by Cloud Files API requests.</para>
+      <para>Cloud Files supports CORS requests to containers and objects.</para>
+      <para>For more information about CORS and the access control headers, see <link
+          xlink:href="http://www.w3.org/TR/access-control/"
+        >www.w3.org/TR/access-control/</link>.</para>
+      <section xml:id="CORS_Container_Headers-d1e1300">
+        <title>CORS headers for containers</title>
+        <remark>David Goetz provided the link for this information:
+          https://github.com/openstack/swift/blob/master/doc/source/cors.rst. </remark>
+        <para>Container-level headers for CORS are used for the following Cloud Files features:<itemizedlist>
             <listitem>
-              <para>Access-Control-Allow-Credentials</para>
+              <para>FormPost (<xref linkend="FormPost-d1a555"
+                  xrefstyle="select:label quotedtitle nopage"/>), to enable your users to post to
+                your site</para>
             </listitem>
             <listitem>
-              <para>Access-Control-Allow-Methods</para>
+              <para>TempURL (<xref linkend="TempURL-d1a4450"
+                  xrefstyle="select:label quotedtitle nopage"/>), to limit how long users can use a
+                given URL</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>CORS container headers enable your users to upload files from one website, or origin,
+          to your Cloud Files account. When you set the CORS headers on your container, you provide
+          Cloud Files with the following information:<itemizedlist>
+            <listitem>
+              <para>Which sites can post to your account</para>
             </listitem>
             <listitem>
-              <para>Access-Control-Allow-Origin</para>
+              <para>How often your container checks its allowed sites list</para>
             </listitem>
             <listitem>
-              <para>Access-Control-Expose-Headers</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Max-Age</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Request-Headers</para>
-            </listitem>
-            <listitem>
-              <para>Access-Control-Request-Method</para>
-            </listitem>
-            <listitem>
-              <para>Origin</para>
+              <para>What headers to expose to the browser in the request response</para>
             </listitem>
           </itemizedlist>
         </para>
-        <para>You can read more about the definition of the
-          Access-Control response headers and Origin response header
-          at <link xlink:href="http://www.w3.org/TR/access-control/"
-            >www.w3.org/TR/access-control/</link>.</para>
-        <para>You can only set CORS headers through the Cloud Files
-          API, and not through the Cloud Control Panel. In the
-          following example, the origin header is assigned that
-          indicates where the file came from. This allows you to
-          provide security that requests to your Cloud Files
-          repository are indeed from the correct origination:</para>
+        <para>CORS metadata is held on the container only. The values given apply to the container
+          itself and all objects within it.</para>
+        <para>The following table lists the container-level headers: </para>
+        <para>
+          <table rules="all">
+            <caption>CORS container-level headers</caption>
+            <col width="48%"/>
+            <col width="52%"/>
+            <tbody>
+              <tr>
+                <td><code>X-Container-Meta-Access-Control-Allow-Origin</code></td>
+                <td>Specifies the origins that are allowed to make cross-origin requests, separated
+                  by a space when there are multiple values. </td>
+              </tr>
+              <tr>
+                <td><code>X-Container-Meta-Access-Control-Max-Age</code></td>
+                <td>Specifies the maximum age for the origin to hold the preflight results, in
+                  seconds (for example, 5, 10, or 1000). </td>
+              </tr>
+              <tr>
+                <td><code>X-Container-Meta-Access-Control-Allow-Headers</code></td>
+                <td>Specifies the headers that are allowed in the actual request, separated by a
+                  space when there are multiple values.</td>
+              </tr>
+              <tr>
+                <td><code>X-Container-Meta-Access-Control-Expose-Headers</code></td>
+                <td>Indicates the headers exposed to the browser in the actual request response,
+                  separated by a space when there are multiple values. </td>
+              </tr>
+            </tbody>
+          </table>
+        </para>
+        <para>Before a browser issues an actual request, it might issue a preflight request. The
+          preflight request is an HTTP <command>OPTIONS</command> call to verify that the origin is
+          allowed to make the request. Following is the sequence of actions:</para>
+        <orderedlist>
+          <listitem>
+            <para>The browser makes an <command>OPTIONS</command> request to Cloud Files.</para>
+          </listitem>
+          <listitem>
+            <para>Cloud Files returns either a 200 or 401 status code to the browser based on the
+              allowed origins.</para>
+          </listitem>
+          <listitem>
+            <para>If Cloud Files returns 200, the browser makes the actual request
+                (<command>DELETE</command>, <command>GET</command>, <command>HEAD</command>,
+                <command>POST</command>, <command>PUT</command>) to Cloud Files. </para>
+          </listitem>
+        </orderedlist>
+        <para>When a browser receives a response to an actual request, it exposes only those headers
+          listed in the <code>X-Container-Meta-Access-Control-Expose-Headers</code> header. By
+          default, Cloud Files returns the following values for this header:</para>
+        <itemizedlist>
+          <listitem>
+            <para>The simple response headers as listed at <link
+                xlink:href="http://www.w3.org/TR/cors/#simple-response-header/"
+                >www.w3.org/TR/cors/#simple-response-header/</link></para>
+          </listitem>
+          <listitem>
+            <para>The <code>ETag</code>, <code>X-Timestamp</code>, and <code>X-Trans-Id</code>
+              headers</para>
+          </listitem>
+          <listitem>
+            <para>All metadata headers (<code>X-Container-Meta-*</code> for containers and
+                <code>X-Object-Meta-*</code> for objects)</para>
+          </listitem>
+          <listitem>
+            <para>Headers listed in
+              <code>X-Container-Meta-Access-Control-Expose-Headers</code></para>
+          </listitem>
+        </itemizedlist>
+        <para>To see some CORS JavaScript in action, follow these steps:</para>
+        <orderedlist>
+          <listitem>
+            <para>Download the <xref linkend="Test-CORS-Page-d1003"/>. </para>
+          </listitem>
+          <listitem>
+            <para>Host the page on a web server and note the protocol and hostname (origin) you will
+              be using to request the page, for example <code>http://localhost</code>.</para>
+          </listitem>
+          <listitem>
+            <para>Locate a container that you want to query. (The Cloud Files cluster hosting this
+              container must have CORS support.)</para>
+          </listitem>
+          <listitem>
+            <para>Append the origin of the test page to the container’s
+                <code>X-Container-Meta-Access-Control-Allow-Origin</code> header, using a request
+              similar to the following example.</para>
+          </listitem>
+        </orderedlist>
         <example>
-          <title>Assign CORS Header Request</title>
-          <literallayout class="monospaced">
-  PUT /&lt;api version&gt;/&lt;account&gt;/&lt;container&gt;/&lt;object&gt; HTTP/1.1
+          <title>CORS POST cURL request</title>
+          <programlisting language="bash">curl -X POST -H 'X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>' \
+  -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
+  http://192.168.56.3:8080/v1/AUTH_test/cont1</programlisting>
+        </example>
+        <para>At this point, the container is accessible to CORS clients hosted on
+            <code>http://localhost</code>. Open the test CORS page in your browser and following
+          these steps:</para>
+        <orderedlist>
+          <listitem>
+            <para>Populate the <code>Token</code> field.</para>
+          </listitem>
+          <listitem>
+            <para>Populate the <code>URL</code> field with the URL of either a container or
+              object.</para>
+          </listitem>
+          <listitem>
+            <para>Select the request method.</para>
+          </listitem>
+          <listitem>
+            <para>Hit Submit.</para>
+          </listitem>
+        </orderedlist>
+        <para>If the request succeeds, the response header and body are displayed. If the request
+          did not succeed, the response status is 0.</para>
+        <example xml:id="Test-CORS-Page-d1003">
+          <title>Test CORS page</title>
+          <programlisting language="bash">&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Test CORS&lt;/title>
+  &lt;/head>
+  &lt;body>
+
+    Token&lt;br>&lt;input id="token" type="text" size="64">&lt;br>&lt;br>
+
+    Method&lt;br>
+    &lt;select id="method">
+        &lt;option value="GET">GET&lt;/option>
+        &lt;option value="HEAD">HEAD&lt;/option>
+        &lt;option value="POST">POST&lt;/option>
+        &lt;option value="DELETE">DELETE&lt;/option>
+        &lt;option value="PUT">PUT&lt;/option>
+    &lt;/select>&lt;br>&lt;br>
+
+    URL (Container or Object)&lt;br>&lt;input id="url" size="64" type="text">&lt;br>&lt;br>
+
+    &lt;input id="submit" type="button" value="Submit" onclick="submit(); return false;">
+
+    &lt;pre id="response_headers">&lt;/pre>
+    &lt;p>
+    &lt;hr>
+    &lt;pre id="response_body">&lt;/pre>
+
+    &lt;script type="text/javascript">
+      function submit() {
+          var token = document.getElementById('token').value;
+          var method = document.getElementById('method').value;
+          var url = document.getElementById('url').value;
+
+          document.getElementById('response_headers').textContent = null;
+          document.getElementById('response_body').textContent = null;
+
+          var request = new XMLHttpRequest();
+
+          request.onreadystatechange = function (oEvent) {
+              if (request.readyState == 4) {
+                  responseHeaders = 'Status: ' + request.status;
+                  responseHeaders = responseHeaders + '\nStatus Text: ' + request.statusText;
+                  responseHeaders = responseHeaders + '\n\n' + request.getAllResponseHeaders();
+                  document.getElementById('response_headers').textContent = responseHeaders;
+                  document.getElementById('response_body').textContent = request.responseText;
+              }
+          }
+
+          request.open(method, url);
+          request.setRequestHeader('X-Auth-Token', token);
+          request.send(null);
+      }
+    &lt;/script>
+
+  &lt;/body>
+&lt;/html>
+</programlisting>
+        </example>
+      </section>
+      <section xml:id="Assigning_CORS_Headers_to_Requests-d1e2120">
+        <title>CORS headers for objects</title>
+        <remark>cyr - From "Assign CORS headers to requests" is in the OpenStack Object Storage
+          Reference - headers for only objects. </remark>
+        <para>You can set object-level headers for CORS. Currently, using object-level headers
+          enables CORS to work over a CDN (<xref linkend="CDN-Enabled_Containers-d1e524"
+            xrefstyle="select:label quotedtitle nopage"/>).</para>
+        <para>The following table lists the object-level headers:</para>
+        <para>
+          <table rules="all">
+            <caption>CORS object-level headers</caption>
+            <col width="30%"/>
+            <col width="70%"/>
+            <tbody>
+              <tr>
+                <td><code>Access-Control-Allow-Origin</code></td>
+                <td>Specifies the origins that are allowed to make cross-origin requests, separated
+                  by a space when there are multiple values. </td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Max-Age</code></td>
+                <td>Specifies the maximum age for the origin to hold the preflight results, in
+                  seconds (for example, 5, 10, or 1000). </td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Expose-Headers</code></td>
+                <td>Specifies the headers exposed to the browser in the actual request response,
+                  separated by a space when there are multiple values. </td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Allow-Credentials</code></td>
+                <td>Indicates whether or not the response to the request can be exposed when the
+                  credentials flag is true.  When used as part of a response to a preflight request,
+                  this indicates whether or not the actual request can be made using credentials. 
+                  Note that simple GET requests are not preflighted, and so if a request is made for
+                  a resource with credentials, if this header is not returned with the resource, the
+                  response is ignored by the browser and not returned to web content.</td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Allow-Methods</code></td>
+                <td>Specifies the method or methods allowed when accessing the resource.  This is
+                  used in response to a preflight request. </td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Request-Headers</code></td>
+                <td>Used when issuing a preflight request to let the server know what HTTP headers
+                  will be used when the actual request is made.</td>
+              </tr>
+              <tr>
+                <td><code>Access-Control-Request-Method</code></td>
+                <td>Used when issuing a preflight request to let the server know what HTTP method
+                  will be used when the actual request is made.</td>
+              </tr>
+              <tr>
+                <td><code>Origin</code></td>
+                <td>Indicates the origin of the cross-site access request or preflight request.</td>
+              </tr>
+            </tbody>
+          </table>
+        </para>
+        <para>The following example assigns the file origin to the <code>Origin</code> header to
+          indicate where the file came from.  Doing so allows you to provide security that requests
+          to your Cloud Files repository are indeed from the correct origination.</para>
+        <example>
+          <title>Assign CORS header request for an object</title>
+          <literallayout class="monospaced" language="bash">
+  PUT /<emphasis role="italic">apiVersion</emphasis>/<emphasis role="italic">yourAccountID</emphasis>/<emphasis role="italic">containerName</emphasis>/<emphasis role="italic">objectName</emphasis> HTTP/1.1
   Host: storage.clouddrive.com
-  X-Auth-Token: eaaafd18-0fed-4b3a-81b4-663c99ec1cbb
+  X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>
   Origin: http://storage.clouddrive.com
                      </literallayout>
         </example>
-        <note>
-          <para>For more information about CORS headers, see <xref
-              linkend="CORS_Container_Header-d1e1300"/>.</para>
-        </note>
       </section>
-      -->
-    </section>
+    </section> 
   </chapter>
 <!-- <remark 4/30/2014 cyr: removing due to publishing the CF Getting Started Guide, which has this and more.</remark>  
   <chapter xml:id="Troubleshooting-d1e2855">
