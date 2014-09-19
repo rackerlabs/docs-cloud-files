@@ -74,7 +74,7 @@
           <itemizedlist>
             <listitem>
               <para>Updated <xref linkend="CORS-d1e1300"/>. This section now includes the following
-                subsections to describe the available access control headers:<itemizedlist>
+                subsections to describe the available access control headers: <itemizedlist>
                   <listitem>
                     <para><xref linkend="CORS_Container_Headers-d1e1300"/></para>
                   </listitem>
@@ -1669,8 +1669,8 @@
       <tip>
         <para>To help you decide which regionalized endpoint to use, read about special
           considerations for choosing a data center at <link
-            xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions"
-            >http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>.
+            xlink:href="http://www.rackspace.com/knowledge_center/article/about-regions"
+            >About Regions</link> in the Knowledge Center.
         </para>
       </tip>
       <para>The endpoints to use for the storage service component of your Cloud Files API calls are

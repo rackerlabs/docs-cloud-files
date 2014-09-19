@@ -222,7 +222,7 @@
                 </doc>
             </representation>           
         </request>
-        <response status="200">
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
@@ -291,7 +291,7 @@
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
-            </param>
+            </param> 
             <representation mediaType="application/xml" xml:lang="EN">                
                 <doc>                 
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.xml"/>
@@ -312,11 +312,11 @@
                     </p></doc>
                 </param>    
             </representation>
-            <representation mediaType="application/json" xml:lang="EN">                
+            <representation mediaType="application/json">                
                 <doc>
                     <xsdxt:code href="../wadl/samples/cf-getAccountContainers_response.json"/>
                 </doc>
-<!--                <param xmlns="http://wadl.dev.java.net/2009/02"
+                <param xmlns="http://wadl.dev.java.net/2009/02"
                     name="name" style="plain" required="true" type="xsd:string" path="$.*.name">
                     <doc><p xmlns="http://www.w3.org/1999/xhtml">Name of the container.
                     </p></doc>
@@ -330,13 +330,12 @@
                     name="bytes" style="plain" required="true" type="xsd:int" path="$.*.bytes">
                     <doc><p xmlns="http://www.w3.org/1999/xhtml">Number of bytes in the container.
                     </p></doc>
-               </param> 
--->
+               </param>
+
             </representation>
         </response>
         <response status="204">
-            <doc title="No Content" xml:lang="EN">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
-            <representation mediaType="application/json"/>              
+            <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>             
         </response>
         &only404Fault;
     </method>
@@ -2097,7 +2096,7 @@ X-Container-Meta-Extra: Data</programlisting>
                             xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/TempURL-d1a4450.html"
                             ><citetitle>TempURL</citetitle></link>. </para></wadl:doc>
             </param>       
-            <representation mediaType="text/xml">
+            <representation mediaType="application/json">
                 <doc title="Get object metadata: HTTP request">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_request.txt"/>
                 </doc>
@@ -2188,7 +2187,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
-            <representation mediaType="text/xml">
+            <representation mediaType="application/json">
                 <doc title="Get object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
                 </doc>
