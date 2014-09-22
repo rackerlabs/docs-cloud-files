@@ -892,9 +892,9 @@
     <section xml:id="Additional_Resources-d1e388">
       <title>Additional resources</title>
       <para>You can download the most current version of this document
-        from the Rackspace Cloud website at <link
+        from the Rackspace API documentation website at <link
           xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html"
-          >docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html</link>. </para>
+          >docs.rackspace.com</link>. </para>
       <para>For more details about the Cloud Files service, see <link
           xlink:href="http://www.rackspace.com/cloud/files/"
           >http://www.rackspace.com/cloud/files/</link>. Related documents are available at the same
@@ -916,7 +916,7 @@
           www.rackspace.com/cloud/public/files/pricing</link>. </para>
       <para>The service level agreement (SLA) for Cloud Files is available at <link
         xlink:href="http://www.rackspace.com/information/legal/cloud/sla?page=files#cloud_files_sla">
-        http://www.rackspace.com/information/legal/cloud/sla?page=files#cloud_files_sla</link>. </para>
+        Cloud Files SLA</link>. </para>
     </section>
   </chapter>
   <chapter xml:id="Concepts-d1e413">
@@ -1666,13 +1666,13 @@
         of the service is therefore responsible for appropriate
         replication, caching, and overall maintenance of Cloud Files
         data across regional boundaries to other Cloud Files servers. </para>
-      <tip>
-        <para>To help you decide which regionalized endpoint to use, read about special
+   
+        <para>To help you decide which regionalized endpoint to use, read the Knowledge Center article about special
           considerations for choosing a data center at <link
             xlink:href="http://www.rackspace.com/knowledge_center/article/about-regions"
-            >About Regions</link> in the Knowledge Center.
+            >About Regions</link>.
         </para>
-      </tip>
+  
       <para>The endpoints to use for the storage service component of your Cloud Files API calls are
         summarized in the following table.</para>
       <para>
