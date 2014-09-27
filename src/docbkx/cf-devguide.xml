@@ -4754,12 +4754,12 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           to your Cloud Files repository are indeed from the correct origination.</para>
         <example>
           <title>Assign CORS header request for an object</title>
-          <literallayout class="monospaced" language="bash">
-  PUT /<emphasis role="italic">apiVersion</emphasis>/<emphasis role="italic">yourAccountID</emphasis>/<emphasis role="italic">containerName</emphasis>/<emphasis role="italic">objectName</emphasis> HTTP/1.1
+          <programlisting language="text">
+  PUT /<replaceable>apiVersion</replaceable>/<replaceable>yourAccountID</replaceable>/<replaceable>containerName</replaceable>/<replaceable>objectName</replaceable> HTTP/1.1
   Host: storage.clouddrive.com
-  X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>
+  X-Auth-Token: <replaceable>yourAuthToken</replaceable>
   Origin: http://storage.clouddrive.com
-                     </literallayout>
+                     </programlisting>
         </example>
       </section>
     </section> 
