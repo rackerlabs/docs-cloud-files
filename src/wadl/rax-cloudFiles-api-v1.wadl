@@ -874,7 +874,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+<!--            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
@@ -883,7 +883,7 @@
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName. 
                 </p></doc>
-            </param>
+            </param> -->
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
@@ -1065,7 +1065,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Removes the metadata item named metadata. For example, X-Remove-Container-Read removes the X-Container-Read metadata item.
                 </p></doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
+<!--            <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Sync-To" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
@@ -1076,7 +1076,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
-            </param>
+            </param>  -->
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Versions-Location" style="header" required="false"
                 type="xsd:string">
@@ -1242,7 +1242,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The type of ranges accepted.   
                 </p></doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+<!--            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
@@ -1250,8 +1250,8 @@ X-Container-Meta-Extra: Data</programlisting>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-To"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
-                </p></doc>
-            </param>
+                </p></doc> 
+            </param>   -->
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
