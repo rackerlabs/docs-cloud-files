@@ -148,12 +148,12 @@
 								(1577836800 seconds) throughout the <citetitle>Cloud Files Developer
 									Guide</citetitle>.</para>
 						</listitem>
-						<listitem>
+					<!--	<listitem>
 							<para>Added additional information to the description of the
 									<code>X-Container-Sync-Key</code> and
 									<code>X-Container-Sync-To</code> headers in the <citetitle>Cloud
 									Files Developer Guide</citetitle>.</para>
-						</listitem>
+						</listitem> -->
 						<listitem>
 							<para>Removed Chapter 14, "Examples using cURL" from the <citetitle>Cloud Files Developer
 									Guide</citetitle>. This information is now included with other
@@ -951,11 +951,11 @@
 					years (1577836800 seconds) throughout the <citetitle>Cloud Files Developer
 						Guide</citetitle>.</para>
 			</listitem>
-			<listitem>
+	<!--		<listitem>
 				<para>Added additional information to the description of the
 						<code>X-Container-Sync-Key</code> and <code>X-Container-Sync-To</code>
 					headers in the <citetitle>Cloud Files Developer Guide</citetitle>.</para>
-			</listitem>
+			</listitem> -->
 			<listitem>
 				<para>Removed Chapter 14, "Examples using cURL" from the <citetitle>Cloud Files Developer
 						Guide</citetitle>. This information is now included with other cURL examples
