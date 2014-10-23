@@ -3844,6 +3844,21 @@ Transfer-Encoding: chunked
         <para>
         <code>/containerName</code>
       </para>
+      <para>Create a text file similar to the following example, objects_to_delete.txt, with the
+        names of the objects that you want to delete.</para>
+      <example>
+        <title>Create text file for bulk delete request</title>
+        <programlisting>$ cat objects_to_delete.txt
+/containerName/objectName1
+/containerName/objectName2
+/containerName/objectName3
+/containerName/objectName4</programlisting>
+      </example>
+      <para>Use a cURL request similar to the following example for the bulk delete.</para>
+      <example>
+        <title>cURL request for the bulk delete</title>
+        <programlisting>$ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_000000\?bulk-delete -T ./objects_to_delete.txt</programlisting>
+      </example>
         <para>The response is similar to the extract archive responses in that every response is 200
         OK and the response body must be parsed for actual results. The following example shows the
         response body, formatted in JSON, from a successful request. </para>
@@ -3854,14 +3869,14 @@ Transfer-Encoding: chunked
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=UTF-8
 X-Trans-Id: tx52fe4601dde24e2b8e7cb-0051912ca8
-Date: Mon, 13 May 2013 18:10:48 GMT
+Date: Thu, 23 Oct 2014 15:16:41 GMT
 Transfer-Encoding: chunked
 
 {
-  "Number Not Found": 1,
+  "Number Not Found": 0,
   "Response Status": "200 OK",
   "Errors": [],
-  "Number Deleted": 10,
+  "Number Deleted": 4,
   "Response Body": ""
 }</programlisting>
         </example>
