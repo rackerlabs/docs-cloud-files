@@ -21,6 +21,7 @@ You can use any editor to work with the files. The files that are most likely to
     o src/docbkx/cf-devguide.xml
     o src/wadl/rax-cloudFiles-api-v1.wadl
     o src/wadl/rax-cloudFilesCDN-api-v1.wadl
+    o src/docbkx/cf-releasenotes.xml
     
 You might also be interested in making changes to the example files referenced in the WADL files. They are here:
 
