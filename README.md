@@ -1,6 +1,6 @@
 docs-cloud-files
 ================
-Cloud Files Documentation
+Cloud Files API Documentation
 
 This github repository contains the source files for the Rackspace Cloud Files API documentation. 
 

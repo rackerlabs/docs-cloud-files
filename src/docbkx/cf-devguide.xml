@@ -3740,8 +3740,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         <title>Example extract archive request</title>
         <programlisting language="bash">$ tar cf archive.tar directory_to_be_archived
 $ curl -i -XPUT -H'x-auth-token: AUTH_TOKEN'
-https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_aaa-aaa-aaa-aaa?extr
-act-archive=tar --data-binary @./archive.tar</programlisting>
+https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_aaa-aaa-aaa-aaa?extract-archive=tar -T ./archive.tar</programlisting>
       </example>
         <para>You can create up to 1,000 new containers per extraction
           request. Also note that only regular files are uploaded.
