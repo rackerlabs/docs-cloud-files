@@ -24,9 +24,9 @@ The output appears in PDF and HTML form in the following locations. The items in
 
 | Name | Build Location |
 | --- | --- |
-| [Getting Started Guide](http://docs.rackspace.com/cf/api/v1/cf-getting-started/) | target/docbkx/webhelp/cf-getting-started-external |
-| [Developer Guide](http://docs.rackspace.com/cf/api/v1/cf-devguide/) | target/docbkx/webhelp/cf-devguide-external |
-| [Release Notes](http://docs.rackspace.com/cf/api/v1/cf-releasenotes/) | target/docbkx/webhelp/cf-releasenotes-external |
+| [Getting Started Guide](http://docs.rackspace.com/files/api/v1/cf-getting-started/) | target/docbkx/webhelp/cf-getting-started-external |
+| [Developer Guide](http://docs.rackspace.com/files/api/v1/cf-devguide/) | target/docbkx/webhelp/cf-devguide-external |
+| [Release Notes](http://docs.rackspace.com/files/api/v1/cf-releasenotes/) | target/docbkx/webhelp/cf-releasenotes-external |
 
 #### Editors
 
@@ -41,10 +41,10 @@ You can use any text editor to work with these source files. If you want to use 
 
 The files that are most likely to be of interest to you are as follows:
 
-* [src/docbkx/cf-getting-started.xml](src/resources/cf-getting-started.xml)
-* [src/docbkx/cf-devguide.xml](src/resources/cf-devguide.xml)
-* [src/wadl/rax-cloudLoadBalancers-api-v1.wadl](src/wadl/rax-cloudFiles-api-v1.wadl)
-* [src/wadl/rax-cloudLoadBalancers-api-v1.wadl](src/wadl/rax-cloudFilesCDN-api-v1.wadl)
+* [src/docbkx/cf-getting-started.xml](src/docbkx/cf-getting-started.xml)
+* [src/docbkx/cf-devguide.xml](src/docbkx/cf-devguide.xml)
+* [src/wadl/rax-cloudFiles-api-v1.wadl](src/wadl/rax-cloudFiles-api-v1.wadl)
+* [src/wadl/rax-cloudFilesCDN-api-v1.wadl](src/wadl/rax-cloudFilesCDN-api-v1.wadl)
 
 If you want to make changes to the example files referenced in the WADL file, you can find the example files at  [src/wadl/samples](src/wadl/samples)
 
