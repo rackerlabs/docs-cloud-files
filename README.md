@@ -46,6 +46,6 @@ The files that are most likely to be of interest to you are as follows:
 * [src/wadl/rax-cloudFiles-api-v1.wadl](src/wadl/rax-cloudFiles-api-v1.wadl)
 * [src/wadl/rax-cloudFilesCDN-api-v1.wadl](src/wadl/rax-cloudFilesCDN-api-v1.wadl)
 
-If you want to make changes to the example files referenced in the WADL file, you can find the example files at  [src/wadl/samples](src/wadl/samples)
+If you want to make changes to the example files referenced in the WADL file, you can find the example files at [src/wadl/samples](src/wadl/samples).
 
 The status codes referenced by the WADL files are at [src/resources/wadl/common.ent](src/wadl/common.ent).
