@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-09-05</pubdate>
+    <pubdate>2014-11-11</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,15 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-11-11</date>
+        <revdescription>
+          <para linkend="Set_Account_Metadata-d1a4460">Updated <xref
+              linkend="Set_Account_Metadata-d1a4460"/> by adding information about changing
+              <code>X-Account-Meta-Temp-Url-Key</code> and the use of a second key,
+              <code>X-Account-Meta-Temp-Url-Key-2</code>.</para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-09-05</date>
         <revdescription>
@@ -3969,9 +3978,23 @@ Transfer-Encoding: chunked
         <para>To create a TempURL, you must first set the <code>X-Account-Meta-Temp-Url-Key</code>
           metadata header on your Cloud Files account to a key that only you know. This key can be
           any arbitrary sequence. </para>
-        <para>After you set the key, do not change it while you still want others to be able to
+        <!--
+          <remark>11-11-2014 cyr: Updated information with information from  Rick Hawkins and the OpenStack Configuration Reference.
+           This is in response to a Disqus request from roberto today. </remark>
+        <para>OLD INFO: After you set the key, do not change it while you still want others to be able to
           access your TempURL. If you change it, the TempURL becomes invalid (within 60 seconds,
-          which is the cache time for a key) and others will not be allowed to access it. </para>
+          which is the cache time for a key) and others will not be allowed to access it. </para> -->
+        <note>
+          <para>Changing the <code>X-Account-Meta-Temp-URL-Key</code> invalidates any previously
+            generated TempURLs within 60 seconds (the cache time for the key). To allow
+            transitioning to a new key without effecting service, Cloud Files supports up to two
+            keys, specified by <code>X-Account-Meta-Temp-URL-Key</code> and
+              <code>X-Account-Meta-Temp-URL-Key-2</code>. Signatures are checked against both keys,
+            if present. Testing both keys enables key rotation without invalidating all existing
+            TempURLs &mdash; you can create TempURLs with a new key while allowing TempURLs created
+            with the original key to remain valid. Once all the TempURLs generated with the old key
+            have been exhausted, you can change or remove the old key. </para>
+        </note>
         <example>
           <title>Set account metadata key for public access: HTTP request</title>
           <programlisting language="bash" >POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
