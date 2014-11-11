@@ -4533,6 +4533,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
                 given URL</para>
             </listitem>
           </itemizedlist></para>
+        <note>
+          <para>Container-level headers for CORS are not inherited for use with a CDN. For
+            information about using object-level headers, which enable CORS to work over a CDN, see
+              <xref linkend="Assigning_CORS_Headers_to_Requests-d1e2120"/>.</para>
+        </note>
         <para>CORS container headers enable your users to upload files from one website, or origin,
           to your Cloud Files account. When you set the CORS headers on your container, you provide
           Cloud Files with the following information:<itemizedlist>
@@ -4579,6 +4584,11 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
             </tbody>
           </table>
         </para>
+        <para>To view the values for these headers, use the <command>HEAD</command> operation to show
+          container metadata. To delete the metadata, use the <command>DELETE</command> operation to
+          delete container metadata. Both of these operations are described in <olink
+            targetdoc="cf-devguide" targetptr="containerServicesOperations_d1e000">“Container
+            services”</olink>.</para>
         <para>Before a browser issues an actual request, it might issue a preflight request. The
           preflight request is an HTTP <command>OPTIONS</command> call to verify that the origin is
           allowed to make the request. Following is the sequence of actions:</para>
