@@ -54,7 +54,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-11-11</pubdate>
+    <pubdate>2014-12-03</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +68,15 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2014-12-03</date>
+        <revdescription>
+          <para>Updated the table in <xref linkend="Absolute_Limits-d1e942"/> for the rate limit for
+            write operations to read "100 <emphasis role="italic">write</emphasis> operations per
+            second <emphasis role="italic">per container</emphasis>" rather than "100 operations per
+            second".</para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-11-11</date>
         <revdescription>
@@ -1942,9 +1951,10 @@
             <td>Rate limit for write operations</td>
             <td>Maximum number of write operations per second per container, where a write operation
               is a <command>COPY</command>, <command>DELETE</command>, <command>POST</command>, or
-                <command>PUT</command>. If you reach this rate limit, Cloud Files  slows the
-              processing of write requests for the container to 100 operations per second.</td>
-            <td>100 operations per second</td>
+                <command>PUT</command>. If you reach this rate limit, Cloud Files slows the
+              processing of write requests for the container to 100 write operations per second per
+              container.</td>
+            <td>100 write operations per second per container</td>
           </tr>
           </tbody>
         </table>

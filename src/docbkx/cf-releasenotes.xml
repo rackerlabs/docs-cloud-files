@@ -22,7 +22,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2014-11-11</pubdate>
+		<pubdate>2014-12-03</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -36,6 +36,18 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision>
+				<date>2014-12-03</date>
+				<revdescription>
+					<para>Updated the table in <link
+						xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Absolute_Limits-d1e942.html"
+						>"Absolute limits"</link> in the
+							<emphasis role="italic">Cloud Files Developer Guide</emphasis> for the
+						rate limit for write operations to read "100 <emphasis role="italic"
+							>write</emphasis> operations per second <emphasis role="italic">per
+							container</emphasis>" rather than "100 operations per second".</para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-11-11</date>
 				<revdescription>
@@ -827,6 +839,24 @@
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Dec03">
+		<title>December 03, 2014</title>
+		<para>This release includes the following changes for the Cloud Files API.</para>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+					xmlns:html="http://www.w3.org/1999/xhtml">Updated the table in <link
+						xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Absolute_Limits-d1e942.html"
+						>"Absolute limits"</link> in the <emphasis role="italic">Cloud Files
+						Developer Guide</emphasis> for the rate limit for write operations to read
+					"100 <emphasis role="italic">write</emphasis> operations per second <emphasis
+						role="italic">per container</emphasis>" rather than "100 operations per
+					second".</para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="Nov11">
 		<title>November 11, 2014</title>
