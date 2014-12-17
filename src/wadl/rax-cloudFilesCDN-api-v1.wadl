@@ -294,15 +294,44 @@
                 The information returned with the response is
                 dependent on the method used in the
                 request.</wadl:doc>
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
+                name="Content-Length" style="header" required="true" type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0).
+                    If the operation fails, this value is the length of the
+                    error text in the response body.
+                </p></doc>
+            </param> 
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Cdn-Uri" style="header" required="true"
+                name="Content-Type" style="header" required="true"
                 type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Indicates the URI that you can
-                        combine with object names to serve objects
-                        through the CDN.</para></wadl:doc>
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The MIME type of the list of names. If the operation fails, this value is the MIME type of the error text in the response body.
+                </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Date" style="header" required="true"
+                type="xsd:datetime">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
+                </p></doc>
+            </param> 
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Ios-Uri" style="header" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"><para>The URI for video streaming
+                        that uses HTTP Live Streaming from Apple.</para></wadl:doc>
+            </param>
+            
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Ssl-Uri" style="header" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"><para>The URI for downloading the
+                        object over HTTPS, using SSL. (The user cannot
+                        have custom SSL certificates because the
+                        Rackspace CDN partner does not provide that
+                        feature.)</para></wadl:doc>
+            </param> 
+<!--            <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Ttl" style="header" required="true"
                 type="xsd:int">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -312,7 +341,7 @@
                         900 seconds), and the maximum is 1 year
                         (31536000 seconds).</para></wadl:doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
+           <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Enabled" style="header" required="true"
                 type="xsd:boolean">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -330,23 +359,27 @@
                         whether the CDN access logs should be
                         collected and stored in the Cloud Files
                         storage system.</para></wadl:doc>
-            </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Cdn-Ssl-Uri" style="header" required="true"
-                type="xsd:string">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>The URI for downloading the
-                        object over HTTPS, using SSL. (The user cannot
-                        have custom SSL certificates because the
-                        Rackspace CDN partner does not provide that
-                        feature.)</para></wadl:doc>
-            </param>
+            </param> 
+ -->
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Streaming-Uri" style="header"
                 required="true" type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"><para>The URI for video streaming
                         that uses HTTP Dynamic Streaming from Adobe.</para></wadl:doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Cdn-Uri" style="header" required="true"
+                type="xsd:string">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"><para>Indicates the URI that you can
+                        combine with object names to serve objects
+                        through the CDN.</para></wadl:doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Trans-Id"
+                style="header" required="true" type="csapi:uuid">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
+                </p></doc>
             </param>
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
