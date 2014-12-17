@@ -295,8 +295,8 @@
                 dependent on the method used in the
                 request.</wadl:doc>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Cdn-Uri" style="header" required="false"
-                type="xsd:int">
+                name="X-Cdn-Uri" style="header" required="true"
+                type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"><para>Indicates the URI that you can
                         combine with object names to serve objects
@@ -320,7 +320,7 @@
                         <code>True</code> or <code>False</code> to
                         indicate whether the container is currently
                         marked to allow public serving of objects
-                        through the CDN.)</para></wadl:doc>
+                        through the CDN.</para></wadl:doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Log-Retention" style="header" required="true"
@@ -339,7 +339,7 @@
                         object over HTTPS, using SSL. (The user cannot
                         have custom SSL certificates because the
                         Rackspace CDN partner does not provide that
-                        feature.</para></wadl:doc>
+                        feature.)</para></wadl:doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Cdn-Streaming-Uri" style="header"
