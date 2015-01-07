@@ -39,9 +39,9 @@
 			<revision>
 				<date>2015-01-07</date>
 				<revdescription>
-					<para>Removed the section "Bulk importing of data" from the <citetitle>Cloud
-							Files Developer Guide</citetitle>. Starting January 1, 2015, this
-						service will not be available. </para>
+					<para>Removed the section "Bulk importing of data" from the <citetitle>Cloud Files Developer
+							Guide</citetitle>. Starting January 1, 2015, this service is not
+						available. </para>
 				</revdescription>
 			</revision>
 			<revision>
@@ -869,7 +869,7 @@
 					xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 					xmlns:html="http://www.w3.org/1999/xhtml">Removed the section "Bulk importing of
 					data" in the <citetitle>Cloud Files Developer Guide</citetitle>. Starting
-					January 1, 2015, this service will not be available. </para>
+					January 1, 2015, this service is not available. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>
