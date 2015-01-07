@@ -17,12 +17,12 @@
 			</affiliation>
 		</author>
 		<copyright>
-			<year>2010 - 2014</year>
+			<year>2010 - 2015</year>
 			<holder>Rackspace US, Inc.</holder>
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2014-12-17</pubdate>
+		<pubdate>2015-01-07</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -36,6 +36,14 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision>
+				<date>2015-01-07</date>
+				<revdescription>
+					<para>Removed the section "Bulk importing of data" from the <citetitle>Cloud
+							Files Developer Guide</citetitle>. Starting January 1, 2015, this
+						service will not be available. </para>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2014-12-17</date>
 				<revdescription>
@@ -851,6 +859,20 @@
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
 	</chapter>
+	<chapter xml:id="Jan07">
+		<title>January 07, 2015</title>
+		<para>This release includes the following changes for the Cloud Files API.</para>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+					xmlns:html="http://www.w3.org/1999/xhtml">Removed the section "Bulk importing of
+					data" in the <citetitle>Cloud Files Developer Guide</citetitle>. Starting
+					January 1, 2015, this service will not be available. </para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
 	<chapter xml:id="Dec17">
 		<title>December 17, 2014</title>
 		<para>This release includes the following changes for the Cloud Files API.</para>
@@ -865,6 +887,11 @@
 						>"CDN-enable and CDN-disable a container"</link>, corrected the
 						<code>X-Cdn-Uri</code> response parameter type to <code>string</code> and
 					noted that this response parameter is <code>required</code>.</para>
+				<para xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+					xmlns:html="http://www.w3.org/1999/xhtml">Removed the section "Bulk importing of
+					data" in the <citetitle>Cloud Files Developer Guide</citetitle>. Starting
+					January 1, 2015, this service will not be available. </para>
 			</listitem>
 		</itemizedlist>
 	</chapter>

@@ -1863,9 +1863,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     machines simultaneously. As a best practice,
                     you can run up to 100 concurrent <command>COPY</command>
                     commands per container. </para>
-                <para>Another option for copying many objects at once is using a bulk import. For
-                    information, see <xref
-                        linkend="Bulk_Import-d1e2094"/>.</para>
+
             </note>
                 <!-- 02-06-12 dsh: Reworked this sentence / to remove the subjunctive / mood and make active -->
                <para>If

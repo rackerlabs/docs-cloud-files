@@ -50,11 +50,12 @@
       <year>2012</year>
       <year>2013</year>
       <year>2014</year>
+      <year>2015</year>
       <holder>Rackspace US, Inc.</holder>
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2014-12-17</pubdate>
+    <pubdate>2015-01-07</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -68,6 +69,13 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2015-01-07</date>
+        <revdescription>
+          <para>Removed the section "Bulk importing of data". Starting January 1, 2015, this service
+            will not be available. </para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2014-12-17</date>
         <revdescription>
@@ -220,7 +228,7 @@
                   linkend="API_Operations_d1e000"/>.</para>
             </listitem>
             <listitem>
-              <para>Updated <xref linkend="Bulk_Import-d1e2094"/> to show the availability of using
+              <para>Updated the "Bulk importing of data"section to show the availability of using
                 this feature in Sydney.</para>
             </listitem>
           </itemizedlist>
@@ -597,7 +605,7 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added <xref linkend="Bulk_Import-d1e2094"/>.</para>
+              <para>Added the "Bulk importing of data" section.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -1770,6 +1778,19 @@
           </tbody>
         </table>
       </para>
+      <note>
+        <para>If you are working with cloud servers that are in one of the Rackspace data centers,
+          using the ServiceNet endpoint in the same data center has no network costs and provides a
+          faster connection. ServiceNet endpoints are prefixed with <code>snet-</code> in <xref
+            linkend="Endpoints-Table-d1e001"/>. ServiceNet is the data center internet network. In
+          your authentication response, it is listed as <code>internalURL</code>. </para>
+        <para> If you are working with servers that are not in one of the Rackspace data centers,
+          you must use a public endpoint to connect. In your authentication response, public
+          endpoints are listed as <code>publicURL</code>. If you are working with servers in
+          multiple data centers or have a mixed environment where you have servers in your data
+          centers and in Rackspace data centers, use a public endpoint because it is accessible from
+          all the servers in the different environments.</para>
+      </note>
       <para>Replace the sample MossoCloudFS information in the preceding table with the actual
         MossoCloudFS information returned as part of the authentication service response. This
         information is located after the final '/' in the <code>publicURL</code> field and the
@@ -1784,22 +1805,6 @@
           Panel at <link xlink:href="https://mycloud.rackspace.com/"
             >mycloud.rackspace.com</link>. </para>
       </tip>
-      <para>If you are working with cloud servers that are in one of
-        the Rackspace data centers, using the ServiceNet endpoint in
-        the same data center has no network costs and provides a
-        faster connection. ServiceNet endpoints are prefixed with
-        <code>snet-</code> in <xref linkend="Endpoints-Table-d1e001"
-        />. ServiceNet is the data center internet network. In your
-        authentication response, it is listed as
-        <code>internalURL</code>. </para>
-      <para> If you are working with servers that are not in one of
-        the Rackspace data centers, you must use a public endpoint to
-        connect. In your authentication response, public endpoints are
-        listed as <code>publicURL</code>. If you are working with
-        servers in multiple data centers or have a mixed environment
-        where you have servers in your data centers and in Rackspace
-        data centers, use a public endpoint because it is accessible
-        from all the servers in the different environments.</para>
       <note xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
         <para>To avoid external bandwidth charges, your containers and servers must be in the same
           data center. </para>
@@ -3698,6 +3703,9 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
             timeout limits. </para>
         </note>
 -->
+<!--   
+      <remark>Per email to Ian White from Mark Barta, hidding this section to avoid promoting 
+      bulk import offering </remark>
       <section xml:id="Bulk_Import-d1e2094">
         <title>Bulk importing of data</title>
         <remark security="writeronly">06-11-2012 dsh: added </remark>
@@ -3727,6 +3735,7 @@ X-Container-Meta-Web-Error: error.html            </programlisting>
         process. You are notified when Rackspace receives your device, begins the data import,
         completes the data import, and ships back or destroys the device. </para>
       </section>
+-->      
     <section xml:id="Extract_Archive-d1e2338">
         <title>Extracting archive files</title>
         <para>An extract archive request expands tar files into a Cloud Files account. The request
