@@ -55,7 +55,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2015-01-07</pubdate>
+    <pubdate>2015-01-14</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -70,10 +70,11 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2015-01-12</date>
+        <date>2015-01-14</date>
         <revdescription>
-          <para>Updated <xref linkend="Retrieving_Auth_Token"/> documentation with information about 
-            using multi-factor authentication for added security when a user authenticates with username and password credentials.</para>
+          <para>Updated <xref linkend="Retrieving_Auth_Token"/> with information about using
+            multi-factor authentication for added security when a user authenticates with
+              <code>username</code> and <code>password</code> credentials.</para>
         </revdescription>
       </revision>
       <revision>
@@ -1271,27 +1272,25 @@
             (<errorcode>503</errorcode>) </simpara>
         <para> The authenticate operation provides clients with an authentication token and a list
           of regional cloud endpoints. </para>
-        <note><title>Notes</title>
-          <itemizedlist>
-            <listitem>
-              <para>For more information about how to use cURL to retrieve the authentication token, see
-                the <citetitle>Cloud Files Getting Started Guide</citetitle>.</para>
-            </listitem>
-            <listitem>
-              <para>
-                If you authenticate with username and password credentials, you can use multi-factor authentication to add an additional level of account security. 
-                This feature is not implemented for username and API credentials. For more information, see 
-                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/MFA_Ops.html">Multifactor authentication</link> 
-                in the <citetitle>Cloud Identity Client Developer Guide</citetitle>.
-              </para>
-            </listitem>
-          </itemizedlist>
+        <note>
+          <para>For  information about how to use cURL to retrieve the authentication token, see the
+              <citetitle>Cloud Files Getting Started Guide</citetitle>.</para>
         </note>
         <para>The sample requests and responses in this section illustrate a general case. In your
           authentication request, use your own credentials rather than the sample values shown here
           for <code>username</code> and <code>apiKey</code>. When you authenticate successfully, the
           response to your authentication request will include a catalog of the services to which
           you have subscribed rather than the sample values shown here.</para>
+        <note>
+          <para>If you authenticate with <code>username</code> and <code>password</code>
+            credentials, you can use multi-factor authentication to add an additional level of
+            account security. This feature is not implemented for the <code>username</code> and
+              <code>apiKey</code> credentials shown in the following examples. </para>
+          <para>For more information, see <link
+              xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/MFA_Ops.html"
+              >Multi-factor authentication</link> in the <citetitle>Cloud Identity Client Developer
+              Guide</citetitle>. </para>
+        </note>
         <example>
           <title>Authentication request: XML</title>
           <programlistingco>
@@ -4154,16 +4153,43 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           without the file name override.</para>
         <example>
           <title>TempURL without file name override</title>
-          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485</programlisting>
+          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>
+temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+temp_url_expires<?sbr?>=1323479485</programlisting>
         </example>
         <para>In the following example, you see
             <code>&amp;filename=bob.txt</code> appended to the TempURL
           to indicate to the browser to save the file as
             <code>bob.txt</code>:</para>
         <example>
-          <title>TempURL with file name override</title>
-          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;temp_url_expires<?sbr?>=1323479485&amp;filename=bob.txt</programlisting>
+          <title>TempURL with file name override - Example 1</title>
+          <programlisting language="bash">https://cf-cluster.example.com/v1/AUTH_account/container/object?
+<?sbr?>temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+temp_url_expires<?sbr?>=1323479485<emphasis role="bold">&amp;
+filename=bob.txt</emphasis></programlisting>
         </example>
+        <para>With GET TempURLs, a <code>Content-Disposition</code> header is set on the response so
+          that browsers interpret this as a file attachment to be saved. The file name chosen is
+          based on the object name, but you can override this with a <code>filename</code> query
+          parameter. The following example specifies a filename of <code>My Test File.pdf</code>: </para>
+        <example>
+          <title>TempURL with file name override - Example 2 </title>
+      
+          <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?
+temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+temp_url_expires=1323479485<emphasis role="bold">&amp;
+filename=My+Test+File.pdf</emphasis></programlisting>   </example>
+        <para>If you do not want the object to be downloaded, you can cause
+            <code>Content-Disposition: inline</code> to be set on the response by adding the
+            <code>inline</code> parameter to the query string:</para>
+        <example>
+          <title>TempURL with inline query parameter</title>
+        
+        <programlisting>https://cf-cluster.example.com/v1/AUTH_account/container/object?
+temp_url_sig=da39a3ee5e6b4b0d3255bfef95601890afd80709&amp;
+temp_url_expires=1323479485<emphasis role="bold">&amp;
+inline</emphasis></programlisting> </example>
+
       </section>
     </section>
     <section xml:id="FormPost-d1a555">

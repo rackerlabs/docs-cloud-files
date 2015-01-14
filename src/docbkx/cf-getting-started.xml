@@ -51,11 +51,12 @@
     <info>
         <copyright>
             <year>2014</year>
+            <year>2015</year>
             <holder>Rackspace US, Inc.</holder>
         </copyright>
         <releaseinfo>API v1</releaseinfo>
         <productname>Rackspace Cloud Files™</productname>
-        <pubdate>2014-07-22</pubdate>
+        <pubdate>2015-01-14</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the doc build process.</remark>
@@ -67,6 +68,15 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
+            <revision>
+                <date>2015-01-14</date>
+                <revdescription>
+                    <para xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                        xmlns:m="http://www.w3.org/the key 1998/Math/MathML">Added a note that
+                        includes a link to additional authentication methods, including multi-factor
+                        authentication, in <xref linkend="Gen-Auth-Token"/>.</para>
+                </revdescription>
+            </revision>
             <revision xmlns:wadl="http://wadl.dev.java.net/2009/02"
                 xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
                 <date>2014-07-22</date>
@@ -623,6 +633,15 @@
                     <listitem>
                         <para><emphasis role="bold">yourApiKey</emphasis>
                             &mdash; Your API key. </para>
+                        <note>
+                            <para>This guide uses <emphasis role="bold">yourUserName</emphasis> and
+                                    <emphasis role="bold">yourApiKey</emphasis> for authentication.
+                                For information about other supported authentication methods, see
+                                    <link
+                                    xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Token_Calls.html"
+                                    >Authentication tokens</link> in the <citetitle>Cloud Identity
+                                    Client Developer Guide</citetitle>.</para>
+                        </note>
                         <!-- <remark>Move up to pre-requisites section per Nicholas Wagner</remark> 
                         <para><emphasis role="bold">To find your API key:</emphasis>
                         </para>
