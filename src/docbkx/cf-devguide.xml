@@ -2345,8 +2345,8 @@ Date: Mon, 07 Apr 2014 01:29:22 GMT </programlisting>
           <programlisting language="bash">POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-<emphasis role="bold">X-Container-Read: user1, user2, user3
-X-Container-Write: user1, user2, user3</emphasis></programlisting>
+X-Container-Read: user1, user2, user3
+X-Container-Write: user1, user2, user3</programlisting>
         </example>
       </para>
       <para>Repeat the operation to show container metadata and confirm the metadata change.</para>
@@ -2360,8 +2360,8 @@ X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 </programlisting>
         <title>Show container metadata after adding ACL headers: HTTP response</title>
         <programlisting language="bash">HTTP/1.1 204 No Content
 X-Container-Object-Count: 2
-<emphasis role="bold">X-Container-Read: user1, user2, user3
-X-Container-Write: user1, user2, user3</emphasis>
+X-Container-Read: user1, user2, user3
+X-Container-Write: user1, user2, user3
 X-Container-Bytes-Used: 76
 Accept-Ranges: bytes
 X-Trans-Id: txb40eb86d949345f7bc66b01e8b63c3a5
