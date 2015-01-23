@@ -4,54 +4,41 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rackspace.cloud.apidocs</groupId>
     <artifactId>cloud-files</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Cloud Files API Docs</name>
-    <build>
-      <sourceDirectory>src</sourceDirectory>
-      <plugins>
 
-	  <plugin>
-            <groupId>com.rackspace.cloud.api</groupId>
-            <artifactId>olink-maven-plugin</artifactId>
-            <version>1.2.6</version>
-            <executions>
-              <execution>
-		         <phase>initialize</phase>
-		         <goals>
-		            <goal>olink</goal>
-		         </goals>
-              </execution>
-            </executions>
-	  </plugin>
+    <parent>
+        <groupId>com.rackspace.cloud.api</groupId>
+        <artifactId>rackspace-docs-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
 
             <plugin>
                 <groupId>com.rackspace.cloud.api</groupId>
-                <artifactId>clouddocs-maven-plugin</artifactId>
-                <version>2.1.3</version>
-                  <executions>
-                      <!--
-                   <execution>
+                <artifactId>olink-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.rackspace.cloud.api</groupId>
+                <artifactId>rackspace-docs-maven-plugin</artifactId>
+
+                <executions>                    
+                    <execution>
+                        <id>g1</id>
                         <goals>
                             <goal>generate-webhelp</goal>
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <includes>cf-intro.xml</includes>
-                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-intro/content</canonicalUrlBase>
-                        </configuration>			
-                    </execution>  -->                  
-                  <execution>
-		                <id>g1</id>
-                        <goals>
-                            <goal>generate-webhelp</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-			            <configuration>
-			                <includes>cf-devguide.xml</includes>
-			                <security>external</security>
-			                <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
-			            </configuration>
+                            <includes>cf-devguide.xml</includes>
+                            <security>external</security>
+                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-devguide/content</canonicalUrlBase>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>g2</id>
@@ -75,17 +62,17 @@
                         <configuration>
                             <includes>cf-releasenotes.xml</includes>
                             <chapterAutolabel>0</chapterAutolabel>
-			                <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
-                         </configuration>
+                            <canonicalUrlBase>http://docs.rackspace.com/files/api/v1/cf-releasenotes/content</canonicalUrlBase>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <branding>rackspace</branding>
                     <feedbackEmail>catherine.richardson@rackspace.com</feedbackEmail>
-		    <socialIcons>1</socialIcons>
-		    <enableDisqus>1</enableDisqus>
-		    <enableGoogleAnalytics>1</enableGoogleAnalytics>
-		    <showXslMessages>true</showXslMessages>
+                    <socialIcons>1</socialIcons>
+                    <enableDisqus>1</enableDisqus>
+                    <enableGoogleAnalytics>1</enableGoogleAnalytics>
+                    <showXslMessages>true</showXslMessages>
                 </configuration>
             </plugin>
             <plugin>
@@ -132,6 +119,6 @@
         </profile>
     </profiles>
     <scm>
-      <connection>scm:git:ssh://git@github.rackspace.com:IX/cloud-files.git</connection>
+        <connection>scm:git:ssh://git@github.rackspace.com:IX/cloud-files.git</connection>
     </scm>
 </project>
