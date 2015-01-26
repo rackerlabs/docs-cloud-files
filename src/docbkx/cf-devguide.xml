@@ -1728,7 +1728,8 @@
         </para>
   
       <para>The endpoints to use for the storage service component of your Cloud Files API calls are
-        summarized in the following table.</para>
+        summarized in the following table. The first endpoint listed for each region is externally
+        accessible. The second endpoint is accessed only from the internal ServiceNet.</para>
       <para>
         <table xml:id="Endpoints-Table-d1e001" rules="all">
           <caption>Regionalized service endpoints for storage services </caption>
@@ -1742,66 +1743,68 @@
             <tr align="left">
               <td colspan="2" rowspan="2">Chicago (ORD)</td>
               <td colspan="5"
-                ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.ord1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Dallas/Ft. Worth (DFW)</td>
               <td colspan="5"
-                ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.dfw1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Hong Kong (HKG)</td>
               <td colspan="5"
-                ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.hkg1.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr align="left">
               <td colspan="2" rowspan="2">London (LON)</td>
               <td colspan="5"
-                ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.lon3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Northern Virginia (IAD)</td>
               <td colspan="5"
-                ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.iad3.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="2" rowspan="2">Sydney (SYD)</td>
               <td colspan="5"
-                ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
             <tr>
               <td colspan="5"
-                ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
+                      ><code>https://snet-storage101.syd2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code></td>
             </tr>
           </tbody>
         </table>
       </para>
       <note>
+        <para><emphasis role="bold">ServiceNet endpoints</emphasis></para>
         <para>If you are working with cloud servers that are in one of the Rackspace data centers,
           using the ServiceNet endpoint in the same data center has no network costs and provides a
           faster connection. ServiceNet endpoints are prefixed with <code>snet-</code> in <xref
             linkend="Endpoints-Table-d1e001"/>. ServiceNet is the data center internet network. In
           your authentication response, it is listed as <code>internalURL</code>. </para>
+        <para><emphasis role="bold">Public endpoints</emphasis></para>
         <para> If you are working with servers that are not in one of the Rackspace data centers,
           you must use a public endpoint to connect. In your authentication response, public
           endpoints are listed as <code>publicURL</code>. If you are working with servers in
@@ -4723,10 +4726,10 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
           </listitem>
         </orderedlist>
         <example>
-          <title>CORS POST cURL request</title>
+          <title>Example of a CORS POST cURL request</title>
           <programlisting language="bash">curl -X POST -H 'X-Auth-Token: <emphasis role="bold">yourAuthToken</emphasis>' \
   -H 'X-Container-Meta-Access-Control-Allow-Origin: http://localhost' \
-  http://192.168.56.3:8080/v1/AUTH_test/cont1</programlisting>
+   https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer </programlisting>
         </example>
         <para>At this point, the container is accessible to CORS clients hosted on
             <code>http://localhost</code>. Open the test CORS page in your browser and following
