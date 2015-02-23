@@ -22,7 +22,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2015-01-14</pubdate>
+		<pubdate>2015-02-26</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -36,6 +36,32 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision>
+				<date>2015-02-26</date>
+				<revdescription>
+					<itemizedlist>
+						<listitem>
+							<para>Added the account to account copy capability and a section to describe it  <olink
+									targetdoc="cf-devguide" targetptr="acctToAcctCOPY-de101"
+									>“Account to account copy”</olink>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the <code>Destination-Account</code> header, which is used
+								to make an account to account copy, to the <command>COPY</command>
+								command request parameters in  <link
+									xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+									>Copy object</link>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the <code>X-Copy-From-Account</code> header, which is used
+								to make an account to account copy, to the <command>PUT</command>
+								command request parameters in <link
+									xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+									>Create or update object</link>. </para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<date>2015-01-14</date>
 				<revdescription>
@@ -876,6 +902,46 @@
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Feb26">
+		<title>February 26, 2015</title>
+		<para>This release includes the following changes for the Cloud Files API.</para>
+		<itemizedlist>
+			<title>Enhancement</title>
+			<listitem>
+				<para>Added the account to account copy capability.</para>
+			</listitem>
+		</itemizedlist>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Added information and links about account to account copy in the <citetitle>Cloud Files
+						Developer Guide</citetitle>: <itemizedlist
+						xmlns:svg="http://www.w3.org/2000/svg"
+						xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+						xmlns:html="http://www.w3.org/1999/xhtml">
+						<listitem>
+							<para>Added the account to account copy description in <olink
+									targetdoc="cf-devguide" targetptr="acctToAcctCOPY-de101"
+									>“Account to account copy”</olink>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the <code>Destination-Account</code> header, which is used
+								to make an account to account copy, to the <command>COPY</command>
+								command request parameters in <link
+									xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+									>Copy object</link>.</para>
+						</listitem>
+						<listitem>
+							<para>Added the <code>X-Copy-From-Account</code> header, which is used
+								to make an account to account copy, to the <command>PUT</command>
+								command request parameters in <link
+									xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+									>Create or update object</link>. </para>
+						</listitem>
+					</itemizedlist></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="Jan14">
 		<title>January 14, 2015</title>

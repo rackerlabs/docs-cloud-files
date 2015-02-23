@@ -55,7 +55,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2015-01-14</pubdate>
+    <pubdate>2015-02-26</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -69,6 +69,31 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2015-02-26</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added the account to account copy capability described in <xref
+                  linkend="acctToAcctCOPY-de101"/>.</para>
+            </listitem>
+            <listitem>
+              <para>Added the <code>Destination-Account</code> header, which is used to make an
+                account to account copy, to the <command>COPY</command> command request parameters
+                in <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+                  >Copy object</link>.</para>
+            </listitem>
+            <listitem>
+              <para>Added the <code>X-Copy-From-Account</code> header, which is used to make an
+                account to account copy, to the <command>PUT</command> command request parameters in
+                  <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+                  >Create or update object</link>. </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2015-01-14</date>
         <revdescription>
@@ -2023,6 +2048,150 @@
           xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
           >text/xml</code> . </para>
     </section>
+    <section xml:id="responseCodes-d101e">
+      <title>Response codes</title>
+      <para>Cloud Files returns an HTTP code that denotes the type of response. </para>
+      <para>The following table lists possible responses with their associated codes and
+        descriptions.</para>
+      <informaltable rules="all">
+        <thead>
+          <tr align="center">
+            <td colspan="2">Response</td>
+            <td colspan="1">Associated response code</td>
+            <td colspan="3">Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2"><code>OK</code></td>
+            <td colspan="1">200</td>
+            <td colspan="3">The request has succeeded. (Some API calls might return 201
+              instead.)</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Created</code></td>
+            <td colspan="1">201</td>
+            <td colspan="3">The request has been fulfilled and a resource was created.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Accepted</code></td>
+            <td colspan="1">202</td>
+            <td colspan="3">The request has been accepted for processing.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>No Content</code></td>
+            <td colspan="1">204</td>
+            <td colspan="3">The request has been fulfilled but does not return a representation
+              (that is, the response is empty).</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Partial Content</code></td>
+            <td colspan="1">206</td>
+            <td colspan="3">The server has fulfilled the partial GET request for the resource.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Bad Request</code></td>
+            <td colspan="1">400</td>
+            <td colspan="3">The request was not understood due to bad syntax or missing required
+              parameters. </td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Unauthorized</code></td>
+            <td colspan="1">401</td>
+            <td colspan="3">Authentication failed, or the user does not have permissions for a
+              requested operation.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Forbidden</code></td>
+            <td colspan="1">403</td>
+            <td colspan="3">The server understood the request but refused to fulfill it.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Not Found</code></td>
+            <td colspan="1">404</td>
+            <td colspan="3">A requested resource was not found but might be available again in the
+              future..</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Method Not Allowed</code></td>
+            <td colspan="1">405</td>
+            <td colspan="3">The request method is not supported for this resource.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Request Timeout</code></td>
+            <td colspan="1">408</td>
+            <td colspan="3">The server timed out waiting for the request.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Conflict</code></td>
+            <td colspan="1">409</td>
+            <td colspan="3">The request could not be completed due to a conflict with the current
+              state of the resource. </td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Length Required</code></td>
+            <td colspan="1">411</td>
+            <td colspan="3">The request did not specify the length of its content, which is required
+              by the requested resource.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Precondition Failed</code></td>
+            <td colspan="1">412</td>
+            <td colspan="3">The server does not meet one of the preconditions that the requester put
+              on the request.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Request Entity Too Large</code></td>
+            <td colspan="1">413</td>
+            <td colspan="3">The server is refusing to process a request because the request entity
+              is larger than the server is willing or able to process. </td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Expectation Failed</code></td>
+            <td colspan="1">417</td>
+            <td colspan="3">The server cannot meet the requirements of the Expect request-header
+              field.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Unprocessable Entity</code>
+            </td>
+            <td colspan="1">422</td>
+            <td colspan="3">The request could not be followed due to semantic errors.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Too Many Requests</code></td>
+            <td colspan="1">429</td>
+            <td colspan="3">Too many requests have been sent in a given amount of time. Pause
+              requests, wait up to one minute, and try again. (Intended for use with rate
+              limiting.)</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Internal Server Error</code></td>
+            <td colspan="1">500</td>
+            <td colspan="3">The service encountered an unexpected condition that prevented it from
+              fulfilling the request.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><code>Service Unavailable</code></td>
+            <td colspan="1">503</td>
+            <td colspan="3">The service is currently unable to handle the request due to a temporary
+              overloading or maintenance. This is a temporary condition. Try again later.</td>
+          </tr>
+        </tbody>
+      </informaltable>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML"><?rax-fo keep-with-next?> An example of an
+        error message follows. </para>
+      <example xmlns:m="http://www.w3.org/1998/Math/MathML">
+        <title>Error message example</title>
+        <programlisting>HTTP/1.1 201 Created
+Last-Modified: Fri, 17 Jan 2014 17:28:35 GMT
+Content-Length: 116
+Etag: 8a964ee2a5e88be344f36c22562a6486 
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx4d5e4f06d357462bb732f-0052d96843 
+Date: Fri, 17 Jan 2014 17:28:35 GMT</programlisting>
+      </example>
+    </section>
   </chapter>
   <chapter xml:id="Overview_of_API_Operations-d1e823">
     <title>Overview of API operations</title>
@@ -3148,29 +3317,135 @@ curl -i -H "X-Auth-Token: yourAuthToken " \
           </listitem>
         </orderedlist>
       </example>
+    </section>
+    <section xml:id="acctToAcctCOPY-de101">
+      <title>Account to account copy</title>
+      <para>The account to account copy capability adds the ability to copy objects between
+        different accounts on the server.  </para>
+      <para>To use this capability to read from or write to the accounts, you must have a access to
+        the containers. You can use a container access control list (ACL) to control access to a
+        container and its objects. For more information about ACLs, see <xref
+          linkend="Container_ACLs-d1e2222"/>. </para>
+      <para>Use the following operations and headers to perform an account to account copy:<itemizedlist>
+          <listitem>
+            <para>A <command>COPY</command> command with the following headers:<itemizedlist>
+                <listitem>
+                  <para><code>Destination-Account</code>: Specifies the account name (which
+                    corresponds to the last part of the storage URL).</para>
+                </listitem>
+                <listitem>
+                  <para><code>Destination</code>: Used with <command>COPY</command>, specifies the
+                    container and object name of the destination object in the form of
+                      <code>/container/object</code>.</para>
+                </listitem>
+              </itemizedlist></para>
+            <para>For more information about the <command>COPY</command> command, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+                >Copy object</link>.</para>
+          </listitem>
+          <listitem>
+            <para>A <command>PUT</command> command with the following headers:<itemizedlist>
+                <listitem>
+                  <para><code>X-Copy-From-Account</code>: Specifies the account name (which
+                    corresponds to the last part of storage URL).</para>
+                </listitem>
+                <listitem>
+                  <para><code>X-Copy-From</code>: Used with <command>PUT</command>, specifies the
+                    container and object name of the source object in the form of
+                      <code>/container/object</code>.</para>
+                </listitem>
+              </itemizedlist></para>
+            <para>For more information about the <command>PUT</command> command, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_createobject_v1__account___container___object__objectServicesOperations_d1e000.html"
+                >Create or update object</link>.</para>
+          </listitem>
+        </itemizedlist></para>
+      <note>
+        <para>If your storage URL is <code>https://storage101.dfw1.clouddrive.com/v1/
+            MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code>, your account name is
+            <code>MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</code>. </para>
+      </note>
+      <para>Use the following examples to complete the steps to use account to account copy.<orderedlist>
+          <title>COPY command steps</title>
+          <listitem>
+            <para>Use the <command>POST</command> command to set <code>X-Container-Write</code>
+              metadata on the destination container.</para>
+            <para><emphasis role="bold">Request:</emphasis></para>
+            <programlisting>POST /v1/Destination_Account/Destination_Container HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: Destination_User_Auth_Token
+X-Container-Write: Source_User_Name</programlisting>
+            <para><emphasis role="bold">Response:</emphasis></para>
+            <programlisting>204 No Content
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx1abc1d6005134be99b1db-0054da619adev1
+Date: Tue, 10 Feb 2015 19:52:58 GMT</programlisting>
+          </listitem>
+          <listitem>
+            <para>Use the <command>COPY</command> command to copy the object.</para>
+            <para><emphasis role="bold">Request:</emphasis></para>
+            <programlisting>COPY /v1/Source_Account/Source_Destination/Source_Object HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: Source_User_Auth_Token
+Destination: Destination_Container/Destination_Object
+Destination-Account: Destination_User_Account   (such as, MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee)
+</programlisting>
+            <para><emphasis role="bold">Response:</emphasis></para>
+            <programlisting>201 Created
+Content-Length: 0
+X-Copied-From-Last-Modified: Tue, 13 Jan 2015 20:53:09 GMT
+X-Copied-From: copy_test/new_copy_object.txt
+Last-Modified: Tue, 10 Feb 2015 19:59:49 GMT
+Etag: c6995201745ed71f24ba352750bde444
+X-Copied-From-Account: StagingUS_xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: txd819a3f557de449cb0879-0054da6334dev1
+Date: Tue, 10 Feb 2015 19:59:48 GMT
+</programlisting>
+          </listitem>
+        </orderedlist><orderedlist>
+          <title>PUT command steps</title>
+          <listitem>
+            <para>Use the POST command to set <code>X-Container-Write</code> metadata on destination
+              container.</para>
+            <para><emphasis role="bold">Request:</emphasis></para>
+            <programlisting>POST  /v1/Destination_Account/Destination_Container HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: Destination_User_Auth_Token
+X-Container-Write: Source_User_Name</programlisting>
+            <para><emphasis role="bold">Response:</emphasis></para>
+            <programlisting>204 No Content
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: tx0f6c102033564bb0800e3-0054da677fdev1
+Date: Tue, 10 Feb 2015 20:18:07 GMT</programlisting>
+          </listitem>
+          <listitem>
+            <para>Use the <command>PUT</command> command to copy the object.</para>
+            <para><emphasis role="bold">Request:</emphasis></para>
+            <programlisting>PUT  /v1/Destination_Account/Dest_Container/Dest_Object HTTP/1.1
+Host: storage.clouddrive.com
+X-Auth-Token: Source_User_Auth_Token
+X-Copy-From: /source_container/source_object
+X-Copy-From-Account: Source_User_Account   (such as, MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee)
+Content-Length: 0      (the actual value is ignored)
+</programlisting>
+            <para><emphasis role="bold">Response:</emphasis></para>
+            <programlisting>201 Created
+Content-Length: 0
+X-Copied-From-Last-Modified: Tue, 10 Feb 2015 20:46:32 GMT
+X-Copied-From: source/source_object.txt
+Last-Modified: Tue, 10 Feb 2015 21:14:50 GMT
+Etag: d41d8cd98f00b204e9800998ecf8427e
+X-Copied-From-Account: StagingUS_xxxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: txe3373a175f944020a63d9-0054da74c9dev1
+Date: Tue, 10 Feb 2015 21:14:49 GMT</programlisting>
+          </listitem>
+        </orderedlist></para>
     </section>   
   </chapter>
-      <!--  <remark>2014-01-27 cyr: I'm not sure about this statement and why we 
-        took it out, so I will leave it in a comment for a while. </remark
-<para>Since the storage system is designed to store
-          large amounts of data, care should be taken when
-          representing the total bytes response as an integer; when
-          possible, convert it to a 64-bit unsigned integer if your
-          platform supports that primitive type.</para>  
-      -->
-        <!--Other status codes listed in Disqus comment from dsh 2 years ago - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html lists these and more. These are standard status codes and their responses from wikipedia.
-          
-In addition to those listed in Anne's great response, a failed upload might return the following error codes, depending upon conditions:
-
-400 Bad Request - The request cannot be fulfilled due to bad syntax.
-403 Forbidden - The request was a legal request, but the server is refusing to respond to it.
-404 Not Found - The requested resource could not be found but might be available again in the future.
-408 Request Timeout - The server timed out waiting for the request.
-411 Length Required - The request did not specify the length of its content, which is required by the requested resource
-412 Precondition Failed - The server does not meet one of the preconditions that the requester put on the request
-413 Request Entity Too Large - The request is larger than the server is willing or able to process
-417 Expectation Failed - The server cannot meet the requirements of the Expect request-header field
--->
   <chapter xml:id="API_Operations_for_CDN_Services-d1e2386" 
     xmlns="http://docbook.org/ns/docbook"
     role="api-reference" >
@@ -3913,10 +4188,23 @@ Transfer-Encoding: chunked
 /containerName/objectName3
 /containerName/objectName4</programlisting>
       </example>
-      <para>Use a cURL request similar to the following example for the bulk delete.</para>
+      <para>You can use a cURL request similar to the following example for the bulk delete.</para>
       <example>
         <title>cURL request for the bulk delete</title>
         <programlisting>$ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_000000\?bulk-delete -T ./objects_to_delete.txt</programlisting>
+      </example>
+      <para>An HTTP request for the bulk delete is similar to the following example.</para>
+      <example>
+        <title>HTTP request for  the bulk delete</title>
+        <programlisting>DELETE /v1/MossoCloudFS_000000?bulk-delete HTTP/1.1
+Host: storage101.dfw1.clouddrive.com
+x-auth-token:f064c46a782c444cb4ba4b6434288f7c
+Content-Length: 108 
+
+/containerName/objectName1
+/containerName/objectName2
+/containerName/objectName3
+/containerName/objectName4 </programlisting>
       </example>
         <para>The response is similar to the extract archive responses in that every response is 200
         OK and the response body must be parsed for actual results. The following example shows the

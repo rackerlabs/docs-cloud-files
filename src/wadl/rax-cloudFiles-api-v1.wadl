@@ -1741,7 +1741,13 @@ X-Container-Meta-Extra: Data</programlisting>
                     You must UTF-8-encode and then URL-encode the names of the container and object before you include them in the header. 
                     Using the PUT operation with <code>X-Copy-From</code> has the same effect as using the COPY operation to copy an object. 
                 </p></doc>
-            </param>                        
+            </param>  
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Copy-From-Account" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Used for account to account copy. Specifies the account name from which you want to copy an object. (The account name is the last part of the storage URL). 
+                </p></doc>
+            </param>
             <representation mediaType="text/xml">
                 <doc title="Create or update object request">
                     <xsdxt:code href="../wadl/samples/cf-createObject_request.txt"/>
@@ -1934,6 +1940,11 @@ X-Container-Meta-Extra: Data</programlisting>
                         container and object name of the
                             destination object in the form of
                         <code>/container/object</code>. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="Destination-Account" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Used for account to account copy. Specifies the destination account name (which is the last part of the storage URL). </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Type" style="header"
