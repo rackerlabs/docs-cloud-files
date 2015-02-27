@@ -1798,6 +1798,9 @@ X-Container-Meta-Extra: Data</programlisting>
                 </doc>
             </representation>
         </response>
+        <response status="202">
+            <doc title="Accepted">The request has been accepted for processing.</doc>             
+        </response>
         &createObjectFaults;
     </method>
   
