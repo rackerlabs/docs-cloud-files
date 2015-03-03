@@ -8,5 +8,3 @@ Content-Disposition: attachment; filename=platmap.mp4
 Content-Type: video/mp4
 Content-Encoding: gzip
 X-Object-Meta-PIN: 1234
-
-[ ...object content... ]
