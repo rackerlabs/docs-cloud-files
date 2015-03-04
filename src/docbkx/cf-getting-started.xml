@@ -56,7 +56,7 @@
         </copyright>
         <releaseinfo>API v1</releaseinfo>
         <productname>Rackspace Cloud Files™</productname>
-        <pubdate>2015-01-14</pubdate>
+        <pubdate>2015-03-04</pubdate>
         <legalnotice role="rs-api">
             <annotation>
                 <remark>Copyright details are filled in by the doc build process.</remark>
@@ -68,6 +68,18 @@
                     (<abbrev>API</abbrev>). </para>
         </abstract>
         <revhistory>
+            <revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
+                <date>2015-03-04</date>
+                <revdescription>
+                    <itemizedlist spacing="compact">
+                        <listitem>
+                            <para>Removed the London endpoint, since Rackspace now has one global
+                                endpoint for authentication using the Rackspace Cloud Identity
+                                service. See <xref linkend="Gen-Auth-Token"/>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </revdescription>
+            </revision>
             <revision>
                 <date>2015-01-14</date>
                 <revdescription>
@@ -675,14 +687,33 @@
                         </orderedlist> -->
                     </listitem>
                 </itemizedlist></para>
+            <para>Use the following endpoint to access the Rackspace Cloud Identity service (for
+                authentication), regardless of US or UK identities:</para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>
+                        <link xlink:href="&ENDPOINT-US-20;">&ENDPOINT-US-20;</link>
+                    </para>
+                </listitem>
+            </itemizedlist>
+            <para>Your account can be based in either the US or the UK. This is not determined by
+                your physical location but by the location of the Rackspace retail site that was
+                used to create your account. </para>
+            <itemizedlist spacing="compact">
+                <listitem>
+                    <para>If your account was created via <link
+                            xlink:href="http://www.rackspacecloud.com"
+                            >http://www.rackspacecloud.com</link>, it is a US-based account. </para>
+                </listitem>
+                <listitem>
+                    <para>If your account was created via <link
+                            xlink:href="http://www.rackspace.co.uk"
+                            >http://www.rackspace.co.uk</link>, it is a UK-based account. </para>
+                </listitem>
+            </itemizedlist>
             <para>You authenticate by using the URL for the Cloud Identity service,
                     <code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>, as shown in
                 the following authentication request example. </para>
-            <note>
-                <para>For UK-based accounts, you might use
-                        <code>https://lon.identity.api.rackspacecloud.com/v2.0/tokens</code>
-                    instead.</para>
-            </note>
             <para>The cURL request uses the <code>-s</code> option for silent or quiet mode to
                 suppress progress meters and error messages and the <code>-d</code> option to send
                 the specified data in a <command>POST</command> request to the HTTP server.</para>

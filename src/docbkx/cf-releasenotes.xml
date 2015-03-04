@@ -22,7 +22,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2015-02-26</pubdate>
+		<pubdate>2015-03-04</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -36,6 +36,19 @@
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
+			<revision xmlns:m="http://www.w3.org/1998/Math/MathML"
+				xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<date>2015-03-04</date>
+				<revdescription>
+					<itemizedlist spacing="compact">
+						<listitem>
+							<para>Removed the London endpoint, since Rackspace now has one global
+								endpoint for authentication using the Rackspace Cloud Identity
+								service.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
 			<revision>
 				<date>2015-02-26</date>
 				<revdescription>
@@ -902,6 +915,27 @@
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Mar04">
+		<title>March 04, 2015</title>
+		<para>This release includes the following changes for the Cloud Files API.</para>
+		<itemizedlist>
+			<title>Documentation</title>
+			<listitem>
+				<para>Removed the London endpoint, since Rackspace now has one global endpoint for
+					authentication using the Rackspace Cloud Identity service. See the following
+					documents: <itemizedlist>
+						<listitem>
+							<para><olink targetdoc="cf-getting-started" targetptr="Gen-Auth-Token"
+									>“Generating an authentication token”</olink></para>
+						</listitem>
+						<listitem>
+							<para><olink targetdoc="cf-devguide" targetptr="Authentication-d1e433"
+									>“Authentication”</olink></para>
+						</listitem>
+					</itemizedlist></para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="Feb26">
 		<title>February 26, 2015</title>
