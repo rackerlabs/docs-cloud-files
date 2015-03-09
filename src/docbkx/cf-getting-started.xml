@@ -71,13 +71,9 @@
             <revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
                 <date>2015-03-04</date>
                 <revdescription>
-                    <itemizedlist spacing="compact">
-                        <listitem>
-                            <para>Removed the London endpoint, since Rackspace now has one global
-                                endpoint for authentication using the Rackspace Cloud Identity
-                                service. See <xref linkend="Gen-Auth-Token"/>.</para>
-                        </listitem>
-                    </itemizedlist>
+                    <para>Removed the London endpoint for the Rackspace Cloud Identity service.
+                        Rackspace now has one global endpoint for authentication. See <xref
+                            linkend="Gen-Auth-Token"/>.</para>
                 </revdescription>
             </revision>
             <revision>
