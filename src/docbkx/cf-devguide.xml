@@ -1253,8 +1253,8 @@
         <title>Geographic endpoints</title>
         <para>The Rackspace Cloud Identity service serves as the entry point to all Rackspace Cloud
           APIs and is itself a RESTful web service. </para>
-        <para>Use the following endpoint to access the Rackspace Cloud Identity service (for
-          authentication), regardless of US or UK identities:</para>
+        <para>Use the following global endpoint to access the Rackspace Cloud Identity
+          service:</para>
         <itemizedlist spacing="compact">
           <listitem>
             <para>
@@ -1262,7 +1262,7 @@
             </para>
           </listitem>
         </itemizedlist>
-        <para>Your account can be based in either the US or the UK. This is not determined by your
+<!--        <para>Your account can be based in either the US or the UK. This is not determined by your
           physical location but by the location of the Rackspace retail site that was used to create
           your account. </para>
         <itemizedlist spacing="compact">
@@ -1276,7 +1276,7 @@
           </listitem>
         </itemizedlist>
         <para>If you are unsure how your account was created, use the Rackspace contact information
-          at either site to ask for help. </para>
+          at either site to ask for help. </para> -->
       </section>
       <section xml:id="Retrieving_Auth_Token"
         xmlns:m="http://www.w3.org/1998/Math/MathML">

@@ -633,8 +633,6 @@
             <para>Your first step must always be to generate an authentication token. You must then
                 include the authentication token in each request in the <code>X-Auth-Token</code>
                 header. </para>
-            <para>For more details about authentication, see the <citetitle>Cloud Files Developer
-                    Guide</citetitle>.</para>
             <para>Remember to replace the placeholders in the following authentication request
                 example with your information:<itemizedlist spacing="compact">
                     <listitem>
@@ -687,8 +685,8 @@
                         </orderedlist> -->
                     </listitem>
                 </itemizedlist></para>
-            <para>Use the following endpoint to access the Rackspace Cloud Identity service (for
-                authentication), regardless of US or UK identities:</para>
+            <para>Use the following global endpoint to access the Rackspace Cloud Identity
+                service:</para>
             <itemizedlist spacing="compact">
                 <listitem>
                     <para>
@@ -696,7 +694,7 @@
                     </para>
                 </listitem>
             </itemizedlist>
-            <para>Your account can be based in either the US or the UK. This is not determined by
+<!--            <para>Your account can be based in either the US or the UK. This is not determined by
                 your physical location but by the location of the Rackspace retail site that was
                 used to create your account. </para>
             <itemizedlist spacing="compact">
@@ -710,7 +708,7 @@
                             xlink:href="http://www.rackspace.co.uk"
                             >http://www.rackspace.co.uk</link>, it is a UK-based account. </para>
                 </listitem>
-            </itemizedlist>
+            </itemizedlist> -->
             <para>You authenticate by using the URL for the Cloud Identity service,
                     <code>https://identity.api.rackspacecloud.com/v2.0/tokens</code>, as shown in
                 the following authentication request example. </para>
