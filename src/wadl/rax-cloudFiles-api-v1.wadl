@@ -467,7 +467,8 @@
             <para>Subsequent <command>POST</command> operations for the same key/value pair overwrite the previous value.</para> 
             <para>A status code of 200 through 299 indicates success. </para>
                 <para>This operation does not require a request body and does not return a response body.</para>
-            <para>To confirm your metadata changes, you can perform a <command>HEAD</command> operation on the account. (For information, see <xref linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"/>.) Do not send the metadata in your <command>HEAD</command> operation.</para> 
+            <para>To confirm your metadata changes, you can perform a <command>HEAD</command> operation on the account. (For information, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000.html">Get account metadata</link>.) Do not send the metadata in your <command>HEAD</command> operation.</para> 
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"
@@ -846,7 +847,8 @@
                 Creates a container.
             </para>
             <para>This operation creates a Cloud Files container. Containers are storage compartments for your data. The URL-encoded name must be no more than 256 bytes and cannot contain a forward slash character (/). You can create up to 500,000 containers in your Cloud Files account.</para>
-            <para>You can assign custom metadata for containers by including additional HTTP headers with an <code>X-Container-Meta-</code> prefix on the <command>POST</command> request. For details on setting custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>. </para>
+            <para>You can assign custom metadata for containers by including additional HTTP headers with an <code>X-Container-Meta-</code> prefix on the <command>POST</command> request. For details on setting custom metadata, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateaccountmeta_v1__account__accountServicesOperations_d1e000.html">Create or update account metadata</link>. </para>
             <para>Using custom container metadata, you can create information in the header to effectively tag a container. The container metadata restrictions are the same as the restrictions for object metadata. You can have a maximum of 4096 bytes of metadata for the container, with a maximum of 90 distinct metadata items. Each distinct metadata item can have a name length of up to 128 characters with a maximum of 256 bytes in the value. Any valid UTF-8 encoded string value is allowed for metadata. In addition for custom metadata, we recommend that you URL-encode any non-ASCII values by using a % symbol followed by the two-digit hexadecimal ISO-Latin code for the character.</para>
             <para>A status code of 201 (Created) indicates that the container was created as requested. Container <command>PUT</command> requests are idempotent, and a code of 202 (Accepted) is returned if the container existed prior to the request. If you make a <command>PUT</command> request to a container with an <code>X-Container-Meta-</code> prefix in the header, your <command>GET</command> or <command>HEAD</command> request responses carry the metadata prefix from the container in subsequent requests.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -946,7 +948,9 @@
             title="Delete container">
             <para role="shortdesc">Deletes an empty container.</para>
             <para>A <command>DELETE</command> operation against a storage container permanently removes it. The container must be empty before it can be deleted.</para>
-            <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects that it contains. (See <xref linkend="GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000"/>.)</para>
+            <para>Before using <command>DELETE</command>, you can use a <command>GET</command> operation against the container to list any objects that it contains. (See 
+                <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/GET_listcontainerobjects_v1__account___container__containerServicesOperations_d1e000.html">Show container details and list objects</link>.)</para>
             <para>A status code of 204 (No Content) indicates
                 success. A status code of 404 (Not Found) is returned if the requested container is not found. A status code of 409
                 (Conflict) is returned if the container is not empty.</para>
@@ -1006,7 +1010,8 @@
             <para role="shortdesc">Creates or updates the container metadata by associating custom metadata headers with the container-level URI. These headers
                 must have the format <code>X-Container-Meta-name</code>.</para>
             <para>To set or edit container metadata, perform a <command>POST</command> operation to the container. The operation must include <code>X-Container-Meta-name</code>, where <code>name</code> is the name of your custom metadata. Subsequent <command>POST</command> operations to the header using the same metadata name overwrite the previous value. </para>
-            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <xref linkend="HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
+            <para>To view your metadata changes, perform a <command>HEAD</command> operation on the container. (For more information, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/HEAD_retrievecontainermeta_v1__account___container__containerServicesOperations_d1e000.html">Show container metadata</link>.) Do not try to send the metadata in your <command>HEAD</command> request. </para>
      <!--   <remark>5/6/2014 cyr: Adding "Deleting Container Metadata" below with information/example from David Goetz.</remark>-->                
             <important>
                 <title>Updating container metadata</title>
@@ -1024,13 +1029,16 @@ X-Container-Meta-Cost: 30</programlisting>
                 <programlisting language="bash">X-Container-Meta-Price: 45                    
 X-Container-Meta-Cost: 30
 X-Container-Meta-Extra: Data</programlisting>
-                <para>For information about deleting container metadata, see <xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-                <para>Note that updating and deleting object metadata works differently. For an example, see <xref linkend="POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
+                <para>For information about deleting container metadata, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000.html">Create or update container metadata</link>.</para>
+                <para>Note that updating and deleting object metadata works differently. For an example, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/containerMetadataOptions_d1e001.html">Chapter 7. Additional container services information</link>.</para>
             </important>
             <para>A status code of 204 (No Content) indicates success. Status
                 code 404 (Not Found) is returned when the requested container does not exist.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
-            <note><para>For information about adding metadata for the following purposes, see <xref linkend="containerMetadataOptions_d1e001"/>: </para>
+            <note><para>For information about adding metadata for the following purposes, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/GET_getobjectdata_v1__account___container___object__objectServicesOperations_d1e000.html">Get object content and metadata</link>: </para>
                     <itemizedlist spacing="compact">
                         <listitem><para>Container quotas</para></listitem>
                         <listitem><para>Access log delivery</para></listitem>
@@ -1155,7 +1163,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 <listitem><para>The total bytes for all objects stored in the container (<code>X-Container-Bytes-Used</code>)</para></listitem>
                 <listitem><para>Any custom metadata that is set on the container (<code>X-Container-Meta-name</code>)</para></listitem>
             </itemizedlist>
-            <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
+            <para>To set and edit your custom metadata, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000.html">Create or update container metadata</link>.</para>
             <para>If the container exists, a status code of 200 through 299 is returned. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -1271,8 +1280,10 @@ X-Container-Meta-Extra: Data</programlisting>
             title="Delete container metadata">
             <para role="shortdesc">Deletes container metadata.</para>
             <para>To delete a metadata header, use a <command>POST</command> operation. You  send  the <command>POST</command> operation to the container with the header <code>X-Remove-Container-Meta-name: value</code>, where <code>name</code> is the name of the metadata you want to delete and <code>value</code> is any value and is not used. </para>                                
-            <para>To set and edit your custom metadata, see <xref linkend="POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
-            <para>Note that updating and deleting object metadata works differently. For an example, see <xref linkend="POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
+            <para>To set and edit your custom metadata, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateacontainermeta_v1__account___container__containerServicesOperations_d1e000.html">Create or update container metadata</link>.</para>
+            <para>Note that updating and deleting object metadata works differently. For an example, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000.html">Create or update object metadata</link>.</para>
             <para>A status code of 200 through 299 indicates success. If the container does not exist,
                 a status code of 404 (Not Found) is returned.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
@@ -1595,7 +1606,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 the concatenated string of ETags for each segment in the
                 manifest, which offers change detection but not direct
                 comparison.</para> 
-                <para>For more information, see <xref linkend="Create-Large-Objects-d10e"/>.</para>
+            <para>For more information, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Create-Large-Objects-d10e.html">Creating large objects</link>.</para>
             <note>
                 <para>The best checks for a successful upload are to check
                     the <code>ETag</code> match with a checksum and to see if
@@ -1849,7 +1861,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 <code>Content-Length</code> value of 0 (zero). </para>
             <note>
                 <para> By default, you cannot copy an object larger than 5 GB. For information about how to handle objects larger than 5 GB, see
-                    <xref linkend="Create-Large-Objects-d10e"/>. </para>
+                    <link
+                        xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Authentication-d1e639.html">Authentication</link>. </para>
             </note>
             <example>
                 <title>Copy object approach 2 - using PUT</title>
@@ -1889,13 +1902,14 @@ X-Container-Meta-Extra: Data</programlisting>
                 network URI, ServiceNet, as the storage URL. You can find your ServiceNet endpoint in the
                 service catalog that is created when you authenticate your session.
                 For information about how to authenticate your session, see
-                <xref linkend="Authentication-d1e639"/>. As shown in the following partial service catalog example, the ServiceNet URI is listed as
+                <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Authentication-d1e639.html">Authentication</link>. As shown in the following partial service catalog example, the ServiceNet URI is listed as
                 <code>internalURL</code>. The name is your Cloud Files
                 storage URL with <code>snet-</code> prepended to it. If you
                 do not know which data center you are working in, you can
                 find it in the Cloud Control Panel. (For more information
-                about service access endpoints, see <xref
-                    linkend="Service-Access-Endpoints-d1e003"/>.)</para>
+                about service access endpoints, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">Service access endpoints</link>.)</para>
             <example>
                 <title>Data center endpoints</title>
                 <programlisting language="bash">  "endpoints": [
@@ -2239,7 +2253,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 the metadata is not removed. </para>
 -->                
             <para>For information about working with metadata when copying
-                objects, see <xref linkend="COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000"/>.</para>
+                objects, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/COPY_copyobject_v1__account___container___object__objectServicesOperations_d1e000.html">Copy object</link>.</para>
             <important>
                 <title>Deleting object metadata</title>
                 <para>For objects, the <command>POST</command> request to set metadata deletes all metadata that is not explicitly set in the request. 
@@ -2263,7 +2278,8 @@ X-Object-Meta-Cost: 30</programlisting>
                 <para>To remove all metadata for an object, simply perform a
                     <command>POST</command> request for the object with no
                     metadata specified. </para>
-                <para>Note that removing container metadata works differently. For more information, see <xref linkend="POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000"/>.</para>
+                <para>Note that removing container metadata works differently. For more information, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_deletecontainermeta_v1__account___container__containerServicesOperations_d1e000.html">Delete container metadata</link>.</para>
             </important>
             <para>A status code of 202
                 (Accepted) indicates success. Status code 404 (Not Found) is
@@ -2374,19 +2390,19 @@ X-Object-Meta-Cost: 30</programlisting>
                 of the request. Any subsequent <command>GET</command>, <command>HEAD</command>, <command>POST</command>, or
                 <command>DELETE</command> operations return a 404 (Not Found) error
                 unless object versioning is on and other versions
-                exist. For more information about object versioning, see <xref
-                    linkend="Object_Versioning-e1e3230"/>.</para>
+                exist. For more information about object versioning, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Object_Versioning-e1e3230.html">Object versioning</link>.</para>
             <para>Objects with the <code>X-Delete-At</code> or
                 <code>X-Delete-After</code> header assigned are deleted
                 within one day of the expiration time, and the object is not
-                served immediately after the expiration time. For more details, see <xref
-                    linkend="Expiring_Objects-e1e3228"/>.</para> 
+                served immediately after the expiration time. For more details, see <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Expiring_Objects-e1e3228.html">Expiring objects</link>.</para> 
             <para>A status code of 204 (No
                 Content) indicates success. Status code 404 (Not Found) is
                 returned when the object does not exist.</para>
             <para>This operation does not require a request body and does not return a response body.</para>
-            <para>For information about bulk deletions, see <xref
-                linkend="Bulk_Delete-d1e2338.html"/>.</para>
+            <para>For information about bulk deletions, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Bulk_Delete-d1e2338.html.html">Bulk delete</link>.</para>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Auth-Token"

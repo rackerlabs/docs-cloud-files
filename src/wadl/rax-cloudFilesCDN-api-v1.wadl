@@ -90,9 +90,8 @@
                 indicates success. A 200 (OK) code is returned if
                 there are containers, and a 204 (No Content) code is
                 returned if there are no containers.</para>
-            <para>To view the CDN container details, see <xref
-                    linkend="HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632"
-                />.</para>
+            <para>To view the CDN container details, see <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632.html">List metadata for CDN-enabled container</link>.</para>
         </wadl:doc>
         <request>
             <!--           <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -185,7 +184,8 @@
                 catalog for Cloud Files during authentication, and set
                 the <code>X-CDN-Enabled</code> header to
                     <code>True</code>.</para>
-            <para><xref linkend="Retrieving_Auth_Token"/> provides an
+            <para><link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Retrieving_Auth_Token.html">Retrieving the authentication token</link> provides an
                 example of the information in the service catalog for
                     <code>cloudfilesCDN</code>.</para>
             <para>When a container is CDN-enabled, any objects stored
@@ -499,7 +499,7 @@
                 container where the <code>Host</code> header value is
                 one of the <code>cdnCloudFiles</code> service access
                 endpoints. (For the CDN
-                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.)</para>
+                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">Service access endpoints</link>.)</para>
             <para>If the container is (or ever has been) CDN-enabled,
                 the metadata is returned in headers in the response
                 for plain text, or in the response body for XML or
@@ -509,9 +509,8 @@
                     operation must be on the CDN host (for example,
                         <code>cdn.clouddrive.com</code>). Otherwise,
                     you will see the metadata for your private
-                    container as described in <xref
-                        linkend="HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000"
-                    />.</para>
+                    container as described in <link
+                        xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/HEAD_retrieveaccountmeta_v1__account__accountServicesOperations_d1e000.html">Get account metadata</link>.</para>
             </note>
             <para>A 204 (No Content) HTTP status code is returned if
                 the account has no containers. Otherwise, the status
@@ -716,9 +715,8 @@
             <note>
                 <para>To prevent the container from going back to the
                     CDN, first change the <code>X-CDN-Enabled</code>
-                    flag to <code>False</code> as shown in <xref
-                        linkend="PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632"
-                    />.</para>
+                    flag to <code>False</code> as shown in <link
+                        xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632.html">CDN-enable and CDN-disable a container</link>.</para>
             </note>
             <para>The system purges the object from the CDN and sends
                 an email to the indicated address or addresses. If you
