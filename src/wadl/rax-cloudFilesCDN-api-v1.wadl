@@ -42,20 +42,21 @@
                     <method href="#enableDisableCDNcontainer"/>
                     <method href="#retrieveCDNcontainermeta"/>
                     <method href="#updateCDNcontainermeta"/>
+                    <resource id="object" path="{object}">
+                        <param name="object" style="template"
+                            type="xsd:string">
+                            <wadl:doc
+                                xmlns="http://docbook.org/ns/docbook"
+                                xml:lang="EN">
+                                <para>The unique identifier of the
+                                    object.</para>
+                            </wadl:doc>
+                        </param>
+                        <method href="#deleteCDNobject"/>
+                    </resource>
                 </resource>
-                <resource id="object" path="{object}">
-                    <param name="object" style="template"
-                        type="xsd:string">
-                        <wadl:doc
-                            xmlns="http://docbook.org/ns/docbook"
-                            xml:lang="EN">
-                            <para>The unique identifier of the
-                                object.</para>
-                        </wadl:doc>
-                    </param>
-                    <method href="#deleteCDNobject"/>
                 </resource>
-            </resource>
+                
         </resource>
     </resources>
 
@@ -670,6 +671,14 @@
                 can perform a <command>DELETE</command> operation
                 against the object, or you can create a support ticket
                 to purge the entire container.</para>
+            <warning>
+                <para>You request this operation against a CDN management services URI, such as <code
+                    xmlns:m="http://www.w3.org/1998/Math/MathML"
+                    >https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code>,
+                    as shown in <link
+                        xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.htmlr">Table 3.4. Regionalized service endpoints for CDN management services</link>. If you use a Storage management
+                    services URI by mistake, you delete your object.</para>
+            </warning>
             <note><para>You should limit object purges to situations
                     in which serious personal, business, or security
                     consequences could occur if the object remained
@@ -691,18 +700,16 @@
                             against a maximum of 25 objects per day
                             using the API.</para>
                         <para>An attempt to delete more objects
-                            results in a 400 (Bad Request) status code
-                            with the following message:
-                                <code>X-Purge-Failed-Reason: You have
-                                the maximum number of daily object
-                                purges</code>.</para>
-                        <para>If a purge request is already in
-                            progress for an object, a 400 (Bad
-                            Request) status code is returned with the
-                            following message:
-                                <code>X-Purge-Failed-Reason: That
-                                object is already in the queue to be
-                                purged</code>.</para>
+                            results in a 498 (Rate Limited) status code.</para>
+                        <para>Here is an example response for hitting the purge rate limit:</para>
+                        <programlisting>$ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainter/MyObject
+
+HTTP/1.1 498 Rate Limited
+Content-Length: 42
+Content-Type: text/html; charset=UTF-8
+X-Trans-Id: txb63f31d26bf84c058542b-0055101cd0dfw1
+Date: Mon, 23 Mar 2015 14:01:52 GMT</programlisting>
+
                     </listitem>
                     <listitem>
                         <para>By creating a support ticket to purge an
@@ -712,6 +719,7 @@
                             Support.</para>
                     </listitem>
                 </itemizedlist></para>
+            
             <note>
                 <para>To prevent the container from going back to the
                     CDN, first change the <code>X-CDN-Enabled</code>
@@ -724,17 +732,14 @@
                 deletion, you can enter a comma-separated list of
                 addresses. The email address is optional.</para>
             <para>A status code of 204 (No Content) indicates success.
-                Status code 404 (Not Found) indicates that the
-                requested CDN-enabled object was not found. Status
+                Status code 498 (Rate Limited) indicates that the account has reached its 25 object daily purge limit for CDN-enabled objects. Status
                 code 403 (Forbidden) indicates that an authorization
                 problem occurred.</para>
-            <para>The CDN URI is returned in the header
-                    <code>X-Cdn-Uri</code> header.</para>
+            
             <para>Because there are so many edge servers around the
                 world, purging objects might take a long time. Be
                 patient while waiting for a response.</para>
-            <para>This operation does not require a request body and
-                does not return a response body.</para>
+            <para>This operation does not return a response body.</para>
         </wadl:doc>
         <request>
             <representation mediaType="text/xml">

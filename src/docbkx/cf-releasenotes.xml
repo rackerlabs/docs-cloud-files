@@ -22,7 +22,7 @@
 		</copyright>
 		<releaseinfo>API v1</releaseinfo>
 		<productname>Rackspace Cloud Files™</productname>
-		<pubdate>2015-03-04</pubdate>
+		<pubdate>2015-03-23</pubdate>
 		<legalnotice role="rs-api">
 			<annotation>
 				<remark>Copyright details are filled in by the template.</remark>
@@ -33,6 +33,32 @@
 				interested in developing applications using the
 				Rackspace Cloud Files API. </para>
 		</abstract>
+		<revhistory>
+			<revision>
+				<date>2015-03-23</date>
+				<revdescription xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
+					xmlns:html="http://www.w3.org/1999/xhtml">
+					<itemizedlist>
+						<listitem>
+							<para>Corrected the URI in the table in <link
+								xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/CDN_Object_Services.html"
+								>CDN object services</link> to include the container
+								information and added a warning with information to make sure that
+								you are using the CDN management services URIs for this
+									<command>DELETE</command> operation.</para>
+						</listitem>
+						<listitem>
+							<para>Corrected the URI in <link
+									xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services.html"
+									>Delete CDN-enabled object</link> to include the container
+								information and added additional information to this operation
+								description with updated request and response examples.</para>
+						</listitem>
+					</itemizedlist>
+				</revdescription>
+			</revision>
+		</revhistory>
 		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
 			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
 			xmlns:html="http://www.w3.org/1999/xhtml">
@@ -910,6 +936,30 @@
 		<para>This version of the release notes replaces and obsoletes all earlier versions. The
 			most recent changes are described in the following table:</para>
 		<?rax revhistory?>
+	</chapter>
+	<chapter xml:id="Mar23">
+		<title>March 23, 2015</title>
+		<para>This release includes the following changes for the Cloud Files API.</para>
+		<itemizedlist>
+			<title>Documentation</title>
+			
+				<listitem>
+					<para>Corrected the URI in the table in <link
+						xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/CDN_Object_Services.html"
+						>CDN object services</link> to include the container
+						information and added a warning with information to make sure that
+						you are using the CDN management services URIs for this
+						<command>DELETE</command> operation.</para>
+				</listitem>
+				<listitem>
+					<para>Corrected the URI in <link
+						xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services.html"
+						>Delete CDN-enabled object</link> to include the container
+						information and added additional information to this operation
+						description with updated request and response examples.</para>
+				</listitem>
+			
+		</itemizedlist>
 	</chapter>
 	<chapter xml:id="Mar04">
 		<title>March 04, 2015</title>

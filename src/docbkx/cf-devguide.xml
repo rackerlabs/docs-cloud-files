@@ -53,7 +53,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2015-03-04</pubdate>
+    <pubdate>2015-03-23</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -67,6 +67,26 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2015-03-23</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Corrected the URI in the table in  <xref linkend="CDN_Object_Services"/> to
+                include the container information and added a warning with information to make sure
+                that you are using the CDN management services URIs for this
+                  <command>DELETE</command> operation.</para>
+            </listitem>
+            <listitem>
+              <para>Corrected the URI in <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/DELETE_deleteCDNobject_v1__account___object__CDN_Object_Services.html"
+                  >Delete CDN-enabled object</link> to include the container information and added
+                additional information to this operation description with updated request and
+                response examples.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision xmlns:m="http://www.w3.org/1998/Math/MathML"
         xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <date>2015-03-04</date>
@@ -1871,7 +1891,7 @@
             more about CDN-enabling your containers in  <xref
               linkend="API_Operations_for_CDN_Services-d1e2386"/>. </para>
         </note>
-        <table rules="all">
+        <table rules="all" xml:id="CDN_Service_Endpoints">
           <caption>Regionalized service endpoints for CDN management services</caption>
           <thead>
             <tr align="center">
@@ -3582,6 +3602,13 @@ Date: Tue, 10 Feb 2015 21:14:49 GMT</programlisting>
         container names, and object names. For more information, see  <xref
           linkend="Retrieving_Auth_Token"/>. Your authentication token and your account information
         are in the service catalog that is produced.</para>
+      <warning>
+        <para>You request this operation against a CDN management services URI, such as <code
+            xmlns:m="http://www.w3.org/1998/Math/MathML"
+                >https://cdn2.clouddrive.com/v1/<parameter>MossoCloudFS_<replaceable>aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee</replaceable></parameter>/</code>,
+          as shown in <xref linkend="CDN_Service_Endpoints"/>. If you use a Storage management
+          services URI by mistake, you delete your object.</para>
+      </warning>
       <wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resource href="../../src/wadl/rax-cloudFilesCDN-api-v1.wadl#object"/>
       </wadl:resources>

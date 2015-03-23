@@ -39,15 +39,16 @@
 -->                     
      <!ENTITY deleteCDNObjectFaults
            '
-        <response status="404" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc title="Not Found">The requested resource was not found.</doc>
-            <representation mediaType="application/xml" element="files:itemNotFound"/>
-            <representation mediaType="application/json"/>
-        </response>
         
-  <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
+        
+        <response status="403" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="Forbidden">The server refused to respond to request.</doc>
             <representation mediaType="application/xml" element="files:forbidden"/>
+            <representation mediaType="application/json"/>
+        </response>
+        <response status="498" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc title="Rate Limited">The account has reached the 25 object daily purge limit for CDN-enabled objects.</doc>
+            <representation mediaType="application/xml" element="files:itemNotFound"/>
             <representation mediaType="application/json"/>
         </response>
            '>
