@@ -71,26 +71,39 @@
             <revision xmlns:wadl="http://wadl.dev.java.net/2009/02">
                 <date>2015-03-04</date>
                 <revdescription>
-                    <para>Removed the London endpoint for the Rackspace Cloud Identity service.
-                        Rackspace now has one global endpoint for authentication. See <xref
-                            linkend="Gen-Auth-Token"/>.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Removed the London endpoint for the Rackspace Cloud Identity
+                                service. Rackspace now has one global endpoint for authentication.
+                                See <xref linkend="Gen-Auth-Token"/>.</para>
+                        </listitem>
+                    </itemizedlist>
                 </revdescription>
             </revision>
             <revision>
                 <date>2015-01-14</date>
                 <revdescription>
-                    <para xmlns:wadl="http://wadl.dev.java.net/2009/02"
-                        xmlns:m="http://www.w3.org/the key 1998/Math/MathML">Added a note that
-                        includes a link to additional authentication methods, including multi-factor
-                        authentication, in <xref linkend="Gen-Auth-Token"/>.</para>
+                    <itemizedlist>
+                        <listitem>
+                            <para xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                                xmlns:m="http://www.w3.org/the key 1998/Math/MathML">Added a note
+                                that includes a link to additional authentication methods, including
+                                multi-factor authentication, in <xref linkend="Gen-Auth-Token"
+                                />.</para>
+                        </listitem>
+                    </itemizedlist>
                 </revdescription>
             </revision>
             <revision xmlns:wadl="http://wadl.dev.java.net/2009/02"
                 xmlns:m="http://www.w3.org/the key 1998/Math/MathML">
                 <date>2014-07-22</date>
                 <revdescription>
-                    <para>Added a link to guidance on choosing a regionalized endpoint in <xref
-                            linkend="Service_Access_Endpoints-d1e753"/>. </para>
+                    <itemizedlist>
+                        <listitem>
+                            <para>Added a link to guidance on choosing a regionalized endpoint in
+                                    <xref linkend="Service_Access_Endpoints-d1e753"/>. </para>
+                        </listitem>
+                    </itemizedlist>
                 </revdescription>
             </revision>
             <revision>
@@ -385,7 +398,7 @@
 <option>-H 'Content-Type: application/json'</option> \
 <uri>'https://identity.api.rackspacecloud.com/v2.0/tokens'</uri> | python  -m  json.tool </screen>
             </example>
-            <para>You can see that the lines that are part of the cURL command syntax have all been
+            <para>You can see that the lines that are part of the cURL command syntax are all
                 escaped with a backslash (\) to indicate that the command continues on the next
                 line:</para>
             <screen language="bash"><command>curl</command> <option>-s</option> <option>-d</option> \
@@ -426,7 +439,7 @@
     <chapter xml:id="Gen-Auth-Token">
         <title>Generating an Authentication Token</title>
             <para>You need to generate a token whether you use cURL or a REST client.</para>
-            <para>In order to use the REST API, you first need to obtain an authentication token,
+            <para>To use the REST API, you first need to obtain an authentication token,
                 which needs to be passed in each request using the <code>X-Auth-Token</code> header. </para>
             <para>The following example demonstrates how to use cURL to obtain the authentication
                 token and the account number. You will need to supply the authentication token and
@@ -1061,16 +1074,16 @@ Date: Tue, 22 Apr 2014 18:13:59 GMT</programlisting>
             <para>When you find it necessary to remove a CDN-enabled object from public access
                 before the TTL expires, you can issue a <command>DELETE</command> request against
                 the object in the CDN management service (or you can create a support ticket to
-                purge the entire container). Currently, only 25 purges can be performed per account
+                purge the entire container). Currently, you can perform only 25 purges per account
                 per day. </para>
             <note>
-                <para>Remember that the objects must be uploaded to the container by using one of
-                    the storage service access endpoints. The CDN management service references the
+                <para>Remember that you must upload the objects to the container by using one of the
+                    storage service access endpoints. The CDN management service references the
                     objects there.</para>
             </note>
             <para xmlns:m="http://www.w3.org/1998/Math/MathML">The HTTP request must include a
                 header to specify the authentication token. Optionally, you can include a header
-                with an email address to be notified that the object has been purged.</para>
+                with an email address to notify that the object was purged.</para>
             <para>The cURL request uses the <code>-X</code> option to specify the correct HTTP
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
@@ -1188,15 +1201,12 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT</programlisting>
         <section xml:id="cloudStorageApp-d1e337">
             <title>Rackspace Cloud Storage App for Microsoft SharePoint</title>
             <para>Rackspace Cloud Storage App for Microsoft SharePoint enables you to work with
-                files inside of Rackspace Cloud Files alongside SharePoint content. You can download
-                the Cloud Storage App from the <link
-                    xlink:href="http://office.microsoft.com/en-us/store/rackspace-cloud-storage-app-for-microsoft-sharepoint-WA104094200.aspx?redir=0"
-                    >SharePoint Store</link>. Cloud Storage App reduces costs and frees valuable
-                space on a SharePoint deployment's Microsoft SQL Server databases by storing data in
-                your cloud account. The app also gives you the ability to expose Cloud Files
-                containers and objects directly in SharePoint websites where you can download,
-                upload, modify, and share files with others. With Cloud Storage App, you can perform
-                the following tasks: </para>
+                files inside of Rackspace Cloud Files alongside SharePoint content. Cloud Storage
+                App reduces costs and frees valuable space on a SharePoint deployment's Microsoft
+                SQL Server databases by storing data in your cloud account. The app also gives you
+                the ability to expose Cloud Files containers and objects directly in SharePoint
+                websites where you can download, upload, modify, and share files with others. With
+                Cloud Storage App, you can perform the following tasks: </para>
             <itemizedlist>
                 <listitem>
                     <para>Manage Cloud Files objects directly inside your SharePoint portal</para>
@@ -1243,10 +1253,10 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT</programlisting>
         <para>Visit the <link
                 xlink:href="http://feedback.rackspace.com"
                 >Product Feedback Forum</link> and tell us what you think about &PRODNAME;.</para>
-        <para> Developers are also encouraged to join some of the members of the Cloud Files team at
+        <para>Developers are also encouraged to join some of the members of the Cloud Files team at
             irc.freenode.net on the #cloudfiles channel. This is not an official Cloud Files support
-            channel but should rather be viewed as a community meeting place to share ideas and
-            discuss Cloud Files. </para>
+            channel. You should view it as a community meeting place to share ideas and discuss
+            Cloud Files. </para>
         <para>This API uses standard HTTP 1.1 response codes as documented at <link
                 xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
                 >www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</link>. </para>
