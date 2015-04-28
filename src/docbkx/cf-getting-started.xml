@@ -75,7 +75,9 @@
                         <listitem>
                             <para>Removed the London endpoint for the Rackspace Cloud Identity
                                 service. Rackspace now has one global endpoint for authentication.
-                                See <xref linkend="Gen-Auth-Token"/>.</para>
+                                See <link
+                                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Gen-Auth-Token.html"
+                                    >Generating an authentication token</link>.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -88,8 +90,9 @@
                             <para xmlns:wadl="http://wadl.dev.java.net/2009/02"
                                 xmlns:m="http://www.w3.org/the key 1998/Math/MathML">Added a note
                                 that includes a link to additional authentication methods, including
-                                multi-factor authentication, in <xref linkend="Gen-Auth-Token"
-                                />.</para>
+                                multi-factor authentication, in <link
+                                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Gen-Auth-Token.html"
+                                    >Generating an authentication token</link>.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -101,7 +104,9 @@
                     <itemizedlist>
                         <listitem>
                             <para>Added a link to guidance on choosing a regionalized endpoint in
-                                    <xref linkend="Service_Access_Endpoints-d1e753"/>. </para>
+                                <link
+                                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Service_Access_Endpoints-d1e753.html"
+                                    >Service access endpoints</link>. </para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
@@ -168,7 +173,8 @@
             to use the Cloud Files API. You can find additional details about Cloud Files in the
                 <emphasis role="italic">Cloud Files Developer Guide</emphasis> at <link
                 xlink:href="http://docs.rackspace.com/">http://docs.rackspace.com/</link>. </para>
-        <para>This guide uses the API directly with cURL (<xref linkend="Using_the_API_Directly"/>). </para>
+        <para>This guide uses the API directly with cURL (<link
+            xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Using_the_API_Directly.html">Using the API directly by using cURL</link>). </para>
         <!-- <remark>Removing per Nicholas Wagner's request and Jerry Scharz's approval </remark> 
         <section xml:id="Benefits-Use-Cases">
             <title>Benefits and Use Cases</title>
@@ -381,7 +387,9 @@
                 </listitem>
             </orderedlist>
             <para>Consider the following cURL authentication request: JSON example, which is
-                described in detail in <xref linkend="Gen-Auth-Token"/>.</para>
+                described in detail in <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Gen-Auth-Token.html"
+                    >Generating an authentication token</link>.</para>
             <example>                
                 <title>cURL authentication request: JSON</title>
                 <?dbfo keep-together="always"?>
@@ -531,8 +539,9 @@
             information is located after the final '/' in the <code>publicURL</code> field and the
                 <code>internalURL</code> field in the <code>cloudFiles</code> section of the service
             catalog returned by the authentication response. For more information about the account
-            number, see the sample authentication request and response in <xref
-                linkend="Gen-Auth-Token"/> as well as the Rackspace <citetitle>Cloud Identity Client
+            number, see the sample authentication request and response in <link
+                xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Gen-Auth-Token.html"
+                >Generating an authentication token</link> as well as the Rackspace <citetitle>Cloud Identity Client
                 Developer Guide</citetitle>. </para>
         <tip>
             <para>If you do not know which data center you are working in or your account ID, you
@@ -542,9 +551,9 @@
         </tip>
         <para>If you are working with cloud servers that are in one of the Rackspace data centers,
             using the ServiceNet endpoint in the same data center has no network costs and provides
-            a faster connection. ServiceNet endpoints are prefixed with <code>snet-</code> in <xref
-                linkend="Endpoints-Table-d1e001"/>. ServiceNet is the data center internet network.
-            In your authentication response, it is listed as <code>internalURL</code>. </para>
+            a faster connection. ServiceNet endpoints are prefixed with <code>snet-</code> in the
+            preceding table. ServiceNet is the data center internet network. In your authentication
+            response, it is listed as <code>internalURL</code>. </para>
         <para> If you are working with servers that are not in one of the Rackspace data centers,
             you must use a public endpoint to connect. In your authentication response, public
             endpoints are listed as <code>publicURL</code>. If you are working with servers in
@@ -566,8 +575,9 @@
                 <para>If your audience is worldwide, consider using the Akamai content delivery
                     network (CDN). The CDN speeds your content delivery because it is cached at edge
                     locations around the globe, rather than being served from a single origin
-                    server. You can learn more about CDN-enabling your containers in <xref
-                        linkend="CDN-Enabling_the_Container-d1e3123"/>. </para>
+                    server. You can learn more about CDN-enabling your containers in <link
+                        xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/CDN-Enabling_the_Container-d1e3123.html"
+                        >CDN-enabling the container and setting a TTL</link>. </para>
             </note>
             <table rules="all">
                 <caption>Regionalized service endpoints for the CDN management service</caption>
@@ -787,9 +797,11 @@ Date: Tue, 22 Apr 2014 16:48:21 GMT</programlisting>
             <title>Uploading an object </title>
             <para>After creating a container, you can upload a file to it. You do this with a &PUT;
                 request. You must ensure that the object's <code>Content-Type</code> is set
-                correctly so that the receiving server knows what kind of file it is. This is the
-                mechanism by which a user's web browser knows how to display the file or whether to
-                launch a helper application to display the file.</para>
+                correctly so that the receiving server knows what kind of file it is. For more
+                information about <code>Content-Type</code>, see the <link
+                    xlink:href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">Header Field Definitions in the Hypertext Transfer Protocol</link>.  This is the mechanism by which a
+                user's web browser knows how to display the file or whether to launch a helper
+                application to display the file.</para>
             <para>The HTTP request must include a
                 header to specify the authentication token. </para>
             <para>The cURL request uses the
@@ -921,7 +933,7 @@ Date: Tue, 22 Apr 2014 17:12:47 GMT     </programlisting>
         <section xml:id="Show-Account-Details-d1e101">
             <title>Showing account details</title>
             <para>You can send a
-                    <command>GET</command> request to show account details and lists containers.
+                    <command>GET</command> request to show account details and list containers.
                 Using the <code>format</code> query parameter on the request causes the list to
                 include details (<code>count</code>, <code>bytes</code>, and <code>name</code>)
                 about each container. Without it, you receive just a list of the container
@@ -1050,7 +1062,9 @@ Date: Tue, 22 Apr 2014 17:59:24 GMT</programlisting>
                 output.</para>
             <para>An HTTP status code of 204 (No Content) in the response indicates that the
                 container details were successfully retrieved. You can confirm the TTL that you set
-                in <xref linkend="CDN-Enabling_the_Container-d1e3123"/>.</para>
+                in <link
+                    xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/CDN-Enabling_the_Container-d1e3123.html"
+                    >CDN-enabling the container and setting a TTL</link>.</para>
             <example>
                 <title>cURL view CDN-enabled container details</title>
                 <programlisting language="bash">curl -i -X HEAD https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
@@ -1114,7 +1128,7 @@ Date: Tue, 22 Apr 2014 19:45:39 GMT   </programlisting>
                 method and the <code>-i</code> option to send the HTTP response to terminal
                 output.</para>
             <para>An HTTP status code of 202 (Accepted) in the response indicates that the request
-                is accept for processing.  </para>
+                is accepted for processing. </para>
             <example>
                 <title>cURL disable CDN for a container</title>
                 <programlisting language="bash">curl -i -X POST https://<emphasis role="bold">cdn1.clouddrive.com</emphasis>/v1/<emphasis role="bold">yourAccountID</emphasis>/<emphasis role="bold">yourContainerName</emphasis> /
@@ -1180,14 +1194,15 @@ Date: Fri, 25 Apr 2014 17:08:43 GMT</programlisting>
         </section>
         <section xml:id="Cyberduck-d1e337">
             <title>Cyberduck</title>
-            <para> Cyberduck is an open-source Cloud Files browser licensed under the GPL; it's
-                available for Mac and Windows. Cyberduck features an easy-to-use interface with
-                easily accessible bookmarks. The browser outline view allows users to browse large
-                folder structures efficiently and preview files with Quick Look. Cyberduck also
-                provides seamless integration with many external editors, making it easy to change
-                content quickly. It provides a way to upload and configure Cloud Files to distribute
-                content over the CDN. For more information, see the Cyberduck web site at <link
-                    xlink:href="http://cyberduck.ch/">http://cyberduck.ch/</link>. <figure>
+            <para> Cyberduck is an open-source Cloud Files browser licensed under the  GNU General
+                Public License (GPL); it's available for Mac and Windows. Cyberduck features an
+                easy-to-use interface with easily accessible bookmarks. The browser outline view
+                allows users to browse large folder structures efficiently and preview files with
+                Quick Look. Cyberduck also provides seamless integration with many external editors,
+                making it easy to change content quickly. It provides a way to upload and configure
+                Cloud Files to distribute content over the CDN. For more information, see the
+                Cyberduck web site at <link xlink:href="http://cyberduck.ch/"
+                    >http://cyberduck.ch/</link>. <figure>
                     <title>Cyberduck interface to Cloud Files</title>
                     <mediaobject>
                         <imageobject>
