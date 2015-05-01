@@ -2228,9 +2228,7 @@ X-Container-Meta-Extra: Data</programlisting>
             <para role="shortdesc">Sets or updates your object 
                 metadata. Metadata must be in the format
                 <code>X-Object-Meta-name</code> where <code>name</code> is the name of your metadata. You can also assign <code>X-Delete-At</code> or
-                <code>X-Delete-After</code> to expiring objects. You cannot use
-                this operation to change other headers, such as
-                <code>Content-Type</code>.</para>
+                <code>X-Delete-After</code> to expiring objects.</para>
             <para>You can set or update your custom metadata for existing
                 objects by sending a <command>POST</command> request to the object name.  </para>
             <para>Metadata is set by using the header <code>X-Object-Meta-name: value</code>, where
