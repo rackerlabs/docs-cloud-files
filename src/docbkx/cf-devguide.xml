@@ -53,7 +53,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2015-04-23</pubdate>
+    <pubdate>2015-05-01</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -67,6 +67,20 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2015-05-01</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/POST_updateaobjmeta_v1__account___container___object__objectServicesOperations_d1e000.html"
+                  >Create or update object metadata</link> to remove the sentence "You cannot use
+                this operation to change other headers, such as Content-Type." as this statement is
+                not true. You can update header information with this operation.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2015-04-23</date>
         <revdescription>
