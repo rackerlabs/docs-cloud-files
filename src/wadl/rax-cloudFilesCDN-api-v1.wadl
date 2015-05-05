@@ -146,6 +146,13 @@
                         href="../wadl/samples/cf-getCDNAccountContainers_request.txt"
                     />
                 </wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"
+                    title="List CDN-enabled containers: HTTP request with a query parameter ?format=json​">
+                    <xsdxt:code
+                        href="../wadl/samples/cf-getCDNAccountContainers_request_queryParm.txt" 
+                    />
+                </wadl:doc>
             </representation>
         </request>
         <response status="200">
@@ -161,15 +168,24 @@
                         href="../wadl/samples/cf-getCDNAccountContainers_response.txt"
                     />
                 </wadl:doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                    xml:lang="EN"
+                    title="List CDN-enabled containers: HTTP response using a query parameter ?format=json​">
+                    <xsdxt:code
+                        href="../wadl/samples/cf-getCDNAccountContainers_response_queryParm.txt" 
+                    />
+                </wadl:doc>
             </representation>
         </response>
-        <response status="204">
+ <!--       <remark>Hide this message because it makes processing generate the "This method returns no response". 204 is addressed in the method description above. </remark>
+     <response status="204">
             <wadl:doc xmlns="http://docbook.org/ns/docbook"
                 title="No Content" xml:lang="EN">The request
                 succeeded. The server fulfilled the request but does
                 not need to return a body.</wadl:doc>
-            <representation mediaType="application/json"/>
-        </response> &only404Fault; </method>
+            <representation mediaType="application/json"/>           
+        </response> -->
+        &only404Fault; </method>
 
     <!--  CDN Container Services Methods  -->
 

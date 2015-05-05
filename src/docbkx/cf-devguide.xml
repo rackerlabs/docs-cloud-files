@@ -5222,7 +5222,7 @@ X-Account-Meta-Temp-Url-Key: yourKey</programlisting>
         <example>
           <title>Assign CORS header request for an object</title>
           <programlisting language="text">
-  PUT /<replaceable>apiVersion</replaceable>/<replaceable>yourAccountID</replaceable>/<replaceable>containerName</replaceable>/<replaceable>objectName</replaceable> HTTP/1.1
+  POST /<replaceable>apiVersion</replaceable>/<replaceable>yourAccountID</replaceable>/<replaceable>containerName</replaceable>/<replaceable>objectName</replaceable> HTTP/1.1
   Host: storage.clouddrive.com
   X-Auth-Token: <replaceable>yourAuthToken</replaceable>
   Origin: http://storage.clouddrive.com
