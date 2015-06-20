@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rackspace Developer Center</title>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type='text/css'>
+
+  <!-- drc styles: -->
+  <link rel="stylesheet" href="https://c2a32ff18d23c8f567f0-e44b0df73868b5d567b1e58e01681d15.ssl.cf5.rackcdn.com/main-ebdad849435665c9fe9a22d338a57bf6.css">
+
+  <!-- local styles: -->
+  <link rel="stylesheet" href="_static/localsphinx.css">
+
+  <link href="/atom.xml" rel="alternate" title="Rackspace Developer Portal" type="application/atom+xml">
+ <!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+var _vwo_code=(function(){
+var account_id=45237,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+// DO NOT EDIT BELOW THIS LINE
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+</script>
+<!-- End Visual Website Optimizer Asynchronous Code -->
+</head>
+<div id="header" class="navbar navbar-fixed-top navbar-inverse navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-btn">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand new-landing-sprite rs-developer-logo" href="/"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-btn">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/sdks/">SDKs</a></li>
+                <li><a href="/databases/">Databases</a></li>
+                <li><a href="/docs/">API Docs</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://community.rackspace.com/developers/default">Developer Forum</a></li>
+                        <li><a href="/community/">Outreach &amp; Events</a></li>
+                        <li><a href="https://github.com/rackerlabs/developer.rackspace.com">This site on github</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <!--<li><a href="#">Developer-to-Developer Support</a></li>-->
+                        <li><a href="http://www.rackspace.com/knowledge_center/">Knowledge Center</a></li>
+                        <li><a href="http://status.rackspace.com">System Health Status</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://my.rackspace.com/portal/auth/login">MyRackspace Portal</a></li>
+                        <li><a href="https://mycloud.rackspace.com">Cloud Control Panel</a></li>
+                        <li><a href="https://manage.rackspacecloud.com/pages/Login.jsp">Cloud Sites Control Panel</a>
+                        </li>
+                        <li><a href="https://apps.rackspace.com">Rackspace Webmail Login</a></li>
+                        <li><a href="https://cp.rackspace.com">Email Admin Login</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/signup" class="btn btn-default" id="btn-get-started">Sign up for $50/month credit</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="title-header">
+  <div class="inner">
+    <span class="headline">Rackspace Developer Center</span>
+  </div>
+</div>
+<div class="container body-container">
+  <div class="row">
+    <div class="col-md-9 col-md-push-3 docs-content bodycontent">
+      <div class="document">
+  <div class="documentwrapper">
+      <div class="body" role="main">
+
+  <div class="section" id="cdn-log-delivery">
+<h1>CDN log delivery<a class="headerlink" href="#cdn-log-delivery" title="Permalink to this headline">¶</a></h1>
+<p>If you set the <code class="docutils literal"><span class="pre">X-Log-Retention</span></code> header on your CDN-enabled container
+to <code class="docutils literal"><span class="pre">True</span></code>, you enable CDN log delivery on that container. Then all the
+request logs generated by the edge nodes of the CDN provider to objects
+in this container are delivered into a special container created in your
+account named <code class="docutils literal"><span class="pre">.CDN_ACCESS_LOGS</span></code>. The delivered logs are in the same
+format as access logs (see <code class="docutils literal"><span class="pre">???</span></code>). These logs, once delivered, are
+treated like any other object in your account, and you are charged for
+that storage.</p>
+<p>You can use the CDN logs to analyze the number of requests for each
+object, the client IP address, and time-based usage patterns (such as
+monthly or seasonal usage).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Delivery times vary greatly for CDN logs. In most cases, the logs are
+delivered within several hours, but delivery can sometimes take days.
+Cloud Files can only deliver the logs to you as fast as the logs are
+delivered from the CDN provider.</p>
+</div>
+<p>When you set the <code class="docutils literal"><span class="pre">X-Log-Retention</span></code> header to <code class="docutils literal"><span class="pre">True</span></code> on a CDN-enabled
+container, Cloud Files tracks every object in the container. If you have
+multiple containers that you want to track, you must set the
+<code class="docutils literal"><span class="pre">X-Log-Retention</span></code> header to <code class="docutils literal"><span class="pre">TRUE</span></code> for each container. When your
+first log is delivered, Cloud Files creates the <code class="docutils literal"><span class="pre">.CDN_ACCESS_LOGS</span></code>
+container. This container holds the CDN logs for every container for
+which you turn on logging. Log files exist until you delete them. To
+turn off logging, set the <code class="docutils literal"><span class="pre">X-Log-Retention</span></code> header to <code class="docutils literal"><span class="pre">FALSE</span></code>.</p>
+<p>Log files are named according to the following pattern: container name,
+log date, log hour, and MD5 hash. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>``Media/2014/07/01/16/096e6c4473f235db081deb51f42a8d98.log.gz``
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal"><span class="pre">Media</span></code> is the name of the container, <code class="docutils literal"><span class="pre">2014/07/01</span></code>
+is the date (July 1, 2014), and <code class="docutils literal"><span class="pre">16</span></code> is the hour that the log file was
+created. There might be multiple files for a given hour because the
+storage system splits log files based on both time and log file size.
+All times in the logs are UTC time. All logs contained in the log file
+are from the day and hour specified in the file name.</p>
+<p>Within the gzip logs, the format of the entries is similar to National
+Center for Supercomputing Applications (NCSA) combined log format, but
+without cookies. The pattern follows. The dashes (<em>``-``</em>) denote fields
+that the NCSA combined log format dictates be present but that Cloud
+Files does not capture.</p>
+<p><code class="docutils literal"><span class="pre">client_ip</span> <span class="pre">-</span> <span class="pre">-</span> <span class="pre">[day/month/year:hour:minute:second</span> <span class="pre">timezone]</span> <span class="pre">“method</span> <span class="pre">request</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">HTTP_version”</span> <span class="pre">return_code</span> <span class="pre">bytes_sent</span> <span class="pre">“referrer”</span> <span class="pre">“user_agent”</span></code></p>
+<p>The following example shows log entries.</p>
+<p><strong>Example: CDN log entries</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>173.203.44.122 - - [15/07/2014:20:52:25 +0000] &quot;GET
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/image1.png HTTP/1.1&quot; 304 277 &quot;-&quot; &quot;Mozilla/4.0 (compatible;
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0;
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)&quot;
+173.203.44.122 - - [15/07/2014:20:52:25 +0000] &quot;GET
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ email.png HTTP/1.1&quot; 304 278 &quot;-&quot; &quot;Mozilla/4.0 (compatible;
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0;
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)&quot;
+173.203.44.122 - - [15/07/2014:20:52:25 +0000] &quot;GET
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ tiny-email.png HTTP/1.1&quot; 304 277 &quot;-&quot; &quot;Mozilla/4.0 (compatible;
+      MSIE 7.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.
+      50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0;
+      InfoPath.3; .NET4.0C; .NET4.0E; MS-RTC LM 8; Microsoft Outlook 14.0.
+      7109; ms-office; MSOffice 14)&quot;
+173.203.44.122 - - [15/07/2014:20:59:44 +0000] &quot;GET
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ default.css?ver=3.8.3 HTTP/1.1&quot; 200 17511 &quot;http://www.rackspace.
+      com/&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML,
+      like Gecko) Chrome/35.0.1916.153 Safari/537.36&quot;
+173.203.44.122 - - [15/07/2014:20:59:44 +0000] &quot;GET
+      /5142b6e5e57f760d7ff4-c591437fc634f2a98934b7738b8b8571.r93.cf1.rackcdn.
+      com/ jquery.min.js?ver=3.8.3 HTTP/1.1&quot; 200 8022 &quot;http://www.rackspace.
+      com/&quot; &quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML,
+      like Gecko) Chrome/35.0.1916.153 Safari/537.36&quot;
+</pre></div>
+</div>
+</div>
+
+
+</div>
+
+  <div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+
+
+      </div>
+<div class="clearer"></div>
+</div>
+    </div>
+    <div class="col-md-3 col-md-pull-9 sidebar">
+<ul>
+  <li><a href="/" class="back">&laquo; Developer Home</a></li>
+</ul>
+<ul>
+  
+<a href="ios-streaming.html"><<</a>
+
+|
+
+<a href="static-websites-using-cdn-enabled-containers.html">>></a>
+
+  <li><span class="sidebarheader">Contents</span></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers.html">CDN-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language-specific-apis.html">Language-specific APIs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="absolute-limits.html">Absolute limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-and-response-types.html">Request and response types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chunked-transfer-encoding.html">Chunked transfer encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating-large-objects.html">Creating large objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enabling-file-compression.html">Enabling file compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enabling-bypass-of-browser-behavior.html">Enabling bypass of browser behavior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expiring-objects.html">Expiring objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object-versioning.html">Object versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="account-to-account-copy.html">Account to account copy</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html">Additional CDN services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ios-streaming.html">iOS streaming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">CDN log delivery</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="static-websites-using-cdn-enabled-containers.html">Static websites using CDN-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set-error-pages-for-a-static-website.html">Set error pages for a static website</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bulk-operations.html">Bulk operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bulk-delete.html">Bulk delete</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="public-access-to-your-cloud-files-account.html">Public access to your Cloud Files account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tempurl.html">TempURL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formpost.html">FormPost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cors.html">CORS</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+
+      <div class="callout">
+  <span class="sidebarheader">Need Help?</span>
+
+  <p>
+    E-mail <a href="mailto:sdk-support@rackspace.com">sdk-support@rackspace.com</a>,<br>
+    tweet <a href="https://twitter.com/rackspace">@rackspace</a>,
+    chat with us in #rackspace on Freenode,
+    or post in <a href="https://community.rackspace.com/developers/default">our developer forum</a>.
+  </p>
+</div>
+
+<div class="callout">
+  <span class="sidebarheader">Found a bug? Caught a typo?</span>
+  <p>File a <a href="https://github.com/rackerlabs/developer.rackspace.com/issues/new">bug report</a> or submit a <a target="blank" href="https://github.com/rackerlabs/developer.rackspace.com">pull request</a> on our developer site Github repo.</p>
+</div>
+
+<div class="callout">
+  <span class="sidebarheader">Want To Stay Up To Date?</span>
+  <p>Subscribe to our developer blog <a href="/atom.xml">RSS</a> feed.</p>
+</div>
+    </div>
+  </div>
+</div>
+<div class="basement">
+    <div class="container">
+        <img src="https://c2a32ff18d23c8f567f0-e44b0df73868b5d567b1e58e01681d15.ssl.cf5.rackcdn.com/rackerpowered-logo-79838459d447e1e48dd93c76549bdf74.png" alt="Racker Powered">
+        <ul>
+            <li>©2015 Rackspace, US Inc.</li>
+            <li><a href="http://www.rackspace.com/about/">About Rackspace</a></li>
+            <li><a href="http://ir.rackspace.com/">Investors</a></li>
+            <li><a href="http://www.rackertalent.com">Careers</a></li>
+            <li><a href="http://www.rackspace.com/information/legal/privacystatement">Privacy Statement</a></li>
+            <li><a href="http://www.rackspace.com/information/legal/websiteterms">Website Terms</a></li>
+            <li><a href="http://www.rackspace.com/information/legal/copyrights_trademarks">Trademarks</a></li>
+        </ul>
+    </div>
+</div>
+<script src="https://c2a32ff18d23c8f567f0-e44b0df73868b5d567b1e58e01681d15.ssl.cf5.rackcdn.com/app-b899e84f641d7962050ed3d62a3d53a7.js"></script>
+
+  <!-- analytics -->
+<script type="text/javascript">
+   var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35639070-1']);
+    _gaq.push(['_setDomainName', 'rackspace.com']);
+    _gaq.push(['_trackPageview']);
+
+   (function () {
+       var ga = document.createElement('script');
+       ga.type = 'text/javascript';
+       ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+   })();
+ </script>
+
+ <!-- Tealium -->
+ <script type="text/javascript" src="https://tags.tiqcdn.com/utag/rackspace/developer/prod/utag.js"></script>
+
+ <!-- Google Code for Rackspace Blog Page Visitors (Global Tag) -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 1040066332;
+    var google_conversion_label = "wFI2CI7LnQQQnM747wM";
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1040066332/?value=0&amp;label=wFI2CI7LnQQQnM747wM&amp;guid=ON&amp;script=0"/>
+    </div>
+</noscript>
+</body>
+</html>
