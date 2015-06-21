@@ -89,82 +89,60 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
   <div class="documentwrapper">
       <div class="body" role="main">
 
-  <div class="section" id="pseudo-hierarchical-folders-and-directories">
-<span id="cf-dg-pseudo-dir"></span><h1>Pseudo-hierarchical folders and directories<a class="headerlink" href="#pseudo-hierarchical-folders-and-directories" title="Permalink to this headline">¶</a></h1>
-<p>Although you cannot nest directories in Cloud Files, you
-can simulate a hierarchical structure within a single container by
-adding forward slash characters (<code class="docutils literal"><span class="pre">/</span></code>) in the object name. To navigate
-the pseudo-directory structure, you can use the <code class="docutils literal"><span class="pre">delimiter</span></code> query
-parameter. This example shows you how to use pseudo-hierarchical folders
-and directories.</p>
+  <div class="section" id="overview-of-api-operations">
+<h1>Overview of API operations<a class="headerlink" href="#overview-of-api-operations" title="Permalink to this headline">¶</a></h1>
+<p>The Cloud Files API is implemented as a set of RESTful web services. All
+authentication and container/object operations can be performed with standard
+HTTP calls. For more information about REST, see
+<a class="reference external" href="https://en.wikipedia.org/wiki/Representational_state_transfer">Representation State Transfer</a>.</p>
+<p>The following constraints apply to REST API HTTP requests:</p>
+<ul class="simple">
+<li>Maximum number of HTTP headers per request: 90</li>
+<li>Maximum length of all HTTP headers: 4096 bytes</li>
+<li>Maximum length per HTTP request line: 8192 bytes</li>
+<li>Maximum length of HTTP request: 5 gigabytes</li>
+<li>Maximum length of container name: 256 bytes</li>
+<li>Maximum length of object name: 1024 bytes</li>
+</ul>
+<p>Container and object names must be UTF-8 encoded and then URL-encoded before
+interacting with the REST interface. You might be using an API binding that
+performs the URL-encoding on your behalf. If so, do not URL-encode before
+calling the API binding, or you will double-encode container and object names.
+Check the length restrictions against the URL-encoded string.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, the objects reside in a container called <code class="docutils literal"><span class="pre">backups</span></code>.
-Within that container, the objects are organized in a pseudo-directory
-called <code class="docutils literal"><span class="pre">photos</span></code>. The container name is not displayed in the example,
-but it is a part of the object URLs. For example, the URL of the
-picture <code class="docutils literal"><span class="pre">me.jpg</span></code> is
-<code class="docutils literal"><span class="pre">https://storage.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups/photos/me.jpg</span></code>.</p>
+<p class="last">The language-specific APIs handle URL-encoding and decoding.</p>
 </div>
-<p>To display a list of all the objects in the storage container, use
-<code class="docutils literal"><span class="pre">GET</span></code> without a <code class="docutils literal"><span class="pre">delimiter</span></code> or <code class="docutils literal"><span class="pre">prefix</span></code>.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
-</pre></div>
+<p>Each REST request against Cloud Files requires the inclusion of an authorization
+token in the <code class="docutils literal"><span class="pre">X-Auth-Token</span></code> header. You obtain this token, along with the Cloud
+Files URIs, by first using the Rackspace authentication service and supplying a
+valid user name and API access key. For more information, see <a class="reference internal" href="authentication-token.html#cf-dg-auth"><span>Authentication</span></a>.</p>
+<p>The following services make up the full Cloud Files product :</p>
+<ul class="simple">
+<li><strong>Storage service</strong>: The service identified with cloudFiles in the service catalog manages the data storage in the system. Example operations are creating containers and uploading objects.</li>
+<li><strong>CDN management service</strong>: The service identified with cloudFilesCDN in the service catalog manages the CDN feature of Cloud Files.</li>
+</ul>
+<p>The purpose of each HTTP method depends on which
+service the call is made against. For example, a PUT request against one of the
+cloudFiles endpoints can be used to create a container or upload an object,
+while a PUT request against the one of the cloudFilesCDN endpoints is used to
+CDN-enable a container.</p>
+<p>The language-specific APIs mask this system separation. They simply create a
+container and mark it public and handle calling the appropriate back-end
+services by using the appropriate REST APIs.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All requests to authenticate and operate against Cloud Files are performed using SSL over HTTP (HTTPS) on TCP port 443.</p>
 </div>
-<p>The system returns status code 200 (OK) and
-the requested list of the objects.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">persian</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">siamese</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">me</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">fern</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">rose</span><span class="o">.</span><span class="n">jpg</span>
-</pre></div>
+<p>The following diagram illustrates the various system interfaces and the ease
+with which content can be distributed over the CDN. The process is simple:
+authenticate, create a container, upload objects, mark the container as public,
+and begin serving that content from a powerful CDN.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Marking the container as public simply means enabling the container to be distributed over the CDN. A CDN-enabled container is publicly accessible.</p>
 </div>
-<p>Use the delimiter parameter to limit the displayed results. To use
-<code class="docutils literal"><span class="pre">delimiter</span></code> with pseudo-directories, you must use the parameter slash
-(<code class="docutils literal"><span class="pre">/</span></code>).</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the requested matching objects. Because you use the slash, only the
-pseudo-directory <code class="docutils literal"><span class="pre">photos/</span></code> displays. The returned values from a slash
-<code class="docutils literal"><span class="pre">delimiter</span></code> query are not real objects. They have a content-type of
-<code class="docutils literal"><span class="pre">application/directory</span></code> and are in the <code class="docutils literal"><span class="pre">subdir</span></code> section of JSON and
-XML results.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/
-</pre></div>
-</div>
-<p>Use the <code class="docutils literal"><span class="pre">prefix</span></code> and <code class="docutils literal"><span class="pre">delimiter</span></code> parameters to view the objects
-inside a pseudo-directory, including further nested pseudo-directories.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and the objects and pseudo-directories within the top level pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/animals/
-photos/me.jpg
-photos/plants/
-</pre></div>
-</div>
-<p>You can create an unlimited number of nested pseudo-directories. To
-navigate through them, use a longer <code class="docutils literal"><span class="pre">prefix</span></code> parameter coupled with
-the <code class="docutils literal"><span class="pre">delimiter</span></code> parameter. In this sample output, there is a
-pseudo-directory called <code class="docutils literal"><span class="pre">dogs</span></code> within the pseudo-directory
-<code class="docutils literal"><span class="pre">animals</span></code>. To navigate directly to the files contained within
-<code class="docutils literal"><span class="pre">dogs</span></code>, enter the following command:</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the objects and pseudo-directories within the nested pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-</pre></div>
-</div>
+<p>Figure 4.1. Cloud Files system interfaces</p>
 </div>
 
 
@@ -186,11 +164,11 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 </ul>
 <ul>
   
-<a href="operations-overview.html"><<</a>
+<a href="response-codes.html"><<</a>
 
 |
 
-<a href="additional-container-services-information.html">>></a>
+<a href="pseudo-hierarchical-folders-and-directories.html">>></a>
 
   <li><span class="sidebarheader">Contents</span></li>
 </ul>
@@ -222,17 +200,12 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 <li class="toctree-l1"><a class="reference internal" href="request-and-response-types.html">Request and response types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
-</ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Pseudo-hierarchical folders and directories</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview of API operations</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
@@ -246,7 +219,6 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html">Additional CDN services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ios-streaming.html">iOS streaming</a></li>

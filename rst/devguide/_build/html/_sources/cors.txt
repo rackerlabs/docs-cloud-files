@@ -32,18 +32,17 @@ CORS headers for containers
 Container-level headers for CORS are used for the following Cloud Files
 features:
 
--  FormPost (`Section : “FormPost” <ch04s02.xhtml>`__), to enable your
+-  :ref:`FormPost<cf-dg-formpost>` to enable your
    users to post to your site
 
--  TempURL (`Section : “TempURL ” <ch04.xhtml#TempURL-d1a4450>`__), to
+-  :ref:`TempURL<cf-dg-tempurl>` to
    limit how long users can use a given URL
 
 
 .. note::
    Container-level headers for CORS are not inherited for use with a
    CDN. For information about using object-level headers, which enable CORS to
-   work over a CDN, see the section called “CORS headers for
-   objects”.
+   work over a CDN, see :ref:`CORS headers for objects<cf-dg-cors-objects>`.
 
 CORS container headers enable your users to upload files from one
 website, or origin, to your Cloud Files account. When you set the CORS
@@ -88,8 +87,8 @@ The following table lists the container-level headers:
 
 To view the values for these headers, use the **HEAD** operation to show
 container metadata. To delete the metadata, use the **DELETE** operation
-to delete container metadata. Both of these operations are described in
-“Container services”.
+to delete container metadata. (See `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__ for operation descriptions.)
+
 
 Before a browser issues an actual request, it might issue a preflight
 request. The preflight request is an HTTP **OPTIONS** call to verify
@@ -221,6 +220,7 @@ the request did not succeed, the response status is 0.
       </body>
     </html>
 
+.. _cf-dg-cors-objects:
 
 CORS headers for objects
 ~~~~~~~~~~~~~~~~~~~~~~~~

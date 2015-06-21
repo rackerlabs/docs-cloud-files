@@ -1,12 +1,6 @@
-====================================
-Set error pages for a static website
-====================================
 
-..
-   2012-05-14 dsh: Added for 2012-05-14 release * You can create and set
-   custom error pages for visitors to your website. To do this, set the
-   ``X-Container-Meta-Web-Error`` metadata header. Currently, only 401
-   (Unauthorized) and 404 (Not Found) status codes are supported.
+Set error pages for a static website
+------------------------------------
 
 Error pages are served with the status code prepended to the name of the
 error page that you set. For example, if you set

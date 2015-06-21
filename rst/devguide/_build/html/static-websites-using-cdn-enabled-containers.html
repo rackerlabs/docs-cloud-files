@@ -91,108 +91,8 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 
   <div class="section" id="static-websites-using-cdn-enabled-containers">
 <h1>Static websites using CDN-enabled containers<a class="headerlink" href="#static-websites-using-cdn-enabled-containers" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes how to use your CDN-enabled containers to create static
+<p>This section describes how to use your CDN-enabled containers to create static
 websites in Cloud Files.</p>
-<div class="section" id="create-a-static-website">
-<h2>Create a static website<a class="headerlink" href="#create-a-static-website" title="Permalink to this headline">¶</a></h2>
-<p>You can use your Cloud Files account to create a static website. First,
-you must CDN-enable a storage container. Any HTML or static web pages in
-the container become available through a static website after you set
-the <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> header to <code class="docutils literal"><span class="pre">index.html</span></code> or another
-index page of your choice. You can also create subdirectories in your
-website by creating pseudo directories, as outlined in <a href="#id1"><span class="problematic" id="id2">`??? &lt;&gt;`__</span></a>. Each
-pseudo directory becomes a subdirectory in the website.</p>
-<p>The page you set for <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> becomes the index
-page for every subdirectory in your website. Each of your pseudo
-directories must contain a file with that name. So, if you set
-<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> to <code class="docutils literal"><span class="pre">index.html</span></code>, you must have an
-<code class="docutils literal"><span class="pre">index.html</span></code> page in each pseudo directory. For example, suppose that
-you have a <code class="docutils literal"><span class="pre">subdir</span></code> pseudo directory. If you do not have an
-<code class="docutils literal"><span class="pre">index.html</span></code> page in <code class="docutils literal"><span class="pre">subdir</span></code>, visits to <code class="docutils literal"><span class="pre">myhost/subdir/</span></code> return a
-status code 404 (Not Found).</p>
-<p>You also have the option of displaying a list of HTML files in your
-pseudo directory, instead of a web page. You do this by setting the
-<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings</span></code> header to <code class="docutils literal"><span class="pre">True</span></code>. If listings are
-enabled, you can add styles to your file list by setting
-<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings-CSS</span></code> to a style sheet. For example,
-setting <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings-CSS:</span> <span class="pre">listing.css</span></code> makes
-listings link to the <code class="docutils literal"><span class="pre">listing.css</span></code> style sheet. To view the HTML
-elements to which you can add styles, use your browser to view the HTML
-source on the listing page.</p>
-<p>You can modify the <code class="docutils literal"><span class="pre">Content-Type</span></code> of directory marker objects by
-setting the <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Directory-Type</span></code> header. If this
-header is not set, <code class="docutils literal"><span class="pre">application/directory</span></code> is used by default.
-Directory marker objects are 0-byte objects that represent directories
-to create a simulated hierarchical structure.</p>
-<p>The following instructions describe using a CNAME with your DNS Server (or
-name server). The CNAME is the domain name of your site (such as
-www.rackspace.com). Your CNAME is set up with your individual DNS
-Server. For more information about using CNAMEs, see the <em>Cloud DNS
-Developer Guide</em> at
-<a class="reference external" href="http://docs.rackspace.com/cdns/api/v1.0/cdns-devguide/content/supported_record_types.html">docs.rackspace.com</a>.
-After your CNAME is established, set the CNAME to your Cloud Files CDN
-URI to get your site up and running on the web.</p>
-<p><strong>Set up a static website</strong></p>
-<p>Following are the step-by-step instructions for setting up a static
-website.</p>
-<ol class="arabic">
-<li><p class="first">Create a container.</p>
-</li>
-<li><p class="first">Upload your pages to the container.</p>
-</li>
-<li><p class="first">Set the index (or primary page) for your website by performing a
-<strong>POST</strong> request to the header <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> on your
-website&#8217;s container. See <a href="#id1"><span class="problematic" id="id3">`Example&nbsp;2.1, “Set up static
-web” fixmefixmefixme#setUpStaticWebEx&gt;`__</span></a>. (Remember to change the
-<code class="docutils literal"><span class="pre">X-Auth-Token</span></code> to your authentication token.) You must use your
-storage URL and the container name to properly point to the container
-(<code class="docutils literal"><span class="pre">storageURL</span></code>/<em>``containerName``</em>).</p>
-<p>(You get your authentication token when you authenticate your session
-as shown in <a href="#id1"><span class="problematic" id="id4">`??? &lt;&gt;`__</span></a>.)</p>
-</li>
-<li><p class="first">CDN-enable your container as shown in <a href="#id1"><span class="problematic" id="id5">`??? &lt;&gt;`__</span></a>.</p>
-</li>
-<li><p class="first">Go to your domain host and set up a CNAME using your CDN URI
-(<code class="docutils literal"><span class="pre">X-Cdn-Uri</span></code>). The CNAME is the domain or branded URI that you use
-instead of the CDN URI. If you need to find your CDN URI, perform a
-<strong>HEAD</strong> request to <code class="docutils literal"><span class="pre">cdn.clouddrive.com</span></code> as shown in the
-description of the operation to list metadata for a CDN-enabled
-container.</p>
-</li>
-<li><p class="first">To view your website online, visit your CDN URI or your CNAME domain.</p>
-</li>
-</ol>
-<p><strong>Example: Set up static web</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>cURL -X POST -H &quot;X-Container-Meta-Web-Index: index.html&quot; -H &quot;X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c&quot; &quot;https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/&quot;
-</pre></div>
-</div>
-<p>After your container has an index page set and your domain host has your
-CNAME recorded, your static website is ready.</p>
-<p><strong>Example: Container setup for static website</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">container</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
-<span class="n">container</span><span class="o">/</span><span class="n">page2</span><span class="o">.</span><span class="n">html</span>
-<span class="n">container</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
-<span class="n">container</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">pageX</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
-<p>In the following results, the CNAME is <code class="docutils literal"><span class="pre">myhost</span></code>, and the
-<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> is set to <code class="docutils literal"><span class="pre">index.html</span></code>. The results on
-the right of the example are the pages that display in the web browser.</p>
-<p><strong>Example: Static website enabled container results</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>http://myhost                     Displays container/index.html
-http://myhost/page2.html          Displays container/page2.html
-http://myhost/subdir              Displays container/subdir/index.html
-http://myhost/subdir/             Displays container/subdir/index.html
-http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To disable a static website that you have created, send a request to
-remove the metadata header that created the static web site (for
-example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code>.</p>
-</div>
-</div>
 </div>
 
 
@@ -224,11 +124,14 @@ example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-I
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -239,6 +142,7 @@ example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-I
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -247,10 +151,16 @@ example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-I
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
@@ -264,16 +174,14 @@ example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-I
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html">Additional CDN services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ios-streaming.html">iOS streaming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-log-delivery.html">CDN log delivery</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Static websites using CDN-enabled containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-static-website">Create a static website</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Static websites using CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="set-error-pages-for-a-static-website.html">Set error pages for a static website</a></li>
 </ul>
 <ul>

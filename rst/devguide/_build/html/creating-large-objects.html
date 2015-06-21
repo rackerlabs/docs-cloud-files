@@ -90,7 +90,7 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
       <div class="body" role="main">
 
   <div class="section" id="creating-large-objects">
-<h1>Creating large objects<a class="headerlink" href="#creating-large-objects" title="Permalink to this headline">¶</a></h1>
+<span id="cf-dg-large-objects"></span><h1>Creating large objects<a class="headerlink" href="#creating-large-objects" title="Permalink to this headline">¶</a></h1>
 <p>The content of an object cannot be larger than 5 GB, by default.
 However, you can store a larger amount of content by using the following
 types of objects:</p>
@@ -122,7 +122,7 @@ object can be larger than 5 GB.</p>
 <ul class="simple">
 <li>Dynamic large objects: The manifest object has no content. However,
 it has the <code class="docutils literal"><span class="pre">X-Object-Manifest</span></code> metadata header. The value of this
-header is <code class="docutils literal"><span class="pre">container</span></code>/<em>``prefix``</em> , where <code class="docutils literal"><span class="pre">container</span></code> is the
+header is <code class="docutils literal"><span class="pre">container</span></code>/<code class="docutils literal"><span class="pre">prefix</span></code>, where <code class="docutils literal"><span class="pre">container</span></code> is the
 name of the container where the segment objects are stored and
 <code class="docutils literal"><span class="pre">prefix</span></code> is a string that all the segment objects have in common.</li>
 <li>Static large objects: The manifest object content is an ordered list
@@ -235,26 +235,26 @@ container.</td>
 </tr>
 <tr class="row-odd"><td>Manifest object
 metadata</td>
-<td>The object has the
-<code class="docutils literal"><span class="pre">X-Static-Large-Object`</span>
-<span class="pre">`</span>
-<span class="pre">metadata</span> <span class="pre">header</span> <span class="pre">set</span> <span class="pre">to</span>
-<span class="pre">``True</span></code>. You do not set
+<td><p class="first">The object has the
+<code class="docutils literal"><span class="pre">X-Static-Large-Object</span></code></p>
+<p class="last">metadata header set to
+<code class="docutils literal"><span class="pre">True</span></code>. You do not set
 this metadata directly.
 Instead the system sets
 it when you use a
 <strong>PUT</strong> operation on a
-static manifest object.</td>
-<td>The
+static manifest object.</p>
+</td>
+<td><p class="first">The
 <code class="docutils literal"><span class="pre">X-Object-Manifest</span></code>
 header value is
-<code class="docutils literal"><span class="pre">container</span></code>/<em>``prefix
-``</em>,
-indicating where the
+<code class="docutils literal"><span class="pre">container</span></code>/<code class="docutils literal"><span class="pre">prefix</span></code></p>
+<p class="last">indicating where the
 segment objects are
 located. You supply
 this request header in
-the <strong>PUT</strong> operation</td>
+the <strong>PUT</strong> operation.</p>
+</td>
 </tr>
 <tr class="row-even"><td>Making a copy of the
 manifest object</td>
@@ -317,7 +317,7 @@ object segments to the same container and ensure that each object name
 is prefixed in such a way that the names sort in the order in which they
 should be concatenated. You also create and upload a manifest file. The
 manifest file is simply a zero-byte file with the extra
-<code class="docutils literal"><span class="pre">X-Object-Manifest:</span> <span class="pre">container</span></code>/<em>``prefix``</em> header,
+<code class="docutils literal"><span class="pre">X-Object-Manifest:</span> <span class="pre">container</span></code>/<code class="docutils literal"><span class="pre">prefix</span></code> header,
 where <code class="docutils literal"><span class="pre">container</span></code> is the container that the object segments are in and
 <code class="docutils literal"><span class="pre">prefix</span></code> is the common prefix for all the segments. The container and
 common prefix must be UTF-8 encoded and URL-encoded in the
@@ -353,7 +353,7 @@ Content-Length: 1
 <p>No response body is returned. A status code of 201 (Created) indicates a
 successful write. Status code 411 (Length Required) indicates that the
 <code class="docutils literal"><span class="pre">Content-Length</span></code> header is missing. If the MD5 checksum calculated by
-the storage system does not match the optionally supplied ETag value, a
+the storage system does not match the optionally supplied <code class="docutils literal"><span class="pre">ETag</span></code> value, a
 422 (Unprocessable Entity) status code is returned.</p>
 <p>You can continue uploading segments as this example shows, prior to
 uploading the manifest.</p>
@@ -395,9 +395,9 @@ set during the <strong>PUT</strong> request that created the manifest. You can e
 change the <code class="docutils literal"><span class="pre">Content-Type</span></code> by reissuing the <strong>PUT</strong> request.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The ETag in the response for a <strong>GET</strong> or <strong>HEAD</strong> on the manifest
+<p class="last">The <code class="docutils literal"><span class="pre">ETag</span></code> in the response for a <strong>GET</strong> or <strong>HEAD</strong> on the manifest
 file is the MD5 sum of the concatenated string of ETags for each of the
-segments in the manifest. Usually, the ETag is the MD5 sum of the
+segments in the manifest. Usually, the <code class="docutils literal"><span class="pre">ETag</span></code> is the MD5 sum of the
 contents of the object, and that holds true for each segment
 independently. But it is not meaningful to generate such an ETag for the
 manifest itself, so this method was chosen to at least offer change
@@ -551,7 +551,7 @@ sum of the sizes of the segments in the manifest)</li>
 <li><code class="docutils literal"><span class="pre">ETag</span></code>: The ETag of the static large object (generated the same way
 as a dynamic large object)</li>
 </ul>
-<p>The GET request with the following query parameter returns the actual
+<p>The <strong>GET</strong> request with the following query parameter returns the actual
 manifest file contents:</p>
 <div class="code highlight-python"><div class="highlight"><pre>?multipart-manifest=get
 </pre></div>
@@ -568,7 +568,7 @@ itself. The segment objects are not affected.</p>
 <p>A <strong>DELETE</strong> operation with the following query parameter deletes all
 segment objects in the manifest, and then, if all are successfully
 deleted, the manifest object itself. A failure response is similar to
-those for the bulk delete operation (<cite>???</cite>).</p>
+those for the bulk delete operation (<a class="reference internal" href="bulk-delete.html#cf-dg-bulk-delete"><span>Bulk delete</span></a>).</p>
 <div class="code highlight-python"><div class="highlight"><pre>?multipart-manifest=delete
 </pre></div>
 </div>
@@ -626,11 +626,14 @@ for the container or the account.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -641,6 +644,7 @@ for the container or the account.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -649,10 +653,16 @@ for the container or the account.</p>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>

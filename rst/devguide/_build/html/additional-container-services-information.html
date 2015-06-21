@@ -93,8 +93,9 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 <span id="cf-dg-container-services"></span><h1>Additional container services information<a class="headerlink" href="#additional-container-services-information" title="Permalink to this headline">¶</a></h1>
 <p>This section provides additional metadata options for containers in
 Cloud Files.</p>
+</div>
 <div class="section" id="container-access-control-lists">
-<span id="cf-dg-container-acls"></span><h2>Container access control lists<a class="headerlink" href="#container-access-control-lists" title="Permalink to this headline">¶</a></h2>
+<span id="cf-dg-container-acls"></span><h1>Container access control lists<a class="headerlink" href="#container-access-control-lists" title="Permalink to this headline">¶</a></h1>
 <p>The Cloud Files access control list (ACL) feature allows account owners
 to specify read or write access to a particular container for a
 particular user.</p>
@@ -116,11 +117,10 @@ objects within the container.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">The account owner does not need to be included as a user in the
 headers because the account owner always has read and write access to
-everything in their Cloud Files account.</p>
+everything in their Cloud Files account. However, the users specified in the
+headers need to have a valid authentication token for the account to be able
+to read objects in the container or write to the container.</p>
 </div>
-<p>However, the users specified in the headers need to have a valid
-authentication token for the account to be able to read objects in the
-container or write to the container.</p>
 <p>You can use the operation to show container metadata to show the absence
 of the <code class="docutils literal"><span class="pre">X-Container-Read</span></code> or <code class="docutils literal"><span class="pre">X-Container-Write</span></code> header for an
 existing container, such as <code class="docutils literal"><span class="pre">MyContainer</span></code> in the following example.</p>
@@ -176,16 +176,16 @@ Date: Mon, 07 Apr 2014 02:20:12 GMT
 </pre></div>
 </div>
 <p>For more information about ACLS and using them with RBAC,
-see the blog post, <a class="reference external" href="http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/">&#8220;Create Cloud Files Container-Level Access Control
-Policies&#8221;.</a></p>
+see the blog post, <a class="reference external" href="http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/">Create Cloud Files Container-Level Access Control
+Policies.</a></p>
 </div>
 <div class="section" id="container-quotas">
-<span id="cf-dg-container-quotas"></span><h2>Container quotas<a class="headerlink" href="#container-quotas" title="Permalink to this headline">¶</a></h2>
+<span id="cf-dg-container-quotas"></span><h1>Container quotas<a class="headerlink" href="#container-quotas" title="Permalink to this headline">¶</a></h1>
 <p>Users (most likely account administrators) who have the ability to set
 container metadata can implement simple quotas on Cloud Files
 containers. Setting container quotas can be useful for limiting
 containers for non-admin users, FormPost uploads, or just as a sanity
-check.</p>
+check. (For information about FormPost, see <a class="reference internal" href="formpost.html#cf-dg-formpost"><span>FormPost</span></a>.)</p>
 <p>Any object <strong>PUT</strong> operations that exceed a quota return a 413 response
 (request entity too large) with a descriptive body.</p>
 <p>Because the storage system is a true distributed system and because it
@@ -196,7 +196,8 @@ file because at the time of both requests the container had sufficient
 remaining quota.</p>
 <p>Also, for chunked file uploads, the storage system cannot reject
 transfers that will eventually exceed the quota because the storage
-system does not know whether the end of the file will exceed the quota.</p>
+system does not know whether the end of the file will exceed the quota. (For
+more information about chunked file uploads, see <a class="reference internal" href="chunked-transfer-encoding.html#cf-dg-chunked-transfer-encoding"><span>Chunked transfer encoding</span></a>.)</p>
 <p>You set quotas by adding metadata to the container. The available
 metadata values are described in the following table.</p>
 <p><strong>Table: Metadata values for setting container quotas</strong></p>
@@ -222,8 +223,8 @@ container</td>
 </tbody>
 </table>
 </div>
-<div class="section" id="access-log-delivery">
-<span id="cf-dg-access-log-delivery"></span><h2>Access log delivery<a class="headerlink" href="#access-log-delivery" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="access-log">
+<span id="cf-dg-access-log-delivery"></span><h1>Access log<a class="headerlink" href="#access-log" title="Permalink to this headline">¶</a></h1>
 <p>You can use access log delivery to analyze the number of requests for
 each object, the client IP address, and time-based usage patterns (such
 as monthly or seasonal usage).</p>
@@ -238,7 +239,7 @@ files exist until you delete them. To turn off logging, set the
 <code class="docutils literal"><span class="pre">X-Container-Meta-Access-Log-Delivery</span></code> header to <code class="docutils literal"><span class="pre">FALSE</span></code>.</p>
 <p>Log files are named according to the following pattern: container name,
 log date, log hour, and MD5 hash. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>``Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz``
+<div class="highlight-python"><div class="highlight"><pre>Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
 </pre></div>
 </div>
 <p>In this example, <code class="docutils literal"><span class="pre">Media</span></code> is the name of the container, 2012/10/01 is
@@ -271,7 +272,6 @@ Files does not capture.</p>
      HTTP/1.0&quot; 401 0 &quot;-&quot; &quot;python-requests/0.13.8
      CPython/2.7.3 Linux/3.2.0-29-generic&quot;
 </pre></div>
-</div>
 </div>
 </div>
 
@@ -311,6 +311,7 @@ Files does not capture.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -321,6 +322,7 @@ Files does not capture.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -328,14 +330,17 @@ Files does not capture.</p>
 <li class="toctree-l1"><a class="reference internal" href="request-and-response-types.html">Request and response types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Additional container services information</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#container-access-control-lists">Container access control lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#container-quotas">Container quotas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#access-log-delivery">Access log delivery</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
 </ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Additional container services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>

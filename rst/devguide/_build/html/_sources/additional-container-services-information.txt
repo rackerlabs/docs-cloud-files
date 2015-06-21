@@ -9,8 +9,9 @@ Cloud Files.
 
 .. _cf-dg-container-acls:
 
+==============================
 Container access control lists
-------------------------------
+==============================
 
 The Cloud Files access control list (ACL) feature allows account owners
 to specify read or write access to a particular container for a
@@ -35,11 +36,9 @@ objects within the container.
 
 .. note:: The account owner does not need to be included as a user in the
    headers because the account owner always has read and write access to
-   everything in their Cloud Files account.
-
-However, the users specified in the headers need to have a valid
-authentication token for the account to be able to read objects in the
-container or write to the container.
+   everything in their Cloud Files account. However, the users specified in the 
+   headers need to have a valid authentication token for the account to be able 
+   to read objects in the container or write to the container.
 
 You can use the operation to show container metadata to show the absence
 of the ``X-Container-Read`` or ``X-Container-Write`` header for an
@@ -109,19 +108,20 @@ response**
     Date: Mon, 07 Apr 2014 02:20:12 GMT
 
 For more information about ACLS and using them with RBAC,
-see the blog post, `"Create Cloud Files Container-Level Access Control
-Policies". <http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/>`__
+see the blog post, `Create Cloud Files Container-Level Access Control
+Policies. <http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/>`__
 
 .. _cf-dg-container-quotas:
 
+================
 Container quotas
-----------------
+================
 
 Users (most likely account administrators) who have the ability to set
 container metadata can implement simple quotas on Cloud Files
 containers. Setting container quotas can be useful for limiting
 containers for non-admin users, FormPost uploads, or just as a sanity
-check.
+check. (For information about FormPost, see :ref:`FormPost<cf-dg-formpost>`.)
 
 Any object **PUT** operations that exceed a quota return a 413 response
 (request entity too large) with a descriptive body.
@@ -135,7 +135,8 @@ remaining quota.
 
 Also, for chunked file uploads, the storage system cannot reject
 transfers that will eventually exceed the quota because the storage
-system does not know whether the end of the file will exceed the quota.
+system does not know whether the end of the file will exceed the quota. (For 
+more information about chunked file uploads, see :ref:`Chunked transfer encoding<cf-dg-chunked-transfer-encoding>`.)
 
 You set quotas by adding metadata to the container. The available
 metadata values are described in the following table.
@@ -154,8 +155,9 @@ metadata values are described in the following table.
 
 .. _cf-dg-access-log-delivery:
 
-Access log delivery
--------------------
+==========
+Access log 
+==========
 
 You can use access log delivery to analyze the number of requests for
 each object, the client IP address, and time-based usage patterns (such
@@ -174,7 +176,7 @@ files exist until you delete them. To turn off logging, set the
 Log files are named according to the following pattern: container name,
 log date, log hour, and MD5 hash. For example::
 
-      ``Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz``
+      Media/2012/10/01/16/096e6c4473f235db081deb51f42a8d98.log.gz
 
 In this example, ``Media`` is the name of the container, 2012/10/01 is
 the date (October 1, 2012), and 16 is the hour that the log file was

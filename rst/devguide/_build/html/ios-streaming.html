@@ -90,7 +90,7 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
       <div class="body" role="main">
 
   <div class="section" id="ios-streaming">
-<h1>iOS streaming<a class="headerlink" href="#ios-streaming" title="Permalink to this headline">¶</a></h1>
+<span id="cf-dg-ios-streaming"></span><h1>iOS streaming<a class="headerlink" href="#ios-streaming" title="Permalink to this headline">¶</a></h1>
 <p>The Cloud Files CDN allows you to stream video to iOS devices without
 needing to convert your video. After you CDN-enable your container, you
 have the tools necessary for streaming media to multiple devices. To
@@ -98,7 +98,7 @@ leverage this ability, you must check the client&#8217;s user agent with
 JavaScript. An example of the user agent check and how to use it
 follows.</p>
 <ol class="arabic">
-<li><p class="first">CDN-enable your container. Two streaming URIs are
+<li><p class="first">CDN-enable your container. (See in the operation to CDN-enable and CDN-disable a container at <a class="reference external" href="http://api.rackspace.com/api-ref-files.html">Cloud Files API v1</a>.) Two streaming URIs are
 created: the container&#8217;s streaming URI (<code class="docutils literal"><span class="pre">X-Cdn-Streaming-Uri</span></code>) and
 its iOS streaming URI (<code class="docutils literal"><span class="pre">X-Cdn-Ios-Uri</span></code>).</p>
 </li>
@@ -188,11 +188,14 @@ for iOS devices.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -203,6 +206,7 @@ for iOS devices.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -211,10 +215,16 @@ for iOS devices.</p>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
@@ -228,6 +238,7 @@ for iOS devices.</p>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html">Additional CDN services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">iOS streaming</a></li>

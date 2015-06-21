@@ -1,3 +1,5 @@
+.. _cf-dg-ios-streaming:
+
 =============
 iOS streaming
 =============
@@ -9,7 +11,7 @@ leverage this ability, you must check the client's user agent with
 JavaScript. An example of the user agent check and how to use it
 follows.
 
-#. CDN-enable your container. Two streaming URIs are
+#. CDN-enable your container. (See in the operation to CDN-enable and CDN-disable a container at `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__.) Two streaming URIs are
    created: the container's streaming URI (``X-Cdn-Streaming-Uri``) and
    its iOS streaming URI (``X-Cdn-Ios-Uri``).
 

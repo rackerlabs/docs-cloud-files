@@ -93,8 +93,9 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 <h1>Additional CDN services information<a class="headerlink" href="#additional-cdn-services-information" title="Permalink to this headline">¶</a></h1>
 <p>The section provides additional information about working with the Cloud
 Files CDN services.</p>
+</div>
 <div class="section" id="purge-cdn-enabled-containers">
-<h2>Purge CDN-enabled containers<a class="headerlink" href="#purge-cdn-enabled-containers" title="Permalink to this headline">¶</a></h2>
+<h1>Purge CDN-enabled containers<a class="headerlink" href="#purge-cdn-enabled-containers" title="Permalink to this headline">¶</a></h1>
 <p>For a container to be purged from the CDN, you can either wait for the
 TTL to expire, or you can request that Rackspace remove, or purge, a
 CDN-enabled container from the network. After you have made the request
@@ -105,9 +106,7 @@ optional.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">To prevent the container from going back to the CDN, first change the
-<code class="docutils literal"><span class="pre">X-CDN-Enabled</span></code> flag to <code class="docutils literal"><span class="pre">False</span></code> as shown in the section about
-CDN-enabling and disabling a container.</p>
-</div>
+<code class="docutils literal"><span class="pre">X-CDN-Enabled</span></code> flag to <code class="docutils literal"><span class="pre">False</span></code> as described in the operation to CDN-enable and CDN-disable a container at <a class="reference external" href="http://api.rackspace.com/api-ref-files.html">Cloud Files API v1</a>.</p>
 </div>
 </div>
 
@@ -140,11 +139,14 @@ CDN-enabling and disabling a container.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -155,6 +157,7 @@ CDN-enabling and disabling a container.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -163,10 +166,16 @@ CDN-enabling and disabling a container.</p>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
@@ -179,10 +188,8 @@ CDN-enabling and disabling a container.</p>
 <li class="toctree-l1"><a class="reference internal" href="account-to-account-copy.html">Account to account copy</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Additional CDN services information</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Additional CDN services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ios-streaming.html">iOS streaming</a></li>

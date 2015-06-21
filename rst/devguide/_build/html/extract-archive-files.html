@@ -89,81 +89,125 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
   <div class="documentwrapper">
       <div class="body" role="main">
 
-  <div class="section" id="pseudo-hierarchical-folders-and-directories">
-<span id="cf-dg-pseudo-dir"></span><h1>Pseudo-hierarchical folders and directories<a class="headerlink" href="#pseudo-hierarchical-folders-and-directories" title="Permalink to this headline">¶</a></h1>
-<p>Although you cannot nest directories in Cloud Files, you
-can simulate a hierarchical structure within a single container by
-adding forward slash characters (<code class="docutils literal"><span class="pre">/</span></code>) in the object name. To navigate
-the pseudo-directory structure, you can use the <code class="docutils literal"><span class="pre">delimiter</span></code> query
-parameter. This example shows you how to use pseudo-hierarchical folders
-and directories.</p>
+  <div class="section" id="extracting-archive-files">
+<h1>Extracting archive files<a class="headerlink" href="#extracting-archive-files" title="Permalink to this headline">¶</a></h1>
+<p>An extract archive request expands tar files into a Cloud Files account.
+The request is a <strong>PUT</strong> operation with the <code class="docutils literal"><span class="pre">?extract-archive=format</span></code>
+query parameter specifying the format of the archive file.</p>
+<p>Valid values for the <code class="docutils literal"><span class="pre">format</span></code> variable are <code class="docutils literal"><span class="pre">tar</span></code>, <code class="docutils literal"><span class="pre">tar.gz</span></code>, and
+<code class="docutils literal"><span class="pre">tar.bz2</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, the objects reside in a container called <code class="docutils literal"><span class="pre">backups</span></code>.
-Within that container, the objects are organized in a pseudo-directory
-called <code class="docutils literal"><span class="pre">photos</span></code>. The container name is not displayed in the example,
-but it is a part of the object URLs. For example, the URL of the
-picture <code class="docutils literal"><span class="pre">me.jpg</span></code> is
-<code class="docutils literal"><span class="pre">https://storage.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups/photos/me.jpg</span></code>.</p>
+<p class="last">This bulk operation involves middleware that conducts many operations
+on a single request.</p>
 </div>
-<p>To display a list of all the objects in the storage container, use
-<code class="docutils literal"><span class="pre">GET</span></code> without a <code class="docutils literal"><span class="pre">delimiter</span></code> or <code class="docutils literal"><span class="pre">prefix</span></code>.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
+<p>For the <strong>PUT</strong> request, use the following URI:</p>
+<p>/<code class="docutils literal"><span class="pre">v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</span></code></p>
+<p><code class="docutils literal"><span class="pre">UPLOAD_PATH</span></code> is the location where the files are expanded and can
+specify any of the following values:</p>
+<ul>
+<li><p class="first">A container</p>
+</li>
+<li><p class="first">A pseudo directory within a container</p>
+</li>
+<li><p class="first">An empty string</p>
+<p>If the <code class="docutils literal"><span class="pre">UPLOAD_PATH</span></code> is an empty string, Cloud Files automatically
+creates containers in which to place the files. Files in the base
+directory of the tar file (that is, files that are not in a folder of
+the unzipped tar file) are ignored.</p>
+</li>
+</ul>
+<p>The destination of a file in the archive is built as follows:</p>
+<p><code class="docutils literal"><span class="pre">/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</span></code></p>
+<p><code class="docutils literal"><span class="pre">FILE_PATH</span></code> is the file name from the listing in the tar file.</p>
+<p>The following example shows a request to extract an archive.</p>
+<p><strong>Example: Example extract archive request</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>$ tar cf archive.tar directory_to_be_archived
+$ curl -i -XPUT -H&#39;x-auth-token: AUTH_TOKEN&#39;
+https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_aaa-aaa-aaa-aaa?extract-archive=tar -T ./archive.tar
 </pre></div>
 </div>
-<p>The system returns status code 200 (OK) and
-the requested list of the objects.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">persian</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">siamese</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">me</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">fern</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">rose</span><span class="o">.</span><span class="n">jpg</span>
+<p>You can create up to 1,000 new containers per extraction request. Also
+note that only regular files are uploaded. Objects such as empty
+directories and symlinks are not uploaded.</p>
+<p>The responses from bulk operations are not like other Cloud Files
+responses because a short request body sent from the client could result
+in many operations on the proxy server and precautions need to be taken
+to prevent the request from timing out because of a lack of activity. To
+this end, the client always receives a 200 OK response, regardless of
+the actual success of the call. The body of the response, which can be
+delivered over a greater amount of time, must be parsed to determine the
+actual success of the operation. In addition, the client might receive
+whitespace characters prepended to the response body while the proxy
+server is completing the request.</p>
+<p>The format of the response body defaults to text plain but can be either
+JSON or XML depending on the <code class="docutils literal"><span class="pre">Accept</span></code> header. Acceptable formats are
+<code class="docutils literal"><span class="pre">text/plain</span></code>, <code class="docutils literal"><span class="pre">application/json</span></code>, <code class="docutils literal"><span class="pre">application/xml</span></code>, and
+<code class="docutils literal"><span class="pre">text/xml</span></code>. The following example shows the response body, formatted
+in JSON, from a successful request.</p>
+<p><strong>Example: Successful extract archive response</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: txa7fd1603cfe04bdb920cd-005191226d
+Date: Mon, 13 May 2013 17:27:10 GMT
+Transfer-Encoding: chunked
+
+{
+  &quot;Number Files Created&quot;: 10,
+  &quot;Response Status&quot;: &quot;201 Created&quot;,
+  &quot;Errors&quot;: [],
+  &quot;Response Body&quot;: &quot;&quot;
+}
 </pre></div>
 </div>
-<p>Use the delimiter parameter to limit the displayed results. To use
-<code class="docutils literal"><span class="pre">delimiter</span></code> with pseudo-directories, you must use the parameter slash
-(<code class="docutils literal"><span class="pre">/</span></code>).</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
+<p>The following example shows a response with errors.</p>
+<p><strong>Example: Extract archive response with errors</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 100 Continue
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+X-Trans-Id: tx9f12e16f047049cc91147-005191245f
+Date:  Mon, 13 May 2013 17:35:27 GMT
+Transfer-Encoding: chunked
+
+{
+  &quot;Number Files Created&quot;: 10,
+  &quot;Response Status&quot;: &quot;400 Bad Request&quot;,
+  &quot;Errors&quot;: [
+    [
+      &quot;/v1/AUTH_test/test_cont/big_file.wav&quot;,
+      &quot;413 Request Entity Too Large&quot;
+    ]
+  ],
+  &quot;Response Body&quot;: &quot;&quot;
+}
 </pre></div>
 </div>
-<p>The system returns status code 200 (OK) and
-the requested matching objects. Because you use the slash, only the
-pseudo-directory <code class="docutils literal"><span class="pre">photos/</span></code> displays. The returned values from a slash
-<code class="docutils literal"><span class="pre">delimiter</span></code> query are not real objects. They have a content-type of
-<code class="docutils literal"><span class="pre">application/directory</span></code> and are in the <code class="docutils literal"><span class="pre">subdir</span></code> section of JSON and
-XML results.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/
-</pre></div>
-</div>
-<p>Use the <code class="docutils literal"><span class="pre">prefix</span></code> and <code class="docutils literal"><span class="pre">delimiter</span></code> parameters to view the objects
-inside a pseudo-directory, including further nested pseudo-directories.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and the objects and pseudo-directories within the top level pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/animals/
-photos/me.jpg
-photos/plants/
-</pre></div>
-</div>
-<p>You can create an unlimited number of nested pseudo-directories. To
-navigate through them, use a longer <code class="docutils literal"><span class="pre">prefix</span></code> parameter coupled with
-the <code class="docutils literal"><span class="pre">delimiter</span></code> parameter. In this sample output, there is a
-pseudo-directory called <code class="docutils literal"><span class="pre">dogs</span></code> within the pseudo-directory
-<code class="docutils literal"><span class="pre">animals</span></code>. To navigate directly to the files contained within
-<code class="docutils literal"><span class="pre">dogs</span></code>, enter the following command:</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the objects and pseudo-directories within the nested pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-</pre></div>
+<p>Errors are presented as a list of tuples in the form
+<code class="docutils literal"><span class="pre">[objectPath,</span> <span class="pre">errorResponse]</span></code>. The <code class="docutils literal"><span class="pre">objectPath</span></code> given is
+the full path where the object was to be put. The <code class="docutils literal"><span class="pre">errorResponse</span></code> is
+the HTTP status of the response for that individual <strong>PUT</strong> operation.
+After 1,000 errors, processing of the request ends, and the completed
+response is returned.</p>
+<p>If all valid files were uploaded successfully, the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code>
+in the response body is 201 Created. If any files failed to be created,
+the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code> corresponds to the subrequest&#8217;s error.
+Possible codes are 400, 401, and 502. In both cases, the
+<code class="docutils literal"><span class="pre">Response</span> <span class="pre">Body</span></code> specifies the number of files successfully uploaded
+and a list of the files that failed. (The actual HTTP status code is
+always 200 OK, so the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code> in the response body is the
+one you should monitor.)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you send a <code class="docutils literal"><span class="pre">Content-Type</span></code> header on the <strong>PUT</strong> request, the
+specified <code class="docutils literal"><span class="pre">Content-Type</span></code> applies to every object in the archive. If
+you set <code class="docutils literal"><span class="pre">Content-Type</span></code> to a blank string, Cloud Files determines the
+<code class="docutils literal"><span class="pre">Content-Type</span></code> based on the individual file type. For example, if you
+have Multipurpose Internet Mail Extensions (MIME) type files, use a
+blank string for <code class="docutils literal"><span class="pre">Content-Type</span></code> to set the MIME type for files within
+the archive.</p>
 </div>
 </div>
 
@@ -186,11 +230,11 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 </ul>
 <ul>
   
-<a href="operations-overview.html"><<</a>
+<a href="bulk-operations.html"><<</a>
 
 |
 
-<a href="additional-container-services-information.html">>></a>
+<a href="bulk-delete.html">>></a>
 
   <li><span class="sidebarheader">Contents</span></li>
 </ul>
@@ -225,8 +269,8 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Pseudo-hierarchical folders and directories</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
@@ -254,10 +298,12 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="static-websites-using-cdn-enabled-containers.html">Static websites using CDN-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create-a-static-website.html">Create a static website</a></li>
 <li class="toctree-l1"><a class="reference internal" href="set-error-pages-for-a-static-website.html">Set error pages for a static website</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="bulk-operations.html">Bulk operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Extracting archive files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bulk-delete.html">Bulk delete</a></li>
 </ul>
 <ul>

@@ -1,3 +1,5 @@
+.. _cf-dg-large-objects:
+
 ======================
 Creating large objects
 ======================
@@ -34,7 +36,7 @@ Following are the types of manifest objects:
 
 -  Dynamic large objects: The manifest object has no content. However,
    it has the ``X-Object-Manifest`` metadata header. The value of this
-   header is ``container``/*``prefix``* , where ``container`` is the
+   header is ``container``/``prefix``, where ``container`` is the
    name of the container where the segment objects are stored and
    ``prefix`` is a string that all the segment objects have in common.
 
@@ -103,15 +105,15 @@ differences as explained in the following table.
 |                         | different containers).   |                         |
 +-------------------------+--------------------------+-------------------------+
 | Manifest object         | The object has the       | The                     |
-| metadata                | ``X-Static-Large-Object` | ``X-Object-Manifest``   |
-|                         | `                        | header value is         |
-|                         | metadata header set to   | ``container``/*``prefix |
-|                         | ``True``. You do not set | ``*,                    |
+| metadata                | ``X-Static-Large-Object``| ``X-Object-Manifest``   |
+|                         |                          | header value is         |
+|                         | metadata header set to   | ``container``/``prefix``|
+|                         | ``True``. You do not set |                         |
 |                         | this metadata directly.  | indicating where the    |
 |                         | Instead the system sets  | segment objects are     |
 |                         | it when you use a        | located. You supply     |
 |                         | **PUT** operation on a   | this request header in  |
-|                         | static manifest object.  | the **PUT** operation   |
+|                         | static manifest object.  | the **PUT** operation.  |
 +-------------------------+--------------------------+-------------------------+
 | Making a copy of the    | To make a copy of the    | The **COPY** operation  |
 | manifest object         | manifest object, include | does not create a       |
@@ -157,7 +159,7 @@ object segments to the same container and ensure that each object name
 is prefixed in such a way that the names sort in the order in which they
 should be concatenated. You also create and upload a manifest file. The
 manifest file is simply a zero-byte file with the extra
-``X-Object-Manifest: container``/*``prefix``* header,
+``X-Object-Manifest: container``/``prefix`` header,
 where ``container`` is the container that the object segments are in and
 ``prefix`` is the common prefix for all the segments. The container and
 common prefix must be UTF-8 encoded and URL-encoded in the
@@ -199,7 +201,7 @@ the next segment of a large object, and the manifest.
 No response body is returned. A status code of 201 (Created) indicates a
 successful write. Status code 411 (Length Required) indicates that the
 ``Content-Length`` header is missing. If the MD5 checksum calculated by
-the storage system does not match the optionally supplied ETag value, a
+the storage system does not match the optionally supplied ``ETag`` value, a
 422 (Unprocessable Entity) status code is returned.
 
 You can continue uploading segments as this example shows, prior to
@@ -253,9 +255,9 @@ set during the **PUT** request that created the manifest. You can easily
 change the ``Content-Type`` by reissuing the **PUT** request.
 
 .. note::
-   The ETag in the response for a **GET** or **HEAD** on the manifest
+   The ``ETag`` in the response for a **GET** or **HEAD** on the manifest
    file is the MD5 sum of the concatenated string of ETags for each of the
-   segments in the manifest. Usually, the ETag is the MD5 sum of the
+   segments in the manifest. Usually, the ``ETag`` is the MD5 sum of the
    contents of the object, and that holds true for each segment
    independently. But it is not meaningful to generate such an ETag for the
    manifest itself, so this method was chosen to at least offer change
@@ -431,7 +433,7 @@ manifest object as follows:
 -  ``ETag``: The ETag of the static large object (generated the same way
    as a dynamic large object)
 
-The GET request with the following query parameter returns the actual
+The **GET** request with the following query parameter returns the actual
 manifest file contents:
 
 .. code::
@@ -453,7 +455,7 @@ itself. The segment objects are not affected.
 A **DELETE** operation with the following query parameter deletes all
 segment objects in the manifest, and then, if all are successfully
 deleted, the manifest object itself. A failure response is similar to
-those for the bulk delete operation (`???`).
+those for the bulk delete operation (:ref:`Bulk delete<cf-dg-bulk-delete>`).
 
 .. code::
 

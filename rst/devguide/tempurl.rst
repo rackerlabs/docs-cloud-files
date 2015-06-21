@@ -1,3 +1,5 @@
+.. _cf-dg-tempurl:
+
 =======
 TempURL
 =======

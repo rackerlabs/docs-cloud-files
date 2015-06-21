@@ -90,7 +90,7 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
       <div class="body" role="main">
 
   <div class="section" id="chunked-transfer-encoding">
-<h1>Chunked transfer encoding<a class="headerlink" href="#chunked-transfer-encoding" title="Permalink to this headline">¶</a></h1>
+<span id="cf-dg-chunked-transfer-encoding"></span><h1>Chunked transfer encoding<a class="headerlink" href="#chunked-transfer-encoding" title="Permalink to this headline">¶</a></h1>
 <p>You can upload data without knowing in advance the amount of data to be
 uploaded. You can do this by specifying the HTTP header
 <code class="docutils literal"><span class="pre">Transfer-Encoding:</span> <span class="pre">chunked</span></code> and not using a <code class="docutils literal"><span class="pre">Content-Length</span></code>
@@ -104,7 +104,8 @@ it into 5 GB chunks, each in its own storage object.</p>
 <p>If you have files that are larger than 5 GB and you want to use Cloud
 Files, you can segment the files before you upload them, upload them to
 the same container, and then use a manifest file to allow downloading of
-a concatenated object that contains all the segmented objects.</p>
+a concatenated object that contains all the segmented objects. For more
+information, see <a class="reference internal" href="creating-large-objects.html#cf-dg-large-objects"><span>Creating large objects</span></a>.</p>
 <p><strong>Example: Upload unspecified quantity of data: HTTP request</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>PUT /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
 Host: storage.clouddrive.com
@@ -152,11 +153,14 @@ into chunks.
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -167,6 +171,7 @@ into chunks.
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -175,10 +180,16 @@ into chunks.
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>

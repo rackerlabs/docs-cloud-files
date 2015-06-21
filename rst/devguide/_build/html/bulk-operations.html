@@ -91,129 +91,8 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 
   <div class="section" id="bulk-operations">
 <h1>Bulk operations<a class="headerlink" href="#bulk-operations" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes bulk operations that are available with Cloud
+<p>This section describes bulk operations that are available with Cloud
 Files.</p>
-<div class="section" id="extracting-archive-files">
-<h2>Extracting archive files<a class="headerlink" href="#extracting-archive-files" title="Permalink to this headline">¶</a></h2>
-<p>An extract archive request expands tar files into a Cloud Files account.
-The request is a <strong>PUT</strong> operation with the <code class="docutils literal"><span class="pre">?extract-archive=format</span></code>
-query parameter specifying the format of the archive file.</p>
-<p>Valid values for the <code class="docutils literal"><span class="pre">format</span></code> variable are <code class="docutils literal"><span class="pre">tar</span></code>, <code class="docutils literal"><span class="pre">tar.gz</span></code>, and
-<code class="docutils literal"><span class="pre">tar.bz2</span></code>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This bulk operation involves middleware that conducts many operations
-on a single request.</p>
-</div>
-<p>For the <strong>PUT</strong> request, use the following URI:</p>
-<p>/<code class="docutils literal"><span class="pre">v1/AUTH_Account/$UPLOAD_PATH?extract-archive=tar.gz</span></code></p>
-<p><code class="docutils literal"><span class="pre">UPLOAD_PATH</span></code> is the location where the files are expanded and can
-specify any of the following values:</p>
-<ul>
-<li><p class="first">A container</p>
-</li>
-<li><p class="first">A pseudo directory within a container</p>
-</li>
-<li><p class="first">An empty string</p>
-<p>If the <code class="docutils literal"><span class="pre">UPLOAD_PATH</span></code> is an empty string, Cloud Files automatically
-creates containers in which to place the files. Files in the base
-directory of the tar file (that is, files that are not in a folder of
-the unzipped tar file) are ignored.</p>
-</li>
-</ul>
-<p>The destination of a file in the archive is built as follows:</p>
-<p><code class="docutils literal"><span class="pre">/v1/AUTH_Account/$UPLOAD_PATH/$FILE_PATH</span></code></p>
-<p><code class="docutils literal"><span class="pre">FILE_PATH</span></code> is the file name from the listing in the tar file.</p>
-<p>The following example shows a request to extract an archive.</p>
-<p><strong>Example: Example extract archive request</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>$ tar cf archive.tar directory_to_be_archived
-$ curl -i -XPUT -H&#39;x-auth-token: AUTH_TOKEN&#39;
-https://storage101.iad3.clouddrive.com/v1/MossoCloudFS_aaa-aaa-aaa-aaa?extract-archive=tar -T ./archive.tar
-</pre></div>
-</div>
-<p>You can create up to 1,000 new containers per extraction request. Also
-note that only regular files are uploaded. Objects such as empty
-directories and symlinks are not uploaded.</p>
-<p>The responses from bulk operations are not like other Cloud Files
-responses because a short request body sent from the client could result
-in many operations on the proxy server and precautions need to be taken
-to prevent the request from timing out because of a lack of activity. To
-this end, the client always receives a 200 OK response, regardless of
-the actual success of the call. The body of the response, which can be
-delivered over a greater amount of time, must be parsed to determine the
-actual success of the operation. In addition, the client might receive
-whitespace characters prepended to the response body while the proxy
-server is completing the request.</p>
-<p>The format of the response body defaults to text plain but can be either
-JSON or XML depending on the <code class="docutils literal"><span class="pre">Accept</span></code> header. Acceptable formats are
-<code class="docutils literal"><span class="pre">text/plain</span></code>, <code class="docutils literal"><span class="pre">application/json</span></code>, <code class="docutils literal"><span class="pre">application/xml</span></code>, and
-<code class="docutils literal"><span class="pre">text/xml</span></code>. The following example shows the response body, formatted
-in JSON, from a successful request.</p>
-<p><strong>Example: Successful extract archive response</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-X-Trans-Id: txa7fd1603cfe04bdb920cd-005191226d
-Date: Mon, 13 May 2013 17:27:10 GMT
-Transfer-Encoding: chunked
-
-{
-  &quot;Number Files Created&quot;: 10,
-  &quot;Response Status&quot;: &quot;201 Created&quot;,
-  &quot;Errors&quot;: [],
-  &quot;Response Body&quot;: &quot;&quot;
-}
-</pre></div>
-</div>
-<p>The following example shows a response with errors.</p>
-<p><strong>Example: Extract archive response with errors</strong></p>
-<div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 100 Continue
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-X-Trans-Id: tx9f12e16f047049cc91147-005191245f
-Date:  Mon, 13 May 2013 17:35:27 GMT
-Transfer-Encoding: chunked
-
-{
-  &quot;Number Files Created&quot;: 10,
-  &quot;Response Status&quot;: &quot;400 Bad Request&quot;,
-  &quot;Errors&quot;: [
-    [
-      &quot;/v1/AUTH_test/test_cont/big_file.wav&quot;,
-      &quot;413 Request Entity Too Large&quot;
-    ]
-  ],
-  &quot;Response Body&quot;: &quot;&quot;
-}
-</pre></div>
-</div>
-<p>Errors are presented as a list of tuples in the form
-<code class="docutils literal"><span class="pre">[objectPath,</span> <span class="pre">errorResponse]</span></code>. The <code class="docutils literal"><span class="pre">objectPath</span></code> given is
-the full path where the object was to be put. The <code class="docutils literal"><span class="pre">errorResponse</span></code> is
-the HTTP status of the response for that individual <strong>PUT</strong> operation.
-After 1,000 errors, processing of the request ends, and the completed
-response is returned.</p>
-<p>If all valid files were uploaded successfully, the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code>
-in the response body is 201 Created. If any files failed to be created,
-the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code> corresponds to the subrequest&#8217;s error.
-Possible codes are 400, 401, and 502. In both cases, the
-<code class="docutils literal"><span class="pre">Response</span> <span class="pre">Body</span></code> specifies the number of files successfully uploaded
-and a list of the files that failed. (The actual HTTP status code is
-always 200 OK, so the <code class="docutils literal"><span class="pre">Response</span> <span class="pre">Status</span></code> in the response body is the
-one you should monitor.)</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you send a <code class="docutils literal"><span class="pre">Content-Type</span></code> header on the <strong>PUT</strong> request, the
-specified <code class="docutils literal"><span class="pre">Content-Type</span></code> applies to every object in the archive. If
-you set <code class="docutils literal"><span class="pre">Content-Type</span></code> to a blank string, Cloud Files determines the
-<code class="docutils literal"><span class="pre">Content-Type</span></code> based on the individual file type. For example, if you
-have Multipurpose Internet Mail Extensions (MIME) type files, use a
-blank string for <code class="docutils literal"><span class="pre">Content-Type</span></code> to set the MIME type for files within
-the archive.</p>
-</div>
-</div>
 </div>
 
 
@@ -239,17 +118,20 @@ the archive.</p>
 
 |
 
-<a href="bulk-delete.html">>></a>
+<a href="extract-archive-files.html">>></a>
 
   <li><span class="sidebarheader">Contents</span></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pricing-and-service-level.html">Pricing and service level</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional-resources.html">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#intended-audience">Intended audience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#document-change-history">Document change history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#additional-resources">Additional resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#pricing-and-service-level">Pricing and service level</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="permissions.html">Permissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
@@ -260,6 +142,7 @@ the archive.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general-api-information.html">General API information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication-token.html">Authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role-based-access-control.html">Role Based Access Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="service-access-endpoints.html">Service access endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-files-service-contract-version.html">Cloud Files service contract version</a></li>
@@ -268,10 +151,16 @@ the archive.</p>
 <li class="toctree-l1"><a class="reference internal" href="response-codes.html">Response codes</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="container-quotas.html">Container quotas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access-log-delivery.html">Access log delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-access-control-lists">Container access control lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#container-quotas">Container quotas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html#access-log">Access log</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-object-services-information.html">Additional object services information</a></li>
@@ -285,6 +174,7 @@ the archive.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html">Additional CDN services information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-cdn-services-information.html#purge-cdn-enabled-containers">Purge CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cdn-enabled-containers-served-through-ssl.html">CDN-enabled containers served through SSL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="streaming-cdn-enabled-containers.html">Streaming CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ios-streaming.html">iOS streaming</a></li>
@@ -292,13 +182,12 @@ the archive.</p>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="static-websites-using-cdn-enabled-containers.html">Static websites using CDN-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create-a-static-website.html">Create a static website</a></li>
 <li class="toctree-l1"><a class="reference internal" href="set-error-pages-for-a-static-website.html">Set error pages for a static website</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Bulk operations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#extracting-archive-files">Extracting archive files</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Bulk operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extract-archive-files.html">Extracting archive files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bulk-delete.html">Bulk delete</a></li>
 </ul>
 <ul>

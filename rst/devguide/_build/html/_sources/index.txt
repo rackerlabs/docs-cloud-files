@@ -40,15 +40,31 @@ General API information
    absolute-limits
    request-and-response-types
    response-codes
+   
+Overview of API operations
+--------------------------
 
-API operations for storage services
------------------------------------
+.. toctree::
+   :maxdepth: 2
+
+   operations-overview
+
+Pseudo hierarchical folders and directories
+-------------------------------------------
 
 .. toctree::
    :maxdepth: 2
 
    pseudo-hierarchical-folders-and-directories
+
+Additional container services information
+-----------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
    additional-container-services-information
+   
 
 Additional object services information
 --------------------------------------
@@ -84,6 +100,7 @@ Static websites using CDN-enabled containers
    :maxdepth: 2
 
    static-websites-using-cdn-enabled-containers
+   create-a-static-website
    set-error-pages-for-a-static-website
 
 Bulk operations
@@ -93,6 +110,7 @@ Bulk operations
    :maxdepth: 2
 
    bulk-operations
+   extract-archive-files
    bulk-delete
 
 Public access to your Cloud Files

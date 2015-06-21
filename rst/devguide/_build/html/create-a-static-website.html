@@ -89,81 +89,103 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
   <div class="documentwrapper">
       <div class="body" role="main">
 
-  <div class="section" id="pseudo-hierarchical-folders-and-directories">
-<span id="cf-dg-pseudo-dir"></span><h1>Pseudo-hierarchical folders and directories<a class="headerlink" href="#pseudo-hierarchical-folders-and-directories" title="Permalink to this headline">¶</a></h1>
-<p>Although you cannot nest directories in Cloud Files, you
-can simulate a hierarchical structure within a single container by
-adding forward slash characters (<code class="docutils literal"><span class="pre">/</span></code>) in the object name. To navigate
-the pseudo-directory structure, you can use the <code class="docutils literal"><span class="pre">delimiter</span></code> query
-parameter. This example shows you how to use pseudo-hierarchical folders
-and directories.</p>
+  <div class="section" id="create-a-static-website">
+<h1>Create a static website<a class="headerlink" href="#create-a-static-website" title="Permalink to this headline">¶</a></h1>
+<p>You can use your Cloud Files account to create a static website. First,
+you must CDN-enable a storage container. Any HTML or static web pages in
+the container become available through a static website after you set
+the <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> header to <code class="docutils literal"><span class="pre">index.html</span></code> or another
+index page of your choice. You can also create subdirectories in your
+website by creating pseudo directories, as outlined in <a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html#cf-dg-pseudo-dir"><span>Pseudo hierarchical directories and folders</span></a>. Each
+pseudo directory becomes a subdirectory in the website.</p>
+<p>The page you set for <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> becomes the index
+page for every subdirectory in your website. Each of your pseudo
+directories must contain a file with that name. So, if you set
+<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> to <code class="docutils literal"><span class="pre">index.html</span></code>, you must have an
+<code class="docutils literal"><span class="pre">index.html</span></code> page in each pseudo directory. For example, suppose that
+you have a <code class="docutils literal"><span class="pre">subdir</span></code> pseudo directory. If you do not have an
+<code class="docutils literal"><span class="pre">index.html</span></code> page in <code class="docutils literal"><span class="pre">subdir</span></code>, visits to <code class="docutils literal"><span class="pre">myhost/subdir/</span></code> return a
+status code 404 (Not Found).</p>
+<p>You also have the option of displaying a list of HTML files in your
+pseudo directory, instead of a web page. You do this by setting the
+<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings</span></code> header to <code class="docutils literal"><span class="pre">True</span></code>. If listings are
+enabled, you can add styles to your file list by setting
+<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings-CSS</span></code> to a style sheet. For example,
+setting <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Listings-CSS:</span> <span class="pre">listing.css</span></code> makes
+listings link to the <code class="docutils literal"><span class="pre">listing.css</span></code> style sheet. To view the HTML
+elements to which you can add styles, use your browser to view the HTML
+source on the listing page.</p>
+<p>You can modify the <code class="docutils literal"><span class="pre">Content-Type</span></code> of directory marker objects by
+setting the <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Directory-Type</span></code> header. If this
+header is not set, <code class="docutils literal"><span class="pre">application/directory</span></code> is used by default.
+Directory marker objects are 0-byte objects that represent directories
+to create a simulated hierarchical structure.</p>
+<p>The following instructions describe using a CNAME with your DNS Server (or
+name server). The CNAME is the domain name of your site (such as
+www.rackspace.com). Your CNAME is set up with your individual DNS
+Server. For more information about using CNAMEs, see the <em>Cloud DNS
+Developer Guide</em> at
+<a class="reference external" href="http://docs.rackspace.com/cdns/api/v1.0/cdns-devguide/content/supported_record_types.html">docs.rackspace.com</a>.
+After your CNAME is established, set the CNAME to your Cloud Files CDN
+URI to get your site up and running on the web.</p>
+<p><strong>Set up a static website</strong></p>
+<p>Following are the step-by-step instructions for setting up a static
+website.</p>
+<ol class="arabic">
+<li><p class="first">Create a container.</p>
+</li>
+<li><p class="first">Upload your pages to the container.</p>
+</li>
+<li><p class="first">Set the index (or primary page) for your website by performing a
+<strong>POST</strong> request to the header <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> on your
+website&#8217;s container. See the following example. (Remember to change the
+<code class="docutils literal"><span class="pre">X-Auth-Token</span></code> to your authentication token.) You must use your
+storage URL and the container name to properly point to the container
+(<code class="docutils literal"><span class="pre">storageURL</span></code>/<em>``containerName``</em>).</p>
+<p>(You get your authentication token when you authenticate your session
+as shown in <a class="reference internal" href="authentication-token.html#cf-dg-auth"><span>Authentication</span></a>.)</p>
+</li>
+<li><p class="first">CDN-enable your container. (See in the operation to CDN-enable and CDN-disable a container at <a class="reference external" href="http://api.rackspace.com/api-ref-files.html">Cloud Files API v1</a>.)</p>
+</li>
+<li><p class="first">Go to your domain host and set up a CNAME using your CDN URI
+(<code class="docutils literal"><span class="pre">X-Cdn-Uri</span></code>). The CNAME is the domain or branded URI that you use
+instead of the CDN URI. If you need to find your CDN URI, perform a
+<strong>HEAD</strong> request to <code class="docutils literal"><span class="pre">cdn.clouddrive.com</span></code> as shown in the
+description of the operation to list metadata for a CDN-enabled
+container.</p>
+</li>
+<li><p class="first">To view your website online, visit your CDN URI or your CNAME domain.</p>
+</li>
+</ol>
+<p><strong>Example: Set up static web</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>cURL -X POST -H &quot;X-Container-Meta-Web-Index: index.html&quot; -H &quot;X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c&quot; &quot;https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_a55df/MyLibrary/&quot;
+</pre></div>
+</div>
+<p>After your container has an index page set and your domain host has your
+CNAME recorded, your static website is ready.</p>
+<p><strong>Example: Container setup for static website</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre><span class="n">container</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="n">container</span><span class="o">/</span><span class="n">page2</span><span class="o">.</span><span class="n">html</span>
+<span class="n">container</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="n">container</span><span class="o">/</span><span class="n">subdir</span><span class="o">/</span><span class="n">pageX</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>In the following results, the CNAME is <code class="docutils literal"><span class="pre">myhost</span></code>, and the
+<code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code> is set to <code class="docutils literal"><span class="pre">index.html</span></code>. The results on
+the right of the example are the pages that display in the web browser.</p>
+<p><strong>Example: Static website enabled container results</strong></p>
+<div class="code highlight-python"><div class="highlight"><pre>http://myhost                     Displays container/index.html
+http://myhost/page2.html          Displays container/page2.html
+http://myhost/subdir              Displays container/subdir/index.html
+http://myhost/subdir/             Displays container/subdir/index.html
+http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, the objects reside in a container called <code class="docutils literal"><span class="pre">backups</span></code>.
-Within that container, the objects are organized in a pseudo-directory
-called <code class="docutils literal"><span class="pre">photos</span></code>. The container name is not displayed in the example,
-but it is a part of the object URLs. For example, the URL of the
-picture <code class="docutils literal"><span class="pre">me.jpg</span></code> is
-<code class="docutils literal"><span class="pre">https://storage.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups/photos/me.jpg</span></code>.</p>
-</div>
-<p>To display a list of all the objects in the storage container, use
-<code class="docutils literal"><span class="pre">GET</span></code> without a <code class="docutils literal"><span class="pre">delimiter</span></code> or <code class="docutils literal"><span class="pre">prefix</span></code>.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the requested list of the objects.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">persian</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">cats</span><span class="o">/</span><span class="n">siamese</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">me</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">fern</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">plants</span><span class="o">/</span><span class="n">rose</span><span class="o">.</span><span class="n">jpg</span>
-</pre></div>
-</div>
-<p>Use the delimiter parameter to limit the displayed results. To use
-<code class="docutils literal"><span class="pre">delimiter</span></code> with pseudo-directories, you must use the parameter slash
-(<code class="docutils literal"><span class="pre">/</span></code>).</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the requested matching objects. Because you use the slash, only the
-pseudo-directory <code class="docutils literal"><span class="pre">photos/</span></code> displays. The returned values from a slash
-<code class="docutils literal"><span class="pre">delimiter</span></code> query are not real objects. They have a content-type of
-<code class="docutils literal"><span class="pre">application/directory</span></code> and are in the <code class="docutils literal"><span class="pre">subdir</span></code> section of JSON and
-XML results.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/
-</pre></div>
-</div>
-<p>Use the <code class="docutils literal"><span class="pre">prefix</span></code> and <code class="docutils literal"><span class="pre">delimiter</span></code> parameters to view the objects
-inside a pseudo-directory, including further nested pseudo-directories.</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and the objects and pseudo-directories within the top level pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre>photos/animals/
-photos/me.jpg
-photos/plants/
-</pre></div>
-</div>
-<p>You can create an unlimited number of nested pseudo-directories. To
-navigate through them, use a longer <code class="docutils literal"><span class="pre">prefix</span></code> parameter coupled with
-the <code class="docutils literal"><span class="pre">delimiter</span></code> parameter. In this sample output, there is a
-pseudo-directory called <code class="docutils literal"><span class="pre">dogs</span></code> within the pseudo-directory
-<code class="docutils literal"><span class="pre">animals</span></code>. To navigate directly to the files contained within
-<code class="docutils literal"><span class="pre">dogs</span></code>, enter the following command:</p>
-<div class="code highlight-python"><div class="highlight"><pre>GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&amp;delimiter=/
-</pre></div>
-</div>
-<p>The system returns status code 200 (OK) and
-the objects and pseudo-directories within the nested pseudo-directory.</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">corgi</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">poodle</span><span class="o">.</span><span class="n">jpg</span>
-<span class="n">photos</span><span class="o">/</span><span class="n">animals</span><span class="o">/</span><span class="n">dogs</span><span class="o">/</span><span class="n">terrier</span><span class="o">.</span><span class="n">jpg</span>
-</pre></div>
+<p class="last">To disable a static website that you have created, send a request to
+remove the metadata header that created the static web site (for
+example, <code class="docutils literal"><span class="pre">X-Container-Meta-Web-Index</span></code>).</p>
 </div>
 </div>
 
@@ -186,11 +208,7 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 </ul>
 <ul>
   
-<a href="operations-overview.html"><<</a>
-
 |
-
-<a href="additional-container-services-information.html">>></a>
 
   <li><span class="sidebarheader">Contents</span></li>
 </ul>
@@ -225,8 +243,8 @@ the objects and pseudo-directories within the nested pseudo-directory.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="operations-overview.html">Overview of API operations</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Pseudo-hierarchical folders and directories</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pseudo-hierarchical-folders-and-directories.html">Pseudo-hierarchical folders and directories</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="additional-container-services-information.html">Additional container services information</a></li>

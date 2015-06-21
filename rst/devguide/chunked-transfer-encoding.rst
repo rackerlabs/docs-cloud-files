@@ -1,3 +1,5 @@
+.. _cf-dg-chunked-transfer-encoding:
+
 =========================
 Chunked transfer encoding
 =========================
@@ -16,7 +18,8 @@ it into 5 GB chunks, each in its own storage object.
 If you have files that are larger than 5 GB and you want to use Cloud
 Files, you can segment the files before you upload them, upload them to
 the same container, and then use a manifest file to allow downloading of
-a concatenated object that contains all the segmented objects.
+a concatenated object that contains all the segmented objects. For more 
+information, see :ref:`Creating large objects <cf-dg-large-objects>`.
 
 **Example: Upload unspecified quantity of data: HTTP request**
 

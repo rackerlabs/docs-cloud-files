@@ -1,3 +1,5 @@
+.. _cf-dg-pseudo-dir:
+
 ===========================================
 Pseudo-hierarchical folders and directories
 ===========================================
@@ -17,9 +19,6 @@ and directories.
    but it is a part of the object URLs. For example, the URL of the
    picture ``me.jpg`` is
    ``https://storage.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups/photos/me.jpg``.
-
-List pseudo-hierarchical folders request: HTTP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To display a list of all the objects in the storage container, use
 ``GET`` without a ``delimiter`` or ``prefix``.
