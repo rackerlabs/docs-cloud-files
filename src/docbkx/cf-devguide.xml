@@ -53,7 +53,7 @@
     </copyright>
     <releaseinfo>API v1</releaseinfo>
     <productname>Rackspace Cloud Files™</productname>
-    <pubdate>2015-05-01</pubdate>
+    <pubdate>2015-07-14</pubdate>
     <legalnotice role="rs-api">
       <annotation>
         <remark>Copyright details are filled in by the
@@ -67,6 +67,20 @@
         Programming Interface (<abbrev>API</abbrev>). </para>
     </abstract>
     <revhistory>
+      <revision>
+        <date>2015-07-14</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated <link
+                  xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Set_Error_Pages_for_Static_Website-dle4005.html"
+                  >Set error pages for a static website</link> to clarify that you can set the
+                  <code>X-Container-Meta-Web-Error</code> header only to
+                <code>error.html</code>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision>
         <date>2015-05-01</date>
         <revdescription>
@@ -4019,24 +4033,24 @@ http://myhost/subdir/pageX.html   Displays container/subdir/pageX.html</programl
       <section xml:id="Set_Error_Pages_for_Static_Website-dle4005">
         <title>Set error pages for a static website</title>
         <para>
-        <remark security="writeronly">2012-05-14 dsh: Added for 2012-05-14 release </remark> You can
+        <remark security="writeronly">2012-05-14 dsh: Added for 2012-05-14 release </remark>You can
         create and set custom error pages for visitors to your website. To do this, set the
           <code>X-Container-Meta-Web-Error</code> metadata header. Currently, only 401
         (Unauthorized) and 404 (Not Found) status codes are supported. </para>
         <para>Error pages are served with the status code prepended to the name of the error page
-        that you set. For example, if you set <code>X-Container-Meta-Web-Error</code> to
-          <code>error.html</code>, 401 errors display the page <code>401error.html</code>.
+        that you set. You can only set <code>X-Container-Meta-Web-Error</code> to
+          <code>error.html</code>. Then, 401 errors display the page <code>401error.html</code>.
         Similarly, 404 errors display <code>404error.html</code>. You must have both of these pages
-        created in your container when you set the <code>X-Container-Meta-Web-Error</code> metadata,
+        created in your container when you set  <code>X-Container-Meta-Web-Error: error.html</code>,
         or your site will display generic error pages. </para>
-        <para>Set the <code>X-Container-Meta-Web-Error</code> metadata
-          once for your entire static website. </para>
+        <para>Set <code>X-Container-Meta-Web-Error: error.html</code> once for your entire static
+        website. </para>
         <example>
           <title>Set error pages for static website: HTTP request</title>
           <programlisting language="bash">POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
 Host: storage.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-X-Container-Meta-Web-Error: error.html            </programlisting>
+<emphasis role="bold">X-Container-Meta-Web-Error: error.html</emphasis>            </programlisting>
         </example>
         <para> Any class 200 status code indicates success. </para>
       </section>
