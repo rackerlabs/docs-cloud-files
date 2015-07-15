@@ -1,0 +1,110 @@
+=============================================================================
+Delete Cdn-Enabled Object -  Rackspace Cloud Files™ Developer Guide
+=============================================================================
+
+Delete Cdn-Enabled Object
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Request <DELETE_delete_cdn-enabled_object_v1_account_container_object_.rst#request>`__
+`Response <DELETE_delete_cdn-enabled_object_v1_account_container_object_.rst#response>`__
+
+.. code-block:: javascript
+
+    DELETE /v1/{account}/{container}/{object}
+
+Deletes CDN-enabled objects.
+
+When you find it necessary to remove a CDN-enabled object from public access before the TTL expires, you can perform a ``DELETE`` operation against the object, or you can create a support ticket to purge the entire container.
+
+``You request this operation against a CDN management services URI, such as ``https://cdn2.clouddrive.com/v1/ ``MossoCloudFS_ ``aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee```` /``, as shown in `Table 3.4. Regionalized service endpoints for CDN management services <http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.htmlr>`__. If you use a Storage management services URI by mistake, you delete your object.
+
+``You should limit object purges to situations in which serious personal, business, or security consequences could occur if the object remained publicly accessible on the CDN (for example, when someone publishes your company's quarterly earnings too early).
+
+You can purge objects from the CDN in the following ways: By using ``DELETE`` in the API You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be notified by email that the object has been purged. You can use the ``DELETE`` operation against a maximum of 25 objects per day using the API. An attempt to delete more objects results in a 498 (Rate Limited) status code. Here is an example response for hitting the purge rate limit: $ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainter/MyObjectHTTP/1.1 498 Rate LimitedContent-Length: 42Content-Type: text/html; charset=UTF-8X-Trans-Id: txb63f31d26bf84c058542b-0055101cd0dfw1Date: Mon, 23 Mar 2015 14:01:52 GMTBy creating a support ticket to purge an entire container The 25-object limit does not apply when purging an entire container through Support.
+
+To prevent the container from going back to the CDN, first change the ``X-CDN-Enabled`` flag to ``False`` as shown in `CDN-enable and CDN-disable a container <http://docs.rackspace.com/files/api/v1/cf-devguide/content/PUT_enableDisableCDNcontainer_v1__account___container__CDN_Container_Services-d1e2632.html>`__.
+
+The system purges the object from the CDN and sends an email to the indicated address or addresses. If you want to notify more than one person about the deletion, you can enter a comma-separated list of addresses. The email address is optional.
+
+A status code of 204 (No Content) indicates success. Status code 498 (Rate Limited) indicates that the account has reached its 25 object daily purge limit for CDN-enabled objects. Status code 403 (Forbidden) indicates that an authorization problem occurred.
+
+Because there are so many edge servers around the world, purging objects might take a long time. Be patient while waiting for a response.
+
+This operation does not return a response body.
+
+
+
+This table shows the possible response codes for this operation:
+
+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|204                       |No Content               |The server fulfilledthe  |
+|                          |                         |request but does not     |
+|                          |                         |need to return abody.    |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |The server refused to    |
+|                          |                         |respond to request.      |
++--------------------------+-------------------------+-------------------------+
+|498                       |Rate Limited             |The account has reached  |
+|                          |                         |the 25 object daily      |
+|                          |                         |purge limit for CDN-     |
+|                          |                         |enabled objects.         |
++--------------------------+-------------------------+-------------------------+
+
+
+Request
+^^^^^^^^^^^^^^^^^
+
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |xsd:string               |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |xsd:string               |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+|{object}                  |xsd:string               |The unique identifier of |
+|                          |                         |the object.              |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
+
+
+
+**Example Delete CDN-enabled object: HTTP request**
+
+
+.. code::
+
+    DELETE /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer/MyObject HTTP/1.1
+    Host: cdn2.clouddrive.com
+    X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+    X-Purge-Email: user@domain.com, user2@domain.com
+
+
+Response
+^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+**Example Delete CDN-enabled object: HTTP response**
+
+
+.. code::
+
+    HTTP/1.1 204 No Content
+    Content-Type: text/html; charset=UTF-8
+    Content-Length: 0
+    X-Trans-Id: txd57d75dcd51e4a79a886d-0055101ecford1
+    Date: Mon, 23 Mar 2015 14:10:25 GMT
+
