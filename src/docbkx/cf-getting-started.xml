@@ -73,9 +73,10 @@
                 <revdescription xmlns:wadl="http://wadl.dev.java.net/2009/02">
                     <itemizedlist>
                         <listitem>
-                            <para>Added information about CLIs to <link
+                            <para>Added information about CLIs tools to <link
                                     xlink:href="http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Tools_and_Applications_for_Cloud_Files-d1e286.html"
-                                    >Other tools and applications for Cloud Files</link> along with other improvements to the text of this Getting Started Guide.</para>
+                                    >Other tools and applications for Cloud Files</link> along with
+                                other improvements to the text of this Getting Started Guide.</para>
                         </listitem>
                     </itemizedlist>
                 </revdescription>
