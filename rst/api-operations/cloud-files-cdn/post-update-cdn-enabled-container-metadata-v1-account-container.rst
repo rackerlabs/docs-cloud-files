@@ -1,0 +1,108 @@
+
+.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+
+=============================================================================
+Update Cdn-Enabled Container Metadata -  Rackspace Cloud Files™ Developer Guide
+=============================================================================
+
+Update Cdn-Enabled Container Metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Request <post-update-cdn-enabled-container-metadata-v1-account-container.html#request>`__
+`Response <post-update-cdn-enabled-container-metadata-v1-account-container.html#response>`__
+
+.. code::
+
+    POST /v1/{account}/{container}
+
+Updates the CDN-enabled container's metadata.
+
+A ``POST`` operation against a CDN-enabled container adjusts the following metadata:
+
+
+
+* ``X-Log-Retention``
+* ``X-Cdn-Enabled``
+* ``X-Ttl``
+
+
+
+
+A status code of 204 (No Content) indicates success. Status code 404 (Not Found) is returned if the requested container is not found.
+
+This operation does not require a request body and does not return a response body.
+
+
+
+This table shows the possible response codes for this operation:
+
+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|204                       |No Content               |The server fulfilled the |
+|                          |                         |request but does not     |
+|                          |                         |need to return a body.   |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |The requested resource   |
+|                          |                         |was not found.           |
++--------------------------+-------------------------+-------------------------+
+
+
+Request
+^^^^^^^^^^^^^^^^^
+
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |xsd:string               |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |xsd:string               |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
+
+
+
+**Example Update CDN-enabled container metadata: HTTP request**
+
+
+.. code::
+
+    POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
+    Host: cdn.clouddrive.com
+    X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+    X-Ttl: 86400
+    X-Cdn-Enabled: True
+    X-Log-Retention: True
+
+
+Response
+^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+**Example Update CDN-enabled container metadata: HTTP response**
+
+
+.. code::
+
+    HTTP/1.1 204 No Content
+    X-Cdn-Ssl-Uri: https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1.ssl.cf0.rackcdn.com
+    X-Ttl: 259200
+    X-Cdn-Uri: http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1.r49.cf0.rackcdn.com
+    X-Cdn-Enabled: True
+    X-Log-Retention: False
+    X-Cdn-Streaming-Uri: http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1.r49.stream.cf0.rackcdn.com
+    X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
+    Content-Length: 0
+
