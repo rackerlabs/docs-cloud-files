@@ -22,7 +22,7 @@
         <resource id="versions" path="v1">
             <resource id="account" path="{account}">
                 <param name="account" style="template"
-                    type="xsd:string">
+                    type="xsd:string" required="true" >
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"
                         xml:lang="EN">
                         <para>Your unique account identifier.</para>
@@ -31,7 +31,7 @@
                 <method href="#listCDNcontainers"/>
                 <resource id="container" path="{container}">
                     <param name="container" style="template"
-                        type="xsd:string">
+                        type="xsd:string" required="true">
                         <wadl:doc
                             xmlns="http://docbook.org/ns/docbook"
                             xml:lang="EN">
@@ -44,7 +44,7 @@
                     <method href="#updateCDNcontainermeta"/>
                     <resource id="object" path="{object}">
                         <param name="object" style="template"
-                            type="xsd:string">
+                            type="xsd:string" required="true">
                             <wadl:doc
                                 xmlns="http://docbook.org/ns/docbook"
                                 xml:lang="EN">
@@ -75,7 +75,7 @@
                     <code>cloudFilesCDN</code> endpoints for an
                 account retrieve a list of CDN-enabled containers. No
                 private containers appear in the list. (For the CDN
-                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">"Service access endpoints"</link>.)</para>
+                endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">Service access endpoints</link>.)</para>
             <!--            <remark>03/2014 cyr removed based on disqus comment </remark>
                 <para>Passing the query parameter
                 <code>?enabled_only=true</code> suppresses any
@@ -84,8 +84,7 @@
                 to return only the list of containers that are
                 CDN-enabled.</para>
 -->
-            <para>This operation does not require a request body. A
-                list of CDN-enabled containers is returned in the
+            <para>A list of CDN-enabled containers is returned in the
                 response body, one container name per line.</para>
             <para>An HTTP response status code of 200 through 299
                 indicates success. A 200 (OK) code is returned if
@@ -146,6 +145,9 @@
                         href="../wadl/samples/cf-getCDNAccountContainers_request.txt"
                     />
                 </wadl:doc>
+            </representation>
+            <representation mediaType="text/xml"
+                element="files:Files">                
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="List CDN-enabled containers: HTTP request with a query parameter ?format=json​">
@@ -167,7 +169,9 @@
                     <xsdxt:code
                         href="../wadl/samples/cf-getCDNAccountContainers_response.txt"
                     />
-                </wadl:doc>
+                </wadl:doc>                
+            </representation>
+            <representation mediaType="text/xml" element="files:Files">                
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
                     title="List CDN-enabled containers: HTTP response using a query parameter ?format=json​">
@@ -176,6 +180,12 @@
                     />
                 </wadl:doc>
             </representation>
+            
+        </response>
+        <response status="204" xmlns="http://wadl.dev.java.net/2009/02">
+            
+            <doc title="No Content" xml:lang="EN">The request
+                succeeded. The server fulfilled the request but does not need to return a body.</doc>			            
         </response>
  <!--       <remark>Hide this message because it makes processing generate the "This method returns no response". 204 is addressed in the method description above. </remark>
      <response status="204">

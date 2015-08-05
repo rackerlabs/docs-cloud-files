@@ -1,0 +1,126 @@
+
+.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+
+List Cdn-Enabled Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    GET /v1/{account}
+
+Lists CDN-enabled containers sorted by name.
+
+``GET`` operations against the ``cloudFilesCDN`` endpoints for an account retrieve a list of CDN-enabled containers. No private containers appear in the list. (For the CDN endpoints, see `"Service access endpoints" <http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html>`__.)
+
+This operation does not require a request body. A list of CDN-enabled containers is returned in the response body, one container name per line.
+
+An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers, and a 204 (No Content) code is returned if there are no containers.
+
+To view the CDN container details, see `List metadata for CDN-enabled container <http://docs.rackspace.com/files/api/v1/cf-devguide/content/HEAD_retrieveCDNcontainermeta_v1__account___container__CDN_Container_Services-d1e2632.html>`__.
+
+
+
+This table shows the possible response codes for this operation:
+
+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|200                       |OK                       |The request succeeded.   |
+|                          |                         |The information returned |
+|                          |                         |with the response is     |
+|                          |                         |dependent on the method  |
+|                          |                         |used in the request.     |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |The requested resource   |
+|                          |                         |was not found.           |
++--------------------------+-------------------------+-------------------------+
+
+
+Request
+""""""""""""""""
+
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |xsd:string               |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+
+
+
+This table shows the query parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|limit                     |xsd:int *(Optional)*     |For an integer value n,  |
+|                          |                         |limits the number of     |
+|                          |                         |results to n values.     |
++--------------------------+-------------------------+-------------------------+
+|marker                    |xsd:string *(Optional)*  |Given a string value x,  |
+|                          |                         |returns container names  |
+|                          |                         |greater in value than    |
+|                          |                         |the specified marker.    |
+|                          |                         |Only strings using UTF-8 |
+|                          |                         |encoding are valid.      |
+|                          |                         |Using ``marker``         |
+|                          |                         |provides a mechanism for |
+|                          |                         |iterating through the    |
+|                          |                         |entire list of           |
+|                          |                         |containers.              |
++--------------------------+-------------------------+-------------------------+
+|end_marker                |xsd:string *(Optional)*  |Given a string value x,  |
+|                          |                         |returns container names  |
+|                          |                         |lesser in value than the |
+|                          |                         |specified end marker.    |
+|                          |                         |Only strings using UTF-8 |
+|                          |                         |encoding are valid.      |
++--------------------------+-------------------------+-------------------------+
+|format                    |xsd:string *(Optional)*  |Value of the serialized  |
+|                          |                         |response format, either  |
+|                          |                         |JSON or XML.             |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+This operation does not accept a request body
+
+
+
+
+**Example List CDN-enabled containers: HTTP request**
+
+
+.. code::
+
+    GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123 HTTP/1.1
+    Host: cdn.clouddrive.com
+    X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+
+
+Response
+""""""""""""""""
+
+
+This operation does not accept a response body
+
+
+
+
+**Example List CDN-enabled containers: HTTP response**
+
+
+.. code::
+
+    HTTP/1.1 200 OK
+    Date: Thu, 08 Sep 2011 14:35:45 GMT
+    Transfer-Encoding: chunked
+    Content-Type: text/plain
+                       
+    images
+    movies
+
