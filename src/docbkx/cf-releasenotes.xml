@@ -57,11 +57,7 @@
 						</listitem>
 					</itemizedlist>
 				</revdescription>
-			</revision>
-		</revhistory>
-		<revhistory xmlns:svg="http://www.w3.org/2000/svg"
-			xmlns:m="http://www.w3.org/the key 1998/Math/MathML"
-			xmlns:html="http://www.w3.org/1999/xhtml">
+			</revision>		
 			<revision xmlns:m="http://www.w3.org/1998/Math/MathML"
 				xmlns:wadl="http://wadl.dev.java.net/2009/02">
 				<date>2015-03-04</date>
