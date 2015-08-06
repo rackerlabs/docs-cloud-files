@@ -315,12 +315,13 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
-            <doc xml:lang="EN" title="OK">The request has succeeded.
+ 
+        <response status="200">
+            <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                xml:lang="EN" title="OK">The request has succeeded.
                 The information returned with the response is
                 dependent on the method used in the
-                request.</doc>
-            <representation mediaType="application/json">
+                request.</wadl:doc>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0).
@@ -358,7 +359,7 @@
                         Rackspace CDN partner does not provide that
                         feature.)</para></wadl:doc>
             </param> 
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02"
+            <!--            <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Ttl" style="header" required="true"
                 type="xsd:int">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -408,7 +409,6 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
                 </p></doc>
             </param>
-        </representation>
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"
@@ -431,7 +431,7 @@
                 succeeded. The server fulfilled the request but does
                 not need to return a body.</wadl:doc>
             <representation mediaType="application/json"/>
-        </response> &only404Fault; </method>
+        </response> &only404Fault; </method>       
 
     <method name="POST" id="updateCDNcontainermeta">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
