@@ -274,8 +274,8 @@
                     Files CDN endpoint with the container name to
                     return the CDN URI in the <code>X-Cdn-Uri</code>
                     header. You can use a cURL request similar to the
-                    following example:</para>
-                <programlisting>curl -I -H 'x-auth-token: yourAuthToken' cloudFilesCDN:yourPublicURL/yourContainerName</programlisting></note>
+                    following example: <code>curl -I -H 'x-auth-token: yourAuthToken' cloudFilesCDN:yourPublicURL/yourContainerName</code></para>
+                </note>
         </wadl:doc>
         <request>
             <param xmlns="http://wadl.dev.java.net/2009/02"
@@ -315,12 +315,12 @@
                 </wadl:doc>
             </representation>
         </request>
-        <response status="200">
-            <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                xml:lang="EN" title="OK">The request has succeeded.
+        <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
+            <doc xml:lang="EN" title="OK">The request has succeeded.
                 The information returned with the response is
                 dependent on the method used in the
-                request.</wadl:doc>
+                request.</doc>
+            <representation mediaType="application/json">
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">If the operation succeeds, this value is zero (0).
@@ -408,6 +408,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">A unique transaction identifier for this request.
                 </p></doc>
             </param>
+        </representation>
             <representation mediaType="text/xml">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"

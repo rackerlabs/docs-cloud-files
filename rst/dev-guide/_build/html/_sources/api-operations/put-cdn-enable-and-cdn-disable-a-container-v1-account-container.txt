@@ -32,9 +32,9 @@ This operation does not require a request body and does not return a response bo
 To remove the container from the CDN, change the ``X-Cdn-Enabled`` header to ``False``. However, note that objects remain on the CDN edge server and are served to the public until their TTL expires.
 
 .. note::
-   The CDN URI is unique per container. After the container is CDN-enabled, you can make a ``HEAD`` request to the Cloud Files CDN endpoint with the container name to return the CDN URI in the ``X-Cdn-Uri`` header. You can use a cURL request similar to the following example:
+   The CDN URI is unique per container. After the container is CDN-enabled, you can make a ``HEAD`` request to the Cloud Files CDN endpoint with the container name to return the CDN URI in the ``X-Cdn-Uri`` header. You can use a cURL request similar to the following example: ``curl -I -H 'x-auth-token: yourAuthToken' cloudFilesCDN:yourPublicURL/yourContainerName``
    
-    curl -I -H 'x-auth-token: yourAuthToken' cloudFilesCDN:yourPublicURL/yourContainerName
+   
 
 
 
@@ -49,40 +49,7 @@ This table shows the possible response codes for this operation:
 |                          |                         |information returned     |
 |                          |                         |with the response is     |
 |                          |                         |dependent on the method  |
-|                          |                         |used in the request.If   |
-|                          |                         |the operation succeeds,  |
-|                          |                         |this value is zero (0).  |
-|                          |                         |If the operation fails,  |
-|                          |                         |this value is the length |
-|                          |                         |of the error text in the |
-|                          |                         |response body.The MIME   |
-|                          |                         |type of the list of      |
-|                          |                         |names. If the operation  |
-|                          |                         |fails, this value is the |
-|                          |                         |MIME type of the error   |
-|                          |                         |text in the response     |
-|                          |                         |body.The transaction     |
-|                          |                         |date and time.The URI    |
-|                          |                         |for video streaming that |
-|                          |                         |uses HTTP Live Streaming |
-|                          |                         |from Apple. The URI for  |
-|                          |                         |downloading the object   |
-|                          |                         |over HTTPS, using SSL.   |
-|                          |                         |(The user cannot have    |
-|                          |                         |custom SSL certificates  |
-|                          |                         |because the Rackspace    |
-|                          |                         |CDN partner does not     |
-|                          |                         |provide that feature.)   |
-|                          |                         |The URI for video        |
-|                          |                         |streaming that uses HTTP |
-|                          |                         |Dynamic Streaming from   |
-|                          |                         |Adobe. Indicates the URI |
-|                          |                         |that you can combine     |
-|                          |                         |with object names to     |
-|                          |                         |serve objects through    |
-|                          |                         |the CDN. A unique        |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request.        |
+|                          |                         |used in the request.     |
 +--------------------------+-------------------------+-------------------------+
 |202                       |Accepted                 |The request has been     |
 |                          |                         |accepted for processing. |
