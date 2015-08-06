@@ -278,24 +278,24 @@
                 </note>
         </wadl:doc>
         <request>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
+            <param 
                 name="X-Ttl" style="header" required="false"
                 type="xsd:int">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Specifies the Time To Live
+                    xml:lang="EN">Specifies the Time To Live
                         (TTL) in seconds for an object to be cached in
                         the CDN. The default value is 259200 seconds,
                         or 72 hours. The minimum TTL is 15 minutes (or
                         900 seconds), and the maximum is 1 year
-                        (31536000 seconds).</para></wadl:doc>
+                        (31536000 seconds).</wadl:doc>
             </param>
-            <param xmlns="http://wadl.dev.java.net/2009/02"
+            <param 
                 name="X-Cdn-Enabled" style="header" required="false"
                 type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
-                    xml:lang="EN"><para>Indicates if a container is
+                    xml:lang="EN">Indicates if a container is
                         CDN-enabled. Valid values are True and
-                        False.</para></wadl:doc>
+                        False.</wadl:doc>
             </param>
             <representation mediaType="text/xml" element="files:Files">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
