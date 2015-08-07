@@ -47,50 +47,7 @@ This table shows the possible response codes for this operation:
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
 |201                       |Created                  |The request has been     |
-|                          |                         |fulfilled.If the         |
-|                          |                         |operation succeeds, this |
-|                          |                         |value is zero (0). If    |
-|                          |                         |the operation fails,     |
-|                          |                         |this value is the length |
-|                          |                         |of the error text in the |
-|                          |                         |response body. For       |
-|                          |                         |objects smaller than 5   |
-|                          |                         |GB, this value is the    |
-|                          |                         |MD5 checksum of the      |
-|                          |                         |uploaded object content. |
-|                          |                         |The value is not quoted. |
-|                          |                         |If you supplied an ETag  |
-|                          |                         |request header and the   |
-|                          |                         |operation was            |
-|                          |                         |successful, the values   |
-|                          |                         |are the same. If you did |
-|                          |                         |not supply an ETag       |
-|                          |                         |request header, check    |
-|                          |                         |the ETag response header |
-|                          |                         |value against the object |
-|                          |                         |content you have just    |
-|                          |                         |uploaded. For static     |
-|                          |                         |large objects, this      |
-|                          |                         |value is the MD5         |
-|                          |                         |checksum of the          |
-|                          |                         |concatenated string of   |
-|                          |                         |MD5 checksums and ETags  |
-|                          |                         |for each of the segments |
-|                          |                         |in the manifest, and not |
-|                          |                         |the MD5 checksum of the  |
-|                          |                         |content that was         |
-|                          |                         |uploaded. Also the value |
-|                          |                         |is enclosed in double-   |
-|                          |                         |quotes. For dynamic      |
-|                          |                         |large objects, the value |
-|                          |                         |is the MD5 checksum of   |
-|                          |                         |the empty string. The    |
-|                          |                         |MIME type of the         |
-|                          |                         |object.A unique          |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request. The    |
-|                          |                         |transaction date and     |
-|                          |                         |time.                    |
+|                          |                         |fulfilled.               |
 +--------------------------+-------------------------+-------------------------+
 |202                       |Accepted                 |The request has been     |
 |                          |                         |accepted for processing. |

@@ -50,47 +50,7 @@ This table shows the possible response codes for this operation:
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
 |201                       |Created                  |The request has been     |
-|                          |                         |fulfilled.If the         |
-|                          |                         |operation succeeds, this |
-|                          |                         |value is zero (0). If    |
-|                          |                         |the operation fails,     |
-|                          |                         |this value is the length |
-|                          |                         |of the error text in the |
-|                          |                         |response body. The MD5   |
-|                          |                         |checksum of the uploaded |
-|                          |                         |object content. The      |
-|                          |                         |value is not quoted. The |
-|                          |                         |MIME type of the         |
-|                          |                         |object.A unique          |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request. The    |
-|                          |                         |transaction date and     |
-|                          |                         |time. For a copied       |
-|                          |                         |object, shows the last   |
-|                          |                         |modified date and time   |
-|                          |                         |for the container and    |
-|                          |                         |object name from which   |
-|                          |                         |the new object was       |
-|                          |                         |copied. For a copied     |
-|                          |                         |object, shows the        |
-|                          |                         |container and object     |
-|                          |                         |name from which the new  |
-|                          |                         |object was copied. The   |
-|                          |                         |value is in form         |
-|                          |                         |``container/object``.    |
-|                          |                         |The date and time that   |
-|                          |                         |the object was created   |
-|                          |                         |or the last time that    |
-|                          |                         |the metadata was         |
-|                          |                         |changed. The custom      |
-|                          |                         |object metadata item,    |
-|                          |                         |where ``name`` is the    |
-|                          |                         |name of the metadata     |
-|                          |                         |item. One ``X-Object-    |
-|                          |                         |Meta-name`` response     |
-|                          |                         |header appears for each  |
-|                          |                         |metadata item (for each  |
-|                          |                         |``name``).               |
+|                          |                         |fulfilled.               |
 +--------------------------+-------------------------+-------------------------+
 |404                       |Not Found                |The requested resource   |
 |                          |                         |was not found.           |

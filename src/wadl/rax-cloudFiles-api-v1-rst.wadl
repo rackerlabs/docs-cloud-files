@@ -1497,6 +1497,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="200">
             <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
+            <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="Content-Length"
                 style="header" required="true" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the object content in the response body, in bytes.
@@ -1567,7 +1568,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 style="header" required="true" type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>    
-            </param>          
+            </param>
+            </representation> 
             <representation mediaType="text/xml">
                 <doc title="Get object data response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectData_response.txt"/>
@@ -1786,6 +1788,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
+ <!--          <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -1822,6 +1825,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
             </param>
+           </representation>  -->
             <representation mediaType="text/xml">
                 <doc title="Create or update object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
@@ -2025,6 +2029,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
+<!--            <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -2080,6 +2085,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
+            </representation>  --> 
             <representation mediaType="text/xml">
                 <doc title="Copy object using COPY: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_response.txt"/>
@@ -2148,6 +2154,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="200">
             <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
+  <!--          <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Timestamp" style="header"
                 required="true" type="xsd:string">
@@ -2231,6 +2238,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
+            </representation> --> 
             <representation mediaType="application/json">
                 <doc title="Get object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
@@ -2361,6 +2369,7 @@ X-Object-Meta-Cost: 30</programlisting>
         </request>
         <response status="202"> 
             <doc title="Accepted">The request was accepted for processing.</doc>
+  <!--         <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -2384,7 +2393,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
-            </param>
+            </param></representation>  -->
             <representation mediaType="text/xml">
                 <doc title="Update object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
@@ -2446,6 +2455,7 @@ X-Object-Meta-Cost: 30</programlisting>
         </request>
         <response status="204">
             <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
+<!--            <representation>               
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -2471,6 +2481,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
+            </representation> -->
             <representation mediaType="text/xml">
                 <doc title="Delete object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>

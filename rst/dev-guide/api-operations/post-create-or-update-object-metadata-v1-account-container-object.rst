@@ -43,15 +43,7 @@ This table shows the possible response codes for this operation:
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
 |202                       |Accepted                 |The request was accepted |
-|                          |                         |for processing.The       |
-|                          |                         |length of the object     |
-|                          |                         |content in the response  |
-|                          |                         |body, in bytes. The MIME |
-|                          |                         |type of the object.A     |
-|                          |                         |unique transaction       |
-|                          |                         |identifier for this      |
-|                          |                         |request. The transaction |
-|                          |                         |date and time.           |
+|                          |                         |for processing.          |
 +--------------------------+-------------------------+-------------------------+
 |404                       |Not Found                |The requested resource   |
 |                          |                         |was not found.           |
