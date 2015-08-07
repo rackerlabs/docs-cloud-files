@@ -34,49 +34,7 @@ This table shows the possible response codes for this operation:
 |204                       |No Content               |The request succeeded.   |
 |                          |                         |The server fulfilled the |
 |                          |                         |request but does not     |
-|                          |                         |need to return a         |
-|                          |                         |body.The total number of |
-|                          |                         |objects that are stored  |
-|                          |                         |in Cloud Files for the   |
-|                          |                         |account.The total number |
-|                          |                         |of bytes that are stored |
-|                          |                         |in Cloud Files for the   |
-|                          |                         |account.The total number |
-|                          |                         |of containers that are   |
-|                          |                         |stored in the Cloud      |
-|                          |                         |Files for the account.If |
-|                          |                         |the operation succeeds,  |
-|                          |                         |this value is zero (0).  |
-|                          |                         |If the operation fails,  |
-|                          |                         |this value is the length |
-|                          |                         |of the error text in the |
-|                          |                         |response body.If the     |
-|                          |                         |operation fails, this    |
-|                          |                         |value is the MIME type   |
-|                          |                         |of the error text in the |
-|                          |                         |response body.A unique   |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request.The     |
-|                          |                         |transaction date and     |
-|                          |                         |time.The type of ranges  |
-|                          |                         |accepted. The custom     |
-|                          |                         |account metadata item,   |
-|                          |                         |where``name`` is the     |
-|                          |                         |name of the metadata     |
-|                          |                         |item. One ``X-Account-   |
-|                          |                         |Meta-name`` response     |
-|                          |                         |header appears for each  |
-|                          |                         |metadata item (for       |
-|                          |                         |each``name``).The secret |
-|                          |                         |key value for temporary  |
-|                          |                         |URLs. If not set, this   |
-|                          |                         |header is not returned   |
-|                          |                         |by this operation.A      |
-|                          |                         |second secret key value  |
-|                          |                         |for temporary URLs. If   |
-|                          |                         |not set, this header is  |
-|                          |                         |not returned by this     |
-|                          |                         |operation.               |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |401                       |Unauthorized             |Authentication has       |
 |                          |                         |failed.                  |

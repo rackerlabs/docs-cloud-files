@@ -31,21 +31,7 @@ This table shows the possible response codes for this operation:
 |204                       |No Content               |The request succeeded.   |
 |                          |                         |The server fulfilled the |
 |                          |                         |request but does not     |
-|                          |                         |need to return a body.If |
-|                          |                         |the operation succeeds,  |
-|                          |                         |this value is zero (0).  |
-|                          |                         |If the operation fails,  |
-|                          |                         |this value is the length |
-|                          |                         |of the error text in the |
-|                          |                         |response body.If the     |
-|                          |                         |operation fails, this    |
-|                          |                         |value is the MIME type   |
-|                          |                         |of the error text in the |
-|                          |                         |response body.A unique   |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request.The     |
-|                          |                         |transaction date and     |
-|                          |                         |time.                    |
+|                          |                         |need to return a body.   |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request could not be |
 |                          |                         |understood by the server |

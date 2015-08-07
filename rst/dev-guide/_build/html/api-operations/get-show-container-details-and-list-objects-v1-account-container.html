@@ -134,37 +134,7 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
 The information returned
 with the response is
 dependent on the method
-used in the request.The
-length of the response
-body that contains the
-list of names. If the
-operation fails, this
-value is the length of
-the error text in the
-response body.The number
-of objects.The type of
-ranges that the object
-accepts.The count of
-bytes used in total.The
-custom container
-metadata item,
-where``name`` is the
-name of the metadata
-item. One <code class="docutils literal"><span class="pre">X-Container-</span>
-<span class="pre">Meta-name</span></code> response
-header appears for each
-metadata item (for
-each``name``).The MIME
-type of the list of
-names. If the operation
-fails, this value is the
-MIME type of the error
-text in the response
-body.A unique
-transaction identifier
-for this request.The
-transaction date and
-time.</td>
+used in the request.</td>
 </tr>
 <tr class="row-odd"><td>204</td>
 <td>No Content</td>
@@ -309,6 +279,49 @@ X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the body parameters for the response:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>String <em>(Required)</em></td>
+<td>Name of the object.</td>
+</tr>
+<tr class="row-odd"><td>bytes</td>
+<td>Int <em>(Required)</em></td>
+<td>Number of bytes in the
+container.</td>
+</tr>
+<tr class="row-even"><td>content-type</td>
+<td>String <em>(Required)</em></td>
+<td>The content type of the
+container.</td>
+</tr>
+<tr class="row-odd"><td>last-modified</td>
+<td>String <em>(Required)</em></td>
+<td>An internal variable
+that indicates the last
+time an entity (account,
+container, or object)
+was modified. <code class="docutils literal"><span class="pre">last-</span>
+<span class="pre">modified</span></code> has
+resolution up to one
+second. For <code class="docutils literal"><span class="pre">last-</span>
+<span class="pre">modified</span></code>, the time
+zone is UTC.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Example Show container details and list objects: XML response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 200 OK
 Content-Length: 500

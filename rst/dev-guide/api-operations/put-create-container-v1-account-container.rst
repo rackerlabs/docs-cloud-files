@@ -35,23 +35,7 @@ This table shows the possible response codes for this operation:
 |                          |                         |created. For 202         |
 |                          |                         |Accepted, the request    |
 |                          |                         |has been accepted for    |
-|                          |                         |processing.The length of |
-|                          |                         |the response body that   |
-|                          |                         |contains the list of     |
-|                          |                         |names. If the operation  |
-|                          |                         |fails, this value is the |
-|                          |                         |length of the error text |
-|                          |                         |in the response body.The |
-|                          |                         |MIME type of the list of |
-|                          |                         |names. If the operation  |
-|                          |                         |fails, this value is the |
-|                          |                         |MIME type of the error   |
-|                          |                         |text in the response     |
-|                          |                         |body.A unique            |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request.The     |
-|                          |                         |transaction date and     |
-|                          |                         |time.                    |
+|                          |                         |processing.              |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Bad Request              |The request could not be |
 |                          |                         |understood by the server |

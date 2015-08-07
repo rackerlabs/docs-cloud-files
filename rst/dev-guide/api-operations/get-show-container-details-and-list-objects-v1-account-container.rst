@@ -60,37 +60,7 @@ This table shows the possible response codes for this operation:
 |                          |                         |The information returned |
 |                          |                         |with the response is     |
 |                          |                         |dependent on the method  |
-|                          |                         |used in the request.The  |
-|                          |                         |length of the response   |
-|                          |                         |body that contains the   |
-|                          |                         |list of names. If the    |
-|                          |                         |operation fails, this    |
-|                          |                         |value is the length of   |
-|                          |                         |the error text in the    |
-|                          |                         |response body.The number |
-|                          |                         |of objects.The type of   |
-|                          |                         |ranges that the object   |
-|                          |                         |accepts.The count of     |
-|                          |                         |bytes used in total.The  |
-|                          |                         |custom container         |
-|                          |                         |metadata item,           |
-|                          |                         |where``name`` is the     |
-|                          |                         |name of the metadata     |
-|                          |                         |item. One ``X-Container- |
-|                          |                         |Meta-name`` response     |
-|                          |                         |header appears for each  |
-|                          |                         |metadata item (for       |
-|                          |                         |each``name``).The MIME   |
-|                          |                         |type of the list of      |
-|                          |                         |names. If the operation  |
-|                          |                         |fails, this value is the |
-|                          |                         |MIME type of the error   |
-|                          |                         |text in the response     |
-|                          |                         |body.A unique            |
-|                          |                         |transaction identifier   |
-|                          |                         |for this request.The     |
-|                          |                         |transaction date and     |
-|                          |                         |time.                    |
+|                          |                         |used in the request.     |
 +--------------------------+-------------------------+-------------------------+
 |204                       |No Content               |The request succeeded.   |
 |                          |                         |The server fulfilled the |
@@ -208,6 +178,32 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the body parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|name                      |String *(Required)*      |Name of the object.      |
++--------------------------+-------------------------+-------------------------+
+|bytes                     |Int *(Required)*         |Number of bytes in the   |
+|                          |                         |container.               |
++--------------------------+-------------------------+-------------------------+
+|content-type              |String *(Required)*      |The content type of the  |
+|                          |                         |container.               |
++--------------------------+-------------------------+-------------------------+
+|last-modified             |String *(Required)*      |An internal variable     |
+|                          |                         |that indicates the last  |
+|                          |                         |time an entity (account, |
+|                          |                         |container, or object)    |
+|                          |                         |was modified. ``last-    |
+|                          |                         |modified`` has           |
+|                          |                         |resolution up to one     |
+|                          |                         |second. For ``last-      |
+|                          |                         |modified``, the time     |
+|                          |                         |zone is UTC.             |
++--------------------------+-------------------------+-------------------------+
 
 
 
