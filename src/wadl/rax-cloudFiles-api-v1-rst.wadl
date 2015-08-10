@@ -225,7 +225,7 @@
         <response status="200" xmlns="http://wadl.dev.java.net/2009/02">
             <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request.</doc>
             <representation mediaType="application/json">
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02" 
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
                     list of names. If the operation fails, this value is the
@@ -292,7 +292,7 @@
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
-            </param> -->
+            </param>
             </representation>   
             <representation mediaType="application/xml" xml:lang="EN">                
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -752,7 +752,7 @@
         </request>
         <response status="200">
             <doc title="OK">The request succeeded. The information returned with the response is dependent on the method used in the request.</doc>
-<!--            <representation>
+           <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -806,7 +806,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
-            </representation>   -->
+            </representation>  
 <!--
             <representation mediaType="text/xml" xml:lang="EN">
                 <doc title="Show container details and list objects response">                 
@@ -889,7 +889,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets an ACL that grants write access. This header can contain a comma-delimited list of users that can write to the container (allows PUT, POST, COPY, and DELETE methods for all objects in the container).
                 </p></doc>
             </param>
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+           <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
@@ -898,7 +898,7 @@
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName. 
                 </p></doc>
-            </param> -->
+            </param>
             <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
@@ -917,7 +917,7 @@
         </request>
         <response status="201 202"> 
             <doc title="Created or Accepted">The request has been fulfilled. For 201 Created, the new container has been created. For 202 Accepted, the request has been accepted for processing.</doc>          
-<!--            <representation>
+            <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -943,7 +943,7 @@
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param>
-            </representation>   -->
+            </representation>
             <representation mediaType="application/xml" element="files:Files" >
                 <doc title="Create container: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainer_response.txt"/>
@@ -986,7 +986,7 @@
         <response status="204">
             <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
             
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02" 
+           <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
                     list of names. If the operation fails, this value is the
@@ -1010,7 +1010,7 @@
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
-            </param> -->
+            </param>
             <representation mediaType="text/xml" element="files:Files" > 
                 <doc title="Delete container: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteContainer_response.txt"/>                   
@@ -1089,7 +1089,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Removes the metadata item named metadata. For example, X-Remove-Container-Read removes the X-Container-Read metadata item.
                 </p></doc>
             </param>
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02"
+            <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Sync-To" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
@@ -1100,7 +1100,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
-            </param>  -->
+            </param>  
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Versions-Location" style="header" required="false"
                 type="xsd:string">
@@ -1133,7 +1133,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="204">
             <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
- <!--           <param xmlns="http://wadl.dev.java.net/2009/02" 
+            <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
                     list of names. If the operation fails, this value is the
@@ -1157,7 +1157,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
-            </param> -->
+            </param>
             <representation mediaType="text/xml">
                 <doc title="Create or update container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createContainerMetadata_response.txt"/>
@@ -1199,7 +1199,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="204">
             <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02"
+            <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Container-Object-Count" style="header"
                 required="true" type="xsd:int">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The
@@ -1266,8 +1266,8 @@ X-Container-Meta-Extra: Data</programlisting>
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The type of ranges accepted.   
                 </p></doc>
-            </param> -->
-<!--            <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
+            </param>
+           <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Container-Sync-Key"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the secret key for container synchronization. For container synchronization, you must set <code>X-Container-Sync-Key</code> on the source container and the destination container.
                 </p></doc>
@@ -1276,12 +1276,12 @@ X-Container-Meta-Extra: Data</programlisting>
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Sets the destination for container synchronization. For container synchronization, the <code>X-Container-Sync-To</code> value must follow the form //realmName/clusterName/accountName/containerName.
                 </p></doc> 
-            </param>   -->
- <!--           <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
+            </param>  
+           <param xmlns="http://wadl.dev.java.net/2009/02" name="X-Versions-Location"
                 style="header" required="false" type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Enables versioning on this container. The value is the name of another container. You must UTF-8-encode and then URL-encode the name before you include it in the header. To disable versioning, set the header to an empty string.
                 </p></doc>
-            </param> -->
+            </param> 
             <representation mediaType="text/xml">
                 <doc title="Get container metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getContainerMetadata_response.txt"/>
@@ -1788,7 +1788,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
- <!--          <representation>
+          <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -1825,7 +1825,7 @@ X-Container-Meta-Extra: Data</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
             </param>
-           </representation>  -->
+           </representation>
             <representation mediaType="text/xml">
                 <doc title="Create or update object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-createObject_response.txt"/>
@@ -2029,7 +2029,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="201">
             <doc title="Created">The request has been fulfilled.</doc>
-<!--            <representation>
+            <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -2085,7 +2085,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
-            </representation>  --> 
+            </representation>   
             <representation mediaType="text/xml">
                 <doc title="Copy object using COPY: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-copyObjectCOPY_response.txt"/>
@@ -2154,7 +2154,7 @@ X-Container-Meta-Extra: Data</programlisting>
         </request>
         <response status="200">
             <doc title="OK">The request has succeeded. The information returned with the response is dependent on the method used in the request.</doc>
-  <!--          <representation>
+           <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="X-Timestamp" style="header"
                 required="true" type="xsd:string">
@@ -2238,7 +2238,7 @@ X-Container-Meta-Extra: Data</programlisting>
                     One <code>X-Object-Meta-name</code> response header appears for each metadata item (for each <code>name</code>).
                 </p></doc>
             </param>
-            </representation> --> 
+            </representation> 
             <representation mediaType="application/json">
                 <doc title="Get object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-getObjectMetadata_response.txt"/>
@@ -2369,7 +2369,7 @@ X-Object-Meta-Cost: 30</programlisting>
         </request>
         <response status="202"> 
             <doc title="Accepted">The request was accepted for processing.</doc>
-  <!--         <representation>
+           <representation>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
                 type="xsd:string">
@@ -2393,7 +2393,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 type="xsd:datetime">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time. 
                 </p></doc>
-            </param></representation>  -->
+            </param></representation>  
             <representation mediaType="text/xml">
                 <doc title="Update object metadata: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-updateObjectMetadata_response.txt"/>
@@ -2455,7 +2455,7 @@ X-Object-Meta-Cost: 30</programlisting>
         </request>
         <response status="204">
             <doc title="No Content">The request succeeded. The server fulfilled the request but does not need to return a body.</doc>
-<!--            <representation>               
+            <representation>               
             <param xmlns="http://wadl.dev.java.net/2009/02" 
                 name="Content-Length" style="header" required="true" type="xsd:string" path="/account/container/Content-Length">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The length of the response body that contains the
@@ -2481,7 +2481,7 @@ X-Object-Meta-Cost: 30</programlisting>
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">The transaction date and time.
                 </p></doc>
             </param> 
-            </representation> -->
+            </representation> 
             <representation mediaType="text/xml">
                 <doc title="Delete object: HTTP response">
                     <xsdxt:code href="../wadl/samples/cf-deleteObject_response.txt"/>
