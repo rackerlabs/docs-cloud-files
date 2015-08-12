@@ -41,6 +41,50 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|X-Remove-Container-Meta-  |String *(Required)*      |The metadata to be       |
+|name                      |                         |deleted. Replace         |
+|                          |                         |``name`` at the end of   |
+|                          |                         |the header with the name |
+|                          |                         |for your metadata.       |
++--------------------------+-------------------------+-------------------------+
+|X-Container-Read          |String *(Optional)*      |The access control list  |
+|                          |                         |(ACL) that grants read   |
+|                          |                         |access. If not set, this |
+|                          |                         |header is not returned   |
+|                          |                         |by this operation. This  |
+|                          |                         |header can contain a     |
+|                          |                         |comma-delimited list of  |
+|                          |                         |users that can read the  |
+|                          |                         |container (allows the    |
+|                          |                         |GET method for all       |
+|                          |                         |objects in the           |
+|                          |                         |container).              |
++--------------------------+-------------------------+-------------------------+
+|X-Container-Write         |String *(Optional)*      |The ACL that grants      |
+|                          |                         |write access. If not     |
+|                          |                         |set, this header is not  |
+|                          |                         |returned by this         |
+|                          |                         |operation. This header   |
+|                          |                         |can contain a comma-     |
+|                          |                         |delimited list of users  |
+|                          |                         |that can write to the    |
+|                          |                         |container (allows PUT,   |
+|                          |                         |POST, COPY, and DELETE   |
+|                          |                         |methods for all objects  |
+|                          |                         |in the container).       |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -75,6 +119,37 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |The length of the        |
+|                          |                         |response body that       |
+|                          |                         |contains the list of     |
+|                          |                         |names. If the operation  |
+|                          |                         |fails, this value is the |
+|                          |                         |length of the error text |
+|                          |                         |in the response body.    |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

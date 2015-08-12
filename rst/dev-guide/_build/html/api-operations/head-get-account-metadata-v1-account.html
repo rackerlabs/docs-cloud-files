@@ -133,6 +133,26 @@ failed.</td>
 </table>
 <div class="section" id="request">
 <h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the request:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Auth-Token</td>
+<td>String <em>(Required)</em></td>
+<td>Authentication token.</td>
+</tr>
+</tbody>
+</table>
 <p>This table shows the URI parameters for the request:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -164,6 +184,106 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the response:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Account-Object-Count</td>
+<td>Int <em>(Required)</em></td>
+<td>The total number of
+objects that are stored
+in Cloud Files for the
+account.</td>
+</tr>
+<tr class="row-odd"><td>X-Account-Bytes-Used</td>
+<td>Int <em>(Required)</em></td>
+<td>The total number of
+bytes that are stored in
+Cloud Files for the
+account.</td>
+</tr>
+<tr class="row-even"><td>X-Account-Container-Count</td>
+<td>Int <em>(Required)</em></td>
+<td>The total number of
+containers that are
+stored in the Cloud
+Files for the account.</td>
+</tr>
+<tr class="row-odd"><td>Content-Length</td>
+<td>String <em>(Required)</em></td>
+<td>If the operation
+succeeds, this value is
+zero (0). If the
+operation fails, this
+value is the length of
+the error text in the
+response body.</td>
+</tr>
+<tr class="row-even"><td>Content-Type</td>
+<td>String <em>(Required)</em></td>
+<td>If the operation fails,
+this value is the MIME
+type of the error text
+in the response body.</td>
+</tr>
+<tr class="row-odd"><td>X-Trans-Id</td>
+<td>Uuid <em>(Required)</em></td>
+<td>A unique transaction
+identifier for this
+request.</td>
+</tr>
+<tr class="row-even"><td>Date</td>
+<td>Datetime <em>(Required)</em></td>
+<td>The transaction date and
+time.</td>
+</tr>
+<tr class="row-odd"><td>Accept-Ranges</td>
+<td>String <em>(Required)</em></td>
+<td>The type of ranges
+accepted.</td>
+</tr>
+<tr class="row-even"><td>X-Account-Meta-name</td>
+<td>String <em>(Optional)</em></td>
+<td>The custom account
+metadata item,
+where``name`` is the
+name of the metadata
+item. One <code class="docutils literal"><span class="pre">X-Account-</span>
+<span class="pre">Meta-name</span></code> response
+header appears for each
+metadata item (for
+each``name``).</td>
+</tr>
+<tr class="row-odd"><td>X-Account-Meta-Temp-URL-
+Key</td>
+<td>String <em>(Optional)</em></td>
+<td>The secret key value for
+temporary URLs. If not
+set, this header is not
+returned by this
+operation.</td>
+</tr>
+<tr class="row-even"><td>X-Account-Meta-Temp-URL-
+Key-2</td>
+<td>String <em>(Optional)</em></td>
+<td>A second secret key
+value for temporary
+URLs. If not set, this
+header is not returned
+by this operation.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Example Get account metadata: HTTP response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 204 No Content
 Content-Length: 0
@@ -240,15 +360,15 @@ Date: Thu, 09 Jan 2014 21:02:10 GMT
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="copy-copy-object-v1-account-container-object.html">Copy object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete cdn-enabled object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete CDN-enabled object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-container-v1-account-container.html">Delete container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-object-v1-account-container-object.html">Delete object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-get-object-content-and-metadata-v1-account-container-object.html">Get object content and metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List cdn-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-account-details-and-list-containers-v1-account.html">Show account details and list containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-container-details-and-list-objects-v1-account-container.html">Show container details and list objects</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Get account metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for cdn-enabled container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for CDN-enabled container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-container-metadata-v1-account-container.html">Show container metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-object-metadata-v1-account-container-object.html">Show object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-account-metadata-v1-account.html">Create or update account metadata</a></li>
@@ -256,8 +376,8 @@ Date: Thu, 09 Jan 2014 21:02:10 GMT
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-object-metadata-v1-account-container-object.html">Create or update object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-account-metadata-v1-account.html">Delete account metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-container-metadata-v1-account-container.html">Delete container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update cdn-enabled container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">Cdn-enable and cdn-disable a container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update CDN-enabled container metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">CDN-enable and CDN-disable a container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-container-v1-account-container.html">Create container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-or-update-object-v1-account-container-object.html">Create or update object</a></li>
 </ul>

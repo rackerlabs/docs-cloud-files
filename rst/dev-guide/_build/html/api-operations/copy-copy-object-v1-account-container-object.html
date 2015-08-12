@@ -144,6 +144,110 @@ was not found.</td>
 </table>
 <div class="section" id="request">
 <h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the request:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Auth-Token</td>
+<td>String <em>(Required)</em></td>
+<td>Authentication token.</td>
+</tr>
+<tr class="row-odd"><td>X-Copy_From</td>
+<td>String <em>(Optional)</em></td>
+<td>Used with PUT, the
+container and object
+name of the source
+object in the form
+of``/container/object``.</td>
+</tr>
+<tr class="row-even"><td>Content-Length</td>
+<td>Int <em>(Required)</em></td>
+<td>Used with PUT, the
+content length. Zero (0)
+is always acceptable for
+this operation.</td>
+</tr>
+<tr class="row-odd"><td>Destination</td>
+<td>String <em>(Optional)</em></td>
+<td>Used with COPY, the
+container and object
+name of the destination
+object in the form
+of``/container/object``.</td>
+</tr>
+<tr class="row-even"><td>Destination-Account</td>
+<td>String <em>(Optional)</em></td>
+<td>Used for account to
+account copy. Specifies
+the destination account
+name (which is the last
+part of the storage URL).</td>
+</tr>
+<tr class="row-odd"><td>Content-Type</td>
+<td>String <em>(Optional)</em></td>
+<td>The media type of the
+entity-body sent. If not
+specified, the <code class="docutils literal"><span class="pre">Content-</span>
+<span class="pre">Type</span></code> is guessed, by
+using the Python
+mimetypes library, based
+on the object path.</td>
+</tr>
+<tr class="row-even"><td>X-Detect-Content-Type</td>
+<td>String <em>(Optional)</em></td>
+<td>If you set this header
+to <code class="docutils literal"><span class="pre">True</span></code>, the
+<code class="docutils literal"><span class="pre">Content-Type</span></code> that is
+sent in the request (if
+any) is ignored, and
+<code class="docutils literal"><span class="pre">Content-Type</span></code> is
+guessed by using the
+Python mimetypes library
+based on the object path.</td>
+</tr>
+<tr class="row-odd"><td>Content-Encoding</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, the value of the
+<code class="docutils literal"><span class="pre">Content-Encoding</span></code>
+metadata.</td>
+</tr>
+<tr class="row-even"><td>Content-Disposition</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, specifies the
+override behavior for
+the browser. For
+example, this header
+might specify that the
+browser use a download
+program to save this
+file rather than show
+the file, which is the
+default.</td>
+</tr>
+<tr class="row-odd"><td>X-Object-Meta-name</td>
+<td>String <em>(Optional)</em></td>
+<td>The container metadata,
+where <code class="docutils literal"><span class="pre">name</span></code> is the
+name of the metadata
+item. You must specify a
+<code class="docutils literal"><span class="pre">X-Object-Meta-name</span></code>
+header for each metadata
+item (for each <code class="docutils literal"><span class="pre">name</span></code>)
+that you want to add or
+update.</td>
+</tr>
+</tbody>
+</table>
 <p>This table shows the URI parameters for the request:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -194,6 +298,92 @@ Content-Length: 0
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the response:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Length</td>
+<td>String <em>(Required)</em></td>
+<td>If the operation
+succeeds, this value is
+zero (0). If the
+operation fails, this
+value is the length of
+the error text in the
+response body.</td>
+</tr>
+<tr class="row-odd"><td>Etag</td>
+<td>String <em>(Required)</em></td>
+<td>The MD5 checksum of the
+uploaded object content.
+The value is not quoted.</td>
+</tr>
+<tr class="row-even"><td>Content-Type</td>
+<td>String <em>(Required)</em></td>
+<td>The MIME type of the
+object.</td>
+</tr>
+<tr class="row-odd"><td>X-Trans-Id</td>
+<td>Uuid <em>(Required)</em></td>
+<td>A unique transaction
+identifier for this
+request.</td>
+</tr>
+<tr class="row-even"><td>Date</td>
+<td>Datetime <em>(Required)</em></td>
+<td>The transaction date and
+time.</td>
+</tr>
+<tr class="row-odd"><td>X-Copied-From-Last-
+Modified</td>
+<td>String <em>(Optional)</em></td>
+<td>For a copied object,
+shows the last modified
+date and time for the
+container and object
+name from which the new
+object was copied.</td>
+</tr>
+<tr class="row-even"><td>X-Copied-From</td>
+<td>String <em>(Optional)</em></td>
+<td>For a copied object,
+shows the container and
+object name from which
+the new object was
+copied. The value is in
+form
+<code class="docutils literal"><span class="pre">container/object</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>Last-Modified</td>
+<td>String <em>(Required)</em></td>
+<td>The date and time that
+the object was created
+or the last time that
+the metadata was changed.</td>
+</tr>
+<tr class="row-even"><td>X-Object-Meta-name</td>
+<td>String <em>(Required)</em></td>
+<td>The custom object
+metadata item, where
+<code class="docutils literal"><span class="pre">name</span></code> is the name of
+the metadata item. One
+<code class="docutils literal"><span class="pre">X-Object-Meta-name</span></code>
+response header appears
+for each metadata item
+(for each <code class="docutils literal"><span class="pre">name</span></code>).</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Example Copy object using COPY: HTTP response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 201 Created
 Content-Length: 0
@@ -282,15 +472,15 @@ Date: Fri, 17 Jan 2014 18:22:57 GMT
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Copy object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete cdn-enabled object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete CDN-enabled object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-container-v1-account-container.html">Delete container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-object-v1-account-container-object.html">Delete object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-get-object-content-and-metadata-v1-account-container-object.html">Get object content and metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List cdn-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-account-details-and-list-containers-v1-account.html">Show account details and list containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-container-details-and-list-objects-v1-account-container.html">Show container details and list objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-get-account-metadata-v1-account.html">Get account metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for cdn-enabled container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for CDN-enabled container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-container-metadata-v1-account-container.html">Show container metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-object-metadata-v1-account-container-object.html">Show object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-account-metadata-v1-account.html">Create or update account metadata</a></li>
@@ -298,8 +488,8 @@ Date: Fri, 17 Jan 2014 18:22:57 GMT
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-object-metadata-v1-account-container-object.html">Create or update object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-account-metadata-v1-account.html">Delete account metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-container-metadata-v1-account-container.html">Delete container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update cdn-enabled container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">Cdn-enable and cdn-disable a container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update CDN-enabled container metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">CDN-enable and CDN-disable a container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-container-v1-account-container.html">Create container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-or-update-object-v1-account-container-object.html">Create or update object</a></li>
 </ul>

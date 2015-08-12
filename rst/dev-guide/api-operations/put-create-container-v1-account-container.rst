@@ -46,6 +46,50 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++------------+-------------+---------------------------------------------------+
+|Name        |Type         |Description                                        |
++============+=============+===================================================+
+|X-Auth-Token|String       |Authentication token.                              |
+|            |*(Required)* |                                                   |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Custom container metadata. Replace ``name`` at the |
+|Meta-name   |*(Optional)* |end of the header with the name for your metadata. |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets an access control list (ACL) that grants read |
+|Read        |*(Optional)* |access. This header can contain a comma-delimited  |
+|            |             |list of users that can read the container (allows  |
+|            |             |the GET method for all objects in the container).  |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets an ACL that grants write access. This header  |
+|Write       |*(Optional)* |can contain a comma-delimited list of users that   |
+|            |             |can write to the container (allows PUT, POST,      |
+|            |             |COPY, and DELETE methods for all objects in the    |
+|            |             |container).                                        |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets the secret key for container synchronization. |
+|Sync-Key    |*(Optional)* |For container synchronization, you must set ``X-   |
+|            |             |Container-Sync-Key`` on the source container and   |
+|            |             |the destination container.                         |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets the destination for container                 |
+|Sync-To     |*(Optional)* |synchronization. For container synchronization,    |
+|            |             |the ``X-Container-Sync-To`` value must follow the  |
+|            |             |form                                               |
+|            |             |//realmName/clusterName/accountName/containerName. |
++------------+-------------+---------------------------------------------------+
+|X-Versions- |String       |Enables versioning on this container. The value is |
+|Location    |*(Optional)* |the name of another container. You must UTF-8-     |
+|            |             |encode and then URL-encode the name before you     |
+|            |             |include it in the header. To disable versioning,   |
+|            |             |set the header to an empty string.                 |
++------------+-------------+---------------------------------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -91,6 +135,37 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |The length of the        |
+|                          |                         |response body that       |
+|                          |                         |contains the list of     |
+|                          |                         |names. If the operation  |
+|                          |                         |fails, this value is the |
+|                          |                         |length of the error text |
+|                          |                         |in the response body.    |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

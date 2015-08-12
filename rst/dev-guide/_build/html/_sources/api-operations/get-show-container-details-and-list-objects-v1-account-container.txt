@@ -81,6 +81,26 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|Accept                    |String *(Optional)*      |Instead of using the     |
+|                          |                         |``format`` query         |
+|                          |                         |parameter, set this      |
+|                          |                         |header to                |
+|                          |                         |``application/json``,    |
+|                          |                         |``application/xml``, or  |
+|                          |                         |``text/xml``.            |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -180,30 +200,53 @@ Response
 """"""""""""""""
 
 
-This table shows the body parameters for the response:
+This table shows the header parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|name                      |String *(Required)*      |Name of the object.      |
+|Content-Length            |String *(Required)*      |The length of the        |
+|                          |                         |response body that       |
+|                          |                         |contains the list of     |
+|                          |                         |names. If the operation  |
+|                          |                         |fails, this value is the |
+|                          |                         |length of the error text |
+|                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|bytes                     |Int *(Required)*         |Number of bytes in the   |
-|                          |                         |container.               |
+|X-Container-Object-Count  |Int *(Required)*         |The number of objects.   |
 +--------------------------+-------------------------+-------------------------+
-|content-type              |String *(Required)*      |The content type of the  |
-|                          |                         |container.               |
+|Accept-Ranges             |String *(Required)*      |The type of ranges that  |
+|                          |                         |the object accepts.      |
 +--------------------------+-------------------------+-------------------------+
-|last-modified             |String *(Required)*      |An internal variable     |
-|                          |                         |that indicates the last  |
-|                          |                         |time an entity (account, |
-|                          |                         |container, or object)    |
-|                          |                         |was modified. ``last-    |
-|                          |                         |modified`` has           |
-|                          |                         |resolution up to one     |
-|                          |                         |second. For ``last-      |
-|                          |                         |modified``, the time     |
-|                          |                         |zone is UTC.             |
+|X-Container-Bytes-Used    |Int *(Required)*         |The count of bytes used  |
+|                          |                         |in total.                |
 +--------------------------+-------------------------+-------------------------+
+|X-Container-Meta-name     |String *(Optional)*      |The custom container     |
+|                          |                         |metadata item,           |
+|                          |                         |where``name`` is the     |
+|                          |                         |name of the metadata     |
+|                          |                         |item. One ``X-Container- |
+|                          |                         |Meta-name`` response     |
+|                          |                         |header appears for each  |
+|                          |                         |metadata item (for       |
+|                          |                         |each``name``).           |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Update cdn-enabled container metadata
+Update CDN-enabled container metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -45,6 +45,45 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Log-Retention           |Boolean *(Optional)*     |``True`` or ``False`` to |
+|                          |                         |indicate whether the CDN |
+|                          |                         |access logs should be    |
+|                          |                         |collected and stored in  |
+|                          |                         |the Cloud Files storage  |
+|                          |                         |system.                  |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Enabled             |Boolean *(Optional)*     |``True`` or ``False`` to |
+|                          |                         |enable or disable public |
+|                          |                         |sharing over the CDN. If |
+|                          |                         |you have content         |
+|                          |                         |currently cached in the  |
+|                          |                         |CDN, setting your        |
+|                          |                         |container back to        |
+|                          |                         |private does not purge   |
+|                          |                         |the CDN cache. You have  |
+|                          |                         |to wait for the TTL to   |
+|                          |                         |expire or purge the      |
+|                          |                         |objects.                 |
++--------------------------+-------------------------+-------------------------+
+|X-Ttl                     |Int *(Optional)*         |The TTL value in         |
+|                          |                         |seconds. The default     |
+|                          |                         |value is 259200 seconds, |
+|                          |                         |or 72 hours. The minimum |
+|                          |                         |TTL is 15 minutes (or    |
+|                          |                         |900 seconds), and the    |
+|                          |                         |maximum is 1 year        |
+|                          |                         |(31536000 seconds).      |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -81,6 +120,8 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
 
 
 

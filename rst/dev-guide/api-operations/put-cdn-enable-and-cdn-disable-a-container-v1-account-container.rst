@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Cdn-enable and cdn-disable a container
+CDN-enable and CDN-disable a container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -67,6 +67,33 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Ttl                     |Int *(Optional)*         |Specifies the Time To    |
+|                          |                         |Live (TTL) in seconds    |
+|                          |                         |for an object to be      |
+|                          |                         |cached in the CDN. The   |
+|                          |                         |default value is 259200  |
+|                          |                         |seconds, or 72 hours.    |
+|                          |                         |The minimum TTL is 15    |
+|                          |                         |minutes (or 900          |
+|                          |                         |seconds), and the        |
+|                          |                         |maximum is 1 year        |
+|                          |                         |(31536000 seconds).      |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Enabled             |String *(Optional)*      |Indicates if a container |
+|                          |                         |is CDN-enabled. Valid    |
+|                          |                         |values are True and      |
+|                          |                         |False.                   |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -114,6 +141,61 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |If the operation         |
+|                          |                         |succeeds, this value is  |
+|                          |                         |zero (0). If the         |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the length of   |
+|                          |                         |the error text in the    |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Ios-Uri             |String *(Required)*      |The URI for video        |
+|                          |                         |streaming that uses HTTP |
+|                          |                         |Live Streaming from      |
+|                          |                         |Apple.                   |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Ssl-Uri             |String *(Required)*      |The URI for downloading  |
+|                          |                         |the object over HTTPS,   |
+|                          |                         |using SSL. (The user     |
+|                          |                         |cannot have custom SSL   |
+|                          |                         |certificates because the |
+|                          |                         |Rackspace CDN partner    |
+|                          |                         |does not provide that    |
+|                          |                         |feature.)                |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Streaming-Uri       |String *(Required)*      |The URI for video        |
+|                          |                         |streaming that uses HTTP |
+|                          |                         |Dynamic Streaming from   |
+|                          |                         |Adobe.                   |
++--------------------------+-------------------------+-------------------------+
+|X-Cdn-Uri                 |String *(Required)*      |Indicates the URI that   |
+|                          |                         |you can combine with     |
+|                          |                         |object names to serve    |
+|                          |                         |objects through the CDN. |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

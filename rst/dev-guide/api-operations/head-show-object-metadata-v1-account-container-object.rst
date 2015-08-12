@@ -42,6 +42,18 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -98,6 +110,136 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Timestamp               |String *(Required)*      |An internal variable     |
+|                          |                         |that indicates the last  |
+|                          |                         |time an entity (account, |
+|                          |                         |container, or object)    |
+|                          |                         |was modified. The format |
+|                          |                         |is the same as a Unix    |
+|                          |                         |timestamp. The storage   |
+|                          |                         |system uses this header  |
+|                          |                         |to determine the latest  |
+|                          |                         |version. For example,    |
+|                          |                         |during replication, the  |
+|                          |                         |storage system makes     |
+|                          |                         |sure all three object    |
+|                          |                         |replicas are up to date, |
+|                          |                         |and it uses the X-       |
+|                          |                         |Timestamp header to      |
+|                          |                         |determine which replica  |
+|                          |                         |is the latest. You might |
+|                          |                         |notice that objects have |
+|                          |                         |both a Last-Modified and |
+|                          |                         |X-Timestamp header. The  |
+|                          |                         |difference between these |
+|                          |                         |two headers is the       |
+|                          |                         |resolution. Last-        |
+|                          |                         |Modified has resolution  |
+|                          |                         |up to one second, while  |
+|                          |                         |X-Timestamp has          |
+|                          |                         |resolution up to five    |
+|                          |                         |decimal places of one    |
+|                          |                         |second.                  |
++--------------------------+-------------------------+-------------------------+
+|Last-Modified             |String *(Required)*      |An internal variable     |
+|                          |                         |that indicates the last  |
+|                          |                         |time an entity (account, |
+|                          |                         |container, or object)    |
+|                          |                         |was modified. For Last-  |
+|                          |                         |Modified, the time zone  |
+|                          |                         |is UTC. You might notice |
+|                          |                         |that objects have both a |
+|                          |                         |Last-Modified and X-     |
+|                          |                         |Timestamp header. The    |
+|                          |                         |difference between these |
+|                          |                         |two headers is the       |
+|                          |                         |resolution. Last-        |
+|                          |                         |Modified has resolution  |
+|                          |                         |up to one second, while  |
+|                          |                         |X-Timestamp has          |
+|                          |                         |resolution up to five    |
+|                          |                         |decimal places of one    |
+|                          |                         |second.                  |
++--------------------------+-------------------------+-------------------------+
+|Content-Length            |String *(Required)*      |The length of the object |
+|                          |                         |content in the response  |
+|                          |                         |body, in bytes.          |
++--------------------------+-------------------------+-------------------------+
+|Etag                      |String *(Required)*      |The MD5 checksum of the  |
+|                          |                         |uploaded object content. |
+|                          |                         |The value is not quoted. |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |object.                  |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+|Content-Encoding          |String *(Optional)*      |If set, the value of the |
+|                          |                         |``Content-Encoding``     |
+|                          |                         |metadata. If not set,    |
+|                          |                         |this header is not       |
+|                          |                         |returned by this         |
+|                          |                         |operation.               |
++--------------------------+-------------------------+-------------------------+
+|Content-Disposition       |String *(Optional)*      |If set, specifies the    |
+|                          |                         |override behavior for    |
+|                          |                         |the browser. For         |
+|                          |                         |example, this header     |
+|                          |                         |might specify that the   |
+|                          |                         |browser use a download   |
+|                          |                         |program to save this     |
+|                          |                         |file rather than show    |
+|                          |                         |the file, which is the   |
+|                          |                         |default. If not set,     |
+|                          |                         |this header is not       |
+|                          |                         |returned by this         |
+|                          |                         |operation.               |
++--------------------------+-------------------------+-------------------------+
+|X-Delete-At               |String *(Optional)*      |If set, the time when    |
+|                          |                         |the object will be       |
+|                          |                         |deleted by the system in |
+|                          |                         |the format of a UNIX     |
+|                          |                         |epoch timestamp. If not  |
+|                          |                         |set, this header is not  |
+|                          |                         |returned by this         |
+|                          |                         |operation.               |
++--------------------------+-------------------------+-------------------------+
+|X-Object-Manifest         |String *(Optional)*      |If set, to this is a     |
+|                          |                         |dynamic large object     |
+|                          |                         |manifest object. The     |
+|                          |                         |value is the container   |
+|                          |                         |and object name prefix   |
+|                          |                         |of the segment objects   |
+|                          |                         |in the form              |
+|                          |                         |``container/prefix``.    |
++--------------------------+-------------------------+-------------------------+
+|X-Static-Large-Object     |Boolean *(Optional)*     |Set to ``True`` if this  |
+|                          |                         |object is a static large |
+|                          |                         |object manifest object.  |
++--------------------------+-------------------------+-------------------------+
+|X-Object-Meta-name        |String *(Required)*      |The custom object        |
+|                          |                         |metadata item, where     |
+|                          |                         |``name`` is the name of  |
+|                          |                         |the metadata item. One   |
+|                          |                         |``X-Object-Meta-name``   |
+|                          |                         |response header appears  |
+|                          |                         |for each metadata item   |
+|                          |                         |(for each ``name``).     |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

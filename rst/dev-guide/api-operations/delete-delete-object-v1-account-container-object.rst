@@ -43,6 +43,18 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -100,6 +112,37 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |The length of the        |
+|                          |                         |response body that       |
+|                          |                         |contains the list of     |
+|                          |                         |names. If the operation  |
+|                          |                         |fails, this value is the |
+|                          |                         |length of the error text |
+|                          |                         |in the response body.    |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

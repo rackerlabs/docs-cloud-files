@@ -92,6 +92,26 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|Accept                    |String *(Optional)*      |Instead of using the     |
+|                          |                         |``format`` query         |
+|                          |                         |parameter, set this      |
+|                          |                         |header to                |
+|                          |                         |``application/json``,    |
+|                          |                         |``application/xml``, or  |
+|                          |                         |``text/xml``.            |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -172,19 +192,67 @@ Response
 """"""""""""""""
 
 
-This table shows the body parameters for the response:
+This table shows the header parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|name                      |String *(Required)*      |Name of the container.   |
+|Content-Length            |String *(Required)*      |The length of the        |
+|                          |                         |response body that       |
+|                          |                         |contains the list of     |
+|                          |                         |names. If the operation  |
+|                          |                         |fails, this value is the |
+|                          |                         |length of the error text |
+|                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|count                     |Int *(Required)*         |Number of objects in the |
-|                          |                         |container.               |
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |list of names. If the    |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the MIME type   |
+|                          |                         |of the error text in the |
+|                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|bytes                     |Int *(Required)*         |Number of bytes in the   |
-|                          |                         |container.               |
+|X-Account-Object-Count    |Int *(Required)*         |The number of objects in |
+|                          |                         |the account.             |
 +--------------------------+-------------------------+-------------------------+
+|X-Account-Bytes-Used      |Int *(Required)*         |The total number of      |
+|                          |                         |bytes that are stored in |
+|                          |                         |Cloud Files for the      |
+|                          |                         |account.                 |
++--------------------------+-------------------------+-------------------------+
+|X-Account-Container-Count |Int *(Required)*         |The number of containers.|
++--------------------------+-------------------------+-------------------------+
+|X-Account-Meta-name       |String *(Optional)*      |The custom account       |
+|                          |                         |metadata item,           |
+|                          |                         |where``name`` is the     |
+|                          |                         |name of the metadata     |
+|                          |                         |item. One ``X-Account-   |
+|                          |                         |Meta-name`` response     |
+|                          |                         |header appears for each  |
+|                          |                         |metadata item (for       |
+|                          |                         |each``name``).           |
++--------------------------+-------------------------+-------------------------+
+|X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
+|Key                       |                         |temporary URLs. If not   |
+|                          |                         |set, this header is not  |
+|                          |                         |returned by this         |
+|                          |                         |operation.               |
++--------------------------+-------------------------+-------------------------+
+|X-Account-Meta-Temp-URL-  |String *(Optional)*      |A second secret key      |
+|Key-2                     |                         |value for temporary      |
+|                          |                         |URLs. If not set, this   |
+|                          |                         |header is not returned   |
+|                          |                         |by this operation.       |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

@@ -90,7 +90,7 @@ f=false,d=document;return{use_existing_jquery:function(){return use_existing_jqu
       <div class="body" role="main">
 
   <div class="section" id="list-metadata-for-cdn-enabled-container">
-<h1>List metadata for cdn-enabled container<a class="headerlink" href="#list-metadata-for-cdn-enabled-container" title="Permalink to this headline">¶</a></h1>
+<h1>List metadata for CDN-enabled container<a class="headerlink" href="#list-metadata-for-cdn-enabled-container" title="Permalink to this headline">¶</a></h1>
 <div class="code highlight-python"><div class="highlight"><pre><span class="n">HEAD</span> <span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="p">{</span><span class="n">account</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">container</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -197,13 +197,13 @@ Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </pre></div>
 </div>
-<p><strong>Example List metadata for cdn-enabled container: JSON request</strong></p>
+<p><strong>Example List metadata for CDN-enabled container: JSON request</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=json
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </pre></div>
 </div>
-<p><strong>Example List metadata for cdn-enabled container: XML request</strong></p>
+<p><strong>Example List metadata for CDN-enabled container: XML request</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer?format=xml
 Host: cdn.clouddrive.com
 X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
@@ -212,6 +212,88 @@ X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the response:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Cdn-Uri</td>
+<td>String <em>(Required)</em></td>
+<td>The URI for downloading
+the object over HTTP.
+This URI can be combined
+with any object name
+within the container to
+form the publicly
+accessible URI for that
+object for distribution
+over a CDN system.</td>
+</tr>
+<tr class="row-odd"><td>X-Ttl</td>
+<td>Int <em>(Required)</em></td>
+<td>The TTL value in
+seconds. The default
+value is 259200 seconds,
+or 72 hours. The minimum
+TTL is 15 minutes (or
+900 seconds), and the
+maximum is 1 year
+(31536000 seconds).</td>
+</tr>
+<tr class="row-even"><td>X-Cdn-Enabled</td>
+<td>Boolean <em>(Required)</em></td>
+<td>True or False to
+indicate whether the
+container is currently
+marked to allow public
+serving of objects
+through the CDN.</td>
+</tr>
+<tr class="row-odd"><td>X-Log-Retention</td>
+<td>Boolean <em>(Required)</em></td>
+<td>True or False to
+indicate whether the CDN
+access logs should be
+collected and stored in
+the Cloud Files storage
+system.</td>
+</tr>
+<tr class="row-even"><td>X-Cdn-Ssl-Uri</td>
+<td>String <em>(Required)</em></td>
+<td>The URI for downloading
+the object over HTTPS,
+using SSL. (The user
+cannot have custom SSL
+certificates because the
+Rackspace CDN partner
+does not provide that
+feature.</td>
+</tr>
+<tr class="row-odd"><td>X-Cdn-Streaming-Uri</td>
+<td>String <em>(Required)</em></td>
+<td>The URI for video
+streaming that uses HTTP
+Dynamic Streaming from
+Adobe.</td>
+</tr>
+<tr class="row-even"><td>X-Cdn-Ios-Uri</td>
+<td>String <em>(Required)</em></td>
+<td>The URI for video
+streaming that uses HTTP
+Live Streaming from
+Apple.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Example Get CDN-enabled container metadata: HTTP request</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 204 No Content
 X-Cdn-Ssl-Uri: https://
@@ -228,7 +310,7 @@ X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c
 Content-Length: 0
 </pre></div>
 </div>
-<p><strong>Example List metadata for cdn-enabled container: JSON response</strong></p>
+<p><strong>Example List metadata for CDN-enabled container: JSON response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 200 OK
 Date: Tue, 30 Oct 2012 14:41:29 GMT
 Content-Length: 127
@@ -247,7 +329,7 @@ Content-Type: application/json; charset=utf-8
 ]
 </pre></div>
 </div>
-<p><strong>Example List metadata for cdn-enabled container: XML response</strong></p>
+<p><strong>Example List metadata for CDN-enabled container: XML response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 200 OK
 Date: Tue, 30 Oct 2012 17:57:28 GMT
 Content-Length: 267
@@ -337,15 +419,15 @@ stream.cf0.rackcdn.com
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="copy-copy-object-v1-account-container-object.html">Copy object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete cdn-enabled object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete CDN-enabled object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-container-v1-account-container.html">Delete container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-object-v1-account-container-object.html">Delete object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-get-object-content-and-metadata-v1-account-container-object.html">Get object content and metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List cdn-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-account-details-and-list-containers-v1-account.html">Show account details and list containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-container-details-and-list-objects-v1-account-container.html">Show container details and list objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-get-account-metadata-v1-account.html">Get account metadata</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">List metadata for cdn-enabled container</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">List metadata for CDN-enabled container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-container-metadata-v1-account-container.html">Show container metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-object-metadata-v1-account-container-object.html">Show object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-account-metadata-v1-account.html">Create or update account metadata</a></li>
@@ -353,8 +435,8 @@ stream.cf0.rackcdn.com
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-object-metadata-v1-account-container-object.html">Create or update object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-account-metadata-v1-account.html">Delete account metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-container-metadata-v1-account-container.html">Delete container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update cdn-enabled container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">Cdn-enable and cdn-disable a container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update CDN-enabled container metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">CDN-enable and CDN-disable a container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-container-v1-account-container.html">Create container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-or-update-object-v1-account-container-object.html">Create or update object</a></li>
 </ul>

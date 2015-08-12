@@ -40,6 +40,36 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
+|Key                       |                         |temporary URLs.          |
++--------------------------+-------------------------+-------------------------+
+|X-Account-Meta-Temp-URL-  |String *(Optional)*      |A second secret key      |
+|Key-2                     |                         |value for temporary      |
+|                          |                         |URLs. The second key     |
+|                          |                         |enables you to rotate    |
+|                          |                         |keys by having an old    |
+|                          |                         |and new key active at    |
+|                          |                         |the same time.           |
++--------------------------+-------------------------+-------------------------+
+|X-Remove-Account-Meta-name|String *(Required)*      |Header to send to delete |
+|                          |                         |account metadata.        |
+|                          |                         |Replace ``name`` at the  |
+|                          |                         |end of the header with   |
+|                          |                         |the name for your        |
+|                          |                         |metadata.                |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -71,6 +101,35 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |If the operation         |
+|                          |                         |succeeds, this value is  |
+|                          |                         |zero (0). If the         |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the length of   |
+|                          |                         |the error text in the    |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |If the operation fails,  |
+|                          |                         |this value is the MIME   |
+|                          |                         |type of the error text   |
+|                          |                         |in the response body.    |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

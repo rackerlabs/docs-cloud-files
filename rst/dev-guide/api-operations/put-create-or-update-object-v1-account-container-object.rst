@@ -68,6 +68,121 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|ETag                      |String *(Optional)*      |The MD5 checksum of your |
+|                          |                         |object's data.           |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Optional)*      |The media type of the    |
+|                          |                         |entity-body sent. If not |
+|                          |                         |specified, the ``Content-|
+|                          |                         |Type`` is guessed, by    |
+|                          |                         |using the Python         |
+|                          |                         |mimetypes library, based |
+|                          |                         |on the object path.      |
++--------------------------+-------------------------+-------------------------+
+|Content-Length            |Int *(Optional)*         |Set to the length of the |
+|                          |                         |object content. Do not   |
+|                          |                         |set if chunked transfer  |
+|                          |                         |encoding is being used.  |
++--------------------------+-------------------------+-------------------------+
+|Content-Disposition       |String *(Optional)*      |The new browser behavior |
+|                          |                         |for the file, so that    |
+|                          |                         |the downloader can save  |
+|                          |                         |the file rather than     |
+|                          |                         |displaying it using      |
+|                          |                         |default browser settings.|
++--------------------------+-------------------------+-------------------------+
+|Content-Encoding          |String *(Optional)*      |The underlying media     |
+|                          |                         |type of the compressed   |
+|                          |                         |file.                    |
++--------------------------+-------------------------+-------------------------+
+|Transfer-Encoding         |String *(Optional)*      |Set to ``chunked`` to    |
+|                          |                         |enable chunked transfer  |
+|                          |                         |encoding. If used, do    |
+|                          |                         |not set the ``Content-   |
+|                          |                         |Length`` header to a non-|
+|                          |                         |zero value.              |
++--------------------------+-------------------------+-------------------------+
+|X-Delete-At               |Int *(Optional)*         |The certain date, in the |
+|                          |                         |format of a Unix epoch   |
+|                          |                         |timestamp, when the      |
+|                          |                         |object will be removed.  |
++--------------------------+-------------------------+-------------------------+
+|X-Delete-After            |Int *(Optional)*         |The certain date, in the |
+|                          |                         |format of a Unix epoch   |
+|                          |                         |timestamp, after which   |
+|                          |                         |the object will be       |
+|                          |                         |removed.                 |
++--------------------------+-------------------------+-------------------------+
+|X-Object-Meta-name        |String *(Optional)*      |The custom object        |
+|                          |                         |metadata. The ``name``   |
+|                          |                         |at the end of this       |
+|                          |                         |header represents the    |
+|                          |                         |name of your metadata.   |
++--------------------------+-------------------------+-------------------------+
+|X-Detect-Content-Type     |Boolean *(Optional)*     |If you set this header   |
+|                          |                         |to ``True``, the         |
+|                          |                         |``Content-Type`` that is |
+|                          |                         |sent in the request (if  |
+|                          |                         |any) is ignored, and     |
+|                          |                         |``Content-Type`` is      |
+|                          |                         |guessed by using the     |
+|                          |                         |Python mimetypes library |
+|                          |                         |based on the object path.|
++--------------------------+-------------------------+-------------------------+
+|X-Object-Manifest         |String *(Optional)*      |Set to specify that this |
+|                          |                         |is a dynamic large       |
+|                          |                         |object manifest object.  |
+|                          |                         |The value is the         |
+|                          |                         |container and object     |
+|                          |                         |name prefix of the       |
+|                          |                         |segment objects in the   |
+|                          |                         |form container/prefix.   |
+|                          |                         |You must UTF-8-encode    |
+|                          |                         |and then URL-encode the  |
+|                          |                         |names of the container   |
+|                          |                         |and prefix before you    |
+|                          |                         |include them in this     |
+|                          |                         |header.                  |
++--------------------------+-------------------------+-------------------------+
+|X-Copy-From               |String *(Optional)*      |If set, this is the name |
+|                          |                         |of an object used to     |
+|                          |                         |create the new object by |
+|                          |                         |copying the ``X-Copy-    |
+|                          |                         |From`` object. The value |
+|                          |                         |is in form               |
+|                          |                         |``container/object``.    |
+|                          |                         |You must UTF-8-encode    |
+|                          |                         |and then URL-encode the  |
+|                          |                         |names of the container   |
+|                          |                         |and object before you    |
+|                          |                         |include them in the      |
+|                          |                         |header. Using the PUT    |
+|                          |                         |operation with ``X-Copy- |
+|                          |                         |From`` has the same      |
+|                          |                         |effect as using the COPY |
+|                          |                         |operation to copy an     |
+|                          |                         |object.                  |
++--------------------------+-------------------------+-------------------------+
+|X-Copy-From-Account       |String *(Optional)*      |Used for account to      |
+|                          |                         |account copy. Specifies  |
+|                          |                         |the account name from    |
+|                          |                         |which you want to copy   |
+|                          |                         |an object. (The account  |
+|                          |                         |name is the last part of |
+|                          |                         |the storage URL).        |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -140,6 +255,65 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|Content-Length            |String *(Required)*      |If the operation         |
+|                          |                         |succeeds, this value is  |
+|                          |                         |zero (0). If the         |
+|                          |                         |operation fails, this    |
+|                          |                         |value is the length of   |
+|                          |                         |the error text in the    |
+|                          |                         |response body.           |
++--------------------------+-------------------------+-------------------------+
+|Etag                      |String *(Required)*      |For objects smaller than |
+|                          |                         |5 GB, this value is the  |
+|                          |                         |MD5 checksum of the      |
+|                          |                         |uploaded object content. |
+|                          |                         |The value is not quoted. |
+|                          |                         |If you supplied an ETag  |
+|                          |                         |request header and the   |
+|                          |                         |operation was            |
+|                          |                         |successful, the values   |
+|                          |                         |are the same. If you did |
+|                          |                         |not supply an ETag       |
+|                          |                         |request header, check    |
+|                          |                         |the ETag response header |
+|                          |                         |value against the object |
+|                          |                         |content you have just    |
+|                          |                         |uploaded. For static     |
+|                          |                         |large objects, this      |
+|                          |                         |value is the MD5         |
+|                          |                         |checksum of the          |
+|                          |                         |concatenated string of   |
+|                          |                         |MD5 checksums and ETags  |
+|                          |                         |for each of the segments |
+|                          |                         |in the manifest, and not |
+|                          |                         |the MD5 checksum of the  |
+|                          |                         |content that was         |
+|                          |                         |uploaded. Also the value |
+|                          |                         |is enclosed in double-   |
+|                          |                         |quotes. For dynamic      |
+|                          |                         |large objects, the value |
+|                          |                         |is the MD5 checksum of   |
+|                          |                         |the empty string.        |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String *(Required)*      |The MIME type of the     |
+|                          |                         |object.                  |
++--------------------------+-------------------------+-------------------------+
+|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|                          |                         |identifier for this      |
+|                          |                         |request.                 |
++--------------------------+-------------------------+-------------------------+
+|Date                      |Datetime *(Required)*    |The transaction date and |
+|                          |                         |time.                    |
++--------------------------+-------------------------+-------------------------+
+
+
 
 
 

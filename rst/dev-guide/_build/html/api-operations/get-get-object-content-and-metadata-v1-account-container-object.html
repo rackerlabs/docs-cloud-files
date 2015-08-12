@@ -150,6 +150,26 @@ was not found.</td>
 </table>
 <div class="section" id="request">
 <h2>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the request:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X-Auth-Token</td>
+<td>String <em>(Required)</em></td>
+<td>Authentication token.</td>
+</tr>
+</tbody>
+</table>
 <p>This table shows the URI parameters for the request:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -249,6 +269,150 @@ Range: bytes=1-3,2-5
 </div>
 <div class="section" id="response">
 <h2>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
+<p>This table shows the header parameters for the response:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Length</td>
+<td>String <em>(Required)</em></td>
+<td>The length of the object
+content in the response
+body, in bytes.</td>
+</tr>
+<tr class="row-odd"><td>Accept-Ranges</td>
+<td>String <em>(Required)</em></td>
+<td>The type of ranges that
+the object accepts.</td>
+</tr>
+<tr class="row-even"><td>Last-Modified</td>
+<td>String <em>(Required)</em></td>
+<td>The date and time that
+the object was created
+or the last time that
+the metadata was changed.</td>
+</tr>
+<tr class="row-odd"><td>ETag</td>
+<td>String <em>(Required)</em></td>
+<td>For objects smaller than
+5 GB, this value is the
+MD5 checksum of the
+object content. The
+value is not quoted. For
+manifest objects, this
+value is the MD5
+checksum of the
+concatenated string of
+MD5 checksums and ETags
+for each of the segments
+in the manifest, and not
+the MD5 checksum of the
+content that was
+downloaded. Also the
+value is enclosed in
+double-quote characters.
+You are strongly
+recommended to compute
+the MD5 checksum of the
+response body as it is
+received and compare
+this value with the one
+in the ETag header. If
+they differ, the content
+was corrupted, so retry
+the operation.</td>
+</tr>
+<tr class="row-even"><td>Content-Type</td>
+<td>String <em>(Required)</em></td>
+<td>The MIME type of the
+object.</td>
+</tr>
+<tr class="row-odd"><td>Content-Encoding</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, the value of the
+<code class="docutils literal"><span class="pre">Content-Encoding</span></code>
+metadata. If not set,
+this header is not
+returned by this
+operation.</td>
+</tr>
+<tr class="row-even"><td>Content-Disposition</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, specifies the
+override behavior for
+the browser. For
+example, this header
+might specify that the
+browser use a download
+program to save this
+file rather than show
+the file, which is the
+default. If not set,
+this header is not
+returned by this
+operation.</td>
+</tr>
+<tr class="row-odd"><td>X-Delete-At</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, the time when
+the object will be
+deleted by the system in
+the format of a UNIX
+epoch timestamp. If not
+set, this header is not
+returned by this
+operation.</td>
+</tr>
+<tr class="row-even"><td>X-Object-Meta-name</td>
+<td>String <em>(Optional)</em></td>
+<td>The custom object
+metadata item, where
+<code class="docutils literal"><span class="pre">name</span></code> is the name of
+the metadata item. One
+<code class="docutils literal"><span class="pre">X-Object-Meta-name</span></code>
+response header appears
+for each metadata item
+(for each <code class="docutils literal"><span class="pre">name</span></code>).</td>
+</tr>
+<tr class="row-odd"><td>X-Object-Manifest</td>
+<td>String <em>(Optional)</em></td>
+<td>If set, to this is a
+dynamic large object
+manifest object. The
+value is the container
+and object name prefix
+of the segment objects
+in the form
+container/prefix.</td>
+</tr>
+<tr class="row-even"><td>X-Static-Large-Object</td>
+<td>Boolean <em>(Optional)</em></td>
+<td>Set to <code class="docutils literal"><span class="pre">True</span></code> if this
+object is a static large
+object manifest object.</td>
+</tr>
+<tr class="row-odd"><td>X-Trans-Id</td>
+<td>Uuid <em>(Required)</em></td>
+<td>A unique transaction
+identifier for this
+request.</td>
+</tr>
+<tr class="row-even"><td>Date</td>
+<td>Datetime <em>(Required)</em></td>
+<td>The transaction date and
+time.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Example Get object data response</strong></p>
 <div class="code highlight-python"><div class="highlight"><pre>HTTP/1.1 200 OK
 Date: Wed, 14 Jul 2010 19:37:41 GMT
@@ -358,15 +522,15 @@ Content-Range: bytes 2-5/10
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="copy-copy-object-v1-account-container-object.html">Copy object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete cdn-enabled object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete-delete-cdn-enabled-object-v1-account-container-object.html">Delete CDN-enabled object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-container-v1-account-container.html">Delete container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="delete-delete-object-v1-account-container-object.html">Delete object</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Get object content and metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List cdn-enabled containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-list-cdn-enabled-containers-v1-account.html">List CDN-enabled containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-account-details-and-list-containers-v1-account.html">Show account details and list containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get-show-container-details-and-list-objects-v1-account-container.html">Show container details and list objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-get-account-metadata-v1-account.html">Get account metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for cdn-enabled container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="head-list-metadata-for-cdn-enabled-container-v1-account-container.html">List metadata for CDN-enabled container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-container-metadata-v1-account-container.html">Show container metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="head-show-object-metadata-v1-account-container-object.html">Show object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-account-metadata-v1-account.html">Create or update account metadata</a></li>
@@ -374,8 +538,8 @@ Content-Range: bytes 2-5/10
 <li class="toctree-l1"><a class="reference internal" href="post-create-or-update-object-metadata-v1-account-container-object.html">Create or update object metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-account-metadata-v1-account.html">Delete account metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post-delete-container-metadata-v1-account-container.html">Delete container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update cdn-enabled container metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">Cdn-enable and cdn-disable a container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post-update-cdn-enabled-container-metadata-v1-account-container.html">Update CDN-enabled container metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="put-cdn-enable-and-cdn-disable-a-container-v1-account-container.html">CDN-enable and CDN-disable a container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-container-v1-account-container.html">Create container</a></li>
 <li class="toctree-l1"><a class="reference internal" href="put-create-or-update-object-v1-account-container-object.html">Create or update object</a></li>
 </ul>

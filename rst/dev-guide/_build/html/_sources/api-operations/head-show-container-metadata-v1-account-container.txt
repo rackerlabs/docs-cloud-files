@@ -30,21 +30,75 @@ This operation does not require a request body and does not return a response bo
 This table shows the possible response codes for this operation:
 
 
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|204                       |No Content               |The request succeeded.   |
-|                          |                         |The server fulfilled the |
-|                          |                         |request but does not     |
-|                          |                         |need to return a body.   |
-+--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |The requested resource   |
-|                          |                         |was not found.           |
-+--------------------------+-------------------------+-------------------------+
++--------------+--------+-----------------------------------------------------------+
+|Response Code |Name    |Description                                                |
++==============+========+===========================================================+
+|204           |No      |The request succeeded. The server fulfilled the request    |
+|              |Content |but does not need to return a body.The number of objects   |
+|              |        |in the container. The total number of bytes used for all   |
+|              |        |objects in the container.Any metadata set on the           |
+|              |        |container. The ``name`` at the end of the header is the    |
+|              |        |name of your metadata. One ``X-Container-Meta-name``       |
+|              |        |response header appears for each metadata item (for each   |
+|              |        |``name``).An internal variable that indicates the last     |
+|              |        |time an entity (account, container, or object) was         |
+|              |        |modified. The format is the same as a Unix timestamp. The  |
+|              |        |storage system uses this header to determine the latest    |
+|              |        |version. For example, during replication, the storage      |
+|              |        |system makes sure all three object replicas are up to      |
+|              |        |date, and it uses the X-Timestamp header to determine      |
+|              |        |which replica is the latest. You might notice that objects |
+|              |        |have both a Last-Modified and X-Timestamp header. The      |
+|              |        |difference between these two headers is the resolution.    |
+|              |        |Last-Modified has resolution up to one second, while X-    |
+|              |        |Timestamp has resolution up to five decimal places of one  |
+|              |        |second.The access control list (ACL) that grants read      |
+|              |        |access. If not set, this header is not returned by this    |
+|              |        |operation. This header can contain a comma-delimited list  |
+|              |        |of users that can read the container (allows the GET       |
+|              |        |method for all objects in the container).The ACL that      |
+|              |        |grants write access. If not set, this header is not        |
+|              |        |returned by this operation. This header can contain a      |
+|              |        |comma-delimited list of users that can write to the        |
+|              |        |container (allows PUT, POST, COPY, and DELETE methods for  |
+|              |        |all objects in the container).The length of the response   |
+|              |        |body that contains the list of names. If the operation     |
+|              |        |fails, this value is the length of the error text in the   |
+|              |        |response body.The MIME type of the list of names. If the   |
+|              |        |operation fails, this value is the MIME type of the error  |
+|              |        |text in the response body.A unique transaction identifier  |
+|              |        |for this request.The transaction date and time.The type of |
+|              |        |ranges accepted. Sets the secret key for container         |
+|              |        |synchronization. For container synchronization, you must   |
+|              |        |set ``X-Container-Sync-Key`` on the source container and   |
+|              |        |the destination container.Sets the destination for         |
+|              |        |container synchronization. For container synchronization,  |
+|              |        |the ``X-Container-Sync-To`` value must follow the form     |
+|              |        |//realmName/clusterName/accountName/containerName.Enables  |
+|              |        |versioning on this container. The value is the name of     |
+|              |        |another container. You must UTF-8-encode and then URL-     |
+|              |        |encode the name before you include it in the header. To    |
+|              |        |disable versioning, set the header to an empty string.     |
++--------------+--------+-----------------------------------------------------------+
+|404           |Not     |The requested resource was not found.                      |
+|              |Found   |                                                           |
++--------------+--------+-----------------------------------------------------------+
 
 
 Request
 """"""""""""""""
+
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+
+
+
 
 This table shows the URI parameters for the request:
 
@@ -80,6 +134,91 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
+
+
+This table shows the header parameters for the response:
+
++------------+-------------+---------------------------------------------------+
+|Name        |Type         |Description                                        |
++============+=============+===================================================+
+|X-Container-|Int          |The number of objects in the container.            |
+|Object-Count|*(Required)* |                                                   |
++------------+-------------+---------------------------------------------------+
+|X-Container-|Int          |The total number of bytes used for all objects in  |
+|Bytes-Used  |*(Required)* |the container.                                     |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Any metadata set on the container. The ``name`` at |
+|Meta-name   |*(Required)* |the end of the header is the name of your          |
+|            |             |metadata. One ``X-Container-Meta-name`` response   |
+|            |             |header appears for each metadata item (for each    |
+|            |             |``name``).                                         |
++------------+-------------+---------------------------------------------------+
+|X-Timestamp |String       |An internal variable that indicates the last time  |
+|            |*(Required)* |an entity (account, container, or object) was      |
+|            |             |modified. The format is the same as a Unix         |
+|            |             |timestamp. The storage system uses this header to  |
+|            |             |determine the latest version. For example, during  |
+|            |             |replication, the storage system makes sure all     |
+|            |             |three object replicas are up to date, and it uses  |
+|            |             |the X-Timestamp header to determine which replica  |
+|            |             |is the latest. You might notice that objects have  |
+|            |             |both a Last-Modified and X-Timestamp header. The   |
+|            |             |difference between these two headers is the        |
+|            |             |resolution. Last-Modified has resolution up to one |
+|            |             |second, while X-Timestamp has resolution up to     |
+|            |             |five decimal places of one second.                 |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |The access control list (ACL) that grants read     |
+|Read        |*(Optional)* |access. If not set, this header is not returned by |
+|            |             |this operation. This header can contain a comma-   |
+|            |             |delimited list of users that can read the          |
+|            |             |container (allows the GET method for all objects   |
+|            |             |in the container).                                 |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |The ACL that grants write access. If not set, this |
+|Write       |*(Optional)* |header is not returned by this operation. This     |
+|            |             |header can contain a comma-delimited list of users |
+|            |             |that can write to the container (allows PUT, POST, |
+|            |             |COPY, and DELETE methods for all objects in the    |
+|            |             |container).                                        |
++------------+-------------+---------------------------------------------------+
+|Content-    |String       |The length of the response body that contains the  |
+|Length      |*(Required)* |list of names. If the operation fails, this value  |
+|            |             |is the length of the error text in the response    |
+|            |             |body.                                              |
++------------+-------------+---------------------------------------------------+
+|Content-Type|String       |The MIME type of the list of names. If the         |
+|            |*(Required)* |operation fails, this value is the MIME type of    |
+|            |             |the error text in the response body.               |
++------------+-------------+---------------------------------------------------+
+|X-Trans-Id  |Uuid         |A unique transaction identifier for this request.  |
+|            |*(Required)* |                                                   |
++------------+-------------+---------------------------------------------------+
+|Date        |Datetime     |The transaction date and time.                     |
+|            |*(Required)* |                                                   |
++------------+-------------+---------------------------------------------------+
+|Accept-     |String       |The type of ranges accepted.                       |
+|Ranges      |*(Required)* |                                                   |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets the secret key for container synchronization. |
+|Sync-Key    |*(Optional)* |For container synchronization, you must set ``X-   |
+|            |             |Container-Sync-Key`` on the source container and   |
+|            |             |the destination container.                         |
++------------+-------------+---------------------------------------------------+
+|X-Container-|String       |Sets the destination for container                 |
+|Sync-To     |*(Optional)* |synchronization. For container synchronization,    |
+|            |             |the ``X-Container-Sync-To`` value must follow the  |
+|            |             |form                                               |
+|            |             |//realmName/clusterName/accountName/containerName. |
++------------+-------------+---------------------------------------------------+
+|X-Versions- |String       |Enables versioning on this container. The value is |
+|Location    |*(Optional)* |the name of another container. You must UTF-8-     |
+|            |             |encode and then URL-encode the name before you     |
+|            |             |include it in the header. To disable versioning,   |
+|            |             |set the header to an empty string.                 |
++------------+-------------+---------------------------------------------------+
+
+
 
 
 
