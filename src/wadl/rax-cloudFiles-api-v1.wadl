@@ -1936,12 +1936,17 @@ X-Container-Meta-Extra: Data</programlisting>
                 </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
-                name="X-Copy_From" style="header" required="false"
+                name="X-Copy-From" style="header" required="false"
                 type="xsd:string">
                 <doc><p xmlns="http://www.w3.org/1999/xhtml">Used with PUT, the
                     container and object name of the
                     source object in the form of
                     <code>/container/object</code>. </p></doc>
+            </param>
+            <param xmlns="http://wadl.dev.java.net/2009/02"
+                name="X-Copy-From-Account" style="header" required="false"
+                type="xsd:string">
+                <doc><p xmlns="http://www.w3.org/1999/xhtml">Specifies the account you are copying from. </p></doc>
             </param>
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="Content-Length" style="header" required="true"
