@@ -528,10 +528,11 @@
                 one of the <code>cdnCloudFiles</code> service access
                 endpoints. (For the CDN
                 endpoints, see <link xlink:href="http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html">Service access endpoints</link>.)</para>
+ <!--       9/17/2015 Removed this paragraph at the request of Brian Metzler in Stratus support    
             <para>If the container is (or ever has been) CDN-enabled,
                 the metadata is returned in headers in the response
                 for plain text, or in the response body for XML or
-                JSON, if you request either as your output format.</para>
+                JSON, if you request either as your output format.</para> -->
             <note>
                 <para>Remember that your <command>HEAD</command>
                     operation must be on the CDN host (for example,
@@ -547,13 +548,14 @@
                 found.</para>
         </wadl:doc>
         <request>
+            <!--9/17/2015 Removed at the request of Brian Metzler in Stratus support
             <param xmlns="http://wadl.dev.java.net/2009/02"
                 name="format" style="query" required="false"
                 type="xsd:string">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN"><para>The optional format for the
                         returned information, either XML or JSON.</para></wadl:doc>
-            </param>
+            </param> -->
             <representation mediaType="text/xml" element="files:Files">
 
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -564,6 +566,7 @@
                     />
                 </wadl:doc>
             </representation>
+            <!--9/17/2015 Removed at the request of Brian Metzler in Stratus support
             <representation mediaType="application/json"
                 element="files:Files">
 
@@ -583,7 +586,7 @@
                         href="../wadl/samples/cf-getCDNContainerMetadata_request.xml"
                     />
                 </wadl:doc>
-            </representation>
+            </representation> -->
         </request>
         <response status="200">
             <wadl:doc xmlns="http://docbook.org/ns/docbook"
@@ -662,6 +665,7 @@
                     />
                 </wadl:doc>
             </representation>
+            <!--9/17/2015 Removed at the request of Brian Metzler in Stratus support            
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook"
                     xml:lang="EN">
@@ -677,7 +681,7 @@
                         href="../wadl/samples/cf-getCDNContainerMetadata_response.xml"
                     />
                 </wadl:doc>
-            </representation>
+            </representation>  -->
         </response>
         <response status="204">
             <wadl:doc xmlns="http://docbook.org/ns/docbook"
