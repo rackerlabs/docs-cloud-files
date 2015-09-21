@@ -5,7 +5,6 @@ target
 nbactions.xml
 
 # Build directories
-target/
 _build/
 
 # Editor files
