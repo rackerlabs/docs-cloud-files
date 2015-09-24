@@ -4,8 +4,3 @@ target
 # NetBeans user build actions
 nbactions.xml
 
-# Build directories
-_build/
-
-# Editor files
-.bak
