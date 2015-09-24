@@ -1,7 +1,7 @@
-src/wadl/rax-cloudFiles-api-v1-rst.wadl:
+src/wadl/rax-cloudFiles-api-v1.wadl:
     title: Rackspace Cloud Files™ Developer Guide
     output_directory: rst/dev-guide/api-operations
     
-src/wadl/rax-cloudFilesCDN-api-v1-rst.wadl:
+src/wadl/rax-cloudFilesCDN-api-v1.wadl:
     title: Rackspace Cloud Files™ Developer Guide
     output_directory: rst/dev-guide/api-operations   
