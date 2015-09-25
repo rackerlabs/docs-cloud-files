@@ -33,7 +33,7 @@ Check the length restrictions against the URL-encoded string.
 Each REST request against Cloud Files requires the inclusion of an authorization 
 token in the ``X-Auth-Token`` header. You obtain this token, along with the Cloud
 Files URIs, by first using the Rackspace authentication service and supplying a 
-valid user name and API access key. For more information, see :ref:`Authentication<cf-dg-auth>`.
+valid user name and API access key. For more information, see :ref:`Authentication<auth>`.
 
 The following services make up the full Cloud Files product :
 
@@ -62,4 +62,4 @@ and begin serving that content from a powerful CDN.
 .. note::
    Marking the container as public simply means enabling the container to be distributed over the CDN. A CDN-enabled container is publicly accessible.
 
-Figure 4.1. Cloud Files system interfaces
+.. image:: /_images/CFinterfaces_New.png

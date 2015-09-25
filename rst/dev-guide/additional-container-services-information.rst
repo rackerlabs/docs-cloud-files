@@ -1,17 +1,15 @@
-.. _cf-dg-container-services:
+.. _additional-container-services-information:
 
-=========================================
 Additional container services information
-=========================================
+-----------------------------------------
 
 This section provides additional metadata options for containers in
 Cloud Files.
 
-.. _cf-dg-container-acls:
+.. _container-acls:
 
-==============================
 Container access control lists
-==============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Cloud Files access control list (ACL) feature allows account owners
 to specify read or write access to a particular container for a
@@ -111,11 +109,10 @@ For more information about ACLS and using them with RBAC,
 see the blog post, `Create Cloud Files Container-Level Access Control
 Policies. <http://www.rackspace.com/blog/create-cloud-files-container-level-access-control-policies/>`__
 
-.. _cf-dg-container-quotas:
+.. _container-quotas:
 
-================
 Container quotas
-================
+~~~~~~~~~~~~~~~~
 
 Users (most likely account administrators) who have the ability to set
 container metadata can implement simple quotas on Cloud Files
@@ -136,7 +133,7 @@ remaining quota.
 Also, for chunked file uploads, the storage system cannot reject
 transfers that will eventually exceed the quota because the storage
 system does not know whether the end of the file will exceed the quota. (For 
-more information about chunked file uploads, see :ref:`Chunked transfer encoding<cf-dg-chunked-transfer-encoding>`.)
+more information about chunked file uploads, see :ref:`Chunked transfer encoding<chunked-transfer-encoding>`.)
 
 You set quotas by adding metadata to the container. The available
 metadata values are described in the following table.
@@ -153,11 +150,10 @@ metadata values are described in the following table.
 |                                      | container                            |
 +--------------------------------------+--------------------------------------+
 
-.. _cf-dg-access-log-delivery:
+.. _access-log-delivery:
 
-==========
-Access log 
-==========
+Access log delivery 
+~~~~~~~~~~~~~~~~~~~
 
 You can use access log delivery to analyze the number of requests for
 each object, the client IP address, and time-based usage patterns (such
