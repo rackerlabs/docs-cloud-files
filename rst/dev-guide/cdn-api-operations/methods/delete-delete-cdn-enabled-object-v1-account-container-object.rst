@@ -26,7 +26,7 @@ When you find it necessary to remove a CDN-enabled object from public access bef
 
 You can purge objects from the CDN in the following ways: 
 
-**By using ``DELETE`` in the API**
+**By using DELETE in the API**
 
 You can manually purge CDN-enabled objects without having to wait for the TTL to expire, and you can optionally be notified by email that the object has been purged.
 
@@ -36,7 +36,14 @@ An attempt to delete more objects results in a 498 (Rate Limited) status code.
 
 Here is an example response for hitting the purge rate limit:
 
-``$ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainter/MyObject HTTP/1.1 498 Rate Limited Content-Length: 42 Content-Type: text/html; charset=UTF-8 X-Trans-Id: txb63f31d26bf84c058542b-0055101cd0dfw1 Date: Mon, 23 Mar 2015 14:01:52 GMT``
+.. code::
+
+   $ curl -i -XDELETE -H'x-auth-token: f064c46a782c444cb4ba4b6434288f7c' https://cdn1.clouddrive.com/v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainter/MyObject 
+   HTTP/1.1 498 Rate Limited 
+   Content-Length: 42 
+   Content-Type: text/html; charset=UTF-8 
+   X-Trans-Id: txb63f31d26bf84c058542b-0055101cd0dfw1 
+   Date: Mon, 23 Mar 2015 14:01:52 GMT``
 
 **By creating a support ticket to purge an entire container**
 

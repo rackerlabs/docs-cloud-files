@@ -94,7 +94,7 @@ account copy.
 
 **PUT command steps**
 
-3. Use the POST command to set ``X-Container-Write`` metadata on
+1. Use the POST command to set ``X-Container-Write`` metadata on
    destination container.
 
    **Request:**
@@ -116,7 +116,7 @@ account copy.
        X-Trans-Id: tx0f6c102033564bb0800e3-0054da677fdev1
        Date: Tue, 10 Feb 2015 20:18:07 GMT
 
-4. Use the **PUT** command to copy the object.
+2. Use the **PUT** command to copy the object.
 
    **Request:**
 
