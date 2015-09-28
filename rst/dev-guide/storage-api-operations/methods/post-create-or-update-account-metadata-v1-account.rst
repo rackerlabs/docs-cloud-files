@@ -12,7 +12,7 @@ Create or update account metadata
 
 This operation creates or updates account metadata.
 
-You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a ``POST`` operation. These headers must have the format ``X-Account-Meta-name``. Replace ``name`` with name of your metadata. (In the following example request, the metadata headers are ``X-Account-Meta-Book`` and ``X-Account_Meta-Subject``.) 
+You can associate custom metadata headers with the account level URI. To create or update an account metadata header, submit a ``POST`` operation. These headers must have the format ``X-Account-Meta-name``. Replace ``name`` with name of your metadata. (In the following example request, the metadata headers are ``X-Account-Meta-Book`` and ``X-Account-Meta-Subject``.) 
 
 Subsequent ``POST`` operations for the same key/value pair overwrite the previous value.
 

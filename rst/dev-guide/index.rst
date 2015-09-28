@@ -31,4 +31,3 @@ Learn how to use the Rackspace Cloud Files service by using the REST API.
    static-websites-using-cdn-enabled-containers/index
    bulk-operations/index
    public-access-to-your-cloud-files-account/index
-   glossary

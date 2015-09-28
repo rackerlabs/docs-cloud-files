@@ -16,20 +16,39 @@ To set or edit container metadata, perform a ``POST`` operation to the container
 
 To view your metadata changes, perform a ``HEAD`` operation on the container. (For more information, see :ref:`Show container metadata <show-container-metadata>`.) Do not try to send the metadata in your ``HEAD`` request. 
 
-.. important::
-   Updating container metadata
+**Updating container metadata**
    
-   For containers, the ``POST`` request to set metadata does not delete existing metadata that is not explicitly set in the request.
+For containers, the ``POST`` request to set metadata does not delete existing metadata that is not explicitly set in the request.
    
-   For example, you use a ``HEAD`` request to list container metadata and get the following results:
+For example, you use a ``HEAD`` request to list container metadata and get the following results:
+
+.. code::
    
-    ``X-Container-Meta-Price: 50                     X-Container-Meta-Extra: Data`` Then you perform a ``POST`` request similar to the following example to set metadata on the same container that you listed above:
+   X-Container-Meta-Price: 50
+   X-Container-Meta-Extra: Data 
+
+Then you perform a ``POST`` request similar to the following example to set metadata on the same container that you listed above:
+
+.. code::
+      
+   POST /v1/account/containName HTTP/1.1 
+   Host: storage.clouddrive.com 
+   X-Auth-Token: yourAuthToken 
+   X-Container-Meta-Price: 45
+   X-Container-Meta-Cost: 30
+
+Listing the container metadata again after the ``POST`` then shows the following results. The ``X-Container-Meta-Extra`` metadata still exists.
+
+
+.. code::
+      
+   X-Container-Meta-Price: 45
+   X-Container-Meta-Cost: 30 
+   X-Container-Meta-Extra: Data
+
+For information about deleting container metadata, see :ref:`Create or update container metadata <create-or-update-container-metadata>`.
    
-    ``POST /v1/account/containName HTTP/1.1 Host: storage.clouddrive.com X-Auth-Token: yourAuthToken X-Container-Meta-Price: 45 X-Container-Meta-Cost: 30`` Listing the container metadata again after the ``POST`` then shows the following results. The ``X-Container-Meta-Extra`` metadata still exists.
-   
-    ``X-Container-Meta-Price: 45                     X-Container-Meta-Cost: 30 X-Container-Meta-Extra: Data`` For information about deleting container metadata, see `Create or update container metadata <create-or-update-container-metadata>`.
-   
-   Note that updating and deleting object metadata works differently. For an example, see :ref:`Additional container services information <additional-container-services-information>`.
+Note that updating and deleting object metadata works differently. For an example, see :ref:`Additional container services information <additional-container-services-information>`.
    
    
 

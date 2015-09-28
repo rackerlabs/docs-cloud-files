@@ -46,7 +46,10 @@ Use a ``limit`` of 2 to show how things work:
 
    GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2 
    Host: storage.clouddrive.com 
-   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c gala grannysmith`` 
+   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
+    
+   gala 
+   grannysmith 
 
 Because the request returned two items, assume there are more object names to list and make another request with a ``marker`` of the last item returned:
 
@@ -54,7 +57,10 @@ Because the request returned two items, assume there are more object names to li
 
    GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2 & marker=grannysmith 
    Host: storage.clouddrive.com 
-   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c honeycrisp jonagold`` 
+   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c 
+   
+   honeycrisp 
+   jonagold 
 
 Again, two items are returned, and you assume that there might be more. So you make another ``GET`` request for two more:
 
@@ -62,7 +68,9 @@ Again, two items are returned, and you assume that there might be more. So you m
 
    GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/AppleType?limit=2 & marker=jonagold 
    Host: storage.clouddrive.com 
-   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c reddelicious`` 
+   X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c 
+   
+   reddelicious 
 
 This one-item response shows fewer than the limit of two object names requested, and indicates that this is the end of the list.
 
