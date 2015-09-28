@@ -58,27 +58,27 @@ The following table lists the container-level headers:
 
 **Table: CORS container-level headers**
 
-+------------------------------------+---------------------------------------+
-| X-Container-Meta-Access-Control-   | Specifies the origins that are        |
-| Allow-Origin                       | allowed to make cross-origin          |
-|                                    | requests, separated by a space when   |
-|                                    | there are multiple values.            |
-+------------------------------------+---------------------------------------+
-| X-Container-Meta-Access-Control-   | Specifies the maximum age for the     |
-| Max-Age                            | origin to hold the preflight results, |
-|                                    | in seconds (for example, 5, 10, or    |
-|                                    | 1000).                                |
-+------------------------------------+---------------------------------------+
-| X-Container-Meta-Access-Control-   | Specifies the headers that are        |
-| Allow-Headers                      | allowed in the actual request,        |
-|                                    | separated by a space when there are   |
-|                                    | multiple values.                      |
-+------------------------------------+---------------------------------------+
-| X-Container-Meta-Access-Control-   | Indicates the headers exposed to the  |
-| Expose-Headers                     | browser in the actual request         |
-|                                    | response, separated by a space when   |
-|                                    | there are multiple values.            |
-+------------------------------------+---------------------------------------+
++----------------------------------------------+---------------------------------------+
+|X-Container-Meta-Access-Control-Allow-Origin  | Specifies the origins that are        |
+|                                              | allowed to make cross-origin          |
+|                                              | requests, separated by a space when   |
+|                                              | there are multiple values.            |
++----------------------------------------------+---------------------------------------+
+|X-Container-Meta-Access-Control-Max-Age       | Specifies the maximum age for the     |
+|                                              | origin to hold the preflight results, |
+|                                              | in seconds (for example, 5, 10, or    |
+|                                              | 1000).                                |
++----------------------------------------------+---------------------------------------+
+|X-Container-Meta-Access-Control-Allow-Headers | Specifies the headers that are        |
+|                                              | allowed in the actual request,        |
+|                                              | separated by a space when there are   |
+|                                              | multiple values.                      |
++----------------------------------------------+---------------------------------------+
+|X-Container-Meta-Access-Control-Expose-Headers| Indicates the headers exposed to the  |
+|                                              | browser in the actual request         |
+|                                              | response, separated by a space when   |
+|                                              | there are multiple values.            |
++----------------------------------------------+---------------------------------------+
 
 To view the values for these headers, use the **HEAD** operation to show
 container metadata. To delete the metadata, use the **DELETE** operation
@@ -230,45 +230,45 @@ The following table lists the object-level headers:
 
 **Table: CORS object-level headers**
 
-+---------------------------+----------------------------------------------------+
-|Access-Control-Allow-Origin| Specifies the origins that are allowed to make     |
-|                           | cross-origin requests, separated by a space when   |
-|                           | there are multiple values.                         |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Max-Age     | Specifies the maximum age for the origin to hold   |
-|                           | the preflight results, in seconds (for example, 5, |
-|                           | 10, or 1000).                                      |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Expose-     | Specifies the headers exposed to the browser in    |
-|Headers                    | the actual request response, separated by a space  |
-|                           | when there are multiple values.                    |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Allow-      | Indicates whether or not the response to the       |
-|Credentials                | request can be exposed when the credentials flag   |
-|                           | is true.  When used as part of a response to a     |
-|                           | preflight request, this indicates whether or not   |
-|                           | the actual request can be made using credentials.  |
-|                           | Note that simple GET requests are not preflighted, |
-|                           | and so if a request is made for a resource with    |
-|                           | credentials, if this header is not returned with   |
-|                           | the resource, the response is ignored by the       |
-|                           | browser and not returned to web content.           |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Allow-      | Specifies the method or methods allowed when       |
-|Methods                    | accessing the resource.  This is used in response  |
-|                           | to a preflight request.                            |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Request-    | Used when issuing a preflight request to let the   |
-|Headers                    | server know what HTTP headers will be used when    |
-|                           | the actual request is made.                        |
-+---------------------------+----------------------------------------------------+
-|Access-Control-Request-    | Used when issuing a preflight request to let the   |
-|Method                     | server know what HTTP method will be used when the |
-|                           | actual request is made.                            |
-+---------------------------+----------------------------------------------------+
-|Origin                     | Indicates the origin of the cross-site access      |
-|                           | request or preflight request.                      |
-+---------------------------+----------------------------------------------------+
++--------------------------------+----------------------------------------------------+
+|Access-Control-Allow-Origin     | Specifies the origins that are allowed to make     |
+|                                | cross-origin requests, separated by a space when   |
+|                                | there are multiple values.                         |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Max-Age          | Specifies the maximum age for the origin to hold   |
+|                                | the preflight results, in seconds (for example, 5, |
+|                                | 10, or 1000).                                      |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Expose-Headers   | Specifies the headers exposed to the browser in    |
+|                                | the actual request response, separated by a space  |
+|                                | when there are multiple values.                    |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Allow-Credentials| Indicates whether or not the response to the       |
+|                                | request can be exposed when the credentials flag   |
+|                                | is true.  When used as part of a response to a     |
+|                                | preflight request, this indicates whether or not   |
+|                                | the actual request can be made using credentials.  |
+|                                | Note that simple GET requests are not preflighted, |
+|                                | and so if a request is made for a resource with    |
+|                                | credentials, if this header is not returned with   |
+|                                | the resource, the response is ignored by the       |
+|                                | browser and not returned to web content.           |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Allow-Methods    | Specifies the method or methods allowed when       |
+|                                | accessing the resource.  This is used in response  |
+|                                | to a preflight request.                            |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Request-Headers  | Used when issuing a preflight request to let the   |
+|                                | server know what HTTP headers will be used when    |
+|                                | the actual request is made.                        |
++--------------------------------+----------------------------------------------------+
+|Access-Control-Request-Method   | Used when issuing a preflight request to let the   |
+|                                | server know what HTTP method will be used when the |
+|                                | actual request is made.                            |
++--------------------------------+----------------------------------------------------+
+|Origin                          | Indicates the origin of the cross-site access      |
+|                                | request or preflight request.                      |
++--------------------------------+----------------------------------------------------+
 
 The following example assigns the file origin to the ``Origin`` header
 to indicate where the file came from. Doing so allows you to provide
