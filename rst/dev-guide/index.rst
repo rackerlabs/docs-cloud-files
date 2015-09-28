@@ -4,6 +4,8 @@
 Rackspace Cloud Files API 1.0
 =========================================================
 
+*Last updated:* |today|
+
 Learn how to use the Rackspace Cloud Files service by using the REST API. 
 
 - For details about using the API, see the :ref:`Developer Guide <developer-guide>`.
