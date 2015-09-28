@@ -14,4 +14,4 @@ optional.
 
 .. note::
    To prevent the container from going back to the CDN, first change the
-   ``X-CDN-Enabled`` flag to ``False`` as described in the operation to CDN-enable and CDN-disable a container at `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__.
+   ``X-CDN-Enabled`` flag to ``False`` as described in the operation to CDN-enable and CDN-disable a container at :ref:`CDN-enable and CDN-disable a container <put-cdn-enable-and-cdn-disable-a-container>`.

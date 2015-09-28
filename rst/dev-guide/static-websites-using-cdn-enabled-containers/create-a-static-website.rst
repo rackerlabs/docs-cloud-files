@@ -62,7 +62,7 @@ website.
    (You get your authentication token when you authenticate your session
    as shown in :ref:`Authentication<auth>`.)
 
-#. CDN-enable your container. (See in the operation to CDN-enable and CDN-disable a container at `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__.)
+#. CDN-enable your container. (See in the operation :ref:`CDN-enable and CDN-disable a container <put-cdn-enable-and-cdn-disable-a-container>`.)
 
 #. Go to your domain host and set up a CNAME using your CDN URI
    (``X-Cdn-Uri``). The CNAME is the domain or branded URI that you use

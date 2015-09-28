@@ -24,11 +24,7 @@ For more information about CORS and the access control headers, see
 
 CORS headers for containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..
-  David Goetz provided the link for this information:
-  https://github.com/openstack/swift/blob/master/doc/source/cors.rst. 
-
+  
 Container-level headers for CORS are used for the following Cloud Files
 features:
 
@@ -86,7 +82,9 @@ The following table lists the container-level headers:
 
 To view the values for these headers, use the **HEAD** operation to show
 container metadata. To delete the metadata, use the **DELETE** operation
-to delete container metadata. (See `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__ for operation descriptions.)
+to delete container metadata. (See :ref:`Show container metadata <show-container-metadata>` 
+and :ref:`Delete container metadata <delete-container-metadata>` for descriptions of these 
+operations.)
 
 
 Before a browser issues an actual request, it might issue a preflight
@@ -224,9 +222,6 @@ the request did not succeed, the response status is 0.
 CORS headers for objects
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. 
-   *cyr - From "Assign CORS headers to requests" is in the OpenStack Object
-   Storage Reference - headers for only objects. *
 
 You can set object-level headers for CORS. Currently, using object-level
 headers enables CORS to work over a CDN.

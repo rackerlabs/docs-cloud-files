@@ -11,16 +11,17 @@ leverage this ability, you must check the client's user agent with
 JavaScript. An example of the user agent check and how to use it
 follows.
 
-#. CDN-enable your container. (See in the operation to CDN-enable and CDN-disable a container at `Cloud Files API v1 <http://api.rackspace.com/api-ref-files.html>`__.) Two streaming URIs are
+1. CDN-enable your container. (See :ref:`CDN-enable and CDN-disable a container 
+   <put-cdn-enable-and-cdn-disable-a-container>`.) Two streaming URIs are
    created: the container's streaming URI (``X-Cdn-Streaming-Uri``) and
    its iOS streaming URI (``X-Cdn-Ios-Uri``).
 
-1. Perform a **HEAD** request against the CDN-enabled container to view
+2. Perform a **HEAD** request against the CDN-enabled container to view
    these URIs.
 
-2. Link to your content in a HTML page by using a ``<video>`` element.
+3. Link to your content in a HTML page by using a ``<video>`` element.
 
-3. Set the SRC attribute of the ``<video>`` element to the full
+4. Set the SRC attribute of the ``<video>`` element to the full
    streaming URI for your container plus the name of your content. In
    the following example, the streaming video is MobyDick.mp4.
 
@@ -33,7 +34,7 @@ follows.
          r49.stream.cf0.rackcdn.com/MobyDick.mp4” />
        </video>
 
-4. Add JavaScript to the ``<head>`` element of your HTML page to check
+5. Add JavaScript to the ``<head>`` element of your HTML page to check
    if the user agent is an iOS device. If it is, the JavaScript should
    use the container's iOS streaming URI (``X-Cdn-Ios-Uri``) instead of
    the regular streaming URI. The Cloud Files CDN delivers the properly
@@ -63,7 +64,7 @@ follows.
 
        </script>
 
-5. Add ``init()`` to the ``<body>`` element of your HTML page to call
+6. Add ``init()`` to the ``<body>`` element of your HTML page to call
    the user agent check when the page loads, as shown in the following
    example.
 

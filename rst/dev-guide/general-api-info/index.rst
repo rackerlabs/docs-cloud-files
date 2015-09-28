@@ -4,8 +4,7 @@ General API Information
 -----------------------
 
 The information in this chapter is relevant to all Cloud Files API
-operations. For information about a specific API operation, see `Cloud Files API v1
-<http://api.rackspace.com/api-ref-files.html>`__.
+operations. For information about a specific API operation, see :ref:`API reference <api-reference>`.
 
 .. toctree:: :hidden:
    :maxdepth: 2

@@ -114,8 +114,8 @@ Operations
 
 Operations are the actions you perform within your account, such as
 creating or deleting containers or uploading or downloading objects. For 
-information about the Cloud Files API operations, see `Cloud Files API v1 
-<http://api.rackspace.com/api-ref-files.html>`__.
+information about the Cloud Files API operations, see :ref:`API reference 
+<api-reference>`.
 
 You can perform operations through the REST web service API or a
 language-specific API. For information about the Rackspace
@@ -173,8 +173,7 @@ service. For example, you could CDN-enable a container called ``images``
 and be assigned the CDN URI, but you also need to create a container
 called ``images`` in the storage service.
 
-For more information about CDN-enabled containers and operations for them, see `Cloud Files API v1
-<http://api.rackspace.com/api-ref-files.html>`__.
+For more information about CDN-enabled containers and operations for them, see :ref:`API operations for CDN services <api-operations-for-cdn-services>`.
 
 Language-specific APIs
 ~~~~~~~~~~~~~~~~~~~~~~
