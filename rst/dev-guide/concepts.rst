@@ -44,7 +44,7 @@ section on authentication <auth>`. After you are authenticated, you can
 perform all Cloud Files operations within that account.
 
 You can use Role Based Access Control (RBAC) with Cloud Files. For more 
-information, see :ref:`Role Based Access Control <cf-dg-rbac>`.
+information, see :ref:`Role Based Access Control <rbac>`.
 
 Containers
 ~~~~~~~~~~

@@ -1,3 +1,5 @@
+.. _absolute-limits:
+
 ===============
 Absolute limits
 ===============

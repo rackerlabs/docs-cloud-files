@@ -1,3 +1,5 @@
+.. _response-codes:
+
 ==============
 Response codes
 ==============

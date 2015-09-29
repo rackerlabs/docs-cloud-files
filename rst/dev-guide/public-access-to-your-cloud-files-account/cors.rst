@@ -1,3 +1,5 @@
+.. _cors:
+
 ====
 CORS
 ====
@@ -22,13 +24,15 @@ Cloud Files supports CORS requests to containers and objects.
 For more information about CORS and the access control headers, see
 `www.w3.org/TR/access-control/ <http://www.w3.org/TR/access-control/>`__.
 
+.. _cors-for-headers:
+
 CORS headers for containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
 Container-level headers for CORS are used for the following Cloud Files
 features:
 
--  :ref:`FormPost<cf-dg-formpost>` to enable your
+-  :ref:`FormPost<formpost>` to enable your
    users to post to your site
 
 -  :ref:`TempURL<tempurl>` to
@@ -38,7 +42,7 @@ features:
 .. note::
    Container-level headers for CORS are not inherited for use with a
    CDN. For information about using object-level headers, which enable CORS to
-   work over a CDN, see :ref:`CORS headers for objects<cf-dg-cors-objects>`.
+   work over a CDN, see :ref:`CORS headers for objects<cors-objects>`.
 
 CORS container headers enable your users to upload files from one
 website, or origin, to your Cloud Files account. When you set the CORS
@@ -217,7 +221,7 @@ the request did not succeed, the response status is 0.
       </body>
     </html>
 
-.. _cf-dg-cors-objects:
+.. _cors-objects:
 
 CORS headers for objects
 ~~~~~~~~~~~~~~~~~~~~~~~~

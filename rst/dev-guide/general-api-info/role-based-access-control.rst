@@ -1,4 +1,4 @@
-.. _cf-dg-rbac:
+.. _rbac:
 
 =========================
 Role Based Access Control

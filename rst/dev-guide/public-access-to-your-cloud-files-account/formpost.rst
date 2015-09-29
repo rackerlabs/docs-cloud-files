@@ -1,4 +1,4 @@
-.. _cf-dg-formpost:
+.. _formpost:
 
 
 ========

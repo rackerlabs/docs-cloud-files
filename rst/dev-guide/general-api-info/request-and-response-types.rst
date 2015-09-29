@@ -1,3 +1,5 @@
+.. request-response-types:
+
 ==========================
 Request and response types
 ==========================

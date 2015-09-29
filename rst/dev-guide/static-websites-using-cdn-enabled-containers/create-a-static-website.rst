@@ -1,3 +1,5 @@
+.. _create-a-static-website:
+
 
 Create a static website
 -----------------------
@@ -7,7 +9,7 @@ you must CDN-enable a storage container. Any HTML or static web pages in
 the container become available through a static website after you set
 the ``X-Container-Meta-Web-Index`` header to ``index.html`` or another
 index page of your choice. You can also create subdirectories in your
-website by creating pseudo directories, as outlined in :ref:`Pseudo hierarchical directories and folders<cf-dg-pseudo-dir>`. Each
+website by creating pseudo directories, as outlined in :ref:`Pseudo hierarchical directories and folders<pseudo-dir>`. Each
 pseudo directory becomes a subdirectory in the website.
 
 The page you set for ``X-Container-Meta-Web-Index`` becomes the index

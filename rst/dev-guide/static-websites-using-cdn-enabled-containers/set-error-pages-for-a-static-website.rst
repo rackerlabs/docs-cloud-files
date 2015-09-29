@@ -1,3 +1,4 @@
+.. _set-error-pages-for-a-static-website:
 
 Set error pages for a static website
 ------------------------------------

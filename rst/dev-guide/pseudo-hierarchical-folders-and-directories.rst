@@ -1,4 +1,4 @@
-.. _cf-dg-pseudo-dir:
+.. _pseudo-dir:
 
 ===========================================
 Pseudo-hierarchical folders and directories

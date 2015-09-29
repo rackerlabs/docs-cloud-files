@@ -1,3 +1,5 @@
+.. _service-contract-version:
+
 ====================================
 Cloud Files service contract version
 ====================================

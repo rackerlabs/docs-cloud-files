@@ -1,3 +1,4 @@
+.. _extracting-archive-files:
 
 Extracting archive files
 ------------------------

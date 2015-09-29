@@ -1,3 +1,5 @@
+.. _overview-api-operations:
+
 ==========================
 Overview of API operations
 ==========================
