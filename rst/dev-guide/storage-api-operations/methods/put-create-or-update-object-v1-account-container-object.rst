@@ -108,9 +108,10 @@ This table shows the header parameters for the request:
 |Transfer-Encoding         |String *(Optional)*      |Set to ``chunked`` to    |
 |                          |                         |enable chunked transfer  |
 |                          |                         |encoding. If used, do    |
-|                          |                         |not set the ``Content-   |
-|                          |                         |Length`` header to a non-|
-|                          |                         |zero value.              |
+|                          |                         |not set the              |
+|                          |                         |``Content-Length``       |
+|                          |                         |header to a non-zero     |
+|                          |                         |value.                   |
 +--------------------------+-------------------------+-------------------------+
 |X-Delete-At               |Int *(Optional)*         |The certain date, in the |
 |                          |                         |format of a Unix epoch   |
@@ -157,8 +158,9 @@ This table shows the header parameters for the request:
 |X-Copy-From               |String *(Optional)*      |If set, this is the name |
 |                          |                         |of an object used to     |
 |                          |                         |create the new object by |
-|                          |                         |copying the ``X-Copy-    |
-|                          |                         |From`` object. The value |
+|                          |                         |copying the              |
+|                          |                         |``X-Copy-From``          |
+|                          |                         |object. The value        |
 |                          |                         |is in form               |
 |                          |                         |``container/object``.    |
 |                          |                         |You must UTF-8-encode    |
@@ -167,8 +169,9 @@ This table shows the header parameters for the request:
 |                          |                         |and object before you    |
 |                          |                         |include them in the      |
 |                          |                         |header. Using the PUT    |
-|                          |                         |operation with ``X-Copy- |
-|                          |                         |From`` has the same      |
+|                          |                         |operation with           |
+|                          |                         |``X-Copy-From``          |
+|                          |                         |has the same             |
 |                          |                         |effect as using the COPY |
 |                          |                         |operation to copy an     |
 |                          |                         |object.                  |
@@ -209,23 +212,21 @@ This table shows the query parameters for the request:
 +================+================+============================================+
 |signature       |String          |Used with temporary URLs to sign the        |
 |                |*(Optional)*    |request. For more information about         |
-|                |                |temporary URLs, see `TempURL                |
-|                |                |<http://docs.rackspace.com/files/api/v1/cf- |
-|                |                |devguide/content/TempURL-d1a4450.html>`__.  |
+|                |                |temporary URLs, see :ref:`TempURL<tempurl>`.|
 +----------------+----------------+--------------------------------------------+
 |expires         |String          |Used with temporary URLs to specify the     |
 |                |*(Optional)*    |expiry time of the signature. For more      |
 |                |                |information about temporary URLs, see       |
-|                |                |`TempURL                                    |
-|                |                |<http://docs.rackspace.com/files/api/v1/cf- |
-|                |                |devguide/content/TempURL-d1a4450.html>`__.  |
+|                |                |:ref:`TempURL<tempurl>`.                    |
 +----------------+----------------+--------------------------------------------+
-|multipart-      |String          |If you include the``multipart-              |
-|manifest        |*(Optional)*    |manifest=get`` query parameter and the      |
+|multipart-      |String          |If you include the                          | 
+|                |*(Optional)*    |``multipart-manifest=get``                  |
+|                |                |query parameter and the                     |
 |                |                |object is a large object, the object        |
 |                |                |contents are not returned. Instead, the     |
-|                |                |manifest is returned in the``X-Object-      |
-|                |                |Manifest`` response header for dynamic      |
+|                |                |manifest is returned in the                 | 
+|                |                |``X-Object-Manifest``                       |
+|                |                |response header for dynamic                 |
 |                |                |large objects or in the response body for   |
 |                |                |static large objects.                       |
 +----------------+----------------+--------------------------------------------+

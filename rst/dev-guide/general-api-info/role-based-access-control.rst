@@ -12,13 +12,14 @@ Assigning roles to account users
 
 The account owner (identity:user-admin) can create account users on the account and then assign roles to those users. The roles grant the account users specific permissions for accessing the capabilities of the Cloud Files service. Each account has only one account owner, and that role is assigned by default to any Rackspace Cloud account when the account is created.
 
-See the *Cloud Identity Client Developer Guide* for information about how to perform the following tasks:
+See the :rax-devguide:`Cloud Identity Client Developer Guide <cloud-identity/v2>` for
+information about how to perform these tasks:
 
--  `Create account users`_
+* :rax-devdocs:`Add user <cloud-identity/v2/developer-guide/#add-user>`  
 
--  `Assign roles to account users`_
+* :rax-devdocs:`Add role to user <cloud-identity/v2/developer-guide/#add-role-to-user>`  
 
--  `Delete roles from account users`_
+* :rax-devdocs:`Delete global role from user <cloud-identity/v2/developer-guide/#delete-global-role-from-user>` 
 
 ..  note:: 
     The account admin user (identity:user-admin) role cannot hold any additional roles because it already has full access to all capabilities by default.
@@ -90,6 +91,4 @@ The following table shows two examples of how potential conflicts between user r
 RBAC permissions cross-reference to Cloud Files API operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-API operations for Cloud Files may or may not be available to all roles. To see which operations are permitted to invoke which calls, please review the `Permissions Matrix for Role-Based Access Control`_.
-
-.. _Permissions Matrix for Role-Based Access Control: http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac
+API operations for Cloud Files may or may not be available to all roles. To see which operations are permitted to invoke which calls, please review the :kc-article:`Permissions Matrix for Role Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.

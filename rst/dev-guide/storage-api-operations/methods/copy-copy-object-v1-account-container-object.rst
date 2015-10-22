@@ -27,10 +27,10 @@ You can send a ``COPY`` request to the existing object and include the ``Destina
 
 .. code::
   
-   COPY /v1/ ``account`` / ``sourceContainer`` / ``sourceObject``  HTTP/1.1   
-   Host:  ``storageURL``   
-   X-Auth-Token:  ``yourAuthToken``   
-   Destination: / ``destinationContainer`` / ``destinationObject`` 
+   COPY /v1/account/sourceContainer/sourceObject  HTTP/1.1   
+   Host: storageURL  
+   X-Auth-Token: yourAuthToken   
+   Destination: /destinationContainer/destinationObject 
 
 Alternatively, you can send a ``PUT`` request to the location of the new object (the destination), and add the ``X-Copy-From`` header to designate the source of the data. The header value must be the container and object name of the source object in the form of ``/container/object``. The HTTP specification of a ``PUT`` request with the ``X-Copy-From`` header requires a ``Content-Length`` header, but the storage system does not use the ``Content-Length`` value to perform the operation. For this reason, you can simply send a ``Content-Length`` value of 0 (zero). 
 
@@ -43,9 +43,11 @@ Alternatively, you can send a ``PUT`` request to the location of the new object 
 
 .. code::
   
-   PUT /v1/ ``account`` / ``destinationContainer`` / ``destinationObject``  HTTP/1.1
-   Host:  ``storageURL``   
-   X-Auth-Token:  ``yourAuthToken``   X-Copy-From: / ``sourceContainer`` / ``sourceObject``   Content-Length: 0 
+   PUT /v1/account/destinationContainer/destinationObject  HTTP/1.1
+   Host: storageURL   
+   X-Auth-Token: yourAuthToken   
+   X-Copy-From: /sourceContainer/sourceObject   
+   Content-Length: 0 
 
 With both of these approaches, the destination container must exist before you copy the object.
 
@@ -109,7 +111,7 @@ This table shows the header parameters for the request:
 |                          |                         |container and object     |
 |                          |                         |name of the source       |
 |                          |                         |object in the form       |
-|                          |                         |of``/container/object``. |
+|                          |                         |of ``/container/object``.|
 +--------------------------+-------------------------+-------------------------+
 |X-Copy-From-Account       |String *(Optional)*      |Specifies the account    |
 |                          |                         |you are copying from.    |
@@ -123,7 +125,7 @@ This table shows the header parameters for the request:
 |                          |                         |container and object     |
 |                          |                         |name of the destination  |
 |                          |                         |object in the form       |
-|                          |                         |of``/container/object``. |
+|                          |                         |of ``/container/object``.|
 +--------------------------+-------------------------+-------------------------+
 |Destination-Account       |String *(Optional)*      |Used for account to      |
 |                          |                         |account copy. Specifies  |

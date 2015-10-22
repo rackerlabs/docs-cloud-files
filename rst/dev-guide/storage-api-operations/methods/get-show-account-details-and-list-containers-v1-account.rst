@@ -14,7 +14,7 @@ This operation lists the storage containers in your account and sorts them by na
 
 The list is limited to 10,000 containers at a time. For information on limiting and navigating the list, see the following section, "Controlling a Large List of Containers". 
 
-Container names are sorted based on a binary comparison, a built-in collating function that compares string data by using SQLite's ``memcmp()`` function, regardless of text encoding. For more information, see `http://www.sqlite.org/datatype3.html#collation <http://www.sqlite.org/datatype3.html#collation>`__.
+Container names are sorted based on a binary comparison, a built-in collating function that compares string data by using SQLite's ``memcmp()`` function, regardless of text encoding. For more information, see `Collating Sequences <http://www.sqlite.org/datatype3.html#collation>`__.
 
 A list of containers is returned in the response body, one container per line. 
 

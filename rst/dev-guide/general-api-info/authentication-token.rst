@@ -38,7 +38,7 @@ The authenticate operation provides clients with an authentication token
 and a list of regional cloud endpoints.
 
 .. note::
-   For information about how to use cURL to retrieve the authentication token, see the *Cloud Files Getting Started Guide*.
+   For information about how to use cURL to retrieve the authentication token, see the `Cloud Files Getting Started Guide <http://docs.rackspace.com/files/api/v1/cf-getting-started/content/Overview-d1e01.html>`_.
 
 The sample requests and responses in this section illustrate a general
 case. In your authentication request, use your own credentials rather
@@ -50,7 +50,7 @@ subscribed rather than the sample values shown here.
 .. note::
    If you authenticate with ``username`` and ``password`` credentials, you can use multi-factor authentication to add an additional level of account security. This feature is not implemented for the ``username`` and ``apiKey`` credentials shown in the following examples.
 
-For more information, see `Multi-factor authentication <http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/MFA_Ops.html>`_ in the *Cloud Identity Client Developer Guide*.
+For more information, see `Multi-factor authentication`_.
 
 **Example: Authentication request: XML**
 
@@ -384,3 +384,4 @@ UK-based accounts see different values in the service catalog. For more
 information about service endpoints, see the section called “Service
 access endpoints”.
 
+.. _Multi-factor authentication: https://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-authentication-info/use-mfa-ops

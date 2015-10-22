@@ -30,7 +30,7 @@ calling the API binding, or you will double-encode container and object names.
 Check the length restrictions against the URL-encoded string.
 
 .. note::
-   The language-specific APIs handle URL-encoding and decoding.
+   The language-specific APIs that are described at :rax-dev:`SDKs and tools<sdks>` handle URL-encoding and decoding.
 
 Each REST request against Cloud Files requires the inclusion of an authorization 
 token in the ``X-Auth-Token`` header. You obtain this token, along with the Cloud

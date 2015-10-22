@@ -288,8 +288,8 @@ You create a static large object by performing the following steps:
    returned by the **PUT** operation. Alternatively, you can calculate
    the MD5 checksum of the segment prior to uploading and include this
    in the ``ETag`` request header. Doing so ensures that the upload
-   cannot corrupt your data. For detailed information, see the section
-   called “Uploading the segments” .
+   cannot corrupt your data. For detailed information, see 
+   :ref:`Uploading the segments<uploading-the-segments>`.
 
    The maximum number of segment objects per static large object is
    1,000. Each segment, except for the final one, must be at least 1 MB.
@@ -298,9 +298,10 @@ You create a static large object by performing the following steps:
    along with its size and MD5 checksum, in order. You indicate that
    this is a manifest object by including the
    ?\ ``multipart-manifest=put`` query string at the end of the manifest
-   object name. For detailed information, see the section called
-   “Uploading the manifest”.
+   object name. For detailed information, see 
+   :ref:`Uploading the manifest<uploading-the-manifest>`. 
 
+.. _uploading-the-segments:
 
 Uploading the segments
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -312,7 +313,7 @@ following information about each segment for the next step, uploading
 the manifest object:
 
 -  ``path`` – The container and object name in the following format:
-   ``containerName``/*``objectName``*
+   ``containerName``/``objectName``
 
 -  ``etag`` – The ``ETag`` header from the successful 201 response of
    the **PUT** operation that uploaded the segment. This is the MD5
@@ -320,6 +321,8 @@ the manifest object:
 
 -  ``size_bytes`` – The segment object's size in bytes. This value must
    match the ``Content-Length`` of that object.
+
+.. _uploading-the-manifest:
 
 Uploading the manifest
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -336,7 +339,7 @@ The body of the **PUT** operation is an ordered list of files in JSON
 data format. The data to be supplied for each segment is as follows:
 
 -  ``path`` – The container and object name in the following format:
-   ``containerName``/*``objectName``*
+   ``containerName``/``objectName``
 
 -  ``etag`` – The ``ETag`` header from the successful 201 response of
    the **PUT** operation that uploaded the segment. This is the MD5

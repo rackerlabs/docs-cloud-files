@@ -48,7 +48,7 @@ are from the day and hour specified in the file name.
 
 Within the gzip logs, the format of the entries is similar to National
 Center for Supercomputing Applications (NCSA) combined log format, but
-without cookies. The pattern follows. The dashes (*``-``*) denote fields
+without cookies. The pattern follows. The dashes ( - ) denote fields
 that the NCSA combined log format dictates be present but that Cloud
 Files does not capture.
 

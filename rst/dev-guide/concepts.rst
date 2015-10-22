@@ -28,8 +28,7 @@ Cloud Identity service to receive Cloud Files connection parameters and an
 authentication token. The token must be passed to Cloud Files operations
 during the time that it is valid.
 
-For more information about authentication, see the *Cloud Identity
-Client Developer Guide, v2.0*.
+For more information about authentication, see the :rax-devguide:`Cloud Identity Client Developer Guide <cloud-identity/v2>`.
 
 .. note::
    The language-specific APIs handle authentication, token passing, and
@@ -119,8 +118,7 @@ information about the Cloud Files API operations, see :ref:`API reference
 
 You can perform operations through the REST web service API or a
 language-specific API. For information about the Rackspace
-language-specific APIs, see `SDKs & Tools 
-<http://developer.rackspace.com/sdks/>`__.
+language-specific APIs, see :rax-dev:`SDKs and tools<sdks>`.
 
 .. note::
    All operations must include a valid authorization token.
@@ -201,7 +199,6 @@ You are welcome to create your own language-specific APIs. Rackspace
 will help answer any questions during development, host your code if you
 like, and give you full credit for your work.
 
-For more information about the Rackspace SDKs, see `SDKs & Tools
-<https://developer.rackspace.com/sdks/>`__.
+For more information about the Rackspace SDKs, see :rax-dev:`SDKs and tools<sdks>`.
 
 

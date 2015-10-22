@@ -9,14 +9,14 @@ When you CDN-enable a container, all the objects within it become available on t
 
 When you enable a container in the CDN service, you automatically generate URIs for SSL and streaming usage. They are listed under the X-Cdn-Ssl-Uri and X-Cdn-Streaming-Uri headers.
 
-On August 13, 2012, the format of new CDN URIs changed in order to enhance the security of the CDN. Any URIs set in the older format (for example, http://c25810.r10.cf1.rackcdn.com/mydog.jpg) continue to work. However, any newly generated CDN URIs have the new format, as shown in the following example: http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8. r10.cf1.rackcdn.com/mydog.jpg. 
+On August 13, 2012, the format of new CDN URIs changed in order to enhance the security of the CDN. Any URIs set in the older format (for example, http://c25810.r10.cf1.rackcdn.com/mydog.jpg) continue to work. However, any newly generated CDN URIs have the new format, as shown in the following example: http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/mydog.jpg. 
 
 .. note::
    Monitor your CDN charges. When you CDN-enable a container, not only can anyone view it,
    but anyone can link to it. We recommend that you monitor your bandwidth usage and 
    charges in the Cloud Control Panel so that you know if someone is hot-linking your 
-   content. For instructions about viewing your usage charges, see the Knowledge Center  
-   article `Protect your Cloud Files CDN Bill from Unexpected Usage <http://www.rackspace.com/knowledge_center/article/protect-your-cloud-files-cdn-bill-from-unexpected-usage-0>`__. 
+   content. For instructions about viewing your usage charges, see 
+   :kc-article:`Protect your Cloud Files CDN Bill from Unexpected Usage<protect-your-cloud-files-cdn-bill-from-unexpected-usage-0>`. 
 
 The examples in this section use sample values for the following:
 

@@ -30,7 +30,7 @@ The types of range specifications are as follows:
 
 
 
-*  Byte range specification: Use a ``FIRST_BYTE_OFFSET`` value to specify the start of the data range, and use a ``LAST_BYTE_OFFSET`` value to specify the end of the range. If you omit the LAST_BYTE_OFFSET value, the offset of the last byte of data is used
+*  Byte range specification: Use a ``FIRST_BYTE_OFFSET`` value to specify the start of the data range, and use a ``LAST_BYTE_OFFSET`` value to specify the end of the range. If you omit the ``LAST_BYTE_OFFSET`` value, the offset of the last byte of data is used
 *  Suffix byte range specification: Use ``LENGTH`` bytes to specify the length of the data range.
 
 

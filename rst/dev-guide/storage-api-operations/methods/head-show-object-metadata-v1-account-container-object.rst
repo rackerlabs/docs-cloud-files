@@ -75,16 +75,12 @@ This table shows the query parameters for the request:
 +================+================+============================================+
 |signature       |String          |Used with temporary URLs to sign the        |
 |                |*(Optional)*    |request. For more information about         |
-|                |                |temporary URLs, see `TempURL                |
-|                |                |<http://docs.rackspace.com/files/api/v1/cf- |
-|                |                |devguide/content/TempURL-d1a4450.html>`__.  |
+|                |                |temporary URLs, see :ref:`TempURL<tempurl>`.|
 +----------------+----------------+--------------------------------------------+
 |expires         |String          |Used with temporary URLs to specify the     |
 |                |*(Optional)*    |expiry time of the signature. For more      |
 |                |                |information about temporary URLs, see       |
-|                |                |`TempURL                                    |
-|                |                |<http://docs.rackspace.com/files/api/v1/cf- |
-|                |                |devguide/content/TempURL-d1a4450.html>`__.  |
+|                |                |:ref:`TempURL<tempurl>`.                    |
 +----------------+----------------+--------------------------------------------+
 
 

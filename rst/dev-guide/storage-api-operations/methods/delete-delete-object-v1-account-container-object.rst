@@ -73,23 +73,24 @@ This table shows the URI parameters for the request:
 
 This table shows the query parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|multipart-manifest        |String *(Optional)*      |If you include           |
-|                          |                         |the``multipart-          |
-|                          |                         |manifest=get`` query     |
-|                          |                         |parameter and the object |
-|                          |                         |is a large object, the   |
-|                          |                         |object contents are not  |
-|                          |                         |returned. Instead, the   |
-|                          |                         |manifest is returned in  |
-|                          |                         |the``X-Object-Manifest`` |
-|                          |                         |response header for      |
-|                          |                         |dynamic large objects or |
-|                          |                         |in the response body for |
-|                          |                         |static large objects.    |
-+--------------------------+-------------------------+-------------------------+
++--------------------------+-------------------------+--------------------------+
+|Name                      |Type                     |Description               |
++==========================+=========================+==========================+
+|multipart-manifest        |String *(Optional)*      |If you include            |
+|                          |                         |the                       |
+|                          |                         |``multipart-manifest=get``|          
+|                          |                         |query                     |
+|                          |                         |parameter and the object  |
+|                          |                         |is a large object, the    |
+|                          |                         |object contents are not   |
+|                          |                         |returned. Instead, the    |
+|                          |                         |manifest is returned in   |
+|                          |                         |the ``X-Object-Manifest`` |
+|                          |                         |response header for       |
+|                          |                         |dynamic large objects or  |
+|                          |                         |in the response body for  |
+|                          |                         |static large objects.     |
++--------------------------+-------------------------+--------------------------+
 
 
 

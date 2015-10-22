@@ -16,7 +16,7 @@ To delete a metadata header, use a ``POST`` operation. You send the ``POST`` ope
 
 To set and edit your custom metadata, see :ref:`Create or update container metadata <create-or-update-container-metadata>`.
 
-Note that updating and deleting object metadata works differently. For an example, see :ref: `Create or update object metadata <create-or-update-object-metadata>`
+Note that updating and deleting object metadata works differently. For an example, see :ref:`Create or update object metadata <create-or-update-object-metadata>`.
 A status code of 200 through 299 indicates success. If the container does not exist, a status code of 404 (Not Found) is returned.
 
 This operation does not require a request body and does not return a response body.

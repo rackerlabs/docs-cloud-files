@@ -9,7 +9,7 @@ using the REST application programming interface (API) for the Rackspace Cloud F
 service. 
 
 To use the information provided here, you should have a general understanding of the
-`Rackspace Cloud Files service`_ and have a `Rackspace Cloud account`_ with access to the Cloud Files service. You should also be familiar with the following technologies:
+:kc-product-faq:`Rackspace Cloud Files service<cloud-files>` and have a `Rackspace Cloud account`_ with access to the Cloud Files service. You should also be familiar with the following technologies:
 
 -  *RESTful* web services
 
@@ -26,5 +26,5 @@ Panel provides an easy to use web-based interface for uploading content
 to and downloading content from Cloud Files.
 
 
-.. _Rackspace Cloud Files service: http://www.rackspace.com/knowledge_center/product-faq/cloud-files
+
 .. _Rackspace Cloud Account: https://cart.rackspace.com/cloud

@@ -12,8 +12,7 @@ Cloud Files servers.
 
 To help you decide which regionalized endpoint to use, read the
 Knowledge Center article about special considerations for choosing a
-data center at `About
-Regions <http://www.rackspace.com/knowledge_center/article/about-regions>`__.
+data center at :kc-article:`About regions<about-regions>`.
 
 The endpoints to use for the storage service component of your Cloud
 Files API calls are summarized in the following table. The first
@@ -81,7 +80,7 @@ see the sample authentication request and response in the :ref:`Authentication <
 
 .. tip:: If you do not know which data center you are working in or your
    account ID, you can find them in your Cloud Control Panel at
-   `mycloud.rackspace.com <https://mycloud.rackspace.com/>`__.
+   :mycloud:`mycloud.rackspace.com<>`.
 
 .. note:: To avoid external bandwidth charges, your containers and servers must
    be in the same data center.

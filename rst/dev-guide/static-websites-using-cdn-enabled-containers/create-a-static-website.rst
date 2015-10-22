@@ -59,7 +59,7 @@ website.
    website's container. See the following example. (Remember to change the
    ``X-Auth-Token`` to your authentication token.) You must use your
    storage URL and the container name to properly point to the container
-   (``storageURL``/*``containerName``*).
+   (``storageURL``/``containerName``).
 
    (You get your authentication token when you authenticate your session
    as shown in :ref:`Authentication<auth>`.)

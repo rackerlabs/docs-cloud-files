@@ -16,10 +16,10 @@ Before a container can be CDN-enabled, it must exist in the storage system. To C
 
 The :ref:`Authentication <auth>` section provides an example of the information in the service catalog for ``cloudfilesCDN``.
 
-When a container is CDN-enabled, any objects stored in it are publicly accessible over the CDN by combining the container's CDN URI with the object name ( ``X-Cdn-Uri/ ``objectName```` ).
+When a container is CDN-enabled, any objects stored in it are publicly accessible over the CDN by combining the container's CDN URI with the object name ( ``X-Cdn-Uri/objectName``).
 
 .. note::
-   The examples in this guide use ``cdn.clouddrive.com`` as the endpoint for operations against the CDN management service, but you should use whatever endpoints your authentication request provides. For more information about service access endpoints, see `"Service access endpoints" <http://docs.rackspace.com/files/api/v1/cf-devguide/content/Service-Access-Endpoints-d1e003.html>`__.
+   The examples in this guide use ``cdn.clouddrive.com`` as the endpoint for operations against the CDN management service, but you should use whatever endpoints your authentication request provides. For more information about service access endpoints, see :ref:`Service access endpoints <service-access>`.
    
    
 
