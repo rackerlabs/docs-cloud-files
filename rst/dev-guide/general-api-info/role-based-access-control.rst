@@ -24,12 +24,6 @@ information about how to perform these tasks:
 ..  note:: 
     The account admin user (identity:user-admin) role cannot hold any additional roles because it already has full access to all capabilities by default.
 
-.. _Create account users: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/POST_addUser_v2.0_users_User_Calls.html
-
-.. _Assign roles to account users: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/PUT_addUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html
-
-.. _Delete roles from account users: http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/DELETE_deleteUserRole__v2.0_users__userId__roles_OS-KSADM__roleid__Role_Calls.html
-
 .. _cf-dg-rbac-available:
 
 Roles available for Cloud Files
