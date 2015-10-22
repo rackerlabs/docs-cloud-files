@@ -40,14 +40,14 @@ Then you perform a ``POST`` request similar to the following example to set meta
    HTTP/1.1 Host: storage.clouddrive.com 
    X-Auth-Token: yourAuthToken 
    X-Object-Meta-Price: 45 
-   X-Object-Meta-Cost: 30`` 
+   X-Object-Meta-Cost: 30 
 
 Listing the object metadata again after the ``POST`` then shows the following results and ``X-Object-Meta-Extra`` no longer exists:
 
 .. code::
    
    X-Object-Meta-Price: 45                     
-   X-Object-Meta-Cost: 30`` 
+   X-Object-Meta-Cost: 30 
 
 To remove all metadata for an object, simply perform a ``POST`` request for the object with no metadata specified. 
    
