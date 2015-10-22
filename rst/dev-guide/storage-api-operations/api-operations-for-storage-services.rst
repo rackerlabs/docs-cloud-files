@@ -6,8 +6,7 @@ API operations for storage services
 
 This section describes each of the API operations provided by the Cloud Files service for storage services.
 
-All requests are directed to the endpoints described in the cloudFiles section of the service catalog obtained during successful authentication. (For more information, see :ref:`Authentication<auth>` and :ref:`Service access endpoints<
->`.)
+All requests are directed to the endpoints described in the cloudFiles section of the service catalog obtained during successful authentication. (For more information, see :ref:`Authentication<auth>` and :ref:`Service access endpoints<service-access>`.)
 
 Following are some requirements for the storage services component:
 

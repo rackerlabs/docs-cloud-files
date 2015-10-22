@@ -131,13 +131,13 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |X-Account-Meta-name       |String *(Optional)*      |The custom account       |
 |                          |                         |metadata item,           |
-|                          |                         |where``name`` is the     |
+|                          |                         |where ``name`` is the    |
 |                          |                         |name of the metadata     |
 |                          |                         |item. One ``X-Account-   |
 |                          |                         |Meta-name`` response     |
 |                          |                         |header appears for each  |
 |                          |                         |metadata item (for       |
-|                          |                         |each``name``).           |
+|                          |                         |each ``name``).          |
 +--------------------------+-------------------------+-------------------------+
 |X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
 |Key                       |                         |temporary URLs. If not   |

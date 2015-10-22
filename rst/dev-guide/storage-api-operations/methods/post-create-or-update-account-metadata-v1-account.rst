@@ -66,9 +66,10 @@ This table shows the header parameters for the request:
 |                          |                         |at the end of the header |
 |                          |                         |with the name for your   |
 |                          |                         |metadata. You must       |
-|                          |                         |specify a ``X-Account-   |
-|                          |                         |Meta-name`` header for   |
-|                          |                         |each metadata item (for  |
+|                          |                         |specify a                |
+|                          |                         |``X-Account-Meta-name``  |
+|                          |                         | header for              |
+|                          |                         | metadata item (for      |
 |                          |                         |each ``name``) that you  |
 |                          |                         |want to add or update.   |
 +--------------------------+-------------------------+-------------------------+

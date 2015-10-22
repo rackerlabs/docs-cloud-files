@@ -83,8 +83,9 @@ This table shows the header parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Content-Type              |String *(Optional)*      |The media type of the    |
 |                          |                         |entity-body sent. If not |
-|                          |                         |specified, the ``Content-|
-|                          |                         |Type`` is guessed, by    |
+|                          |                         |specified, the           | 
+|                          |                         |``Content-Type``         |
+|                          |                         |is guessed, by           |
 |                          |                         |using the Python         |
 |                          |                         |mimetypes library, based |
 |                          |                         |on the object path.      |

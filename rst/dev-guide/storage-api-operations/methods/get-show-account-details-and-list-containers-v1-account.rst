@@ -12,7 +12,7 @@ Show account details and list containers
 
 This operation lists the storage containers in your account and sorts them by name. You perform the operation against your storage account URL.
 
-The list is limited to 10,000 containers at a time. For information on limiting and navigating the list, see the following section, "Controlling a Large List of Containers". 
+The list is limited to 10,000 containers at a time. For information on limiting and navigating the list, see the following section, :ref:`Controlling a Large List of Containers<controlling-large-list>`.. 
 
 Container names are sorted based on a binary comparison, a built-in collating function that compares string data by using SQLite's ``memcmp()`` function, regardless of text encoding. For more information, see `Collating Sequences <http://www.sqlite.org/datatype3.html#collation>`__.
 
@@ -27,6 +27,8 @@ An HTTP response status code of 200 through 299 indicates success. A 200 (OK) co
 If you append the ``?format=xml`` or ``?format=json`` query parameter to the storage account URL, the service returns container information serialized in the specified format. To format your results, you must place this query parameter before any other parameters. 
 
 The example responses in this section are formatted for readability. 
+
+.. _controlling-large-list:
 
 **Controlling a Large List of Containers**
 
@@ -260,13 +262,13 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |X-Account-Meta-name       |String *(Optional)*      |The custom account       |
 |                          |                         |metadata item,           |
-|                          |                         |where``name`` is the     |
+|                          |                         |where ``name`` is the    |
 |                          |                         |name of the metadata     |
 |                          |                         |item. One ``X-Account-   |
 |                          |                         |Meta-name`` response     |
 |                          |                         |header appears for each  |
 |                          |                         |metadata item (for       |
-|                          |                         |each``name``).           |
+|                          |                         |each ``name``).          |
 +--------------------------+-------------------------+-------------------------+
 |X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
 |Key                       |                         |temporary URLs. If not   |

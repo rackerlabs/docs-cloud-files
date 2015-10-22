@@ -135,20 +135,18 @@ This table shows the query parameters for the request:
 +================+================+============================================+
 |signature       |String          |Used with temporary URLs to sign the        |
 |                |*(Optional)*    |request. For more information about         |
-|                |                |temporary URLs, see `TempURL                |
-|                |                |<tempurl>`.                                 |
+|                |                |temporary URLs, see :ref:`TempURL<tempurl>`.|                
 +----------------+----------------+--------------------------------------------+
 |expires         |String          |Used with temporary URLs to specify the     |
 |                |*(Optional)*    |expiry time of the signature. For more      |
 |                |                |information about temporary URLs, see       |
-|                |                |`TempURL                                    |
-|                |                |<tempurl>`.                                 |
+|                |                |:ref:`TempURL<tempurl>`.                    |
 +----------------+----------------+--------------------------------------------+
-|multipart-      |String          |If you include the``multipart-              |
+|multipart-      |String          |If you include the ``multipart-             |
 |manifest        |*(Optional)*    |manifest=get`` query parameter and the      |
 |                |                |object is a large object, the object        |
 |                |                |contents are not returned. Instead, the     |
-|                |                |manifest is returned in the``X-Object-      |
+|                |                |manifest is returned in the ``X-Object-     |
 |                |                |Manifest`` response header for dynamic      |
 |                |                |large objects or in the response body for   |
 |                |                |static large objects.                       |

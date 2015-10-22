@@ -118,7 +118,7 @@ Users (most likely account administrators) who have the ability to set
 container metadata can implement simple quotas on Cloud Files
 containers. Setting container quotas can be useful for limiting
 containers for non-admin users, FormPost uploads, or just as a sanity
-check. (For information about FormPost, see :ref:`FormPost<formpost>`.)
+check. (For more information, see :ref:`FormPost<formpost>`.)
 
 Any object **PUT** operations that exceed a quota return a 413 response
 (request entity too large) with a descriptive body.

@@ -12,13 +12,16 @@ Show container details and list objects
 
 This operation shows details for a specified container and lists objects, sorted by name, in the container. You can use optional query parameters to refine the list results.
 
-A request with no query parameters returns the full list of object names stored in the container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full list and returns a subset of objects. For information about limiting and controlling the list, see the following “Controlling a Large List of Objects” section.
+A request with no query parameters returns the full list of object names stored in the container, up to 10,000 names. The response body shows the object names as one object name per line. Specifying the query parameters filters the full list and returns a subset of objects. For information about limiting and controlling the list, see :ref:`Controlling a Large List of Objects<controlling-large-list-objects>`.
 
 An HTTP response status code of 200 through 299 indicates success. A status code of 200 (OK) is returned if there are objects, and a 204 (No Content) is returned if there are no objects. If the container does not exist, or if an incorrect account is specified, a status code 404 (Not Found) is returned.
 
 **Format Object List**
 
 If you append the ``format=xml`` or the ``format=json`` query parameter to the storage account URL, the service returns additional object information serialized in the specified format. The status codes are the same for ``format=xml`` and ``format=json``. However, ``Content-Type`` matches the specified format. The example responses in this section are formatted for readability.
+
+
+.. _controlling-large-list-objects:
 
 **Controlling a Large List of Objects**
 
@@ -251,13 +254,13 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |X-Container-Meta-name     |String *(Optional)*      |The custom container     |
 |                          |                         |metadata item,           |
-|                          |                         |where``name`` is the     |
+|                          |                         |where ``name`` is the    |
 |                          |                         |name of the metadata     |
 |                          |                         |item. One ``X-Container- |
 |                          |                         |Meta-name`` response     |
 |                          |                         |header appears for each  |
 |                          |                         |metadata item (for       |
-|                          |                         |each``name``).           |
+|                          |                         |each ``name``).          |
 +--------------------------+-------------------------+-------------------------+
 |Content-Type              |String *(Required)*      |The MIME type of the     |
 |                          |                         |list of names. If the    |
