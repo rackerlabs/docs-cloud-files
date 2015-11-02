@@ -1,0 +1,17 @@
+API |contract version| updates, September 26, 2013
+--------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Added support for Role Based Access Control (RBAC).
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

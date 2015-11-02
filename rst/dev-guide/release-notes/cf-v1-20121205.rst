@@ -1,0 +1,17 @@
+API |contract version| updates, December 05, 2012
+-------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Added iOS streaming.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

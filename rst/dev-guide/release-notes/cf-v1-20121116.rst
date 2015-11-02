@@ -1,0 +1,17 @@
+API |contract version| updates, November 16, 2012
+-------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Added CORS container headers.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

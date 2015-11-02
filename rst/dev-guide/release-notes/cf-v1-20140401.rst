@@ -1,0 +1,18 @@
+API |contract version| updates, April 1, 2014
+---------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Added the Sydney data center as a location that provides bulk
+   imports.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

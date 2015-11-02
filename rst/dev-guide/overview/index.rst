@@ -19,9 +19,11 @@ interface. There are also language-specific application programming
 interfaces (APIs) that use the RESTful API and make it easy for
 developers to integrate into their applications.
 
+This document describes the features available with API |contract version|.
 
 .. toctree:: :hidden:
    :maxdepth: 3
    
    additional-resources
    pricing-service-level
+   api-service-updates
