@@ -1,0 +1,25 @@
+API |contract version| updates, February 26, 2015
+-------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Added the account to account copy capability.
+
+   -  Added the ``Destination-Account`` header, which is used to make an
+      account to account copy, to the **COPY** command request
+      parameters in the copy object operation.
+      
+    - Added the ``X-Copy-From-Account`` header, which is used to make an
+      account to account copy, to the **PUT** command request parameters
+      in the create or update object operation.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

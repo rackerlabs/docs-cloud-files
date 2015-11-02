@@ -1,0 +1,28 @@
+API |contract version| updates, February 21, 2014
+-------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Updated the following object methods to include the
+   ``X-Detect-Content-Type`` header in the request:
+
+   -  **PUT** (Create or Update Object)
+
+   -  **POST** (Update Object Metadata)
+
+   -  **COPY** (Copy Object)
+
+   If you set this header to ``True``, the ``Content-Type`` that is sent
+   in the request (if any) is ignored, and ``Content-Type`` is guessed
+   by using the Python mimetypes library based on the object path.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

@@ -1,7 +1,7 @@
 .. _index:
 
 =========================================================
-Rackspace Cloud Files API 1.0
+Rackspace Cloud Files API |contract version|
 =========================================================
 
 *Last updated:* |today|
@@ -12,6 +12,8 @@ Learn how to use the Rackspace Cloud Files service by using the REST API.
 - For details about API resources, operations, requests and responses, see the 
   :ref:`API reference <api-reference>`.
 - For information about using the API for some specific use cases, see the :ref:`Use cases information <use-cases-information>`.
+- For service release notes, see the :ref:`Release Notes <release-notes>`.
+
 
 
 .. toctree:: :hidden:
@@ -33,3 +35,4 @@ Learn how to use the Rackspace Cloud Files service by using the REST API.
    static-websites-using-cdn-enabled-containers/index
    bulk-operations/index
    public-access-to-your-cloud-files-account/index
+   release-notes
