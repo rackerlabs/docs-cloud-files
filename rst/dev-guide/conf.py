@@ -37,7 +37,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+#templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -128,7 +128,8 @@ extlinks = {
 rst_epilog = """
 .. |apiservice| replace:: Rackspace Cloud Files API
 .. |no changes| replace:: None for this release.
-.. |contract version| replace:: v1
+.. |contract version| replace:: 1.0
+.. |product name| replace:: Rackspace Cloud Files
 """
 
 
