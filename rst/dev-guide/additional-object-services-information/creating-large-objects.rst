@@ -262,6 +262,8 @@ change the ``Content-Type`` by reissuing the **PUT** request.
    manifest itself, so this method was chosen to at least offer change
    detection.
 
+.. _creating-static-large-object:
+
 Creating a static large object
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

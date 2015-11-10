@@ -4,9 +4,8 @@ API |contract version| updates, August 28, 2014
 What's new
 ~~~~~~~~~~
 
-- Added the ``x-delete-at`` and ``x-delete-after`` parameters to FormPost.
-  These parameters allow you to set the expiration for an object that gets 
-  uploaded using FormPost.
+The ``x-delete-at`` and ``x-delete-after`` parameters have been added to :ref:`FormPost <formpost>`. These parameters enable you to set the expiration 
+for an object that is uploaded by using FormPost.
 
 
 Resolved issues

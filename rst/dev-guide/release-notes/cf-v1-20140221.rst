@@ -4,18 +4,18 @@ API |contract version| updates, February 21, 2014
 What's new
 ~~~~~~~~~~
 
--  Updated the following object methods to include the
-   ``X-Detect-Content-Type`` header in the request:
+The following object methods have been updated to include the
+``X-Detect-Content-Type`` header in the request:
 
-   -  **PUT** (Create or Update Object)
+-  **PUT** (:ref:`create or update object <create-or-update-object>`)
 
-   -  **POST** (Update Object Metadata)
+-  **POST** (:ref:`update object metadata <create-or-update-object-metadata>`)
 
-   -  **COPY** (Copy Object)
+-  **COPY** (:ref:`copy object <copy-object>`)
 
-   If you set this header to ``True``, the ``Content-Type`` that is sent
-   in the request (if any) is ignored, and ``Content-Type`` is guessed
-   by using the Python mimetypes library based on the object path.
+If you set this header to ``True``, the ``Content-Type`` that is sent
+in the request (if any) is ignored, and the ``Content-Type`` is determined
+by using the Python mimetypes library based on the object path.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

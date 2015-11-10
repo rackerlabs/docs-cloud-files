@@ -4,7 +4,7 @@ API |contract version| updates, October 01, 2012
 What's new
 ~~~~~~~~~~
 
--  Added Access Log Delivery.
+You can now use access log delivery to analyze the number of requests for each object, the client IP address, and time-based usage patterns (such as monthly or seasonal usage). See :ref:`Access log delivery <access-log-delivery>`.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

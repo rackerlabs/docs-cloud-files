@@ -167,6 +167,8 @@ If you do not provide users with the exact TempURL, they get a 401
               "temp_url_sig=#{sig}&temp_url_expires=#{expires}")
       end
 
+.. _override-tempurl-fn:
+
 Override TempURL file names
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

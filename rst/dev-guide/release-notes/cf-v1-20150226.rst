@@ -4,15 +4,16 @@ API |contract version| updates, February 26, 2015
 What's new
 ~~~~~~~~~~
 
--  Added the account to account copy capability.
+-  You can now copy objects between different accounts on the server. For 
+   more information, see :ref:`Account to account copy <account-to-account_copy>`.
 
-   -  Added the ``Destination-Account`` header, which is used to make an
-      account to account copy, to the **COPY** command request
-      parameters in the copy object operation.
+-  The ``Destination-Account`` header, which is used to make an
+   account to account copy, has been added to the **COPY** command request
+   parameters in the :ref:`copy object operation <copy-object>`.
       
-    - Added the ``X-Copy-From-Account`` header, which is used to make an
-      account to account copy, to the **PUT** command request parameters
-      in the create or update object operation.
+-  The ``X-Copy-From-Account`` header, which is used to make an
+   account to account copy, to the **PUT** command request parameters
+   in the :ref:`create or update object operation <create-or-update-object>`.
 
 Resolved issues
 ~~~~~~~~~~~~~~~
