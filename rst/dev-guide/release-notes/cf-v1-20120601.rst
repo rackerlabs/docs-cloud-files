@@ -4,9 +4,12 @@ API |contract version| updates, June 01, 2012
 What's new
 ~~~~~~~~~~
 
-- Added static web functionality.
+- You can now use your Cloud Files account to create a static website. See 
+  :ref:`Static websites using CDN-enabled containers <static-websites-using-cdn-enabled-containers>`. 
 
-- Added object versioning functionality.
+- You can now use object versioning to store multiple versions of your 
+  content so that you can recover from unintended overwrites and deletions. 
+  See :ref:`Object versioning <object-versioning>`. 
 
 Resolved issues
 ~~~~~~~~~~~~~~~

@@ -4,7 +4,7 @@ API |contract version| updates, September 25, 2012
 What's new
 ~~~~~~~~~~
 
--  Added multi-region functionality.
+Multi-region functionality was added. See :ref:`Service access endpoints <service-access>` for a list of the different access endpoints.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

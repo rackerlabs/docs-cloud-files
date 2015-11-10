@@ -4,9 +4,11 @@ API |contract version| updates, December 31, 2013
 What's new
 ~~~~~~~~~~
 
--  Added the "Update account metadata" operation.
+The following operations were added:
 
--  Added the "Delete account metadata" operation.
+-  :ref:`Create or update account metadata <create-or-update-account-metadata>`
+
+-  :ref:`Delete account metadata <delete-account-metadata>`
 
 Resolved issues
 ~~~~~~~~~~~~~~~
