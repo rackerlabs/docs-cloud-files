@@ -13,7 +13,7 @@ Learn how to use the Rackspace Cloud Files service by using the REST API.
   :ref:`API reference <api-reference>`.
 - For information about using the API for some specific use cases, see the :ref:`Use cases information <use-cases-information>`.
 - For service release notes, see the :ref:`Release Notes <release-notes>`.
-
+- For instructions to use some basic operation to quickly get started, see the :ref:`Getting Started Guide <getting-started>`.
 
 
 .. toctree:: :hidden:
@@ -38,3 +38,4 @@ Learn how to use the Rackspace Cloud Files service by using the REST API.
    bulk-operations/index
    public-access-to-your-cloud-files-account/index
    release-notes
+   getting-started
