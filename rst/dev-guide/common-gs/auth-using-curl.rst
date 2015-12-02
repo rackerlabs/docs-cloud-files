@@ -143,7 +143,7 @@ To reference the value in an API request, prefix the variable name with a $, for
    .. include:: ../common-gs/samples/service-catalog-endpoint.rst
           
    
-#. Copy the URL, and then export it to an environment variable.
+#. Copy the URL and export it to an environment variable.
 
    .. code::
       
