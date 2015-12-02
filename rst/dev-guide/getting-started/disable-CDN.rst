@@ -1,6 +1,6 @@
 .. _gsg-disable-cdn:
 
-Disabling CDN for a container
+Disable CDN for a container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To disable use of the CDN for a container, you send an HTTP **POST**

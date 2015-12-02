@@ -1,6 +1,6 @@
 .. _gsg-purge-cdn-data:
 
-Purging an object from a CDN-enabled container 
+Purge an object from a CDN-enabled container 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a CDN-enabled object from public access before the TTL

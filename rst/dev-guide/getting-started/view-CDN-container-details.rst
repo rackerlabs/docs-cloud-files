@@ -1,6 +1,6 @@
 .. _gsg-view-cdn-container-details:
 
-Viewing CDN-enabled container details
+View CDN-enabled container details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To view details about a container in the CDN, you send an HTTP **HEAD**

@@ -1,6 +1,6 @@
 .. _gsg-update-object-metadata:
 
-Updating object metadata
+Update object metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 To set or update custom metadata for existing objects, you send an HTTP

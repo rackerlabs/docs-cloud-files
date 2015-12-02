@@ -1,6 +1,6 @@
 .. _gsg-delete-container:
 
-Deleting a container
+Delete a container
 ~~~~~~~~~~~~~~~~~~~~
 
 To delete a container, you send an HTTP **DELETE** request with a valid
