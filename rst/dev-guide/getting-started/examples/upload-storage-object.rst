@@ -20,14 +20,16 @@ An HTTP status code of 201 (Created) in the response indicates that the
 object was successfully uploaded.
 
  
-**Example: cURL upload an object**
+**cURL upload an object request**
 
 .. code::  
 
-   curl -i -X PUT https://storage101.dfw1.clouddrive.com/v1/yourAccountID/yourContainerName/yourObjectName /
-   -H "X-Auth-Token: yourAuthToken" \
+   curl -i -X PUT $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
+   -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "Content-Type: image/jpeg" \
    -H "Content-Length: 0"
+
+**Upload an object response**
 
 .. code::  
 

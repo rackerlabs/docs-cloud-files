@@ -12,13 +12,15 @@ authentication token.
 An HTTP status code of 201 (Created) in the response indicates that the
 container was successfully created.
 
- 
-**Example: cURL create storage container**
+ 
+**cURL create a storage container request**
 
 .. code::  
 
-   curl -i -X PUT https://storage101.dfw1.clouddrive.com/v1/yourAccountID/yourContainerName \
-   -H "X-Auth-Token: yourAuthToken" 
+   curl -i -X PUT $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
+   -H "X-Auth-Token: $AUTH_TOKEN" 
+
+**Create a storage container response**
 
 .. code::  
 

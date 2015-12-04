@@ -1,6 +1,6 @@
 .. _gsg-purge-cdn-data:
 
-Purge an object from a CDN-enabled container 
+Purge an object from a CDN-enabled container 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a CDN-enabled object from public access before the TTL
@@ -24,14 +24,16 @@ Because there are so many edge servers around the world, purging an
 object might take a long time. Be patient while waiting for the emailed
 response.
 
- 
-**Example: cURL purge an object from a CDN-enabled container**
+ 
+**cURL purge an object from a CDN-enabled container request**
 
 .. code::  
 
-   curl -i -X DELETE https://cdn1.clouddrive.com/v1/yourAccountID/yourContainerName/yourObjectName /
-   -H "X-Auth-Token: yourAuthToken" /
+   curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName /
+   -H "X-Auth-Token: $AUTH_TOKEN" /
    -H "X-Purge-Email: yourEmail@yourDomain.com"      
+
+*Purge an object from a CDN-enabled container response**
 
 .. code::  
 

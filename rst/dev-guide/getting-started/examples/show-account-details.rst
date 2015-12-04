@@ -13,12 +13,14 @@ An HTTP status code of 200 (OK) in the response indicates that the
 account and container details were successfully retrieved.
 
  
-**Example: cURL show account details**
+**cURL show account details request**
 
 .. code::  
 
-   curl -i -X GET https://storage101.dfw1.clouddrive.com/v1/yourAccountID?format=json \
-   -H "X-Auth-Token: yourAuthToken"  
+   curl -i -X GET $API_ENDPOINT/v1/$TENANT_ID?format=json \
+   -H "X-Auth-Token: $AUTH_TOKEN"  
+
+**Show account details response**
 
 .. code::  
 

@@ -10,13 +10,15 @@ it.
 An HTTP status code of 204 (No Content) in the response indicates that
 the container was successfully deleted.
 
- 
-**Example: cURL delete a Container**
+ 
+**cURL delete a container request**
 
 .. code::  
 
-   curl -i -X DELETE https://storage101.dfw1.clouddrive.com/v1/yourAccountID/yourContainerName \
-   -H "X-Auth-Token: yourAuthToken"  
+   curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
+   -H "X-Auth-Token: $AUTH_TOKEN"  
+
+**Delete a container response**
 
 .. code::  
 

@@ -27,14 +27,16 @@ the SSL URI with the object name to access the file over a secure SSL
 connection through the CDN.
 
  
-**Example. cURL CDN-enable container and set TTL**
+**cURL CDN-enable container and set TTL request**
 
 .. code::  
 
-   curl -i -X PUT https://cdn1.clouddrive.com/v1/yourAccountID/yourContainerName /
-   -H "X-Auth-Token: yourAuthToken" \
+   curl -i -X PUT $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
+   -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "X-CDN-Enabled: True" \
    -H "X-TTL: 604800"
+
+**CDN-enable container and set TTL response**
 
 .. code::  
 

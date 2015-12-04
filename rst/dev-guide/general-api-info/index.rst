@@ -9,7 +9,7 @@ operations. For information about a specific API operation, see :ref:`API refere
 .. toctree:: :hidden:
    :maxdepth: 2
    
-   authentication-token
+   authentication
    role-based-access-control   
    service-access-endpoints  
    cloud-files-service-contract-version   
