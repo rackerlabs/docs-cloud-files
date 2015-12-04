@@ -17,14 +17,16 @@ An HTTP status code of 202 (Accepted) in the response indicates that the
 metadata for the object was successfully updated.
 
  
-**Example: cURL update object metadata**
+**cURL update object metadata request**
 
 .. code::  
 
-   curl -i -X POST https://storage101.dfw1.clouddrive.com/v1/yourAccountID/yourContainerName/yourObjectName \
-   -H "X-Auth-Token: yourAuthToken" \
+   curl -i -X POST $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
+   -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "X-Object-Meta-ImageType: png" \
    -H "X-Object-Meta-ImageSize: 400 MB"
+
+**Update object metadata response**
 
 .. code::  
 

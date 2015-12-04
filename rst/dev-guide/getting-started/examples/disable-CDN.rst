@@ -12,13 +12,15 @@ An HTTP status code of 202 (Accepted) in the response indicates that the
 request is accepted for processing.
 
  
-**Example: cURL disable CDN for a container**
+**cURL disable CDN for a container request**
 
 .. code::  
 
-   curl -i -X POST https://cdn1.clouddrive.com/v1/yourAccountID/yourContainerName /
-   -H "X-Auth-Token: yourAuthToken" \
+   curl -i -X POST $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
+   -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "X-CDN-Enabled: False"
+
+*Disable CDN for a container response**
 
 .. code::  
 

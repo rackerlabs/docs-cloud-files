@@ -17,12 +17,14 @@ on and other versions exist). For more information about object
 versioning, see the *Cloud Files Developer Guide*.
 
  
-**Example: cURL delete an object**
+**cURL delete an object request**
 
 .. code::  
 
-   curl -i -X DELETE https://storage101.dfw1.clouddrive.com/v1/yourAccountID/yourContainerName/yourObjectName \
-   -H "X-Auth-Token: yourAuthToken" 
+   curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
+   -H "X-Auth-Token: $AUTH_TOKEN" 
+
+**Delete an object response**
 
 .. code::  
 
