@@ -67,13 +67,13 @@
 
 **Check links**
 
-- [ ] Run link check on page.
+- [X] Run link check on page.
 
-- [ ] Look for malformed internal and external cross-references
+- [X] Look for malformed internal and external cross-references
 
-- [ ] Look for link references that aren't linked, or links that refer to html topics from docs.rackspace.com
+- [X] Look for link references that aren't linked, or links that refer to html topics from docs.rackspace.com
 
-- [ ] Look for missing punctuation when link is at end of sentence.  
+- [X] Look for missing punctuation when link is at end of sentence.  
           (Leave a space between the end of link and the punctuation. ```This is a :ref:`test <refid>` .```
 
 **Code samples**
