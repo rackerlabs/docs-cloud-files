@@ -17,7 +17,7 @@
 
 - [X] Compare use case (topics) in migrated content to original content on docs.rackspace.com to identify any missing content
 
-- [ X Use case H1 topics use imperative, H2 topics use gerund
+- [X] Use case H1 topics use imperative, H2 topics use gerund
 
       ![Use case titles](https://github.com/rackerlabs/docs-common/blob/master/rst/getting-started-content-architecture/QE-images/GS-use-case-titles.png) 
 
