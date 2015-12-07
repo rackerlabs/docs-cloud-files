@@ -35,6 +35,10 @@ that includes the following information:
 In the following example, the ellipsis (...)  represents other service endpoints, which 
 are not shown. The values shown in this and other examples vary because the information 
 returned is specific to your account. 
+
+.. note:: 
+     For detailed information about the authentication response, see the 
+     :rax-devdocs:`annotated authentication request and response<cloud-identity/v2/developer-guide/#document-authentication-info/sample-auth-req-response>` in the Rackspace Cloud API documentation.
       
 **Example: Authentication response**  
     
