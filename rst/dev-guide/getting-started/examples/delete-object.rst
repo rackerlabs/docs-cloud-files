@@ -1,6 +1,6 @@
 .. _gsg-delete-object:
 
-Delete an object
+Deleting an object
 ~~~~~~~~~~~~~~~~~~~
 
 To delete an object in a container, you send an HTTP **DELETE** request

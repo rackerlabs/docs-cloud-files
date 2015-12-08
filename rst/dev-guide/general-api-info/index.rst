@@ -10,8 +10,8 @@ operations. For information about a specific API operation, see :ref:`API refere
    :maxdepth: 2
    
    authentication
-   role-based-access-control   
-   service-access-endpoints  
+   service-access-endpoints
+   role-based-access-control        
    cloud-files-service-contract-version   
    absolute-limits
    request-and-response-types

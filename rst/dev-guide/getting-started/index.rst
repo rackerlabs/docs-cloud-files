@@ -8,7 +8,7 @@
    :maxdepth: 2
 
    prerequisites-for-using-api
-   send-request-ovw
+   Send API requests<send-request-ovw>
    Authenticate<authenticate>
    use-API-directly
    tools-and-applications-for-Cloud-Files

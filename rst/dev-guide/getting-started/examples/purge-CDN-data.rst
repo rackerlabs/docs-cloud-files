@@ -1,6 +1,6 @@
 .. _gsg-purge-cdn-data:
 
-Purge an object from a CDN-enabled container 
+Purging an object from a CDN-enabled container 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a CDN-enabled object from public access before the TTL
@@ -33,7 +33,7 @@ response.
    -H "X-Auth-Token: $AUTH_TOKEN" /
    -H "X-Purge-Email: yourEmail@yourDomain.com"      
 
-*Purge an object from a CDN-enabled container response**
+**Purge an object from a CDN-enabled container response**
 
 .. code::  
 

@@ -1,6 +1,6 @@
 .. _gsg-show-account-details:
 
-Show account details
+Showing account details
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To show account details and list containers, you send an HTTP **GET**
