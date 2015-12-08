@@ -3,8 +3,8 @@
 Prerequisites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To run the examples in this guide, you must have the following
-prerequisites:
+To use the getting started examples, make sure you have the following information 
+and complete any necessary configuration work. 
 
 - Rackspace Cloud account  
 - Username and password to access the account
