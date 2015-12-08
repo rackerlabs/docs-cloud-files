@@ -1,6 +1,6 @@
 .. _gsg-cdn-enabling-container:
 
-CDN-enable the container and setting a TTL
+CDN-enabling the container and setting a TTL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After creating a container and storing a file in it, you can choose to

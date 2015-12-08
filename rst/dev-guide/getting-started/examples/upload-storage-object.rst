@@ -1,6 +1,6 @@
 .. _gsg-upload-storage-object:
 
-Upload an object 
+Uploading an object 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 After creating a container, you can upload a file to it.

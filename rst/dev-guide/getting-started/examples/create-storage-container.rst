@@ -1,6 +1,6 @@
 .. _gsg-create-storage-container:
 
-Create a storage container
+Creating a storage container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before uploading any data to Cloud Files, you must create a storage

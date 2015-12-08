@@ -1,6 +1,6 @@
 .. _gsg-retrieve-object:
 
-Retrieve an object
+Retrieving an object
 ~~~~~~~~~~~~~~~~~~~~
 
 To get the object content and metadata, you send an HTTP **GET** request

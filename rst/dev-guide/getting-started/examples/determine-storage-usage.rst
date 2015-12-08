@@ -1,6 +1,6 @@
 .. _gsg-determine-storage-usage:
 
-Determine storage usage
+Determining storage usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To determine how much data you have stored in the system and the number
