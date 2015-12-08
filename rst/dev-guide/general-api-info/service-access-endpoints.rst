@@ -77,7 +77,7 @@ the actual MossoCloudFS information returned as part of the
 final '/' in the ``publicURL`` field and the ``internalURL`` field in
 the ``cloudFiles`` section of the service catalog returned by the
 authentication response. For more information about the account number,
-see the sample authentication request and response in the ::ref:`authentication service response<review-auth-resp>`.
+see the sample authentication request and response in the :ref:`authentication service response<review-auth-resp>`.
 
 .. tip:: If you do not know which data center you are working in or your
    account ID, you can find them in your Cloud Control Panel at
