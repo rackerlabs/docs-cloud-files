@@ -1,0 +1,18 @@
+API |contract version| updates, December 17, 2014
+--------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+The ability to bulk import data is being removed. Starting January 1, 2015, 
+this service will not be available.
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

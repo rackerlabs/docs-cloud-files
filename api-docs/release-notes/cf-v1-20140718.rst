@@ -1,0 +1,18 @@
+API |contract version| updates, July 18, 2014
+---------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+The format for CDN logs has changed from storing the month as three letters
+to using the following format: DD/MM/YYYY (for example, 16/07/2014).
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|
