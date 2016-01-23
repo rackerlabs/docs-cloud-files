@@ -7,7 +7,11 @@
 
 This GitHub repository contains the source files for the following Rackspace Cloud Files API documentation:
 
-* [Cloud Files Developer Guide](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/)
+* [Cloud Files Getting Started Guide](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#getting-started)
+* [Cloud Files Developer Guide](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#developer-guide)
+* [Cloud Files API Reference](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#api-reference)
+* [Cloud Files Specific Use Cases](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#use-cases-information)
+* [Cloud Files Release Notes](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#release-notes)
 
 ## Contributing
 
@@ -44,20 +48,24 @@ the Sphinx project and content architecture for the documentation:
 
 Content | File
 --- | ---
-|Sphinx documentation configuration file| [conf.py](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/conf.py) (Typically, this file does not require changes.)
-|Index page for the main content structure| [index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/index.rst)
-|About the API index| [overview/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/overview/index.rst)
-|Getting Started introduction| [getting-started.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/getting-started.rst)
-|Getting Started index|[getting-started/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/getting-started/index.rst)
-|Developer Guide introduction|[developer-guide.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/developer-guide.rst)
-|Concepts section| [concepts.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/concepts.rst)
-|General API information index|[general-api-info/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/general-api-info/index.rst)
-|API Reference introduction|[api-reference.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/api-reference.rst)
-|API Reference index for CDN|[api-operations/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/cdn-api-operations/index.rst)
-|API Reference index for Bulk|[api-operations/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/bulk-operations/index.rst)
-|API operations methods for CDN, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/rst/dev-guide/cdn-api-operations/methods) 
-|API operations methods for Bulk, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/rst/dev-guide/bulk-operations) 
-|Release notes|[release-notes.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/rst/dev-guide/release-notes.rst)
+|Sphinx documentation configuration file| [conf.py](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/conf.py) (Typically, this file does not require changes.)
+|Index page for the main content structure| [index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/index.rst)
+|About the API index| [overview/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/overview/index.rst)
+|Getting Started introduction| [getting-started.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/getting-started.rst)
+|Getting Started index|[getting-started/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/getting-started/index.rst)
+|Developer Guide introduction|[developer-guide.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/developer-guide.rst)
+|Concepts section| [concepts.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/concepts.rst)
+|General API information index|[general-api-info/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/general-api-info/index.rst)
+|API Reference introduction|[api-reference.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/api-reference.rst)
+|API Reference index for CDN|[api-operations/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/cdn-api-operations/index.rst)
+|API Reference index for Bulk|[api-operations/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/bulk-operations/index.rst)
+|API operations methods for CDN, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/cdn-api-operations/methods) 
+|API operations methods for Bulk, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/bulk-operations) 
+|Special Use Cases introduction|[use-cases-information.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/use-cases-information.rst)
+|Static websites using CDN-enabled containers|[static-websites-using-cdn-enabled-containers/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/static-websites-using-cdn-enabled-containers/index.rst)
+|Bulk operations|[bulk-operations/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/bulk-operations/index.rst)
+|Public access to your Cloud Files account|[public-access-to-your-cloud-files-account/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/public-access-to-your-cloud-files-account/index.rst)
+|Release notes|[release-notes.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/release-notes.rst)
 |**make.bat**|Windows build script
 |**Makefile**| Linux and OS X build
 
