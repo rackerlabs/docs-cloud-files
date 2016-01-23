@@ -1,0 +1,27 @@
+API |contract version| updates, May 20, 2013
+--------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+-  Users who can set container metadata can now implement simple quotas on Cloud 
+   Files containers. See :ref:`Container quotas <container-quotas>`.
+
+-  Support for static large objects (SLO) has been added. See 
+   :ref:`Creating a static large object <creating-static-large-object>`.
+
+-  The following bulk operations have been added: 
+   :ref:`bulk delete <bulk-delete>` and :ref:`extracting archive files <extracting-archive-files>`.
+
+-  File name overrides have been added to the TempURL feature. See 
+   :ref:`Override TempURL file names <override-tempurl-fn>` .
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|

@@ -1,0 +1,21 @@
+API |contract version| updates, December 31, 2013
+-------------------------------------------------
+
+What's new
+~~~~~~~~~~
+
+The following operations were added:
+
+-  :ref:`Create or update account metadata <create-or-update-account-metadata>`
+
+-  :ref:`Delete account metadata <delete-account-metadata>`
+
+Resolved issues
+~~~~~~~~~~~~~~~
+
+|no changes|
+
+Known issues
+~~~~~~~~~~~~
+
+|no changes|
