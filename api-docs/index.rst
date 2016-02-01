@@ -40,4 +40,5 @@ using the |apiservice|.
    bulk-operations/index
    public-access-to-your-cloud-files-account/index
    release-notes
+   copyright
 
