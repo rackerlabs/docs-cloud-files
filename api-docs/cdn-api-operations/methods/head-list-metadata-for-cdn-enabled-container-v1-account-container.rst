@@ -1,6 +1,4 @@
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _list-metadata-for-cdn-enabled-container:
 
 List metadata for CDN-enabled container
