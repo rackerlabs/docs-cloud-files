@@ -1,6 +1,4 @@
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _update-cdn-enabled-container-metadata:
 
 Update CDN-enabled container metadata

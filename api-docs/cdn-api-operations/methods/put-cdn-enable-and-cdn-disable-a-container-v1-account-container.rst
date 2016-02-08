@@ -1,6 +1,4 @@
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _put-cdn-enable-and-cdn-disable-a-container:
 
 CDN-enable and CDN-disable a container

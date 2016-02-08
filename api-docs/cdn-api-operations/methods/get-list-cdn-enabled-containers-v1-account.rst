@@ -1,6 +1,4 @@
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _list-cdn-enabled-containers:
 
 List CDN-enabled containers
