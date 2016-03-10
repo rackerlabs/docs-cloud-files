@@ -16,7 +16,7 @@ On August 13, 2012, the format of new CDN URIs changed in order to enhance the s
    but anyone can link to it. We recommend that you monitor your bandwidth usage and 
    charges in the Cloud Control Panel so that you know if someone is hot-linking your 
    content. For instructions about viewing your usage charges, see 
-   :kc-article:`Protect your Cloud Files CDN Bill from Unexpected Usage<protect-your-cloud-files-cdn-bill-from-unexpected-usage-0>`. 
+   :how-to:`Protect your Cloud Files CDN Bill from Unexpected Usage<protect-your-cloud-files-cdn-bill-from-unexpected-usage>`. 
 
 The examples in this section use sample values for the following:
 

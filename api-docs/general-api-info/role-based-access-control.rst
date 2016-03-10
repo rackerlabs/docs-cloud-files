@@ -85,4 +85,4 @@ The following table shows two examples of how potential conflicts between user r
 RBAC permissions cross-reference to Cloud Files API operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-API operations for Cloud Files may or may not be available to all roles. To see which operations are permitted to invoke which calls, please review the :kc-article:`Permissions Matrix for Role Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.
+API operations for Cloud Files may or may not be available to all roles. To see which operations are permitted to invoke which calls, please review the :how-to:`Permissions Matrix for Role Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.

@@ -9,7 +9,7 @@ using the REST application programming interface (API) for the Rackspace Cloud F
 service. 
 
 To use the information provided here, you should have a general understanding of the
-:kc-product-faq:`Rackspace Cloud Files service<cloud-files>` and have a `Rackspace Cloud account`_ with access to the Cloud Files service. You should also be familiar with the following technologies:
+:how-to:`Rackspace Cloud Files service<cloud-files>` and have a `Rackspace Cloud account`_ with access to the Cloud Files service. You should also be familiar with the following technologies:
 
 -  *RESTful* web services
 
