@@ -197,7 +197,7 @@ This operation does not accept a request body.
 
 
 
-**Example Show container details and list objects: XML request**
+**Example: Show container details and list objects XML request**
 
 
 .. code::
@@ -211,7 +211,7 @@ This operation does not accept a request body.
 
 
 
-**Example Show container details and list objects: JSON request**
+**Example: Show container details and list objects JSON request**
 
 
 .. code::
@@ -284,7 +284,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Show container details and list objects: XML response**
+**Example: Show container details and list objects XML response**
 
 
 .. code::
@@ -322,7 +322,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Show container details and list objects: JSON response**
+**Example: Show container details and list objects JSON response**
 
 
 .. code::

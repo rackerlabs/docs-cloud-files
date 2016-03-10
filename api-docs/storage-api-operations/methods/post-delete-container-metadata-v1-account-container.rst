@@ -102,7 +102,7 @@ This operation does not accept a request body.
 
 
 
-**Example Delete container metadata: HTTP request**
+**Example: Delete container metadata HTTP request**
 
 
 .. code::
@@ -156,7 +156,7 @@ This operation does not return a response body.
 
 
 
-**Example Delete container metadata: HTTP response**
+**Example: Delete container metadata HTTP response**
 
 
 .. code::

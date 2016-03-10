@@ -98,7 +98,7 @@ This operation does not accept a request body.
 
 
 
-**Example Delete object: HTTP request**
+**Example: Delete object HTTP request**
 
 
 .. code::
@@ -152,7 +152,7 @@ This operation does not return a response body.
 
 
 
-**Example Delete object: HTTP response**
+**Example: Delete object HTTP response**
 
 
 .. code::

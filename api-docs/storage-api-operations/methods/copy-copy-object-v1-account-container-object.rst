@@ -21,7 +21,7 @@ Suppose you upload a file with the wrong object name or content type, or you nee
 
 You can send a ``COPY`` request to the existing object and include the ``Destination`` header to specify the destination of the copy. The header value is the container and new object name in the form of ``/container/object``. Unlike using the ``PUT`` request, this approach does not require a ``Content-Length`` header.
 
-**Copy object approach 1 - using COPY**
+**Example: Copy object approach 1 - using COPY**
 
 .. code::
   
@@ -37,7 +37,7 @@ Alternatively, you can send a ``PUT`` request to the location of the new object 
    
    
 
-**Copy object approach 2 - using PUT**
+**Example: Copy object approach 2 - using PUT**
 
 .. code::
   
@@ -60,7 +60,7 @@ All metadata is preserved during the object copy. Note that you can set metadata
 
 Your account is not charged when you copy or move your objects within the same data center by using the internal network URI, ServiceNet, as the storage URL. You can find your ServiceNet endpoint in the service catalog that is created when you authenticate your session. For information about how to authenticate your session, see :ref:`Authentication <auth>`. As shown in the following partial service catalog example, the ServiceNet URI is listed as ``internalURL``. The name is your Cloud Files storage URL with ``snet-`` prepended to it. If you do not know which data center you are working in, you can find it in the Cloud Control Panel. (For more information about service access endpoints, see :ref:`Service access endpoints <service-access>`.)
 
-Data center endpoints
+**Example: Data center endpoints**
 
 .. code::
   
@@ -202,7 +202,7 @@ This operation does not accept a request body.
 
 
 
-**Example Copy object using COPY: HTTP request**
+**Example: Copy object using COPY HTTP request**
 
 
 .. code::
@@ -216,7 +216,7 @@ This operation does not accept a request body.
 
 
 
-**Example Copy object using PUT: HTTP request**
+**Example: Copy object using PUT HTTP request**
 
 
 .. code::
@@ -301,7 +301,7 @@ This operation does not return a response body.
 
 
 
-**Example Copy object using COPY: HTTP response**
+**Example: Copy object using COPY HTTP response**
 
 
 .. code::
@@ -321,7 +321,7 @@ This operation does not return a response body.
 
 
 
-**Example Copy object using PUT: HTTP response**
+**Example: Copy object using PUT HTTP response**
 
 
 .. code::

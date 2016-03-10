@@ -25,7 +25,7 @@ object might take a long time. Be patient while waiting for the emailed
 response.
 
  
-**cURL purge an object from a CDN-enabled container request**
+**Example: cURL purge an object from a CDN-enabled container request**
 
 .. code::  
 
@@ -33,7 +33,7 @@ response.
    -H "X-Auth-Token: $AUTH_TOKEN" /
    -H "X-Purge-Email: yourEmail@yourDomain.com"      
 
-**Purge an object from a CDN-enabled container response**
+**Example: Purge an object from a CDN-enabled container response**
 
 .. code::  
 

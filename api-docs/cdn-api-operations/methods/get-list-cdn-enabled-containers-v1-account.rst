@@ -100,7 +100,7 @@ This operation does not accept a request body.
 
 
 
-**Example List CDN-enabled containers: HTTP request**
+**Example: List CDN-enabled containers HTTP request**
 
 
 .. code::
@@ -113,7 +113,7 @@ This operation does not accept a request body.
 
 
 
-**Example List CDN-enabled containers: HTTP request with a query parameter ?format=json​**
+**Example: List CDN-enabled containers HTTP request with a query parameter ?format=json​**
 
 
 .. code::
@@ -138,7 +138,7 @@ Response
 
 
 
-**Example List CDN-enabled containers: HTTP response**
+**Example: List CDN-enabled containers HTTP response**
 
 
 .. code::
@@ -155,7 +155,7 @@ Response
 
 
 
-**Example List CDN-enabled containers: HTTP response using a query parameter ?format=json​**
+**Example: List CDN-enabled containers HTTP response using a query parameter ?format=json​**
 
 
 .. code::

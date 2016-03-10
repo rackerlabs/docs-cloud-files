@@ -105,7 +105,7 @@ This operation does not accept a request body.
 
 
 
-**Example Update CDN-enabled container metadata: HTTP request**
+**Example: Update CDN-enabled container metadata HTTP request**
 
 
 .. code::
@@ -133,7 +133,7 @@ This operation does not return a response body.
 
 
 
-**Example Update CDN-enabled container metadata: HTTP response**
+**Example: Update CDN-enabled container metadata HTTP response**
 
 
 .. code::

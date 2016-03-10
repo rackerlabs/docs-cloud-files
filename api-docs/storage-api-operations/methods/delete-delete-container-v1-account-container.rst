@@ -75,7 +75,7 @@ This operation does not accept a request body.
 
 
 
-**Example Delete container: HTTP request**
+**Example: Delete container HTTP request**
 
 
 .. code::
@@ -128,7 +128,7 @@ This operation does not return a response body.
 
 
 
-**Example Delete container: HTTP response**
+**Example: Delete container HTTP response**
 
 
 .. code::

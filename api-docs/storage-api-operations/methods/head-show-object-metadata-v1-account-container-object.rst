@@ -89,7 +89,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get object metadata: HTTP request**
+**Example: Get object metadata HTTP request**
 
 
 .. code::
@@ -243,7 +243,7 @@ This operation does not return a response body.
 
 
 
-**Example Get object metadata: HTTP response**
+**Example: Get object metadata HTTP response**
 
 
 .. code::

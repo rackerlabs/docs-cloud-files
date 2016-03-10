@@ -10,14 +10,14 @@ An HTTP status code of 200 (OK) in the response indicates that the
 object was successfully retrieved.
 
  
-**cURL retrieve an object request**
+**Example: cURL retrieve an object request**
 
 .. code::  
 
    curl -i -X GET $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
    -H "X-Auth-Token: $AUTH_TOKEN" 
 
-**Retrieve an object response**
+**Example: Retrieve an object response**
 
 .. code::  
 

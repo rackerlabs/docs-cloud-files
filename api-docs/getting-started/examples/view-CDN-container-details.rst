@@ -12,14 +12,14 @@ TTL that you set in :ref:`CDN-enabling the container and setting a
 TTL <gsg-cdn-enabling-container>`.
 
  
-**cURL view CDN-enabled container details request**
+**Example: cURL view CDN-enabled container details request**
 
 .. code::  
 
    curl -i -X HEAD $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
    -H "X-Auth-Token: $AUTH_TOKEN" 
 
-**View CDN-enabled container details response**
+**Example:View CDN-enabled container details response**
 
 .. code::  
 

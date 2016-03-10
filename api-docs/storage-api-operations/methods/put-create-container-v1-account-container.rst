@@ -117,7 +117,7 @@ This operation does not accept a request body.
 
 
 
-**Example Create container: HTTP request**
+**Example: Create container HTTP request**
 
 
 .. code::
@@ -131,7 +131,7 @@ This operation does not accept a request body.
 
 
 
-**Example Create container with metadata: HTTP request**
+**Example: Create container with metadata HTTP request**
 
 
 .. code::
@@ -186,7 +186,7 @@ This operation does not return a response body.
 
 
 
-**Example Create container: HTTP response**
+**Example: Create container HTTP response**
 
 
 .. code::
@@ -201,7 +201,7 @@ This operation does not return a response body.
 
 
 
-**Example Create container with metadata: HTTP response**
+**Example: Create container with metadata HTTP response**
 
 
 .. code::

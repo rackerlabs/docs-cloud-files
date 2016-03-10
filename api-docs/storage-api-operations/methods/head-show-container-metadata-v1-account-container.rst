@@ -76,7 +76,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get container metadata: HTTP request**
+**Example: Get container metadata HTTP request**
 
 
 .. code::
@@ -219,7 +219,7 @@ This operation does not return a response body.
 
 
 
-**Example Get container metadata: HTTP response**
+**Example: Get container metadata HTTP response**
 
 
 .. code::

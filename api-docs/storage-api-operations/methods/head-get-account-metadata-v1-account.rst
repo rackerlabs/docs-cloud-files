@@ -67,7 +67,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get account metadata: HTTP request**
+**Example: Get account metadata HTTP request**
 
 
 .. code::
@@ -159,7 +159,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Get account metadata: HTTP response**
+**Example: Get account metadata HTTP response**
 
 
 .. code::

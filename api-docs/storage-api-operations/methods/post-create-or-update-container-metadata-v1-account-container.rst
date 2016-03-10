@@ -177,7 +177,7 @@ This operation does not accept a request body.
 
 
 
-**Example Create or update container metadata: HTTP request**
+**Example: Create or update container metadata HTTP request**
 
 
 .. code::
@@ -233,7 +233,7 @@ This operation does not return a response body.
 
 
 
-**Example Create or update container metadata: HTTP response**
+**Example: Create or update container metadata HTTP response**
 
 
 .. code::

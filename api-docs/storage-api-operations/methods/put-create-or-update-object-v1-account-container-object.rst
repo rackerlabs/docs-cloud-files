@@ -238,7 +238,7 @@ This operation does not accept a request body.
 
 
 
-**Example Create or update object request**
+**Example: Create or update object HTTP request**
 
 
 .. code::
@@ -326,7 +326,7 @@ This operation does not return a response body.
 
 
 
-**Example Create or update object: HTTP response**
+**Example: Create or update object HTTP response**
 
 
 .. code::

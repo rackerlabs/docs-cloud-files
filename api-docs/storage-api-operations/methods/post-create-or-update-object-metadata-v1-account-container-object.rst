@@ -160,7 +160,7 @@ This operation does not accept a request body.
 
 
 
-**Example Update object metadata: HTTP request**
+**Example: Update object metadata HTTP request**
 
 
 .. code::
@@ -207,7 +207,7 @@ This operation does not return a response body.
 
 
 
-**Example Update object metadata: HTTP response**
+**Example: Update object metadata HTTP response**
 
 
 .. code::

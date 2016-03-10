@@ -158,7 +158,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get object data: HTTP request**
+**Example: Get object data HTTP request**
 
 
 .. code::
@@ -171,7 +171,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get object data using a range: HTTP request**
+**Example: Get object data using a range HTTP request**
 
 
 .. code::
@@ -185,7 +185,7 @@ This operation does not accept a request body.
 
 
 
-**Example Get object data using multiple ranges: HTTP request**
+**Example: Get object data using multiple ranges HTTP request**
 
 
 .. code::
@@ -320,7 +320,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Get object data response**
+**Example: Get object data response**
 
 
 .. code::
@@ -338,7 +338,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Get object data using range response**
+**Example: Get object data using range response**
 
 
 .. code::
@@ -358,7 +358,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Get object data using multiple ranges response**
+**Example: Get object data using multiple ranges response**
 
 
 .. code::
