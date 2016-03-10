@@ -7,9 +7,9 @@ We welcome feedback, comments, and bug reports. Visit the Rackspace `Product Fee
 
 Use the links below to learn more about the Rackspace Cloud Files service and API.
 
-- For general information about Cloud Files, see the :kc-product-faq:`Cloud Files FAQ<cloud-files>`.
+- For general information about Cloud Files, see the :how-to:`Cloud Files FAQ<cloud-files>`.
 
-- For best practices, see :kc-article:`Best Practices for Using Cloud Files<best-practices-for-using-cloud-files>`.
+- For best practices, see :how-to:`Best Practices for Using Cloud Files<best-practices-for-using-cloud-files>`.
 
 - To learn more about the Cloud Files service and the various ways you can interact 
   with it (API, SDK, CLI, and Control Panel), see the `Rackspace Cloud Guide to Core

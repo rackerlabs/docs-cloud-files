@@ -10,9 +10,9 @@ therefore responsible for appropriate replication, caching, and overall
 maintenance of Cloud Files data across regional boundaries to other
 Cloud Files servers.
 
-To help you decide which regionalized endpoint to use, read the
-Knowledge Center article about special considerations for choosing a
-data center at :kc-article:`About regions<about-regions>`.
+To help you decide which regionalized endpoint to use, read 
+about special considerations for choosing a
+data center at :how-to:`About regions<about-regions>`.
 
 The endpoints to use for the storage service component of your Cloud
 Files API calls are summarized in the following table. The first

@@ -23,5 +23,5 @@ Storage App, you can perform the following tasks:
    credentials, by generating temporary URLs that expire after a certain
    number of days
 
-For more information, see :kc-article:`Rackspace Cloud Storage App for Microsoft
+For more information, see :how-to:`Rackspace Cloud Storage App for Microsoft
 SharePoint<cloud-storage-app-for-microsoft-sharepoint-overview>`.
