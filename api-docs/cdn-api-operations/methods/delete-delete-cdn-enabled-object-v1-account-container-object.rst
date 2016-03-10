@@ -114,7 +114,7 @@ This operation does not accept a request body.
 
 
 
-**Example Delete CDN-enabled object: HTTP request**
+**Example: Delete CDN-enabled object HTTP request**
 
 
 .. code::
@@ -141,7 +141,7 @@ This operation does not return a response body.
 
 
 
-**Example Delete CDN-enabled object: HTTP response**
+**Example: Delete CDN-enabled object HTTP response**
 
 
 .. code::

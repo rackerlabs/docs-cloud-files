@@ -83,7 +83,7 @@ This operation does not accept a request body.
 
 
 
-**Example Delete account metadata: HTTP request**
+**Example: Delete account metadata HTTP request**
 
 
 .. code::
@@ -135,7 +135,7 @@ This operation does not return a response body.
 
 
 
-**Example Delete account metadata: HTTP response**
+**Example: Delete account metadata HTTP response**
 
 
 .. code::

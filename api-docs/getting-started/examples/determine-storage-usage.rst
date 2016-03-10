@@ -13,14 +13,14 @@ response indicate the number of containers in this storage account and
 the total bytes stored for the entire account.
 
  
-**cURL determine storage usage request**
+**Example: cURL determine storage usage request**
 
 .. code::  
 
    curl -i -X HEAD $API_ENDPOINT/v1/$TENANT_ID \
    -H "X-Auth-Token: $AUTH_TOKEN" 
 
-**Determine storage usage response**
+**Example: Determine storage usage response**
 
 .. code::  
 

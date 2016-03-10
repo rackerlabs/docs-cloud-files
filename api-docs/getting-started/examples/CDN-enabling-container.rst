@@ -27,7 +27,7 @@ the SSL URI with the object name to access the file over a secure SSL
 connection through the CDN.
 
  
-**cURL CDN-enable container and set TTL request**
+**Example: cURL CDN-enable container and set TTL request**
 
 .. code::  
 
@@ -36,7 +36,7 @@ connection through the CDN.
    -H "X-CDN-Enabled: True" \
    -H "X-TTL: 604800"
 
-**CDN-enable container and set TTL response**
+**Example: CDN-enable container and set TTL response**
 
 .. code::  
 

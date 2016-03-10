@@ -12,7 +12,7 @@ An HTTP status code of 202 (Accepted) in the response indicates that the
 request is accepted for processing.
 
  
-**cURL disable CDN for a container request**
+**Example: cURL disable CDN for a container request**
 
 .. code::  
 
@@ -20,7 +20,7 @@ request is accepted for processing.
    -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "X-CDN-Enabled: False"
 
-**Disable CDN for a container response**
+**Example: Disable CDN for a container response**
 
 .. code::  
 

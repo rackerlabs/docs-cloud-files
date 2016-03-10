@@ -17,7 +17,7 @@ An HTTP status code of 202 (Accepted) in the response indicates that the
 metadata for the object was successfully updated.
 
  
-**cURL update object metadata request**
+**Example: cURL update object metadata request**
 
 .. code::  
 
@@ -26,7 +26,7 @@ metadata for the object was successfully updated.
    -H "X-Object-Meta-ImageType: png" \
    -H "X-Object-Meta-ImageSize: 400 MB"
 
-**Update object metadata response**
+**Example: Update object metadata response**
 
 .. code::  
 

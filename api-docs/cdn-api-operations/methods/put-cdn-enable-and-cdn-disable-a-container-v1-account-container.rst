@@ -111,7 +111,7 @@ This operation does not accept a request body.
 
 
 
-**Example CDN-enable container: HTTP request**
+**Example: CDN-enable container HTTP request**
 
 
 .. code::
@@ -127,7 +127,7 @@ This operation does not accept a request body.
 
 
 
-**Example CDN-disable container: HTTP request**
+**Example: CDN-disable container HTTP request**
 
 
 .. code::
@@ -206,7 +206,7 @@ This operation does not return a response body.
 
 
 
-**Example CDN-enable container: HTTP response**
+**Example: CDN-enable container HTTP response**
 
 
 .. code::

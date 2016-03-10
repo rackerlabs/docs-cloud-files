@@ -11,14 +11,14 @@ An HTTP status code of 204 (No Content) in the response indicates that
 the container was successfully deleted.
 
  
-**cURL delete a container request**
+**Example: cURL delete a container request**
 
 .. code::  
 
    curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
    -H "X-Auth-Token: $AUTH_TOKEN"  
 
-**Delete a container response**
+**Example: Delete a container response**
 
 .. code::  
 

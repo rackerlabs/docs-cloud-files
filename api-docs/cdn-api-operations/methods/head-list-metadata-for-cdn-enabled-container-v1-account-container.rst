@@ -67,7 +67,7 @@ This operation does not accept a request body.
 
 
 
-**Example List metadata for CDN-enabled container: HTTP request**
+**Example: List metadata for CDN-enabled container HTTP request**
 
 
 .. code::
@@ -152,7 +152,7 @@ This operation does not return a response body.
 
 
 
-**Example Get CDN-enabled container metadata: HTTP request**
+**Example: Get CDN-enabled container metadata HTTP response**
 
 
 .. code::

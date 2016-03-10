@@ -26,7 +26,7 @@ An HTTP status code of 201 (Created) in the response indicates that the
 object was successfully uploaded.
 
  
-**cURL upload an object request**
+**Example: cURL upload an object request**
 
 .. code::  
 
@@ -35,7 +35,7 @@ object was successfully uploaded.
    -H "Content-Type: image/jpeg” \
    -H "Content-Length: 0"
 
-**Upload an object response**
+**Example: Upload an object response**
 
 .. code::  
 

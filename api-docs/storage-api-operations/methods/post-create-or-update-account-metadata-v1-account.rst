@@ -93,7 +93,7 @@ This operation does not accept a request body.
 
 
 
-**Example Create or update account metadata: HTTP request**
+**Example: Create or update account metadata HTTP request**
 
 
 .. code::
@@ -147,7 +147,7 @@ This table shows the header parameters for the response:
 
 
 
-**Example Create or update account metadata: HTTP response**
+**Example: Create or update account metadata HTTP response**
 
 
 .. code::
