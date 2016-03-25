@@ -1,7 +1,7 @@
 # Contributor guidelines
 
 These guidelines provide the general process for maintaining source code that builds the 
-Rackspace Cloud Identity developer documentation. 
+Rackspace Cloud Files developer documentation. 
 
 - [Project description](#project-description)
 - [Updating and adding content](#updating-and-adding-content)
@@ -24,7 +24,6 @@ Following are the key files that define project and content architecture:
 
 Content | File
 --- | ---
-
 |Index page for the main content structure| [index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/index.rst)
 |About the API index| [overview/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/overview/index.rst)
 |Getting Started introduction| [getting-started.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/getting-started.rst)
