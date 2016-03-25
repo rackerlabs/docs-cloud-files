@@ -1,6 +1,6 @@
 # Rackspace Cloud Files API documentation
 
-[![build badge](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/badge?branch=master)](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/)
+[![build badge](https://build.developer.rackspace.com/rackerlabs/docs-cloud-identity/badge?branch=master)](https://build.developer.rackspace.com/rackerlabs/docs-cloud-files/)
 
 This repository contains the source files for the following Rackspace Cloud Files API documentation:
 
