@@ -185,7 +185,7 @@ cost to download, use, and modify.
 
 Detailed information about the language-specific APIs is in the
 Rackspace Cloud SDKs Software Development Kit Guide. Each API has its
-own documentation (in HTML, PDF, or CHM format) including code snippets
+own documentation including code snippets
 and examples to help you get started.
 
 For more information about the Rackspace SDKs, see :rax-dev:`SDKs and tools<sdks>`.
