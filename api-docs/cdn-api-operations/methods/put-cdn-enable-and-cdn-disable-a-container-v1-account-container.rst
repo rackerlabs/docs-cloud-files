@@ -10,7 +10,7 @@ CDN-enable and CDN-disable a container
 
 This operation enables or disables a container for use with the CDN.
 
-Before a container can be CDN-enabled, it must exist in the storage system. To CDN-enable the container, perform a ``PUT`` request against it using the ``publicURL`` noted in the service catalog for Cloud Files during authentication, and set the ``X-CDN-Enabled`` header to ``True``.
+Before a container can be CDN-enabled, it must exist in the storage system. To CDN-enable the container, perform a ``PUT`` request against it using the ``publicURL`` noted in the service catalog with  "name": "cloudFilesCDN" during authentication, and set the ``X-CDN-Enabled`` header to ``True``.
 
 The :ref:`Authentication <auth>` section provides an example of the information in the service catalog for ``cloudfilesCDN``.
 
