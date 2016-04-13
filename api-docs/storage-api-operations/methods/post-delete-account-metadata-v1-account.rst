@@ -35,6 +35,16 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+
+
 
 This table shows the header parameters for the request:
 
@@ -43,10 +53,10 @@ This table shows the header parameters for the request:
 +==========================+=========================+=========================+
 |X-Auth-Token              |String *(Required)*      |Authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
+|X-Account-Meta-Temp-URL-  |String                   |The secret key value for |
 |Key                       |                         |temporary URLs.          |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Meta-Temp-URL-  |String *(Optional)*      |A second secret key      |
+|X-Account-Meta-Temp-URL-  |String                   |A second secret key      |
 |Key-2                     |                         |value for temporary      |
 |                          |                         |URLs. The second key     |
 |                          |                         |enables you to rotate    |
@@ -65,14 +75,6 @@ This table shows the header parameters for the request:
 
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
 
 
 
@@ -106,7 +108,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |If the operation         |
+|Content-Length            |String                   |If the operation         |
 |                          |                         |succeeds, this value is  |
 |                          |                         |zero (0). If the         |
 |                          |                         |operation fails, this    |
@@ -114,16 +116,16 @@ This table shows the header parameters for the response:
 |                          |                         |the error text in the    |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |If the operation fails,  |
+|Content-Type              |String                   |If the operation fails,  |
 |                          |                         |this value is the MIME   |
 |                          |                         |type of the error text   |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 

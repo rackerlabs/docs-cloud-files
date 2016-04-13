@@ -53,7 +53,7 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{account}                 |String *(Required)*      |Your unique account      |
+|{account}                 |String                   |Your unique account      |
 |                          |                         |identifier.              |
 +--------------------------+-------------------------+-------------------------+
 
@@ -64,11 +64,11 @@ This table shows the query parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|limit                     |Int *(Optional)*         |For an integer value n,  |
+|limit                     |Int                      |For an integer value n,  |
 |                          |                         |limits the number of     |
 |                          |                         |results to n values.     |
 +--------------------------+-------------------------+-------------------------+
-|marker                    |String *(Optional)*      |Given a string value x,  |
+|marker                    |String                   |Given a string value x,  |
 |                          |                         |returns container names  |
 |                          |                         |greater in value than    |
 |                          |                         |the specified marker.    |
@@ -80,14 +80,14 @@ This table shows the query parameters for the request:
 |                          |                         |entire list of           |
 |                          |                         |containers.              |
 +--------------------------+-------------------------+-------------------------+
-|end_marker                |String *(Optional)*      |Given a string value x,  |
+|end_marker                |String                   |Given a string value x,  |
 |                          |                         |returns container names  |
 |                          |                         |lesser in value than the |
 |                          |                         |specified end marker.    |
 |                          |                         |Only strings using UTF-8 |
 |                          |                         |encoding are valid.      |
 +--------------------------+-------------------------+-------------------------+
-|format                    |String *(Optional)*      |Value of the serialized  |
+|format                    |String                   |Value of the serialized  |
 |                          |                         |response format, either  |
 |                          |                         |JSON or XML.             |
 +--------------------------+-------------------------+-------------------------+

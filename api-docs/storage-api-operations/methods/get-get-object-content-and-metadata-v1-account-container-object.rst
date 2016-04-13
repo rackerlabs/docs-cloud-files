@@ -98,17 +98,6 @@ Request
 """"""""""""""""
 
 
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -126,22 +115,35 @@ This table shows the URI parameters for the request:
 
 
 
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
+
 This table shows the query parameters for the request:
 
 +----------------+----------------+--------------------------------------------+
 |Name            |Type            |Description                                 |
 +================+================+============================================+
 |signature       |String          |Used with temporary URLs to sign the        |
-|                |*(Optional)*    |request. For more information about         |
+|                |                |request. For more information about         |
 |                |                |temporary URLs, see :ref:`TempURL<tempurl>`.|                
 +----------------+----------------+--------------------------------------------+
 |expires         |String          |Used with temporary URLs to specify the     |
-|                |*(Optional)*    |expiry time of the signature. For more      |
+|                |                |expiry time of the signature. For more      |
 |                |                |information about temporary URLs, see       |
 |                |                |:ref:`TempURL<tempurl>`.                    |
 +----------------+----------------+--------------------------------------------+
 |multipart-      |String          |If you include the ``multipart-             |
-|manifest        |*(Optional)*    |manifest=get`` query parameter and the      |
+|manifest        |                |manifest=get`` query parameter and the      |
 |                |                |object is a large object, the object        |
 |                |                |contents are not returned. Instead, the     |
 |                |                |manifest is returned in the ``X-Object-     |
@@ -208,19 +210,19 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |The length of the object |
+|Content-Length            |String                   |The length of the object |
 |                          |                         |content in the response  |
 |                          |                         |body, in bytes.          |
 +--------------------------+-------------------------+-------------------------+
-|Accept-Ranges             |String *(Required)*      |The type of ranges that  |
+|Accept-Ranges             |String                   |The type of ranges that  |
 |                          |                         |the object accepts.      |
 +--------------------------+-------------------------+-------------------------+
-|Last-Modified             |String *(Required)*      |The date and time that   |
+|Last-Modified             |String                   |The date and time that   |
 |                          |                         |the object was created   |
 |                          |                         |or the last time that    |
 |                          |                         |the metadata was changed.|
 +--------------------------+-------------------------+-------------------------+
-|ETag                      |String *(Required)*      |For objects smaller than |
+|ETag                      |String                   |For objects smaller than |
 |                          |                         |5 GB, this value is the  |
 |                          |                         |MD5 checksum of the      |
 |                          |                         |object content. The      |
@@ -248,17 +250,17 @@ This table shows the header parameters for the response:
 |                          |                         |was corrupted, so retry  |
 |                          |                         |the operation.           |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |object.                  |
 +--------------------------+-------------------------+-------------------------+
-|Content-Encoding          |String *(Optional)*      |If set, the value of the |
+|Content-Encoding          |String                   |If set, the value of the |
 |                          |                         |``Content-Encoding``     |
 |                          |                         |metadata. If not set,    |
 |                          |                         |this header is not       |
 |                          |                         |returned by this         |
 |                          |                         |operation.               |
 +--------------------------+-------------------------+-------------------------+
-|Content-Disposition       |String *(Optional)*      |If set, specifies the    |
+|Content-Disposition       |String                   |If set, specifies the    |
 |                          |                         |override behavior for    |
 |                          |                         |the browser. For         |
 |                          |                         |example, this header     |
@@ -272,7 +274,7 @@ This table shows the header parameters for the response:
 |                          |                         |returned by this         |
 |                          |                         |operation.               |
 +--------------------------+-------------------------+-------------------------+
-|X-Delete-At               |String *(Optional)*      |If set, the time when    |
+|X-Delete-At               |String                   |If set, the time when    |
 |                          |                         |the object will be       |
 |                          |                         |deleted by the system in |
 |                          |                         |the format of a UNIX     |
@@ -281,7 +283,7 @@ This table shows the header parameters for the response:
 |                          |                         |returned by this         |
 |                          |                         |operation.               |
 +--------------------------+-------------------------+-------------------------+
-|X-Object-Meta-name        |String *(Optional)*      |The custom object        |
+|X-Object-Meta-name        |String                   |The custom object        |
 |                          |                         |metadata item, where     |
 |                          |                         |``name`` is the name of  |
 |                          |                         |the metadata item. One   |
@@ -290,7 +292,7 @@ This table shows the header parameters for the response:
 |                          |                         |for each metadata item   |
 |                          |                         |(for each ``name``).     |
 +--------------------------+-------------------------+-------------------------+
-|X-Object-Manifest         |String *(Optional)*      |If set, to this is a     |
+|X-Object-Manifest         |String                   |If set, to this is a     |
 |                          |                         |dynamic large object     |
 |                          |                         |manifest object. The     |
 |                          |                         |value is the container   |
@@ -299,15 +301,15 @@ This table shows the header parameters for the response:
 |                          |                         |in the form              |
 |                          |                         |container/prefix.        |
 +--------------------------+-------------------------+-------------------------+
-|X-Static-Large-Object     |Boolean *(Optional)*     |Set to ``True`` if this  |
+|X-Static-Large-Object     |Boolean                  |Set to ``True`` if this  |
 |                          |                         |object is a static large |
 |                          |                         |object manifest object.  |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 

@@ -68,6 +68,23 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |String                   |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+|{object}                  |String                   |The unique identifier of |
+|                          |                         |the object.              |
++--------------------------+-------------------------+-------------------------+
+
+
+
 
 This table shows the header parameters for the request:
 
@@ -76,10 +93,10 @@ This table shows the header parameters for the request:
 +==========================+=========================+=========================+
 |X-Auth-Token              |String *(Required)*      |Authentication token.    |
 +--------------------------+-------------------------+-------------------------+
-|ETag                      |String *(Optional)*      |The MD5 checksum of your |
+|ETag                      |String                   |The MD5 checksum of your |
 |                          |                         |object's data.           |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Optional)*      |The media type of the    |
+|Content-Type              |String                   |The media type of the    |
 |                          |                         |entity-body sent. If not |
 |                          |                         |specified, the           | 
 |                          |                         |``Content-Type``         |
@@ -88,23 +105,23 @@ This table shows the header parameters for the request:
 |                          |                         |mimetypes library, based |
 |                          |                         |on the object path.      |
 +--------------------------+-------------------------+-------------------------+
-|Content-Length            |Int *(Optional)*         |Set to the length of the |
+|Content-Length            |Int                      |Set to the length of the |
 |                          |                         |object content. Do not   |
 |                          |                         |set if chunked transfer  |
 |                          |                         |encoding is being used.  |
 +--------------------------+-------------------------+-------------------------+
-|Content-Disposition       |String *(Optional)*      |The new browser behavior |
+|Content-Disposition       |String                   |The new browser behavior |
 |                          |                         |for the file, so that    |
 |                          |                         |the downloader can save  |
 |                          |                         |the file rather than     |
 |                          |                         |displaying it using      |
 |                          |                         |default browser settings.|
 +--------------------------+-------------------------+-------------------------+
-|Content-Encoding          |String *(Optional)*      |The underlying media     |
+|Content-Encoding          |String                   |The underlying media     |
 |                          |                         |type of the compressed   |
 |                          |                         |file.                    |
 +--------------------------+-------------------------+-------------------------+
-|Transfer-Encoding         |String *(Optional)*      |Set to ``chunked`` to    |
+|Transfer-Encoding         |String                   |Set to ``chunked`` to    |
 |                          |                         |enable chunked transfer  |
 |                          |                         |encoding. If used, do    |
 |                          |                         |not set the              |
@@ -112,24 +129,24 @@ This table shows the header parameters for the request:
 |                          |                         |header to a non-zero     |
 |                          |                         |value.                   |
 +--------------------------+-------------------------+-------------------------+
-|X-Delete-At               |Int *(Optional)*         |The certain date, in the |
+|X-Delete-At               |Int                      |The certain date, in the |
 |                          |                         |format of a Unix epoch   |
 |                          |                         |timestamp, when the      |
 |                          |                         |object will be removed.  |
 +--------------------------+-------------------------+-------------------------+
-|X-Delete-After            |Int *(Optional)*         |The certain date, in the |
+|X-Delete-After            |Int                      |The certain date, in the |
 |                          |                         |format of a Unix epoch   |
 |                          |                         |timestamp, after which   |
 |                          |                         |the object will be       |
 |                          |                         |removed.                 |
 +--------------------------+-------------------------+-------------------------+
-|X-Object-Meta-name        |String *(Optional)*      |The custom object        |
+|X-Object-Meta-name        |String                   |The custom object        |
 |                          |                         |metadata. The ``name``   |
 |                          |                         |at the end of this       |
 |                          |                         |header represents the    |
 |                          |                         |name of your metadata.   |
 +--------------------------+-------------------------+-------------------------+
-|X-Detect-Content-Type     |Boolean *(Optional)*     |If you set this header   |
+|X-Detect-Content-Type     |Boolean                  |If you set this header   |
 |                          |                         |to ``True``, the         |
 |                          |                         |``Content-Type`` that is |
 |                          |                         |sent in the request (if  |
@@ -139,7 +156,7 @@ This table shows the header parameters for the request:
 |                          |                         |Python mimetypes library |
 |                          |                         |based on the object path.|
 +--------------------------+-------------------------+-------------------------+
-|X-Object-Manifest         |String *(Optional)*      |Set to specify that this |
+|X-Object-Manifest         |String                   |Set to specify that this |
 |                          |                         |is a dynamic large       |
 |                          |                         |object manifest object.  |
 |                          |                         |The value is the         |
@@ -154,7 +171,7 @@ This table shows the header parameters for the request:
 |                          |                         |include them in this     |
 |                          |                         |header.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Copy-From               |String *(Optional)*      |If set, this is the name |
+|X-Copy-From               |String                   |If set, this is the name |
 |                          |                         |of an object used to     |
 |                          |                         |create the new object by |
 |                          |                         |copying the              |
@@ -175,7 +192,7 @@ This table shows the header parameters for the request:
 |                          |                         |operation to copy an     |
 |                          |                         |object.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Copy-From-Account       |String *(Optional)*      |Used for account to      |
+|X-Copy-From-Account       |String                   |Used for account to      |
 |                          |                         |account copy. Specifies  |
 |                          |                         |the account name from    |
 |                          |                         |which you want to copy   |
@@ -187,21 +204,6 @@ This table shows the header parameters for the request:
 
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-|{container}               |String                   |The unique identifier of |
-|                          |                         |the container.           |
-+--------------------------+-------------------------+-------------------------+
-|{object}                  |String                   |The unique identifier of |
-|                          |                         |the object.              |
-+--------------------------+-------------------------+-------------------------+
-
 
 
 This table shows the query parameters for the request:
@@ -210,16 +212,16 @@ This table shows the query parameters for the request:
 |Name            |Type            |Description                                 |
 +================+================+============================================+
 |signature       |String          |Used with temporary URLs to sign the        |
-|                |*(Optional)*    |request. For more information about         |
+|                |                |request. For more information about         |
 |                |                |temporary URLs, see :ref:`TempURL<tempurl>`.|
 +----------------+----------------+--------------------------------------------+
 |expires         |String          |Used with temporary URLs to specify the     |
-|                |*(Optional)*    |expiry time of the signature. For more      |
+|                |                |expiry time of the signature. For more      |
 |                |                |information about temporary URLs, see       |
 |                |                |:ref:`TempURL<tempurl>`.                    |
 +----------------+----------------+--------------------------------------------+
 |multipart-      |String          |If you include the                          | 
-|                |*(Optional)*    |``multipart-manifest=get``                  |
+|                |                |``multipart-manifest=get``                  |
 |                |                |query parameter and the                     |
 |                |                |object is a large object, the object        |
 |                |                |contents are not returned. Instead, the     |
@@ -267,7 +269,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |If the operation         |
+|Content-Length            |String                   |If the operation         |
 |                          |                         |succeeds, this value is  |
 |                          |                         |zero (0). If the         |
 |                          |                         |operation fails, this    |
@@ -275,7 +277,7 @@ This table shows the header parameters for the response:
 |                          |                         |the error text in the    |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Etag                      |String *(Required)*      |For objects smaller than |
+|Etag                      |String                   |For objects smaller than |
 |                          |                         |5 GB, this value is the  |
 |                          |                         |MD5 checksum of the      |
 |                          |                         |uploaded object content. |
@@ -307,14 +309,14 @@ This table shows the header parameters for the response:
 |                          |                         |is the MD5 checksum of   |
 |                          |                         |the empty string.        |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |object.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 

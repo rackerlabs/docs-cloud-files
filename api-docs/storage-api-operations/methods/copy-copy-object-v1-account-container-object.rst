@@ -97,87 +97,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-|X-Copy-From               |String *(Optional)*      |Used with PUT, the       |
-|                          |                         |container and object     |
-|                          |                         |name of the source       |
-|                          |                         |object in the form       |
-|                          |                         |of ``/container/object``.|
-+--------------------------+-------------------------+-------------------------+
-|X-Copy-From-Account       |String *(Optional)*      |Specifies the account    |
-|                          |                         |you are copying from.    |
-+--------------------------+-------------------------+-------------------------+
-|Content-Length            |Int *(Required)*         |Used with PUT, the       |
-|                          |                         |content length. Zero (0) |
-|                          |                         |is always acceptable for |
-|                          |                         |this operation.          |
-+--------------------------+-------------------------+-------------------------+
-|Destination               |String *(Optional)*      |Used with COPY, the      |
-|                          |                         |container and object     |
-|                          |                         |name of the destination  |
-|                          |                         |object in the form       |
-|                          |                         |of ``/container/object``.|
-+--------------------------+-------------------------+-------------------------+
-|Destination-Account       |String *(Optional)*      |Used for account to      |
-|                          |                         |account copy. Specifies  |
-|                          |                         |the destination account  |
-|                          |                         |name (which is the last  |
-|                          |                         |part of the storage URL).|
-+--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Optional)*      |The media type of the    |
-|                          |                         |entity-body sent. If not |
-|                          |                         |specified, the ``Content-|
-|                          |                         |Type`` is guessed, by    |
-|                          |                         |using the Python         |
-|                          |                         |mimetypes library, based |
-|                          |                         |on the object path.      |
-+--------------------------+-------------------------+-------------------------+
-|X-Detect-Content-Type     |String *(Optional)*      |If you set this header   |
-|                          |                         |to ``True``, the         |
-|                          |                         |``Content-Type`` that is |
-|                          |                         |sent in the request (if  |
-|                          |                         |any) is ignored, and     |
-|                          |                         |``Content-Type`` is      |
-|                          |                         |guessed by using the     |
-|                          |                         |Python mimetypes library |
-|                          |                         |based on the object path.|
-+--------------------------+-------------------------+-------------------------+
-|Content-Encoding          |String *(Optional)*      |If set, the value of the |
-|                          |                         |``Content-Encoding``     |
-|                          |                         |metadata.                |
-+--------------------------+-------------------------+-------------------------+
-|Content-Disposition       |String *(Optional)*      |If set, specifies the    |
-|                          |                         |override behavior for    |
-|                          |                         |the browser. For         |
-|                          |                         |example, this header     |
-|                          |                         |might specify that the   |
-|                          |                         |browser use a download   |
-|                          |                         |program to save this     |
-|                          |                         |file rather than show    |
-|                          |                         |the file, which is the   |
-|                          |                         |default.                 |
-+--------------------------+-------------------------+-------------------------+
-|X-Object-Meta-name        |String *(Optional)*      |The container metadata,  |
-|                          |                         |where ``name`` is the    |
-|                          |                         |name of the metadata     |
-|                          |                         |item. You must specify a |
-|                          |                         |``X-Object-Meta-name``   |
-|                          |                         |header for each metadata |
-|                          |                         |item (for each ``name``) |
-|                          |                         |that you want to add or  |
-|                          |                         |update.                  |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -192,6 +111,89 @@ This table shows the URI parameters for the request:
 |{object}                  |String                   |The unique identifier of |
 |                          |                         |the object.              |
 +--------------------------+-------------------------+-------------------------+
+
+
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|X-Copy-From               |String                   |Used with PUT, the       |
+|                          |                         |container and object     |
+|                          |                         |name of the source       |
+|                          |                         |object in the form       |
+|                          |                         |of ``/container/object``.|
++--------------------------+-------------------------+-------------------------+
+|X-Copy-From-Account       |String                   |Specifies the account    |
+|                          |                         |you are copying from.    |
++--------------------------+-------------------------+-------------------------+
+|Content-Length            |Int *(Required)*         |Used with PUT, the       |
+|                          |                         |content length. Zero (0) |
+|                          |                         |is always acceptable for |
+|                          |                         |this operation.          |
++--------------------------+-------------------------+-------------------------+
+|Destination               |String                   |Used with COPY, the      |
+|                          |                         |container and object     |
+|                          |                         |name of the destination  |
+|                          |                         |object in the form       |
+|                          |                         |of ``/container/object``.|
++--------------------------+-------------------------+-------------------------+
+|Destination-Account       |String                   |Used for account to      |
+|                          |                         |account copy. Specifies  |
+|                          |                         |the destination account  |
+|                          |                         |name (which is the last  |
+|                          |                         |part of the storage URL).|
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String                   |The media type of the    |
+|                          |                         |entity-body sent. If not |
+|                          |                         |specified, the ``Content-|
+|                          |                         |Type`` is guessed, by    |
+|                          |                         |using the Python         |
+|                          |                         |mimetypes library, based |
+|                          |                         |on the object path.      |
++--------------------------+-------------------------+-------------------------+
+|X-Detect-Content-Type     |String                   |If you set this header   |
+|                          |                         |to ``True``, the         |
+|                          |                         |``Content-Type`` that is |
+|                          |                         |sent in the request (if  |
+|                          |                         |any) is ignored, and     |
+|                          |                         |``Content-Type`` is      |
+|                          |                         |guessed by using the     |
+|                          |                         |Python mimetypes library |
+|                          |                         |based on the object path.|
++--------------------------+-------------------------+-------------------------+
+|Content-Encoding          |String                   |If set, the value of the |
+|                          |                         |``Content-Encoding``     |
+|                          |                         |metadata.                |
++--------------------------+-------------------------+-------------------------+
+|Content-Disposition       |String                   |If set, specifies the    |
+|                          |                         |override behavior for    |
+|                          |                         |the browser. For         |
+|                          |                         |example, this header     |
+|                          |                         |might specify that the   |
+|                          |                         |browser use a download   |
+|                          |                         |program to save this     |
+|                          |                         |file rather than show    |
+|                          |                         |the file, which is the   |
+|                          |                         |default.                 |
++--------------------------+-------------------------+-------------------------+
+|X-Object-Meta-name        |String                   |The container metadata,  |
+|                          |                         |where ``name`` is the    |
+|                          |                         |name of the metadata     |
+|                          |                         |item. You must specify a |
+|                          |                         |``X-Object-Meta-name``   |
+|                          |                         |header for each metadata |
+|                          |                         |item (for each ``name``) |
+|                          |                         |that you want to add or  |
+|                          |                         |update.                  |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 
 
 
@@ -240,7 +242,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |If the operation         |
+|Content-Length            |String                   |If the operation         |
 |                          |                         |succeeds, this value is  |
 |                          |                         |zero (0). If the         |
 |                          |                         |operation fails, this    |
@@ -248,28 +250,28 @@ This table shows the header parameters for the response:
 |                          |                         |the error text in the    |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Etag                      |String *(Required)*      |The MD5 checksum of the  |
+|Etag                      |String                   |The MD5 checksum of the  |
 |                          |                         |uploaded object content. |
 |                          |                         |The value is not quoted. |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |object.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
-|X-Copied-From-Last-       |String *(Optional)*      |For a copied object,     |
+|X-Copied-From-Last-       |String                   |For a copied object,     |
 |Modified                  |                         |shows the last modified  |
 |                          |                         |date and time for the    |
 |                          |                         |container and object     |
 |                          |                         |name from which the new  |
 |                          |                         |object was copied.       |
 +--------------------------+-------------------------+-------------------------+
-|X-Copied-From             |String *(Optional)*      |For a copied object,     |
+|X-Copied-From             |String                   |For a copied object,     |
 |                          |                         |shows the container and  |
 |                          |                         |object name from which   |
 |                          |                         |the new object was       |
@@ -277,12 +279,12 @@ This table shows the header parameters for the response:
 |                          |                         |form                     |
 |                          |                         |``container/object``.    |
 +--------------------------+-------------------------+-------------------------+
-|Last-Modified             |String *(Required)*      |The date and time that   |
+|Last-Modified             |String                   |The date and time that   |
 |                          |                         |the object was created   |
 |                          |                         |or the last time that    |
 |                          |                         |the metadata was changed.|
 +--------------------------+-------------------------+-------------------------+
-|X-Object-Meta-name        |String *(Required)*      |The custom object        |
+|X-Object-Meta-name        |String                   |The custom object        |
 |                          |                         |metadata item, where     |
 |                          |                         |``name`` is the name of  |
 |                          |                         |the metadata item. One   |

@@ -37,6 +37,16 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+
+
 
 This table shows the header parameters for the request:
 
@@ -48,15 +58,6 @@ This table shows the header parameters for the request:
 
 
 
-
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
 
 
 
@@ -89,22 +90,22 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Account-Object-Count    |Int *(Required)*         |The total number of      |
+|X-Account-Object-Count    |Int                      |The total number of      |
 |                          |                         |objects that are stored  |
 |                          |                         |in Cloud Files for the   |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Bytes-Used      |Int *(Required)*         |The total number of      |
+|X-Account-Bytes-Used      |Int                      |The total number of      |
 |                          |                         |bytes that are stored in |
 |                          |                         |Cloud Files for the      |
 |                          |                         |account.                 |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Container-Count |Int *(Required)*         |The total number of      |
+|X-Account-Container-Count |Int                      |The total number of      |
 |                          |                         |containers that are      |
 |                          |                         |stored in the Cloud      |
 |                          |                         |Files for the account.   |
 +--------------------------+-------------------------+-------------------------+
-|Content-Length            |String *(Required)*      |If the operation         |
+|Content-Length            |String                   |If the operation         |
 |                          |                         |succeeds, this value is  |
 |                          |                         |zero (0). If the         |
 |                          |                         |operation fails, this    |
@@ -112,22 +113,22 @@ This table shows the header parameters for the response:
 |                          |                         |the error text in the    |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |If the operation fails,  |
+|Content-Type              |String                   |If the operation fails,  |
 |                          |                         |this value is the MIME   |
 |                          |                         |type of the error text   |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
-|Accept-Ranges             |String *(Required)*      |The type of ranges       |
+|Accept-Ranges             |String                   |The type of ranges       |
 |                          |                         |accepted.                |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Meta-name       |String *(Optional)*      |The custom account       |
+|X-Account-Meta-name       |String                   |The custom account       |
 |                          |                         |metadata item,           |
 |                          |                         |where ``name`` is the    |
 |                          |                         |name of the metadata     |
@@ -137,13 +138,13 @@ This table shows the header parameters for the response:
 |                          |                         |metadata item (for       |
 |                          |                         |each ``name``).          |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Meta-Temp-URL-  |String *(Optional)*      |The secret key value for |
+|X-Account-Meta-Temp-URL-  |String                   |The secret key value for |
 |Key                       |                         |temporary URLs. If not   |
 |                          |                         |set, this header is not  |
 |                          |                         |returned by this         |
 |                          |                         |operation.               |
 +--------------------------+-------------------------+-------------------------+
-|X-Account-Meta-Temp-URL-  |String *(Optional)*      |A second secret key      |
+|X-Account-Meta-Temp-URL-  |String                   |A second secret key      |
 |Key-2                     |                         |value for temporary      |
 |                          |                         |URLs. If not set, this   |
 |                          |                         |header is not returned   |

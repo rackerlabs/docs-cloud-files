@@ -104,26 +104,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-|Accept                    |String *(Optional)*      |Instead of using the     |
-|                          |                         |``format`` query         |
-|                          |                         |parameter, set this      |
-|                          |                         |header to                |
-|                          |                         |``application/json``,    |
-|                          |                         |``application/xml``, or  |
-|                          |                         |``text/xml``.            |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -137,45 +117,64 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|Accept                    |String                   |Instead of using the     |
+|                          |                         |``format`` query         |
+|                          |                         |parameter, set this      |
+|                          |                         |header to                |
+|                          |                         |``application/json``,    |
+|                          |                         |``application/xml``, or  |
+|                          |                         |``text/xml``.            |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
 
 This table shows the query parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|limit                     |Int *(Optional)*         |For an integer n, limits |
+|limit                     |Int                      |For an integer n, limits |
 |                          |                         |the number of results to |
 |                          |                         |n values.                |
 +--------------------------+-------------------------+-------------------------+
-|marker                    |String *(Optional)*      |Given a string value x,  |
+|marker                    |String                   |Given a string value x,  |
 |                          |                         |returns object names     |
 |                          |                         |greater in value than    |
 |                          |                         |the specified marker.    |
 +--------------------------+-------------------------+-------------------------+
-|end_marker                |String *(Optional)*      |Given a string value x,  |
+|end_marker                |String                   |Given a string value x,  |
 |                          |                         |returns object names     |
 |                          |                         |lesser in value than the |
 |                          |                         |specified marker.        |
 +--------------------------+-------------------------+-------------------------+
-|prefix                    |String *(Optional)*      |For a string value x,    |
+|prefix                    |String                   |For a string value x,    |
 |                          |                         |causes the results to be |
 |                          |                         |limited to object names  |
 |                          |                         |beginning with the       |
 |                          |                         |substring x.             |
 +--------------------------+-------------------------+-------------------------+
-|format                    |String *(Optional)*      |Specifies either JSON or |
+|format                    |String                   |Specifies either JSON or |
 |                          |                         |XML to return the        |
 |                          |                         |respective serialized    |
 |                          |                         |response.                |
 +--------------------------+-------------------------+-------------------------+
-|delimiter                 |Char *(Optional)*        |For a character c,       |
+|delimiter                 |Char                     |For a character c,       |
 |                          |                         |returns the object names |
 |                          |                         |nested in the container  |
 |                          |                         |(without the need for    |
 |                          |                         |the directory marker     |
 |                          |                         |objects).                |
 +--------------------------+-------------------------+-------------------------+
-|path                      |String *(Optional)*      |For a string x, returns  |
+|path                      |String                   |For a string x, returns  |
 |                          |                         |the object names nested  |
 |                          |                         |in the pseudo path. This |
 |                          |                         |parameter is equivalent  |
@@ -234,7 +233,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |The length of the        |
+|Content-Length            |String                   |The length of the        |
 |                          |                         |response body that       |
 |                          |                         |contains the list of     |
 |                          |                         |names. If the operation  |
@@ -242,15 +241,15 @@ This table shows the header parameters for the response:
 |                          |                         |length of the error text |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Object-Count  |Int *(Required)*         |The number of objects.   |
+|X-Container-Object-Count  |Int                      |The number of objects.   |
 +--------------------------+-------------------------+-------------------------+
-|Accept-Ranges             |String *(Required)*      |The type of ranges that  |
+|Accept-Ranges             |String                   |The type of ranges that  |
 |                          |                         |the object accepts.      |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Bytes-Used    |Int *(Required)*         |The count of bytes used  |
+|X-Container-Bytes-Used    |Int                      |The count of bytes used  |
 |                          |                         |in total.                |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Meta-name     |String *(Optional)*      |The custom container     |
+|X-Container-Meta-name     |String                   |The custom container     |
 |                          |                         |metadata item,           |
 |                          |                         |where ``name`` is the    |
 |                          |                         |name of the metadata     |
@@ -260,18 +259,18 @@ This table shows the header parameters for the response:
 |                          |                         |metadata item (for       |
 |                          |                         |each ``name``).          |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |list of names. If the    |
 |                          |                         |operation fails, this    |
 |                          |                         |value is the MIME type   |
 |                          |                         |of the error text in the |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 

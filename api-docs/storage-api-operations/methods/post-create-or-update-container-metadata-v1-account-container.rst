@@ -83,6 +83,19 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |String                   |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+
+
 
 This table shows the header parameters for the request:
 
@@ -97,7 +110,7 @@ This table shows the header parameters for the request:
 |                          |                         |the name of your         |
 |                          |                         |metadata.                |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Read          |String *(Optional)*      |Sets an access control   |
+|X-Container-Read          |String                   |Sets an access control   |
 |                          |                         |list (ACL) that grants   |
 |                          |                         |read access. This header |
 |                          |                         |can contain a comma-     |
@@ -108,7 +121,7 @@ This table shows the header parameters for the request:
 |                          |                         |objects in the           |
 |                          |                         |container).              |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Write         |String *(Optional)*      |Sets an ACL that grants  |
+|X-Container-Write         |String                   |Sets an ACL that grants  |
 |                          |                         |write access. This       |
 |                          |                         |header can contain a     |
 |                          |                         |comma-delimited list of  |
@@ -119,14 +132,14 @@ This table shows the header parameters for the request:
 |                          |                         |objects in the           |
 |                          |                         |container).              |
 +--------------------------+-------------------------+-------------------------+
-|X-Remove-Container-name   |String *(Optional)*      |Removes the metadata     |
+|X-Remove-Container-name   |String                   |Removes the metadata     |
 |                          |                         |item named metadata. For |
 |                          |                         |example, X-Remove-       |
 |                          |                         |Container-Read removes   |
 |                          |                         |the X-Container-Read     |
 |                          |                         |metadata item.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Versions-Location       |String *(Optional)*      |Enables versioning on    |
+|X-Versions-Location       |String                   |Enables versioning on    |
 |                          |                         |this container. The      |
 |                          |                         |value is the name of     |
 |                          |                         |another container. You   |
@@ -138,13 +151,13 @@ This table shows the header parameters for the request:
 |                          |                         |header to an empty       |
 |                          |                         |string.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Remove-Versions-Location|String *(Optional)*      |Set to any value to      |
+|X-Remove-Versions-Location|String                   |Set to any value to      |
 |                          |                         |disable versioning.      |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Optional)*      |Changes the MIME type    |
+|Content-Type              |String                   |Changes the MIME type    |
 |                          |                         |for the object.          |
 +--------------------------+-------------------------+-------------------------+
-|X-Detect-Content-Type     |Boolean *(Optional)*     |If set to ``True``,      |
+|X-Detect-Content-Type     |Boolean                  |If set to ``True``,      |
 |                          |                         |Cloud Files guesses the  |
 |                          |                         |content type based on    |
 |                          |                         |the file extension and   |
@@ -156,17 +169,6 @@ This table shows the header parameters for the request:
 
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-|{container}               |String                   |The unique identifier of |
-|                          |                         |the container.           |
-+--------------------------+-------------------------+-------------------------+
 
 
 
@@ -202,7 +204,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |The length of the        |
+|Content-Length            |String                   |The length of the        |
 |                          |                         |response body that       |
 |                          |                         |contains the list of     |
 |                          |                         |names. If the operation  |
@@ -210,18 +212,18 @@ This table shows the header parameters for the response:
 |                          |                         |length of the error text |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |list of names. If the    |
 |                          |                         |operation fails, this    |
 |                          |                         |value is the MIME type   |
 |                          |                         |of the error text in the |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 
