@@ -51,10 +51,10 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{account}                 |String *(Required)*      |Your unique account      |
+|{account}                 |String                   |Your unique account      |
 |                          |                         |identifier.              |
 +--------------------------+-------------------------+-------------------------+
-|{container}               |String *(Required)*      |The unique identifier of |
+|{container}               |String                   |The unique identifier of |
 |                          |                         |the container.           |
 +--------------------------+-------------------------+-------------------------+
 
@@ -90,7 +90,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Cdn-Uri                 |String *(Required)*      |The URI for downloading  |
+|X-Cdn-Uri                 |String                   |The URI for downloading  |
 |                          |                         |the object over HTTP.    |
 |                          |                         |This URI can be combined |
 |                          |                         |with any object name     |
@@ -100,7 +100,7 @@ This table shows the header parameters for the response:
 |                          |                         |object for distribution  |
 |                          |                         |over a CDN system.       |
 +--------------------------+-------------------------+-------------------------+
-|X-Ttl                     |Int *(Required)*         |The TTL value in         |
+|X-Ttl                     |Int                      |The TTL value in         |
 |                          |                         |seconds. The default     |
 |                          |                         |value is 259200 seconds, |
 |                          |                         |or 72 hours. The minimum |
@@ -109,21 +109,21 @@ This table shows the header parameters for the response:
 |                          |                         |maximum is 1 year        |
 |                          |                         |(31536000 seconds).      |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Enabled             |Boolean *(Required)*     |True or False to         |
+|X-Cdn-Enabled             |Boolean                  |True or False to         |
 |                          |                         |indicate whether the     |
 |                          |                         |container is currently   |
 |                          |                         |marked to allow public   |
 |                          |                         |serving of objects       |
 |                          |                         |through the CDN.         |
 +--------------------------+-------------------------+-------------------------+
-|X-Log-Retention           |Boolean *(Required)*     |True or False to         |
+|X-Log-Retention           |Boolean                  |True or False to         |
 |                          |                         |indicate whether the CDN |
 |                          |                         |access logs should be    |
 |                          |                         |collected and stored in  |
 |                          |                         |the Cloud Files storage  |
 |                          |                         |system.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Ssl-Uri             |String *(Required)*      |The URI for downloading  |
+|X-Cdn-Ssl-Uri             |String                   |The URI for downloading  |
 |                          |                         |the object over HTTPS,   |
 |                          |                         |using SSL. (The user     |
 |                          |                         |cannot have custom SSL   |
@@ -132,12 +132,12 @@ This table shows the header parameters for the response:
 |                          |                         |does not provide that    |
 |                          |                         |feature.                 |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Streaming-Uri       |String *(Required)*      |The URI for video        |
+|X-Cdn-Streaming-Uri       |String                   |The URI for video        |
 |                          |                         |streaming that uses HTTP |
 |                          |                         |Dynamic Streaming from   |
 |                          |                         |Adobe.                   |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Ios-Uri             |String *(Required)*      |The URI for video        |
+|X-Cdn-Ios-Uri             |String                   |The URI for video        |
 |                          |                         |streaming that uses HTTP |
 |                          |                         |Live Streaming from      |
 |                          |                         |Apple.                   |

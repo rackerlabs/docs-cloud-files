@@ -43,18 +43,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -65,6 +53,15 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |{container}               |String                   |The unique identifier of |
 |                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -99,14 +96,14 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Container-Object-Count  |Int *(Required)*         |The number of objects in |
+|X-Container-Object-Count  |Int                      |The number of objects in |
 |                          |                         |the container.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Bytes-Used    |Int *(Required)*         |The total number of      |
+|X-Container-Bytes-Used    |Int                      |The total number of      |
 |                          |                         |bytes used for all       |
 |                          |                         |objects in the container.|
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Meta-name     |String *(Required)*      |Any metadata set on the  |
+|X-Container-Meta-name     |String                   |Any metadata set on the  |
 |                          |                         |container. The ``name``  |
 |                          |                         |at the end of the header |
 |                          |                         |is the name of your      |
@@ -116,7 +113,7 @@ This table shows the header parameters for the response:
 |                          |                         |for each metadata item   |
 |                          |                         |(for each ``name``).     |
 +--------------------------+-------------------------+-------------------------+
-|X-Timestamp               |String *(Required)*      |An internal variable     |
+|X-Timestamp               |String                   |An internal variable     |
 |                          |                         |that indicates the last  |
 |                          |                         |time an entity (account, |
 |                          |                         |container, or object)    |
@@ -147,7 +144,7 @@ This table shows the header parameters for the response:
 |                          |                         |decimal places of one    |
 |                          |                         |second.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Read          |String *(Optional)*      |The access control list  |
+|X-Container-Read          |String                   |The access control list  |
 |                          |                         |(ACL) that grants read   |
 |                          |                         |access. If not set, this |
 |                          |                         |header is not returned   |
@@ -160,7 +157,7 @@ This table shows the header parameters for the response:
 |                          |                         |objects in the           |
 |                          |                         |container).              |
 +--------------------------+-------------------------+-------------------------+
-|X-Container-Write         |String *(Optional)*      |The ACL that grants      |
+|X-Container-Write         |String                   |The ACL that grants      |
 |                          |                         |write access. If not     |
 |                          |                         |set, this header is not  |
 |                          |                         |returned by this         |
@@ -173,7 +170,7 @@ This table shows the header parameters for the response:
 |                          |                         |methods for all objects  |
 |                          |                         |in the container).       |
 +--------------------------+-------------------------+-------------------------+
-|Content-Length            |String *(Required)*      |The length of the        |
+|Content-Length            |String                   |The length of the        |
 |                          |                         |response body that       |
 |                          |                         |contains the list of     |
 |                          |                         |names. If the operation  |
@@ -181,24 +178,24 @@ This table shows the header parameters for the response:
 |                          |                         |length of the error text |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |list of names. If the    |
 |                          |                         |operation fails, this    |
 |                          |                         |value is the MIME type   |
 |                          |                         |of the error text in the |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
-|Accept-Ranges             |String *(Required)*      |The type of ranges       |
+|Accept-Ranges             |String                   |The type of ranges       |
 |                          |                         |accepted.                |
 +--------------------------+-------------------------+-------------------------+
-|X-Versions-Location       |String *(Optional)*      |Enables versioning on    |
+|X-Versions-Location       |String                   |Enables versioning on    |
 |                          |                         |this container. The      |
 |                          |                         |value is the name of     |
 |                          |                         |another container. You   |

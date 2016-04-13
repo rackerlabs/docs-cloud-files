@@ -10,9 +10,9 @@ CDN-enable and CDN-disable a container
 
 This operation enables or disables a container for use with the CDN.
 
-Before a container can be CDN-enabled, it must exist in the storage system. To CDN-enable the container, perform a ``PUT`` request against it using the ``publicURL`` noted in the service catalog with  "name": "cloudFilesCDN" during authentication, and set the ``X-CDN-Enabled`` header to ``True``.
+Before a container can be CDN-enabled, it must exist in the storage system. To CDN-enable the container, perform a ``PUT`` request against it using the ``publicURL`` noted in the service catalog with  ``"name": "cloudFilesCDN"`` during authentication, and set the ``X-CDN-Enabled`` header to ``True``.
 
-The :ref:`Authentication <auth>` section provides an example of the information in the service catalog for ``cloudfilesCDN``.
+The :ref:`Authentication <auth>` section provides an example of the information in the service catalog for ``cloudFilesCDN``.
 
 When a container is CDN-enabled, any objects stored in it are publicly accessible over the CDN by combining the container's CDN URI with the object name ( ``X-Cdn-Uri/objectName``).
 
@@ -63,13 +63,26 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |String                   |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
+
+
 
 This table shows the header parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Ttl                     |Int *(Optional)*         |Specifies the Time To    |
+|X-Ttl                     |Int                      |Specifies the Time To    |
 |                          |                         |Live (TTL) in seconds    |
 |                          |                         |for an object to be      |
 |                          |                         |cached in the CDN. The   |
@@ -81,7 +94,7 @@ This table shows the header parameters for the request:
 |                          |                         |maximum is 1 year        |
 |                          |                         |(31536000 seconds).      |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Enabled             |String *(Optional)*      |Indicates if a container |
+|X-Cdn-Enabled             |String                   |Indicates if a container |
 |                          |                         |is CDN-enabled. Valid    |
 |                          |                         |values are True and      |
 |                          |                         |False.                   |
@@ -90,17 +103,6 @@ This table shows the header parameters for the request:
 
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String *(Required)*      |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-|{container}               |String *(Required)*      |The unique identifier of |
-|                          |                         |the container.           |
-+--------------------------+-------------------------+-------------------------+
 
 
 
@@ -150,7 +152,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |If the operation         |
+|Content-Length            |String                   |If the operation         |
 |                          |                         |succeeds, this value is  |
 |                          |                         |zero (0). If the         |
 |                          |                         |operation fails, this    |
@@ -158,22 +160,22 @@ This table shows the header parameters for the response:
 |                          |                         |the error text in the    |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |list of names. If the    |
 |                          |                         |operation fails, this    |
 |                          |                         |value is the MIME type   |
 |                          |                         |of the error text in the |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Ios-Uri             |String *(Required)*      |The URI for video        |
+|X-Cdn-Ios-Uri             |String                   |The URI for video        |
 |                          |                         |streaming that uses HTTP |
 |                          |                         |Live Streaming from      |
 |                          |                         |Apple.                   |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Ssl-Uri             |String *(Required)*      |The URI for downloading  |
+|X-Cdn-Ssl-Uri             |String                   |The URI for downloading  |
 |                          |                         |the object over HTTPS,   |
 |                          |                         |using SSL. (The user     |
 |                          |                         |cannot have custom SSL   |
@@ -182,17 +184,17 @@ This table shows the header parameters for the response:
 |                          |                         |does not provide that    |
 |                          |                         |feature.)                |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Streaming-Uri       |String *(Required)*      |The URI for video        |
+|X-Cdn-Streaming-Uri       |String                   |The URI for video        |
 |                          |                         |streaming that uses HTTP |
 |                          |                         |Dynamic Streaming from   |
 |                          |                         |Adobe.                   |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Uri                 |String *(Required)*      |Indicates the URI that   |
+|X-Cdn-Uri                 |String                   |Indicates the URI that   |
 |                          |                         |you can combine with     |
 |                          |                         |object names to serve    |
 |                          |                         |objects through the CDN. |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+

@@ -42,8 +42,23 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 
 
+
+
 Request
 """"""""""""""""
+
+
+This table shows the URI parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|{account}                 |String                   |Your unique account      |
+|                          |                         |identifier.              |
++--------------------------+-------------------------+-------------------------+
+|{container}               |String                   |The unique identifier of |
+|                          |                         |the container.           |
++--------------------------+-------------------------+-------------------------+
 
 
 This table shows the header parameters for the request:
@@ -51,14 +66,14 @@ This table shows the header parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|X-Log-Retention           |Boolean *(Optional)*     |``True`` or ``False`` to |
+|X-Log-Retention           |Boolean                  |``True`` or ``False`` to |
 |                          |                         |indicate whether the CDN |
 |                          |                         |access logs should be    |
 |                          |                         |collected and stored in  |
 |                          |                         |the Cloud Files storage  |
 |                          |                         |system.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Cdn-Enabled             |Boolean *(Optional)*     |``True`` or ``False`` to |
+|X-Cdn-Enabled             |Boolean                  |``True`` or ``False`` to |
 |                          |                         |enable or disable public |
 |                          |                         |sharing over the CDN. If |
 |                          |                         |you have content         |
@@ -71,7 +86,7 @@ This table shows the header parameters for the request:
 |                          |                         |expire or purge the      |
 |                          |                         |objects.                 |
 +--------------------------+-------------------------+-------------------------+
-|X-Ttl                     |Int *(Optional)*         |The TTL value in         |
+|X-Ttl                     |Int                      |The TTL value in         |
 |                          |                         |seconds. The default     |
 |                          |                         |value is 259200 seconds, |
 |                          |                         |or 72 hours. The minimum |
@@ -84,17 +99,6 @@ This table shows the header parameters for the request:
 
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String *(Required)*      |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-|{container}               |String *(Required)*      |The unique identifier of |
-|                          |                         |the container.           |
-+--------------------------+-------------------------+-------------------------+
 
 
 

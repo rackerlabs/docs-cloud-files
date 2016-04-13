@@ -95,13 +95,13 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{account}                 |String *(Required)*      |Your unique account      |
+|{account}                 |String                   |Your unique account      |
 |                          |                         |identifier.              |
 +--------------------------+-------------------------+-------------------------+
-|{container}               |String *(Required)*      |The unique identifier of |
+|{container}               |String                   |The unique identifier of |
 |                          |                         |the container.           |
 +--------------------------+-------------------------+-------------------------+
-|{object}                  |String *(Required)*      |The unique identifier of |
+|{object}                  |String                   |The unique identifier of |
 |                          |                         |the object.              |
 +--------------------------+-------------------------+-------------------------+
 

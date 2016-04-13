@@ -76,66 +76,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-|X-Object-Meta-name        |String *(Optional)*      |The container metadata.  |
-|                          |                         |The ``name`` represents  |
-|                          |                         |the name of your         |
-|                          |                         |metadata.                |
-+--------------------------+-------------------------+-------------------------+
-|X-Delete-At               |Int *(Optional)*         |The date, in the format  |
-|                          |                         |of a Unix epoch          |
-|                          |                         |timestamp, when the      |
-|                          |                         |object will be removed.  |
-+--------------------------+-------------------------+-------------------------+
-|X-Delete-After            |Int *(Optional)*         |The date, in the format  |
-|                          |                         |of a Unix epoch          |
-|                          |                         |timestamp, after which   |
-|                          |                         |the object is removed.   |
-+--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Optional)*      |The media type of the    |
-|                          |                         |entity-body sent. If not |
-|                          |                         |specified, the ``Content-|
-|                          |                         |Type`` is guessed, by    |
-|                          |                         |using the Python         |
-|                          |                         |mimetypes library, based |
-|                          |                         |on the object path.      |
-+--------------------------+-------------------------+-------------------------+
-|X-Detect-Content-Type     |String *(Optional)*      |If you set this header   |
-|                          |                         |to ``True``, the         |
-|                          |                         |``Content-Type`` that is |
-|                          |                         |sent in the request (if  |
-|                          |                         |any) is ignored, and     |
-|                          |                         |``Content-Type`` is      |
-|                          |                         |guessed by using the     |
-|                          |                         |Python mimetypes library |
-|                          |                         |based on the object path.|
-+--------------------------+-------------------------+-------------------------+
-|Content-Disposition       |String *(Optional)*      |If set, specifies the    |
-|                          |                         |override behavior for    |
-|                          |                         |the browser. For         |
-|                          |                         |example, this header     |
-|                          |                         |might specify that the   |
-|                          |                         |browser use a download   |
-|                          |                         |program to save this     |
-|                          |                         |file rather than show    |
-|                          |                         |the file, which is the   |
-|                          |                         |default.                 |
-+--------------------------+-------------------------+-------------------------+
-|Content-Encoding          |String *(Optional)*      |If set, the value of the |
-|                          |                         |``Content-Encoding``     |
-|                          |                         |metadata.                |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -150,6 +90,68 @@ This table shows the URI parameters for the request:
 |{object}                  |String                   |The unique identifier of |
 |                          |                         |the object.              |
 +--------------------------+-------------------------+-------------------------+
+
+
+
+
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+|X-Object-Meta-name        |String                   |The container metadata.  |
+|                          |                         |The ``name`` represents  |
+|                          |                         |the name of your         |
+|                          |                         |metadata.                |
++--------------------------+-------------------------+-------------------------+
+|X-Delete-At               |Int                      |The date, in the format  |
+|                          |                         |of a Unix epoch          |
+|                          |                         |timestamp, when the      |
+|                          |                         |object will be removed.  |
++--------------------------+-------------------------+-------------------------+
+|X-Delete-After            |Int                      |The date, in the format  |
+|                          |                         |of a Unix epoch          |
+|                          |                         |timestamp, after which   |
+|                          |                         |the object is removed.   |
++--------------------------+-------------------------+-------------------------+
+|Content-Type              |String                   |The media type of the    |
+|                          |                         |entity-body sent. If not |
+|                          |                         |specified, the ``Content-|
+|                          |                         |Type`` is guessed, by    |
+|                          |                         |using the Python         |
+|                          |                         |mimetypes library, based |
+|                          |                         |on the object path.      |
++--------------------------+-------------------------+-------------------------+
+|X-Detect-Content-Type     |String                   |If you set this header   |
+|                          |                         |to ``True``, the         |
+|                          |                         |``Content-Type`` that is |
+|                          |                         |sent in the request (if  |
+|                          |                         |any) is ignored, and     |
+|                          |                         |``Content-Type`` is      |
+|                          |                         |guessed by using the     |
+|                          |                         |Python mimetypes library |
+|                          |                         |based on the object path.|
++--------------------------+-------------------------+-------------------------+
+|Content-Disposition       |String                   |If set, specifies the    |
+|                          |                         |override behavior for    |
+|                          |                         |the browser. For         |
+|                          |                         |example, this header     |
+|                          |                         |might specify that the   |
+|                          |                         |browser use a download   |
+|                          |                         |program to save this     |
+|                          |                         |file rather than show    |
+|                          |                         |the file, which is the   |
+|                          |                         |default.                 |
++--------------------------+-------------------------+-------------------------+
+|Content-Encoding          |String                   |If set, the value of the |
+|                          |                         |``Content-Encoding``     |
+|                          |                         |metadata.                |
++--------------------------+-------------------------+-------------------------+
+
+
+
 
 
 
@@ -184,18 +186,18 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |The length of the object |
+|Content-Length            |String                   |The length of the object |
 |                          |                         |content in the response  |
 |                          |                         |body, in bytes.          |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |object.                  |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 

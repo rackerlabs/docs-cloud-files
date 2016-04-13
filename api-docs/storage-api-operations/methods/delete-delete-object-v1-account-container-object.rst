@@ -40,18 +40,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-This table shows the header parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -68,13 +56,25 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
+This table shows the header parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|X-Auth-Token              |String *(Required)*      |Authentication token.    |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
 
 This table shows the query parameters for the request:
 
 +--------------------------+-------------------------+--------------------------+
 |Name                      |Type                     |Description               |
 +==========================+=========================+==========================+
-|multipart-manifest        |String *(Optional)*      |If you include            |
+|multipart-manifest        |String                   |If you include            |
 |                          |                         |the                       |
 |                          |                         |``multipart-manifest=get``|          
 |                          |                         |query                     |
@@ -120,7 +120,7 @@ This table shows the header parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|Content-Length            |String *(Required)*      |The length of the        |
+|Content-Length            |String                   |The length of the        |
 |                          |                         |response body that       |
 |                          |                         |contains the list of     |
 |                          |                         |names. If the operation  |
@@ -128,18 +128,18 @@ This table shows the header parameters for the response:
 |                          |                         |length of the error text |
 |                          |                         |in the response body.    |
 +--------------------------+-------------------------+-------------------------+
-|Content-Type              |String *(Required)*      |The MIME type of the     |
+|Content-Type              |String                   |The MIME type of the     |
 |                          |                         |list of names. If the    |
 |                          |                         |operation fails, this    |
 |                          |                         |value is the MIME type   |
 |                          |                         |of the error text in the |
 |                          |                         |response body.           |
 +--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid *(Required)*        |A unique transaction     |
+|X-Trans-Id                |Uuid                     |A unique transaction     |
 |                          |                         |identifier for this      |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime *(Required)*    |The transaction date and |
+|Date                      |Datetime                 |The transaction date and |
 |                          |                         |time.                    |
 +--------------------------+-------------------------+-------------------------+
 
