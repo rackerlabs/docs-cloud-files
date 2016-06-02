@@ -1,5 +1,0 @@
-HTTP/1.1 204 No Content
-Content-Type: text/html; charset=UTF-8
-Content-Length: 0
-X-Trans-Id: txd57d75dcd51e4a79a886d-0055101ecford1
-Date: Mon, 23 Mar 2015 14:10:25 GMT
