@@ -12,6 +12,9 @@ This operation deletes CDN-enabled objects.
 
 When you find it necessary to remove a CDN-enabled object from public access before the TTL expires, you can perform a ``DELETE`` operation against the object, or you can create a support ticket to purge the entire container.
 
+To delete containers that have been CDN-enabled in the past and are now disabled, but are still showing up when you use the :ref:`List CDN-enabled containers<list-cdn-enabled-containers>` operation, send a DELETE request with an ``x-remove-cdn-container: t`` header to remove them from the listing.
+
+
 .. warning::
    You request this operation against a CDN management services URI, such as ``https://cdn2.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee``/, as shown in the table “Regionalized service endpoints for CDN management service” in the :ref:`Service Access endpoints <service-access>` section. If you use a Storage management services URI by mistake, you delete your object.
    
@@ -42,6 +45,8 @@ Here is an example response for hitting the purge rate limit:
    Content-Type: text/html; charset=UTF-8 
    X-Trans-Id: txb63f31d26bf84c058542b-0055101cd0dfw1 
    Date: Mon, 23 Mar 2015 14:01:52 GMT
+
+
 
 **By creating a support ticket to purge an entire container**
 
