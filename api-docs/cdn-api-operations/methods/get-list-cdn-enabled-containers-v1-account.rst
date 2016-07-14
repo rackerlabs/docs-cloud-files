@@ -8,13 +8,13 @@ List CDN-enabled containers
 
     GET /v1/{account}
 
-This operation lists CDN-enabled containers sorted by name.
+This operation lists any containers that are currently or have ever been CDN-enabled, sorted by name.
 
-``GET`` operations against the ``cloudFilesCDN`` endpoints for an account retrieve a list of CDN-enabled containers. No private containers appear in the list. (For the CDN endpoints, see :ref:`Service access endpoints <service-access>`.)
+``GET`` operations against the ``cloudFilesCDN`` endpoints for an account retrieve a list of containers that are currently or have ever been CDN-enabled. No private containers appear in the list. (For the CDN endpoints, see :ref:`Service access endpoints <service-access>`.)
 
-A list of CDN-enabled containers is returned in the response body, one container name per line.
+The list is returned in the response body, one container name per line.
 
-An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers, and a 204 (No Content) code is returned if there are no containers.
+An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers to list, and a 204 (No Content) code is returned if there are no containers to list.
 
 To view the CDN container details, see :ref:`List metadata for CDN-enabled container <list-metadata-for-cdn-enabled-container>`.
 
@@ -155,7 +155,7 @@ Response
 
 
 
-**Example: List CDN-enabled containers HTTP response using a query parameter ?format=json​**
+**Example: List CDN-enabled containers HTTP response, using a query parameter ?format=json​**
 
 
 .. code::
