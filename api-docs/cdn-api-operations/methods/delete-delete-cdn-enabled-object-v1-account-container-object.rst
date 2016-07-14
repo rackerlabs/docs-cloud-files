@@ -8,7 +8,7 @@ Delete CDN-enabled object
 
     DELETE /v1/{account}/{container}/{object}
 
-This operation deletes CDN-enabled objects.
+This operation purges an object from the CDN.
 
 When you find it necessary to remove a CDN-enabled object from public access before the TTL expires, you can perform a ``DELETE`` operation against the object, or you can create a support ticket to purge the entire container.
 
