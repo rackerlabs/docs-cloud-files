@@ -1,13 +1,13 @@
 .. _index:
 
-=========================================================
+============================================
 Rackspace Cloud Files API |contract version|
-=========================================================
+============================================
 
 *Last updated:* |today|
 
-Use the following links to jump directly to user and reference information for 
-using the |apiservice|. 
+Use the following links to jump directly to user and reference information for
+using the |apiservice|.
 
 * :ref:`Getting Started Guide<getting-started>`
 * :ref:`Developer Guide<developer-guide>`
@@ -18,7 +18,7 @@ using the |apiservice|.
 
 .. toctree:: :hidden:
    :maxdepth: 2
- 
+
    Cloud Files 1.0 <self>
    API Status <https://status.rackspace.com>
    overview/index
@@ -27,7 +27,7 @@ using the |apiservice|.
    developer-guide
    concepts
    general-api-info/index
-   operations-overview 
+   operations-overview
    api-reference
    storage-api-operations/index
    pseudo-hierarchical-folders-and-directories
@@ -41,4 +41,3 @@ using the |apiservice|.
    public-access-to-your-cloud-files-account/index
    release-notes
    copyright
-

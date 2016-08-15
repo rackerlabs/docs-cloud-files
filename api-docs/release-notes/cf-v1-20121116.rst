@@ -4,7 +4,8 @@ API |contract version| updates, November 16, 2012
 What's new
 ~~~~~~~~~~
 
-Container-level headers for Cross-Origin Resource Sharing (CORS) have been added. See :ref:`CORS headers for containers <cors>`.
+Container-level headers for Cross-Origin Resource Sharing (CORS) have been
+added. See :ref:`CORS headers for containers <cors>`.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

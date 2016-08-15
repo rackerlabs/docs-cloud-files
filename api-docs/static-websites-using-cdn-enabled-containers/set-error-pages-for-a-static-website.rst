@@ -21,7 +21,6 @@ static website.
     POST /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
     Host: storage.clouddrive.com
     X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
-    X-Container-Meta-Web-Error: error.html            
+    X-Container-Meta-Web-Error: error.html
 
 Any class 200 status code indicates success.
-

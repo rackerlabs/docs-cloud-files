@@ -4,8 +4,8 @@ API |contract version| updates, April 30, 2014
 What's new
 ~~~~~~~~~~
 
-The time to live (TTL) maximum value has been changed to 1 year (31536000 seconds) 
-instead of 50 years (1577836800 seconds).
+The time to live (TTL) maximum value has been changed to 1 year (31536000
+seconds) instead of 50 years (1577836800 seconds).
 
 Resolved issues
 ~~~~~~~~~~~~~~~

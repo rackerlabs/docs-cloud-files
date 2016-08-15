@@ -11,18 +11,17 @@ An HTTP status code of 204 (No Content) in the response indicates that
 the storage data was successfully retrieved. The HTTP headers in the
 response indicate the number of containers in this storage account and
 the total bytes stored for the entire account.
-
  
 **Example: cURL determine storage usage request**
 
-.. code::  
+.. code::
 
    curl -i -X HEAD $API_ENDPOINT/v1/$TENANT_ID \
-   -H "X-Auth-Token: $AUTH_TOKEN" 
+   -H "X-Auth-Token: $AUTH_TOKEN"
 
 **Example: Determine storage usage response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 204 No Content
    Content-Length: 0

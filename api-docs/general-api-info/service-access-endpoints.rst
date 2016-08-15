@@ -10,7 +10,7 @@ therefore responsible for appropriate replication, caching, and overall
 maintenance of Cloud Files data across regional boundaries to other
 Cloud Files servers.
 
-To help you decide which regionalized endpoint to use, read 
+To help you decide which regionalized endpoint to use, read
 about special considerations for choosing a
 data center at :how-to:`About regions<about-regions>`.
 
@@ -49,7 +49,6 @@ endpoint is accessed only from the internal ServiceNet.
 |                          | ``https://snet-storage101.syd2.clouddrive.com/v1/MossoCloudFS_aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/`` |
 +--------------------------+-------------------------------------------------------------------------------------------------------+
 
-
 **ServiceNet endpoints**
 
 If you are working with cloud servers that are in one of the Rackspace
@@ -57,14 +56,15 @@ data centers, using the ServiceNet endpoint in the same data center has
 no network costs and provides a faster connection. ServiceNet endpoints
 are prefixed with ``snet-`` in the table “Regionalized service
 endpoints for storage services”. ServiceNet is the data
-center internet network. In the :ref:`authentication service response<review-auth-resp>`, 
+center internet network. In the
+:ref:`authentication service response<review-auth-resp>`,
 it is listed as ``internalURL``.
 
 **Public endpoints**
 
 If you are working with servers that are not in one of the Rackspace
-data centers, you must use a public endpoint to connect. In the 
-:ref:`authentication service response<review-auth-resp>`, 
+data centers, you must use a public endpoint to connect. In the
+:ref:`authentication service response<review-auth-resp>`,
 public endpoints are listed as ``publicURL``.
 If you are working with servers in multiple data centers or have a mixed
 environment where you have servers in your data centers and in Rackspace
@@ -73,11 +73,12 @@ the servers in the different environments.
 
 Replace the sample MossoCloudFS information in the preceding table with
 the actual MossoCloudFS information returned as part of the
-:ref:`authentication service response<review-auth-resp>`. This information is located after the
-final '/' in the ``publicURL`` field and the ``internalURL`` field in
-the ``cloudFiles`` section of the service catalog returned by the
+:ref:`authentication service response<review-auth-resp>`. This information is
+located after the final '/' in the ``publicURL`` field and the ``internalURL``
+field in the ``cloudFiles`` section of the service catalog returned by the
 authentication response. For more information about the account number,
-see the sample authentication request and response in the :ref:`authentication service response<review-auth-resp>`.
+see the sample authentication request and response in the
+:ref:`authentication service response<review-auth-resp>`.
 
 .. tip:: If you do not know which data center you are working in or your
    account ID, you can find them in your Cloud Control Panel at
@@ -119,6 +120,7 @@ Cloud Files API calls are summarized in the following table.
 
 As with the storage component service, replace the sample MossoCloudFS
 information with the actual MossoCloudFS information returned as part of
-the :ref:`authentication service response<review-auth-resp>`. For the CDN management service,
-this information is located after the final '/' in the ``publicURL``
-field in the ``cloudFilesCDN`` section of the service catalog returned.
+the :ref:`authentication service response<review-auth-resp>`. For the CDN
+management service, this information is located after the final '/' in the
+``publicURL``field in the ``cloudFilesCDN`` section of the service catalog
+returned.

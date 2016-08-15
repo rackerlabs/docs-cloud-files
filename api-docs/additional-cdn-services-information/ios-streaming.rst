@@ -1,6 +1,5 @@
 .. _ios-streaming:
 
-
 iOS streaming
 ~~~~~~~~~~~~~
 
@@ -11,7 +10,7 @@ leverage this ability, you must check the client's user agent with
 JavaScript. An example of the user agent check and how to use it
 follows.
 
-1. CDN-enable your container. (See :ref:`CDN-enable and CDN-disable a container 
+1. CDN-enable your container. (See :ref:`CDN-enable and CDN-disable a container
    <put-cdn-enable-and-cdn-disable-a-container>`.) Two streaming URIs are
    created: the container's streaming URI (``X-Cdn-Streaming-Uri``) and
    its iOS streaming URI (``X-Cdn-Ios-Uri``).
@@ -76,4 +75,3 @@ follows.
 
 With these pieces of code in place, the proper content streams are set
 for iOS devices.
-

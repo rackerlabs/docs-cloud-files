@@ -11,17 +11,16 @@ the container details were successfully retrieved. You can confirm the
 TTL that you set in :ref:`CDN-enabling the container and setting a
 TTL <gsg-cdn-enabling-container>`.
 
- 
 **Example: cURL view CDN-enabled container details request**
 
-.. code::  
+.. code::
 
    curl -i -X HEAD $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
-   -H "X-Auth-Token: $AUTH_TOKEN" 
+   -H "X-Auth-Token: $AUTH_TOKEN"
 
 **Example:View CDN-enabled container details response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 204 No Content
    Content-Length: 0

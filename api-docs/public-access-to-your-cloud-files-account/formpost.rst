@@ -1,6 +1,5 @@
 .. _formpost:
 
-
 ========
 FormPost
 ========
@@ -77,7 +76,9 @@ The parameters and attributes in the form are defined as follows:
    name of each uploaded object has the ``<CF-url>`` appended to the
    front of it.
 
-   .. note:: Optionally, you can also include a prefix to separate uploads, such as assigning each user a certain prefix:
+   .. note::
+      Optionally, you can also include a prefix to separate uploads,
+      such as assigning each user a certain prefix:
 
         https://storage.clouddrive.com/v1/yourAccountID/container/object_prefix.
 
@@ -92,7 +93,10 @@ The parameters and attributes in the form are defined as follows:
    ``max_file_size exceeded``.
 
    .. note::
-        Although the ``redirect`` attribute is optional for the form, it must be present in the HMAC body (shown in the following example). Although ``redirect`` must be present, its value can be an empty string to indicate that no ``redirect`` is included on the form.
+      Although the ``redirect`` attribute is optional for the form, it must be
+      present in the HMAC body (shown in the following example). Although
+      ``redirect`` must be present, its value can be an empty string to
+      indicate that no ``redirect`` is included on the form.
 
 -  *(Required)* The ``max_file_size`` attribute specifies the maximum
    size in bytes of the largest single file upload. Because the storage
@@ -107,14 +111,16 @@ The parameters and attributes in the form are defined as follows:
    the file over the ``max_file_count`` value.
 
    .. note::
-        The ``max_file_count`` value used to generate the ``signature`` must be the same as that in the web form.
+        The ``max_file_count`` value used to generate the ``signature`` must
+        be the same as that in the web form.
 
 -  *(Required)* The ``expires`` attribute is the UNIX timestamp when the
    form is invalidated. This gives your website users a limited time to
    have the form open. Time must be in UNIX epoch format.
 
    .. note::
-        The ``expires`` in the web form and ``expires`` in the HMAC must be the same.
+        The ``expires`` in the web form and ``expires`` in the HMAC must be
+        the same.
 
 -  *(Required)* The ``signature`` attribute is the HMAC-SHA1 signature
    of the form. Following is sample code for computing the signature in
@@ -128,7 +134,7 @@ The parameters and attributes in the form are defined as follows:
          from hashlib import sha1
          from time import time
          path = '/v1/account/container/object_prefix'
-         redirect = 'https://myserver.com/some-page'  # set to '' if redirect not in form 
+         redirect = 'https://myserver.com/some-page'  # set to '' if redirect not in form
          max_file_size = 104857600
          max_file_count = 10
          expires = int(time() + 600)
@@ -147,7 +153,9 @@ The parameters and attributes in the form are defined as follows:
    header set for the account.
 
    .. note::
-        If you receive the ``Invalid Signature`` error, use the **HEAD** operation to confirm that your key matches the value in the response from the **HEAD** command.
+        If you receive the ``Invalid Signature`` error, use the **HEAD**
+        operation to confirm that your key matches the value in the response
+        from the **HEAD** command.
 
 -  *(Optional)* If you want the uploaded files to be temporary, you can
    set the ``x-delete-at`` or ``x-delete-after`` attributes by adding
@@ -161,5 +169,5 @@ The parameters and attributes in the form are defined as follows:
    different name.
 
    .. note::
-        The ``type="file"`` attribute or attributes must be at the end of the form code for Cloud Files to process the uploads correctly.
-
+        The ``type="file"`` attribute or attributes must be at the end of the
+        form code for Cloud Files to process the uploads correctly.

@@ -11,7 +11,8 @@ from the CDN, and sends an email to the address (or multiple addresses)
 that you indicate through the ticket. The email address notification is
 optional.
 
-
 .. note::
    To prevent the container from going back to the CDN, first change the
-   ``X-CDN-Enabled`` flag to ``False`` as described in the operation to CDN-enable and CDN-disable a container at :ref:`CDN-enable and CDN-disable a container <put-cdn-enable-and-cdn-disable-a-container>`.
+   ``X-CDN-Enabled`` flag to ``False`` as described in the operation to
+   CDN-enable and CDN-disable a container at :ref:`CDN-enable and CDN-disable a
+   container <put-cdn-enable-and-cdn-disable-a-container>`.

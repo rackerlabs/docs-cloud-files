@@ -58,12 +58,12 @@ An HTTP request for the bulk delete is similar to the following example.
     DELETE /v1/MossoCloudFS_000000?bulk-delete HTTP/1.1
     Host: storage101.dfw1.clouddrive.com
     x-auth-token:f064c46a782c444cb4ba4b6434288f7c
-    Content-Length: 108 
+    Content-Length: 108
 
     /containerName/objectName1
     /containerName/objectName2
     /containerName/objectName3
-    /containerName/objectName4 
+    /containerName/objectName4
 
 The response is similar to the extract archive responses in that every
 response is 200 OK and the response body must be parsed for actual
@@ -132,4 +132,3 @@ not found as well as a list of those that failed. The return body is
 formatted in the way specified in the request's ``Accept`` header.
 Acceptable formats are ``text/plain``, ``application/json``,
 ``application/xml``, and ``text/xml``.
-

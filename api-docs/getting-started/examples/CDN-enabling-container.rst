@@ -25,11 +25,10 @@ the ``X-Cdn-Uri`` header of the response, and returns the SSL URI in the
 with the object name to access the file through the CDN, or you can use
 the SSL URI with the object name to access the file over a secure SSL
 connection through the CDN.
-
  
 **Example: cURL CDN-enable container and set TTL request**
 
-.. code::  
+.. code::
 
    curl -i -X PUT $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
    -H "X-Auth-Token: $AUTH_TOKEN" \
@@ -38,7 +37,7 @@ connection through the CDN.
 
 **Example: CDN-enable container and set TTL response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 201 Created
    Content-Length: 0

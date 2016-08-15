@@ -8,6 +8,6 @@ websites in Cloud Files.
 
 .. toctree:: :hidden:
    :maxdepth: 2
-   
+
    create-a-static-website
    set-error-pages-for-a-static-website   

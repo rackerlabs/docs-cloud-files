@@ -10,10 +10,9 @@ and objects stored in Cloud Files. You can create containers in the
 Cloud Control Panel, and then upload, download, and delete files. It
 describes those files.
 
- 
 **Figure: Rackspace Cloud Control Panel**
 
-.. image:: /_images/cf-screenshot-ControlPanel.png 
+.. image:: /_images/cf-screenshot-ControlPanel.png
 
 Access this   by logging in to your Cloud Control Panel at
 `http://mycloud.rackspace.com <https://mycloud.rackspace.com>`__, and

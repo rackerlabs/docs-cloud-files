@@ -12,17 +12,16 @@ just a list of the container names.
 An HTTP status code of 200 (OK) in the response indicates that the
 account and container details were successfully retrieved.
 
- 
 **Example: cURL show account details request**
 
-.. code::  
+.. code::
 
    curl -i -X GET $API_ENDPOINT/v1/$TENANT_ID?format=json \
-   -H "X-Auth-Token: $AUTH_TOKEN"  
+   -H "X-Auth-Token: $AUTH_TOKEN"
 
 **Example: Show account details response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 200 OK
    Content-Length: 111

@@ -34,8 +34,8 @@ objects within the container.
 
 .. note:: The account owner does not need to be included as a user in the
    headers because the account owner always has read and write access to
-   everything in their Cloud Files account. However, the users specified in the 
-   headers need to have a valid authentication token for the account to be able 
+   everything in their Cloud Files account. However, the users specified in the
+   headers need to have a valid authentication token for the account to be able
    to read objects in the container or write to the container.
 
 You can use the operation to show container metadata to show the absence
@@ -49,7 +49,7 @@ request**
 
     HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
     Host: storage.clouddrive.com
-    X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 
+    X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
 
 **Example: Show container metadata before adding ACL headers: HTTP
 response**
@@ -57,12 +57,12 @@ response**
 .. code::
 
     HTTP/1.1 204 No Content
-    X-Container-Object-Count: 2 
-    X-Container-Bytes-Used: 76 
-    Accept-Ranges: bytes 
-    X-Trans-Id: tx3aa52e951fc64b63bc1fda27902b9bd3 
-    Content-Length: 80 
-    Date: Mon, 07 Apr 2014 01:29:22 GMT 
+    X-Container-Object-Count: 2
+    X-Container-Bytes-Used: 76
+    Accept-Ranges: bytes
+    X-Trans-Id: tx3aa52e951fc64b63bc1fda27902b9bd3
+    Content-Length: 80
+    Date: Mon, 07 Apr 2014 01:29:22 GMT
 
 Update the existing container to set the ``X-Container-Read`` and
 ``X-Container-Write`` metadata headers to enable read and write access
@@ -88,7 +88,7 @@ request**
 
     HEAD /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/MyContainer HTTP/1.1
     Host: storage.clouddrive.com
-    X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4 
+    X-Storage-Token: 182f9c0af0e828cfe3281767d29d19f4
 
 **Example: Show container metadata after adding ACL headers: HTTP
 response**
@@ -132,8 +132,9 @@ remaining quota.
 
 Also, for chunked file uploads, the storage system cannot reject
 transfers that will eventually exceed the quota because the storage
-system does not know whether the end of the file will exceed the quota. (For 
-more information about chunked file uploads, see :ref:`Chunked transfer encoding<chunked-transfer-encoding>`.)
+system does not know whether the end of the file will exceed the quota. (For
+more information about chunked file uploads, see
+:ref:`Chunked transfer encoding<chunked-transfer-encoding>`.)
 
 You set quotas by adding metadata to the container. The available
 metadata values are described in the following table.
@@ -152,7 +153,7 @@ metadata values are described in the following table.
 
 .. _access-log-delivery:
 
-Access log delivery 
+Access log delivery
 ~~~~~~~~~~~~~~~~~~~
 
 You can use access log delivery to analyze the number of requests for
@@ -195,20 +196,18 @@ The following example shows log entries.
 .. code::
 
        50.56.228.64 - - [27/08/2012:16:50:22 +0000] "PUT /v1/
-            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-            HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
+            HTTP/1.0" 401 0 "-" "python-requests/0.13.8
             CPython/2.7.3 Linux/3.2.0-29-generic"
        50.56.228.64 - - [27/08/2012:16:53:49 +0000] "PUT /v1/
             MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
-            /object_%2521 HTTP/1.0" 201 118 "-" "python-requests/0.13.8 
-            CPython/2.7.3 Linux/3.2.0-29-generic"  
-       50.56.228.64 - - [27/08/2012:16:53:47 +0000] "PUT /v1/
-            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-            HTTP/1.0" 202 58 "-" "python-requests/0.13.8 
-            CPython/2.7.3 Linux/3.2.0-29-generic"       
-       50.56.228.64 - - [27/08/2012:16:50:36 +0000] "PUT /v1/
-            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521 
-            HTTP/1.0" 401 0 "-" "python-requests/0.13.8 
+            /object_%2521 HTTP/1.0" 201 118 "-" "python-requests/0.13.8
             CPython/2.7.3 Linux/3.2.0-29-generic"
-
-
+       50.56.228.64 - - [27/08/2012:16:53:47 +0000] "PUT /v1/
+            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
+            HTTP/1.0" 202 58 "-" "python-requests/0.13.8
+            CPython/2.7.3 Linux/3.2.0-29-generic"
+       50.56.228.64 - - [27/08/2012:16:50:36 +0000] "PUT /v1/
+            MossoCloudFS_bb88c7b9-ea5b-49af-82fc-376ff241963c/CharacterTest_%2521
+            HTTP/1.0" 401 0 "-" "python-requests/0.13.8
+            CPython/2.7.3 Linux/3.2.0-29-generic"

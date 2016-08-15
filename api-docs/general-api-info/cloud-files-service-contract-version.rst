@@ -12,7 +12,6 @@ supports. The requested contract version is included in all request
 URIs. Different contract versions of the API might be available at any
 given time and are not guaranteed to be compatible with one another.
 
-
 **Example: Request URL**
 
 .. code::
@@ -21,4 +20,3 @@ given time and are not guaranteed to be compatible with one another.
 
 .. note::
    This document pertains to contract version 1.
-

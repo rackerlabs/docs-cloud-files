@@ -1,6 +1,6 @@
 .. _cdn-api-methods:
-       
-.. toctree:: 
+
+.. toctree::
    :maxdepth: 2
 
    api-operations-for-cdn-services

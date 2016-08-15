@@ -4,13 +4,12 @@ API |contract version| updates, August 13, 2012
 What's new
 ~~~~~~~~~~
 
--  CDN URLs have been changed to enhance the scale and security of the CDN. 
+-  CDN URLs have been changed to enhance the scale and security of the CDN.
    Previously existing URLs continue to work as new URLs are rolled out.
 
--  The time to live (TTL) maximum has been refreshed to one year. Previously set TTLs
-   for existing objects in the CDN continue to work as the new limit is
-   rolled out for new objects.
-
+-  The time to live (TTL) maximum has been refreshed to one year. Previously
+   set TTLs for existing objects in the CDN continue to work as the new limit
+   is rolled out for new objects.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

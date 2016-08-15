@@ -17,7 +17,8 @@ Streaming is a method of relaying data, such as video and audio
 material, over the network as a steady continuous stream, allowing
 playback to proceed while subsequent data is being received.
 
-For information about streaming to iOS devices, see :ref:`iOS streaming <ios-streaming>`.
+For information about streaming to iOS devices, see
+:ref:`iOS streaming <ios-streaming>`.
 
 **Example: CDN-enabled container metadata: HTTP request**
 

@@ -1,13 +1,13 @@
 .. _gsg-use-API-directly:
 
 Create and manage object storage
----------------------------------------------- 
+--------------------------------
 
-You can use the simple examples in the following sections for basic Cloud Files  
+You can use the simple examples in the following sections for basic Cloud Files
 requests that you will commonly use. Example requests are provided in
 cURL, followed by the response.
 
-..  note:: 
+..  note::
     Generally, each time ``curl`` is invoked to perform an operation, a
     separate TCP/IP and SSL connection is created and then discarded. The
     language APIs, in contrast, are designed to reuse connections between
@@ -17,12 +17,13 @@ cURL, followed by the response.
 
 Before running the examples, review the :ref:`Cloud Files concepts<concepts>`.
 
-.. note:: 
-     These examples use the ``$API_ENDPOINT``, ``$AUTH_TOKEN``, and ``$TENANT_ID`` environment 
-     variables to specify the API endpoint, authentication token, and account ID values 
-     for accessing the service. Make sure you 
-     :ref:`configure these variables<configure-environment-variables>` before running the 
-     code samples. 
+.. note::
+     These examples use the ``$API_ENDPOINT``, ``$AUTH_TOKEN``, and
+     ``$TENANT_ID`` environment variables to specify the API endpoint,
+     authentication token, and account ID values for accessing the service.
+     Make sure you
+     :ref:`configure these variables<configure-environment-variables>` before
+     running the code samples.
 
 For more information about all Cloud Files operations, see the
 :ref:`API reference <api-reference>`.

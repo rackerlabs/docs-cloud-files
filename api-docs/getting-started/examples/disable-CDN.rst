@@ -10,11 +10,10 @@ service access endpoint URL specifies the CDN system.)
 
 An HTTP status code of 202 (Accepted) in the response indicates that the
 request is accepted for processing.
-
  
 **Example: cURL disable CDN for a container request**
 
-.. code::  
+.. code::
 
    curl -i -X POST $API_ENDPOINT/v1/$TENANT_ID/yourContainerName \
    -H "X-Auth-Token: $AUTH_TOKEN" \
@@ -22,7 +21,7 @@ request is accepted for processing.
 
 **Example: Disable CDN for a container response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 202 Accepted
    Content-Length: 76

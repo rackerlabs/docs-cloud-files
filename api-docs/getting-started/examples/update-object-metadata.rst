@@ -8,18 +8,17 @@ To set or update custom metadata for existing objects, you send an HTTP
 using the header ``X-Object-Meta-name: value``, where name is the custom
 name for your metadata and value is the data value.
 
-..  note:: 
+..  note::
     If an object has custom metadata, when you post new metadata, you must
     resend any metadata that you want kept with the object or it will be
     lost.
 
 An HTTP status code of 202 (Accepted) in the response indicates that the
 metadata for the object was successfully updated.
-
  
 **Example: cURL update object metadata request**
 
-.. code::  
+.. code::
 
    curl -i -X POST $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
    -H "X-Auth-Token: $AUTH_TOKEN" \
@@ -28,7 +27,7 @@ metadata for the object was successfully updated.
 
 **Example: Update object metadata response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 202 Accepted
    Content-Length: 76

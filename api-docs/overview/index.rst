@@ -1,7 +1,7 @@
 .. _overview:
 
 About the API
------------------------------------------
+-------------
 
 Rackspace Cloud Files™ is an affordable, redundant, scalable, and
 dynamic storage service. The core storage system is designed to provide
@@ -23,6 +23,6 @@ This document describes the features available with API |contract version|.
 
 .. toctree:: :hidden:
    :maxdepth: 3
-   
+
    additional-resources
    api-service-updates

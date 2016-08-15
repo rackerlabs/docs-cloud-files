@@ -27,8 +27,7 @@ To display a list of all the objects in the storage container, use
 
     GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups
 
-The system returns status code 200 (OK) and
-the requested list of the objects.
+The system returns status code 200 (OK) and the requested list of the objects.
 
 .. code::
 
@@ -67,7 +66,8 @@ inside a pseudo-directory, including further nested pseudo-directories.
 
     GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/&delimiter=/
 
-The system returns status code 200 (OK) and the objects and pseudo-directories within the top level pseudo-directory.
+The system returns status code 200 (OK) and the objects and pseudo-directories
+within the top level pseudo-directory.
 
 .. code::
 
@@ -86,8 +86,8 @@ pseudo-directory called ``dogs`` within the pseudo-directory
 
     GET /v1/MossoCloudFS_0672d7fa-9f85-4a81-a3ab-adb66a880123/backups?prefix=photos/animals/dogs/&delimiter=/
 
-The system returns status code 200 (OK) and
-the objects and pseudo-directories within the nested pseudo-directory.
+The system returns status code 200 (OK) and the objects and pseudo-directories
+within the nested pseudo-directory.
 
 .. code::
 
