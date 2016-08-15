@@ -9,7 +9,7 @@ Cloud Files.
 
 .. toctree:: :hidden:
    :maxdepth: 2
-   
+
    chunked-transfer-encoding
    creating-large-objects
    enabling-file-compression

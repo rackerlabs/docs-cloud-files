@@ -4,7 +4,8 @@ API |contract version| updates, December 05, 2012
 What's new
 ~~~~~~~~~~
 
-The Cloud Files CDN now allows you to stream video to iOS devices without needing to convert your video. See :ref:`iOS streaming <ios-streaming>`.
+The Cloud Files CDN now allows you to stream video to iOS devices without
+needing to convert your video. See :ref:`iOS streaming <ios-streaming>`.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
 .. _gsg-upload-storage-object:
 
 Uploading an object 
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 After creating a container, you can upload a file to it.
 
@@ -17,18 +17,17 @@ This is the mechanism by which a user's web browser knows how to display
 the file or whether to launch a helper application to display the file.
 
 If you know the value of ``Content-Length``, you should also set it in the
-request. However, when you send the file in the cURL request by using the 
-cURL ``-T`` option, cURL, by default, sets the ``Content-Length`` 
-correctly by reading the file. In this case, you can omit ``Content-Length`` 
+request. However, when you send the file in the cURL request by using the
+cURL ``-T`` option, cURL, by default, sets the ``Content-Length``
+correctly by reading the file. In this case, you can omit ``Content-Length``
 in the request.
 
 An HTTP status code of 201 (Created) in the response indicates that the
 object was successfully uploaded.
-
  
 **Example: cURL upload an object request**
 
-.. code::  
+.. code::
 
    curl -i -X PUT $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
    -H "X-Auth-Token: $AUTH_TOKEN" \
@@ -37,7 +36,7 @@ object was successfully uploaded.
 
 **Example: Upload an object response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 201 Created
    Last-Modified: Wed, 06 Jan 2016 17:08:31 GMT

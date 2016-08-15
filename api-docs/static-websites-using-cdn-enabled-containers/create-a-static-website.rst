@@ -9,7 +9,8 @@ you must CDN-enable a storage container. Any HTML or static web pages in
 the container become available through a static website after you set
 the ``X-Container-Meta-Web-Index`` header to ``index.html`` or another
 index page of your choice. You can also create subdirectories in your
-website by creating pseudo directories, as outlined in :ref:`Pseudo hierarchical directories and folders<pseudo-dir>`. Each
+website by creating pseudo directories, as outlined in
+:ref:`Pseudo hierarchical directories and folders<pseudo-dir>`. Each
 pseudo directory becomes a subdirectory in the website.
 
 The page you set for ``X-Container-Meta-Web-Index`` becomes the index
@@ -64,7 +65,8 @@ website.
    (You get your authentication token when you authenticate your session
    as shown in :ref:`Authentication<auth>`.)
 
-#. CDN-enable your container. (See in the operation :ref:`CDN-enable and CDN-disable a container <put-cdn-enable-and-cdn-disable-a-container>`.)
+#. CDN-enable your container. (See in the operation
+   :ref:`CDN-enable and CDN-disable a container <put-cdn-enable-and-cdn-disable-a-container>`.)
 
 #. Go to your domain host and set up a CNAME using your CDN URI
    (``X-Cdn-Uri``). The CNAME is the domain or branded URI that you use
@@ -111,4 +113,3 @@ the right of the example are the pages that display in the web browser.
    To disable a static website that you have created, send a request to
    remove the metadata header that created the static web site (for
    example, ``X-Container-Meta-Web-Index``).
-

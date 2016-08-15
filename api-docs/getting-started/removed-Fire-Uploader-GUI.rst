@@ -12,7 +12,6 @@ the tool, you must supply your Rackspace Cloud username; when prompted
 for a password, enter your API key. For more information, see the
 FireUploader web site at http://www.fireuploader.com.
 
- 
 **Figure: FireUploader interface to Cloud Files**
 
 .. image:: /_images/cf-screenshot-FireUploader.png

@@ -13,7 +13,6 @@ to change content quickly. It provides a way to upload and configure
 Cloud Files to distribute content over the CDN. For more information,
 see the Cyberduck web site at http://cyberduck.ch/.
 
- 
 **Figure: Cyberduck interface to Cloud Files**
 
 .. image:: /_images/cf-screenshot-Cyberduck.png

@@ -8,18 +8,17 @@ with a valid authentication token.
 
 An HTTP status code of 200 (OK) in the response indicates that the
 object was successfully retrieved.
-
  
 **Example: cURL retrieve an object request**
 
-.. code::  
+.. code::
 
    curl -i -X GET $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
-   -H "X-Auth-Token: $AUTH_TOKEN" 
+   -H "X-Auth-Token: $AUTH_TOKEN"
 
 **Example: Retrieve an object response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 200 OK
    Content-Length: 0
@@ -31,6 +30,6 @@ object was successfully retrieved.
    X-Timestamp: 1398186411.61064
    Content-Type: image/jpeg
    X-Trans-Id: txad3571ebcee24cabb387a-005356a229dfw1
-   Date: Tue, 22 Apr 2014 17:08:57 GMT 
+   Date: Tue, 22 Apr 2014 17:08:57 GMT
 
     [ ...object content...]

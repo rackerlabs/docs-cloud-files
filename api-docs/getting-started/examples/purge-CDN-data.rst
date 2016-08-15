@@ -1,6 +1,6 @@
 .. _gsg-purge-cdn-data:
 
-Purging an object from a CDN-enabled container 
+Purging an object from a CDN-enabled container
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To remove a CDN-enabled object from public access before the TTL
@@ -9,7 +9,7 @@ token against the object to the CDN management service (or you can
 create a support ticket to purge the entire container). Currently, you
 can perform only 25 purges per account per day.
 
-..  note:: 
+..  note::
     Remember that you must upload the objects to the container by using one
     of the storage service access endpoints. The CDN management service
     references the objects there.
@@ -24,18 +24,17 @@ Because there are so many edge servers around the world, purging an
 object might take a long time. Be patient while waiting for the emailed
 response.
 
- 
 **Example: cURL purge an object from a CDN-enabled container request**
 
-.. code::  
+.. code::
 
    curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName /
    -H "X-Auth-Token: $AUTH_TOKEN" /
-   -H "X-Purge-Email: yourEmail@yourDomain.com"      
+   -H "X-Purge-Email: yourEmail@yourDomain.com"
 
 **Example: Purge an object from a CDN-enabled container response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 204 No Content
    Content-Length: 0

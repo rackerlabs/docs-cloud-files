@@ -1,109 +1,101 @@
-
 .. _list-cdn-enabled-containers:
 
 List CDN-enabled containers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
     GET /v1/{account}
 
-This operation lists any containers that are currently or have ever been CDN-enabled, sorted by name.
+This operation lists any containers that are currently or have ever been
+CDN-enabled, sorted by name.
 
-``GET`` operations against the ``cloudFilesCDN`` endpoints for an account retrieve a list of containers that are currently or have ever been CDN-enabled. No private containers appear in the list. (For the CDN endpoints, see :ref:`Service access endpoints <service-access>`.)
+``GET`` operations against the ``cloudFilesCDN`` endpoints for an account
+retrieve a list of containers that are currently or have ever been CDN-enabled.
+No private containers appear in the list. (For the CDN endpoints, see
+:ref:`Service access endpoints <service-access>`.)
 
 The list is returned in the response body, one container name per line.
 
-An HTTP response status code of 200 through 299 indicates success. A 200 (OK) code is returned if there are containers to list, and a 204 (No Content) code is returned if there are no containers to list.
+An HTTP response status code of 200 through 299 indicates success. A 200 (OK)
+code is returned if there are containers to list, and a 204 (No Content) code
+is returned if there are no containers to list.
 
-For instructions about how to delete containers that were CDN-enabled in the past and are now disabled, but are showing in the listing, see :ref:`Delete CDN-enabled object<delete-cdn-enabled-object>`.
+For instructions about how to delete containers that were CDN-enabled in the
+past and are now disabled, but are showing in the listing, see
+:ref:`Delete CDN-enabled object<delete-cdn-enabled-object>`.
 
-To view the CDN container details, see :ref:`List metadata for CDN-enabled container <list-metadata-for-cdn-enabled-container>`.
-
-
+To view the CDN container details, see
+:ref:`List metadata for CDN-enabled container <list-metadata-for-cdn-enabled-container>`.
 
 This table shows the possible response codes for this operation:
 
-
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|200                       |OK                       |The request succeeded.   |
-|                          |                         |The information returned |
-|                          |                         |with the response is     |
-|                          |                         |dependent on the method  |
-|                          |                         |used in the request.     |
-+--------------------------+-------------------------+-------------------------+
-|204                       |No Content               |The request succeeded.   |
-|                          |                         |The server fulfilled the |
-|                          |                         |request but does not     |
-|                          |                         |need to return a body.   |
-+--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |The requested resource   |
-|                          |                         |was not found.           |
-+--------------------------+-------------------------+-------------------------+
-
++--------------------------+-------------------------+------------------------+
+|Response Code             |Name                     |Description             |
++==========================+=========================+========================+
+|200                       |OK                       |The request succeeded.  |
+|                          |                         |The information returned|
+|                          |                         |with the response is    |
+|                          |                         |dependent on the method |
+|                          |                         |used in the request.    |
++--------------------------+-------------------------+------------------------+
+|204                       |No Content               |The request succeeded.  |
+|                          |                         |The server fulfilled the|
+|                          |                         |request but does not    |
+|                          |                         |need to return a body.  |
++--------------------------+-------------------------+------------------------+
+|404                       |Not Found                |The requested resource  |
+|                          |                         |was not found.          |
++--------------------------+-------------------------+------------------------+
 
 Request
-""""""""""""""""
-
-
-
+"""""""
 
 This table shows the URI parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-
-
++--------------------------+-------------------------+------------------------+
+|Name                      |Type                     |Description             |
++==========================+=========================+========================+
+|{account}                 |String                   |Your unique account     |
+|                          |                         |identifier.             |
++--------------------------+-------------------------+------------------------+
 
 This table shows the query parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|limit                     |Int                      |For an integer value n,  |
-|                          |                         |limits the number of     |
-|                          |                         |results to n values.     |
-+--------------------------+-------------------------+-------------------------+
-|marker                    |String                   |Given a string value x,  |
-|                          |                         |returns container names  |
-|                          |                         |greater in value than    |
-|                          |                         |the specified marker.    |
-|                          |                         |Only strings using UTF-8 |
-|                          |                         |encoding are valid.      |
-|                          |                         |Using ``marker``         |
-|                          |                         |provides a mechanism for |
-|                          |                         |iterating through the    |
-|                          |                         |entire list of           |
-|                          |                         |containers.              |
-+--------------------------+-------------------------+-------------------------+
-|end_marker                |String                   |Given a string value x,  |
-|                          |                         |returns container names  |
-|                          |                         |lesser in value than the |
-|                          |                         |specified end marker.    |
-|                          |                         |Only strings using UTF-8 |
-|                          |                         |encoding are valid.      |
-+--------------------------+-------------------------+-------------------------+
-|format                    |String                   |Value of the serialized  |
-|                          |                         |response format, either  |
-|                          |                         |JSON or XML.             |
-+--------------------------+-------------------------+-------------------------+
-
-
-
++--------------------------+-------------------------+------------------------+
+|Name                      |Type                     |Description             |
++==========================+=========================+========================+
+|limit                     |Int                      |For an integer value n, |
+|                          |                         |limits the number of    |
+|                          |                         |results to n values.    |
++--------------------------+-------------------------+------------------------+
+|marker                    |String                   |Given a string value x, |
+|                          |                         |returns container names |
+|                          |                         |greater in value than   |
+|                          |                         |the specified marker.   |
+|                          |                         |Only strings using UTF-8|
+|                          |                         |encoding are valid.     |
+|                          |                         |Using ``marker``        |
+|                          |                         |provides a mechanism for|
+|                          |                         |iterating through the   |
+|                          |                         |entire list of          |
+|                          |                         |containers.             |
++--------------------------+-------------------------+------------------------+
+|end_marker                |String                   |Given a string value x, |
+|                          |                         |returns container names |
+|                          |                         |lesser in value than the|
+|                          |                         |specified end marker.   |
+|                          |                         |Only strings using UTF-8|
+|                          |                         |encoding are valid.     |
++--------------------------+-------------------------+------------------------+
+|format                    |String                   |Value of the serialized |
+|                          |                         |response format, either |
+|                          |                         |JSON or XML.            |
++--------------------------+-------------------------+------------------------+
 
 This operation does not accept a request body.
 
-
-
-
 **Example: List CDN-enabled containers HTTP request**
-
 
 .. code::
 
@@ -111,12 +103,7 @@ This operation does not accept a request body.
    Host: cdn.clouddrive.com
    X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
-
-
-
-
 **Example: List CDN-enabled containers HTTP request with a query parameter ?format=json​**
-
 
 .. code::
 
@@ -124,24 +111,10 @@ This operation does not accept a request body.
    Host: cdn.clouddrive.com
    X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
 
-
-
-
-
 Response
-""""""""""""""""
-
-
-
-
-
-
-
-
-
+""""""""
 
 **Example: List CDN-enabled containers HTTP response**
-
 
 .. code::
 
@@ -149,16 +122,11 @@ Response
    Date: Thu, 08 Sep 2011 14:35:45 GMT
    Transfer-Encoding: chunked
    Content-Type: text/plain
-                      
+
    images
    movies
 
-
-
-
-
 **Example: List CDN-enabled containers HTTP response, using a query parameter ?format=json​**
-
 
 .. code::
 
@@ -167,7 +135,7 @@ Response
    Content-Type: application/json
    X-Trans-Id: tx82a6752e00424edb9c46fa2573132e2c​iad3
    Date: Tue, 05 May 2015 14:09:02 GMT
-   
+
    [
        {
            "cdn_enabled": true,
@@ -181,7 +149,3 @@ Response
        },
        ...
    ]
-
-
-
-

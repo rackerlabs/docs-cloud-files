@@ -28,7 +28,7 @@ For more information about CORS and the access control headers, see
 
 CORS headers for containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 Container-level headers for CORS are used for the following Cloud Files
 features:
 
@@ -37,7 +37,6 @@ features:
 
 -  :ref:`TempURL<tempurl>` to
    limit how long users can use a given URL
-
 
 .. note::
    Container-level headers for CORS are not inherited for use with a
@@ -86,10 +85,10 @@ The following table lists the container-level headers:
 
 To view the values for these headers, use the **HEAD** operation to show
 container metadata. To delete the metadata, use the **DELETE** operation
-to delete container metadata. (See :ref:`Show container metadata <show-container-metadata>` 
-and :ref:`Delete container metadata <delete-container-metadata>` for descriptions of these 
-operations.)
-
+to delete container metadata. (See
+:ref:`Show container metadata <show-container-metadata>`
+and :ref:`Delete container metadata <delete-container-metadata>` for
+descriptions of these operations.)
 
 Before a browser issues an actual request, it might issue a preflight
 request. The preflight request is an HTTP **OPTIONS** call to verify
@@ -226,7 +225,6 @@ the request did not succeed, the response status is 0.
 CORS headers for objects
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 You can set object-level headers for CORS. Currently, using object-level
 headers enables CORS to work over a CDN.
 
@@ -287,5 +285,3 @@ the correct origination.
       Host: storage.clouddrive.com
       X-Auth-Token: yourAuthToken
       Origin: http://storage.clouddrive.com
-
-

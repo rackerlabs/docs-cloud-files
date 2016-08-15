@@ -1,8 +1,8 @@
 .. _api-reference:
 
-===================
-**API Reference**
-===================
+=============
+API Reference
+=============
 
-Learn about the available Cloud Files API resources and methods and see request and 
-response examples.
+Learn about the available Cloud Files API resources and methods and see request
+and response examples.

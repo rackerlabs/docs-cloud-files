@@ -23,12 +23,13 @@ and enable your API access key, go to
 Authentication
 ~~~~~~~~~~~~~~
 
-The Cloud Identity Guide describes how to authenticate against the Rackspace 
+The Cloud Identity Guide describes how to authenticate against the Rackspace
 Cloud Identity service to receive Cloud Files connection parameters and an
 authentication token. The token must be passed to Cloud Files operations
 during the time that it is valid.
 
-For more information about authentication, see the :rax-devguide:`Cloud Identity Client Developer Guide <cloud-identity/v2>`.
+For more information about authentication, see the
+:rax-devguide:`Cloud Identity Client Developer Guide <cloud-identity/v2>`.
 
 .. note::
    The language-specific APIs handle authentication, token passing, and
@@ -37,43 +38,44 @@ For more information about authentication, see the :rax-devguide:`Cloud Identity
 Permissions
 ~~~~~~~~~~~
 
-In Cloud Files, you have your own storage account and full access to that 
-account. You must authenticate with your credentials as described in :ref:`the 
-section on authentication <auth>`. After you are authenticated, you can 
+In Cloud Files, you have your own storage account and full access to that
+account. You must authenticate with your credentials as described in :ref:`the
+section on authentication <auth>`. After you are authenticated, you can
 perform all Cloud Files operations within that account.
 
-You can use Role Based Access Control (RBAC) with Cloud Files. For more 
+You can use Role Based Access Control (RBAC) with Cloud Files. For more
 information, see :ref:`Role Based Access Control <rbac>`.
 
 Containers
 ~~~~~~~~~~
 
-A container is a storage compartment that provides a way for you to organize 
-your data. You can think of a container like a folder in Windows® or a directory
-in UNIX®. The primary difference between a container and these other file
-system concepts is that containers cannot be nested. You can have up to 500,000
-containers in your account. Data must be stored in a container, so you must
-have at least one container defined in your account before you upload data.
+A container is a storage compartment that provides a way for you to organize
+your data. You can think of a container like a folder in Windows® or a
+directory in UNIX®. The primary difference between a container and these other
+file system concepts is that containers cannot be nested. You can have up to
+500,000 containers in your account. Data must be stored in a container, so you
+must have at least one container defined in your account before you upload
+data.
 
-If you expect to write more than 100 objects per second to a single container, 
-we recommend organizing those objects across multiple containers to improve 
+If you expect to write more than 100 objects per second to a single container,
+we recommend organizing those objects across multiple containers to improve
 performance.
 
-The only restrictions on container names is that they cannot contain a forward 
-slash (/) and must be less than 256 bytes in length. Note that the length 
-restriction applies to the name after it has been URL-encoded. For example, a 
-container name of Course Docs would be URL-encoded as Course%20Docs and is 
+The only restrictions on container names is that they cannot contain a forward
+slash (/) and must be less than 256 bytes in length. Note that the length
+restriction applies to the name after it has been URL-encoded. For example, a
+container name of Course Docs would be URL-encoded as Course%20Docs and is
 therefore 13 bytes in length rather than the expected 11.
 
-You can create a container in any Rackspace data center. (See 
+You can create a container in any Rackspace data center. (See
 :ref:`Service access endpoints <service-access>` for a list.) However,
-in order to lower your costs, you should create your most served containers in 
-the same data center as your server. Otherwise, you will be billed for external 
-bandwidth charges. Note that this is true when computations are performed on 
+in order to lower your costs, you should create your most served containers in
+the same data center as your server. Otherwise, you will be billed for external
+bandwidth charges. Note that this is true when computations are performed on
 objects but is not true for static content served to end users directly.
 
-In addition to containing objects, you can also use the container to control 
-access to objects by using an access control list (ACL). For more information, 
+In addition to containing objects, you can also use the container to control
+access to objects by using an access control list (ACL). For more information,
 see :ref:`Container access control lists <container-acls>`. You cannot
 store an ACL with individual objects.
 
@@ -112,8 +114,8 @@ Operations
 ~~~~~~~~~~
 
 Operations are the actions you perform within your account, such as
-creating or deleting containers or uploading or downloading objects. For 
-information about the Cloud Files API operations, see :ref:`API reference 
+creating or deleting containers or uploading or downloading objects. For
+information about the Cloud Files API operations, see :ref:`API reference
 <api-reference>`.
 
 You can perform operations through the REST web service API or a
@@ -171,7 +173,8 @@ service. For example, you could CDN-enable a container called ``images``
 and be assigned the CDN URI, but you also need to create a container
 called ``images`` in the storage service.
 
-For more information about CDN-enabled containers and operations for them, see :ref:`API operations for CDN services <api-operations-for-cdn-services>`.
+For more information about CDN-enabled containers and operations for them, see
+:ref:`API operations for CDN services <api-operations-for-cdn-services>`.
 
 Language-specific APIs
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -189,5 +192,3 @@ own documentation including code snippets
 and examples to help you get started.
 
 For more information about the Rackspace SDKs, see :rax-dev:`SDKs and tools<sdks>`.
-
-

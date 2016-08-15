@@ -16,17 +16,16 @@ operations return a 404 (Not Found) error (unless object versioning is
 on and other versions exist). For more information about object
 versioning, see the *Cloud Files Developer Guide*.
 
- 
 **Example: cURL delete an object request**
 
-.. code::  
+.. code::
 
    curl -i -X DELETE $API_ENDPOINT/v1/$TENANT_ID/yourContainerName/yourObjectName \
-   -H "X-Auth-Token: $AUTH_TOKEN" 
+   -H "X-Auth-Token: $AUTH_TOKEN"
 
 **Example: Delete an object response**
 
-.. code::  
+.. code::
 
    HTTP/1.1 204 No Content
    Content-Length: 0

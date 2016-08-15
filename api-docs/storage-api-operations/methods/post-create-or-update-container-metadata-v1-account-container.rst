@@ -1,186 +1,174 @@
-
 .. _create-or-update-container-metadata:
 
 Create or update container metadata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
     POST /v1/{account}/{container}
 
-This operation creates or updates the container metadata by associating custom metadata headers with the container-level URI. These headers must have the format ``X-Container-Meta-name``.
+This operation creates or updates the container metadata by associating custom
+metadata headers with the container-level URI. These headers must have the
+format ``X-Container-Meta-name``.
 
-To set or edit container metadata, perform a ``POST`` operation to the container. The operation must include ``X-Container-Meta-name``, where ``name`` is the name of your custom metadata. Subsequent ``POST`` operations to the header using the same metadata name overwrite the previous value. 
+To set or edit container metadata, perform a ``POST`` operation to the
+container. The operation must include ``X-Container-Meta-name``, where ``name``
+is the name of your custom metadata. Subsequent ``POST`` operations to the h
+eader using the same metadata name overwrite the previous value.
 
-To view your metadata changes, perform a ``HEAD`` operation on the container. (For more information, see :ref:`Show container metadata <show-container-metadata>`.) Do not try to send the metadata in your ``HEAD`` request. 
+To view your metadata changes, perform a ``HEAD`` operation on the container.
+(For more information, see
+:ref:`Show container metadata <show-container-metadata>`.) Do not try to send
+the metadata in your ``HEAD`` request.
 
 **Updating container metadata**
-   
-For containers, the ``POST`` request to set metadata does not delete existing metadata that is not explicitly set in the request.
-   
-For example, you use a ``HEAD`` request to list container metadata and get the following results:
+
+For containers, the ``POST`` request to set metadata does not delete existing
+metadata that is not explicitly set in the request.
+
+For example, you use a ``HEAD`` request to list container metadata and get the
+following results:
 
 .. code::
-   
+
    X-Container-Meta-Price: 50
-   X-Container-Meta-Extra: Data 
+   X-Container-Meta-Extra: Data
 
-Then you perform a ``POST`` request similar to the following example to set metadata on the same container that you listed above:
+Then you perform a ``POST`` request similar to the following example to set
+metadata on the same container that you listed above:
 
 .. code::
-      
-   POST /v1/account/containName HTTP/1.1 
-   Host: storage.clouddrive.com 
-   X-Auth-Token: yourAuthToken 
+
+   POST /v1/account/containName HTTP/1.1
+   Host: storage.clouddrive.com
+   X-Auth-Token: yourAuthToken
    X-Container-Meta-Price: 45
    X-Container-Meta-Cost: 30
 
-Listing the container metadata again after the ``POST`` then shows the following results. The ``X-Container-Meta-Extra`` metadata still exists.
-
+Listing the container metadata again after the ``POST`` then shows the
+following results. The ``X-Container-Meta-Extra`` metadata still exists.
 
 .. code::
-      
+
    X-Container-Meta-Price: 45
-   X-Container-Meta-Cost: 30 
+   X-Container-Meta-Cost: 30
    X-Container-Meta-Extra: Data
 
-For information about deleting container metadata, see :ref:`Create or update container metadata <create-or-update-container-metadata>`.
-   
-Note that updating and deleting object metadata works differently. For an example, see :ref:`Additional container services information <additional-container-services-information>`.
-   
-   
+For information about deleting container metadata, see
+:ref:`Create or update container metadata <create-or-update-container-metadata>`.
 
-A status code of 204 (No Content) indicates success. Status code 404 (Not Found) is returned when the requested container does not exist.
+Note that updating and deleting object metadata works differently. For an
+example, see
+:ref:`Additional container services information <additional-container-services-information>`.
 
-This operation does not require a request body and does not return a response body.
+A status code of 204 (No Content) indicates success. Status code 404
+(Not Found) is returned when the requested container does not exist.
 
 .. note::
-   For information about adding metadata for the following purposes, see :ref:`Get object content and metadata <get-object-content-and-metadata>`: 
-   
-   
-   
+   For information about adding metadata for the following purposes, see
+   :ref:`Get object content and metadata <get-object-content-and-metadata>`:
+
    *  Container quotas
    *  Access log delivery
-   
-   
-   
-
-
 
 This table shows the possible response codes for this operation:
 
-
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|204                       |No Content               |The request succeeded.   |
-+--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |The requested resource   |
-|                          |                         |was not found.           |
-+--------------------------+-------------------------+-------------------------+
-
++-------------------------+-------------------------+-------------------------+
+|Response Code            |Name                     |Description              |
++=========================+=========================+=========================+
+|204                      |No Content               |The request succeeded.   |
++-------------------------+-------------------------+-------------------------+
+|404                      |Not Found                |The requested resource   |
+|                         |                         |was not found.           |
++-------------------------+-------------------------+-------------------------+
 
 Request
-""""""""""""""""
+"""""""
 
 This table shows the URI parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{account}                 |String                   |Your unique account      |
-|                          |                         |identifier.              |
-+--------------------------+-------------------------+-------------------------+
-|{container}               |String                   |The unique identifier of |
-|                          |                         |the container.           |
-+--------------------------+-------------------------+-------------------------+
-
-
++-------------------------+-------------------------+-------------------------+
+|Name                     |Type                     |Description              |
++=========================+=========================+=========================+
+|{account}                |String                   |Your unique account      |
+|                         |                         |identifier.              |
++-------------------------+-------------------------+-------------------------+
+|{container}              |String                   |The unique identifier of |
+|                         |                         |the container.           |
++-------------------------+-------------------------+-------------------------+
 
 This table shows the header parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|X-Auth-Token              |String *(Required)*      |Authentication token.    |
-+--------------------------+-------------------------+-------------------------+
-|X-Container-Meta-name     |String *(Required)*      |The container metadata.  |
-|                          |                         |Replace ``name`` at the  |
-|                          |                         |end of the header with   |
-|                          |                         |the name of your         |
-|                          |                         |metadata.                |
-+--------------------------+-------------------------+-------------------------+
-|X-Container-Read          |String                   |Sets an access control   |
-|                          |                         |list (ACL) that grants   |
-|                          |                         |read access. This header |
-|                          |                         |can contain a comma-     |
-|                          |                         |delimited list of users  |
-|                          |                         |that can read the        |
-|                          |                         |container (allows the    |
-|                          |                         |GET method for all       |
-|                          |                         |objects in the           |
-|                          |                         |container).              |
-+--------------------------+-------------------------+-------------------------+
-|X-Container-Write         |String                   |Sets an ACL that grants  |
-|                          |                         |write access. This       |
-|                          |                         |header can contain a     |
-|                          |                         |comma-delimited list of  |
-|                          |                         |users that can write to  |
-|                          |                         |the container (allows    |
-|                          |                         |PUT, POST, COPY, and     |
-|                          |                         |DELETE methods for all   |
-|                          |                         |objects in the           |
-|                          |                         |container).              |
-+--------------------------+-------------------------+-------------------------+
-|X-Remove-Container-name   |String                   |Removes the metadata     |
-|                          |                         |item named metadata. For |
-|                          |                         |example, X-Remove-       |
-|                          |                         |Container-Read removes   |
-|                          |                         |the X-Container-Read     |
-|                          |                         |metadata item.           |
-+--------------------------+-------------------------+-------------------------+
-|X-Versions-Location       |String                   |Enables versioning on    |
-|                          |                         |this container. The      |
-|                          |                         |value is the name of     |
-|                          |                         |another container. You   |
-|                          |                         |must UTF-8-encode and    |
-|                          |                         |then URL-encode the name |
-|                          |                         |before you include it in |
-|                          |                         |the header. To disable   |
-|                          |                         |versioning, set the      |
-|                          |                         |header to an empty       |
-|                          |                         |string.                  |
-+--------------------------+-------------------------+-------------------------+
-|X-Remove-Versions-Location|String                   |Set to any value to      |
-|                          |                         |disable versioning.      |
-+--------------------------+-------------------------+-------------------------+
-|Content-Type              |String                   |Changes the MIME type    |
-|                          |                         |for the object.          |
-+--------------------------+-------------------------+-------------------------+
-|X-Detect-Content-Type     |Boolean                  |If set to ``True``,      |
-|                          |                         |Cloud Files guesses the  |
-|                          |                         |content type based on    |
-|                          |                         |the file extension and   |
-|                          |                         |ignores the value sent   |
-|                          |                         |in the ``Content-Type``  |
-|                          |                         |header, if present.      |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
-
-
-
-
++-------------------------+-------------------------+-------------------------+
+|Name                     |Type                     |Description              |
++=========================+=========================+=========================+
+|X-Auth-Token             |String *(Required)*      |Authentication token.    |
++-------------------------+-------------------------+-------------------------+
+|X-Container-Meta-name    |String *(Required)*      |The container metadata.  |
+|                         |                         |Replace ``name`` at the  |
+|                         |                         |end of the header with   |
+|                         |                         |the name of your         |
+|                         |                         |metadata.                |
++-------------------------+-------------------------+-------------------------+
+|X-Container-Read         |String                   |Sets an access control   |
+|                         |                         |list (ACL) that grants   |
+|                         |                         |read access. This header |
+|                         |                         |can contain a comma-     |
+|                         |                         |delimited list of users  |
+|                         |                         |that can read the        |
+|                         |                         |container (allows the    |
+|                         |                         |GET method for all       |
+|                         |                         |objects in the           |
+|                         |                         |container).              |
++-------------------------+-------------------------+-------------------------+
+|X-Container-Write        |String                   |Sets an ACL that grants  |
+|                         |                         |write access. This       |
+|                         |                         |header can contain a     |
+|                         |                         |comma-delimited list of  |
+|                         |                         |users that can write to  |
+|                         |                         |the container (allows    |
+|                         |                         |PUT, POST, COPY, and     |
+|                         |                         |DELETE methods for all   |
+|                         |                         |objects in the           |
+|                         |                         |container).              |
++-------------------------+-------------------------+-------------------------+
+|X-Remove-Container-name  |String                   |Removes the metadata     |
+|                         |                         |item named metadata. For |
+|                         |                         |example, X-Remove-       |
+|                         |                         |Container-Read removes   |
+|                         |                         |the X-Container-Read     |
+|                         |                         |metadata item.           |
++-------------------------+-------------------------+-------------------------+
+|X-Versions-Location      |String                   |Enables versioning on    |
+|                         |                         |this container. The      |
+|                         |                         |value is the name of     |
+|                         |                         |another container. You   |
+|                         |                         |must UTF-8-encode and    |
+|                         |                         |then URL-encode the name |
+|                         |                         |before you include it in |
+|                         |                         |the header. To disable   |
+|                         |                         |versioning, set the      |
+|                         |                         |header to an empty       |
+|                         |                         |string.                  |
++-------------------------+-------------------------+-------------------------+
+|X-Remove-Versions-       |String                   |Set to any value to      |
+|Location                 |                         |disable versioning.      |
++-------------------------+-------------------------+-------------------------+
+|Content-Type             |String                   |Changes the MIME type    |
+|                         |                         |for the object.          |
++-------------------------+-------------------------+-------------------------+
+|X-Detect-Content-Type    |Boolean                  |If set to ``True``,      |
+|                         |                         |Cloud Files guesses the  |
+|                         |                         |content type based on    |
+|                         |                         |the file extension and   |
+|                         |                         |ignores the value sent   |
+|                         |                         |in the ``Content-Type``  |
+|                         |                         |header, if present.      |
++-------------------------+-------------------------+-------------------------+
 
 This operation does not accept a request body.
 
-
-
-
 **Example: Create or update container metadata HTTP request**
-
 
 .. code::
 
@@ -191,52 +179,40 @@ This operation does not accept a request body.
    X-Container-Meta-Book: MobyDick
    X-Container-Meta-Subject: Whaling
 
-
-
-
-
 Response
-""""""""""""""""
-
+""""""""
 
 This table shows the header parameters for the response:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|Content-Length            |String                   |The length of the        |
-|                          |                         |response body that       |
-|                          |                         |contains the list of     |
-|                          |                         |names. If the operation  |
-|                          |                         |fails, this value is the |
-|                          |                         |length of the error text |
-|                          |                         |in the response body.    |
-+--------------------------+-------------------------+-------------------------+
-|Content-Type              |String                   |The MIME type of the     |
-|                          |                         |list of names. If the    |
-|                          |                         |operation fails, this    |
-|                          |                         |value is the MIME type   |
-|                          |                         |of the error text in the |
-|                          |                         |response body.           |
-+--------------------------+-------------------------+-------------------------+
-|X-Trans-Id                |Uuid                     |A unique transaction     |
-|                          |                         |identifier for this      |
-|                          |                         |request.                 |
-+--------------------------+-------------------------+-------------------------+
-|Date                      |Datetime                 |The transaction date and |
-|                          |                         |time.                    |
-+--------------------------+-------------------------+-------------------------+
-
-
-
-
++-------------------------+-------------------------+-------------------------+
+|Name                     |Type                     |Description              |
++=========================+=========================+=========================+
+|Content-Length           |String                   |The length of the        |
+|                         |                         |response body that       |
+|                         |                         |contains the list of     |
+|                         |                         |names. If the operation  |
+|                         |                         |fails, this value is the |
+|                         |                         |length of the error text |
+|                         |                         |in the response body.    |
++-------------------------+-------------------------+-------------------------+
+|Content-Type             |String                   |The MIME type of the     |
+|                         |                         |list of names. If the    |
+|                         |                         |operation fails, this    |
+|                         |                         |value is the MIME type   |
+|                         |                         |of the error text in the |
+|                         |                         |response body.           |
++-------------------------+-------------------------+-------------------------+
+|X-Trans-Id               |Uuid                     |A unique transaction     |
+|                         |                         |identifier for this      |
+|                         |                         |request.                 |
++-------------------------+-------------------------+-------------------------+
+|Date                     |Datetime                 |The transaction date and |
+|                         |                         |time.                    |
++-------------------------+-------------------------+-------------------------+
 
 This operation does not return a response body.
 
-
-
 **Example: Create or update container metadata HTTP response**
-
 
 .. code::
 
@@ -245,7 +221,3 @@ This operation does not return a response body.
    Content-Type: text/html; charset=UTF-8
    X-Trans-Id: tx05dbd434c651429193139-0052d82635
    Date: Thu, 16 Jan 2014 18:34:29 GMT
-
-
-
-

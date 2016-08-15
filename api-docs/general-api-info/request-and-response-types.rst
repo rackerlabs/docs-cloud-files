@@ -15,5 +15,4 @@ You specify the response format in requests by using the ``Accept``
 header. The Cloud Files API supports both the JSON
 (``application/json``) and XML (``application/xml``) data serialization
 formats, as well as other formats such as ``text/plain`` and
-``text/xml`` .
-
+``text/xml``.

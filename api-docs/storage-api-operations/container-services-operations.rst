@@ -3,7 +3,8 @@
 Container services operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can perform the operations described in this section on containers in your Cloud Files account.
+You can perform the operations described in this section on containers in your
+Cloud Files account.
 
 The examples in this section use sample values for the following:
 
@@ -13,8 +14,11 @@ The examples in this section use sample values for the following:
 
 - container — for example, MyContainer
 
-For your own requests, you must use your own account information, authentication token, and container names. For more information, see the :ref:`Authentication <auth>` section. Your authentication token and your account information are in the service catalog that is produced.
-   
+For your own requests, you must use your own account information,
+authentication token, and container names. For more information, see the
+:ref:`Authentication <auth>` section. Your authentication token and your
+account information are in the service catalog that is produced.
+
 .. include:: methods/get-show-container-details-and-list-objects-v1-account-container.rst
 .. include:: methods/put-create-container-v1-account-container.rst
 .. include:: methods/delete-delete-container-v1-account-container.rst

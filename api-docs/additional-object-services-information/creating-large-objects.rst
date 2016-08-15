@@ -47,92 +47,92 @@ differences as explained in the following table.
 
 **Table: Comparison of static and dynamic large objects**
 
-+-------------------------+--------------------------+-------------------------+
-| Feature                 | Static large object      | Dynamic large object    |
-+=========================+==========================+=========================+
-| End-to-end integrity    | Assured. The list of     | Not assured. The        |
-|                         | segments includes the    | eventual consistency    |
-|                         | MD5 checksum (ETag) of   | model means that        |
-|                         | each segment. You cannot | although you have       |
-|                         | upload the manifest      | uploaded a segment      |
-|                         | object if the ETag in    | object, it might not    |
-|                         | the list differs from    | appear in the container |
-|                         | the segment object       | list immediately. If    |
-|                         | already uploaded. If a   | you download the        |
-|                         | segment is somehow lost, | manifest before the     |
-|                         | an attempt to download   | object appears in the   |
-|                         | the manifest object      | container, the object   |
-|                         | results in an error.     | will not be part of the |
-|                         |                          | content returned in     |
-|                         |                          | response to a **GET**   |
-|                         |                          | request.                |
-+-------------------------+--------------------------+-------------------------+
-| Upload order            | The segment objects must | You can upload manifest |
-|                         | be uploaded before the   | and segment objects in  |
-|                         | manifest object.         | any order. We recommend |
-|                         |                          | that you upload the     |
-|                         |                          | manifest object after   |
-|                         |                          | the segments in case a  |
-|                         |                          | premature download of   |
-|                         |                          | the manifest occurs.    |
-|                         |                          | However, this is not    |
-|                         |                          | enforced.               |
-+-------------------------+--------------------------+-------------------------+
-| Removal or addition of  | You cannot add or remove | You can upload new      |
-| segment objects         | segment objects from the | segment objects or      |
-|                         | manifest. However, you   | remove existing         |
-|                         | can create a completely  | segments—the names must |
-|                         | new manifest object of   | simply match the        |
-|                         | the same name with a     | ``<prefix>`` supplied   |
-|                         | different manifest list. | in the                  |
-|                         |                          | ``X-Object-Manifest``   |
-|                         |                          | header.                 |
-+-------------------------+--------------------------+-------------------------+
-| Segment object size and | Segment objects must be  | Segment objects can be  |
-| number                  | at least 1 MB in size,   | of any size.            |
-|                         | by default. The final    |                         |
-|                         | segment object can be    |                         |
-|                         | any size. By default, a  |                         |
-|                         | maximum of 1000 segments |                         |
-|                         | are supported.           |                         |
-+-------------------------+--------------------------+-------------------------+
-| Segment object          | The manifest list        | All segment objects     |
-| container name          | includes the container   | must be in the same     |
-|                         | name of each object      | container.              |
-|                         | (that is, segment        |                         |
-|                         | objects might be in      |                         |
-|                         | different containers).   |                         |
-+-------------------------+--------------------------+-------------------------+
-| Manifest object         | The object has the       | The                     |
-| metadata                | ``X-Static-Large-Object``| ``X-Object-Manifest``   |
-|                         |                          | header value is         |
-|                         | metadata header set to   | ``container``/``prefix``|
-|                         | ``True``. You do not set |                         |
-|                         | this metadata directly.  | indicating where the    |
-|                         | Instead the system sets  | segment objects are     |
-|                         | it when you use a        | located. You supply     |
-|                         | **PUT** operation on a   | this request header in  |
-|                         | static manifest object.  | the **PUT** operation.  |
-+-------------------------+--------------------------+-------------------------+
-| Making a copy of the    | To make a copy of the    | The **COPY** operation  |
-| manifest object         | manifest object, include | does not create a       |
-|                         | the                      | manifest object. To     |
-|                         | ?multipart-manifest=get  | duplicate a manifest    |
-|                         | query string with the    | object, use the **GET** |
-|                         | **COPY** operation. The  | operation to read the   |
-|                         | new object contains the  | value of                |
-|                         | same manifest as the     | ``X-Object-Manifest``   |
-|                         | original. The segment    | and use this value in   |
-|                         | objects are not copied.  | the                     |
-|                         | Instead, both the        | ``X-Object-Manifest``   |
-|                         | original and new         | request header in a     |
-|                         | manifest objects share   | **PUT** operation. This |
-|                         | the same set of segment  | creates a new manifest  |
-|                         | objects.                 | object that shares the  |
-|                         |                          | same set of segment     |
-|                         |                          | objects as the original |
-|                         |                          | manifest object.        |
-+-------------------------+--------------------------+-------------------------+
++-------------------------+--------------------------+------------------------+
+| Feature                 | Static large object      | Dynamic large object   |
++=========================+==========================+========================+
+| End-to-end integrity    | Assured. The list of     | Not assured. The       |
+|                         | segments includes the    | eventual consistency   |
+|                         | MD5 checksum (ETag) of   | model means that       |
+|                         | each segment. You cannot | although you have      |
+|                         | upload the manifest      | uploaded a segment     |
+|                         | object if the ETag in    | object, it might not   |
+|                         | the list differs from    | appear in the container|
+|                         | the segment object       | list immediately. If   |
+|                         | already uploaded. If a   | you download the       |
+|                         | segment is somehow lost, | manifest before the    |
+|                         | an attempt to download   | object appears in the  |
+|                         | the manifest object      | container, the object  |
+|                         | results in an error.     | will not be part of the|
+|                         |                          | content returned in    |
+|                         |                          | response to a **GET**  |
+|                         |                          | request.               |
++-------------------------+--------------------------+------------------------+
+| Upload order            | The segment objects must | You can upload manifest|
+|                         | be uploaded before the   | and segment objects in |
+|                         | manifest object.         | any order. We recommend|
+|                         |                          | that you upload the    |
+|                         |                          | manifest object after  |
+|                         |                          | the segments in case a |
+|                         |                          | premature download of  |
+|                         |                          | the manifest occurs.   |
+|                         |                          | However, this is not   |
+|                         |                          | enforced.              |
++-------------------------+--------------------------+------------------------+
+| Removal or addition of  | You cannot add or remove | You can upload new     |
+| segment objects         | segment objects from the | segment objects or     |
+|                         | manifest. However, you   | remove existing        |
+|                         | can create a completely  | segments—the names must|
+|                         | new manifest object of   | simply match the       |
+|                         | the same name with a     | ``<prefix>`` supplied  |
+|                         | different manifest list. | in the                 |
+|                         |                          | ``X-Object-Manifest``  |
+|                         |                          | header.                |
++-------------------------+--------------------------+------------------------+
+| Segment object size and | Segment objects must be  | Segment objects can be |
+| number                  | at least 1 MB in size,   | of any size.           |
+|                         | by default. The final    |                        |
+|                         | segment object can be    |                        |
+|                         | any size. By default, a  |                        |
+|                         | maximum of 1000 segments |                        |
+|                         | are supported.           |                        |
++-------------------------+--------------------------+------------------------+
+| Segment object          | The manifest list        | All segment objects    |
+| container name          | includes the container   | must be in the same    |
+|                         | name of each object      | container.             |
+|                         | (that is, segment        |                        |
+|                         | objects might be in      |                        |
+|                         | different containers).   |                        |
++-------------------------+--------------------------+------------------------+
+| Manifest object         | The object has the       | The                    |
+| metadata                | ``X-Static-Large-Object``| ``X-Object-Manifest``  |
+|                         |                          | header value is        |
+|                         | metadata header set to   | ``container``/         |
+|                         | ``True``. You do not set | ``prefix``             |
+|                         | this metadata directly.  | indicating where the   |
+|                         | Instead the system sets  | segment objects are    |
+|                         | it when you use a        | located. You supply    |
+|                         | **PUT** operation on a   | this request header in |
+|                         | static manifest object.  | the **PUT** operation. |
++-------------------------+--------------------------+------------------------+
+| Making a copy of the    | To make a copy of the    | The **COPY** operation |
+| manifest object         | manifest object, include | does not create a      |
+|                         | the                      | manifest object. To    |
+|                         | ?multipart-manifest=get  | duplicate a manifest   |
+|                         | query string with the    | object, use the **GET**|
+|                         | **COPY** operation. The  | operation to read the  |
+|                         | new object contains the  | value of               |
+|                         | same manifest as the     | ``X-Object-Manifest``  |
+|                         | original. The segment    | and use this value in  |
+|                         | objects are not copied.  | the                    |
+|                         | Instead, both the        | ``X-Object-Manifest``  |
+|                         | original and new         | request header in a    |
+|                         | manifest objects share   | **PUT** operation. This|
+|                         | the same set of segment  | creates a new manifest |
+|                         | objects.                 | object that shares the |
+|                         |                          | same set of segment    |
+|                         |                          | objects as the original|
+|                         |                          | manifest object.       |
++-------------------------+--------------------------+------------------------+
 
 Creating a dynamic large object
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -290,7 +290,7 @@ You create a static large object by performing the following steps:
    returned by the **PUT** operation. Alternatively, you can calculate
    the MD5 checksum of the segment prior to uploading and include this
    in the ``ETag`` request header. Doing so ensures that the upload
-   cannot corrupt your data. For detailed information, see 
+   cannot corrupt your data. For detailed information, see
    :ref:`Uploading the segments<uploading-the-segments>`.
 
    The maximum number of segment objects per static large object is
@@ -300,8 +300,8 @@ You create a static large object by performing the following steps:
    along with its size and MD5 checksum, in order. You indicate that
    this is a manifest object by including the
    ?\ ``multipart-manifest=put`` query string at the end of the manifest
-   object name. For detailed information, see 
-   :ref:`Uploading the manifest<uploading-the-manifest>`. 
+   object name. For detailed information, see
+   :ref:`Uploading the manifest<uploading-the-manifest>`.
 
 .. _uploading-the-segments:
 
@@ -442,7 +442,7 @@ manifest file contents:
 
 .. code::
 
-    ?multipart-manifest=get  
+    ?multipart-manifest=get
 
 The response body contains generated JSON. The resulting list is not
 identically formatted like the manifest that you originally used in the
@@ -487,4 +487,3 @@ not reflect the total size of the manifest, but the actual size of the
 stored JSON data. This enables you to see the total size of the static
 large object in a container list, but does not inflate the bytes used
 for the container or the account.
-

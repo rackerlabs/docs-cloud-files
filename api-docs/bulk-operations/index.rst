@@ -8,6 +8,6 @@ Files.
 
 .. toctree:: :hidden:
    :maxdepth: 2
-   
+
    extract-archive-files
    bulk-delete

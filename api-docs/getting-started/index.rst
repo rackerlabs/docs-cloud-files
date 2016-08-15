@@ -4,7 +4,7 @@
    :local:
    :depth: 2
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 2
 
    prerequisites-for-using-api
