@@ -25,8 +25,8 @@ deleted within one day of the expiration time, and the object is not served
 immediately after the expiration time. For more details, see
 :ref:`Expiring objects <expiring-objects>`.
 
-A status code of 204 (No Content) indicates success. Status code 404
-(Not Found) is returned when the object does not exist.
+A status code of ``204 (No Content)`` indicates success. Status code
+``404 (Not Found)`` is returned when the object does not exist.
 
 For information about bulk deletions, see :ref:`Bulk delete <bulk-delete>`.
 

@@ -20,9 +20,9 @@ service access endpoints. (For the CDN endpoints, see
    private container as described in
    :ref:`Get account metadata <get-account-metadata>`.
 
-A 204 (No Content) HTTP status code is returned if the account has no
-containers. Otherwise, the status code of 200 (OK) is returned. Status code 404
-(Not Found) is returned if the requested container was not found.
+A ``204 (No Content)`` HTTP status code is returned if the account has no
+containers. Otherwise, the status code of ``200 (OK)`` is returned. Status code
+``404 (Not Found)`` is returned if the requested container was not found.
 
 This table shows the possible response codes for this operation:
 

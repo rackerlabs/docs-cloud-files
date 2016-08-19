@@ -17,9 +17,9 @@ No private containers appear in the list. (For the CDN endpoints, see
 
 The list is returned in the response body, one container name per line.
 
-An HTTP response status code of 200 through 299 indicates success. A 200 (OK)
-code is returned if there are containers to list, and a 204 (No Content) code
-is returned if there are no containers to list.
+An HTTP response status code of ``200`` through ``299`` indicates success. A
+``200 (OK)`` code is returned if there are containers to list, and a
+``204 (No Content)`` code is returned if there are no containers to list.
 
 For instructions about how to delete containers that were CDN-enabled in the
 past and are now disabled, but are showing in the listing, see

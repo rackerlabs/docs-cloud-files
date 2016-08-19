@@ -13,12 +13,12 @@ metadata and other standard HTTP headers.
 .. note::
    The ``HEAD`` return code for an object is different than the ``HEAD`` return
    code for a container. A ``HEAD`` request does not return a message body in
-   the response, so a status code of 200 through 299 indicates success. When a
-   ``HEAD`` request is performed against a container, it queries the container
-   databases, and it does not retrieve the content from them. Thus, this
-   operation returns the 204 (No Content) status code. However, when a ``HEAD``
-   request is performed against an object, it returns a 200 OK status code
-   because it can view the content.
+   the response, so a status code of ``200`` through ``299`` indicates success.
+   When a ``HEAD`` request is performed against a container, it queries the
+   container databases, and it does not retrieve the content from them. Thus,
+   this operation returns the ``204 (No Content)`` status code. However, when a
+   ``HEAD`` request is performed against an object, it returns a ``200 (OK)``
+   status code because it can view the content.
 
 This table shows the possible response codes for this operation:
 

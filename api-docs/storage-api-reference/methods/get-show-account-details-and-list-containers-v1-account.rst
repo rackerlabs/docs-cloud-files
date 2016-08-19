@@ -26,9 +26,9 @@ names is a single \n. If you want to parse these listings, you send an
 ``Accept: application/json`` or ``Accept: application/xml`` header with the
 request to get the results in JSON or XML.
 
-An HTTP response status code of 200 through 299 indicates success. A 200 (OK)
-code is returned if there are containers, and a 204 (No Content) code is
-returned if there are no containers.
+An HTTP response status code of ``200`` through ``299`` indicates success. A
+``200 (OK)`` code is returned if there are containers, and a
+``204 (No Content)`` code is returned if there are no containers.
 
 **Format Container List**
 

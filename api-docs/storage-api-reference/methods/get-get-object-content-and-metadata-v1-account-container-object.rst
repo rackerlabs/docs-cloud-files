@@ -66,8 +66,8 @@ The following table shows forms of the header and the ranges of data specified.
 Object data is returned in the response body. Object metadata is returned as
 HTTP headers.
 
-A status code of 200 through 299 indicates success. Status code 404 (Not Found)
-is returned if the object does not exist.
+A status code of ``200`` through ``299`` indicates success. Status code
+``404 (Not Found)`` is returned if the object does not exist.
 
 .. note::
    In the following examples that use ranges, the object contains the 10 bytes

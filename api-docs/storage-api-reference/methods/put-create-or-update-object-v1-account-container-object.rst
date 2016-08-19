@@ -16,7 +16,7 @@ The ``PUT`` operation writes, or overwrites, an object's content and metadata.
    The ``PUT`` operation actually always creates a new object. If you use this
    operation on an existing object, you actually replace the existing object
    and metadata rather than modifying the object. This is why this operation
-   returns a 201 Created status code.
+   returns a ``201 (Created)`` status code.
 
 You can ensure end-to-end data integrity by including an MD5 checksum of your
 object's data in the ``ETag`` header. You are not required to include the
@@ -40,7 +40,8 @@ end-to-end data validation on the client side. For manifest objects, ``ETag``
 is the MD5 checksum of the concatenated string of ETags for each segment in the
 manifest, which offers change detection but not direct comparison.
 
-For more information, see :ref:`Creating large objects <creating-large-objects>`.
+For more information, see
+:ref:`Creating large objects <creating-large-objects>`.
 
 .. note::
    The best checks for a successful upload are to check the ``ETag`` match with
@@ -54,13 +55,13 @@ in the ``PUT`` request. To assign custom metadata, use an HTTP header with the
 You can also specify the ``Content-Type`` header for your object. For example,
 you can specify ``Content-Type: audio/mpeg3`` for MP3 files.
 
-A status code of 201 (Created) indicates a successful write. Any status code in
-the 400 range denotes failure. The 401 (Unauthorized) status code is returned
-if authentication fails. The 411 (Length Required) status code denotes a
-missing ``Content-Length`` or ``Content-Type`` header in the request. If the
-MD5 checksum of the data written to the storage system does not match the
-optionally supplied ``ETag`` value, a 422 (Unprocessable Entity) status code
-is returned.
+A status code of ``201 (Created)`` indicates a successful write. Any status
+code in the ``400`` range denotes failure. The ``401 (Unauthorized)`` status
+code is returned if authentication fails. The ``411 (Length Required)`` status
+code denotes a missing ``Content-Length`` or ``Content-Type`` header in the
+request. If the MD5 checksum of the data written to the storage system does not
+match the optionally supplied ``ETag`` value, a ``422 (Unprocessable Entity)``
+status code is returned.
 
 This table shows the possible response codes for this operation:
 

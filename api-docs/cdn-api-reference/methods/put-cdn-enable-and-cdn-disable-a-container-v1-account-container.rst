@@ -41,13 +41,11 @@ long time does not guarantee that the content stays populated on CDN edge
 servers for the entire period. The most popular objects stay cached based on
 the edge location's logic.
 
-A status code of 201 (Created) indicates that the container was CDN-enabled as
-requested. If the container is already CDN-enabled, a 202 (Accepted) status
-code is returned, and the TTL is adjusted. A status code of 204 (No Content)
-indicates that the container was CDN-enabled as requested but has no content.
-
-This operation does not require a request body and does not return a response
-body.
+A status code of ``201 (Created)`` indicates that the container was CDN-enabled
+as requested. If the container is already CDN-enabled, a ``202 (Accepted)``
+status code is returned, and the TTL is adjusted. A status code of
+``204 (No Content)`` indicates that the container was CDN-enabled as requested
+but has no content.
 
 To remove the container from the CDN, change the ``X-Cdn-Enabled`` header to
 ``False``. However, note that objects remain on the CDN edge server and are

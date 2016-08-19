@@ -16,9 +16,9 @@ Before using ``DELETE``, you can use a ``GET`` operation against the container
 to list any objects that it contains. (See :ref:`Show container details and
 list objects <get-container-details-and-list-objects>`.)
 
-A status code of 204 (No Content) indicates success. A status code of 404
-(Not Found) is returned if the requested container is not found. A status code
-of 409 (Conflict) is returned if the container is not empty.
+A status code of ``204 (No Content)`` indicates success. A status code of
+``404 (Not Found)`` is returned if the requested container is not found. A
+status code of ``409 (Conflict)`` is returned if the container is not empty.
 
 This table shows the possible response codes for this operation:
 

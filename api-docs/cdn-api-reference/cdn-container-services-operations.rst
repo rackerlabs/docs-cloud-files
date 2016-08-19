@@ -21,9 +21,10 @@ X-Cdn-Streaming-Uri headers.
 
 On August 13, 2012, the format of new CDN URIs changed in order to enhance the
 security of the CDN. Any URIs set in the older format
-(for example, http://c25810.r10.cf1.rackcdn.com/mydog.jpg) continue to work.
+(for example, ``http://c25810.r10.cf1.rackcdn.com/mydog.jpg``) continue to work.
 However, any newly generated CDN URIs have the new format, as shown in the
-following example: http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/mydog.jpg.
+following example:
+``http://80745c48926cd286a5a0-48261ebe0e4c795a565ece6b9cca2fe8.r10.cf1.rackcdn.com/mydog.jpg``.
 
 .. note::
    Monitor your CDN charges. When you CDN-enable a container, not only can

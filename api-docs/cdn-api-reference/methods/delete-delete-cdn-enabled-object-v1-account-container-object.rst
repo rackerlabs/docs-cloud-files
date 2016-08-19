@@ -73,10 +73,10 @@ address or addresses. If you want to notify more than one person about the
 deletion, you can enter a comma-separated list of addresses. The email address
 is optional.
 
-A status code of 204 (No Content) indicates success. Status code 498
-(Rate Limited) indicates that the account has reached its 25 object daily purge
-limit for CDN-enabled objects. Status code 403 (Forbidden) indicates that an
-authorization problem occurred.
+A status code of ``204 (No Content)`` indicates success. Status code
+``498 (Rate Limited)`` indicates that the account has reached its 25 object
+daily purge limit for CDN-enabled objects. Status code ``403 (Forbidden)``
+indicates that an authorization problem occurred.
 
 Because there are so many edge servers around the world, purging objects might
 take a long time. Be patient while waiting for a response.

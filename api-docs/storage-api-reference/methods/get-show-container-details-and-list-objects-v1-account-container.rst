@@ -18,10 +18,11 @@ list and returns a subset of objects. For information about limiting and
 controlling the list, see
 :ref:`Controlling a Large List of Objects<controlling-large-list-objects>`.
 
-An HTTP response status code of 200 through 299 indicates success. A status
-code of 200 (OK) is returned if there are objects, and a 204 (No Content) is
-returned if there are no objects. If the container does not exist, or if an i
-ncorrect account is specified, a status code 404 (Not Found) is returned.
+An HTTP response status code of ``200`` through ``299`` indicates success. A
+status code of ``200 (OK)`` is returned if there are objects, and a
+``204 (No Content)`` is returned if there are no objects. If the container does
+not exist, or if an incorrect account is specified, a status code
+``404 (Not Found)`` is returned.
 
 **Format Object List**
 

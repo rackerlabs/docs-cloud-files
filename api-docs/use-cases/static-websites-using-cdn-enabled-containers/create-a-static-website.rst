@@ -41,8 +41,8 @@ to create a simulated hierarchical structure.
 The following instructions describe using a CNAME with your DNS Server (or
 name server). The CNAME is the domain name of your site (such as
 www.rackspace.com). Your CNAME is set up with your individual DNS
-Server. For more information about using CNAMEs, see the *Cloud DNS
-Developer Guide*.
+Server. For more information about using CNAMEs, see the Cloud DNS
+API documentation at the :rax-devdocs:`API documentation home <>`.
 After your CNAME is established, set the CNAME to your Cloud Files CDN
 URI to get your site up and running on the web.
 

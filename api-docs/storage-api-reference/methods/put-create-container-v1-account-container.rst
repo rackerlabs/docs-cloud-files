@@ -27,12 +27,12 @@ is allowed for metadata. In addition for custom metadata, we recommend that
 you URL-encode any non-ASCII values by using a % symbol followed by the
 two-digit hexadecimal ISO-Latin code for the character.
 
-A status code of 201 (Created) indicates that the container was created as
-requested. Container ``PUT`` requests are idempotent, and a code of 202
-(Accepted) is returned if the container existed prior to the request. If you
-make a ``PUT`` request to a container with an ``X-Container-Meta-`` prefix in
-the header, your ``GET`` or ``HEAD`` request responses carry the metadata
-prefix from the container in subsequent requests.
+A status code of ``201 (Created)`` indicates that the container was created as
+requested. Container ``PUT`` requests are idempotent, and a code of
+``202 (Accepted)`` is returned if the container existed prior to the request.
+If you make a ``PUT`` request to a container with an ``X-Container-Meta-``
+prefix in the header, your ``GET`` or ``HEAD`` request responses carry the
+metadata prefix from the container in subsequent requests.
 
 This table shows the possible response codes for this operation:
 

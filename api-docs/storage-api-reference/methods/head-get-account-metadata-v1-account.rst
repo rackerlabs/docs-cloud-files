@@ -17,9 +17,10 @@ the following information:
 *  The total bytes that are stored for your account
    ( ``X-Account-Bytes-Used`` )
 
-An HTTP status code of 200 through 299 indicates success. In the example, a 204
-(No Content) status code is returned. A 401 (Unauthorized) status code is
-returned for an invalid account or authentication token.
+An HTTP status code of ``200`` through ``299`` indicates success. In the
+example, a ``204 (No Content)`` status code is returned. A
+``401 (Unauthorized)`` status code is returned for an invalid account or
+authentication token.
 
 This table shows the possible response codes for this operation:
 

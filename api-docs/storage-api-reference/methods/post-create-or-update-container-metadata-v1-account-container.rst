@@ -61,8 +61,8 @@ Note that updating and deleting object metadata works differently. For an
 example, see
 :ref:`Additional container services information <additional-container-services-information>`.
 
-A status code of 204 (No Content) indicates success. Status code 404
-(Not Found) is returned when the requested container does not exist.
+A status code of ``204 (No Content)`` indicates success. Status code
+``404 (Not Found)`` is returned when the requested container does not exist.
 
 .. note::
    For information about adding metadata for the following purposes, see

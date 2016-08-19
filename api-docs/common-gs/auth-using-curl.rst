@@ -96,7 +96,7 @@ the following error message descriptions to determine next steps.
 ..  note::
        For additional information about authentication errors, see the
        :rax-dev:`Identity API reference documentation
-       <docs/cloud-identity/v2/>`.
+       <docs/cloud-identity/v2/general-api-info/http-status-codes/>`.
 
 .. _configure-environment-variables:
 
@@ -145,6 +145,8 @@ request, prefix the variable name with a ``$``, for example ``$ENDPOINT``.
 #. In the ``service catalog`` section of the authentication response, copy the
    ``publicURL`` value for the |apiservice|, version, and region that you want
    to access.
+
+.. _cloud-files-auth-response:
 
    This example shows the endpoints available for the |apiservice|.
 

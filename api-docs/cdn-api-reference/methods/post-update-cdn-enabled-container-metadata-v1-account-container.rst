@@ -16,8 +16,8 @@ metadata:
 * ``X-Cdn-Enabled``
 * ``X-Ttl``
 
-A status code of 204 (No Content) indicates success. Status code 404
-(Not Found) is returned if the requested container is not found.
+A status code of ``204 (No Content)`` indicates success. Status code
+``404 (Not Found)`` is returned if the requested container is not found.
 
 This table shows the possible response codes for this operation:
 

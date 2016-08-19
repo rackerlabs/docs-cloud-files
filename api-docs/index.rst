@@ -57,7 +57,7 @@ using the |apiservice|:
 * :ref:`General API information <general-api-info>`
 * :ref:`Storage API reference <storage-api-reference>`
 * :ref:`CDN API reference <cdn-api-reference>`
-* :ref:`Specific use cases <use-cases>`
+* :ref:`Use cases <use-cases>`
 * :ref:`Release notes <release-notes-collection>`
 
 .. toctree::
