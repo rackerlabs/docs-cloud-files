@@ -35,8 +35,7 @@ response that includes the following information:
 .. note::
 
    For detailed information about the authentication response, see the
-   :rax-devdocs:`Review the authentication response \
-   <cloud-identity/v2/getting-started/authenticate/#review-the-authentication-response>`
+   :rax-devdocs:`Annotated authentication request and response <cloud-identity/v2/general-api-info/authentication-info/sample-auth-req-response/#annotated-auth-req-resp>`
    in the Rackspace Cloud API documentation.
 
 In the following example, the ellipsis (...)  represents other service
