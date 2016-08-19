@@ -4,11 +4,12 @@
 
 This repository contains the source files for the following Rackspace Cloud Files API documentation:
 
-* [Cloud Files Getting Started Guide](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#getting-started)
-* [Cloud Files Developer Guide](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#developer-guide)
-* [Cloud Files API Reference](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#api-reference)
-* [Cloud Files Specific Use Cases](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#use-cases-information)
-* [Cloud Files Release Notes](https://developer.rackspace.com/docs/cloud-files/v1/developer-guide/#release-notes)
+* [Getting started](https://developer.rackspace.com/docs/cloud-files/v1/getting-started/)
+* [General information](https://developer.rackspace.com/docs/cloud-files/v1/general-api-info/)
+* [Storage API reference](https://developer.rackspace.com/docs/cloud-files/v1/storage-api-reference/)
+* [CDN API reference](https://developer.rackspace.com/docs/cloud-files/v1/cdn-api-reference/)
+* [Use cases](https://developer.rackspace.com/docs/cloud-files/v1/use-cases/)
+* [Release notes](https://developer.rackspace.com/docs/cloud-files/v1/release-notes/)
 
 When you commit changes to the master branch of this repository, the 
 [Strider CI/CD build job](https://build.developer.rackspace.com/rackerlabs/docs-cloud-files/) 
