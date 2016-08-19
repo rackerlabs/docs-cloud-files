@@ -7,14 +7,15 @@ is available for Linux distributions, Mac OS® X, and Microsoft Windows®. For
 information about cURL, see `http://curl.haxx.se/ <http://curl.haxx.se/>`__.
 
 To run the cURL request examples shown in this guide on Mac OS® X or another
-Linux-based operating system, copy each example directly to the command line or
-a script.
+Linux-based operating system, copy each example directly to the command line
+or a script.
 
 .. note::
 
    If you are using Microsoft Windows, you need to adjust the cURL examples to
    run them. See
-   :ref:`Convert cURL examples to run on Windows <convert-cURL-examples-for-windows>`.
+   :ref:`Convert cURL examples to run on Windows<convert-cURL-examples-for-windows>`.
+
 
 .. _auth-curl-json:
 
@@ -30,19 +31,18 @@ key value. Environment variables make it easier to reference account
 information in API requests, to reuse the same cURL commands with different
 credentials, and to keep sensitive information like your API key from being
 exposed when you send requests to Rackspace Cloud API services. For details
-about creating environment variables, see
-:ref:`Configure environment variables <configure-environment-variables>`.
+about creating environment variables, see :ref:`Configure environment variables
+<configure-environment-variables>`.
 
 ..  note::
 
-    The carriage returns in the cURL request examples use a backslash (``\``)
-    as an escape character. The escape character allows continuation of the
-    command across multiple lines.
+    The cURL request examples use a backslash (``\``) as a line-continuation
+    symbol, which allows the command to continue across multiple lines.
 
 The cURL examples in this guide use the following command-line options.
 
 .. list-table::
-   :widths: 50 50
+   :widths: 30 70
    :header-rows: 1
 
    * - Option
@@ -68,8 +68,10 @@ The cURL examples in this guide use the following command-line options.
        - ``X-Auth-Token``: Required. Specifies the authentication
          token.
 
+
        - ``X-Auth-Project-Id``: Optional. Specifies the project ID,
          which can be your account number or another value.
+
 
        - ``Accept``: Optional. Specifies the format of the response
          body.
@@ -98,8 +100,8 @@ The cURL examples in this guide use the following command-line options.
        server. The specified method is used instead of the default method,
        which is **GET**.
 
-For commands that return a response, use json.tool to pretty-print the output
-by appending the following command to the cURL call:
+For commands that return a response, you can use json.tool to pretty-print the
+output. Append the following command to the cURL call:
 
 .. code::
 
@@ -107,7 +109,6 @@ by appending the following command to the cURL call:
 
 To use json.tool, import the JSON module. For information about json.tool, see
 `JSON encoder and decoder`_.
-
 
 If you run a Python version earlier than 2.6, import the simplejson module and
 use simplejson.tool. For information about simplejson.tool, see
@@ -121,20 +122,21 @@ If you do not want to pretty-print JSON output, omit this code.
    to pretty-print the output. Header information is not in JSON format, and
    the API service returns an error if you specify json.tool.
 
-.. _JSON encoder and decoder: http://docs.python.org/2/library/json.html
-.. _simplejson encoder and decoder: https://simplejson.readthedocs.io/en/latest/
+.. _json encoder and decoder: http://docs.python.org/2/library/json.html
+.. _simplejson encoder and decoder: https://simplejson.readthedocs.io/en/latest
+
 
 .. _convert-cURL-examples-for-windows:
 
 Convert cURL examples to run on Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The cURL examples in the Rackspace API documentation use syntax supported
-on Mac OS® X, Linux and UNIX systems. Microsoft Windows does not support
-the same format. However, you can run the examples after making the following
+The cURL examples in the Rackspace API documentation use syntax supported on Mac
+OS® X, Linux, and UNIX systems. Microsoft Windows does not support the same
+format. However, you can run the examples on Windows after making the following
 changes:
 
-- Replace all the line continuation backslash characters (``\``) with a caret
+- Replace all the line-continuation backslash characters (``\``) with a caret
   (``^``), and remove any trailing spaces after the ``^``.
 
 - If an example includes JSON data, export the data to a text file. When you
@@ -142,7 +144,7 @@ changes:
   Save the JSON data files in a directory, and run cURL commands from that
   directory.
 
-The following example shows the format for Linux and UNIX systems:
+The following example shows the cURL format for Linux and UNIX systems:
 
 .. code::
 
@@ -156,7 +158,7 @@ systems:
 
 .. code::
 
-     $ curl https://identity.api.rackspacecloud.com/v2.0/tokens  ^
-           -X POST ^
-           -d @credentials.txt  ^
-           -H "Content-type: application/json"
+   $ curl https://identity.api.rackspacecloud.com/v2.0/tokens  ^
+          -X POST ^
+          -d @credentials.txt  ^
+          -H "Content-type: application/json"

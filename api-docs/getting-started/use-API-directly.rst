@@ -26,7 +26,8 @@ Before running the examples, review the :ref:`Cloud Files concepts<concepts>`.
      running the code samples.
 
 For more information about all Cloud Files operations, see the
-:ref:`API reference <api-reference>`.
+:ref:`Storage API reference <storage-api-reference>` and the 
+:ref:`CDN API reference <cdn-api-reference>`.
 
 .. include:: examples/create-storage-container.rst
 .. include:: examples/upload-storage-object.rst

@@ -14,7 +14,7 @@ Object deletion is processed immediately at the time of the request. Any
 subsequent **GET**, **HEAD**, **POST**, **PUT**, or **DELETE**
 operations return a 404 (Not Found) error (unless object versioning is
 on and other versions exist). For more information about object
-versioning, see the *Cloud Files Developer Guide*.
+versioning, see :ref:`Object versioning <object-versioning>`.
 
 **Example: cURL delete an object request**
 
