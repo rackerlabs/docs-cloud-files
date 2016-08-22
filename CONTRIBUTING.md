@@ -25,13 +25,13 @@ Following are the key files that define project and content architecture:
 Content | File
 --- | ---
 |Index page for the main content structure| [index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/index.rst)
-|Getting started index|[getting-started/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/getting-started/index.rst)
-|General API information index|[general-api-info/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/general-api-info/index.rst)
-|Storage API reference index| [storage-api-reference/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/storage-api-reference/index.rst)
-|Storage API operations methods including code samples|[storage-api-reference/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/storage-api-reference/methods)
-|CDN API reference index| [cdn-api-reference/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/cdn-api-reference/index.rst)
-|CDN API operations methods including code samples|[cdn-api-reference/methods](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/cdn-api-reference/methods) 
-|Use cases index|[use-cases/index.rst](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/use-cases/index.rst)
+|Getting started|[getting-started folder](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/getting-started)
+|General API information|[general-api-info folder](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/general-api-info)
+|Use cases index|[use-cases folder](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/use-cases)
+|Storage API reference| [storage-api-reference folder](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/storage-api-reference)
+|Storage API operations methods including code samples|[storage-api-reference/methods folder](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/storage-api-reference/methods)
+|CDN API reference| [cdn-api-reference folder](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/cdn-api-reference)
+|CDN API operations methods including code samples|[cdn-api-reference/methods folder](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/cdn-api-reference/methods) 
 |Release notes folder|[release-notes](https://github.com/rackerlabs/docs-cloud-files/tree/master/api-docs/release-notes)
 |Sphinx documentation configuration file| [conf.py](https://github.com/rackerlabs/docs-cloud-files/blob/master/api-docs/conf.py) (Typically, this file does not require changes.)
 |Linux and OS X build script|``Makefile``|
