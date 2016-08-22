@@ -55,9 +55,9 @@ using the |apiservice|:
 
 * :ref:`Getting started <getting-started>`
 * :ref:`General API information <general-api-info>`
+* :ref:`Use cases <use-cases>`
 * :ref:`Storage API reference <storage-api-reference>`
 * :ref:`CDN API reference <cdn-api-reference>`
-* :ref:`Use cases <use-cases>`
 * :ref:`Release notes <release-notes-collection>`
 
 .. toctree::
@@ -67,9 +67,9 @@ using the |apiservice|:
    Cloud Files 1.0 <self>
    getting-started/index
    general-api-info/index
+   use-cases/index
    storage-api-reference/index
    cdn-api-reference/index
-   use-cases/index
    release-notes/index
    service-updates
    additional-resources
