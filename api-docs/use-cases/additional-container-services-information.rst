@@ -1,8 +1,8 @@
 .. _additional-container-services-information:
 
-=========================================
-Additional container services information
-=========================================
+===================
+Container use cases
+===================
 
 This section provides additional metadata options for containers in
 Cloud Files.

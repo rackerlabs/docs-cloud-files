@@ -39,4 +39,3 @@ the :ref:`Service access endpoints <service-access>` section.)
    cdn-account-services-operations
    cdn-container-services-operations
    cdn-object-services-operations
-   additional-cdn-service-information

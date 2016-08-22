@@ -40,5 +40,3 @@ Following are some requirements for the storage services component:
    account-services-operations
    container-services-operations
    object-services-operations
-   additional-container-services-information
-   additional-object-services-information
