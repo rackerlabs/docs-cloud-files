@@ -6,9 +6,9 @@ This repository contains the source files for the following Rackspace Cloud File
 
 * [Getting started](https://developer.rackspace.com/docs/cloud-files/v1/getting-started/)
 * [General information](https://developer.rackspace.com/docs/cloud-files/v1/general-api-info/)
+* [Use cases](https://developer.rackspace.com/docs/cloud-files/v1/use-cases/)
 * [Storage API reference](https://developer.rackspace.com/docs/cloud-files/v1/storage-api-reference/)
 * [CDN API reference](https://developer.rackspace.com/docs/cloud-files/v1/cdn-api-reference/)
-* [Use cases](https://developer.rackspace.com/docs/cloud-files/v1/use-cases/)
 * [Release notes](https://developer.rackspace.com/docs/cloud-files/v1/release-notes/)
 
 When you commit changes to the master branch of this repository, the 
