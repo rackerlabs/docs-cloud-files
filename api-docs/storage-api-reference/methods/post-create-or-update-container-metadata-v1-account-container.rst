@@ -65,11 +65,14 @@ A status code of ``204 (No Content)`` indicates success. Status code
 ``404 (Not Found)`` is returned when the requested container does not exist.
 
 .. note::
-   For information about adding metadata for the following purposes, see
-   :ref:`Get object content and metadata <get-object-content-and-metadata>`:
 
-   *  Container quotas
-   *  Access log delivery
+   See the following information about adding metadata:
+
+   *  For container quotas, see
+      :ref:`Get object content and metadata <get-object-content-and-metadata>`.
+
+   *  For access log delivery, see
+      :ref:`Access log delivery <access-log-delivery>`.
 
 This table shows the possible response codes for this operation:
 
