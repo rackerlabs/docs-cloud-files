@@ -191,12 +191,6 @@ the next segment of a large object, and the manifest.
     ETag: 8a964ee2a5e88be344f36c22562a6486
     Content-Length: 1
 
-**Example: Upload a segment of a large object response**
-
-.. code::
-
-    s
-
 No response body is returned. A status code of 201 (Created) indicates a
 successful write. Status code 411 (Length Required) indicates that the
 ``Content-Length`` header is missing. If the MD5 checksum calculated by
@@ -216,12 +210,6 @@ request**
     X-Auth-Token: f064c46a782c444cb4ba4b6434288f7c
     ETag: 8a964ee2a5e88be344f36c22562a6486
     Content-Length: 1
-
-**Example: Upload the next segment of the large object response**
-
-.. code::
-
-    w
 
 Next, upload the manifest that you created that indicates the container
 in which the object segments reside. Note that uploading additional
