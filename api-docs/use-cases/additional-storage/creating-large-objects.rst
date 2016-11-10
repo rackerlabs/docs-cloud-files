@@ -441,17 +441,12 @@ The main purpose of the **GET** or **HEAD** operation is for debugging.
 Deleting a large object
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-A **DELETE** operation on a manifest object deletes the manifest object
-itself. The segment objects are not affected.
+If you use the **DELETE** operation on a manifest object, the manifest object
+is deleted. The segment objects are not affected.
 
-A **DELETE** operation with the following query parameter deletes all
-segment objects in the manifest, and then, if all are successfully
-deleted, the manifest object itself. A failure response is similar to
-those for the bulk delete operation (:ref:`Bulk delete<bulk-delete>`).
-
-.. code::
-
-    ?multipart-manifest=delete
+However, if you add the ``?multipart-manifest=delete`` query parameter, the
+segment objects are deleted, and if all are successfully deleted, the manifest
+object is also deleted.
 
 Modifying a large object
 ^^^^^^^^^^^^^^^^^^^^^^^^
