@@ -69,7 +69,7 @@ time for your TempURL to expire in UNIX epoch notation.
 .. note::
 
    You can also use HMAC-SHA1 (RFC 2104) with TempURL, but HMAC-SHA256 is
-   stronger cyrtographically.
+   stronger crytographically.
 
 In the following examples, a TempURL that will be available for 60
 seconds is generated for the my\_cat.jpg object. The ``key`` in the
