@@ -60,11 +60,16 @@ Any class 200 status code indicates success.
 Create the TempURL
 ------------------
 
-After the metadata is set, you must create an HMAC-SHA1 (RFC 2104)
+After the metadata is set, you must create an HMAC-SHA256 (RFC 2403)
 signature. When you generate the TempURL, you determine which method of
 access you will grant users, **GET** or **PUT**. You also determine the
 path to the object to which you are granting access. Lastly, you set the
 time for your TempURL to expire in UNIX epoch notation.
+
+.. note::
+
+   You can also use HMAC-SHA1 (RFC 2104) with TempURL, but HMAC-SHA256 is
+   stronger cyrtographically.
 
 In the following examples, a TempURL that will be available for 60
 seconds is generated for the my\_cat.jpg object. The ``key`` in the
@@ -75,7 +80,7 @@ examples is the value of ``X-Account-Meta-Temp-Url-Key``.
 .. code::
 
       import hmac
-      from hashlib import sha1
+      from hashlib import sha256
       from sys import argv
       from time import time
 
@@ -92,7 +97,7 @@ examples is the value of ``X-Account-Meta-Temp-Url-Key``.
         seconds = int(seconds)
         expires = int(time() + seconds)
         hmac_body = '%s\n%s\n%s' % (method, expires, object_path)
-        sig = hmac.new(key, hmac_body, sha1).hexdigest()
+        sig = hmac.new(key, hmac_body, sha256).hexdigest()
         print '%s%s?temp_url_sig=%s;temp_url_expires=%s' % \
             (base_url, object_path, sig, expires)
 
@@ -136,7 +141,7 @@ If you do not provide users with the exact TempURL, they get a 401
         $seconds = (int)$seconds;
         $expires = (int)(time() + $seconds);
         $hmac_body = "$method\n$expires\n$object_path";
-        $sig = hash_hmac("sha1", $hmac_body, $key);
+        $sig = hash_hmac("sha256", $hmac_body, $key);
         echo "$base_url$object_path?" .
              "temp_url_sig=$sig&temp_url_expires=$expires";
       }
@@ -161,7 +166,7 @@ If you do not provide users with the exact TempURL, they get a 401
           seconds = seconds.to_i
           expires = (Time.now + seconds).to_i
           hmac_body = "#{method}\n#{expires}\n#{object_path}"
-          sig = OpenSSL::HMAC.hexdigest("sha1", key, hmac_body)
+          sig = OpenSSL::HMAC.hexdigest("sha256", key, hmac_body)
           puts ("#{base_url}#{object_path}?" +
               "temp_url_sig=#{sig}&temp_url_expires=#{expires}")
       end
