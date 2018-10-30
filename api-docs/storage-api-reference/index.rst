@@ -32,7 +32,7 @@ Following are some requirements for the storage services component:
      You can also perform operations by using the
      :rax-devdocs:`Rackspace Command Line Interface (rack CLI) <#sdks>`, one
      of the language-specific :rax-devdocs:`software development kits <#sdks>`,
-     or the `Cloud Control Panel <https://mycloud.rackspace.com/>`_.
+     or the `Cloud Control Panel <https://login.rackspace.com/>`_.
 
 .. toctree::
    :maxdepth: 2
