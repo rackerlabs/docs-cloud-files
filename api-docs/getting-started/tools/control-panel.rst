@@ -15,5 +15,5 @@ describes those files.
 .. image:: /_images/cf-screenshot-ControlPanel.png
 
 Access this   by logging in to your Cloud Control Panel at
-`http://mycloud.rackspace.com <https://mycloud.rackspace.com>`__, and
+`http://login.rackspace.com <https://login.rackspace.com>`__, and
 then clicking on **Files** (at the top) to view the Cloud Files page.
