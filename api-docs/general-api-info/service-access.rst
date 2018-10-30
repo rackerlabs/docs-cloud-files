@@ -82,7 +82,7 @@ authentication response.
 
 .. tip:: If you do not know which data center you are working in or your
    account ID, you can find them in your Cloud Control Panel at
-   :mycloud:`mycloud.rackspace.com<>`.
+   :mycloud:`login.rackspace.com<>`.
 
 .. note:: To avoid external bandwidth charges, your containers and servers must
    be in the same data center.
