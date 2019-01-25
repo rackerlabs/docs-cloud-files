@@ -24,8 +24,8 @@ and enable your API access key, go to
 Authentication
 --------------
 
-The Rackspace Identity Guide describes how to authenticate against the
-Rackspace Identity service to receive Cloud Files connection parameters and an
+The Identity Guide describes how to authenticate against the
+Identity service to receive Cloud Files connection parameters and an
 authentication token. The token must be passed to Cloud Files operations
 during the time that it is valid.
 
