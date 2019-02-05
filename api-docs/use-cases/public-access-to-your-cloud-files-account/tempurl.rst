@@ -57,6 +57,7 @@ request**
 
 Any class 200 status code indicates success.
 
+
 Create the TempURL
 ------------------
 
@@ -75,7 +76,7 @@ In the following examples, a TempURL that will be available for 60
 seconds is generated for the my\_cat.jpg object. The ``key`` in the
 examples is the value of ``X-Account-Meta-Temp-Url-Key``.
 
-**Example: Create TempURL (in Python)**
+**Example: Create TempURL (in Python3)**
 
 .. code::
 
@@ -92,14 +93,15 @@ examples is the value of ``X-Account-Meta-Temp-Url-Key``.
       else:
         method, url, seconds, key = argv[1:]
         method = method.upper()
-        base_url, object_path = url.split('/v1/')
+        base_url, object_path = object_url.split('/v1/')
         object_path = '/v1/' + object_path
-        seconds = int(seconds)
-        expires = int(time() + seconds)
+        #  print object_url
         hmac_body = '%s\n%s\n%s' % (method, expires, object_path)
-        sig = hmac.new(key, hmac_body, sha256).hexdigest()
-        print '%s%s?temp_url_sig=%s;temp_url_expires=%s' % \
-            (base_url, object_path, sig, expires)
+        temp_url_key_bytes = bytes(temp_url_key , 'latin-1')
+        hmac_body_bytes = bytes(hmac_body, 'latin-1')
+        temp_url_sig = hmac.new(temp_url_key_bytes, hmac_body_bytes, sha256).hexdigest()
+        s = '{object_url}?temp_url_sig={temp_url_sig}&temp_url_expires={expires}'
+        temp_url = s.format(object_url=object_url, temp_url_sig=temp_url_sig, expires=expires)
 
 Be certain to use the full URL to the object, just as you would with a
 normal request.
