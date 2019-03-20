@@ -178,21 +178,3 @@ called ``images`` in the storage service.
 
 For more information about CDN-enabled containers and operations for them, see
 the :ref:`CDN API reference <cdn-api-reference>`.
-
-Language-specific APIs
-~~~~~~~~~~~~~~~~~~~~~~
-
-APIs in several popular languages are available to help put Cloud Files
-in the hands of developers. These language-specific APIs provide a layer
-of abstraction on top of the base REST API, enabling developers to work
-with a container and object model instead of working directly with HTTP
-requests and responses. The language-specific APIs are available at no
-cost to download, use, and modify.
-
-Detailed information about the language-specific APIs is in the
-Rackspace Cloud SDKs Software Development Kit Guide. Each API has its
-own documentation including code snippets
-and examples to help you get started.
-
-For more information about the Rackspace SDKs, see
-:rax-devdocs:`SDKs and tools<#sdks>`.
