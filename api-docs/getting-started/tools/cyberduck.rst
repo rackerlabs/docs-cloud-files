@@ -11,7 +11,7 @@ structures efficiently and preview files with Quick Look. Cyberduck also
 provides seamless integration with many external editors, making it easy
 to change content quickly. It provides a way to upload and configure
 Cloud Files to distribute content over the CDN. For more information,
-see the Cyberduck web site at http://cyberduck.ch/.
+see the Cyberduck web site at http://cyberduck.io/.
 
 **Figure: Cyberduck interface to Cloud Files**
 
