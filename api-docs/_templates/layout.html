@@ -182,14 +182,14 @@
   {# Do not conflict with RTD insertion of analytics script #}
   {%- block footer %} 
   {%- if (theme_prev_next_buttons_location == 'bottom' or theme_prev_next_buttons_location == 'both') and (next or prev) %}
-  <div class="rst-footer-buttons justify-content-between" role="navigation" aria-label="footer navigation">
-    <div class="prev float-left">
+  <div class="rst-footer-buttons row justify-content-between" role="navigation" aria-label="footer navigation">
+    <div class="prev col-sm-12 col-md-6 col-lg-6 float-left">
     {%- if prev %}
     <span class="label" aria-hidden="true">Previous</span>
     <a href="{{ prev.link|e }}" title="{{ prev.title|striptags|e }}" accesskey="p" rel="prev">{{ prev.title|striptags|e }}</a>
     {%- endif %}
     </div>
-    <div class="next float-right">
+    <div class="next col-sm-12 col-md-6 col-lg-6 float-right">
       {%- if next %}
       <span class="label" aria-hidden="true">Next</span>
       <a href="{{ next.link|e }}" title="{{ next.title|striptags|e }}" accesskey="n" rel="next">{{ next.title|striptags|e }}</a>
