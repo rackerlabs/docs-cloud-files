@@ -176,11 +176,6 @@
         </div>
       {%- endblock %}
       </div>
-  
-  {% include "versions.html" %}
-
-  {# Do not conflict with RTD insertion of analytics script #}
-  {%- block footer %} {% endblock %}
       </div>
       {%- if (theme_prev_next_buttons_location == 'bottom' or theme_prev_next_buttons_location == 'both') and (next or prev) %}
       <div class="rst-footer-buttons row justify-content-between" role="navigation" aria-label="footer navigation">
