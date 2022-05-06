@@ -3,6 +3,8 @@
 iOS streaming
 ~~~~~~~~~~~~~
 
+**Note: X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022.**
+
 The Cloud Files CDN allows you to stream video to iOS devices without
 needing to convert your video. After you CDN-enable your container, you
 have the tools necessary for streaming media to multiple devices. To
