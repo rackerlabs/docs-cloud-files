@@ -168,6 +168,8 @@ This table shows the header parameters for the response:
 |                          |                         |streaming that uses HTTP|
 |                          |                         |Live Streaming from     |
 |                          |                         |Apple.                  |
+|                          |                         |**To be discontinued**  | 
+|                          |                         |**July 31, 2022**       |
 +--------------------------+-------------------------+------------------------+
 |X-Cdn-Ssl-Uri             |String                   |The URI for downloading |
 |                          |                         |the object over HTTPS,  |
@@ -182,6 +184,8 @@ This table shows the header parameters for the response:
 |                          |                         |streaming that uses HTTP|
 |                          |                         |Dynamic Streaming from  |
 |                          |                         |Adobe.                  |
+|                          |                         |**To be discontinued**  | 
+|                          |                         |**July 31, 2022**       |
 +--------------------------+-------------------------+------------------------+
 |X-Cdn-Uri                 |String                   |Indicates the URI that  |
 |                          |                         |you can combine with    |
@@ -196,6 +200,8 @@ This table shows the header parameters for the response:
 This operation does not return a response body.
 
 **Example: CDN-enable container HTTP response**
+
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022.
 
 .. code::
 
