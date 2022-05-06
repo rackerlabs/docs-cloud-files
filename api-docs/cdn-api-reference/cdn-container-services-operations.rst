@@ -17,7 +17,9 @@ container.
 
 When you enable a container in the CDN service, you automatically generate URIs
 for SSL and streaming usage. They are listed under the X-Cdn-Ssl-Uri and
-X-Cdn-Streaming-Uri/X-Cdn-Ios-Uri headers. **Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri streaming links will be discontinued on July 31, 2022.
+X-Cdn-Streaming-Uri/X-Cdn-Ios-Uri headers. 
+
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri streaming links will be discontinued on July 31, 2022.
 
 On August 13, 2012, the format of new CDN URIs changed in order to enhance the
 security of the CDN. Any URIs set in the older format
