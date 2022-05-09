@@ -19,6 +19,8 @@ requesting objects stored in CDN-enabled containers.
 **Example: CDN-enabled container metadata with SSL URI: HTTP
 response**
 
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022. X-Cdn_Uri and X-Cdn-Ssl_Uri links will be unaffected.
+
 .. code::
 
     HTTP/1.1 204 No Content

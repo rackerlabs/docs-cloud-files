@@ -128,6 +128,8 @@ Response
 
 **Example: List CDN-enabled containers HTTP response, using a query parameter ?format=json​**
 
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022. 
+
 .. code::
 
    HTTP/1.1 200 OK
@@ -139,10 +141,10 @@ Response
    [
        {
            "cdn_enabled": true,
-           "cdn_ios_uri": "http://acc3b9ba6a79805f5577-e7e60117100ffd73b45850c0b1fd96c1.iosr.cf5.rackcdn.com",
-           "cdn_ssl_uri": "https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com",
-           "cdn_streaming_uri": "http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com",
-           "cdn_uri": "http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1.r49.cf0.rackcdn.com",
+           "X-Cdn-Ios-Uri": "http://acc3b9ba6a79805f5577-e7e60117100ffd73b45850c0b1fd96c1.iosr.cf5.rackcdn.com",
+           "X-Cdn-Ssl-Uri": "https://83c49b9a2f7ad18250b3-346eb45fd42c58ca13011d659bfc1ac1. ssl.cf0.rackcdn.com",
+           "X-Cdn-Streaming-Uri": "http://084cc2790632ccee0a12-346eb45fd42c58ca13011d659bfc1ac1. r49.stream.cf0.rackcdn.com",
+           "X-Cdn-Uri": "http://081e40d3ee1cec5f77bf-346eb45fd42c58ca13011d659bfc1ac1.r49.cf0.rackcdn.com",
            "log_retention": false,
            "name": "cdn_test",
            "ttl": 259200

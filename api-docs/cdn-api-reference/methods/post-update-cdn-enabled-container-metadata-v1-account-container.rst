@@ -102,6 +102,8 @@ This operation does not return a response body.
 
 **Example: Update CDN-enabled container metadata HTTP response**
 
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022. 
+
 .. code::
 
    HTTP/1.1 204 No Content

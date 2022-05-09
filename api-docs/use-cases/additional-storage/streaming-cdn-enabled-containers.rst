@@ -3,6 +3,8 @@
 Streaming CDN-enabled containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Note: X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022.**
+
 In addition to the other headers associated with CDN, a **HEAD**
 operation against a CDN-enabled container returns the following
 streaming URIs to enable the streaming feature:

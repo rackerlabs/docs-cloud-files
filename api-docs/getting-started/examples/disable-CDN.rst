@@ -21,6 +21,8 @@ request is accepted for processing.
 
 **Example: Disable CDN for a container response**
 
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022.
+
 .. code::
 
    HTTP/1.1 202 Accepted

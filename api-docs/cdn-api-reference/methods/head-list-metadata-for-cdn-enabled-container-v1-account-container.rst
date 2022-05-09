@@ -120,16 +120,22 @@ This table shows the header parameters for the response:
 |                          |                         |streaming that uses HTTP|
 |                          |                         |Dynamic Streaming from  |
 |                          |                         |Adobe.                  |
+|                          |                         |**To be discontinued**  | 
+|                          |                         |**July 31, 2022**       |
 +--------------------------+-------------------------+------------------------+
 |X-Cdn-Ios-Uri             |String                   |The URI for video       |
 |                          |                         |streaming that uses HTTP|
 |                          |                         |Live Streaming from     |
 |                          |                         |Apple.                  |
+|                          |                         |**To be discontinued**  | 
+|                          |                         |**July 31, 2022**       |
 +--------------------------+-------------------------+------------------------+
 
 This operation does not return a response body.
 
 **Example: Get CDN-enabled container metadata HTTP response**
+
+**Note:** X-Cdn-Streaming-Uri and X-Cdn-Ios-Uri links will be discontinued on July 31, 2022.
 
 .. code::
 
